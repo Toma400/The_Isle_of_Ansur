@@ -1,16 +1,6 @@
 import gui.menu
 import stats.races
-
-def cache_deleting (pathage):
-  import os
-  import shutil
-  try:
-    shutil.rmtree(pathage)
-  except NotADirectoryError:
-    os.remove(pathage)
-  except FileNotFoundError:
-    pass
-  del shutil
+import utils.repo_manag
 
 gui.menu.start()
 print (stats.races.race_saphtri.descript)
@@ -18,8 +8,10 @@ temp_stat = 5 + stats.races.race_saphtri.atr_endurance
 print ("Endurance with penalty: " + str(temp_stat))
 
 #cache deletin
+utils.repo_manag.cache_deleting ("stats/__pycache__")
+utils.repo_manag.cache_deleting ("utils/__pycache__")
+utils.repo_manag.cache_deleting ("gui/__pycache__")
+utils.repo_manag.cache_deleting ("saves/__pycache__")
 del stats.races
-cache_deleting ("stats/__pycache__")
-cache_deleting ("utils/__pycache__")
-cache_deleting ("gui/__pycache__")
-cache_deleting ("saves/__pycache__")
+del gui.menu
+del utils.repo_manag
