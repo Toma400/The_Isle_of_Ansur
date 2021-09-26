@@ -1,9 +1,12 @@
-def text_align (text, side, width):
+def text_align (text, side):
   if side == "left":
-    str.ljust(text, width, " ")
+    aligned = '{:<65}'.format(text)
+    return aligned
   elif side == "right":
-    str.rjust(text, width, " ")
+    aligned = '{:>65}'.format(text)
+    return aligned
   elif side == "centre":
-    str.center(text, width, " ")
+    aligned = '{:^65}'.format(text)
+    return aligned
   else:
     print ("Alignment error")
