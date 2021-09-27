@@ -78,8 +78,8 @@ class necromant:
   abil_destruction_magic = 1
   abil_firearms = -2
 
-class healer:
-  descript = "Healer Mage"
+class priest:
+  descript = "Priest"
   pwr_magic = 5
   pwr_tech = -5
   abil_restoration_magic = 2

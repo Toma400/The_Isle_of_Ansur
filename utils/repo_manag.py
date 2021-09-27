@@ -1,4 +1,4 @@
-def cache_deleting (pathage):
+def file_deleting (pathage):
   import os
   import shutil
   try:
