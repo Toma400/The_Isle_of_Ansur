@@ -1,9 +1,9 @@
 import utils.colours
 import utils.text
+import gui.character
 
 def start():
   while True:
-    import utils.colours
     print ('''\n\n|__) _|_    _ _ _   (_ |_  _  _| _     _   _  _  _|  |  . _ |_ |_ 
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 
                                                          _/  
@@ -18,8 +18,7 @@ def start():
     print ("\n\n")
     menu_choice = input ("")
     if menu_choice == "1":
-      print ("Option unavailable")
-      break
+      gui.character.name()
     elif menu_choice == "2":
       print ("Option unavailable")
       break
