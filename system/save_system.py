@@ -14,7 +14,8 @@ def folder_creating(name):
       return False
     else:
       try:
-        os.makedirs(path)
+        os.makedirs (path)
+        profile_creating (path)
         return True
       except OSError:
         print ("Creation of the directory %s failed" % path)
@@ -22,3 +23,21 @@ def folder_creating(name):
       else:
         #print ("Successfully created the directory %s" % path)
         pass
+
+def profile_creating(path):
+  import os
+  deeper_path = path + "/in_use"
+  temp_var = "/"
+  save_jsons = ["finished_quests.json", "quests.json", "inventory.json", "world.json", "profile.json"]
+  #creating subfolder
+  try:
+    os.makedirs(deeper_path)
+  except OSError:
+    print ("Creation of the directory %s failed" % path)
+  else:
+    pass
+  #creating jsons for main folder and subfolder
+  for i in save_jsons:
+    creating = open(path + temp_var + i, "a")
+  for j in save_jsons:
+    creating2 = open(deeper_path + temp_var + j, "a")
