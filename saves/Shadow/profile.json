@@ -1,0 +1,31 @@
+{
+  "name": "",
+  "gender": "",
+  "race": "",
+  "class": "",
+
+  "location": "",
+
+  "pwr_tech": 0,
+  "pwr_magic": 0,
+  "pwr_conn": 0,
+  "pwr_void": 0,
+
+  "strength": 8,
+  "dexterity": 8,
+  "intelligence": 8,
+  "endurance": 8,
+  "charisma": 8,
+
+  "hp": 100,
+  "sp": 1000,
+  "mp": 100,
+  "xp": 0,
+  "weight": 0,
+  "hp_level": 100,
+  "mp_level": 100,
+  "xp_level": 100,
+  "max_weight": 24,
+  "level": 1
+
+}

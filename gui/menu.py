@@ -9,7 +9,7 @@ def start():
                                                          _/  
 ''')
     print ("𝚃𝚑𝚎 𝙸𝚜𝚕𝚎 𝚘𝚏 𝙰𝚗𝚜𝚞𝚛\n")
-    print (utils.text.text_align("alpha 0.0.1\n\n", "right"))
+    print (utils.text.text_align("alpha 0.0.1b\n\n", "right"))
     print (utils.text.text_align("--------------------", "centre"))
     print (utils.text.text_align(utils.colours.bcolors.CRED + "[1] START THE GAME" + utils.colours.bcolors.ENDC, "centre_colour"))
     print (utils.text.text_align(utils.colours.bcolors.CRED + "[2] LOAD THE GAME" + utils.colours.bcolors.ENDC, "centre_colour"))

@@ -1,0 +1,1 @@
+I. fixing loop at Start the Game (w/ incorrect naming it should redirect the character back, with correct it should end the program >for now<)
