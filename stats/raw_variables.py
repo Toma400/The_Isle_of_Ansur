@@ -42,6 +42,7 @@ class execute:
 
   #Perks
   perk_assassin_hit = False
+  perk_trader_sight = False
   perk_vehicle_driving = False
   perk_toxin_immunity = False
   perk_undead = False
