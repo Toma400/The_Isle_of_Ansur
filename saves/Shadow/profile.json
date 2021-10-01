@@ -5,6 +5,8 @@
   "class": "",
 
   "location": "",
+  "time_day": "",
+  "time_hour": "",
 
   "pwr_tech": 0,
   "pwr_magic": 0,
@@ -26,6 +28,10 @@
   "mp_level": 100,
   "xp_level": 100,
   "max_weight": 24,
-  "level": 1
+  "level": 1,
 
+  "save_system": 1.0,
+  "time_system": "realistic",
+  "saved_on_day": "",
+  "saved_on_hour": ""
 }

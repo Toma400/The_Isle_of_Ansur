@@ -11,10 +11,11 @@ def start():
     print ("𝚃𝚑𝚎 𝙸𝚜𝚕𝚎 𝚘𝚏 𝙰𝚗𝚜𝚞𝚛\n")
     print (utils.text.text_align("alpha 0.0.1b\n\n", "right"))
     print (utils.text.text_align("--------------------", "centre"))
-    print (utils.text.text_align(utils.colours.bcolors.CRED + "[1] START THE GAME" + utils.colours.bcolors.ENDC, "centre_colour"))
+    print (utils.text.text_align("[1] START THE GAME", "centre"))
     print (utils.text.text_align(utils.colours.bcolors.CRED + "[2] LOAD THE GAME" + utils.colours.bcolors.ENDC, "centre_colour"))
     print (utils.text.text_align("[3] ENCYCLOPAEDIA", "centre"))
-    print (utils.text.text_align("[4] EXIT THE GAME", "centre"))
+    print (utils.text.text_align(utils.colours.bcolors.CRED + "[4] GAME SETTINGS" + utils.colours.bcolors.ENDC, "centre_colour"))
+    print (utils.text.text_align("[5] EXIT THE GAME", "centre"))
     print ("\n\n")
     menu_choice = input ("")
     if menu_choice == "1":
@@ -26,6 +27,9 @@ def start():
       encyclopaedia()
       break
     elif menu_choice == "4":
+      print ("Option unavailable")
+      break
+    elif menu_choice == "5":
       break
     else:
       continue
