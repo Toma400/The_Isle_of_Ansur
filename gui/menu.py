@@ -31,6 +31,10 @@ def start():
       break
     elif menu_choice == "5":
       break
+    elif menu_choice == "test":
+      import system.json_manag
+      system.json_manag.json_read("saves/Shadow/profile.json", "time_system")
+      break 
     else:
       continue
 

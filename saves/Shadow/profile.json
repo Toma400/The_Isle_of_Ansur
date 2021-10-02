@@ -1,6 +1,7 @@
 {
-  "nuid":"",
+  "nuid": "",
   "name": "",
+  "nuid_key": "",
   "gender": "",
   "race": "",
   "class": "",
@@ -8,6 +9,7 @@
   "location": "",
   "time_day": "",
   "time_hour": "",
+  "world_tick": 1,
 
   "pwr_tech": 0,
   "pwr_magic": 0,

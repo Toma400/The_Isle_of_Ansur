@@ -1,3 +1,5 @@
+#temporary .py file, just to list all variables that will be needed in RPG system
+
 class execute:
   #Attributes
   atr_charisma = 0
@@ -22,7 +24,7 @@ class execute:
   abil_persuasion = 0
   #Abilities: Technical
   abil_repair = 0
-  abil_trapspotting = 0 #it's about spotting any mechanism, despite the name
+  abil_traps = 0
   #Abilities: Resource Gathering
   abil_resource_processing = 0
   abil_tools = 0
@@ -32,7 +34,7 @@ class execute:
   #Abilities: Rogue
   abil_lockpicking = 0
   abil_sneaking = 0
-  abil_traps = 0
+  abil_trapspotting = 0 #it's about spotting any mechanism, despite the name
   abil_pickpocketing = 0
   #Abilities: Survival
   abil_healing = 0
@@ -44,14 +46,16 @@ class execute:
   perk_assassin_hit = False
   perk_trader_sight = False
   perk_vehicle_driving = False
-  perk_toxin_immunity = False
-  perk_undead = False
+  perk_toxin_immunity = 0
+
   perk_animal_friend = False
   perk_animal_trainer = False
-  perk_vampirism = False
 
   #SpecialPerks
   perk_step_on_water = False
   perk_flying_monk = False
   perk_stheyr = False
   perk_body_eating = False
+
+  perk_undead = False
+  perk_vampirism = False
