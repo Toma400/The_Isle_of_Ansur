@@ -1,4 +1,5 @@
 {
+  "nuid":"",
   "name": "",
   "gender": "",
   "race": "",
@@ -32,6 +33,7 @@
 
   "save_system": 1.0,
   "time_system": "realistic",
+  "hunger_thirst": "enabled",
   "saved_on_day": "",
   "saved_on_hour": ""
 }

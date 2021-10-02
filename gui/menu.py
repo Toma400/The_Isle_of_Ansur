@@ -1,8 +1,8 @@
 import utils.colours
 import utils.text
-import gui.character
 
 def start():
+  import gui.character
   while True:
     print ('''\n\n|__) _|_    _ _ _   (_ |_  _  _| _     _   _  _  _|  |  . _ |_ |_ 
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 

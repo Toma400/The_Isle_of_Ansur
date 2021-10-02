@@ -15,7 +15,7 @@ def name():
       break
     else:
       #actually that part should already export 'player_name' to 'in_use' profile.json
-      #and gender should have no arguments, since no need is necessary
+      #and gender will have argument just to know where to put further stats (folder)
       gender (player_name)
       break
 
