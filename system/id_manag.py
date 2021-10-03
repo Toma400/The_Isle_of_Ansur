@@ -1,6 +1,7 @@
 #NUID - Numerical User ID - used for rare user identification (also: NUID key)
 #IID - Item ID - used for item identification (workspace:object)
 #WID - World ID - used for world/location identification (workspace:location*)
+#QID - Quest ID - used for quests (workspace:quest); stored in separate group in .json
 #CID - Class ID - used for class identification (workspace:object)
 #RID - Race ID - used for race identification (workspace:object)
 #* - optional, but if not used, then world=True in wid_conv

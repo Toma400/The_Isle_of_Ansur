@@ -28,7 +28,7 @@ def profile_creating(path):
   import os
   deeper_path = path + "/in_use"
   temp_var = "/"
-  save_jsons = ["finished_quests.json", "quests.json", "inventory.json", "world.json", "profile.json"]
+  save_jsons = ["quests.json", "inventory.json", "world.json", "profile.json"]
   #creating subfolder
   try:
     os.makedirs(deeper_path)
@@ -41,3 +41,19 @@ def profile_creating(path):
     creating = open(path + temp_var + i, "a")
   for j in save_jsons:
     creating2 = open(deeper_path + temp_var + j, "a")
+    stats_creating(deeper_path, "profile")
+
+def stats_creating(path, set):
+  if set == "profile":
+    deeper_path = path + "/profile.json"
+    import json
+    import stats.default_stats
+    default_stats = {}
+    default_stats.update (stats.default_stats.profile.not_default_stats)
+    default_stats.update (stats.default_stats.profile.general_stats)
+    default_stats.update (stats.default_stats.profile.attributes)
+    default_stats.update (stats.default_stats.profile.abilities)
+    default_stats.update (stats.default_stats.profile.perks)
+    default_stats.update (stats.default_stats.profile.settings)
+    with open (deeper_path,'w') as file:
+      json.dump(default_stats, file, indent = 2)
