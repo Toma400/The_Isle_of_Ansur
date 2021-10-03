@@ -8,5 +8,9 @@ import gui.menu
 #import system.id_manag
 #system.id_manag.rid_conv ("Ansur:", "descript")
 
-gui.menu.start()
+#gui.menu.start()
 #use "test" answer to use latest working feature (.json manag)
+
+import system.json_manag
+print (system.json_manag.save_read("Sandra", "profile", "hp_level"))
+system.json_manag.save_change("Sandra", "profile", "hp_level", "math", -10)
