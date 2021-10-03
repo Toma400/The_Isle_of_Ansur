@@ -1,8 +1,9 @@
+import system.cache.cache_manag
+system.cache.cache_manag.cache_redirect()
 import gui.menu
 
-gui.menu.start()
-#use "test" answer to use latest working feature (.json manag)
+import system.id_manag
+system.id_manag.rid_conv ("Ansur:", "descript")
 
-#cache deletin
-import utils.cache_manag
-utils.cache_manag.cache_deleting ()
+#gui.menu.start()
+#use "test" answer to use latest working feature (.json manag)
