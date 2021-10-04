@@ -50,4 +50,8 @@ def gender(name):
       gender(name)
 
 def race(name):
-  pass
+  import utils.text
+  import utils.colours
+  import system.mod_manag
+  mods_loaded = system.mod_manag.mod_lister("stats")
+  print (mods_loaded)

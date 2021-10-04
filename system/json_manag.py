@@ -1,8 +1,12 @@
-def json_read(path, element):
+def json_read(path, element, dict_type=False):
   import json
-  json_file = open(path, "r")
-  print (json.load(json_file))
-  print (type(json_file))
+  data = {}
+  with open(path) as json_file:
+    data = json.load(json_file)
+  if dict_type == False:
+    return data[element]
+  else:
+    return data
 
 def json_change(path, element, change_type, change_value):
   #change type identifies whether you want to do replacement, maths or var addition
