@@ -14,7 +14,7 @@ def full_save (name):
     temp_list.append(temp2_list)
   for j in temp_list:
     try:
-      system.json_manag.save_change(name, j, 0, "game_save", 0, in_use=False)
+      system.json_manag.save_change(name, j, 0, "game_save", 0, False)
     except json.decoder.JSONDecodeError:
       print ("JSON File: " + j + ".json does not have any arguments. Skipping.")
 

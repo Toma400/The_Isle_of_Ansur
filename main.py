@@ -8,5 +8,9 @@ import gui.menu
 #import system.id_manag
 #system.id_manag.rid_conv ("Ansur:", "descript")
 
-#gui.menu.start()
+gui.menu.start()
 #use "test" answer to use latest working feature (.json manag)
+
+#import utils.repo_manag
+#print (utils.repo_manag.dir_checker ("system/", "Dir", "py"))
+#print (utils.repo_manag.mod_lister ("worlds", "Modded"))

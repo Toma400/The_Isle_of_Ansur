@@ -64,7 +64,7 @@ def save_change(name, category, element, change_type, change_value, in_use=True)
     #var_add, but for deleting; change_value can be anything in this case
     elif change_type == "var_del":
       temp_dict = save_read(name, category, element, True)
-      del temp_dict[element]
+      temp_dict.remove (element)
       with open (final_path,'w') as file:
         json.dump(temp_dict, file, indent = 2)
     #for loading the game (uses load_read)
