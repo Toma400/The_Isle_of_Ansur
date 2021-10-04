@@ -17,7 +17,7 @@ class profile:
     "gender": "",
     "race": "", #rid
     "class": "", #cid
-    "location": "", #wid
+    "location": "ansur:beginning", #wid
     "time_day": 1, #distance from default value (3.10.921 NE); time_day changes drastically if realistic time mode is set
     "time_hour": 1, #value of 1-1440
     "world_tick": 1, #each turn made by player
