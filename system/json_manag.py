@@ -8,6 +8,18 @@ def json_read(path, element, dict_type=False):
   else:
     return data
 
+def json_subread(path, element, subelement):
+  import json
+  subdata = json_read(path, element)[0]
+  return subdata[subelement]
+
+def json_write(path, name, dictionary):
+  import json
+  final_path = path + "/" + name + ".json"
+  creating = open(final_path, "a")
+  with open (final_path, 'w') as json_file:
+    json.dump(dictionary, json_file, indent = 2)
+
 def json_change(path, element, change_type, change_value):
   #change type identifies whether you want to do replacement, maths or var addition
   #replacement - it simply makes value X become value Y
@@ -22,7 +34,7 @@ def save_read(name, category, element, dict_type=False):
   import json
   final_path = "saves/" + name + "/in_use/" + category + ".json"
   data = {}
-  with open(final_path) as json_file:
+  with open (final_path) as json_file:
     data = json.load(json_file)
   if dict_type == False:
     return data[element]
