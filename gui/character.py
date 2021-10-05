@@ -108,6 +108,18 @@ def classes(name):
     choose_class = int(input (""))
     if choose_class > 0 and choose_class <= classes_count:
       chosen_class = classes_loaded[choose_class-1]
+      try:
+        #checks
+        if system.json_manag.save_read(name, "profile", "race") == system.id_manag.cid_conv(chosen_class, "race_exclusive"):
+          pass
+        else:
+          print ((utils.text.text_align(utils.colours.bcolors.CYELLOW2 + "Class is exclusive for race you don't represent!" + utils.colours.bcolors.ENDC, "centre_colour")))
+          print ("\n")
+          classes(name)
+          break
+      except KeyError:
+        pass
+      #runs if not interrupted by race_exclusivity
       system.json_manag.save_change(name, "profile", "class", "replace", chosen_class)
       for i in system.id_manag.cid_conv(chosen_class, 0, True):
         k = system.id_manag.cid_conv(chosen_class, i)
@@ -118,14 +130,15 @@ def classes(name):
           system.json_manag.save_change(name, "profile", i, "replace", k)
         except KeyError:
           #detector of values that can't be added
-          if i == "class_id" or i == "descript":
+          if i == "class_id" or i == "descript" or i == "race_exclusive":
             pass
           else:
             print ("Value not found:" + i + ". Skipped.")
-      manual_bonus(name)
-      break
+        manual_bonus(name)
+        break
     else:
       classes(name)
 
 def manual_bonus(name):
   pass
+

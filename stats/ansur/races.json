@@ -9,9 +9,7 @@
       "atr_endurance": -1,
       "pwr_tech": 3,
       "abil_firearms": 1,
-      "abil_persuasion": 1,
-      "spec_diamond": false,
-      "spec_moon": false
+      "abil_persuasion": 1
     }
   ],
   "westernwaldian": [
@@ -23,9 +21,114 @@
       "atr_intelligence": 1,
       "pwr_magic": 2,
       "abil_trade": 1,
-      "abil_longswords": 1,
-      "spec_diamond": false,
-      "spec_moon": false
+      "abil_longswords": 1
+    }
+  ],
+  "nord": [
+    {
+      "race_id": "ansur:nord",
+      "descript": "Human, Born in Northern Isles",
+      "atr_strength": 2,
+      "atr_endurance": 1,
+      "atr_charisma": 1,
+      "atr_intelligence": -1,
+      "abil_shortswords": 1,
+      "abil_toughness": 1
+    }
+  ],
+  "lunanian": [
+    {
+      "race_id": "ansur:lunanian",
+      "descript": "Human, Born in Center of Moon Continent",
+      "atr_strength": 1,
+      "atr_endurance": 1,
+      "atr_charisma": 1,
+      "abil_trade": 1,
+      "abil_resource_processing": 1
+    }
+  ],
+  "saphtri": [
+    {
+      "race_id": "ansur:saphtri",
+      "descript": "Saphtri",
+      "atr_strength": -1,
+      "atr_dexterity": 2,
+      "atr_charisma": 1,
+      "atr_endurance": 1,
+      "pwr_conn": 1,
+      "abil_archery": 2
+    }
+  ],
+  "voitri": [
+    {
+      "race_id": "ansur:voitri",
+      "descript": "Voitri",
+      "atr_charisma": 1,
+      "atr_dexterity": 1,
+      "atr_intelligence": 2,
+      "atr_endurance": -1,
+      "pwr_magic": 4,
+      "pwr_void": 2,
+      "abil_transformation_magic": 1,
+      "abil_destruction_magic": 1
+    }
+  ],
+  "lunatri": [
+    {
+      "race_id": "ansur:lunatri",
+      "descript": "Lunatri",
+      "atr_charisma": 1,
+      "atr_dexterity": 1,
+      "atr_intelligence": 1,
+      "pwr_magic": 5,
+      "abil_transformation_magic": 1,
+      "abil_persuasion": 1,
+      "abil_alchemy": 1
+    }
+  ],
+  "ormath": [
+    {
+      "race_id": "ansur:ormath",
+      "descript": "Ormath",
+      "atr_strength": -1,
+      "atr_intelligence": 2,
+      "atr_dexterity": 1,
+      "atr_endurance": 1,
+      "pwr_conn": 7,
+      "pwr_magic": 2,
+      "pwr_void": -20,
+      "abil_connection": 1,
+      "abil_healing": 1,
+      "abil_survival": 1
+    }
+  ],
+  "ett": [
+    {
+      "race_id": "ansur:ett",
+      "descript": "Ett",
+      "atr_strength": 1,
+      "atr_dexterity": -1,
+      "atr_intelligence": 1,
+      "atr_endurance": 2,
+      "pwr_tech": 6,
+      "abil_smithery": 1,
+      "abil_trap": 1
+    }
+  ],
+  "ghlodd": [
+    {
+      "race_id": "ansur:ghlodd",
+      "descript": "Ghlodd",
+      "atr_strength": 1,
+      "atr_endurance": 1,
+      "atr_dexterity": 2,
+      "atr_charisma": -1,
+      "pwr_conn": 5,
+      "pwr_tech": 1,
+      "pwr_magic": 1,
+      "abil_repair": 1,
+      "abil_tools": 1,
+      "spec_diamond": true
     }
   ]
 }

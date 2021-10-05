@@ -38,7 +38,7 @@ class bcolors:
     CGREY    = '\33[90m'
     CRED2    = '\33[91m'
     CGREEN2  = '\33[92m'
-    CYELLOW2 = '\33[93m'
+    CYELLOW2 = '\33[93m' #for in-game warnings, not bugs/crashes
     CBLUE2   = '\33[94m'
     CVIOLET2 = '\33[95m'
     CBEIGE2  = '\33[96m'

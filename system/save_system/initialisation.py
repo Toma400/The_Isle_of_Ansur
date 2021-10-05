@@ -9,7 +9,7 @@ def folder_creating(name):
   import utils.text
   path = "saves/" + name
   if os.path.isdir(path) == True:
-    print (utils.text.text_align("※ Not able to create player profile, the name is taken. Please use different name instead ※", "centre"))
+    print (utils.text.text_align(utils.colours.bcolors.CYELLOW2 + "※ Not able to create player profile, the name is taken. Please use different name instead ※" + utils.colours.bcolors.ENDC, "centre_colour"))
     return False
   else:
     try:

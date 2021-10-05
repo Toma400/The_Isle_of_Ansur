@@ -25,5 +25,142 @@
       "abil_sneaking": 1,
       "abil_toughness": -1
     }
+  ],
+  "gunslinger": [
+    {
+      "class_id": "ansur:gunslinger",
+      "descript": "Gunslinger",
+      "pwr_tech": 5,
+      "pwr_magic": -5,
+      "abil_firearms": 2,
+      "abil_repair": 1,
+      "abil_castspelling": -2
+    }
+  ],
+  "mage": [
+    {
+      "class_id": "ansur:mage",
+      "descript": "Regular Mage",
+      "pwr_magic": 5,
+      "pwr_tech": -5,
+      "abil_castspelling": 2,
+      "abil_healing": 1,
+      "abil_firearms": -2
+    }
+  ],
+  "trader": [
+    {
+      "class_id": "ansur:trader",
+      "descript": "Trader",
+      "abil_trade": 2,
+      "abil_persuasion": 1,
+      "abil_toughness": -2,
+      "perk_trader_sight": true
+    }
+  ],
+  "rogue": [
+    {
+      "class_id": "ansur:rogue",
+      "descript": "Rogue",
+      "abil_sneaking": 1,
+      "abil_lockpicking": 1,
+      "abil_pickpocketing": 1,
+      "abil_toughness": -2
+    }
+  ],
+  "assassin": [
+    {
+      "class_id": "ansur:assassin",
+      "descript": "Assassin",
+      "abil_sneaking": 1,
+      "abil_shortswords": 1,
+      "abil_toughness": -2,
+      "perk_assassin_hit": true
+    }
+  ],
+  "mechanic": [
+    {
+      "class_id": "ansur:mechanic",
+      "descript": "Mechanic",
+      "pwr_tech": 15,
+      "pwr_magic": -15,
+      "abil_repair": 2,
+      "abil_smithery": 1,
+      "abil_castspelling": -2,
+      "perk_vehicle_driving": true
+    }
+  ],
+  "blacksmith": [
+    {
+      "class_id": "ansur:blacksmith",
+      "descript": "Blacksmith",
+      "abil_repair": 1,
+      "abil_smithery": 1,
+      "abil_resource_processing": 1,
+      "abil_tools": 1,
+      "abil_shortswords": -1,
+      "abil_longswords": -1,
+      "abil_archery": -1
+    }
+  ],
+  "outlander": [
+    {
+      "class_id": "ansur:outlander",
+      "descript": "Outlander",
+      "atr_charisma": -1,
+      "abil_repair": 1,
+      "abil_survival": 1,
+      "abil_trapspotting": 1,
+      "abil_healing": 1,
+      "abil_persuasion": -1
+    }
+  ],
+  "necromant": [
+    {
+      "class_id": "ansur:necromant",
+      "descript": "Necromant",
+      "pwr_void": 8,
+      "pwr_conn": -20,
+      "pwr_tech": -5,
+      "pwr_magic": 5,
+      "abil_necromancy": 2,
+      "abil_destruction_magic": 1,
+      "abil_firearms": -2
+    }
+  ],
+  "priest": [
+    {
+      "class_id": "ansur:priest",
+      "descript": "Priest",
+      "pwr_magic": 5,
+      "pwr_tech": -5,
+      "abil_restoration_magic": 2,
+      "abil_herbalism": 1,
+      "abil_firearms": -2
+    }
+  ],
+  "illusionist": [
+    {
+      "class_id": "ansur:illusionist",
+      "descript": "Illusionist",
+      "pwr_magic": 5,
+      "pwr_tech": -5,
+      "abil_transformation_magic": 2,
+      "abil_alchemy": 1,
+      "abil_firearms": -2
+    }
+  ],
+  "ormath_shaman": [
+    {
+      "class_id": "ansur:ormath_shaman",
+      "descript": "Ormath Shaman",
+      "race_exclusive": "ansur:ormath",
+      "pwr_conn": 10,
+      "pwr_void": -10,
+      "abil_connection": 2,
+      "abil_herbalism": 1,
+      "abil_healing": 1,
+      "abil_firearms": -2
+    }
   ]
 }
