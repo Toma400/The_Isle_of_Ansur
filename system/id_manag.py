@@ -62,6 +62,8 @@ def rid_conv (rid, element, dict_type=False):
       print ("Incorrect ID")
     else:
       if dict_type == True:
+        #returns values used by object as dict
         return system.json_manag.json_keyread ("stats/" + rid1 + "/races.json", rid2)
       else:
+        #returns values of object
         return system.json_manag.json_subread ("stats/" + rid1 + "/races.json", rid2, element)

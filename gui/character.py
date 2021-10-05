@@ -70,6 +70,19 @@ def race(name):
     if choose_race > 0 and choose_race <= races_count:
       chosen_race = races_loaded[choose_race-1]
       system.json_manag.save_change(name, "profile", "race", "replace", chosen_race)
+      for i in system.id_manag.rid_conv(chosen_race, 0, True):
+        k = system.id_manag.rid_conv(chosen_race, i)
+        try:
+          system.json_manag.save_change(name, "profile", i, "math", k)
+        except ValueError:
+          #int/str detector (int can use "math", str not)
+          system.json_manag.save_change(name, "profile", i, "replace", k)
+        except KeyError:
+          #detector of values that can't be added
+          if i == "race_id" or i == "descript":
+            pass
+          else:
+            print ("Value not found:" + i + ". Skipped.")
       classes(name)
       break
     else:

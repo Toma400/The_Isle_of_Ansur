@@ -72,19 +72,19 @@ def save_change(name, category, element, change_type, change_value, in_use=True)
     #math is intended to change value with +/- (use negative value to make it smaller)
     elif change_type == "math":
       temp_dict = save_read(name, category, element, True)
-      temp_dict[element] = temp_dict[element] + change_value
+      temp_dict[element] = int(temp_dict[element]) + int(change_value)
       with open (final_path,'w') as file:
         json.dump(temp_dict, file, indent = 2)
     #math, but for (*) [rare case]
     elif change_type == "math*":
       temp_dict = save_read(name, category, element)
-      temp_dict[element] = temp_dict[element] * change_value
+      temp_dict[element] = int(temp_dict[element]) * int(change_value)
       with open (final_path,'w') as file:
         json.dump(temp_dict, file, indent = 2)
     #math, but for (/) [rare case]
     elif change_type == "math/":
       temp_dict = save_read(name, category, element)
-      temp_dict[element] = temp_dict[element] / change_value
+      temp_dict[element] = int(temp_dict[element]) / int(change_value)
       with open (final_path,'w') as file:
         json.dump(temp_dict, file, indent = 2)
     #var_add is intended to be dict; can be useful with version_updater especially
