@@ -113,19 +113,18 @@ def save_change(name, category, element, change_type, change_value, in_use=True)
 
 def save_change_ins(name, category, element, change_value, extended_math=False):
   #basically variable type insensitive variant of save_change()
-  #detects whether type is capable to do math, and if not, then redirects to replace 
+  #detects type and redirects for its type; automation friendly 
   #useful for dicts with various types of variables, which needs to be looped
-  try:
-    if extended_math == False:
-      save_change(name, category, element, "math", change_value)
-    elif extended_math == "*":
-      save_change(name, category, element, "math*", change_value)
-    elif extended_math == "/":
-      save_change(name, category, element, "math/", change_value)
-  except ValueError:
+  if extended_math == False:
     #int/str detector (int can use "math", str not)
-    save_change(name, category, element, "replace", change_value)
-  pass
+    if type(change_value) == int:
+      save_change(name, category, element, "math", change_value)
+    elif type(change_value) == str or type(change_value) == bool:
+      save_change(name, category, element, "replace", change_value)
+  elif extended_math == "*":
+    save_change(name, category, element, "math*", change_value)
+  elif extended_math == "/":
+    save_change(name, category, element, "math/", change_value)
 
 def load_read(name, category):
   #for loading the game

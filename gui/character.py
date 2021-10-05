@@ -74,13 +74,13 @@ def race(name):
       for i in system.id_manag.rid_conv(chosen_race, 0, True):
         k = system.id_manag.rid_conv(chosen_race, i)
         try:
-          system.json_manag.save_change_ins(name, "profile", i, k)
-        except KeyError:
-          #detector of values that can't be added
           if i == "race_id" or i == "descript":
             pass
           else:
-            print ("Unknown value:" + i + ". Skipped.")
+            system.json_manag.save_change_ins(name, "profile", i, k)
+        except KeyError:
+          #detector of values that can't be added
+          print ("Unknown value:" + i + ". Skipped.")
       classes(name)
       break
     else:
@@ -123,15 +123,15 @@ def classes(name):
       for i in system.id_manag.cid_conv(chosen_class, 0, True):
         k = system.id_manag.cid_conv(chosen_class, i)
         try:
-          system.json_manag.save_change_ins(name, "profile", i, k)
-        except KeyError:
-          #detector of values that can't be added
           if i == "class_id" or i == "descript" or i == "race_exclusive":
             pass
           else:
-            print ("Unknown value:" + i + ". Skipped.")
-        manual_attribute(name)
-        break
+            system.json_manag.save_change_ins(name, "profile", i, k)
+        except KeyError:
+          #detector of values that can't be added
+          print ("Unknown value:" + i + ". Skipped.")
+      manual_attribute(name)
+      break
     else:
       classes(name)
 

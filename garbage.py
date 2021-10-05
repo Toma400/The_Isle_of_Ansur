@@ -26,3 +26,7 @@ for i in system.id_manag.rid_conv("ansur:baedoorian", 0, True):
 #POSSIBLE COMPATIBILITY THINGIES:
 #character additional_abilities/additional_attributes list can be made into .json and read from there = can be expanded by mods with additional attributes or abilities
 #in character.py it will just be loaded to fit their lists used in character creation
+
+#BOOLEAN TRUE IS SET AS =1 IN STATS
+
+#BLACKSMITH/CLASSES/RACES BEING WEIRDLY USING THEIR STATS (NOT REALLY CORRECT)
