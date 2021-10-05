@@ -22,3 +22,7 @@ default_stats = {}
 import system.id_manag
 for i in system.id_manag.rid_conv("ansur:baedoorian", 0, True):
   print (i + "-> " + str(system.id_manag.rid_conv("ansur:baedoorian", i)))
+
+#POSSIBLE COMPATIBILITY THINGIES:
+#character additional_abilities/additional_attributes list can be made into .json and read from there = can be expanded by mods with additional attributes or abilities
+#in character.py it will just be loaded to fit their lists used in character creation

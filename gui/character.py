@@ -65,6 +65,7 @@ def race(name):
   for k in races_loaded:
     print ("[" + str(j) + "][" + system.id_manag.rid_conv (k, "descript") + "]")
     j = j+1
+  print ("\n")
   while True:
     choose_race = int(input (""))
     if choose_race > 0 and choose_race <= races_count:
@@ -73,16 +74,13 @@ def race(name):
       for i in system.id_manag.rid_conv(chosen_race, 0, True):
         k = system.id_manag.rid_conv(chosen_race, i)
         try:
-          system.json_manag.save_change(name, "profile", i, "math", k)
-        except ValueError:
-          #int/str detector (int can use "math", str not)
-          system.json_manag.save_change(name, "profile", i, "replace", k)
+          system.json_manag.save_change_ins(name, "profile", i, k)
         except KeyError:
           #detector of values that can't be added
           if i == "race_id" or i == "descript":
             pass
           else:
-            print ("Value not found:" + i + ". Skipped.")
+            print ("Unknown value:" + i + ". Skipped.")
       classes(name)
       break
     else:
@@ -104,6 +102,7 @@ def classes(name):
   for k in classes_loaded:
     print ("[" + str(j) + "][" + system.id_manag.cid_conv (k, "descript") + "]")
     j = j+1
+  print ("\n")
   while True:
     choose_class = int(input (""))
     if choose_class > 0 and choose_class <= classes_count:
@@ -124,21 +123,73 @@ def classes(name):
       for i in system.id_manag.cid_conv(chosen_class, 0, True):
         k = system.id_manag.cid_conv(chosen_class, i)
         try:
-          system.json_manag.save_change(name, "profile", i, "math", k)
-        except ValueError:
-          #int/str detector (int can use "math", str not)
-          system.json_manag.save_change(name, "profile", i, "replace", k)
+          system.json_manag.save_change_ins(name, "profile", i, k)
         except KeyError:
           #detector of values that can't be added
           if i == "class_id" or i == "descript" or i == "race_exclusive":
             pass
           else:
-            print ("Value not found:" + i + ". Skipped.")
-        manual_bonus(name)
+            print ("Unknown value:" + i + ". Skipped.")
+        manual_attribute(name)
         break
     else:
       classes(name)
 
-def manual_bonus(name):
-  pass
+def manual_attribute(name):
+  import utils.text
+  import utils.colours
+  import system.mod_manag
+  import system.id_manag
+  import json
+  attribute_list = ["Strength", "Dexterity", "Endurance", "Intelligence", "Charisma"]
+  print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
+  print ("\n")
+  print (utils.text.text_align("Choose attribute you want to enhance", "centre"))
+  print ("\n")
+  j = 1
+  for i in attribute_list:
+    print ("[" + str(j) + "][" + i + "]")
+    j = j+1
+  print ("\n")
+  while True:
+    choose_atr = int(input (""))
+    if choose_atr > 0 and choose_atr <= len(attribute_list):
+      choose_atr = attribute_list[choose_atr-1].lower()
+      choose_atr = choose_atr.replace(" ", "_")
+      choose_atr = ("atr_" + choose_atr)
+      pass
+    else:
+      manual_attribute(name)
+      break
+    system.json_manag.save_change(name, "profile", choose_atr, "math", 1)
+    manual_ability(name)
+    break
 
+def manual_ability(name):
+  import utils.text
+  import utils.colours
+  import system.mod_manag
+  import system.id_manag
+  import json
+  ability_list = ["Shortswords", "Longswords", "Archery", "Firearms", "Castspelling", "Restoration Magic", "Transformation Magic", "Destruction Magic", "Sneaking", "Pickpocketing", "Lockpicking", "Trapspotting", "Trade", "Persuasion", "Repair", "Traps", "Resource Processing", "Tools", "Smithery", "Herbalism", "Alchemy", "Healing", "Cooking", "Survival", "Toughness"]
+  print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
+  print ("\n")
+  print (utils.text.text_align("Choose ability you want to enhance", "centre"))
+  print ("\n")
+  j = 1
+  for i in ability_list:
+    print ("[" + str(j) + "][" + i + "]")
+    j = j+1
+  print ("\n")
+  while True:
+    choose_abil = int(input (""))
+    if choose_abil > 0 and choose_abil <= len(ability_list):
+      choose_abil = ability_list[choose_abil-1].lower()
+      choose_abil = choose_abil.replace(" ", "_")
+      choose_abil = ("abil_" + choose_abil)
+      pass
+    else:
+      manual_attribute(name)
+      break
+    system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
+    break

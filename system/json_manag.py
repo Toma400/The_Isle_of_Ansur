@@ -111,6 +111,22 @@ def save_change(name, category, element, change_type, change_value, in_use=True)
       with open (final_path,'w') as file:
         json.dump(temp_dict, file, indent = 2)
 
+def save_change_ins(name, category, element, change_value, extended_math=False):
+  #basically variable type insensitive variant of save_change()
+  #detects whether type is capable to do math, and if not, then redirects to replace 
+  #useful for dicts with various types of variables, which needs to be looped
+  try:
+    if extended_math == False:
+      save_change(name, category, element, "math", change_value)
+    elif extended_math == "*":
+      save_change(name, category, element, "math*", change_value)
+    elif extended_math == "/":
+      save_change(name, category, element, "math/", change_value)
+  except ValueError:
+    #int/str detector (int can use "math", str not)
+    save_change(name, category, element, "replace", change_value)
+  pass
+
 def load_read(name, category):
   #for loading the game
   import json
