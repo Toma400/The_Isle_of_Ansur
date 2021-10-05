@@ -15,9 +15,16 @@ def json_read(path, element, dict_type=False):
     print ("JSON File: " + path + " does not have any arguments. Skipping.")
 
 def json_subread(path, element, subelement):
+  #used to call values of objects from ID
   import json
   subdata = json_read(path, element)[0]
   return subdata[subelement]
+
+def json_keyread(path, element):
+  #used to call objects from ID
+  import json
+  subdata = json_read(path, element)[0]
+  return subdata
 
 def json_write(path, name, dictionary):
   import json

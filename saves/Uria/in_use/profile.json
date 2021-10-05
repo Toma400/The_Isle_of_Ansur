@@ -1,6 +1,6 @@
 {
   "nuid": "",
-  "name": "Teora",
+  "name": "Uria",
   "nuid_key": "",
   "gender": "Female",
   "race": "",
@@ -23,6 +23,8 @@
   "pwr_magic": 0,
   "pwr_conn": 0,
   "pwr_void": 0,
+  "spec_diamond": false,
+  "spec_moon": false,
   "armour": 0,
   "atr_charisma": 8,
   "atr_dexterity": 8,

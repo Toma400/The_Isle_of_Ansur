@@ -56,6 +56,7 @@ def race(name):
   import system.id_manag
   import json
   races_loaded = system.mod_manag.rid_loader()
+  races_count = len(races_loaded)
   print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
   print ("\n")
   print (utils.text.text_align("Choose your race", "centre"))
@@ -64,3 +65,15 @@ def race(name):
   for k in races_loaded:
     print ("[" + str(j) + "][" + system.id_manag.rid_conv (k, "descript") + "]")
     j = j+1
+  while True:
+    choose_race = int(input (""))
+    if choose_race > 0 and choose_race <= races_count:
+      chosen_race = races_loaded[choose_race-1]
+      system.json_manag.save_change(name, "profile", "race", "replace", chosen_race)
+      classes(name)
+      break
+    else:
+      race(name)
+
+def classes(name):
+  pass

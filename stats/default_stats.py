@@ -38,6 +38,8 @@ class profile:
     'pwr_magic': 0,
     'pwr_conn': 0,
     'pwr_void': 0,
+    'spec_diamond': False,
+    'spec_moon': False,
     'armour': 0,
   }
 

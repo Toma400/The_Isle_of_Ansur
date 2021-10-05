@@ -49,7 +49,7 @@ def cid_conv (cid, element):
       #import stats.cid1.classes
       #return stats.cid1.classes.cid2.element
 
-def rid_conv (rid, element):
+def rid_conv (rid, element, dict_type=False):
   if ":" not in rid:
     #ID has wrong syntax
     print ("Incorrect ID")
@@ -61,4 +61,7 @@ def rid_conv (rid, element):
       #ID has no workspace or object
       print ("Incorrect ID")
     else:
-      return system.json_manag.json_subread ("stats/" + rid1 + "/races.json", rid2, element)
+      if dict_type == True:
+        return system.json_manag.json_keyread ("stats/" + rid1 + "/races.json", rid2)
+      else:
+        return system.json_manag.json_subread ("stats/" + rid1 + "/races.json", rid2, element)
