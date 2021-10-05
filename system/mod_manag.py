@@ -61,3 +61,19 @@ def mod_checker (directory, name):
       return True
     else:
       return False
+
+def rid_loader ():
+  import system.mod_manag
+  import system.json_manag
+  mods_loaded = system.mod_manag.mod_lister("stats")
+  races_loaded = []
+  for i in mods_loaded:
+    try:
+      path = "stats/" + i + "/races.json"
+      temp_dir = len(system.json_manag.json_read(path, "list", True))
+      for j in range(temp_dir):
+        element = (system.json_manag.json_read(path, "list", True)[j])
+        races_loaded.append(system.json_manag.json_subread(path, element, "race_id"))
+    except FileNotFoundError:
+      continue
+  return races_loaded

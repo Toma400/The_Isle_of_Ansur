@@ -53,5 +53,14 @@ def race(name):
   import utils.text
   import utils.colours
   import system.mod_manag
-  mods_loaded = system.mod_manag.mod_lister("stats")
-  print (mods_loaded)
+  import system.id_manag
+  import json
+  races_loaded = system.mod_manag.rid_loader()
+  print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
+  print ("\n")
+  print (utils.text.text_align("Choose your race", "centre"))
+  print ("\n")
+  j = 1
+  for k in races_loaded:
+    print ("[" + str(j) + "][" + system.id_manag.rid_conv (k, "descript") + "]")
+    j = j+1

@@ -1,0 +1,31 @@
+{
+  "baedoorian": [
+    {
+      "race_id": "ansur:baedoorian",
+      "descript": "Human, Born in Baedoor",
+      "atr_strength": 2,
+      "atr_charisma": 1,
+      "atr_intelligence": 1,
+      "atr_endurance": -1,
+      "pwr_tech": 3,
+      "abil_firearms": 1,
+      "abil_persuasion": 1,
+      "spec_diamond": false,
+      "spec_moon": false
+    }
+  ],
+  "westernwaldian": [
+    {
+      "race_id": "ansur:westernwaldian",
+      "descript": "Human, Born in WesternWald",
+      "atr_strength": 1,
+      "atr_charisma": 1,
+      "atr_intelligence": 1,
+      "pwr_magic": 2,
+      "abil_trade": 1,
+      "abil_longswords": 1,
+      "spec_diamond": false,
+      "spec_moon": false
+    }
+  ]
+}

@@ -1,12 +1,18 @@
 def json_read(path, element, dict_type=False):
   import json
   data = {}
-  with open(path) as json_file:
-    data = json.load(json_file)
-  if dict_type == False:
-    return data[element]
-  else:
-    return data
+  try:
+    with open(path) as json_file:
+      data = json.load(json_file)
+    if dict_type == False:
+      return data[element]
+    if dict_type == True and element == "list":
+      #returns list with keys instead of dict
+      return [*data]
+    else:
+      return data
+  except json.decoder.JSONDecodeError:
+    print ("JSON File: " + path + " does not have any arguments. Skipping.")
 
 def json_subread(path, element, subelement):
   import json
@@ -34,12 +40,15 @@ def save_read(name, category, element, dict_type=False):
   import json
   final_path = "saves/" + name + "/in_use/" + category + ".json"
   data = {}
-  with open (final_path) as json_file:
-    data = json.load(json_file)
-  if dict_type == False:
-    return data[element]
-  else:
-    return data
+  try:
+    with open (final_path) as json_file:
+      data = json.load(json_file)
+    if dict_type == False:
+      return data[element]
+    else:
+      return data
+  except json.decoder.JSONDecodeError:
+    print ("JSON File: " + final_path + " does not have any arguments. Skipping.")
   #element tells what type of variable is needed to be read
 
 def save_change(name, category, element, change_type, change_value, in_use=True):
@@ -85,13 +94,12 @@ def save_change(name, category, element, change_type, change_value, in_use=True)
         json.dump(temp_dict, file, indent = 2)
     #for loading the game (uses load_read)
     elif change_type == "game_load":
-      temp_dict = load_read(name, category, element, True)
+      temp_dict = load_read(name, category)
       with open (final_path,'w') as file:
         json.dump(temp_dict, file, indent = 2)
   elif in_use == False:
     #for game saving | 'element' and 'change_value' can be anything
     if change_type == "game_save":
-      final_path = "saves/" + name + "/" + category + ".json"
       temp_dict = save_read(name, category, element, True)
       with open (final_path,'w') as file:
         json.dump(temp_dict, file, indent = 2)
@@ -101,6 +109,9 @@ def load_read(name, category):
   import json
   final_path = "saves/" + name + "/" + category + ".json"
   data = {}
-  with open(final_path) as json_file:
-    data = json.load(json_file)
-  return data
+  try:
+    with open(final_path) as json_file:
+      data = json.load(json_file)
+    return data
+  except json.decoder.JSONDecodeError:
+    print ("JSON File: " + final_path + " does not have any arguments. Skipping.")

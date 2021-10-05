@@ -1,3 +1,4 @@
+import system.json_manag
 #NUID - Numerical User ID - used for rare user identification (also: NUID key)
 #IID - Item ID - used for item identification (workspace:object)
 #WID - World ID - used for world/location identification (workspace:location*)
@@ -5,6 +6,10 @@
 #CID - Class ID - used for class identification (workspace:object)
 #RID - Race ID - used for race identification (workspace:object)
 #* - optional, but if not used, then world=True in wid_conv
+#---------------------------
+#this section uses a bit different namings that used in json_manag:
+#(rid2) - "object", argument from surface
+#(element) - "attribute of object", argument from depth
 #---------------------------
 
 def wid_conv (wid, element, world=False):
@@ -40,7 +45,7 @@ def cid_conv (cid, element):
       #ID has no workspace or object
       print ("Incorrect ID")
     else:
-      path = "stats/" + cid1 + "/classes.py" #path of object
+      path = "stats/" + cid1 + "/classes.json" #path of object
       #import stats.cid1.classes
       #return stats.cid1.classes.cid2.element
 
@@ -56,7 +61,4 @@ def rid_conv (rid, element):
       #ID has no workspace or object
       print ("Incorrect ID")
     else:
-      rid2 = "race_" + rid2
-      path = "stats/" + rid1 + "/races.py" #path of object
-      #import stats.rid1.races
-      #return stats.rid1.races.rid2.element
+      return system.json_manag.json_subread ("stats/" + rid1 + "/races.json", rid2, element)
