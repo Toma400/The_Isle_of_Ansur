@@ -33,7 +33,7 @@ def wid_conv (wid, element, world=False):
     #theoretically it can be used for some general world checking material
     #it would just check "id of workspace", therefore it is separate condition
 
-def cid_conv (cid, element):
+def cid_conv (cid, element, dict_type=False):
   if ":" not in cid:
     #ID has wrong syntax
     print ("Incorrect ID")
@@ -45,9 +45,12 @@ def cid_conv (cid, element):
       #ID has no workspace or object
       print ("Incorrect ID")
     else:
-      path = "stats/" + cid1 + "/classes.json" #path of object
-      #import stats.cid1.classes
-      #return stats.cid1.classes.cid2.element
+      if dict_type == True:
+        #returns values used by object as dict
+        return system.json_manag.json_keyread ("stats/" + cid1 + "/classes.json", cid2)
+      else:
+        #returns values of object
+        return system.json_manag.json_subread ("stats/" + cid1 + "/classes.json", cid2, element)
 
 def rid_conv (rid, element, dict_type=False):
   if ":" not in rid:

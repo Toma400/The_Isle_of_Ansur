@@ -77,3 +77,19 @@ def rid_loader ():
     except FileNotFoundError:
       continue
   return races_loaded
+
+def cid_loader ():
+  import system.mod_manag
+  import system.json_manag
+  mods_loaded = system.mod_manag.mod_lister("stats")
+  classes_loaded = []
+  for i in mods_loaded:
+    try:
+      path = "stats/" + i + "/classes.json"
+      temp_dir = len(system.json_manag.json_read(path, "list", True))
+      for j in range(temp_dir):
+        element = (system.json_manag.json_read(path, "list", True)[j])
+        classes_loaded.append(system.json_manag.json_subread(path, element, "class_id"))
+    except FileNotFoundError:
+      continue
+  return classes_loaded

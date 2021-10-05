@@ -1,0 +1,29 @@
+{
+  "undefined": [
+    {
+      "class_id": "ansur:undefined",
+      "descript": "Undefined",
+      "atr_charisma": 1
+    }
+  ],
+  "fighter": [
+    {
+      "class_id": "ansur:fighter",
+      "descript": "Fighter",
+      "abil_shortswords": 1,
+      "abil_longswords": 1,
+      "abil_toughness": 1,
+      "abil_firearms": -1,
+      "abil_archery": -1
+    }
+  ],
+  "archer": [
+    {
+      "class_id": "ansur:archer",
+      "descript": "Archer",
+      "abil_archery": 1,
+      "abil_sneaking": 1,
+      "abil_toughness": -1
+    }
+  ]
+}

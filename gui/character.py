@@ -89,4 +89,43 @@ def race(name):
       race(name)
 
 def classes(name):
+  import utils.text
+  import utils.colours
+  import system.mod_manag
+  import system.id_manag
+  import json
+  classes_loaded = system.mod_manag.cid_loader()
+  classes_count = len(classes_loaded)
+  print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
+  print ("\n")
+  print (utils.text.text_align("Choose your class", "centre"))
+  print ("\n")
+  j = 1
+  for k in classes_loaded:
+    print ("[" + str(j) + "][" + system.id_manag.cid_conv (k, "descript") + "]")
+    j = j+1
+  while True:
+    choose_class = int(input (""))
+    if choose_class > 0 and choose_class <= classes_count:
+      chosen_class = classes_loaded[choose_class-1]
+      system.json_manag.save_change(name, "profile", "class", "replace", chosen_class)
+      for i in system.id_manag.cid_conv(chosen_class, 0, True):
+        k = system.id_manag.cid_conv(chosen_class, i)
+        try:
+          system.json_manag.save_change(name, "profile", i, "math", k)
+        except ValueError:
+          #int/str detector (int can use "math", str not)
+          system.json_manag.save_change(name, "profile", i, "replace", k)
+        except KeyError:
+          #detector of values that can't be added
+          if i == "class_id" or i == "descript":
+            pass
+          else:
+            print ("Value not found:" + i + ". Skipped.")
+      manual_bonus(name)
+      break
+    else:
+      classes(name)
+
+def manual_bonus(name):
   pass
