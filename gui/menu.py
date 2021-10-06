@@ -14,7 +14,7 @@ def start():
     print (utils.text.text_align(system.settings.version_call("game_version") + "\n\n", "right"))
     print (utils.text.text_align("--------------------", "centre"))
     print (utils.text.text_align("[1] START THE GAME", "centre"))
-    print (utils.text.text_align(utils.colours.bcolors.CRED + "[2] LOAD THE GAME" + utils.colours.bcolors.ENDC, "centre_colour"))
+    print (utils.text.text_align("[2] LOAD THE GAME", "centre"))
     print (utils.text.text_align("[3] ENCYCLOPAEDIA", "centre"))
     print (utils.text.text_align("[4] GAME SETTINGS", "centre"))
     print (utils.text.text_align("[5] EXIT THE GAME", "centre"))
@@ -23,7 +23,7 @@ def start():
     if menu_choice == "1":
       gui.character.name()
     elif menu_choice == "2":
-      print ("Option unavailable")
+      game_load()
       break
     elif menu_choice == "3":
       encyclopaedia()
@@ -37,9 +37,76 @@ def start():
       continue
 
 def game_load():
+  import utils.repo_manag
+  import system.json_manag
+  import system.id_manag
+  import system.save_system.save_load
+  loaded_profiles = utils.repo_manag.dir_checker ("saves/", "dir")
+  loaded_profiles.sort()
+  profile_set = {}
+  j = 1
   print ("\n")
   print (utils.text.text_align("--------------------", "centre"))
-  pass
+  print (utils.text.text_align("Choose your save", "centre"))
+  print (utils.text.text_align("[use numbers or precise name]", "centre"))
+  print ("\n")
+  for i in loaded_profiles:
+    if utils.repo_manag.empty_checker("saves/" + i + "/in_use/profile.json") == False:
+      race = system.id_manag.rid_conv(system.json_manag.save_read(i, "profile", "race"), "descript")
+      classe = system.id_manag.cid_conv(system.json_manag.save_read(i, "profile", "class"), "descript")
+      locate = system.json_manag.save_read(i, "profile", "location")
+      print (utils.text.text_align("[ " + utils.colours.bcolors.OKCYAN + i + utils.colours.bcolors.ENDC + " ][" + race + " - " + classe + "][ " + utils.colours.bcolors.OKCYAN + locate + utils.colours.bcolors.ENDC + " ]", "centre_colour"))
+      profile_set[str(j)] = i
+      j = j + 1
+    else:
+      pass
+  print ("\n")
+  print (utils.text.text_align("--------------------", "centre"))
+  print (utils.text.text_align("[use any non-assigned button to go back to menu]", "centre"))
+  print (utils.text.text_align("[use slash '/' before name to delete profile]", "centre"))
+  print ("\n")
+  temp_var = input ("")
+  if "/" in temp_var: #deleting save
+    import utils.repo_manag
+    import time
+    path = ("saves/" + temp_var.replace("/", ""))
+    try:
+      temp_var2 = utils.repo_manag.dir_checker (path, "dir")
+      utils.repo_manag.file_deleting (path)
+      print (utils.text.text_align("--------------------", "centre"))
+      print (utils.text.text_align("Profile successfully deleted!", "centre"))
+      print (utils.text.text_align("--------------------", "centre"))
+      time.sleep(2)
+      game_load()
+    except FileNotFoundError:
+      import system.save_system.save_load
+      system.save_system.save_load.deep_load_error("name")
+  else:
+    #finds out whether player inputted number or name
+    try:
+      just_testing = int(temp_var)
+      name = profile_set[temp_var]
+    except ValueError:
+      name = temp_var
+    #checks if game was saved before
+    if name in utils.repo_manag.dir_checker ("saves/", "dir"):
+      if utils.repo_manag.empty_checker("saves/" + name + "/profile.json") == False:
+        system.save_system.save_load.deep_load (name)
+      else:
+        special_load(name)
+    else:
+      system.save_system.save_load.deep_load_error("name")
+      
+
+def special_load(name):
+  import system.save_system.save_load
+  #special load for game that wasn't saved before exiting the game, but loaded
+  #it simply saves "temp" files and tries to load them to avoid error from empty .jsons
+  print (utils.text.text_align("--------------------", "centre"))
+  print (utils.text.text_align("Save file wasn't saved before. Saving from in-game data.", "centre"))
+  print (utils.text.text_align("--------------------", "centre"))
+  system.save_system.save_load.full_save (name)
+  system.save_system.save_load.deep_load (name)
 
 def settings():
   import system.settings

@@ -33,3 +33,10 @@ def dir_checker (path, separator, extension="None"):
     for i in listed:
       listed2.append (i.replace(path, ""))
     return listed2
+
+def empty_checker (path):
+  import os
+  if os.stat(path).st_size == 0:
+    return True
+  else:
+    return False

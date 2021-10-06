@@ -2,8 +2,9 @@ import system.json_manag
 
 def full_save (name):
   import json
+  import system.mod_manag
   temp_list = ["inventory", "profile", "quests", "world"]
-  world_list = [] #here we should have full list of worlds and make them appear during generation/load/save
+  world_list = system.mod_manag.mod_lister("worlds", "modded") #here we should have full list of worlds and make them appear during generation/load/save
   temp2_list = []
   if not world_list:
     pass
@@ -17,8 +18,9 @@ def full_save (name):
 
 def full_load (name):
   import json
+  import system.mod_manag
   temp_list = ["inventory", "profile", "quests", "world"]
-  world_list = [] #here we should have full list of worlds and make them appear during generation/load/save
+  world_list = system.mod_manag.mod_lister("worlds", "modded") #here we should have full list of worlds and make them appear during generation/load/save
   temp2_list = []
   if not world_list:
     pass
@@ -57,10 +59,10 @@ def deep_load (name):
           deep_load_error(True)
       else:
         pass
-      if error_count == 0:
-        import gui.interface
-        full_load(name)
-        gui.interface.main_game (name)
+    if error_count == 0:
+      import gui.interface
+      full_load(name)
+      gui.interface.main_game (name)
   except FileNotFoundError:
     deep_load_error("name")
 

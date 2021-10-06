@@ -146,6 +146,7 @@ def save_change(name, category, element, change_type, change_value, in_use=True)
         json.dump(temp_dict, file, indent = 2)
   elif in_use == False:
     #for game saving | 'element' and 'change_value' can be anything
+    final_path = "saves/" + name + "/" + category + ".json"
     if change_type == "game_save":
       temp_dict = save_read(name, category, element, True)
       with open (final_path,'w') as file:
