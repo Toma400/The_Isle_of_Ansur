@@ -5,9 +5,13 @@ class profile:
   #profile.json
 
   def version_checker():
-    #for system/save_system/version_updater purposes
-    version = 1.0
-    return version
+    import system.settings
+    return system.settings.version_call("save_system")
+
+  def settings_checker(setting):
+    import system.settings
+    i = system.settings.settings(setting)
+    return i
 
   #stats that are set either by player or game itself \
   not_default_stats = {
@@ -91,8 +95,8 @@ class profile:
 
   settings = {
     "save_system": version_checker(),
-    "time_system": system.settings.in_use.default_settings("time_system"),
-    "hunger_thirst": system.settings.in_use.default_settings("hunger_thirst"),
+    "time_system": settings_checker("time_system"),
+    "hunger_thirst": settings_checker("hunger_thirst"),
     "saved_on_day": "",
     "saved_on_hour": ""
   }

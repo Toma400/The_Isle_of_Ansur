@@ -29,3 +29,51 @@ def full_load (name):
     temp_list.append(temp2_list)
   for j in temp_list:
     system.json_manag.save_change(name, j, 0, "game_load", 0)
+
+def deep_load (name):
+  #differs from full_load that it checks settings integrity and returns true if everything worked properly
+  import utils.text
+  import utils.colours
+  try:
+    settings_checklist = ["time_system", "hunger_thirst"]
+    for i in settings_checklist:
+      #i - key, json_read - key value
+      profile_data = system.json_manag.save_read(name, "profile", i)
+      settings_data = system.json_manag.json_read("system/system_settings.json", i)
+      error_count = 0
+      if profile_data != settings_data:
+        print (utils.text.text_align (utils.colours.bcolors.CYELLOW2 + "Found difference between system settings and save settings with: " + i  + utils.colours.bcolors.ENDC, "centre_colour"))
+        #time system difference
+        error_count = error_count + 1
+        if i == "time_system" and profile_data == "proportional" or i == "hunger_thirst" and profile_data == False:
+          temp_var = input(utils.text.text_align ("Do you want your save file settings be changed? [Y/N]", "centre_colour")).lower()
+          if temp_var == "y":
+            system.json_manag.save_change_ins(name, "profile", i, settings_data)
+            error_count = error_count - 1
+            pass
+          else:
+            deep_load_error()
+        elif i == "time_system" and profile_data == "realistic" or i == "hunger_thirst" and profile_data == True:
+          deep_load_error(True)
+      else:
+        pass
+      if error_count == 0:
+        import gui.interface
+        full_load(name)
+        gui.interface.main_game (name)
+  except FileNotFoundError:
+    deep_load_error("name")
+
+def deep_load_error (critical=False):
+  import time
+  import gui.menu
+  import utils.text
+  import utils.colours
+  if critical == True:
+    print (utils.text.text_align (utils.colours.bcolors.CYELLOW2 + "Unfortunately that setting can't be set back to default. Please change your settings in menu to fit that save file." + utils.colours.bcolors.ENDC, "centre_colour"))
+  if critical == "name":
+    print (utils.text.text_align (utils.colours.bcolors.CYELLOW2 + "No character profile is found with that name. Please make sure you wrote it correctly." + utils.colours.bcolors.ENDC, "centre_colour"))
+    print (utils.text.text_align (utils.colours.bcolors.CYELLOW2 + "[case sensitivity matters]" + utils.colours.bcolors.ENDC, "centre_colour"))
+  print (utils.text.text_align (utils.colours.bcolors.CYELLOW2 + "Redirecting to game menu." + utils.colours.bcolors.ENDC, "centre_colour"))
+  time.sleep(1)
+  gui.menu.start()

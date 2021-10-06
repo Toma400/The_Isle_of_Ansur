@@ -5,7 +5,7 @@ class bcolors:
     OKGREEN = '\033[92m'
     WARNING = '\033[93m'
     FAIL = '\033[91m'
-    ENDC = '\033[0m'
+    ENDC = '\033[0m' #for normal writing
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
@@ -18,7 +18,7 @@ class bcolors:
     CSELECTED = '\33[7m'
 
     CBLACK  = '\33[30m'
-    CRED    = '\33[31m'
+    CRED    = '\33[31m' #for technical warnings
     CGREEN  = '\33[32m'
     CYELLOW = '\33[33m'
     CBLUE   = '\33[34m'

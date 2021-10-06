@@ -1,5 +1,6 @@
+import json
+
 def json_read(path, element, dict_type=False):
-  import json
   data = {}
   try:
     with open(path) as json_file:
@@ -16,35 +17,75 @@ def json_read(path, element, dict_type=False):
 
 def json_subread(path, element, subelement):
   #used to call values of objects from ID
-  import json
   subdata = json_read(path, element)[0]
   return subdata[subelement]
 
 def json_keyread(path, element):
   #used to call objects from ID
-  import json
   subdata = json_read(path, element)[0]
   return subdata
 
 def json_write(path, name, dictionary):
-  import json
   final_path = path + "/" + name + ".json"
   creating = open(final_path, "a")
   with open (final_path, 'w') as json_file:
     json.dump(dictionary, json_file, indent = 2)
 
 def json_change(path, element, change_type, change_value):
-  #change type identifies whether you want to do replacement, maths or var addition
-  #replacement - it simply makes value X become value Y
-  #maths - it adds value X to value Y (3+4=7, str+str=strstr)
-  #var addition - compatibility type, adds another variable with specified default value - possibly using within "save_system" type of thing, when element needs to be updated
-  import json
-  #json_file = open (path, "r")
-  #^ function a bit obsolete, but can be used to non-save related things, such as objects with non-changeable directory (default worlds/Ansur elements, for example)
-  #for [modded] worlds/X elements though, another loader can be necessary
+  temp_dict = {}
+  #simply replacing value with new one (usually for string variables)
+  if change_type == "replace":
+    temp_dict = json_read(path, element, True)
+    temp_dict[element] = change_value
+    with open (path,'w') as file:
+      json.dump(temp_dict, file, indent = 2)
+  #math is intended to change value with +/- (use negative value to make it smaller)
+  elif change_type == "math":
+    temp_dict = json_read(path, element, True)
+    temp_dict[element] = int(temp_dict[element]) + int(change_value)
+    with open (path,'w') as file:
+      json.dump(temp_dict, file, indent = 2)
+  #math, but for (*) [rare case]
+  elif change_type == "math*":
+    temp_dict = json_read(path, element, True)
+    temp_dict[element] = int(temp_dict[element]) * int(change_value)
+    with open (path,'w') as file:
+      json.dump(temp_dict, file, indent = 2)
+  #math, but for (/) [rare case]
+  elif change_type == "math/":
+    temp_dict = json_read(path, element, True)
+    temp_dict[element] = int(temp_dict[element]) / int(change_value)
+    with open (path,'w') as file:
+      json.dump(temp_dict, file, indent = 2)
+  #var_add is intended to be dict; can be useful with version_updater especially
+  elif change_type == "var_add":
+    temp_dict = json_read(path, element, True)
+    temp_dict.update (change_value)
+    with open (path,'w') as file:
+      json.dump(temp_dict, file, indent = 2)
+  #var_add, but for deleting; change_value can be anything in this case
+  elif change_type == "var_del":
+    temp_dict = json_read(path, element, True)
+    temp_dict.remove (element)
+    with open (path,'w') as file:
+      json.dump(temp_dict, file, indent = 2)
+
+def json_change_ins(path, element, change_value, extended_math=False):
+  #basically variable type insensitive variant of json_change()
+  #detects type and redirects for its type; automation friendly 
+  #useful for dicts with various types of variables, which needs to be looped
+  if extended_math == False:
+    #int/str detector (int can use "math", str not)
+    if type(change_value) == int:
+      json_change(path, element, "math", change_value)
+    elif type(change_value) == str or type(change_value) == bool:
+      json_change(path, element, "replace", change_value)
+  elif extended_math == "*":
+    json_change(path, element, "math*", change_value)
+  elif extended_math == "/":
+    json_change(path, element, "math/", change_value)
 
 def save_read(name, category, element, dict_type=False):
-  import json
   final_path = "saves/" + name + "/in_use/" + category + ".json"
   data = {}
   try:
@@ -60,7 +101,6 @@ def save_read(name, category, element, dict_type=False):
 
 def save_change(name, category, element, change_type, change_value, in_use=True):
   #in_use=True is for all data elements within game, =False for saving game
-  import json
   if in_use == True:
     final_path = "saves/" + name + "/in_use/" + category + ".json"
     #simply replacing value with new one (usually for string variables)
@@ -128,7 +168,6 @@ def save_change_ins(name, category, element, change_value, extended_math=False):
 
 def load_read(name, category):
   #for loading the game
-  import json
   final_path = "saves/" + name + "/" + category + ".json"
   data = {}
   try:

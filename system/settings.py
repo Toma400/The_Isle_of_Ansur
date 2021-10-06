@@ -1,16 +1,32 @@
-class in_use:
+def default_settings(callout=None):
+  time_system = "proportional"
+  hunger_thirst = False
+  if callout == "time_system":
+    return time_system
+  elif callout == "hunger_thirst":
+    return hunger_thirst
 
-  def default_settings(callout=None):
-    time_system = "proportional"
-    hunger_thirst = False
-    if callout == "time_system":
-      return time_system
-    elif callout == "hunger_thirst":
-      return hunger_thirst
+def version_call(selector):
+  if selector == "game_version":
+    return "pre-alpha 1"
+  elif selector == "save_system":
+    return "1.0"
 
-  def version_call(selector):
-    if selector == "game version":
-      return "pre-alpha 1"
-    elif selector == "save system":
-      import stats.default_stats
-      return stats.default_stats.version_checker()
+def settings(callout):
+  import system.json_manag
+  if callout == "time_system":
+    return system.json_manag.json_read("system/system_settings.json", "time_system")
+  elif callout == "hunger_thirst":
+    return system.json_manag.json_read("system/system_settings.json", "hunger_thirst")
+
+def settings_changer(callout):
+  import system.json_manag
+  path = "system/system_settings.json"
+  if system.json_manag.json_read(path, callout) == "proportional":
+    system.json_manag.json_change_ins(path, callout, "realistic")
+  elif system.json_manag.json_read(path, callout) == "realistic":
+    system.json_manag.json_change_ins(path, callout, "proportional")
+  elif system.json_manag.json_read(path, callout) == True:
+    system.json_manag.json_change_ins(path, callout, False)
+  elif system.json_manag.json_read(path, callout) == True:
+    system.json_manag.json_change_ins(path, callout, False)

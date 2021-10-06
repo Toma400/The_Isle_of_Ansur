@@ -1,4 +1,4 @@
 {
-  "time_system": "",
-  "hunger_thirst": ""
+  "time_system": "proportional",
+  "hunger_thirst": false
 }

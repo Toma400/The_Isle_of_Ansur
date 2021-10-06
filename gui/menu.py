@@ -3,18 +3,20 @@ import utils.text
 
 def start():
   import gui.character
+  import system.settings
+  system.settings.version_call("game_version")
   while True:
     print ('''\n\n|__) _|_    _ _ _   (_ |_  _  _| _     _   _  _  _|  |  . _ |_ |_ 
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 
                                                          _/  
 ''')
     print ("𝚃𝚑𝚎 𝙸𝚜𝚕𝚎 𝚘𝚏 𝙰𝚗𝚜𝚞𝚛\n")
-    print (utils.text.text_align("pre-alpha 1\n\n", "right"))
+    print (utils.text.text_align(system.settings.version_call("game_version") + "\n\n", "right"))
     print (utils.text.text_align("--------------------", "centre"))
     print (utils.text.text_align("[1] START THE GAME", "centre"))
     print (utils.text.text_align(utils.colours.bcolors.CRED + "[2] LOAD THE GAME" + utils.colours.bcolors.ENDC, "centre_colour"))
     print (utils.text.text_align("[3] ENCYCLOPAEDIA", "centre"))
-    print (utils.text.text_align(utils.colours.bcolors.CRED + "[4] GAME SETTINGS" + utils.colours.bcolors.ENDC, "centre_colour"))
+    print (utils.text.text_align("[4] GAME SETTINGS", "centre"))
     print (utils.text.text_align("[5] EXIT THE GAME", "centre"))
     print ("\n\n")
     menu_choice = input ("")
@@ -27,12 +29,44 @@ def start():
       encyclopaedia()
       break
     elif menu_choice == "4":
-      print ("Option unavailable")
+      settings()
       break
     elif menu_choice == "5":
       break
     else:
       continue
+
+def game_load():
+  print ("\n")
+  print (utils.text.text_align("--------------------", "centre"))
+  pass
+
+def settings():
+  import system.settings
+  print ("\n")
+  print (utils.text.text_align("--------------------", "centre"))
+  print (utils.text.text_align("Select setting to switch.", "centre"))
+  print (utils.text.text_align("--------------------", "centre"))
+  setting_options = ["Time System", "Hunger/Thirst"]
+  setting_set = {}
+  j = 1
+  for i in setting_options:
+    i2 = i.lower().replace(" ", "_")
+    i2 = i2.replace("/", "_")
+    y = system.json_manag.json_read("system/system_settings.json", i2)
+    print (utils.text.text_align("[" + str(j) + "][" + i + "][ " + utils.colours.bcolors.OKCYAN + str(y).capitalize() + utils.colours.bcolors.ENDC + " ]", "centre_colour"))
+    setting_set[str(j)] = i2
+    j = j + 1
+  print ("\n")
+  print (utils.text.text_align("--------------------", "centre"))
+  print (utils.text.text_align("[use any non-numerical button to go back to menu]", "centre"))
+  print ("\n")
+  temp_var = input ("")
+  try:
+    system.settings.settings_changer(setting_set[temp_var])
+    settings()
+  except KeyError:
+    start()
 
 def encyclopaedia():
   import utils.colours

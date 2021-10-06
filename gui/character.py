@@ -170,6 +170,7 @@ def manual_ability(name):
   import utils.colours
   import system.mod_manag
   import system.id_manag
+  import gui.interface
   import json
   ability_list = ["Shortswords", "Longswords", "Archery", "Firearms", "Castspelling", "Restoration Magic", "Transformation Magic", "Destruction Magic", "Sneaking", "Pickpocketing", "Lockpicking", "Trapspotting", "Trade", "Persuasion", "Repair", "Traps", "Resource Processing", "Tools", "Smithery", "Herbalism", "Alchemy", "Healing", "Cooking", "Survival", "Toughness"]
   print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
@@ -192,4 +193,4 @@ def manual_ability(name):
       manual_attribute(name)
       break
     system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
-    break
+    gui.interface.main_game (name)
