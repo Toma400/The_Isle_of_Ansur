@@ -46,6 +46,7 @@ def profile_creating(path):
     stats_creating(deeper_path, "world")
 
 def stats_creating(path, set):
+  
   if set == "profile":
     deeper_path = path + "/profile.json"
     import json
@@ -59,13 +60,16 @@ def stats_creating(path, set):
     default_stats.update (stats.default_stats.profile.settings)
     with open (deeper_path,'w') as file:
       json.dump(default_stats, file, indent = 2)
+
   elif set == "inventory":
     deeper_path = path + "/inventory.json"
     import json
     import stats.default_stats
     default_stats = {}
+    default_stats.update (stats.default_stats.inventory.main_slots)   
     with open (deeper_path,'w') as file:
       json.dump(default_stats, file, indent = 2)
+
   elif set == "quests":
     deeper_path = path + "/quests.json"
     import json
@@ -73,6 +77,7 @@ def stats_creating(path, set):
     default_stats = {}
     with open (deeper_path,'w') as file:
       json.dump(default_stats, file, indent = 2)
+
   elif set == "world":
     deeper_path = path + "/world.json"
     import json

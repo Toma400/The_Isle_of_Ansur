@@ -122,15 +122,17 @@ class quests:
 
 class inventory:
 
-  inventory = {}
-  slot_main = {} #main weapon
-  slot_alternative = {} #alternative weapon
-  slot_helmet = {}
-  slot_chestplate = {}
-  slot_leggings = {}
-  slot_boots = {}
-  slot_necklace = {}
-  slot_cape = {}
-  slot_ring = {}
-  slot_ring2 = {}
-  slot_ring3 = {}
+  main_slots = {
+    "inventory": {},
+    "slot_main": {},
+    "slot_alternative": {},
+    "slot_helmet": {},
+    "slot_chestplate": {},
+    "slot_leggings": {},
+    "slot_boots": {},
+    "slot_necklace": {},
+    "slot_cape": {},
+    "slot_ring": {},
+    "slot_ring2": {},
+    "slot_ring3": {}
+  }

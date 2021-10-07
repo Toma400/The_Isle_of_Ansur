@@ -141,7 +141,12 @@ def manual_attribute(name):
   import system.mod_manag
   import system.id_manag
   import json
-  attribute_list = ["Strength", "Dexterity", "Endurance", "Intelligence", "Charisma"]
+  import stats.default_stats
+  attribute_list = []
+  for i in stats.default_stats.profile.attributes:
+    i = i.replace("atr_", "")
+    i = i.title()
+    attribute_list.append (i)
   print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
   print ("\n")
   print (utils.text.text_align("Choose attribute you want to enhance", "centre"))
@@ -171,8 +176,14 @@ def manual_ability(name):
   import system.mod_manag
   import system.id_manag
   import gui.interface
+  import stats.default_stats
   import json
-  ability_list = ["Shortswords", "Longswords", "Archery", "Firearms", "Castspelling", "Restoration Magic", "Transformation Magic", "Destruction Magic", "Sneaking", "Pickpocketing", "Lockpicking", "Trapspotting", "Trade", "Persuasion", "Repair", "Traps", "Resource Processing", "Tools", "Smithery", "Herbalism", "Alchemy", "Healing", "Cooking", "Survival", "Toughness"]
+  ability_list = []
+  for i in stats.default_stats.profile.abilities:
+    i = i.replace("abil_", "")
+    i = i.replace("_", " ")
+    i = i.title()
+    ability_list.append (i)
   print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
   print ("\n")
   print (utils.text.text_align("Choose ability you want to enhance", "centre"))
