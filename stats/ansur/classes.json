@@ -103,6 +103,16 @@
       "abil_archery": -1
     }
   ],
+    "bard": [
+    {
+      "class_id": "ansur:bard",
+      "descript": "Bard",
+      "abil_musicality": 1,
+      "abil_persuasion": 1,
+      "abil_pickpocketing": 1,
+      "abil_toughness": -1
+    }
+  ],
   "outlander": [
     {
       "class_id": "ansur:outlander",

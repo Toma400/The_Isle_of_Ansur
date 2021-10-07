@@ -68,6 +68,7 @@ class profile:
     'abil_connection' : 0, #no creative change
     'abil_trade' : 1, #positive by default
     'abil_persuasion' : 0,
+    'abil_musicality' : 0,
     'abil_repair' : 0,
     'abil_traps' : 0,
     'abil_resource_processing' : 0,
@@ -120,5 +121,16 @@ class quests:
   #in .json they will be set as different object
 
 class inventory:
-  #for inventory.json
-  pass
+
+  inventory = {}
+  slot_main = {} #main weapon
+  slot_alternative = {} #alternative weapon
+  slot_helmet = {}
+  slot_chestplate = {}
+  slot_leggings = {}
+  slot_boots = {}
+  slot_necklace = {}
+  slot_cape = {}
+  slot_ring = {}
+  slot_ring2 = {}
+  slot_ring3 = {}
