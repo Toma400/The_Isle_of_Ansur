@@ -1,0 +1,12 @@
+{
+  "weapons": [
+    {
+      "ayer_knife": [
+        {
+          "stackable": false,
+          "max_quality": "average"
+        }
+      ]
+    }
+  ]
+}

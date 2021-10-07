@@ -1,0 +1,13 @@
+{
+  "main": [
+    {
+      "world_id": "ansur",
+      "descript": "Ansur Isle"
+    }
+  ],
+  "availability": [
+    {
+      "vanilla": true
+    }
+  ]
+}

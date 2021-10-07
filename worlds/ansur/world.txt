@@ -1,0 +1,16 @@
+{
+  "main": [
+    {
+      "world_id": "ansur",          <<- WID
+      "descript": "Ansur Isle"      <<- description seen in-game
+    }
+  ],
+  "availability": [
+    {
+      "vanilla": true,              <<- only for Ansur; makes default world (declining                                    next options)
+      "available_via_ship": false,  <<- checks if it is destination of ship
+      "previous_location": null     <<- if above is "false", it marks location which                                      will have possibility to travel into world's                                      starting point
+      "starting_location": null     <<- usually LID, but used only in modded worlds
+    }
+  ]
+}
