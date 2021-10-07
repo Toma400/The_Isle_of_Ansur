@@ -1,4 +1,5 @@
 {
   "time_system": "proportional",
-  "hunger_thirst": false
+  "hunger_thirst": false,
+  "permadeath": false
 }

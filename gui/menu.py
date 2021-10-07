@@ -110,15 +110,17 @@ def special_load(name):
 
 def settings():
   import system.settings
+  import system.json_manag
   print ("\n")
   print (utils.text.text_align("--------------------", "centre"))
   print (utils.text.text_align("Select setting to switch.", "centre"))
   print (utils.text.text_align("--------------------", "centre"))
-  setting_options = ["Time System", "Hunger/Thirst"]
+  setting_options = ["Time System", "Hunger/Thirst", "Permanent Death"]
   setting_set = {}
   j = 1
   for i in setting_options:
-    i2 = i.lower().replace(" ", "_")
+    i2 = i.replace("nent D", "d") #permadeath
+    i2 = i2.lower().replace(" ", "_")
     i2 = i2.replace("/", "_")
     y = system.json_manag.json_read("system/system_settings.json", i2)
     print (utils.text.text_align("[" + str(j) + "][" + i + "][ " + utils.colours.bcolors.OKCYAN + str(y).capitalize() + utils.colours.bcolors.ENDC + " ]", "centre_colour"))

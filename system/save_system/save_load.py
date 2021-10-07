@@ -37,7 +37,7 @@ def deep_load (name):
   import utils.text
   import utils.colours
   try:
-    settings_checklist = ["time_system", "hunger_thirst"]
+    settings_checklist = ["time_system", "hunger_thirst", "permadeath"]
     for i in settings_checklist:
       #i - key, json_read - key value
       profile_data = system.json_manag.save_read(name, "profile", i)

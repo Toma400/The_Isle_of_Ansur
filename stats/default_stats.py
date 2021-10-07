@@ -98,6 +98,7 @@ class profile:
     "save_system": version_checker(),
     "time_system": settings_checker("time_system"),
     "hunger_thirst": settings_checker("hunger_thirst"),
+    "permadeath": settings_checker("permadeath"),
     "saved_on_day": "",
     "saved_on_hour": ""
   }
