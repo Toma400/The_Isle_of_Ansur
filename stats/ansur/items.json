@@ -3,11 +3,17 @@
     {
       "ayer_knife": [
         {
+          "descript": "Ayer Knife",
           "stackable": false,
+          "weight": 1,
           "max_quality": "good",
+          "min_price": 3,
+          "max_price": 9,
+          "type": "shortsword",
           "average_dmg": 4,
           "dmg_yaw": 1,
-          "block_chance": 20
+          "block_chance": 20,
+          "needs_U+": 0
         }
       ]
     }

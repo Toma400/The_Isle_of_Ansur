@@ -42,6 +42,10 @@ def game_load():
   import system.id_manag
   import system.save_system.save_load
   loaded_profiles = utils.repo_manag.dir_checker ("saves/", "dir")
+  for i in loaded_profiles:
+    openability = system.json_manag.save_read(i, "profile", "openable")
+    if openability == False:
+      loaded_profiles.remove(i)
   loaded_profiles.sort()
   profile_set = {}
   j = 1
@@ -88,15 +92,22 @@ def game_load():
       name = profile_set[temp_var]
     except ValueError:
       name = temp_var
-    #checks if game was saved before
-    if name in utils.repo_manag.dir_checker ("saves/", "dir"):
-      if utils.repo_manag.empty_checker("saves/" + name + "/profile.json") == False:
-        system.save_system.save_load.deep_load (name)
+    #checks if: game is in permadeath and if: game was saved before
+    if system.json_manag.save_read(name, "profile", "openable"):
+      if name in utils.repo_manag.dir_checker ("saves/", "dir"):
+        if utils.repo_manag.empty_checker("saves/" + name + "/profile.json") == False:
+          system.save_system.save_load.deep_load (name)
+        else:
+          special_load(name)
       else:
-        special_load(name)
+        system.save_system.save_load.deep_load_error("name")
     else:
-      system.save_system.save_load.deep_load_error("name")
-      
+      print ("\n")
+      print (utils.text.text_align("--------------------", "centre"))
+      print (utils.text.text_align("You died in that save while having Permanent Death enabled", "centre"))
+      print (utils.text.text_align("--------------------", "centre"))
+      print ("\n")
+      game_load()
 
 def special_load(name):
   import system.save_system.save_load
