@@ -1,20 +1,19 @@
 #just trash stuff that i want to keep here for now, just for reference purposes
 
-print (stats.races.race_saphtri.descript)
-temp_stat = 5 + stats.races.race_saphtri.atr_endurance
-print ("Endurance with penalty: " + str(temp_stat))
-
-      print ('''✺--------------------------------------------------------------✺
-| Λ Λ Λ Λ Λ Λ                      )                           |
-| Λ           ░░░░░░░░░░░░░░░░    (         ~~~                |
-|Λ  ░░░░░░░░░░░░░░░░░░░  ♖-------♖ )                           |
-| Λ ░░░░░░░░░░░░░░░░░░░  |  Baedoor ♖)           ~~~           |
-|Λ  ░░░░░░░░░░░░░░░░░░░  ♖-------♖⚓)                          |
-|Λ  ۩  ░░░░░░░░░░░░░░░░           (         ~~~        ✖       |
-| Λ Λ Λ Λ Λ Λ Λ   Λ ░░░░░░░░░░░░░  )                           |
-✺--------------------------------------------------------------✺''')
-
-default_stats = {}
+#print (stats.races.race_saphtri.descript)
+#temp_stat = 5 + stats.races.race_saphtri.atr_endurance
+#print ("Endurance with penalty: " + str(temp_stat))
+{
+"landscape": "✺---------------------------------------------------------------✺",
+"landscap2": "| Λ Λ Λ Λ Λ Λ                      )                             |",
+"landscap3": "| Λ           ░░░░░░░░░░░░░░░░    (         ~~~                  |",
+"landscap4": "|Λ  ░░░░░░░░░░░░░░░░░░░  ♖-------♖ )                           |",
+"landscap5": "| Λ ░░░░░░░░░░░░░░░░░░░  |  Baedoor ♖)           ~~~            |",
+"landscap6": "|Λ  ░░░░░░░░░░░░░░░░░░░  ♖-------♖⚓)                       ✖ |",
+"landscap7": "|Λ  ۩  ░░░░░░░░░░░░░░░░           (         ~~~           <_>    |",
+"landscap8": "| Λ Λ Λ Λ Λ Λ Λ   Λ ░░░░░░░░░░░░░  )                     Ansur   |",
+"landscap9": "✺---------------------------------------------------------------✺"
+}
 
 #everything above is total bullshit, it's just for conceptualisation purposes
 
@@ -29,4 +28,41 @@ for i in system.id_manag.rid_conv("ansur:baedoorian", 0, True):
 
 #BOOLEAN TRUE IS SET AS =1 IN STATS
 
-#BLACKSMITH/CLASSES/RACES BEING WEIRDLY USING THEIR STATS (NOT REALLY CORRECT)
+#-------------------------------------------------------------------------------
+#TODO
+
+# - item load (stats/items.json)
+#   - class (weapons, utils, etc)                      <- "KEY READER"
+#   - values of separate items (damage, quality, etc)  <- "VALUE READER"
+# - item inventory load (saves/X/inventory.json)
+#   - item values                                      
+# - inventory management
+#   - item add (with general values + ew. crafting dependent on skill)
+#   - item remove
+#   - item qualities check ("?" prefix before choice)
+#   - equip item on respective slot
+#   - slot limit (1)
+# - interface (main game)
+
+#-------------------------------------------------------------------------------
+{
+"stackable": False,       #stacking (if no individual qualities given - True)
+#individual qualities (general):
+"quality": "good",        #depends on a way item is obtained; can't be higher than max
+#non-individual (general):
+"max_quality": "good",    #max quality that can be obtained by item
+#non-individual (weapons):
+"average_dmg": 4,         #average dmg
+"dmg_yaw": 1,             #offset of average (4+yaw1 = 3-5)
+"block_chance": 20        #base percent chance of blocking, if that option is set
+}
+#-------------------------------------------------------------------------------
+#  QUALITY
+#  - broken (-5)
+#  - weak (-2)
+#  - damaged (-1)
+#  - average (0)
+#  - good (1)
+#  - forged (2)
+#  - hardened (3)
+#  - ultimate (4)

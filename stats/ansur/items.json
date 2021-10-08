@@ -4,7 +4,10 @@
       "ayer_knife": [
         {
           "stackable": false,
-          "max_quality": "average"
+          "max_quality": "good",
+          "average_dmg": 4,
+          "dmg_yaw": 1,
+          "block_chance": 20
         }
       ]
     }

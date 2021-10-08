@@ -15,6 +15,7 @@ class profile:
 
   #stats that are set either by player or game itself \
   not_default_stats = {
+    "openable": True,
     "nuid": "", #nuid
     "name": "",
     "nuid_key": "", #nuid+#+name
