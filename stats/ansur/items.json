@@ -12,8 +12,25 @@
       "max_price": 25,
       "average_dmg": 4,
       "dmg_yaw": 1,
-      "block_chance": 20,
+      "block_chance": 15,
       "needs_U+": 0
+    }
+  ],
+  "iron_sabre": [
+    {
+      "item_id": "ansur:iron_sabre",
+      "category": "weapon",
+      "type": "shortsword",
+      "descript": "Iron Sabre",
+      "stackable": false,
+      "weight": 1.7,
+      "max_quality": "hardened",
+      "min_price": 35,
+      "max_price": 46,
+      "average_dmg": 9,
+      "dmg_yaw": 3,
+      "block_chance": 40,
+      "needs_U+": 2
     }
   ],
   "bread": [
@@ -29,6 +46,19 @@
       "healing_time": 2
     }
   ],
+  "honey_cookie": [
+    {
+      "item_id": "ansur:honey_cookie",
+      "category": "food",
+      "descript": "Honey Cookie",
+      "stackable": true,
+      "weight": 0.1,
+      "min_price": 1,
+      "max_price": 1,
+      "healing": 1,
+      "healing_time": 1
+    }
+  ],
   "water": [
     {
       "item_id": "ansur:water",
@@ -37,6 +67,17 @@
       "stackable": true,
       "weight": 0.7,
       "min_price": 1,
+      "max_price": 2
+    }
+  ],
+  "honey": [
+    {
+      "item_id": "ansur:honey",
+      "category": "food",
+      "descript": "Honey",
+      "stackable": true,
+      "weight": 0.4,
+      "min_price": 2,
       "max_price": 2
     }
   ],
@@ -115,6 +156,17 @@
       "weight": 0.5,
       "min_price": 3,
       "max_price": 8
+    }
+  ],
+  "iron_handle": [
+    {
+      "item_id": "ansur:iron_handle",
+      "category": "tool_parts",
+      "descript": "Iron Handle",
+      "stackable": true,
+      "weight": 0.75,
+      "min_price": 6,
+      "max_price": 10
     }
   ]
 }

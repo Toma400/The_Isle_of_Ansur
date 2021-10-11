@@ -1,9 +1,12 @@
 WEAPONS:
  - Ayer Knife
+ - Iron Sabre
 
 FOOD:
  - Bread
+ - Honey Cookie
  - Water
+ - Honey
 
 UTILS:
  - Empty Bottle
@@ -17,7 +20,11 @@ MATERIALS:
 
 TOOL PARTS:
  - Wooden Handle
+ - Iron Handle
 
+
+============YET UNOBTAINABLE==============
+ - Honey
 ==========================================
 #WORKPLACES
 

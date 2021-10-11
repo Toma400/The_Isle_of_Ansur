@@ -9,6 +9,17 @@
       "sp_spent": 45
     }
   ],
+  "iron_sabre": [
+    {
+      "workplace": "anvil",
+      "material_1": "ansur:iron_ingot",
+      "material_2": "ansur:iron_ingot",
+      "material_3": "ansur:iron_handle",
+      "skill_needed": "smithery",
+      "skill_level": 4,
+      "sp_spent": 75
+    }
+  ],
   "bread": [
     {
       "workplace": "oven",
@@ -17,6 +28,17 @@
       "skill_needed": "cooking",
       "skill_level": 1,
       "sp_spent": 10
+    }
+  ],
+  "honey_cookie": [
+    {
+      "workplace": "oven",
+      "material_1": "ansur:water",
+      "material_2": "ansur:honey",
+      "material_3": "ansur:flour",
+      "skill_needed": "cooking",
+      "skill_level": 2,
+      "sp_spent": 15
     }
   ],
   "water": [
@@ -58,6 +80,15 @@
       "skill_needed": "resource_processing",
       "skill_level": 1,
       "sp_spent": 20
+    }
+  ],
+  "iron_handle": [
+    {
+      "workplace": "anvil",
+      "material_1": "ansur:iron_ingot",
+      "skill_needed": "resource_processing",
+      "skill_level": 1,
+      "sp_spent": 30
     }
   ]
 }
