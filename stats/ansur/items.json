@@ -1,21 +1,76 @@
 {
-  "weapons": [
+  "ayer_knife": [
     {
-      "ayer_knife": [
-        {
-          "descript": "Ayer Knife",
-          "stackable": false,
-          "weight": 1,
-          "max_quality": "good",
-          "min_price": 3,
-          "max_price": 9,
-          "type": "shortsword",
-          "average_dmg": 4,
-          "dmg_yaw": 1,
-          "block_chance": 20,
-          "needs_U+": 0
-        }
-      ]
+      "item_id": "ansur:ayer_knife",
+      "category": "weapon",
+      "type": "shortsword",
+      "descript": "Ayer Knife",
+      "stackable": false,
+      "weight": 1,
+      "max_quality": "good",
+      "min_price": 3,
+      "max_price": 9,
+      "average_dmg": 4,
+      "dmg_yaw": 1,
+      "block_chance": 20,
+      "needs_U+": 0
+    }
+  ],
+  "bread": [
+    {
+      "item_id": "ansur:bread",
+      "category": "food",
+      "descript": "Bread",
+      "stackable": true,
+      "weight": 0.3,
+      "min_price": 2,
+      "max_price": 5,
+      "healing": 3,
+      "healing_time": 2
+    }
+  ],
+  "water": [
+    {
+      "item_id": "ansur:water",
+      "category": "food",
+      "descript": "Water",
+      "stackable": true,
+      "weight": 0.7,
+      "min_price": 1,
+      "max_price": 2
+    }
+  ],
+  "empty_bottle": [
+    {
+      "item_id": "ansur:empty_bottle",
+      "category": "utils",
+      "descript": "Empty Bottle",
+      "stackable": true,
+      "weight": 0.2,
+      "min_price": 2,
+      "max_price": 3
+    }
+  ],
+  "iron_ingot": [
+    {
+      "item_id": "ansur:iron_ingot",
+      "category": "materials",
+      "descript": "Iron Ingot",
+      "stackable": true,
+      "weight": 1.5,
+      "min_price": 7,
+      "max_price": 10
+    }
+  ],
+  "raw_iron": [
+    {
+      "item_id": "ansur:raw_iron",
+      "category": "materials",
+      "descript": "Raw Iron",
+      "stackable": true,
+      "weight": 1,
+      "min_price": 4,
+      "max_price": 6
     }
   ]
 }

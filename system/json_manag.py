@@ -1,3 +1,4 @@
+#inventory is managed by its separate instance (gui/inventory.py)
 import json
 
 def json_read(path, element, dict_type=False):

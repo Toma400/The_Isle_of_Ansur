@@ -50,7 +50,9 @@ for i in system.id_manag.rid_conv("ansur:baedoorian", 0, True):
 #individual qualities (general):
 "quality": "good",        #depends on a way item is obtained; can't be higher than max
 #non-individual (general):
+"item_id": "",            #obvious
 "descript": "",           #obvious
+"category": "",           #type of item (weapon/etc)
 "weight": 1,              #how much inventory space is taken
 "max_quality": "good",    #max quality that can be obtained by item
 "min_price": 3,           #min price for trade
@@ -61,7 +63,10 @@ for i in system.id_manag.rid_conv("ansur:baedoorian", 0, True):
 "average_dmg": 4,         #average dmg
 "dmg_yaw": 1,             #offset of average (4+yaw1 = 3-5)
 "block_chance": 20,       #base percent chance of blocking, if that option is set
-"needs_U+": 0             #if skill is needed to be used, says which level is needed
+"needs_U+": 0,            #if skill is needed to be used, says which level is needed
+#non-individual (food):
+"healing": 3,             #how many hp restores for 1 round
+"healing_time": 1         #how many rounds healing effect works
 }
 #-------------------------------------------------------------------------------
 #  QUALITY
@@ -75,3 +80,5 @@ for i in system.id_manag.rid_conv("ansur:baedoorian", 0, True):
 #  - ultimate (4)
 
 #  CATEGORY -> SLOTS ("weapons": main/alternative)
+
+#  CRAFTING RECIPES + U+ needed WILL BE IN SEPARATE MENU

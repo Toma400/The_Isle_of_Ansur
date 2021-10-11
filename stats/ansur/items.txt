@@ -1,0 +1,9 @@
+WEAPONS:
+ - Ayer Knife
+
+FOOD:
+ - Bread
+ - Water
+
+UTILS:
+ - Empty Bottle

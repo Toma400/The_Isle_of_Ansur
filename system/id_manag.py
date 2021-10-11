@@ -33,6 +33,25 @@ def wid_conv (wid, element, world=False):
     #theoretically it can be used for some general world checking material
     #it would just check "id of workspace", therefore it is separate condition
 
+def iid_conv (iid, element, dict_type=False):
+  if ":" not in iid:
+    #ID has wrong syntax
+    print ("Incorrect ID")
+  else:
+    iid_list = iid.split(":") #cid splitting list
+    iid1 = iid_list[0] #id of workspace
+    iid2 = iid_list[1] #id of object
+    if iid1 == "" or iid2 == "":
+      #ID has no workspace or object
+      print ("Incorrect ID")
+    else:
+      if dict_type == True:
+        #returns values used by object as dict
+        return system.json_manag.json_keyread ("stats/" + iid1 + "/items.json", iid2)
+      else:
+        #returns values of object
+        return system.json_manag.json_subread ("stats/" + iid1 + "/items.json", iid2, element)
+
 def cid_conv (cid, element, dict_type=False):
   if ":" not in cid:
     #ID has wrong syntax

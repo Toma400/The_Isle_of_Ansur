@@ -1,0 +1,42 @@
+{
+  "ayer_knife": [
+    {
+      "workplace": "anvil",
+      "material_1": "ansur:iron_ingot",
+      "material_2": "ansur:wooden_hilt",
+      "skill_needed": "smithery",
+      "skill_level": 2
+    }
+  ],
+  "bread": [
+    {
+      "workplace": "oven",
+      "material_1": "ansur:water",
+      "material_2": "ansur:flour",
+      "skill_needed": "cooking",
+      "skill_level": 1
+    }
+  ],
+  "water": [
+    {
+      "workplace": "well",
+      "material_1": "ansur:empty_bottle"
+    }
+  ],
+  "empty_bottle": [
+    {
+      "workplace": "anvil",
+      "material_1": "ansur:iron_ingot",
+      "skill_needed": "smithery",
+      "skill_level": 1
+    }
+  ],
+  "iron_ingot": [
+    {
+      "workplace": "furnace",
+      "material_1": "ansur:raw_iron",
+      "skill_needed": "resource_processing",
+      "skill_level": 1 
+    }
+  ]
+}
