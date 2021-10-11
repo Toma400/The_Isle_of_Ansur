@@ -8,8 +8,8 @@
       "stackable": false,
       "weight": 1,
       "max_quality": "good",
-      "min_price": 3,
-      "max_price": 9,
+      "min_price": 22,
+      "max_price": 25,
       "average_dmg": 4,
       "dmg_yaw": 1,
       "block_chance": 20,
@@ -23,8 +23,8 @@
       "descript": "Bread",
       "stackable": true,
       "weight": 0.3,
-      "min_price": 2,
-      "max_price": 5,
+      "min_price": 5,
+      "max_price": 9,
       "healing": 3,
       "healing_time": 2
     }
@@ -57,7 +57,7 @@
       "category": "materials",
       "descript": "Iron Ingot",
       "stackable": true,
-      "weight": 1.5,
+      "weight": 2,
       "min_price": 7,
       "max_price": 10
     }
@@ -71,6 +71,50 @@
       "weight": 1,
       "min_price": 4,
       "max_price": 6
+    }
+  ],
+  "flour": [
+    {
+      "item_id": "ansur:flour",
+      "category": "materials",
+      "descript": "Flour",
+      "stackable": true,
+      "weight": 1.5,
+      "min_price": 3,
+      "max_price": 5
+    }
+  ],
+  "wheat": [
+    {
+      "item_id": "ansur:wheat",
+      "category": "materials",
+      "descript": "Wheat",
+      "stackable": true,
+      "weight": 1.2,
+      "min_price": 3,
+      "max_price": 4
+    }
+  ],
+  "oak_log": [
+    {
+      "item_id": "ansur:oak_log",
+      "category": "materials",
+      "descript": "Oak Log",
+      "stackable": true,
+      "weight": 1.6,
+      "min_price": 4,
+      "max_price": 7
+    }
+  ],
+  "wooden_handle": [
+    {
+      "item_id": "ansur:wooden_handle",
+      "category": "tool_parts",
+      "descript": "Wooden Handle",
+      "stackable": true,
+      "weight": 0.5,
+      "min_price": 3,
+      "max_price": 8
     }
   ]
 }

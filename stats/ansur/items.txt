@@ -7,3 +7,23 @@ FOOD:
 
 UTILS:
  - Empty Bottle
+
+MATERIALS:
+ - Raw Iron
+ - Iron Ingot
+ - Wheat
+ - Flour
+ - Oak Log
+
+TOOL PARTS:
+ - Wooden Handle
+
+==========================================
+#WORKPLACES
+
+Well                              <<- general
+Oven                              <<- baking/cooking/food processing
+Gristmill  
+Anvil                             <<- smithery
+Furnace
+Carry-on Woodprocessing Ensemble  <<- resource processing

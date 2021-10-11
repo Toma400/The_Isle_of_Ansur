@@ -11,6 +11,13 @@
     {
       "is_bed": false,                  <<- checks if sleep is available
       "is_fire": false                  <<- checks if cooking is available
+
+      #workplaces checker (not needed to state)
+      "well": true,                     <<- general
+      "oven": true,                     <<- baking/cooking/food processing
+      "gristmill": true,
+      "anvil": true,                    <<- smithery
+      "furnace": true
     }
   ]
 }

@@ -3,9 +3,10 @@
     {
       "workplace": "anvil",
       "material_1": "ansur:iron_ingot",
-      "material_2": "ansur:wooden_hilt",
+      "material_2": "ansur:wooden_handle",
       "skill_needed": "smithery",
-      "skill_level": 2
+      "skill_level": 2,
+      "sp_spent": 45
     }
   ],
   "bread": [
@@ -14,13 +15,15 @@
       "material_1": "ansur:water",
       "material_2": "ansur:flour",
       "skill_needed": "cooking",
-      "skill_level": 1
+      "skill_level": 1,
+      "sp_spent": 10
     }
   ],
   "water": [
     {
       "workplace": "well",
-      "material_1": "ansur:empty_bottle"
+      "material_1": "ansur:empty_bottle",
+      "sp_spent": 5
     }
   ],
   "empty_bottle": [
@@ -28,7 +31,8 @@
       "workplace": "anvil",
       "material_1": "ansur:iron_ingot",
       "skill_needed": "smithery",
-      "skill_level": 1
+      "skill_level": 1,
+      "sp_spent": 25
     }
   ],
   "iron_ingot": [
@@ -36,7 +40,24 @@
       "workplace": "furnace",
       "material_1": "ansur:raw_iron",
       "skill_needed": "resource_processing",
-      "skill_level": 1 
+      "skill_level": 1,
+      "sp_spent": 10
+    }
+  ],
+  "flour": [
+    {
+      "workplace": "gristmill",
+      "material_1": "ansur:wheat",
+      "sp_spent": 100
+    }
+  ],
+  "wooden_handle": [
+    {
+      "workplace": "carry-on_woodprocessing_ensemble",
+      "material_1": "ansur:oak_log",
+      "skill_needed": "resource_processing",
+      "skill_level": 1,
+      "sp_spent": 20
     }
   ]
 }
