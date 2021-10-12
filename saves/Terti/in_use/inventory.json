@@ -3,7 +3,13 @@
     "ansur:ayer_knife": {
       "springness": "x",
       "toughness": "sss"
-    }
+    },
+    "ansur:iron_sabre": {},
+    "ansur:iron_sabre^1": {},
+    "ansur:iron_sabre^2": {},
+    "ansur:iron_sabre^3": {},
+    "ansur:iron_sabre^4": {},
+    "ansur:iron_sabre^5": {}
   },
   "slot_main": {},
   "slot_alternative": {},

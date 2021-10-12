@@ -13,4 +13,6 @@ import system.json_manag
 #print (gui.inventory.inv_key_manager ("Terti", "ansur:ayer_knife", "quality", "value"))
 #print (gui.inventory.inv_key_manager ("Terti", "ansur:ayer_knife", "quality", "item_amount"))
 #gui.inventory.add_item ("Terti", "ansur:bread", 5)
-print (gui.inventory.inv_key_creator("Terti", "ansur:ayer_knife", "toughness", "sss", "value_change"))
+#print (gui.inventory.inv_key_creator("Terti", "ansur:ayer_knife", "toughness", "sss", "item_add"))
+gui.inventory.del_item ("Terti", "ansur:short_sword")
+gui.inventory.add_item ("Terti", "ansur:iron_sabre")
