@@ -26,7 +26,7 @@ def del_item (name, iid):
     pass
 
 def add_data (name, iid, source=False):
-  #creator of all properties, depending on skills
+  #creator of all properties, depending on skills (for now only: quality)
   pass
 
 def inv_key_reader (name, iid, element, selector):
@@ -35,9 +35,9 @@ def inv_key_reader (name, iid, element, selector):
   main_dict = system.json_manag.json_read(path, "inventory")
   #list of items in that inventory
   key_dict = main_dict.keys()
-
+  #========================================================
   #SURFACE DATA (inventory manag, items themselves)
-
+  #--------------------------------------------------------
   #checker whether item exists or not
   if selector == "if_item_exists":
     found = 0
@@ -53,7 +53,6 @@ def inv_key_reader (name, iid, element, selector):
       return True
     else:
       return False
-
   #returns number of items
   elif selector == "item_amount":
     found = []
@@ -63,15 +62,15 @@ def inv_key_reader (name, iid, element, selector):
       else:
         pass
     return len(found)
-
+  #returns number of items for stackable items
   elif selector == "item_stackable_amount":
     if inv_key_reader (name, iid, 0, "if_item_exists") == True:
       return main_dict[iid]
     else:
       return 0
-
+  #========================================================
   #DEEPER DATA (item key-value)
-
+  #--------------------------------------------------------
   elif selector == "deep_inv":
     if inv_key_reader(name, iid, 0, "if_item_exists") == True:
       deep_dict = main_dict[iid]
@@ -106,18 +105,26 @@ def inv_key_reader (name, iid, element, selector):
     return deep_dict[element]
 
 
-def inv_key_creator (name, iid, element, selector):
+def inv_key_creator (name, iid, element, value, selector, slot="inventory"):
   path = "saves/" + name + "/in_use/inventory.json"
-  #inventory of selected player
-  main_dict = system.json_manag.json_read(path, "inventory")
+  #inventory of selected player (all slots)
+  main_dict = system.json_manag.json_read(path, 0, True)
   #list of items in that inventory
-  key_dict = main_dict.keys()
+  #for i in main_dict:
+    #globals()['_%s' % i] = main_dict[i]
+  #key_dict = main_dict.keys()
   #SURFACE/DEEPER DATA CREATOR (only basic data, primitive function)
   #uses "element" being "dict"
-  if selector == "item_creator":
-    temp_var = {iid: element}
-    system.json_manag.save_change(name, "inventory", "inventory", "var_add", temp_var)
-
+  #if selector == "item_creator":
+  #  temp_var = {iid: element}
+  #  system.json_manag.save_change(name, "inventory", "inventory", "var_add", temp_var)
+  if selector == "value_change":
+    #can be used to change value, but also add new one
+    change_point = main_dict[slot]
+    change_set = {element:value}
+    change_point[iid].update(change_set)
+    main_dict[slot] = change_point
+    system.json_manag.json_write(path, main_dict)
 
 
 

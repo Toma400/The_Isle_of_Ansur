@@ -9,6 +9,16 @@
       "sp_spent": 45
     }
   ],
+  "short_sword": [
+    {
+      "workplace": "anvil",
+      "material_1": "ansur:iron_ingot",
+      "material_2": "ansur:iron_handle",
+      "skill_needed": "smithery",
+      "skill_level": 3,
+      "sp_spent": 60
+    }
+  ],
   "iron_sabre": [
     {
       "workplace": "anvil",
@@ -30,7 +40,7 @@
       "sp_spent": 10
     }
   ],
-  "honey_cookie": [
+  "honey_roll": [
     {
       "workplace": "oven",
       "material_1": "ansur:water",

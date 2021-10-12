@@ -1,7 +1,8 @@
 {
   "inventory": {
     "ansur:ayer_knife": {
-      "quality": "good"
+      "springness": "x",
+      "toughness": "sss"
     }
   },
   "slot_main": {},

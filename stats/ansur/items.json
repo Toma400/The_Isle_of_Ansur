@@ -12,7 +12,24 @@
       "max_price": 25,
       "average_dmg": 4,
       "dmg_yaw": 1,
-      "block_chance": 15,
+      "block_chance": 10,
+      "needs_U+": 0
+    }
+  ],
+  "short_sword": [
+    {
+      "item_id": "ansur:short_sword",
+      "category": "weapon",
+      "type": "shortsword",
+      "descript": "Short Sword",
+      "stackable": false,
+      "weight": 1.3,
+      "max_quality": "hardened",
+      "min_price": 30,
+      "max_price": 38,
+      "average_dmg": 10,
+      "dmg_yaw": 1,
+      "block_chance": 25,
       "needs_U+": 0
     }
   ],
@@ -29,7 +46,7 @@
       "max_price": 46,
       "average_dmg": 9,
       "dmg_yaw": 3,
-      "block_chance": 40,
+      "block_chance": 35,
       "needs_U+": 2
     }
   ],
@@ -46,11 +63,11 @@
       "healing_time": 2
     }
   ],
-  "honey_cookie": [
+  "honey_roll": [
     {
-      "item_id": "ansur:honey_cookie",
+      "item_id": "ansur:honey_roll",
       "category": "food",
-      "descript": "Honey Cookie",
+      "descript": "Honey Roll",
       "stackable": true,
       "weight": 0.1,
       "min_price": 1,

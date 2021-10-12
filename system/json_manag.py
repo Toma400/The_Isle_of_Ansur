@@ -26,10 +26,9 @@ def json_keyread(path, element):
   subdata = json_read(path, element)[0]
   return subdata
 
-def json_write(path, name, dictionary):
-  final_path = path + "/" + name + ".json"
-  creating = open(final_path, "a")
-  with open (final_path, 'w') as json_file:
+def json_write(path, dictionary):
+  creating = open(path, "a")
+  with open (path, 'w') as json_file:
     json.dump(dictionary, json_file, indent = 2)
 
 def json_change(path, element, change_type, change_value):
