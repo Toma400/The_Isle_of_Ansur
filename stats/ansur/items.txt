@@ -5,6 +5,8 @@ WEAPONS:
 FOOD:
  - Bread
  - Honey Roll
+ - Herring
+ - Baked Herring
  - Water
  - Honey
 
@@ -18,19 +20,28 @@ MATERIALS:
  - Flour
  - Oak Log
 
-TOOL PARTS:
+PARTS:
  - Wooden Handle
  - Iron Handle
 
 
 ============YET UNOBTAINABLE==============
  - Honey
+ - Herring
+ - Hyerbitus
 ==========================================
 #WORKPLACES
 
 Well                              <<- general
 Oven                              <<- baking/cooking/food processing
-Gristmill  
+Gristmill
+Fire  
 Anvil                             <<- smithery
 Furnace
 Carry-on Woodprocessing Ensemble  <<- resource processing
+Herbalist String                  <<- herbalism
+
+
+
+#MAKE .JSON WHICH WILL LIST WORKPLACES ITEMS BY ONE-TIME CHECKING ALL MODS ITEMS EACH TIME GAME IS LOADED
+#THIS WAY YOU WILL NOT NEED TO LOAD THEM SUCH COMPLICATED WAY AGAIN AND AGAIN, AND DOING IT EACH LOAD WILL MAKE YOU SAFER FOR MOD/VANILLA CHANGES WITHIN THESE FILES (ALL DATA WILL BE REWRITTEN EACH LOAD)

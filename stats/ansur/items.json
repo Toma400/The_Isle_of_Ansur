@@ -8,6 +8,7 @@
       "stackable": false,
       "weight": 1,
       "max_quality": "good",
+      "durability": 70,
       "min_price": 22,
       "max_price": 25,
       "average_dmg": 4,
@@ -25,6 +26,7 @@
       "stackable": false,
       "weight": 1.3,
       "max_quality": "hardened",
+      "durability": 100,
       "min_price": 30,
       "max_price": 38,
       "average_dmg": 10,
@@ -42,6 +44,7 @@
       "stackable": false,
       "weight": 1.7,
       "max_quality": "hardened",
+      "durability": 95,
       "min_price": 35,
       "max_price": 46,
       "average_dmg": 9,
@@ -60,7 +63,10 @@
       "min_price": 5,
       "max_price": 9,
       "healing": 3,
-      "healing_time": 2
+      "healing_time": 2,
+      "hunger_thirst": "food",
+      "ht_restore": 20,
+      "out": false
     }
   ],
   "honey_roll": [
@@ -70,10 +76,45 @@
       "descript": "Honey Roll",
       "stackable": true,
       "weight": 0.1,
-      "min_price": 1,
-      "max_price": 1,
+      "min_price": 4,
+      "max_price": 10,
       "healing": 1,
-      "healing_time": 1
+      "healing_time": 1,
+      "hunger_thirst": "food",
+      "ht_restore": 10,
+      "out": false
+    }
+  ],
+  "herring": [
+    {
+      "item_id": "ansur:herring",
+      "category": "food",
+      "descript": "Herring",
+      "stackable": true,
+      "weight": 0.3,
+      "min_price": 7,
+      "max_price": 12,
+      "healing": 4,
+      "healing_time": 2,
+      "hunger_thirst": "food",
+      "ht_restore": 15,
+      "out": false
+    }
+  ],
+  "roasted_herring": [
+    {
+      "item_id": "ansur:roasted_herring",
+      "category": "food",
+      "descript": "Roasted Herring",
+      "stackable": true,
+      "weight": 0.3,
+      "min_price": 9,
+      "max_price": 15,
+      "healing": 8,
+      "healing_time": 2,
+      "hunger_thirst": "food",
+      "ht_restore": 25,
+      "out": false
     }
   ],
   "water": [
@@ -84,7 +125,10 @@
       "stackable": true,
       "weight": 0.7,
       "min_price": 1,
-      "max_price": 2
+      "max_price": 2,
+      "hunger_thirst": "potion",
+      "ht_restore": 30,
+      "out": "ansur:empty_bottle"
     }
   ],
   "honey": [
@@ -95,7 +139,32 @@
       "stackable": true,
       "weight": 0.4,
       "min_price": 2,
-      "max_price": 2
+      "max_price": 2,
+      "hunger_thirst": "food",
+      "ht_restore": 3,
+      "out": false
+    }
+  ],
+  "hyerbitus": [
+    {
+      "item_id": "ansur:hyerbitus",
+      "category": "plant",
+      "descript": "Hyerbitus",
+      "stackable": true,
+      "weight": 0,
+      "min_price": 6,
+      "max_price": 10
+    }
+  ],
+  "dried_hyerbitus": [
+    {
+      "item_id": "ansur:dried_hyerbitus",
+      "category": "plant",
+      "descript": "Dried Hyerbitus",
+      "stackable": true,
+      "weight": 0,
+      "min_price": 7,
+      "max_price": 9
     }
   ],
   "empty_bottle": [
@@ -167,7 +236,7 @@
   "wooden_handle": [
     {
       "item_id": "ansur:wooden_handle",
-      "category": "tool_parts",
+      "category": "parts",
       "descript": "Wooden Handle",
       "stackable": true,
       "weight": 0.5,
@@ -178,7 +247,7 @@
   "iron_handle": [
     {
       "item_id": "ansur:iron_handle",
-      "category": "tool_parts",
+      "category": "parts",
       "descript": "Iron Handle",
       "stackable": true,
       "weight": 0.75,

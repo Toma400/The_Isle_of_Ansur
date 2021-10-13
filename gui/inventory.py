@@ -37,8 +37,8 @@ def del_item (name, iid, modifier=False):
         numb = 1
       item_data = inv_key_reader (name, iid, 0, "item_stackable_amount")
       if item_data - numb > -1:
-        return True
         inv_key_creator (name, iid, 0, item_data - numb, "item_change")
+        return True
       else:
         return False
   else:
@@ -97,9 +97,6 @@ def inv_key_reader (name, iid, element, selector):
       return deep_dict
     else:
       print ("Item called by function does not exist. Checker prevention action failed.")
-  
-  elif "slot" in selector:
-    pass
 
   elif selector == "if_value_exists":
     temp_dict = inv_key_reader(name, iid, 0, "deep_inv")
@@ -158,14 +155,22 @@ def inv_key_creator (name, iid, element, value, selector, slot="inventory"):
     main_dict[slot] = change_point
     system.json_manag.json_write(path, main_dict)
 
-
-
+def inv_slot_manager (name, slot, selector):
+  pass
 
 
 
 
 
   #slot selector
-  #key creator
-  #del item
+
   #add data
+  #  |
+  #  V
+  #crafting requirements, adding weight to player, etc
+  #  |
+  #  V
+  #slot management
+  #  |
+  #  V
+  #crafting menu, inventory menu
