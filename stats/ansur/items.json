@@ -6,7 +6,7 @@
       "type": "shortsword",
       "descript": "Ayer Knife",
       "stackable": false,
-      "weight": 1,
+      "weight": 1.2,
       "max_quality": "good",
       "durability": 70,
       "min_price": 22,
@@ -17,6 +17,24 @@
       "needs_U+": 0
     }
   ],
+  "sickle": [
+    {
+      "item_id": "ansur:sickle",
+      "category": "weapon_tool",
+      "type": "shortsword",
+      "descript": "Sickle",
+      "stackable": false,
+      "weight": 0.9,
+      "max_quality": "good",
+      "durability": 85,
+      "min_price": 24,
+      "max_price": 30,
+      "average_dmg": 5,
+      "dmg_yaw": 2,
+      "block_chance": 0,
+      "needs_U+": 0
+    }
+  ],
   "short_sword": [
     {
       "item_id": "ansur:short_sword",
@@ -24,7 +42,7 @@
       "type": "shortsword",
       "descript": "Short Sword",
       "stackable": false,
-      "weight": 1.3,
+      "weight": 1.8,
       "max_quality": "hardened",
       "durability": 100,
       "min_price": 30,
@@ -51,6 +69,48 @@
       "dmg_yaw": 3,
       "block_chance": 35,
       "needs_U+": 2
+    }
+  ],
+  "iron_rapier": [
+    {
+      "item_id": "ansur:iron_rapier",
+      "category": "weapon",
+      "type": "shortsword",
+      "subtype": "rapier",
+      "descript": "Iron Rapier",
+      "stackable": false,
+      "weight": 1.5,
+      "max_quality": "hardened",
+      "durability": 88,
+      "min_price": 44,
+      "max_price": 55,
+      "average_dmg": 7,
+      "dmg_yaw": 4,
+      "block_chance": 38,
+      "needs_U+": 4
+    }
+  ],
+  "dynamite": [
+    {
+      "item_id": "ansur:dynamite",
+      "category": "weapon",
+      "type": "ranged",
+      "subtype": "vanishable",
+      "descript": "Dynamite",
+      "stackable": true,
+      "weight": 0.8,
+      "max_quality": "average",
+      "durability": 1,
+      "min_price": 30,
+      "max_price": 40,
+      "average_dmg": 5,
+      "dmg_yaw": 25,
+      "block_chance": 0,
+      "needs_U+": 0,
+      "self-harm_chance": 35,
+      "self-harm_skill": true,
+      "self-harm_percent": 45,
+      "self-harm_yaw": 25
     }
   ],
   "bread": [
@@ -117,6 +177,38 @@
       "out": false
     }
   ],
+  "rat_meat": [
+    {
+      "item_id": "ansur:rat_meat",
+      "category": "food",
+      "descript": "Rat Meat",
+      "stackable": true,
+      "weight": 0.6,
+      "min_price": 1,
+      "max_price": 3,
+      "healing": 1,
+      "healing_time": 2,
+      "hunger_thirst": "food",
+      "ht_restore": -15,
+      "out": false
+    }
+  ],
+  "roasted_rat_meat": [
+    {
+      "item_id": "ansur:roasted_rat_meat",
+      "category": "food",
+      "descript": "Roasted Rat Meat",
+      "stackable": true,
+      "weight": 0.5,
+      "min_price": 3,
+      "max_price": 10,
+      "healing": 5,
+      "healing_time": 3,
+      "hunger_thirst": "food",
+      "ht_restore": 15,
+      "out": false
+    }
+  ],
   "water": [
     {
       "item_id": "ansur:water",
@@ -145,6 +237,20 @@
       "out": false
     }
   ],
+  "beer": [
+    {
+      "item_id": "ansur:beer",
+      "category": "food",
+      "descript": "Beer",
+      "stackable": true,
+      "weight": 1,
+      "min_price": 10,
+      "max_price": 18,
+      "hunger_thirst": "potion",
+      "ht_restore": 10,
+      "out": "ansur:empty_bottle"
+    }
+  ],
   "hyerbitus": [
     {
       "item_id": "ansur:hyerbitus",
@@ -170,7 +276,7 @@
   "empty_bottle": [
     {
       "item_id": "ansur:empty_bottle",
-      "category": "utils",
+      "category": "utility",
       "descript": "Empty Bottle",
       "stackable": true,
       "weight": 0.2,
@@ -181,7 +287,7 @@
   "iron_ingot": [
     {
       "item_id": "ansur:iron_ingot",
-      "category": "materials",
+      "category": "material",
       "descript": "Iron Ingot",
       "stackable": true,
       "weight": 2,
@@ -192,7 +298,7 @@
   "raw_iron": [
     {
       "item_id": "ansur:raw_iron",
-      "category": "materials",
+      "category": "material",
       "descript": "Raw Iron",
       "stackable": true,
       "weight": 1,
@@ -203,7 +309,7 @@
   "flour": [
     {
       "item_id": "ansur:flour",
-      "category": "materials",
+      "category": "material",
       "descript": "Flour",
       "stackable": true,
       "weight": 1.5,
@@ -214,7 +320,7 @@
   "wheat": [
     {
       "item_id": "ansur:wheat",
-      "category": "materials",
+      "category": "material",
       "descript": "Wheat",
       "stackable": true,
       "weight": 1.2,
@@ -225,7 +331,7 @@
   "oak_log": [
     {
       "item_id": "ansur:oak_log",
-      "category": "materials",
+      "category": "material",
       "descript": "Oak Log",
       "stackable": true,
       "weight": 1.6,
@@ -233,10 +339,43 @@
       "max_price": 7
     }
   ],
+  "paper": [
+    {
+      "item_id": "ansur:paper",
+      "category": "material",
+      "descript": "Paper",
+      "stackable": true,
+      "weight": 0.2,
+      "min_price": 3,
+      "max_price": 5
+    }
+  ],
+  "parchment": [
+    {
+      "item_id": "ansur:parchment",
+      "category": "material",
+      "descript": "Parchment",
+      "stackable": true,
+      "weight": 0.5,
+      "min_price": 15,
+      "max_price": 27
+    }
+  ],
+  "silk": [
+    {
+      "item_id": "ansur:silk",
+      "category": "material",
+      "descript": "Silk",
+      "stackable": true,
+      "weight": 1.2,
+      "min_price": 50,
+      "max_price": 62
+    }
+  ],
   "wooden_handle": [
     {
       "item_id": "ansur:wooden_handle",
-      "category": "parts",
+      "category": "part",
       "descript": "Wooden Handle",
       "stackable": true,
       "weight": 0.5,
@@ -247,7 +386,7 @@
   "iron_handle": [
     {
       "item_id": "ansur:iron_handle",
-      "category": "parts",
+      "category": "part",
       "descript": "Iron Handle",
       "stackable": true,
       "weight": 0.75,

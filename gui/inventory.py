@@ -72,6 +72,18 @@ def inv_key_reader (name, iid, element, selector):
       return True
     else:
       return False
+  #checker whether item exists or not (iid_checker edition)
+  if selector == "if_item_exists+":
+    found = 0
+    for i in key_dict:
+      if i == iid:
+        found = found + 1
+      else:
+        pass
+    if found > 0:
+      return True
+    else:
+      return False
   #returns number of items
   elif selector == "item_amount":
     found = []
@@ -91,7 +103,7 @@ def inv_key_reader (name, iid, element, selector):
   #DEEPER DATA (item key-value)
   #--------------------------------------------------------
   elif selector == "deep_inv":
-    if inv_key_reader(name, iid, 0, "if_item_exists") == True:
+    if inv_key_reader(name, iid, 0, "if_item_exists+") == True:
       deep_dict = main_dict[iid]
       #dict of keys/values of specific item
       return deep_dict
@@ -154,6 +166,25 @@ def inv_key_creator (name, iid, element, value, selector, slot="inventory"):
     change_point[iid].update(change_set)
     main_dict[slot] = change_point
     system.json_manag.json_write(path, main_dict)
+
+def iid_checker (name, iid):
+  path = "saves/" + name + "/in_use/inventory.json"
+  #inventory of selected player (all slots)
+  main_dict = system.json_manag.json_read(path, "inventory")
+  #list of items in that inventory
+  key_dict = main_dict.keys()
+  j = 1
+  for i in key_dict:
+    if iid + "^" in i:
+      #checks if there is next item ID to missing item (IID^5 after IID^3, for example)
+      if inv_key_reader (name, iid + "^" + str(j), 0, "if_item_exists+") == False and inv_key_reader (name, iid + "^" + str(j+1), 0, "if_item_exists+") == True:
+        #if so, it moves next item into previous one, and deletes next one
+        next_value = (inv_key_reader (name, iid + "^" + str(j+1), 0, "deep_inv"))
+        inv_key_creator (name, iid + "^" + str(j), 0, next_value, "item_change")
+        inv_key_creator (name, iid + "^" + str(j+1), 0, 0, "item_del")
+        #inv_key_creator (name, iid + "^" + str(j), 0, next_value, "item_change", slot="inventory")
+        #inv_key_creator (name, iid + "^" + str(j+1), 0, 0, "item_del", slot="inventory")
+      j = j + 1
 
 def inv_slot_manager (name, slot, selector):
   pass

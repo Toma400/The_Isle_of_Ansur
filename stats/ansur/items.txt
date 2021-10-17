@@ -29,6 +29,12 @@ PARTS:
  - Honey
  - Herring
  - Hyerbitus
+ - Paper
+ - Parchment
+ - Rat Meat
+ - Beer
+ - Silk
+ - Dynamite
 ==========================================
 #WORKPLACES
 

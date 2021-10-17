@@ -10,6 +10,17 @@
       "repair_material": "ansur:iron_ingot"
     }
   ],
+  "ansur:sickle": [
+    {
+      "workplace": "anvil",
+      "material_1": "ansur:iron_ingot",
+      "material_2": "ansur:wooden_handle",
+      "skill_needed": "smithery",
+      "skill_level": 2,
+      "sp_spent": 35,
+      "repair_material": "ansur:iron_ingot"
+    }
+  ],
   "ansur:short_sword": [
     {
       "workplace": "anvil",
@@ -30,6 +41,18 @@
       "skill_needed": "smithery",
       "skill_level": 4,
       "sp_spent": 75,
+      "repair_material": "ansur:iron_ingot"
+    }
+  ],
+  "ansur:iron_rapier": [
+    {
+      "workplace": "anvil",
+      "material_1": "ansur:iron_ingot",
+      "material_2": "ansur:iron_ingot",
+      "material_3": "ansur:iron_handle",
+      "skill_needed": "smithery",
+      "skill_level": 6,
+      "sp_spent": 55,
       "repair_material": "ansur:iron_ingot"
     }
   ],
@@ -100,6 +123,13 @@
       "workplace": "gristmill",
       "material_1": "ansur:wheat",
       "sp_spent": 100
+    }
+  ],
+  "ansur:roasted_rat_meat": [
+    {
+      "workplace": "fire",
+      "material_1": "ansur:rat_meat",
+      "sp_spent": 20
     }
   ],
   "ansur:wooden_handle": [

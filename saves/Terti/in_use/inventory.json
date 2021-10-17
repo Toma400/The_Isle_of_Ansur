@@ -1,38 +1,5 @@
 {
   "inventory": {
-    "ansur:ayer_knife": {
-      "springness": "x",
-      "toughness": "sss"
-    },
-    "ansur:iron_sabre": {},
-    "ansur:iron_sabre^1": {},
-    "ansur:iron_sabre^2": {},
-    "ansur:iron_sabre^3": {},
-    "ansur:iron_sabre^4": {},
-    "ansur:iron_sabre^5": {},
-    "ansur:iron_sabre^6": {},
-    "ansur:iron_sabre^7": {},
-    "ansur:bread": 6,
-    "ansur:short_sword": {},
-    "ansur:short_sword^1": {},
-    "ansur:short_sword^2": {},
-    "ansur:short_sword^3": {},
-    "ansur:short_sword^4": {},
-    "ansur:short_sword^5": {},
-    "ansur:short_sword^6": {},
-    "ansur:short_sword^7": {},
-    "ansur:honey_roll": 55,
     "ansur:flour": 3
-  },
-  "slot_main": {},
-  "slot_alternative": {},
-  "slot_helmet": {},
-  "slot_chestplate": {},
-  "slot_leggings": {},
-  "slot_boots": {},
-  "slot_necklace": {},
-  "slot_cape": {},
-  "slot_ring": {},
-  "slot_ring2": {},
-  "slot_ring3": {}
+  }
 }

@@ -9,5 +9,6 @@ import gui.menu
 
 import gui.inventory
 import system.json_manag
-gui.inventory.del_item ("Terti", "ansur:honey_roll", 2)
-gui.inventory.add_item ("Terti", "ansur:flour")
+#gui.inventory.del_item ("Terti", "ansur:honey_roll", 2)
+#gui.inventory.add_item ("Terti", "ansur:flour")
+#gui.inventory.iid_checker("Terti", "ansur:short_sword")
