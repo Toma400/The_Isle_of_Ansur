@@ -69,13 +69,13 @@ def deep_load (name):
 def deep_load_error (critical=False):
   import time
   import gui.menu
-  import utils.text
-  import utils.colours
+  import utils.text.text_align as align
+  import utils.colours.bcolors as colour
   if critical == True:
-    print (utils.text.text_align (utils.colours.bcolors.CYELLOW2 + "Unfortunately that setting can't be set back to default. Please change your settings in menu to fit that save file." + utils.colours.bcolors.ENDC, "centre_colour"))
+    print (align (colour.CYELLOW2 + "Unfortunately that setting can't be set back to default. Please change your settings in menu to fit that save file." + colour.ENDC, "centre_colour"))
   if critical == "name":
-    print (utils.text.text_align (utils.colours.bcolors.CYELLOW2 + "No character profile is found with that name. Please make sure you wrote it correctly." + utils.colours.bcolors.ENDC, "centre_colour"))
-    print (utils.text.text_align (utils.colours.bcolors.CYELLOW2 + "[case sensitivity matters]" + utils.colours.bcolors.ENDC, "centre_colour"))
-  print (utils.text.text_align (utils.colours.bcolors.CYELLOW2 + "Redirecting to game menu." + utils.colours.bcolors.ENDC, "centre_colour"))
+    print (align (colour.CYELLOW2 + "No character profile is found with that name. Please make sure you wrote it correctly." + colour.ENDC, "centre_colour"))
+    print (align (colour.CYELLOW2 + "[case sensitivity matters]" + colour.ENDC, "centre_colour"))
+  print (align (colour.CYELLOW2 + "Redirecting to game menu." + colour.ENDC, "centre_colour"))
   time.sleep(1)
   gui.menu.start()

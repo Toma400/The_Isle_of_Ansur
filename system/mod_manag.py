@@ -1,10 +1,10 @@
-import utils.repo_manag
+import utils.repo_manag.dir_checker as dir_check
 
 def mod_lister (directory, system="full"):
   if directory == "stats":
     #checks whether mod is in stats directory
     path = "stats/"
-    mod_loaded = utils.repo_manag.dir_checker(path, "dir")
+    mod_loaded = dir_check(path, "dir")
     if system == "modded":
       mod_loaded.remove ("ansur")
       return mod_loaded
@@ -13,7 +13,7 @@ def mod_lister (directory, system="full"):
   elif directory == "worlds":
     #checks whether mod is in worlds directory
     path = "worlds/"
-    mod_loaded = utils.repo_manag.dir_checker(path, "dir")
+    mod_loaded = dir_check(path, "dir")
     if system == "modded":
       mod_loaded.remove ("ansur")
       return mod_loaded
@@ -22,8 +22,8 @@ def mod_lister (directory, system="full"):
   elif directory == "all":
     path1 = "stats/"
     path2 = "worlds/"
-    mod_loaded = utils.repo_manag.dir_checker(path1, "dir")
-    mod_loaded.append (utils.repo_manag.dir_checker(path2, "dir"))
+    mod_loaded = dir_check(path1, "dir")
+    mod_loaded.append (dir_check(path2, "dir"))
     if system == "modded":
       mod_loaded.remove ("ansur")
       return mod_loaded
@@ -54,8 +54,8 @@ def mod_checker (directory, name):
     #checks whether mod is in both directories (AND)
     path1 = "stats/"
     path2 = "worlds/"   
-    mod_loaded1 = utils.repo_manag.dir_checker(path1, "dir")
-    mod_loaded2 = utils.repo_manag.dir_checker(path2, "dir")
+    mod_loaded1 = dir_check(path1, "dir")
+    mod_loaded2 = dir_check(path2, "dir")
     mods_loaded = set(mod_loaded1) & set(mod_loaded2)
     if name in mods_loaded:
       return True
