@@ -2,14 +2,14 @@ import system.json_manag
 #player_name is the only continuously used variable throughout whole game, recognising the save profile
 
 def name():
-  import utils.text
-  import utils.colours
+  import utils.text.text_align as align
+  import utils.colours as colour
   import system.save_system.initialisation
-  print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
+  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
   print ("\n")
-  print (utils.text.text_align("Type your character name", "centre"))
-  print (utils.text.text_align("---", "centre"))
-  print (utils.text.text_align("Type -0- to cancel", "centre"))
+  print (align("Type your character name", "centre"))
+  print (align("---", "centre"))
+  print (align("Type -0- to cancel", "centre"))
   print ("\n")
   while True:
     player_name = input ("")
@@ -26,14 +26,14 @@ def name():
       break
 
 def gender(name):
-  import utils.text
-  import utils.colours
-  print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
+  import utils.text.align as align
+  import utils.colours.bcolors as colour
+  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
   print ("\n")
-  print (utils.text.text_align("Choose your gender", "centre"))
-  print (utils.text.text_align("[1] Male", "centre"))
-  print (utils.text.text_align("[2] Female", "centre"))
-  print (utils.text.text_align("---", "centre"))
+  print (align("Choose your gender", "centre"))
+  print (align("[1] Male", "centre"))
+  print (align("[2] Female", "centre"))
+  print (align("---", "centre"))
   print ("\n")
   while True:
     gender = input ("")
@@ -50,20 +50,20 @@ def gender(name):
       gender(name)
 
 def race(name):
-  import utils.text
-  import utils.colours
+  import utils.text.text_align as align
+  import utils.colours.bcolors as colour
   import system.mod_manag
-  import system.id_manag
+  import system.id_manag.rid_conv as rid_conv
   import json
   races_loaded = system.mod_manag.rid_loader()
   races_count = len(races_loaded)
-  print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
+  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
   print ("\n")
-  print (utils.text.text_align("Choose your race", "centre"))
+  print (align("Choose your race", "centre"))
   print ("\n")
   j = 1
   for k in races_loaded:
-    print ("[" + str(j) + "][" + system.id_manag.rid_conv (k, "descript") + "]")
+    print ("[" + str(j) + "][" + rid_conv (k, "descript") + "]")
     j = j+1
   print ("\n")
   while True:
@@ -71,8 +71,8 @@ def race(name):
     if choose_race > 0 and choose_race <= races_count:
       chosen_race = races_loaded[choose_race-1]
       system.json_manag.save_change(name, "profile", "race", "replace", chosen_race)
-      for i in system.id_manag.rid_conv(chosen_race, 0, True):
-        k = system.id_manag.rid_conv(chosen_race, i)
+      for i in rid_conv(chosen_race, 0, True):
+        k = rid_conv(chosen_race, i)
         try:
           if i == "race_id" or i == "descript":
             pass
@@ -87,20 +87,20 @@ def race(name):
       race(name)
 
 def classes(name):
-  import utils.text
-  import utils.colours
+  import utils.text.text_align as align
+  import utils.colours.bcolors as colour
   import system.mod_manag
-  import system.id_manag
+  import system.id_manag.cid_conv as cid_conv
   import json
   classes_loaded = system.mod_manag.cid_loader()
   classes_count = len(classes_loaded)
-  print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
+  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
   print ("\n")
-  print (utils.text.text_align("Choose your class", "centre"))
+  print (align("Choose your class", "centre"))
   print ("\n")
   j = 1
   for k in classes_loaded:
-    print ("[" + str(j) + "][" + system.id_manag.cid_conv (k, "descript") + "]")
+    print ("[" + str(j) + "][" + cid_conv (k, "descript") + "]")
     j = j+1
   print ("\n")
   while True:
@@ -109,10 +109,10 @@ def classes(name):
       chosen_class = classes_loaded[choose_class-1]
       try:
         #checks
-        if system.json_manag.save_read(name, "profile", "race") == system.id_manag.cid_conv(chosen_class, "race_exclusive"):
+        if system.json_manag.save_read(name, "profile", "race") == cid_conv(chosen_class, "race_exclusive"):
           pass
         else:
-          print ((utils.text.text_align(utils.colours.bcolors.CYELLOW2 + "Class is exclusive for race you don't represent!" + utils.colours.bcolors.ENDC, "centre_colour")))
+          print ((align(colour.CYELLOW2 + "Class is exclusive for race you don't represent!" + colour.ENDC, "centre_colour")))
           print ("\n")
           classes(name)
           break
@@ -120,8 +120,8 @@ def classes(name):
         pass
       #runs if not interrupted by race_exclusivity
       system.json_manag.save_change(name, "profile", "class", "replace", chosen_class)
-      for i in system.id_manag.cid_conv(chosen_class, 0, True):
-        k = system.id_manag.cid_conv(chosen_class, i)
+      for i in cid_conv(chosen_class, 0, True):
+        k = cid_conv(chosen_class, i)
         try:
           if i == "class_id" or i == "descript" or i == "race_exclusive":
             pass
@@ -136,8 +136,8 @@ def classes(name):
       classes(name)
 
 def manual_attribute(name):
-  import utils.text
-  import utils.colours
+  import utils.text.text_align as align
+  import utils.colours.bcolors as colour
   import system.mod_manag
   import system.id_manag
   import json
@@ -147,9 +147,9 @@ def manual_attribute(name):
     i = i.replace("atr_", "")
     i = i.title()
     attribute_list.append (i)
-  print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
+  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
   print ("\n")
-  print (utils.text.text_align("Choose attribute you want to enhance", "centre"))
+  print (align("Choose attribute you want to enhance", "centre"))
   print ("\n")
   j = 1
   for i in attribute_list:
@@ -171,22 +171,22 @@ def manual_attribute(name):
     break
 
 def manual_ability(name):
-  import utils.text
-  import utils.colours
+  import utils.text.text_align as align
+  import utils.colours.bcolors as colour
   import system.mod_manag
   import system.id_manag
   import gui.interface
-  import stats.default_stats
+  import stats.default_stats.profile.abilities as abilities
   import json
   ability_list = []
-  for i in stats.default_stats.profile.abilities:
+  for i in abilities:
     i = i.replace("abil_", "")
     i = i.replace("_", " ")
     i = i.title()
     ability_list.append (i)
-  print (utils.text.text_align(utils.colours.bcolors.OKBLUE + "--------------------" + utils.colours.bcolors.ENDC, "centre_colour"))
+  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
   print ("\n")
-  print (utils.text.text_align("Choose ability you want to enhance", "centre"))
+  print (align("Choose ability you want to enhance", "centre"))
   print ("\n")
   j = 1
   for i in ability_list:
