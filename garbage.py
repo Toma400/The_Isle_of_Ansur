@@ -1,3 +1,25 @@
+#---------------------------------
+#IMPORT RULES
+#'manag' modules should rather be left in name, since they make context most visible
+#   import system.id_manag as id_manag
+#
+#Common importing renamings:
+#   import utils.colours as colour
+#   import utils.text.text_align as align
+
+
+
+
+
+
+
+
+
+
+
+
+
+#---------------------------------
 #just trash stuff that i want to keep here for now, just for reference purposes
 
 #print (stats.races.race_saphtri.descript)

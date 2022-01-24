@@ -14,3 +14,13 @@ import system.json_manag
 #system.int_systems.inv_manag.iid_checker("Terti", "ansur:short_sword")
 import gui.inventory
 gui.inventory.main_inv("Terti")
+
+#FOR THE FUTURE!!!!
+#Write here what was the last thing you worked on. What was the issues you found tiring
+#Like "WORKED ON X, BUT Y DEMOTIVATED ME"
+#--------------------V------------------
+#
+# Inventory managment iirc, it might be single-stack items Being difficult to manage
+# Slot selecting too btw
+#
+#---------------------------------------

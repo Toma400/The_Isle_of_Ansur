@@ -1,9 +1,9 @@
 import system.json_manag
 #player_name is the only continuously used variable throughout whole game, recognising the save profile
+import utils.text.text_align as align
+import utils.colours.bcolors as colour
 
 def name():
-  import utils.text.text_align as align
-  import utils.colours as colour
   import system.save_system.initialisation
   print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
   print ("\n")
@@ -26,8 +26,6 @@ def name():
       break
 
 def gender(name):
-  import utils.text.align as align
-  import utils.colours.bcolors as colour
   print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
   print ("\n")
   print (align("Choose your gender", "centre"))
@@ -50,10 +48,8 @@ def gender(name):
       gender(name)
 
 def race(name):
-  import utils.text.text_align as align
-  import utils.colours.bcolors as colour
   import system.mod_manag
-  import system.id_manag.rid_conv as rid_conv
+  import system.id_manag.rid_conv as rid_conv #garbage.py rule avoided
   import json
   races_loaded = system.mod_manag.rid_loader()
   races_count = len(races_loaded)
@@ -87,10 +83,8 @@ def race(name):
       race(name)
 
 def classes(name):
-  import utils.text.text_align as align
-  import utils.colours.bcolors as colour
   import system.mod_manag
-  import system.id_manag.cid_conv as cid_conv
+  import system.id_manag.cid_conv as cid_conv #garbage.py rule avoided
   import json
   classes_loaded = system.mod_manag.cid_loader()
   classes_count = len(classes_loaded)
@@ -136,8 +130,6 @@ def classes(name):
       classes(name)
 
 def manual_attribute(name):
-  import utils.text.text_align as align
-  import utils.colours.bcolors as colour
   import system.mod_manag
   import system.id_manag
   import json
@@ -171,8 +163,6 @@ def manual_attribute(name):
     break
 
 def manual_ability(name):
-  import utils.text.text_align as align
-  import utils.colours.bcolors as colour
   import system.mod_manag
   import system.id_manag
   import gui.interface

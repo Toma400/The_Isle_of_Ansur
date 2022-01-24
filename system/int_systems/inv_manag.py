@@ -1,9 +1,9 @@
-import system.id_manag
-import system.json_manag
+import system.id_manag as idm
+import system.json_manag as json_manag
 
 def add_item (name, iid, modifier=False):
   #adds item, considering its amount and stackability
-  if (system.id_manag.iid_conv(iid, "stackable")) == False:
+  if (idm.iid_conv(iid, "stackable")) == False:
     #item_data stores all "unstackable" properties
     item_data = add_data (name, iid, modifier)
     #item_data has to be dict with all properties (if none, then item data is just empty dict)
@@ -24,7 +24,7 @@ def add_item (name, iid, modifier=False):
 def del_item (name, iid, modifier=False):
   #returns value to check if there's possibility to delete/decrease
   if inv_key_reader (name, iid, 0, "if_item_exists") == True:
-    if (system.id_manag.iid_conv(iid, "stackable")) == False:
+    if (idm.iid_conv(iid, "stackable")) == False:
       if inv_key_reader (name, iid, 0, "item_amount") > 1:
         iid = iid + "^" + str(inv_key_reader (name, iid, 0, "item_amount") - 1)
         inv_key_creator (name, iid, 0, 0, "item_del")
@@ -51,7 +51,7 @@ def add_data (name, iid, source=False):
 def inv_key_reader (name, iid, element, selector):
   path = "saves/" + name + "/in_use/inventory.json"
   #inventory of selected player
-  main_dict = system.json_manag.json_read(path, "inventory")
+  main_dict = json_manag.json_read(path, "inventory")
   #list of items in that inventory
   key_dict = main_dict.keys()
   #========================================================
@@ -136,7 +136,7 @@ def inv_key_reader (name, iid, element, selector):
 def inv_key_creator (name, iid, element, value, selector, slot="inventory"):
   path = "saves/" + name + "/in_use/inventory.json"
   #inventory of selected player (all slots)
-  main_dict = system.json_manag.json_read(path, 0, True)
+  main_dict = json_manag.json_read(path, 0, True)
   #list of items in that inventory
   #for i in main_dict:
     #globals()['_%s' % i] = main_dict[i]
@@ -149,7 +149,7 @@ def inv_key_creator (name, iid, element, value, selector, slot="inventory"):
     if value != 0:
       temp_dict = {iid:value}
       main_dict[slot].update (temp_dict)
-      system.json_manag.json_write(path, main_dict)
+      json_manag.json_write(path, main_dict)
     else:
       inv_key_creator (name, iid, element, value, "item_del", slot)
 
@@ -157,7 +157,7 @@ def inv_key_creator (name, iid, element, value, selector, slot="inventory"):
     temp_dict = main_dict[slot]
     del temp_dict[iid]
     main_dict[slot] = temp_dict
-    system.json_manag.json_write(path, main_dict)
+    json_manag.json_write(path, main_dict)
 
   if selector == "value_change":
     #can be used to change value, but also add new one
@@ -165,12 +165,12 @@ def inv_key_creator (name, iid, element, value, selector, slot="inventory"):
     change_set = {element:value}
     change_point[iid].update(change_set)
     main_dict[slot] = change_point
-    system.json_manag.json_write(path, main_dict)
+    json_manag.json_write(path, main_dict)
 
 def iid_checker (name, iid):
   path = "saves/" + name + "/in_use/inventory.json"
   #inventory of selected player (all slots)
-  main_dict = system.json_manag.json_read(path, "inventory")
+  main_dict = json_manag.json_read(path, "inventory")
   #list of items in that inventory
   key_dict = main_dict.keys()
   j = 1
