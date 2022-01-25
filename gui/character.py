@@ -1,5 +1,5 @@
-import system.json_manag
 #player_name is the only continuously used variable throughout whole game, recognising the save profile
+import system.json_manag as json_manag
 import utils.text.text_align as align
 import utils.colours.bcolors as colour
 
@@ -19,7 +19,7 @@ def name():
         name()
         break
       else:
-        system.json_manag.save_change(player_name, "profile", "name", "replace", player_name)
+        json_manag.save_change(player_name, "profile", "name", "replace", player_name)
         gender (player_name)
         break
     else:
@@ -41,7 +41,7 @@ def gender(name):
         gender_name = "Male"
       elif gender == "2":
         gender_name = "Female"
-      system.json_manag.save_change(name, "profile", "gender", "replace", gender_name)
+      json_manag.save_change(name, "profile", "gender", "replace", gender_name)
       race(name)
       break
     else:
