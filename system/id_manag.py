@@ -33,6 +33,18 @@ def wid_conv (wid, element, world=False):
     #theoretically it can be used for some general world checking material
     #it would just check "id of workspace", therefore it is separate condition
 
+#---------------------------------------------------------------
+# IID_CONV
+# --------
+# Returns either whole item with all attributes to be referenced
+# (as dict), or value of specific attribute. Default is latter.
+#
+# 'IID' needs to be IID type of string (mod_id:item_id)
+# 'Element' is String, contains attribute referred to
+#
+# 'Dict_Type' is Boolean, if changed to True, redirects return
+# value to dictionary. Element is no longer needed then.
+#---------------------------------------------------------------
 def iid_conv (iid, element, dict_type=False):
   if ":" not in iid:
     #ID has wrong syntax
