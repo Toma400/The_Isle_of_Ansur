@@ -1,5 +1,5 @@
-import utils.colours as colour
-import utils.text.text_align as align
+from utils import colours as colour
+from utils.text import text_align as align
 
 def start():
   import gui.character

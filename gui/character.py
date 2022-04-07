@@ -1,7 +1,7 @@
 #player_name is the only continuously used variable throughout whole game, recognising the save profile
 import system.json_manag as json_manag
 import utils.text.text_align as align
-import utils.colours.bcolors as colour
+from utils.colours import bcolors as colour
 
 def name():
   import system.save_system.initialisation
@@ -49,8 +49,7 @@ def gender(name):
 
 def race(name):
   import system.mod_manag
-  import system.id_manag.rid_conv as rid_conv #garbage.py rule avoided
-  import json
+  from system.id_manag import rid_conv as rid_conv #garbage.py rule avoided
   races_loaded = system.mod_manag.rid_loader()
   races_count = len(races_loaded)
   print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
@@ -84,8 +83,7 @@ def race(name):
 
 def classes(name):
   import system.mod_manag
-  import system.id_manag.cid_conv as cid_conv #garbage.py rule avoided
-  import json
+  from system.id_manag import cid_conv as cid_conv #garbage.py rule avoided
   classes_loaded = system.mod_manag.cid_loader()
   classes_count = len(classes_loaded)
   print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
@@ -130,9 +128,7 @@ def classes(name):
       classes(name)
 
 def manual_attribute(name):
-  import system.mod_manag
   import system.id_manag
-  import json
   import stats.default_stats
   attribute_list = []
   for i in stats.default_stats.profile.attributes:
@@ -163,11 +159,10 @@ def manual_attribute(name):
     break
 
 def manual_ability(name):
-  import system.mod_manag
   import system.id_manag
   import gui.interface
-  import stats.default_stats.profile.abilities as abilities
-  import json
+  from stats.default_stats import profile
+  abilities = profile.abilities
   ability_list = []
   for i in abilities:
     i = i.replace("abil_", "")

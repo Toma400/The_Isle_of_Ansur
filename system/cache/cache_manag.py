@@ -2,7 +2,7 @@
 def cache_deleting():
   import utils.repo_manag
   utils.repo_manag.file_deleting ("stats/__pycache__")
-  utils.repo_manag.file_deleting ("utils/__pycache__")
+  utils.repo_manag.file_deleting ("utils2/__pycache__")
   utils.repo_manag.file_deleting ("gui/__pycache__")
   utils.repo_manag.file_deleting ("saves/__pycache__")
   utils.repo_manag.file_deleting ("system/__pycache__")

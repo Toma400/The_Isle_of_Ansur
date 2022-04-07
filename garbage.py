@@ -4,8 +4,8 @@
 #   import system.id_manag as id_manag
 #
 #Common importing renamings:
-#   import utils.colours as colour
-#   import utils.text.text_align as align
+#   import utils2.colours as colour
+#   import utils2.text.text_align as align
 
 
 
@@ -54,7 +54,7 @@ for i in system.id_manag.rid_conv("ansur:baedoorian", 0, True):
 #TODO
 
 # - item load (stats/items.json)
-#   - class (weapons, utils, etc)                      <- "KEY READER"
+#   - class (weapons, utils2, etc)                      <- "KEY READER"
 #   - values of separate items (damage, quality, etc)  <- "VALUE READER"
 # - item inventory load (saves/X/inventory.json)
 #   - item values                                      

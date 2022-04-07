@@ -9,13 +9,16 @@ In case you have any questions, feel free to contact me on
 ([thomasso_calgori@o2.pl](mailto:thomasso_calgori@o2.pl)).
 
 ---
+
 The Isle of Ansur is successor (and, in the same time, remake) of 
 Between Shadows and Lights game, which was too crappy programmed to be released publicly. 
 Remake of it will try to polish and expand all features of the BSaL, 
 allowing you to feel the depth of that text-based sandbox RPG game. 
 It is also based on newly created Baedoor RPG 3.0 system, 
 which is most refined version of it, adding several tweaks and new features.
+
 ---
+
 ### Story
 921 NE. You wake up on ship, travelling to New Baedoor, the place everyone dreams about. 
 But your travel is disrupted by storm that forces the ship to dock to the island being 
