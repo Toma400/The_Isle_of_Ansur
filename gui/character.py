@@ -128,10 +128,9 @@ def classes(name):
       classes(name)
 
 def manual_attribute(name):
-  import system.id_manag
-  import stats.default_stats
+  import system.ref_systems.default_stats
   attribute_list = []
-  for i in stats.default_stats.profile.attributes:
+  for i in system.ref_systems.default_stats.profile.attributes:
     i = i.replace("atr_", "")
     i = i.title()
     attribute_list.append (i)
@@ -161,7 +160,7 @@ def manual_attribute(name):
 def manual_ability(name):
   import system.id_manag
   import gui.interface
-  from stats.default_stats import profile
+  from system.ref_systems.default_stats import profile
   abilities = profile.abilities
   ability_list = []
   for i in abilities:

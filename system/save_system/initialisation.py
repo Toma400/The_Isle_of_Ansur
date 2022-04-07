@@ -51,30 +51,30 @@ def stats_creating(path, set):
   if set == "profile":
     deeper_path = path + "/profile.json"
     import json
-    import stats.default_stats
+    import system.ref_systems.default_stats
     default_stats = {}
-    default_stats.update (stats.default_stats.profile.not_default_stats)
-    default_stats.update (stats.default_stats.profile.general_stats)
-    default_stats.update (stats.default_stats.profile.attributes)
-    default_stats.update (stats.default_stats.profile.abilities)
-    default_stats.update (stats.default_stats.profile.perks)
-    default_stats.update (stats.default_stats.profile.settings)
+    default_stats.update (system.ref_systems.default_stats.profile.not_default_stats)
+    default_stats.update (system.ref_systems.default_stats.profile.general_stats)
+    default_stats.update (system.ref_systems.default_stats.profile.attributes)
+    default_stats.update (system.ref_systems.default_stats.profile.abilities)
+    default_stats.update (system.ref_systems.default_stats.profile.perks)
+    default_stats.update (system.ref_systems.default_stats.profile.settings)
     with open (deeper_path,'w') as file:
       json.dump(default_stats, file, indent = 2)
 
   elif set == "inventory":
     deeper_path = path + "/inventory.json"
     import json
-    import stats.default_stats
+    import system.ref_systems.default_stats
     default_stats = {}
-    default_stats.update (stats.default_stats.inventory.main_slots)   
+    default_stats.update (system.ref_systems.default_stats.inventory.main_slots)
     with open (deeper_path,'w') as file:
       json.dump(default_stats, file, indent = 2)
 
   elif set == "quests":
     deeper_path = path + "/quests.json"
     import json
-    import stats.default_stats
+    import system.ref_systems.default_stats
     default_stats = {}
     with open (deeper_path,'w') as file:
       json.dump(default_stats, file, indent = 2)
@@ -82,7 +82,7 @@ def stats_creating(path, set):
   elif set == "world":
     deeper_path = path + "/world.json"
     import json
-    import stats.default_stats
+    import system.ref_systems.default_stats
     default_stats = {}
     with open (deeper_path,'w') as file:
       json.dump(default_stats, file, indent = 2)
