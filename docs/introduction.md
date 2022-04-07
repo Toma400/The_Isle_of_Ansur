@@ -26,8 +26,12 @@ You can also read [detailed history of the world](lore/background.md).
 * [Introduction to Baedoor](baedoor.md)
 * [FAQ](faq.md)
 * [EULA](eula.md)
-* Character Creation
+* [Character Creation](creation/start.md)
+  * [Statistics](creation/statistics.md)
+  * [Classes](creation/classes.md)
+  * [Races](creation/races.md)
 * Lore
+  * [Lore Background](lore/background.md)
 * Modding
   * [Types of mods](mods/modtypes.md)
     * [Statpacks](mods/statpack_tutorial.md)
