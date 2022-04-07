@@ -1,16 +1,14 @@
-`<a id='statpack_tutorial'></a>`
-
 # Statpack Tutorial
 ***
 ## What is statpack?
 Statpack is set of one or more .json files adding one of following features:
-* [Races](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Statpack-Tutorial#racesjson)
-* [Classes](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Statpack-Tutorial#classesjson)
-* [Items](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Statpack-Tutorial#itemsjson--craftingjson)
+* [Races](statpack_tutorial.md#racesjson)
+* [Classes](statpack_tutorial.md#classesjson)
+* [Items](statpack_tutorial.md#itemsjson--craftingjson)
 
 For each of these features it is needed respectively named .json file (races.json, classes.json, items.json + crafting.json), by default, placed in "stats/name_of_statpack/" directory. File itself needs to contain specific keys and values.
-* [General races/classes values](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Statpack-Tutorial#list-of-general-player-statistics)
-* [General items values](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Statpack-Tutorial#list-of-general-item-statistics)
+* [General races/classes values](statpack_tutorial.md#list-of-general-player-statistics)
+* [General items values](statpack_tutorial.md#list-of-general-item-statistics)
 
 Remember that your statpack folder name has to be lowercased and use underline instead of spaces. Folder name is considered as your mod ID and it is used for any further ID types (RID/CID/IID), therefore using other ways of writing it can cause issues.
 Don't also forget about JSON syntax, since examples mentioned here shows how it should be done for one element. For more than one, you will need to follow syntax rules (files put in links can help to see syntax patterns). Remember that numerical values don't use quotation marks, same with booleans taking only `true/false` values.
@@ -80,7 +78,9 @@ Differences between each .jsons aren't big, they only differ by used keys - let'
   ]
 }
 ```
-This is items.json file, limited for Ayer Knife item only. It has several keys, stating values needed for gameplay - values are explained in [this section](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Statpack-Tutorial#list-of-general-item-statistics).
+This is items.json file, limited for Ayer Knife item only. 
+It has several keys, stating values needed for gameplay - 
+values are explained in [this section](statpack_tutorial.md#list-of-general-item-statistics).
 ```
 {
   "ansur:ayer_knife": [
@@ -110,11 +110,11 @@ Values are so short that we can explain them here:
   * 30-100 - for big tasks
 * `repair_material` - not necessary. If used, it allows player to repair item with this specific item (IID is used).
 
-You can see list of workplaces [here](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Statpack-Tutorial#workplaces).
+You can see list of workplaces [here](statpack_tutorial.md#workplaces).
 
 ***
 ## List of general player statistics
-It is list of all statistics values you can use for races/classes creation. Values effects in-game are further explained [here](https://github.com/Toma400/The_Isle_of_Ansur/wiki/List-of-statistics).
+It is list of all statistics values you can use for races/classes creation. Values effects in-game are further explained [here](/docs/creation/statistics.md).
 If you want to create bonus points to specific element, use positive value (n) - and for depleting element, use negative ones (-n).
 
 #### Powers

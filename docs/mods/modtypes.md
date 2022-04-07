@@ -7,8 +7,6 @@ Note that these three mod types are not the only ones that will be available to 
 ## Statpack
 Statpack is module made only for "/stats/" path, and can contain either new races, new classes or new items.
 
-* <a href='#statpack_tutorial'>Tutorial</a>
-
 ## Worldpack
 Worldpack is similarly, module exclusively written for "/worlds/" path, and contain any set of locations bound within "world". Worlds will be available during dialogue with ship captain.
 
