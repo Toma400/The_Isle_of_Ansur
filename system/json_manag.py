@@ -16,11 +16,19 @@ def json_read(path, element, dict_type=False):
   except json.decoder.JSONDecodeError:
     print ("JSON File: " + path + " does not have any arguments. Skipping.")
 
+#--------------------------------------
+# SUBREAD
+# Reads second key of .json file
+#--------------------------------------
 def json_subread(path, element, subelement):
   #used to call values of objects from ID
   subdata = json_read(path, element)[0]
   return subdata[subelement]
 
+#--------------------------------------
+# KEYREAD
+# Reads first key of .json file
+#--------------------------------------
 def json_keyread(path, element):
   #used to call objects from ID
   subdata = json_read(path, element)[0]
@@ -31,6 +39,17 @@ def json_write(path, dictionary):
   with open (path, 'w') as json_file:
     json.dump(dictionary, json_file, indent = 2)
 
+#--------------------------------------------------------------
+# JSON_CHANGE
+# Multitask function to operate on .json files, depending on
+# `change_type` string you put there.
+# Can perform:
+#
+# * replacing values with new ones
+# * replacing math values with relative ones
+# * adding variables to .jsons
+# * removing variables from .jsons
+#--------------------------------------------------------------
 def json_change(path, element, change_type, change_value):
   temp_dict = {}
   #simply replacing value with new one (usually for string variables)
@@ -70,6 +89,12 @@ def json_change(path, element, change_type, change_value):
     with open (path,'w') as file:
       json.dump(temp_dict, file, indent = 2)
 
+#--------------------------------------------------------------
+# JSON_CHANGE_INS(ENSITIVE)
+# Variant of Json_Change function, automatically recognising
+# type of value. From obvious reasons, more convenient for
+# automating, having less broad use instead.
+#--------------------------------------------------------------
 def json_change_ins(path, element, change_value, extended_math=False):
   #basically variable type insensitive variant of json_change()
   #detects type and redirects for its type; automation friendly 

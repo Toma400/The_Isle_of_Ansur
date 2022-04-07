@@ -40,9 +40,9 @@ def wid_conv (wid, element, world=False):
 # (as dict), or value of specific attribute. Default is latter.
 #
 # 'IID' needs to be IID type of string (mod_id:item_id)
-# 'Element' is String, contains attribute referred to
+# 'Element' is string, contains attribute being referred to
 #
-# 'Dict_Type' is Boolean, if changed to True, redirects return
+# 'Dict_Type' is boolean, if changed to True, redirects return
 # value to dictionary. Element is no longer needed then.
 #---------------------------------------------------------------
 def iid_conv (iid, element, dict_type=False):
