@@ -7,41 +7,43 @@ from utils.text import text_align as align
 # Interface showing inventory items
 #-----------------------------------------------------------------------------
 def main_inv (name):
-  path = "saves/" + name + "/in_use/inventory.json"
-  items = system.json_manag.json_read(path, "inventory").keys()
-  print("✺---------------------------------------------------------------✺")
-  j = 1
-  for i in items:
-    item_name = system.id_manag.iid_conv (i, "descript")
-    print ("[" + str(j) + "][ " + item_name + " ]")
-    j = j+1
-  print("✺---------------------------------------------------------------✺")
-  # Here there will be actions which you will need to choose
-  print("[U] [Use the item]\n[E] [Equip the item]\n[T] [Throw item away]\n[Q] [Go back]")
-  print("✺---------------------------------------------------------------✺")
-  print(align("{ use single letter to choose the action }", "centre"))
-  print(align("{ use letter, dot and number to choose both action and item }", "centre"))
-  print("✺---------------------------------------------------------------✺")
-  choice = input ("").lower()
-  if len(choice) > 1:
-    # checks if user wrote input correctly
-    if "." not in choice:
-      print(align("{ incorrect selector used! }", "centre"))
-      main_inv(name)
+  choice = "x"
+  while choice != "q":
+    path = "saves/" + name + "/in_use/inventory.json"
+    items = system.json_manag.json_read(path, "inventory").keys()
+    print("✺---------------------------------------------------------------✺")
+    j = 1
+    for i in items:
+      item_name = system.id_manag.iid_conv (i, "descript")
+      print ("[" + str(j) + "][ " + item_name + " ]")
+      j = j+1
+    print("✺---------------------------------------------------------------✺")
+    # Here there will be actions which you will need to choose
+    print("[U] [Use the item]\n[E] [Equip the item]\n[T] [Throw item away]\n[Q] [Go back]")
+    print("✺---------------------------------------------------------------✺")
+    print(align("{ use single letter to choose the action }", "centre"))
+    print(align("{ use letter, dot and number to choose both action and item }", "centre"))
+    print("✺---------------------------------------------------------------✺")
+    choice = input ("").lower()
+    if len(choice) > 1:
+      # checks if user wrote input correctly
+      if "." not in choice:
+        print(align("{ incorrect selector used! }", "centre"))
+        continue
+      else:
+        choice_list = choice.split(".") # splits by dot and sort into the list
+        # then, checks if values are correct, and if so, redirects to function
+        if choice_checker(name, choice_list[0], choice_list[1]) == True:
+          action_selector_full(name, choice_list[0], choice_list[1])
+        else:
+          print(align("{ values are incorrect! }", "centre"))
+          continue
     else:
-      choice_list = choice.split(".") # splits by dot and sort into the list
-      # then, checks if values are correct, and if so, redirects to function
-      if choice_checker(name, choice_list[0], choice_list[1]) == True:
-        action_selector_full(name, choice_list[0], choice_list[1])
+      if choice_checker(name, choice) == True: # checks if value is correct
+        action_selector_empty(name, choice)
       else:
         print(align("{ values are incorrect! }", "centre"))
-        main_inv(name)
-  else:
-    if choice_checker(name, choice) == True: # checks if value is correct
-      action_selector_empty(name, choice)
-    else:
-      print(align("{ values are incorrect! }", "centre"))
-      main_inv(name)
+        continue
 
 #------------------------------------------------------------------------------
 # ACTION SELECTORS
