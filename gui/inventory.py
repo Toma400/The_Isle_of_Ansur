@@ -45,9 +45,13 @@ def main_inv (name):
 # directly to action on that item.
 #------------------------------------------------------------------------------
 def action_selector_empty(name, action):
-  pass
+  print("✺---------------------------------------------------------------✺")
+  print(align("{ select item by putting number of it }", "centre"))
+  print("✺---------------------------------------------------------------✺")
+  choice = input("")
 
 def action_selector_full(name, action, slot):
+  slot = int(slot)
   pass
 
 #------------------------------------------------------------------------------

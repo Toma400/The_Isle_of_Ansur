@@ -33,6 +33,9 @@ You can also read [detailed history of the world](lore/background.md).
   * [Statistics](creation/statistics.md)
   * [Classes](creation/classes.md)
   * [Races](creation/races.md)
+* Gameplay
+  * Crafting
+    * [Workplaces](game/workplaces.md)
 * Lore
   * [Lore Background](lore/background.md)
 * Modding
