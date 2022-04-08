@@ -24,13 +24,10 @@ def start():
       gui.character.name()
     elif menu_choice == "2":
       game_load()
-      break
     elif menu_choice == "3":
       encyclopaedia()
-      break
     elif menu_choice == "4":
       settings()
-      break
     elif menu_choice == "5":
       break
     else:

@@ -26,16 +26,22 @@ def main_inv (name):
   if len(choice) > 1:
     # checks if user wrote input correctly
     if "." not in choice:
-      print("Incorrect ID")
+      print(align("{ incorrect selector used! }", "centre"))
       main_inv(name)
     else:
       choice_list = choice.split(".") # splits by dot and sort into the list
       # then, checks if values are correct, and if so, redirects to function
       if choice_checker(name, choice_list[0], choice_list[1]) == True:
         action_selector_full(name, choice_list[0], choice_list[1])
+      else:
+        print(align("{ values are incorrect! }", "centre"))
+        main_inv(name)
   else:
     if choice_checker(name, choice) == True: # checks if value is correct
       action_selector_empty(name, choice)
+    else:
+      print(align("{ values are incorrect! }", "centre"))
+      main_inv(name)
 
 #------------------------------------------------------------------------------
 # ACTION SELECTORS
@@ -63,10 +69,6 @@ def choice_checker(name, action, slot=0):
     if int(slot):
       return True
     else:
-      print(align("{ values are incorrect! }", "centre"))
-      main_inv(name)
       return False
   else:
-    print(align("{ values are incorrect! }", "centre"))
-    main_inv(name)
     return False
