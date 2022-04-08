@@ -9,11 +9,11 @@ from utils.text import text_align as align
 def main_inv (name):
   path = "saves/" + name + "/in_use/inventory.json"
   items = system.json_manag.json_read(path, "inventory").keys()
-  print ("✺---------------------------------------------------------------✺")
+  print("✺---------------------------------------------------------------✺")
   j = 1
   for i in items:
-    name = system.id_manag.iid_conv (i, "descript")
-    print ("[" + str(j) + "][ " + name + " ]")
+    item_name = system.id_manag.iid_conv (i, "descript")
+    print ("[" + str(j) + "][ " + item_name + " ]")
     j = j+1
   print("✺---------------------------------------------------------------✺")
   # Here there will be actions which you will need to choose
@@ -22,10 +22,9 @@ def main_inv (name):
   print(align("{ use single letter to choose the action }", "centre"))
   print(align("{ use letter, dot and number to choose both action and item }", "centre"))
   print("✺---------------------------------------------------------------✺")
-  choice = input ("")
-  choice = choice.lower()
+  choice = input ("").lower()
   if len(choice) > 1:
-    # checks if user written input correctly
+    # checks if user wrote input correctly
     if "." not in choice:
       print("Incorrect ID")
       main_inv(name)
@@ -33,10 +32,10 @@ def main_inv (name):
       choice_list = choice.split(".") # splits by dot and sort into the list
       # then, checks if values are correct, and if so, redirects to function
       if choice_checker(name, choice_list[0], choice_list[1]) == True:
-        action_selector_full(choice_list[0], choice_list[1])
+        action_selector_full(name, choice_list[0], choice_list[1])
   else:
     if choice_checker(name, choice) == True: # checks if value is correct
-      action_selector_empty(choice)
+      action_selector_empty(name, choice)
 
 #------------------------------------------------------------------------------
 # ACTION SELECTORS
@@ -45,10 +44,10 @@ def main_inv (name):
 # selecting - if they type both action and slot, they will be redirected
 # directly to action on that item.
 #------------------------------------------------------------------------------
-def action_selector_empty(action):
+def action_selector_empty(name, action):
   pass
 
-def action_selector_full(action, slot):
+def action_selector_full(name, action, slot):
   pass
 
 #------------------------------------------------------------------------------
