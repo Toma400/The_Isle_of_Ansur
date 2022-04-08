@@ -1,3 +1,4 @@
+import gui.interface
 import system.id_manag
 import system.json_manag
 from utils.text import text_align as align
@@ -8,17 +9,13 @@ from utils.text import text_align as align
 #-----------------------------------------------------------------------------
 def main_inv (name):
   choice = "x"
-  while choice != "q":
+  while choice != "q": # call stack killer
     path = "saves/" + name + "/in_use/inventory.json"
     items = system.json_manag.json_read(path, "inventory").keys()
     print("✺---------------------------------------------------------------✺")
-    j = 1
-    for i in items:
-      item_name = system.id_manag.iid_conv (i, "descript")
-      print ("[" + str(j) + "][ " + item_name + " ]")
-      j = j+1
+    inventory_items(items) # shows items from inventory being iterated here
     print("✺---------------------------------------------------------------✺")
-    # Here there will be actions which you will need to choose
+    # here there will be actions which you will need to choose
     print("[U] [Use the item]\n[E] [Equip the item]\n[T] [Throw item away]\n[Q] [Go back]")
     print("✺---------------------------------------------------------------✺")
     print(align("{ use single letter to choose the action }", "centre"))
@@ -44,6 +41,8 @@ def main_inv (name):
       else:
         print(align("{ values are incorrect! }", "centre"))
         continue
+  else:
+    gui.interface.main_game(name)
 
 #------------------------------------------------------------------------------
 # ACTION SELECTORS
@@ -74,3 +73,10 @@ def choice_checker(name, action, slot=0):
       return False
   else:
     return False
+
+def inventory_items(items):
+  j = 1
+  for i in items:
+    item_name = system.id_manag.iid_conv(i, "descript")
+    print("[" + str(j) + "][ " + item_name + " ]")
+    j = j + 1
