@@ -27,6 +27,7 @@ class DefaultRun:
         core_path + "main.py",
         "--onedir",
         "--noupx",  # if you are going to change this, please redirect upx to net source (requests library?)
+        "--clean",
         "--name=" + game_name,
         "--icon=" + icon_path,
         "--distpath=" + export_path,

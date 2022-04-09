@@ -883,13 +883,13 @@
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\tracemalloc.py',
    'PYMODULE'),
-  ('_py_abc',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
-   'PYMODULE'),
   ('stringprep',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\stringprep.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
    'PYMODULE'),
   ('system.json_manag',
    'D:\\Ministerstwo '

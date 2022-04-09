@@ -1,7 +1,9 @@
-from utils import colours as colour
+from utils.colours import bcolors as colour
 from utils.text import text_align as align
-import gui.character
 from system.settings import version_call as version_call
+
+import gui.character
+import system.mod_manag
 
 def start():
   version_call("game_version")
@@ -12,6 +14,7 @@ def start():
 ''')
     print ("𝚃𝚑𝚎 𝙸𝚜𝚕𝚎 𝚘𝚏 𝙰𝚗𝚜𝚞𝚛\n")
     print (align(version_call("game_version") + "\n\n", "right"))
+    core_checker_output()
     print (align("--------------------", "centre"))
     print (align("[1] START THE GAME", "centre"))
     print (align("[2] LOAD THE GAME", "centre"))
@@ -21,9 +24,11 @@ def start():
     print ("\n\n")
     menu_choice = input ("")
     if menu_choice == "1":
-      gui.character.name()
+      if core_checker_output() == True:
+        gui.character.name()
     elif menu_choice == "2":
-      game_load()
+      if core_checker_output() == True:
+        game_load()
     elif menu_choice == "3":
       continue #encyclopaedia removed, should go into "save managment" to remove saves w/o entering folders
     elif menu_choice == "4":
@@ -143,3 +148,12 @@ def settings():
     settings()
   except KeyError:
     start()
+
+def core_checker_output():
+  # checks whether ansur globalpack is loaded
+  core_checker = system.mod_manag.mod_checker("both", "ansur")
+  if not core_checker:
+    print(align(colour.CRED + "Core files are not loaded! Restricted menu options." + colour.ENDC, "centre_colour"))
+    return False
+  else:
+    return True
