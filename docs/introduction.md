@@ -41,5 +41,4 @@ You can also read [detailed history of the world](lore/background.md).
 * Modding
   * [Types of mods](mods/modtypes.md)
     * [Statpacks](mods/statpack_tutorial.md)
-* Core
   * [Glossary](glossary.md)

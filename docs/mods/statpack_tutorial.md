@@ -15,7 +15,7 @@ File itself needs to contain specific keys and values.
 
 Remember that your statpack folder name has to be lowercased and use 
 underline instead of spaces. Folder name is considered as your mod ID and 
-it is used for any further [ID types](/docs/glossary.md#glossary) (RID/CID/IID), therefore using other 
+it is used for any further [ID types](/docs/glossary.md#ids) (RID/CID/IID), therefore using other 
 ways of writing it can cause issues.
 Don't also forget about JSON syntax, since examples mentioned here shows how it 
 should be done for one element. For more than one, 
@@ -54,11 +54,17 @@ As you see, it contains key ("baedoorian" on top) and several values. While stat
 * `spec_moon` - boolean value, set by default to false. Makes player ignore Void - Connection relation penalty.
 
 ## Classes.json
-Classes are almost identical to races, the difference is only focus: they mostly add abilities, and bonus for attributes is really rare. Perks can be added, though, same with powers. Using `spec_diamond/spec_moon` is not prohibited, but it's definitely lore-unfriendly, as this bonus comes only with race.
+Classes are almost identical to races, the difference is only focus: t
+hey mostly add abilities, and bonus for attributes is really rare. 
+Perks can be added, though, same with powers. 
+Using `spec_diamond/spec_moon` is not prohibited, 
+but it's definitely lore-unfriendly, as this bonus comes only with race.
 
-Example file with vanilla classes can be found [here](https://drive.google.com/file/d/1Dn0jOxeOzoqI2pqwwP3IiQA49IIyQ7kv/view?usp=sharing).
+Example file with vanilla classes can be found 
+[here](https://drive.google.com/file/d/1Dn0jOxeOzoqI2pqwwP3IiQA49IIyQ7kv/view?usp=sharing).
 
-If you want to make your class exclusive to specific race, you can use `race_exclusive: RID` value, stating RID of selected race.
+If you want to make your class exclusive to specific race, you can use 
+`race_exclusive: RID` value, stating RID of selected race.
 
 ## Items.json (& crafting.json)
 These two .json files control existence of items (items.json) and their crafting (crafting.json). Choice of which ones should exist in your mod folder depends on purpose:
