@@ -1,9 +1,9 @@
 from utils import colours as colour
 from utils.text import text_align as align
+import gui.character
+from system.settings import version_call as version_call
 
 def start():
-  import gui.character
-  import system.settings.version_call as version_call
   version_call("game_version")
   while True:
     print ('''\n\n|__) _|_    _ _ _   (_ |_  _  _| _     _   _  _  _|  |  . _ |_ |_ 

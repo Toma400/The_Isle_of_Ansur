@@ -2,7 +2,7 @@ import system.cache.cache_manag
 system.cache.cache_manag.cache_redirect()
 import gui.menu
 
-#gui.menu.start()
+gui.menu.start()
 
 #import gui.character
 #gui.character.race("Wuwuzela")
@@ -14,8 +14,8 @@ import system.json_manag
 #system.int_systems.inv_manag.iid_checker("Terti", "ansur:short_sword")
 
 #INV TESTING
-import gui.inventory
-gui.inventory.main_inv("Terti")
+#import gui.inventory
+#gui.inventory.main_inv("Terti")
 
 #FOR THE FUTURE!!!!
 #Write here what was the last thing you worked on. What was the issues you found tiring

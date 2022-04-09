@@ -1,6 +1,19 @@
-#name is the only continuously used variable throughout whole game, recognising the save profile
+#-------------------------------------------------------------------------------------------------------------------
+# CHARACTER.PY
+# Character module is run only with new game initialisation, and it is generally character builder. It runs several
+# functions which then save player profile, function-by-function appending new elements. It is the only one moment
+# in game which doesn't care about call stack, implementing functions carelessly without closing the ones already
+# running.
+# All next game iterations are run from [load] initialisation, which skips that module.
+#
+# * breaks after functions are part of call stack killing, though they may be changed, since they - realistically -
+#   never gonna happen (left for legacy reasons)
+# * 'name' is the only continuously used variable throughout whole game, recognising the save profile and allowing
+#   game to constantly communicate with saved profile
+#-------------------------------------------------------------------------------------------------------------------
 import system.json_manag as json_manag
-import utils.text.text_align as align
+import system.mod_manag
+from utils.text import text_align as align
 from utils.colours import bcolors as colour
 
 def name():
@@ -47,7 +60,6 @@ def gender(name):
       continue
 
 def race(name):
-  import system.mod_manag
   from system.id_manag import rid_conv as rid_conv #garbage.py rule avoided
   races_loaded = system.mod_manag.rid_loader()
   races_count = len(races_loaded)
@@ -78,7 +90,6 @@ def race(name):
       continue
 
 def classes(name):
-  import system.mod_manag
   from system.id_manag import cid_conv as cid_conv #garbage.py rule avoided
   classes_loaded = system.mod_manag.cid_loader()
   classes_count = len(classes_loaded)
@@ -89,34 +100,37 @@ def classes(name):
   listing_classes(classes_loaded, cid_conv)  # prints out available classes
   print ("\n")
   while True:
-    choose_class = int(input (""))
-    if choose_class > 0 and choose_class <= classes_count:
-      chosen_class = classes_loaded[choose_class-1]
-      try:
-        #checks
-        if system.json_manag.save_read(name, "profile", "race") == cid_conv(chosen_class, "race_exclusive"):
-          pass
-        else:
-          print ((align(colour.CYELLOW2 + "Class is exclusive for race you don't represent!" + colour.ENDC, "centre_colour")))
-          print ("\n")
-          continue
-      except KeyError:
-        pass
-      #runs if not interrupted by race_exclusivity
-      system.json_manag.save_change(name, "profile", "class", "replace", chosen_class)
-      for i in cid_conv(chosen_class, 0, True):
-        k = cid_conv(chosen_class, i)
+    try:  # checks if input is convertable to number
+      choose_class = int(input (""))
+      if choose_class > 0 and choose_class <= classes_count:
+        chosen_class = classes_loaded[choose_class-1]
         try:
-          if i == "class_id" or i == "descript" or i == "race_exclusive":
+          #checks
+          if system.json_manag.save_read(name, "profile", "race") == cid_conv(chosen_class, "race_exclusive"):
             pass
           else:
-            system.json_manag.save_change_ins(name, "profile", i, k)
+            print ((align(colour.CYELLOW2 + "Class is exclusive for race you don't represent!" + colour.ENDC, "centre_colour")))
+            print ("\n")
+            continue
         except KeyError:
-          #detector of values that can't be added
-          print ("Unknown value:" + i + ". Skipped.")
-      manual_attribute(name)
-      break
-    else:
+          pass
+        #runs if not interrupted by race_exclusivity
+        system.json_manag.save_change(name, "profile", "class", "replace", chosen_class)
+        for i in cid_conv(chosen_class, 0, True):
+          k = cid_conv(chosen_class, i)
+          try:
+            if i == "class_id" or i == "descript" or i == "race_exclusive":
+              pass
+            else:
+              system.json_manag.save_change_ins(name, "profile", i, k)
+          except KeyError:
+            #detector of values that can't be added
+            print ("Unknown value:" + i + ". Skipped.")
+        manual_attribute(name)
+        break
+      else:
+        continue
+    except ValueError:  # loops back if player put non-numberic input
       continue
 
 def manual_attribute(name):

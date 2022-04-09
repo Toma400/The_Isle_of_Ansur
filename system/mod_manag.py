@@ -1,4 +1,4 @@
-import utils.repo_manag.dir_checker as dir_check
+from utils.repo_manag import dir_checker as dir_check
 
 def mod_lister (directory, system="full"):
   if directory == "stats":
