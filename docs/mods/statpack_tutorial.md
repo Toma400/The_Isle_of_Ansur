@@ -6,12 +6,22 @@ Statpack is set of one or more .json files adding one of following features:
 * [Classes](statpack_tutorial.md#classesjson)
 * [Items](statpack_tutorial.md#itemsjson--craftingjson)
 
-For each of these features it is needed respectively named .json file (races.json, classes.json, items.json + crafting.json), by default, placed in "stats/name_of_statpack/" directory. File itself needs to contain specific keys and values.
+For each of these features it is needed respectively named .json file 
+(races.json, classes.json, items.json + crafting.json), by default, 
+placed in "stats/name_of_statpack/" directory. 
+File itself needs to contain specific keys and values.
 * [General races/classes values](statpack_tutorial.md#list-of-general-player-statistics)
 * [General items values](statpack_tutorial.md#list-of-general-item-statistics)
 
-Remember that your statpack folder name has to be lowercased and use underline instead of spaces. Folder name is considered as your mod ID and it is used for any further ID types (RID/CID/IID), therefore using other ways of writing it can cause issues.
-Don't also forget about JSON syntax, since examples mentioned here shows how it should be done for one element. For more than one, you will need to follow syntax rules (files put in links can help to see syntax patterns). Remember that numerical values don't use quotation marks, same with booleans taking only `true/false` values.
+Remember that your statpack folder name has to be lowercased and use 
+underline instead of spaces. Folder name is considered as your mod ID and 
+it is used for any further [ID types](/docs/glossary.md#glossary) (RID/CID/IID), therefore using other 
+ways of writing it can cause issues.
+Don't also forget about JSON syntax, since examples mentioned here shows how it 
+should be done for one element. For more than one, 
+you will need to follow syntax rules (files put in links can help to see 
+syntax patterns). Remember that numerical values don't use quotation marks, 
+same with booleans taking only `true/false` values.
 ***
 ## Races.json
 Races represent main factor of creating character statistics, adding bonuses for attributes, powers, sometimes also perks and abilities.
