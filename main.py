@@ -12,6 +12,8 @@ import system.json_manag
 #system.int_systems.inv_manag.del_item ("Terti", "ansur:honey_roll", 2)
 #system.int_systems.inv_manag.add_item ("Terti", "ansur:flour")
 #system.int_systems.inv_manag.iid_checker("Terti", "ansur:short_sword")
+
+#INV TESTING
 import gui.inventory
 gui.inventory.main_inv("Terti")
 
