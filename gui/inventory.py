@@ -9,7 +9,7 @@ from utils.text import text_align as align
 #-----------------------------------------------------------------------------
 def main_inv (name):
   choice = "x"
-  while choice != "q": # call stack killer
+  while choice != "q": # call stack killer: root
     path = "saves/" + name + "/in_use/inventory.json"
     items = system.json_manag.json_read(path, "inventory").keys()
     print("✺---------------------------------------------------------------✺")
@@ -28,7 +28,7 @@ def main_inv (name):
         print(align("{ incorrect selector used! }", "centre"))
         continue
       else:
-        choice_list = choice.split(".") # splits by dot and sort into the list
+        choice_list = choice.split(".")  # splits by dot and sort into the list
         # then, checks if values are correct, and if so, redirects to function
         if choice_checker(name, choice_list[0], choice_list[1]) == True:
           action_selector_full(name, choice_list[0], choice_list[1])
@@ -36,13 +36,11 @@ def main_inv (name):
           print(align("{ values are incorrect! }", "centre"))
           continue
     else:
-      if choice_checker(name, choice) == True: # checks if value is correct
+      if choice_checker(name, choice) == True:  # checks if value is correct
         action_selector_empty(name, choice)
       else:
         print(align("{ values are incorrect! }", "centre"))
         continue
-  else:
-    gui.interface.main_game(name)
 
 #------------------------------------------------------------------------------
 # ACTION SELECTORS
@@ -52,10 +50,19 @@ def main_inv (name):
 # directly to action on that item.
 #------------------------------------------------------------------------------
 def action_selector_empty(name, action):
-  print("✺---------------------------------------------------------------✺")
-  print(align("{ select item by putting number of it }", "centre"))
-  print("✺---------------------------------------------------------------✺")
-  choice = input("")
+  while True: # call stack killer: root/inventory
+    print("✺---------------------------------------------------------------✺")
+    print(align("{ select item by putting number of it }", "centre"))
+    print("✺---------------------------------------------------------------✺")
+    try:
+      item_choice = input("")
+      if item_choice.lower() != "q":  # checks if user does not want to quit
+        int(item_choice)
+      else:
+        break  # quits if user used 'q' key
+    except ValueError:  # if item_choice is non-convertible-string
+      print(align("{ values are incorrect! }", "centre"))
+      continue
 
 def action_selector_full(name, action, slot):
   slot = int(slot)

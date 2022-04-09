@@ -28,7 +28,7 @@ def start():
       continue #encyclopaedia removed, should go into "save managment" to remove saves w/o entering folders
     elif menu_choice == "4":
       settings()
-    elif menu_choice == "5":
+    elif menu_choice == "5" or "q":
       break
     else:
       continue
