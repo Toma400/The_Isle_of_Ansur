@@ -13,11 +13,10 @@ def name():
   print ("\n")
   while True:
     player_name = input ("")
-    if player_name != "0":
+    if player_name != "0" or "q":
       if system.save_system.initialisation.folder_creating(player_name) == False:
         #function creating profile, if it fails then loops back to start (usually because of already existing name of character)
-        name()
-        break
+        continue
       else:
         json_manag.save_change(player_name, "profile", "name", "replace", player_name)
         gender (player_name)
@@ -45,7 +44,7 @@ def gender(name):
       race(name)
       break
     else:
-      gender(name)
+      continue
 
 def race(name):
   import system.mod_manag
@@ -56,10 +55,7 @@ def race(name):
   print ("\n")
   print (align("Choose your race", "centre"))
   print ("\n")
-  j = 1
-  for k in races_loaded:
-    print ("[" + str(j) + "][" + rid_conv (k, "descript") + "]")
-    j = j+1
+  listing_races(races_loaded, rid_conv)  # prints out available races
   print ("\n")
   while True:
     choose_race = int(input (""))
@@ -79,7 +75,7 @@ def race(name):
       classes(name)
       break
     else:
-      race(name)
+      continue
 
 def classes(name):
   import system.mod_manag
@@ -90,10 +86,7 @@ def classes(name):
   print ("\n")
   print (align("Choose your class", "centre"))
   print ("\n")
-  j = 1
-  for k in classes_loaded:
-    print ("[" + str(j) + "][" + cid_conv (k, "descript") + "]")
-    j = j+1
+  listing_classes(classes_loaded, cid_conv)  # prints out available classes
   print ("\n")
   while True:
     choose_class = int(input (""))
@@ -106,8 +99,7 @@ def classes(name):
         else:
           print ((align(colour.CYELLOW2 + "Class is exclusive for race you don't represent!" + colour.ENDC, "centre_colour")))
           print ("\n")
-          classes(name)
-          break
+          continue
       except KeyError:
         pass
       #runs if not interrupted by race_exclusivity
@@ -125,7 +117,7 @@ def classes(name):
       manual_attribute(name)
       break
     else:
-      classes(name)
+      continue
 
 def manual_attribute(name):
   import system.ref_systems.default_stats
@@ -138,10 +130,7 @@ def manual_attribute(name):
   print ("\n")
   print (align("Choose attribute you want to enhance", "centre"))
   print ("\n")
-  j = 1
-  for i in attribute_list:
-    print ("[" + str(j) + "][" + i + "]")
-    j = j+1
+  listing_attributes(attribute_list)  # prints out attributes
   print ("\n")
   while True:
     choose_atr = int(input (""))
@@ -151,8 +140,7 @@ def manual_attribute(name):
       choose_atr = ("atr_" + choose_atr)
       pass
     else:
-      manual_attribute(name)
-      break
+      continue
     system.json_manag.save_change(name, "profile", choose_atr, "math", 1)
     manual_ability(name)
     break
@@ -173,19 +161,47 @@ def manual_ability(name):
   print (align("Choose ability you want to enhance", "centre"))
   print ("\n")
   j = 1
-  for i in ability_list:
-    print ("[" + str(j) + "][" + i + "]")
-    j = j+1
+  listing_abilities(ability_list)  # prints out abilities
   print ("\n")
   while True:
-    choose_abil = int(input (""))
-    if choose_abil > 0 and choose_abil <= len(ability_list):
-      choose_abil = ability_list[choose_abil-1].lower()
-      choose_abil = choose_abil.replace(" ", "_")
-      choose_abil = ("abil_" + choose_abil)
-      pass
-    else:
-      manual_attribute(name)
-      break
-    system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
-    gui.interface.main_game (name)
+    try:
+      choose_abil = int(input (""))
+      if choose_abil > 0 and choose_abil <= len(ability_list):
+        choose_abil = ability_list[choose_abil-1].lower()
+        choose_abil = choose_abil.replace(" ", "_")
+        choose_abil = ("abil_" + choose_abil)
+      else:
+        continue  # previously it was calling of manual attribute, but this doesn't make sense here
+      system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
+      gui.interface.main_game (name)
+    except ValueError:
+      continue
+
+#-------------------------------------------------------
+# LIST PRINTING FUNCTIONS
+# Put as separate functions just for improved code
+# readibility above
+#-------------------------------------------------------
+def listing_races(races_loaded, rid_conv):
+  j = 1
+  for k in races_loaded:
+    print("[" + str(j) + "][" + rid_conv(k, "descript") + "]")
+    j = j + 1
+
+def listing_classes(classes_loaded, cid_conv):
+  j = 1
+  for k in classes_loaded:
+    print("[" + str(j) + "][" + cid_conv(k, "descript") + "]")
+    j = j + 1
+
+def listing_attributes(attribute_list):
+  j = 1
+  for i in attribute_list:
+    print ("[" + str(j) + "][" + i + "]")
+    j = j+1
+
+def listing_abilities(ability_list):
+  j = 1
+  for i in ability_list:
+    print("[" + str(j) + "][" + i + "]")
+    j = j + 1
