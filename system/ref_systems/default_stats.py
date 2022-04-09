@@ -4,7 +4,7 @@ class profile:
   import system.settings
   #profile.json
 
-  def version_checker(self):
+  def version_checker(self=0):
     import system.settings
     return system.settings.version_call("save_system")
 
