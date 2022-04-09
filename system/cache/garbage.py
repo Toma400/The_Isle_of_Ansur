@@ -4,8 +4,8 @@
 #   import system.id_manag as id_manag
 #
 #Common importing renamings:
-#   from utils2 import colours as colour
-#   from utils2.text import text_align as align
+#   from utils.colours import bcolors as colour
+#   from utils.text import text_align as align
 
 
 
