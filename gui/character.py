@@ -1,4 +1,4 @@
-#player_name is the only continuously used variable throughout whole game, recognising the save profile
+#name is the only continuously used variable throughout whole game, recognising the save profile
 import system.json_manag as json_manag
 import utils.text.text_align as align
 from utils.colours import bcolors as colour

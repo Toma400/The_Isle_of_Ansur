@@ -27,6 +27,7 @@ You can also read [detailed history of the world](lore/background.md).
 
 ### Encyclopaedia Tree
 * [Introduction to Baedoor](baedoor.md)
+  * [Baedoor RPG System](rpg_system.md)
 * [FAQ](faq.md)
 * [EULA](eula.md)
 * [Character Creation](creation/start.md)
