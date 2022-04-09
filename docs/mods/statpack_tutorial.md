@@ -15,7 +15,7 @@ File itself needs to contain specific keys and values.
 
 Remember that your statpack folder name has to be lowercased and use 
 underline instead of spaces. Folder name is considered as your mod ID and 
-it is used for any further [ID types](/docs/glossary.md#ids) (RID/CID/IID), therefore using other 
+it is used for any further [ID types](glossary.md#ids) (RID/CID/IID), therefore using other 
 ways of writing it can cause issues.
 Don't also forget about JSON syntax, since examples mentioned here shows how it 
 should be done for one element. For more than one, 
@@ -25,7 +25,8 @@ same with booleans taking only `true/false` values.
 ***
 ## Races.json
 Races represent main factor of creating character statistics, adding bonuses for attributes, powers, sometimes also perks and abilities.
-You can start by seeing vanilla template uploaded [here](https://drive.google.com/file/d/1nLyoPmMxBYhFnm1TzhfKntHXuwhNqwOd/view?usp=sharing).
+You can start by seeing vanilla template uploaded 
+[here](https://drive.google.com/file/d/1nLyoPmMxBYhFnm1TzhfKntHXuwhNqwOd/view?usp=sharing).
 
 One of races uploaded can look like this:
 ```
@@ -67,12 +68,17 @@ If you want to make your class exclusive to specific race, you can use
 `race_exclusive: RID` value, stating RID of selected race.
 
 ## Items.json (& crafting.json)
-These two .json files control existence of items (items.json) and their crafting (crafting.json). Choice of which ones should exist in your mod folder depends on purpose:
-* items.json alone is useful mostly if you create Globalpack (so items will not be craftable, but you will be able to find them in world)
+These two .json files control existence of items (items.json) and their crafting
+(crafting.json). Choice of which ones should exist in your mod folder depends on 
+purpose:
+* items.json alone is useful mostly if you create Globalpack (so items will not be 
+  craftable, but you will be able to find them in world)
 * crafting.json alone is useful if you want to add more recipes to vanilla items
-* both .json files are useful for any item-adding mod, whether it is pure Statpack or Globalpack
+* both .json files are useful for any item-adding mod, whether it is pure Statpack 
+  or Globalpack
 
-Differences between each .jsons aren't big, they only differ by used keys - let's look:
+Differences between each .jsons aren't big, they only differ by used keys - 
+let's look:
 ```
 {
   "ayer_knife": [
@@ -130,8 +136,10 @@ You can see list of workplaces [here](statpack_tutorial.md#workplaces).
 
 ***
 ## List of general player statistics
-It is list of all statistics values you can use for races/classes creation. Values effects in-game are further explained [here](/docs/creation/statistics.md).
-If you want to create bonus points to specific element, use positive value (n) - and for depleting element, use negative ones (-n).
+It is list of all statistics values you can use for races/classes creation. 
+Values effects in-game are further explained [here](/docs/creation/statistics.md).
+If you want to create bonus points to specific element, use positive value 
+(n) - and for depleting element, use negative ones (-n).
 
 #### Powers
 `   'pwr_tech': n`
