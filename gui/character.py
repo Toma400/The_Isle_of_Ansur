@@ -26,16 +26,16 @@ def name():
   print ("\n")
   while True:
     player_name = input ("")
-    if player_name != "0" or "q":
+    if player_name == "0" or "q":
+      break
+    else:
       if system.save_system.initialisation.folder_creating(player_name) == False:
-        #function creating profile, if it fails then loops back to start (usually because of already existing name of character)
+        # function creating profile, if it fails then loops back to start (usually because of already existing name of character)
         continue
       else:
         json_manag.save_change(player_name, "profile", "name", "replace", player_name)
-        gender (player_name)
+        gender(player_name)
         break
-    else:
-      break
 
 def gender(name):
   print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
