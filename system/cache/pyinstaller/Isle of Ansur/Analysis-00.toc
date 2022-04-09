@@ -916,13 +916,13 @@
   ('os',
    'C:\\Users\\Ryzen 5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\os.py',
    'PYMODULE'),
-  ('_py_abc',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
-   'PYMODULE'),
   ('tracemalloc',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\tracemalloc.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
    'PYMODULE'),
   ('stringprep',
    'C:\\Users\\Ryzen '
@@ -1032,13 +1032,13 @@
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\cache\\__init__.py',
    'PYMODULE')],
- [('python38.dll',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\python38.dll',
-   'BINARY'),
-  ('VCRUNTIME140.dll',
+ [('VCRUNTIME140.dll',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('python38.dll',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\python38.dll',
    'BINARY'),
   ('_lzma',
    'C:\\Users\\Ryzen '

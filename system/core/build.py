@@ -22,7 +22,7 @@ class DefaultRun:
     core_path = "D:/Ministerstwo Kalibracyjne/PyCharm_Projects/Isle_of_Ansur/"
     game_name = "Isle of Ansur"
     icon_path = core_path + "utils/assets/icon.ico"
-    export_path = "D:/Ministerstwo Kalibracyjne/PyCharm_Projects/builds/IoA"
+    export_path = "D:/Ministerstwo Kalibracyjne/PyCharm_Projects/builds/"
     forge_builder = [
         core_path + "main.py",
         "--onedir",

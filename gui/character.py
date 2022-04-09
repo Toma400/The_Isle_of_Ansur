@@ -26,7 +26,7 @@ def name():
   print ("\n")
   while True:
     player_name = input ("")
-    if player_name == "0" or "q":
+    if player_name == "0" or player_name == "q":
       break
     else:
       if system.save_system.initialisation.folder_creating(player_name) == False:
