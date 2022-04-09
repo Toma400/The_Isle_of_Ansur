@@ -916,17 +916,17 @@
   ('os',
    'C:\\Users\\Ryzen 5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\os.py',
    'PYMODULE'),
-  ('tracemalloc',
+  ('_py_abc',
    'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\tracemalloc.py',
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
    'PYMODULE'),
   ('stringprep',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\stringprep.py',
    'PYMODULE'),
-  ('_py_abc',
+  ('tracemalloc',
    'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\tracemalloc.py',
    'PYMODULE'),
   ('system.json_manag',
    'D:\\Ministerstwo '
@@ -980,10 +980,6 @@
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\interface.py',
    'PYMODULE'),
-  ('system.mod_manag',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\mod_manag.py',
-   'PYMODULE'),
   ('gui',
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\__init__.py',
@@ -992,9 +988,13 @@
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\utils\\repo_manag.py',
    'PYMODULE'),
-  ('system.settings',
+  ('utils',
    'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\settings.py',
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\utils\\__init__.py',
+   'PYMODULE'),
+  ('system.mod_manag',
+   'D:\\Ministerstwo '
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\mod_manag.py',
    'PYMODULE'),
   ('gui.character',
    'D:\\Ministerstwo '
@@ -1012,6 +1012,10 @@
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\save_system\\initialisation.py',
    'PYMODULE'),
+  ('system.settings',
+   'D:\\Ministerstwo '
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\settings.py',
+   'PYMODULE'),
   ('utils.text',
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\utils\\text.py',
@@ -1019,10 +1023,6 @@
   ('utils.colours',
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\utils\\colours.py',
-   'PYMODULE'),
-  ('utils',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\utils\\__init__.py',
    'PYMODULE'),
   ('system.cache.cache_manag',
    'D:\\Ministerstwo '
@@ -1032,13 +1032,13 @@
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\cache\\__init__.py',
    'PYMODULE')],
- [('VCRUNTIME140.dll',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\VCRUNTIME140.dll',
-   'BINARY'),
-  ('python38.dll',
+ [('python38.dll',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\python38.dll',
+   'BINARY'),
+  ('VCRUNTIME140.dll',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\VCRUNTIME140.dll',
    'BINARY'),
   ('_lzma',
    'C:\\Users\\Ryzen '

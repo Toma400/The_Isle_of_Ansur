@@ -67,7 +67,7 @@
  [],
  False,
  False,
- 1649539682,
+ 1649540574,
  [('run.exe',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',

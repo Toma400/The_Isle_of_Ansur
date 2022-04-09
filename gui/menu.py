@@ -14,7 +14,7 @@ def start():
 ''')
     print ("𝚃𝚑𝚎 𝙸𝚜𝚕𝚎 𝚘𝚏 𝙰𝚗𝚜𝚞𝚛\n")
     print (align(version_call("game_version") + "\n\n", "right"))
-    core_checker_output()
+    is_core_pack_loaded()
     print (align("--------------------", "centre"))
     print (align("[1] START THE GAME", "centre"))
     print (align("[2] LOAD THE GAME", "centre"))
@@ -24,10 +24,10 @@ def start():
     print ("\n\n")
     menu_choice = input ("")
     if menu_choice == "1":
-      if core_checker_output() == True:
+      if is_core_pack_loaded():
         gui.character.name()
     elif menu_choice == "2":
-      if core_checker_output() == True:
+      if is_core_pack_loaded():
         game_load()
     elif menu_choice == "3":
       continue #encyclopaedia removed, should go into "save managment" to remove saves w/o entering folders
@@ -149,7 +149,7 @@ def settings():
   except KeyError:
     start()
 
-def core_checker_output():
+def is_core_pack_loaded():
   # checks whether ansur globalpack is loaded
   core_checker = system.mod_manag.mod_checker("both", "ansur")
   if not core_checker:
