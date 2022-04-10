@@ -10,6 +10,7 @@ import PyInstaller
 from distutils.dir_util import copy_tree
 from utils.colours import bcolors as colour
 from utils.text import text_align as align
+from utils.repo_manag import file_deleting as delete
 
 #-----------------------------------------------------------
 # RUN
@@ -19,12 +20,21 @@ from utils.text import text_align as align
 #-----------------------------------------------------------
 class DefaultRun:
 
-    # values used for run() function
+    # ----------------------------------------------------------------------
+    # CONFIGURATION OF BUILD
+    # Adjust values here to make build customised more to your needs
+    # ----------------------------------------------------------------------
+    # directory of the game
     core_path = "D:/Ministerstwo Kalibracyjne/PyCharm_Projects/Isle_of_Ansur/"
     game_name = "Isle of Ansur"
     icon_path = core_path + "utils/assets/icon.ico"
+    # directory for outcome
     export_path = "D:/Ministerstwo Kalibracyjne/PyCharm_Projects/builds/"
     full_export_path = export_path + game_name + "/"
+    # ----------------------------------------------------------------------
+    # REFERENCE DOCS
+    # https://github.com/pyinstaller/pyinstaller/blob/v4.5.1/doc/usage.rst
+    # ----------------------------------------------------------------------
     forge_builder = [
         core_path + "main.py",
         "--onedir",
@@ -37,32 +47,29 @@ class DefaultRun:
         "--specpath=" + core_path + "system/cache/pyinstaller"
     ]
     ommitted_elements = [  # list of files that are deleted after finishing the build
-        full_export_path + ".idea/",
-        full_export_path + "_pycache_/",
+        full_export_path + ".idea",
+        full_export_path + "__pycache__",
         full_export_path + ".breakpoints",
         full_export_path + ".gitignore"
     ]
 
-#----------------------------------------------------------------------
-# REFERENCE DOCS
-# https://github.com/pyinstaller/pyinstaller/blob/v4.5.1/doc/usage.rst
-#----------------------------------------------------------------------
+# function used to delete elements excluded in list above
+def file_deleting(delete_list):
+    j = 0
+    for i in delete_list:
+        delete(delete_list[j])
+        j += 1
+
 def run():
     PyInstaller.__main__.run(
         DefaultRun.forge_builder
     )
     copy_tree(DefaultRun.core_path, DefaultRun.full_export_path) # copies all files over
+    file_deleting(DefaultRun.ommitted_elements)
     print(align(colour.CGREEN + "Build successful" + colour.ENDC, "centre_colour"))
 
 def forge():
-    try:
-        run()
-    except:
-        print(align(colour.HEADER + "Build failed" + colour.ENDC, "centre_colour"))
-
-    # NON USED ELEMENTS
-    # '--onefile' -> single .exe element
-    # '--adddata' -> maybe useful for handling non-module folders
+    run()
 
 print(align("------------------------------", "centre"))
 print(align(" BUILD CONSTRUCTOR ", "centre"))

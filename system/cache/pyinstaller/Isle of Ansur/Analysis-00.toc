@@ -916,6 +916,10 @@
   ('os',
    'C:\\Users\\Ryzen 5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\os.py',
    'PYMODULE'),
+  ('_py_abc',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
+   'PYMODULE'),
   ('tracemalloc',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\tracemalloc.py',
@@ -923,10 +927,6 @@
   ('stringprep',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\stringprep.py',
-   'PYMODULE'),
-  ('_py_abc',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
    'PYMODULE'),
   ('system.json_manag',
    'D:\\Ministerstwo '
@@ -1096,13 +1096,13 @@
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\DLLs\\_hashlib.pyd',
    'EXTENSION'),
-  ('libssl-1_1.dll',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\DLLs\\libssl-1_1.dll',
-   'BINARY'),
   ('libcrypto-1_1.dll',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\DLLs\\libcrypto-1_1.dll',
+   'BINARY'),
+  ('libssl-1_1.dll',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\DLLs\\libssl-1_1.dll',
    'BINARY'),
   ('libffi-7.dll',
    'C:\\Users\\Ryzen '
