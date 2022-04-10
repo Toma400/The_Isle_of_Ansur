@@ -2,6 +2,7 @@
 Here you will find all commonly asked questions, or the ones I found important to answer.
 
 * [Technical Questions](faq.md#technical-questions)
+* [Copyright Questions](faq.md#copyright-questions)
 
 ***
 
@@ -26,3 +27,16 @@ Yes, you can. Remember though that - if you want to convert them -
 you can only convert non-realistic settings into realistic one. 
 It is protection from bugs that could come from time differences and lack of 
 statistics.
+
+***
+
+# Copyright Questions
+## 1. I made a mod. Where can I publish it?
+Anywhere you want! As a mod creator, you have full rights to publish it on any page!
+EULA restricts you only to not benefit from accessing the mod, so the only requirement
+for distributing IoA mods is that they have to be accessible without paying or profitting
+from that. 
+
+You can of course put donation links and such on the pages with distribution,
+since users donating will not pay for product per se, but more as a support gesture for
+you.

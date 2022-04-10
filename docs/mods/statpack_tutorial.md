@@ -15,7 +15,7 @@ File itself needs to contain specific keys and values.
 
 Remember that your statpack folder name has to be lowercased and use 
 underline instead of spaces. Folder name is considered as your mod ID and 
-it is used for any further [ID types](glossary.md#ids) (RID/CID/IID), therefore using other 
+it is used for any further [ID types](/docs/glossary.md#ids) (RID/CID/IID), therefore using other 
 ways of writing it can cause issues.
 Don't also forget about JSON syntax, since examples mentioned here shows how it 
 should be done for one element. For more than one, 
