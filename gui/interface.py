@@ -5,5 +5,5 @@ def main_game (name):
   #    break
 
   # temporary element - just to make first version of the game for testing
-  import menu
-  menu.start()
+  import gui.menu
+  gui.menu.start()
