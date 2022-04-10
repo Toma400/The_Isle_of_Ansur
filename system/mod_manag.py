@@ -73,7 +73,8 @@ def rid_loader ():
       temp_dir = len(system.json_manag.json_read(path, "list", True))
       for j in range(temp_dir):
         element = (system.json_manag.json_read(path, "list", True)[j])
-        races_loaded.append(id_builder(i, element))  # previously inside append: system.json_manag.json_subread(path, element, "race_id")
+        races_loaded.append(id_builder(i, element))
+        overflow_protector(races_loaded, "RID")
     except FileNotFoundError:
       continue
   return races_loaded
@@ -90,6 +91,7 @@ def cid_loader ():
       for j in range(temp_dir):
         element = (system.json_manag.json_read(path, "list", True)[j])
         classes_loaded.append(id_builder(i, element))  # previously inside append: system.json_manag.json_subread(path, element, "class_id")
+        overflow_protector(classes_loaded, "CID")
     except FileNotFoundError:
       continue
   return classes_loaded
@@ -110,3 +112,22 @@ def checker (name, loaded_value):
     return True
   else:
     return False
+
+#--------------------------------------------------------
+# OVERFLOW PROTECTOR
+# Function taking care of (probably never reachable)
+# overflow of mod elements. If list reaches specific
+# limit amount, prints message and backs to menu
+#--------------------------------------------------------
+def overflow_protector (list, module):
+  import time
+  import utils
+  import gui
+  import sys
+  limit = sys.maxsize / 2
+  if len(list) >= limit:
+    print (utils.text.text_align(utils.colours.bcolors.CRED +
+                                 "Limit of loaded elements for module: " + module + "reached! Terminating the game."
+                                 + utils.colours.bcolors.ENDC, "centre_colour"))
+    time.sleep(10)
+    gui.menu()
