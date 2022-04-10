@@ -1,5 +1,11 @@
 # GLOSSARY
 
+## List of Contents
+
+* [Basic Technical Concepts](glossary.md#basic-technical-concepts)
+* [More In-depth Elements](glossary.md#more-in-depth-elements)
+* [Game Versioning](glossary.md#game-versioning)
+
 ---
 
 ### BASIC TECHNICAL CONCEPTS
@@ -36,3 +42,23 @@ that point, and pointer of hierarchy ("root" being `interface.py` module being m
 element of the game)
 
 Still work in progress, since it is new issue to be handled for me.
+
+---
+
+### GAME VERSIONING
+
+---
+
+Game versioning requires separate section for listing all stages.
+
+> **PRE-ALPHA**
+> 
+> Version of game not really possible to be played, containing mainly not-fully-
+> implemented systems and elements that require lots of testing to be working correctly.
+> 
+> Released pre-alpha builds are only for later testing, and are usually unstable.<br>
+> Can contain specific feature only, or game with implemented-yet features.
+
+#### LIST OF RELEASED VERSIONS
+
+    * Pre-Alpha 1

@@ -45,6 +45,7 @@ One of races uploaded can look like this:
       "spec_diamond": false,
       "spec_moon": false
     }
+  ]
 }
 ```
 As you see, it contains key ("baedoorian" on top) and several values. While statistics are pretty straight-forward (you can see them listed [below](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Statpack-Tutorial#list-of-general-player-statistics)), other values could be explained:

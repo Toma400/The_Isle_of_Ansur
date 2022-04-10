@@ -13,10 +13,11 @@ from utils.text import text_align as align
 from utils.repo_manag import file_deleting as delete
 
 #-----------------------------------------------------------
-# RUN
-# Used to execute pyInstaller commands precised later in
-# module.
-# References DefaultRun class
+# FORGE
+# Function used to execute pyInstaller commands precised
+# later in module
+# References DefaultRun class as configurator for all
+# options (when changing devices, change directories paths)
 #-----------------------------------------------------------
 class DefaultRun:
 
@@ -38,7 +39,7 @@ class DefaultRun:
     forge_builder = [
         core_path + "main.py",
         "--onedir",
-        "--noupx",  # if you are going to change this, please redirect upx to net source (requests library?)
+        "--noupx",  # if you are going to change this, please redirect upx to net source (requests library?) or import files if license allows you to do so
         "--clean",
         "--name=" + game_name,
         "--icon=" + icon_path,
@@ -60,20 +61,18 @@ def file_deleting(delete_list):
         delete(delete_list[j])
         j += 1
 
-def run():
+# main function for running builder
+def forge():
     PyInstaller.__main__.run(
         DefaultRun.forge_builder
     )
     copy_tree(DefaultRun.core_path, DefaultRun.full_export_path) # copies all files over
-    file_deleting(DefaultRun.ommitted_elements)
+    file_deleting(DefaultRun.ommitted_elements) # deletes files excluded in list
     print(align(colour.CGREEN + "Build successful" + colour.ENDC, "centre_colour"))
 
-def forge():
-    run()
-
-print(align("------------------------------", "centre"))
-print(align(" BUILD CONSTRUCTOR ", "centre"))
+print(align(colour.CVIOLET + "------------------------------", "centre"))
+print(align(" ISLE OF ANSUR BUILD CONSTRUCTOR ", "centre"))
 print("\n")
 print(align("----------------------------", "left"))
-print(align("------------------------------------------------------------------------------", "centre"))
+print(align("------------------------------------------------------------------------------" + colour.ENDC, "centre"))
 forge()

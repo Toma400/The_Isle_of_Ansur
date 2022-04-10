@@ -9,6 +9,12 @@ def default_settings(callout=None):
   elif callout == "permadeath":
     return permadeath
 
+#-------------------------------
+# VERSION CALL
+# Returns version of game/systems
+# being current. Versioning can
+# be found in docs (glossary.md).
+#-------------------------------
 def version_call(selector):
   if selector == "game_version":
     return "pre-alpha 1"
