@@ -187,7 +187,7 @@ def manual_ability(name):
       else:
         continue  # previously it was calling of manual attribute, but this doesn't make sense here
       system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
-      gui.interface.main_game (name)
+      gui.interface.main_game(name)
     except ValueError:
       continue
 

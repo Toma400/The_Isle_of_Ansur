@@ -73,7 +73,7 @@ def rid_loader ():
       temp_dir = len(system.json_manag.json_read(path, "list", True))
       for j in range(temp_dir):
         element = (system.json_manag.json_read(path, "list", True)[j])
-        races_loaded.append(system.json_manag.json_subread(path, element, "race_id"))
+        races_loaded.append(i + ":" + element)  # previously inside append: system.json_manag.json_subread(path, element, "race_id")
     except FileNotFoundError:
       continue
   return races_loaded
@@ -89,7 +89,7 @@ def cid_loader ():
       temp_dir = len(system.json_manag.json_read(path, "list", True))
       for j in range(temp_dir):
         element = (system.json_manag.json_read(path, "list", True)[j])
-        classes_loaded.append(system.json_manag.json_subread(path, element, "class_id"))
+        classes_loaded.append(i + ":" + element)  # previously inside append: system.json_manag.json_subread(path, element, "class_id")
     except FileNotFoundError:
       continue
   return classes_loaded
