@@ -53,3 +53,49 @@ class bcolors:
     CBEIGEBG2  = '\33[106m'
     CWHITEBG2  = '\33[107m'
 #class call: bcolors.HEADER
+
+#------------------------------------------------------------------
+# TEXT FORMATTERS
+#------------------------------------------------------------------
+def colour_formatter(colour, text, alignment="centre", keying="c"):
+    # ------------------------
+    # colour bounding
+    if keying == "c":
+        if colour == "red":
+            text = bcolors.CRED + text + bcolors.ENDC
+        if colour == "blue":
+            text = bcolors.CBLUE + text + bcolors.ENDC
+        if colour == "violet":
+            text = bcolors.CVIOLET + text + bcolors.ENDC
+    #------------------------
+    #alignment bounding
+    if alignment == "centre":
+        text = text_align(text, "centre_colour")
+    return text
+
+#---------------------------------------------------
+# TEXT ALIGN
+# Used to align text to specific part of the console
+# Takes a bit different values if used with colours
+#---------------------------------------------------
+def text_align (text, side):
+  if side == "left":
+    aligned = '{:<65}'.format(text)
+    return aligned
+  elif side == "right":
+    aligned = '{:>65}'.format(text)
+    return aligned
+  elif side == "centre":
+    aligned = '{:^65}'.format(text)
+    return aligned
+  elif side == "left_colour":
+    aligned = '{:<75}'.format(text)
+    return aligned
+  elif side == "right_colour":
+    aligned = '{:>75}'.format(text)
+    return aligned
+  elif side == "centre_colour":
+    aligned = '{:^75}'.format(text)
+    return aligned
+  else:
+    print ("Alignment error")

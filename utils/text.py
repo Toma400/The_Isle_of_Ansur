@@ -1,3 +1,4 @@
+@DeprecationWarning
 def text_align (text, side):
   if side == "left":
     aligned = '{:<65}'.format(text)

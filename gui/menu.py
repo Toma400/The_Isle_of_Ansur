@@ -210,3 +210,9 @@ def pack_colour(type):
     return colour.CVIOLET2 + pack_type_helper()[1] + colour.ENDC
   elif type == "statpack":
     return colour.CGREEN + pack_type_helper()[2] + colour.ENDC
+
+@DeprecationWarning
+def pack_formatter(entry):
+  entry.replace("_", " ")
+  entry.title()
+  return entry
