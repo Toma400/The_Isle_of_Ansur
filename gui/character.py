@@ -13,7 +13,7 @@
 #-------------------------------------------------------------------------------------------------------------------
 import system.json_manag as json_manag
 import system.mod_manag
-from utils.text import text_align as align
+from utils.colours import text_align as align
 from utils.colours import bcolors as colour
 
 def name():

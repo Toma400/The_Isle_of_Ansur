@@ -1,5 +1,5 @@
 from utils.colours import bcolors as colour
-from utils.text import text_align as align
+from utils.colours import text_align as align
 from system.settings import version_call as version_call
 
 import gui.character

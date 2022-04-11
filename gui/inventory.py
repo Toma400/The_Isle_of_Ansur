@@ -1,7 +1,7 @@
 import gui.interface
 import system.id_manag
 import system.json_manag
-from utils.text import text_align as align
+from utils.colours import text_align as align
 
 #-----------------------------------------------------------------------------
 # MAIN_INV
