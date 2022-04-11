@@ -65,12 +65,18 @@ def colour_formatter(colour, text, alignment="centre", keying="c"):
             text = bcolors.CRED + text + bcolors.ENDC
         if colour == "blue":
             text = bcolors.CBLUE + text + bcolors.ENDC
+        if colour == "green":
+            text = bcolors.CGREEN + text + bcolors.ENDC
         if colour == "violet":
             text = bcolors.CVIOLET + text + bcolors.ENDC
+        if colour == "cyan":
+            text = bcolors.OKCYAN + text + bcolors.ENDC
     #------------------------
     #alignment bounding
     if alignment == "centre":
         text = text_align(text, "centre_colour")
+    elif alignment == "left":
+        text = text_align(text, "left_colour")
     return text
 
 #---------------------------------------------------

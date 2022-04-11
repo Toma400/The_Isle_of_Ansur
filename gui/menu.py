@@ -1,5 +1,6 @@
 from utils.colours import bcolors as colour
 from utils.colours import text_align as align
+from utils.colours import colour_formatter as format
 from system.settings import version_call as version_call
 
 import gui.character
@@ -155,15 +156,43 @@ def settings():
 #---------------------------------------------------------
 def packs():
   print("\n")
-  print(align("-----------------------------------------------------------", "centre"))
-  print(align(" PACKS LOADED ", "centre"))
-  print(align("⊱⋅-----------------------------------------⋅⊰", "centre"))
-  for pack_type in pack_type_helper():
-    packgroup_opened = pack_loader(pack_type)
-    if packgroup_opened:  # checks if specific packgroup list is not empty
-      for pack_name in packgroup_opened:
-        print(align("[ " + pack_colour(pack_type) + " ] [ " + pack_name + " ]", "centre_colour"))
-  print(align("-----------------------------------------------------------", "centre"))
+  while True:
+    packs_loaded = []
+    print(align("-----------------------------------------------------------", "centre"))
+    print(align(" PACKS LOADED ", "centre"))
+    print(align("⊱⋅-----------------------------------------⋅⊰", "centre"))
+    for pack_type in pack_type_helper():
+      packgroup_opened = pack_loader(pack_type)
+      if packgroup_opened:  # checks if specific packgroup list is not empty
+        for pack_name in packgroup_opened:
+          packs_loaded.append(pack_name)
+          print(align("[ " + pack_colour(pack_type) + " ] [ " + pack_name + " ]", "centre_colour"))
+          ## ^ add here some info about pack being disabled or enabled soon
+    print(align("-----------------------------------------------------------", "centre"))
+    print(align(" Enter name of pack to open its settings ", "centre"))
+    print(align(" Press -q- to leave the menu ", "centre"))
+    print(align("-----------------------------------------------------------", "centre"))
+    keybind = input("").lower()
+    if keybind == "q":
+      break
+    else:
+      pack_settings_checker(keybind, packs_loaded)
+
+def pack_settings(pack_name):
+  from system.mod_manag import mod_reader as p_read
+  print("\n")
+  while True:
+    print(align("-----------------------------------------------------------", "centre"))
+    print(format("violet", p_read(pack_name, "name")))  # mod name
+    print(align("Pack ID: " + pack_name, "centre"))
+    print(align("⊱⋅---------------------------------⋅⊰", "centre"))
+    ## HERE PUT PACK TYPE, INFO ABOUT BEING ENABLED OR DISABLED
+    print(format("blue", p_read(pack_name, "description"), "left"))  # mod description
+    print(align("-----------------------------------------------------------", "centre"))
+    print(format("cyan", "URL: " + p_read(pack_name, "link")))  # link assigned
+    print(format("green", "Credits: " + p_read(pack_name, "credits")))  # mod credits
+    print(align("-----------------------------------------------------------", "centre"))
+    break
 
 #---------------------------------------------------------
 # SYSTEM FUNCTIONS
@@ -188,6 +217,16 @@ def pack_loader(request):
   if request == "worldpack":
     return [x for x in sys.mod_lister("worlds", "modded") if x not in globalpacks_loaded]  # loads worldpacks-only packs
 
+def pack_settings_checker(pack_name, pack_list):
+  # checks if pack name entered is listed inside available packs
+  while True:
+    if pack_name in pack_list:
+      pack_settings(pack_name)
+      break
+    else:
+      print(format("red", "Pack with this name does not exist!"))
+      break
+
 #---------------------------------------------------------
 # UNSPAGHETTIERS
 # Used for making code a bit cleaner
@@ -210,9 +249,3 @@ def pack_colour(type):
     return colour.CVIOLET2 + pack_type_helper()[1] + colour.ENDC
   elif type == "statpack":
     return colour.CGREEN + pack_type_helper()[2] + colour.ENDC
-
-@DeprecationWarning
-def pack_formatter(entry):
-  entry.replace("_", " ")
-  entry.title()
-  return entry

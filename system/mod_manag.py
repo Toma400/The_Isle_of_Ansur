@@ -53,6 +53,31 @@ def mod_checker (directory, name):
     mod_loaded = mod_lister ("both")
     return checker(name, mod_loaded)
 
+# --------------------------------------------------------
+# MOD READER
+# Reads specific information from mod info.json file
+# --------------------------------------------------------
+def mod_reader(name, value=None):
+  from os.path import isfile as search
+  from system.json_manag import json_read as read
+  path_s = "stats/" + name + "/info.json"
+  path_w = "worlds/" + name + "/info.json"
+  if not search(path_s):
+    if not search(path_w):
+      if value == "name":
+        return name_formatter(name)
+      elif value == "credits":
+        return str(None)
+      else:
+        return value.title() + " not found"
+    else:
+      return read(path_w, value)
+  else:
+    return read(path_s, value)
+    # checks if there's file in stats/, if not then goes to
+    # worlds/, if not then returns either formatted name,
+    # or message of not-found element
+
 #--------------------------------------------------------
 # ID BUILDER
 # Small function to unclutter ID building
@@ -115,6 +140,12 @@ def checker (name, loaded_value):
     return True
   else:
     return False
+
+def name_formatter (name):
+  # used for simplified name formatting into readable state
+  name = name.replace("_", " ")
+  name = name.title()
+  return name
 
 #--------------------------------------------------------
 # OVERFLOW PROTECTOR
