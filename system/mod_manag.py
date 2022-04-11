@@ -57,7 +57,7 @@ def mod_checker (directory, name):
 # MOD READER
 # Reads specific information from mod info.json file
 # --------------------------------------------------------
-def mod_reader(name, value=None):
+def mod_reader(name, value):
   from os.path import isfile as search
   from system.json_manag import json_read as read
   path_s = "stats/" + name + "/info.json"
