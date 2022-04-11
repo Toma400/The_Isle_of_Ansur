@@ -3,7 +3,7 @@ from utils.text import text_align as align
 from system.settings import version_call as version_call
 
 import gui.character
-import system.mod_manag
+import system.mod_manag as sys
 
 def start():
   version_call("game_version")
@@ -18,8 +18,8 @@ def start():
     print (align("--------------------", "centre"))
     print (align("[1] START THE GAME", "centre"))
     print (align("[2] LOAD THE GAME", "centre"))
-    print (align("[3] ENCYCLOPAEDIA", "centre"))
-    print (align("[4] GAME SETTINGS", "centre"))
+    print (align("[3] SETTINGS", "centre"))
+    print (align("[4] PACKS", "centre"))
     print (align("[5] EXIT THE GAME", "centre"))
     print ("\n\n")
     menu_choice = input ("")
@@ -30,9 +30,9 @@ def start():
       if is_core_pack_loaded():
         game_load()
     elif menu_choice == "3":
-      continue #encyclopaedia removed, should go into "save managment" to remove saves w/o entering folders
-    elif menu_choice == "4":
       settings()
+    elif menu_choice == "4":
+      packs()
     elif menu_choice == "5" or "q":
       break
     else:
@@ -149,11 +149,64 @@ def settings():
   except KeyError:
     start()
 
+#---------------------------------------------------------
+# PACKS
+# List all packs available, sorted by their type
+#---------------------------------------------------------
+def packs():
+  print("\n")
+  print(align("-----------------------------------------------------------", "centre"))
+  print(align(" PACKS LOADED ", "centre"))
+  print(align("⊱⋅-----------------------------------------⋅⊰", "centre"))
+  for pack_type in pack_type_helper():
+    packgroup_opened = pack_loader(pack_type)
+    if packgroup_opened:  # checks if specific packgroup list is not empty
+      for pack_name in packgroup_opened:
+        print(align("[ " + pack_colour(pack_type) + " ] [ " + pack_name + " ]", "centre_colour"))
+  print(align("-----------------------------------------------------------", "centre"))
+
+#---------------------------------------------------------
+# SYSTEM FUNCTIONS
+# Functions used for some system-related behaviours
+#---------------------------------------------------------
 def is_core_pack_loaded():
   # checks whether ansur globalpack is loaded
-  core_checker = system.mod_manag.mod_checker("both", "ansur")
+  core_checker = sys.mod_checker("both", "ansur")
   if not core_checker:
     print(align(colour.CRED + "Core files are not loaded! Restricted menu options." + colour.ENDC, "centre_colour"))
     return False
   else:
     return True
+
+def pack_loader(request):
+  # returns list of all correctly sorted modded packs depending on requested type
+  globalpacks_loaded = sys.mod_lister("both", "modded")
+  if request == "globalpack":
+    return sys.mod_lister("both", "modded")
+  if request == "statpack":
+    return [x for x in sys.mod_lister("stats", "modded") if x not in globalpacks_loaded]  # loads statpacks-only packs
+  if request == "worldpack":
+    return [x for x in sys.mod_lister("worlds", "modded") if x not in globalpacks_loaded]  # loads worldpacks-only packs
+
+#---------------------------------------------------------
+# UNSPAGHETTIERS
+# Used for making code a bit cleaner
+#---------------------------------------------------------
+def pack_type_helper(number=None):
+  pack_types = [
+    "globalpack",
+    "worldpack",
+    "statpack"
+  ]
+  if number == None:
+    return pack_types
+  else:
+    return pack_types[number]
+
+def pack_colour(type):
+  if type == "globalpack":
+    return colour.OKBLUE + pack_type_helper()[0] + colour.ENDC
+  elif type == "worldpack":
+    return colour.CVIOLET2 + pack_type_helper()[1] + colour.ENDC
+  elif type == "statpack":
+    return colour.CGREEN + pack_type_helper()[2] + colour.ENDC

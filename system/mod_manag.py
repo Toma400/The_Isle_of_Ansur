@@ -17,10 +17,17 @@ def mod_lister (directory, system="full"):
     mod_loaded = dir_check(path, "dir")
     return lister(mod_loaded, system)
   elif directory == "all":
+    #lists all mods altogether
     path1 = "stats/"
     path2 = "worlds/"
     mod_loaded = dir_check(path1, "dir")
     mod_loaded.append (dir_check(path2, "dir"))
+    return lister(mod_loaded, system)
+  elif directory == "both":
+    #lists only globalpacks
+    path1 = "stats/"
+    path2 = "worlds/"
+    mod_loaded = list(set(dir_check(path1, "dir")) & set(dir_check(path2, "dir")))
     return lister(mod_loaded, system)
 
 #--------------------------------------------------------
@@ -43,12 +50,8 @@ def mod_checker (directory, name):
 
   elif directory == "both":
     #checks whether mod is in both directories (AND)
-    path1 = "stats/"
-    path2 = "worlds/"   
-    mod_loaded1 = dir_check(path1, "dir")
-    mod_loaded2 = dir_check(path2, "dir")
-    mods_loaded = set(mod_loaded1) & set(mod_loaded2)
-    return checker(name, mods_loaded)
+    mod_loaded = mod_lister ("both")
+    return checker(name, mod_loaded)
 
 #--------------------------------------------------------
 # ID BUILDER
