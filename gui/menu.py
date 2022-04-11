@@ -32,11 +32,10 @@ def start():
     elif menu_choice == "3":
       settings()
     elif menu_choice == "4":
-      packs()
+      if is_core_pack_loaded():
+        packs()
     elif menu_choice == "5" or "q":
       break
-    else:
-      continue
 
 def game_load():
   import utils.repo_manag as repo_manag
@@ -123,31 +122,32 @@ def special_load(name):
 def settings():
   import system.settings
   import system.json_manag
-  print ("\n")
-  print (align("--------------------", "centre"))
-  print (align("Select setting to switch.", "centre"))
-  print (align("--------------------", "centre"))
-  setting_options = ["Time System", "Hunger/Thirst", "Permanent Death"]
-  setting_set = {}
-  j = 1
-  for i in setting_options:
-    i2 = i.replace("nent D", "d") #permadeath
-    i2 = i2.lower().replace(" ", "_")
-    i2 = i2.replace("/", "_")
-    y = system.json_manag.json_read("system/system_settings.json", i2)
-    print (align("[" + str(j) + "][" + i + "][ " + colour.OKCYAN + str(y).capitalize() + colour.ENDC + " ]", "centre_colour"))
-    setting_set[str(j)] = i2
-    j = j + 1
-  print ("\n")
-  print (align("--------------------", "centre"))
-  print (align("[use any non-numerical button to go back to menu]", "centre"))
-  print ("\n")
-  temp_var = input ("")
-  try:
-    system.settings.settings_changer(setting_set[temp_var])
-    settings()
-  except KeyError:
-    start()
+  while True:
+    print ("\n")
+    print (align("--------------------", "centre"))
+    print (align("Select setting to switch.", "centre"))
+    print (align("--------------------", "centre"))
+    setting_options = ["Time System", "Hunger/Thirst", "Permanent Death"]
+    setting_set = {}
+    j = 1
+    for i in setting_options:
+      i2 = i.replace("nent D", "d") #permadeath
+      i2 = i2.lower().replace(" ", "_")
+      i2 = i2.replace("/", "_")
+      y = system.json_manag.json_read("system/system_settings.json", i2)
+      print (align("[" + str(j) + "][" + i + "][ " + colour.OKCYAN + str(y).capitalize() + colour.ENDC + " ]", "centre_colour"))
+      setting_set[str(j)] = i2
+      j = j + 1
+    print ("\n")
+    print (align("--------------------", "centre"))
+    print (align("[use any non-numerical button to go back to menu]", "centre"))
+    print ("\n")
+    temp_var = input ("")
+    try:
+      system.settings.settings_changer(setting_set[temp_var])
+      continue
+    except KeyError:
+      break
 
 #---------------------------------------------------------
 # PACKS
