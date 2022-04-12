@@ -1,5 +1,6 @@
 {
   "time_system": "proportional",
   "hunger_thirst": false,
-  "permadeath": false
+  "permadeath": false,
+  "autoimport_of_packs": true
 }

@@ -2,12 +2,15 @@ from utils.text_manag import bcolors as colour
 from utils.text_manag import align
 from utils.text_manag import colour_formatter as format
 from system.settings import version_call as version_call
+from system.settings import settings as settings_check
 
 import gui.character
 import system.mod_manag as sys
 
 def start():
   version_call("game_version")
+  if settings_check("autoimport"):
+    pack_unloader()
   while True:
     print ('''\n\n|__) _|_    _ _ _   (_ |_  _  _| _     _   _  _  _|  |  . _ |_ |_ 
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 
@@ -35,7 +38,7 @@ def start():
     elif menu_choice == "4":
       if is_core_pack_loaded():
         packs()
-    elif menu_choice == "5" or "q":
+    elif menu_choice == "5" or menu_choice == "q":
       break
 
 def game_load():
@@ -175,10 +178,10 @@ def packs():
     print(align("-----------------------------------------------------------"))
     print(align(" Enter name of pack to open its settings "))
     print(align(" Use -unzip- key to unzip mod files "))
-    print(align(" Press -q- to leave the menu "))
+    print(align(" Press -q- to leave to menu "))
     print(align("-----------------------------------------------------------"))
     keybind = input("").lower()
-    if keybind == "q":
+    if keybind == "q" or keybind == "quit" or keybind == "":
       break
     if keybind == "unzip":
       pack_unloader()
@@ -220,17 +223,30 @@ def pack_settings(pack_name):
       from system.mod_manag import mod_blacklister as blacklister
       blacklister(pack_name)
       continue
-    if keyword == "q" or "quit" or "":
+    if keyword == "q" or keyword == "quit" or keyword == "":
       break
     else:
       continue
 
 #----------------------------------------------------
 # PACK UNLOADER
-# Allows unzipping mods via /pack/ dir or custom path
+# Allows unzipping mods from /pack/ dir and updating
 #----------------------------------------------------
 def pack_unloader():
-  pass
+  import os, zipfile
+  packs_in_dir = os.listdir("packs/")
+  for pack in packs_in_dir:
+    if ".zip" in pack:  # make sure file has correct extension
+      with zipfile.ZipFile("packs/" + pack, "r") as file:
+        pack_unloader_checker(file)
+        file.close()
+
+def pack_unloader_checker(file):
+  for i in file.namelist():
+    if "stats/" in i:
+      file.extract(i, "")
+    if "worlds/" in i:
+      file.extract(i, "")
 
 #---------------------------------------------------------------------------------------------
 # SYSTEM FUNCTIONS

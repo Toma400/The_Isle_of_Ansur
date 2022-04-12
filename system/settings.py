@@ -2,12 +2,15 @@ def default_settings(callout=None):
   time_system = "proportional"
   hunger_thirst = False
   permadeath = False
+  autoimport_packs = True
   if callout == "time_system":
     return time_system
   elif callout == "hunger_thirst":
     return hunger_thirst
   elif callout == "permadeath":
     return permadeath
+  elif callout == "autoimport_packs":
+    return autoimport_packs
 
 #-------------------------------
 # VERSION CALL
@@ -29,6 +32,8 @@ def settings(callout):
     return system.json_manag.json_read("system/system_settings.json", "hunger_thirst")
   elif callout == "permadeath":
     return system.json_manag.json_read("system/system_settings.json", "permadeath")
+  elif callout == "autoimport":
+    return system.json_manag.json_read("system/system_settings.json", "autoimport_of_packs")
 
 def settings_changer(callout):
   import system.json_manag
