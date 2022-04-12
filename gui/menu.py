@@ -152,7 +152,8 @@ def settings():
 
 #---------------------------------------------------------
 # PACKS
-# List all packs available, sorted by their type
+# List all packs available, sorted by their type, also
+# operations possible on them (blacklisting, unzipping)
 #---------------------------------------------------------
 def packs():
   print("\n")
@@ -170,14 +171,22 @@ def packs():
           ## ^ add here some info about pack being disabled or enabled soon
     print(align("-----------------------------------------------------------"))
     print(align(" Enter name of pack to open its settings "))
+    print(align(" Use -unzip- key to unzip mod files "))
     print(align(" Press -q- to leave the menu "))
     print(align("-----------------------------------------------------------"))
     keybind = input("").lower()
     if keybind == "q":
       break
+    if keybind == "unzip":
+      pack_unloader()
+      continue
     else:
       pack_settings_checker(keybind, packs_loaded)
 
+#----------------------------------------------------
+# PACK SETTINGS
+# Shows info.json and makes a way to disable the pack
+#----------------------------------------------------
 def pack_settings(pack_name):
   from system.mod_manag import mod_reader as p_read
   print("\n")
@@ -193,6 +202,13 @@ def pack_settings(pack_name):
     print(format("green", "Credits: " + p_read(pack_name, "credits")))  # mod credits
     print(align("-----------------------------------------------------------"))
     break
+
+#----------------------------------------------------
+# PACK UNLOADER
+# Allows unzipping mods via /pack/ dir or custom path
+#----------------------------------------------------
+def pack_unloader():
+  pass
 
 #---------------------------------------------------------
 # SYSTEM FUNCTIONS

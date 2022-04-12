@@ -21,3 +21,5 @@ def cache_brutedel():
   utils.repo_manag.file_deleting ("system/cache/__pycache__")
   utils.repo_manag.file_deleting ("system/cache/home")
   utils.repo_manag.file_deleting ("system/cache/usr")
+  utils.repo_manag.file_deleting ("system/cache/Ministerstwo Kalibracyjne")
+  utils.repo_manag.file_deleting ("system/cache/Users")
