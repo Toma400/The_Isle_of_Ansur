@@ -106,5 +106,8 @@ def align (text, side="centre"):
   elif side == "centre_colour":
     aligned = '{:^75}'.format(text)
     return aligned
+  elif side == "centre_colour+":
+    aligned = '{:^85}'.format(text)
+    return aligned
   else:
     print ("Alignment error")

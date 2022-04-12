@@ -156,6 +156,7 @@ def settings():
 # operations possible on them (blacklisting, unzipping)
 #---------------------------------------------------------------------------------------------
 def packs():
+  from system.mod_manag import mod_blacklister as blacklisted
   print("\n")
   while True:
     packs_loaded = []
@@ -167,8 +168,10 @@ def packs():
       if packgroup_opened:  # checks if specific packgroup list is not empty
         for pack_name in packgroup_opened:
           packs_loaded.append(pack_name)
-          print(align("[ " + pack_colour(pack_type) + " ] [ " + pack_name + " ]", "centre_colour"))
-          ## ^ add here some info about pack being disabled or enabled soon
+          if blacklisted(pack_name, True):
+            print(align("[ " + pack_colour(pack_type) + " ] [ " + colour.CRED + pack_name + colour.ENDC + " ] ", "centre_colour+"))
+          else:
+            print(align("[ " + pack_colour(pack_type) + " ] [ " + pack_name + " ]", "centre_colour"))
     print(align("-----------------------------------------------------------"))
     print(align(" Enter name of pack to open its settings "))
     print(align(" Use -unzip- key to unzip mod files "))
@@ -213,9 +216,9 @@ def pack_settings(pack_name):
     keyword = input("").lower()
     if keyword == "link":  # opens website in browser
       webbrowser.open(p_read(pack_name, "link"))
-    if keyword == "switch":
-      from system.mod_manag import mod_blacklister as b
-      b(pack_name)
+    if keyword == "switch":  # switches mod from being enabled to disabled and reversely
+      from system.mod_manag import mod_blacklister as blacklister
+      blacklister(pack_name)
       continue
     if keyword == "q" or "quit" or "":
       break
