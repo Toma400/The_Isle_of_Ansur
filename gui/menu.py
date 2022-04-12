@@ -123,6 +123,11 @@ def special_load(name):
   system.save_system.save_load.full_save (name)
   system.save_system.save_load.deep_load (name)
 
+#---------------------------------------------------------------------------------------------
+# SETTINGS
+# Function allowing user to switch their settings to desired ones. Takes values from
+# `settings_options` list, formats them into .json keys and check their values
+#---------------------------------------------------------------------------------------------
 def settings():
   import system.settings
   import system.json_manag
@@ -131,7 +136,7 @@ def settings():
     print (align("--------------------"))
     print (align("Select setting to switch."))
     print (align("--------------------"))
-    setting_options = ["Time System", "Hunger/Thirst", "Permanent Death"]
+    setting_options = ["Time System", "Hunger/Thirst", "Permanent Death", "Autoimport of Packs"]
     setting_set = {}
     j = 1
     for i in setting_options:
