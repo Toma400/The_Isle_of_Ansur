@@ -17,10 +17,6 @@
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\importlib\\metadata.py',
    'PYMODULE'),
-  ('importlib.abc',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\importlib\\abc.py',
-   'PYMODULE'),
   ('contextlib',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\contextlib.py',
@@ -289,14 +285,6 @@
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\asyncio\\runners.py',
    'PYMODULE'),
-  ('asyncio.events',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\asyncio\\events.py',
-   'PYMODULE'),
-  ('contextvars',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\contextvars.py',
-   'PYMODULE'),
   ('asyncio.trsock',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\asyncio\\trsock.py',
@@ -312,6 +300,10 @@
   ('asyncio.tasks',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\asyncio\\tasks.py',
+   'PYMODULE'),
+  ('contextvars',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\contextvars.py',
    'PYMODULE'),
   ('concurrent.futures',
    'C:\\Users\\Ryzen '
@@ -636,6 +628,14 @@
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\asyncio\\futures.py',
    'PYMODULE'),
+  ('asyncio.events',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\asyncio\\events.py',
+   'PYMODULE'),
+  ('asyncio.exceptions',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\asyncio\\exceptions.py',
+   'PYMODULE'),
   ('asyncio.coroutines',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\asyncio\\coroutines.py',
@@ -643,10 +643,6 @@
   ('asyncio.base_futures',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\asyncio\\base_futures.py',
-   'PYMODULE'),
-  ('asyncio.exceptions',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\asyncio\\exceptions.py',
    'PYMODULE'),
   ('asyncio.format_helpers',
    'C:\\Users\\Ryzen '
@@ -719,54 +715,6 @@
   ('distutils',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\__init__.py',
-   'PYMODULE'),
-  ('distutils.ccompiler',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\ccompiler.py',
-   'PYMODULE'),
-  ('distutils.fancy_getopt',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\fancy_getopt.py',
-   'PYMODULE'),
-  ('distutils.debug',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\debug.py',
-   'PYMODULE'),
-  ('distutils.util',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\util.py',
-   'PYMODULE'),
-  ('distutils.filelist',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\filelist.py',
-   'PYMODULE'),
-  ('distutils.dep_util',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\dep_util.py',
-   'PYMODULE'),
-  ('distutils.dir_util',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\dir_util.py',
-   'PYMODULE'),
-  ('distutils.file_util',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\file_util.py',
-   'PYMODULE'),
-  ('distutils.spawn',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\spawn.py',
-   'PYMODULE'),
-  ('distutils.errors',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\errors.py',
-   'PYMODULE'),
-  ('distutils.sysconfig',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\sysconfig.py',
-   'PYMODULE'),
-  ('distutils.text_file',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\distutils\\text_file.py',
    'PYMODULE'),
   ('platform',
    'C:\\Users\\Ryzen '
@@ -844,6 +792,10 @@
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\csv.py',
    'PYMODULE'),
+  ('importlib.abc',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\importlib\\abc.py',
+   'PYMODULE'),
   ('importlib._bootstrap',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\importlib\\_bootstrap.py',
@@ -879,25 +831,45 @@
   ('os',
    'C:\\Users\\Ryzen 5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\os.py',
    'PYMODULE'),
-  ('_py_abc',
+  ('stringprep',
    'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\stringprep.py',
    'PYMODULE'),
   ('tracemalloc',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\tracemalloc.py',
    'PYMODULE'),
-  ('stringprep',
+  ('_py_abc',
    'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\stringprep.py',
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
    'PYMODULE'),
-  ('system.json_manag',
+  ('gui.menu',
    'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\json_manag.py',
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\menu.py',
+   'PYMODULE'),
+  ('system.save_system.save_load',
+   'D:\\Ministerstwo '
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\save_system\\save_load.py',
+   'PYMODULE'),
+  ('system.save_system',
+   'D:\\Ministerstwo '
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\save_system\\__init__.py',
    'PYMODULE'),
   ('system',
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\__init__.py',
+   'PYMODULE'),
+  ('gui.interface',
+   'D:\\Ministerstwo '
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\interface.py',
+   'PYMODULE'),
+  ('system.id_manag',
+   'D:\\Ministerstwo '
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\id_manag.py',
+   'PYMODULE'),
+  ('system.json_manag',
+   'D:\\Ministerstwo '
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\json_manag.py',
    'PYMODULE'),
   ('json',
    'C:\\Users\\Ryzen '
@@ -914,38 +886,6 @@
   ('json.scanner',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\json\\scanner.py',
-   'PYMODULE'),
-  ('system.int_systems.inv_manag',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\int_systems\\inv_manag.py',
-   'PYMODULE'),
-  ('system.int_systems',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\int_systems\\__init__.py',
-   'PYMODULE'),
-  ('system.id_manag',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\id_manag.py',
-   'PYMODULE'),
-  ('gui.menu',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\menu.py',
-   'PYMODULE'),
-  ('system.save_system.save_load',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\save_system\\save_load.py',
-   'PYMODULE'),
-  ('system.save_system',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\save_system\\__init__.py',
-   'PYMODULE'),
-  ('gui.interface',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\interface.py',
-   'PYMODULE'),
-  ('gui',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\__init__.py',
    'PYMODULE'),
   ('utils.repo_manag',
    'D:\\Ministerstwo '
@@ -975,17 +915,17 @@
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\save_system\\initialisation.py',
    'PYMODULE'),
+  ('gui',
+   'D:\\Ministerstwo '
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\__init__.py',
+   'PYMODULE'),
   ('system.settings',
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\settings.py',
    'PYMODULE'),
-  ('utils.text',
+  ('utils.text_manag',
    'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\utils\\text.py',
-   'PYMODULE'),
-  ('utils.colours',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\utils\\colours.py',
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\utils\\text_manag.py',
    'PYMODULE'),
   ('system.cache.cache_manag',
    'D:\\Ministerstwo '
