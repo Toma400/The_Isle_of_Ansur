@@ -84,12 +84,12 @@ def race(name):
         except KeyError:
           #detector of values that can't be added
           print ("Unknown value:" + i + ". Skipped.")
-      classes(name)
+      profession(name)
       break
     else:
       continue
 
-def classes(name):
+def profession(name):
   from system.id_manag import cid_conv as cid_conv #garbage.py rule avoided
   classes_loaded = system.mod_manag.cid_loader()
   classes_count = len(classes_loaded)
