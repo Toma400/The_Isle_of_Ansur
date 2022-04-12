@@ -160,8 +160,8 @@ def overflow_protector (list, module):
   import sys
   limit = sys.maxsize / 2
   if len(list) >= limit:
-    print (utils.text.text_align(utils.colours.bcolors.CRED +
+    print (utils.text.align(utils.colours.bcolors.CRED +
                                  "Limit of loaded elements for module: " + module + "reached! Terminating the game."
-                                 + utils.colours.bcolors.ENDC, "centre_colour"))
+                            + utils.colours.bcolors.ENDC, "centre_colour"))
     time.sleep(10)
     gui.menu()

@@ -11,18 +11,20 @@
 # * 'name' is the only continuously used variable throughout whole game, recognising the save profile and allowing
 #   game to constantly communicate with saved profile
 #-------------------------------------------------------------------------------------------------------------------
+from utils.text_manag import align
+from utils.text_manag import bcolors as colour
+from utils.text_manag import colour_formatter as format
+
 import system.json_manag as json_manag
 import system.mod_manag
-from utils.colours import text_align as align
-from utils.colours import bcolors as colour
 
 def name():
   import system.save_system.initialisation
-  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
+  print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Type your character name", "centre"))
-  print (align("---", "centre"))
-  print (align("Type -0- to cancel", "centre"))
+  print (align("Type your character name"))
+  print (align("---"))
+  print (align("Type -0- to cancel"))
   print ("\n")
   while True:
     player_name = input ("")
@@ -38,12 +40,12 @@ def name():
         break
 
 def gender(name):
-  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
+  print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Choose your gender", "centre"))
-  print (align("[1] Male", "centre"))
-  print (align("[2] Female", "centre"))
-  print (align("---", "centre"))
+  print (align("Choose your gender"))
+  print (align("[1] Male"))
+  print (align("[2] Female"))
+  print (align("---"))
   print ("\n")
   while True:
     gender = input ("")
@@ -63,9 +65,9 @@ def race(name):
   from system.id_manag import rid_conv as rid_conv #garbage.py rule avoided
   races_loaded = system.mod_manag.rid_loader()
   races_count = len(races_loaded)
-  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
+  print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Choose your race", "centre"))
+  print (align("Choose your race"))
   print ("\n")
   listing_races(races_loaded, rid_conv)  # prints out available races
   print ("\n")
@@ -93,9 +95,9 @@ def profession(name):
   from system.id_manag import cid_conv as cid_conv #garbage.py rule avoided
   classes_loaded = system.mod_manag.cid_loader()
   classes_count = len(classes_loaded)
-  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
+  print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Choose your class", "centre"))
+  print (align("Choose your class"))
   print ("\n")
   listing_classes(classes_loaded, cid_conv)  # prints out available classes
   print ("\n")
@@ -109,7 +111,7 @@ def profession(name):
           if system.json_manag.save_read(name, "profile", "race") == cid_conv(chosen_class, "race_exclusive"):
             pass
           else:
-            print ((align(colour.CYELLOW2 + "Class is exclusive for race you don't represent!" + colour.ENDC, "centre_colour")))
+            print (format("yellow", "Class is exclusive for race you don't represent!"))
             print ("\n")
             continue
         except KeyError:
@@ -140,9 +142,9 @@ def manual_attribute(name):
     i = i.replace("atr_", "")
     i = i.title()
     attribute_list.append (i)
-  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
+  print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Choose attribute you want to enhance", "centre"))
+  print (align("Choose attribute you want to enhance"))
   print ("\n")
   listing_attributes(attribute_list)  # prints out attributes
   print ("\n")
@@ -170,9 +172,9 @@ def manual_ability(name):
     i = i.replace("_", " ")
     i = i.title()
     ability_list.append (i)
-  print (align(colour.OKBLUE + "--------------------" + colour.ENDC, "centre_colour"))
+  print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Choose ability you want to enhance", "centre"))
+  print (align("Choose ability you want to enhance"))
   print ("\n")
   j = 1
   listing_abilities(ability_list)  # prints out abilities

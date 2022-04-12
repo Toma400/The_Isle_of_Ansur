@@ -8,7 +8,7 @@
 import PyInstaller.__main__
 import PyInstaller
 from distutils.dir_util import copy_tree
-from utils.colours import bcolors as colour
+from utils.text_manag import bcolors as colour
 from utils.text import text_align as align
 from utils.repo_manag import file_deleting as delete
 

@@ -60,23 +60,26 @@ class bcolors:
 def colour_formatter(colour, text, alignment="centre", keying="c"):
     # ------------------------
     # colour bounding
-    if keying == "c":
-        if colour == "red":
-            text = bcolors.CRED + text + bcolors.ENDC
-        if colour == "blue":
-            text = bcolors.CBLUE + text + bcolors.ENDC
-        if colour == "green":
-            text = bcolors.CGREEN + text + bcolors.ENDC
-        if colour == "violet":
-            text = bcolors.CVIOLET + text + bcolors.ENDC
-        if colour == "cyan":
-            text = bcolors.OKCYAN + text + bcolors.ENDC
+    if colour == "red":
+        text = bcolors.CRED + text + bcolors.ENDC
+    if colour == "blue":
+        text = bcolors.CBLUE + text + bcolors.ENDC
+    if colour == "blue+":
+        text = bcolors.OKBLUE + text + bcolors.ENDC
+    if colour == "green":
+        text = bcolors.CGREEN + text + bcolors.ENDC
+    if colour == "violet":
+        text = bcolors.CVIOLET + text + bcolors.ENDC
+    if colour == "cyan":
+        text = bcolors.OKCYAN + text + bcolors.ENDC
+    if colour == "yellow":
+        text = bcolors.CYELLOW2 + text + bcolors.ENDC
     #------------------------
     #alignment bounding
     if alignment == "centre":
-        text = text_align(text, "centre_colour")
+        text = align(text, "centre_colour")
     elif alignment == "left":
-        text = text_align(text, "left_colour")
+        text = align(text, "left_colour")
     return text
 
 #---------------------------------------------------
@@ -84,7 +87,7 @@ def colour_formatter(colour, text, alignment="centre", keying="c"):
 # Used to align text to specific part of the console
 # Takes a bit different values if used with colours
 #---------------------------------------------------
-def text_align (text, side):
+def align (text, side="centre"):
   if side == "left":
     aligned = '{:<65}'.format(text)
     return aligned

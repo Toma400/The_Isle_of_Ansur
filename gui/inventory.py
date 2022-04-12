@@ -1,7 +1,7 @@
 import gui.interface
 import system.id_manag
 import system.json_manag
-from utils.colours import text_align as align
+from utils.text_manag import align
 
 #-----------------------------------------------------------------------------
 # MAIN_INV
@@ -18,14 +18,14 @@ def main_inv (name):
     # here there will be actions which you will need to choose
     print("[U] [Use the item]\n[E] [Equip the item]\n[T] [Throw item away]\n[Q] [Go back]")
     print("✺---------------------------------------------------------------✺")
-    print(align("{ use single letter to choose the action }", "centre"))
-    print(align("{ use letter, dot and number to choose both action and item }", "centre"))
+    print(align("{ use single letter to choose the action }"))
+    print(align("{ use letter, dot and number to choose both action and item }"))
     print("✺---------------------------------------------------------------✺")
     choice = input ("").lower()
     if len(choice) > 1:
       # checks if user wrote input correctly
       if "." not in choice:
-        print(align("{ incorrect selector used! }", "centre"))
+        print(align("{ incorrect selector used! }"))
         continue
       else:
         choice_list = choice.split(".")  # splits by dot and sort into the list
@@ -33,13 +33,13 @@ def main_inv (name):
         if choice_checker(name, choice_list[0], choice_list[1]) == True:
           action_selector_full(name, choice_list[0], choice_list[1])
         else:
-          print(align("{ values are incorrect! }", "centre"))
+          print(align("{ values are incorrect! }"))
           continue
     else:
       if choice_checker(name, choice) == True:  # checks if value is correct
         action_selector_empty(name, choice)
       else:
-        print(align("{ values are incorrect! }", "centre"))
+        print(align("{ values are incorrect! }"))
         continue
 
 #------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ def main_inv (name):
 def action_selector_empty(name, action):
   while True: # call stack killer: root/inventory
     print("✺---------------------------------------------------------------✺")
-    print(align("{ select item by putting number of it }", "centre"))
+    print(align("{ select item by putting number of it }"))
     print("✺---------------------------------------------------------------✺")
     try:
       item_choice = input("")
@@ -61,7 +61,7 @@ def action_selector_empty(name, action):
       else:
         break  # quits if user used 'q' key
     except ValueError:  # if item_choice is non-convertible-string
-      print(align("{ values are incorrect! }", "centre"))
+      print(align("{ values are incorrect! }"))
       continue
 
 def action_selector_full(name, action, slot):

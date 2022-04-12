@@ -33,7 +33,7 @@ def full_load (name):
 def deep_load (name):
   #differs from full_load that it checks settings integrity and returns true if everything worked properly
   import utils.text
-  import utils.colours
+  import utils.text_manag
   try:
     settings_checklist = ["time_system", "hunger_thirst", "permadeath"]
     for i in settings_checklist:
@@ -70,7 +70,7 @@ def deep_load_error (critical=False):
   import time
   import gui.menu
   import utils.text.text_align as align
-  import utils.colours.bcolors as colour
+  import utils.text_manag.bcolors as colour
   if critical == True:
     print (align (colour.CYELLOW2 + "Unfortunately that setting can't be set back to default. Please change your settings in menu to fit that save file." + colour.ENDC, "centre_colour"))
   if critical == "name":
