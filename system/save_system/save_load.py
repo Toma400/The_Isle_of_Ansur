@@ -32,23 +32,21 @@ def full_load (name):
 
 def deep_load (name):
   #differs from full_load that it checks settings integrity and returns true if everything worked properly
-  import utils.text
-  import utils.text_manag
+  import utils.text_manag as util
   try:
     settings_checklist = ["time_system", "hunger_thirst", "permadeath"]
+    error_count = 0
     for i in settings_checklist:
       #i - key, json_read - key value
       profile_data = system.json_manag.save_read(name, "profile", i)
       settings_data = system.json_manag.json_read("system/system_settings.json", i)
-      error_count = 0
       if profile_data != settings_data:
-        print (utils.text.text_align (
-          utils.colours.bcolors.CYELLOW2 + "Found difference between system settings and save settings with: " + i + utils.colours.bcolors.ENDC, "centre_colour"))
+        print (util.colour_formatter("yellow", "Found difference between system settings and save settings with: " + i))
         #time system difference
         error_count = error_count + 1
         if i == "time_system" and profile_data == "proportional" or i == "hunger_thirst" and profile_data == False:
           temp_var = input(
-            utils.text.text_align ("Do you want your save file settings be changed? [Y/N]", "centre_colour")).lower()
+            util.align ("Do you want your save file settings be changed? [Y/N]", "centre_colour")).lower()
           if temp_var == "y":
             system.json_manag.save_change_ins(name, "profile", i, settings_data)
             error_count = error_count - 1
@@ -69,13 +67,14 @@ def deep_load (name):
 def deep_load_error (critical=False):
   import time
   import gui.menu
-  import utils.text.text_align as align
-  import utils.text_manag.bcolors as colour
+  from utils.text_manag import colour_formatter as format
+  from utils.text_manag import align as align
+  from utils.text_manag import bcolors as colour
   if critical == True:
-    print (align (colour.CYELLOW2 + "Unfortunately that setting can't be set back to default. Please change your settings in menu to fit that save file." + colour.ENDC, "centre_colour"))
+    print (format("yellow", "Unfortunately that setting can't be set back to default. Please change your settings in menu to fit that save file."))
   if critical == "name":
-    print (align (colour.CYELLOW2 + "No character profile is found with that name. Please make sure you wrote it correctly." + colour.ENDC, "centre_colour"))
-    print (align (colour.CYELLOW2 + "[case sensitivity matters]" + colour.ENDC, "centre_colour"))
-  print (align (colour.CYELLOW2 + "Redirecting to game menu." + colour.ENDC, "centre_colour"))
+    print (format("yellow", "No character profile is found with that name. Please make sure you wrote it correctly." + colour.ENDC, "centre_colour"))
+    print (format("yellow", "[case sensitivity matters]"))
+  print (format("yellow", "Redirecting to game menu."))
   time.sleep(1)
   gui.menu.start()

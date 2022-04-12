@@ -9,7 +9,7 @@ import PyInstaller.__main__
 import PyInstaller
 from distutils.dir_util import copy_tree
 from utils.text_manag import bcolors as colour
-from utils.text import text_align as align
+from utils.text_manag import align as align
 from utils.repo_manag import file_deleting as delete
 
 #-----------------------------------------------------------
@@ -70,9 +70,9 @@ def forge():
     file_deleting(DefaultRun.ommitted_elements) # deletes files excluded in list
     print(align(colour.CGREEN + "Build successful" + colour.ENDC, "centre_colour"))
 
-print(align(colour.CVIOLET + "------------------------------", "centre"))
-print(align(" ISLE OF ANSUR BUILD CONSTRUCTOR ", "centre"))
+print(align(colour.CVIOLET + "------------------------------"))
+print(align(" ISLE OF ANSUR BUILD CONSTRUCTOR "))
 print("\n")
 print(align("----------------------------", "left"))
-print(align("------------------------------------------------------------------------------" + colour.ENDC, "centre"))
+print(align("------------------------------------------------------------------------------" + colour.ENDC))
 forge()
