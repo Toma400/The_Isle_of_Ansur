@@ -150,11 +150,11 @@ def settings():
     except KeyError:
       break
 
-#---------------------------------------------------------
+#---------------------------------------------------------------------------------------------
 # PACKS
 # List all packs available, sorted by their type, also
 # operations possible on them (blacklisting, unzipping)
-#---------------------------------------------------------
+#---------------------------------------------------------------------------------------------
 def packs():
   print("\n")
   while True:
@@ -189,19 +189,38 @@ def packs():
 #----------------------------------------------------
 def pack_settings(pack_name):
   from system.mod_manag import mod_reader as p_read
+  from system.mod_manag import mod_blacklister as blacklisted
+  import webbrowser
   print("\n")
   while True:
     print(align("-----------------------------------------------------------"))
     print(format("violet", p_read(pack_name, "name")))  # mod name
     print(align("Pack ID: " + pack_name))
     print(align("⊱⋅---------------------------------⋅⊰"))
-    ## HERE PUT PACK TYPE, INFO ABOUT BEING ENABLED OR DISABLED
+    if blacklisted(pack_name, True):  # shows up only if blacklisted
+      print(format("red", "Pack disabled"))
+    print(align("Type: " + pack_type_recogniser(pack_name)))
+    print(align("⊱⋅---------------------------------⋅⊰"))
     print(format("blue", p_read(pack_name, "description"), "left"))  # mod description
     print(align("-----------------------------------------------------------"))
     print(format("cyan", "URL: " + p_read(pack_name, "link")))  # link assigned
     print(format("green", "Credits: " + p_read(pack_name, "credits")))  # mod credits
     print(align("-----------------------------------------------------------"))
-    break
+    print("[link] Open the link")
+    print("[switch] Change mod status (enabled/disabled)")
+    print("[q] Return to pack list")
+    print(align("-----------------------------------------------------------"))
+    keyword = input("").lower()
+    if keyword == "link":  # opens website in browser
+      webbrowser.open(p_read(pack_name, "link"))
+    if keyword == "switch":
+      from system.mod_manag import mod_blacklister as b
+      b(pack_name)
+      continue
+    if keyword == "q" or "quit" or "":
+      break
+    else:
+      continue
 
 #----------------------------------------------------
 # PACK UNLOADER
@@ -210,10 +229,10 @@ def pack_settings(pack_name):
 def pack_unloader():
   pass
 
-#---------------------------------------------------------
+#---------------------------------------------------------------------------------------------
 # SYSTEM FUNCTIONS
 # Functions used for some system-related behaviours
-#---------------------------------------------------------
+#---------------------------------------------------------------------------------------------
 def is_core_pack_loaded():
   # checks whether ansur globalpack is loaded
   core_checker = sys.mod_checker("both", "ansur")
@@ -243,10 +262,10 @@ def pack_settings_checker(pack_name, pack_list):
       print(format("red", "Pack with this name does not exist!"))
       break
 
-#---------------------------------------------------------
+#---------------------------------------------------------------------------------------------
 # UNSPAGHETTIERS
 # Used for making code a bit cleaner
-#---------------------------------------------------------
+#---------------------------------------------------------------------------------------------
 def pack_type_helper(number=None):
   pack_types = [
     "globalpack",
@@ -265,3 +284,11 @@ def pack_colour(type):
     return colour.CVIOLET2 + pack_type_helper()[1] + colour.ENDC
   elif type == "statpack":
     return colour.CGREEN + pack_type_helper()[2] + colour.ENDC
+
+def pack_type_recogniser(pack_name):
+  if pack_name in pack_loader("globalpack"):
+    return pack_colour("globalpack")
+  elif pack_name in pack_loader("statpack"):
+    return pack_colour("statpack")
+  elif pack_name in pack_loader("worldpack"):
+    return pack_colour("worldpack")

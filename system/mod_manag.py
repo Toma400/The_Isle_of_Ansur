@@ -79,6 +79,24 @@ def mod_reader(name, value):
     # or message of not-found element
 
 #--------------------------------------------------------
+# MOD BLACKLISTER
+# Used to either blacklist/whitelist specific mod, or
+# to return value if specific mod is blacklisted
+#--------------------------------------------------------
+def mod_blacklister(mod, is_blacklisted=False):
+  from system.json_manag import json_read as read
+  from system.json_manag import json_write as write
+  blacklist = read("system/blackloading.json", "", True)
+  if is_blacklisted:
+    return mod in blacklist
+  else:
+    if mod in blacklist:
+      blacklist.remove(mod)
+    else:
+      blacklist.append(mod)
+    write("system/blackloading.json", blacklist)
+
+#--------------------------------------------------------
 # ID BUILDER
 # Small function to unclutter ID building
 #--------------------------------------------------------
