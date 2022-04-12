@@ -26,14 +26,13 @@ same with booleans taking only `true/false` values.
 ## Races.json
 Races represent main factor of creating character statistics, adding bonuses for attributes, powers, sometimes also perks and abilities.
 You can start by seeing vanilla template uploaded 
-[here](https://drive.google.com/file/d/1nLyoPmMxBYhFnm1TzhfKntHXuwhNqwOd/view?usp=sharing).
+[here](https://drive.google.com/file/d/1ffEDK6phESfF4N3DQMUbyXUAc3wqlNXe/view?usp=sharing).
 
 One of races uploaded can look like this:
 ```
 {
   "baedoorian": [
     {
-      "race_id": "ansur:baedoorian",
       "descript": "Human, Born in Baedoor",
       "atr_strength": 2,
       "atr_charisma": 1,
@@ -63,7 +62,7 @@ Using `spec_diamond/spec_moon` is not prohibited,
 but it's definitely lore-unfriendly, as this bonus comes only with race.
 
 Example file with vanilla classes can be found 
-[here](https://drive.google.com/file/d/1Dn0jOxeOzoqI2pqwwP3IiQA49IIyQ7kv/view?usp=sharing).
+[here](https://drive.google.com/file/d/1tP1ZKsBqBjoKnlj47js23hGpjHIirqm7/view?usp=sharing).
 
 If you want to make your class exclusive to specific race, you can use 
 `race_exclusive: RID` value, stating RID of selected race.
