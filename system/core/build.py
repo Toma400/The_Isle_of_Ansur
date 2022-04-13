@@ -73,6 +73,6 @@ def forge():
 print(align(colour.CVIOLET + "------------------------------"))
 print(align(" ISLE OF ANSUR BUILD CONSTRUCTOR "))
 print("\n")
-print(align("----------------------------", "left"))
+print(align("----------------------------"))
 print(align("------------------------------------------------------------------------------" + colour.ENDC))
 forge()

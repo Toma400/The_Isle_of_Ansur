@@ -5,6 +5,7 @@ from system.settings import version_call as version_call
 from system.settings import settings as settings_check
 
 import gui.character
+import gui.interface
 import system.mod_manag as sys
 
 def start():
@@ -12,6 +13,7 @@ def start():
   if settings_check("autoimport"):
     pack_unloader()
   while True:
+    first_game = False
     print ('''\n\n|__) _|_    _ _ _   (_ |_  _  _| _     _   _  _  _|  |  . _ |_ |_ 
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 
                                                          _/  
@@ -29,7 +31,16 @@ def start():
     menu_choice = input ("")
     if menu_choice == "1":
       if is_core_pack_loaded():
-        gui.character.name()
+        name = gui.character.name()
+        if name:
+          if gui.character.gender(name):
+            if gui.character.race(name):
+              if gui.character.profession(name):
+                if gui.character.manual_attribute(name):
+                  if gui.character.manual_ability(name):
+                    first_game = True
+        else:
+          continue
     elif menu_choice == "2":
       if is_core_pack_loaded():
         game_load()
@@ -40,6 +51,8 @@ def start():
         packs()
     elif menu_choice == "5" or menu_choice == "q":
       break
+    if first_game:  # run only if menu_choice is run and all character creation steps are done
+      gui.interface.main_game(name)  # dw about warning, it is strictly conditioned to happen
 
 def game_load():
   import utils.repo_manag as repo_manag

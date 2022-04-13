@@ -12,8 +12,8 @@
 #   game to constantly communicate with saved profile
 #-------------------------------------------------------------------------------------------------------------------
 from utils.text_manag import align
-from utils.text_manag import bcolors as colour
 from utils.text_manag import colour_formatter as format
+from utils.text_manag import quit_checker as quit
 
 import system.json_manag as json_manag
 import system.mod_manag
@@ -28,16 +28,15 @@ def name():
   print ("\n")
   while True:
     player_name = input ("")
-    if player_name == "0" or player_name == "q":
-      break
+    if quit(player_name):
+      return False
     else:
       if system.save_system.initialisation.folder_creating(player_name) == False:
         # function creating profile, if it fails then loops back to start (usually because of already existing name of character)
         continue
       else:
         json_manag.save_change(player_name, "profile", "name", "replace", player_name)
-        gender(player_name)
-        break
+        return player_name
 
 def gender(name):
   print (format("blue+", "--------------------"))
@@ -49,15 +48,16 @@ def gender(name):
   print ("\n")
   while True:
     gender = input ("")
-    if gender == "1" or gender == "2":
+    if quit(gender):
+      return False
+    elif gender == "1" or gender == "2":
       gender_name = ""
       if gender == "1":
         gender_name = "Male"
       elif gender == "2":
         gender_name = "Female"
       json_manag.save_change(name, "profile", "gender", "replace", gender_name)
-      race(name)
-      break
+      return True
     else:
       continue
 
@@ -72,8 +72,13 @@ def race(name):
   listing_races(races_loaded, rid_conv)  # prints out available races
   print ("\n")
   while True:
-    choose_race = int(input (""))
-    if choose_race > 0 and choose_race <= races_count:
+    try:
+      choose_race = int(input (""))
+    except ValueError:
+      continue
+    if quit(choose_race):
+      return False
+    elif choose_race > 0 and choose_race <= races_count:
       chosen_race = races_loaded[choose_race-1]
       system.json_manag.save_change(name, "profile", "race", "replace", chosen_race)
       for i in rid_conv(chosen_race, 0, True):
@@ -86,8 +91,7 @@ def race(name):
         except KeyError:
           #detector of values that can't be added
           print ("Unknown value:" + i + ". Skipped.")
-      profession(name)
-      break
+      return True
     else:
       continue
 
@@ -104,35 +108,36 @@ def profession(name):
   while True:
     try:  # checks if input is convertable to number
       choose_class = int(input (""))
-      if choose_class > 0 and choose_class <= classes_count:
-        chosen_class = classes_loaded[choose_class-1]
+    except ValueError:  # loops back if player put non-numberic input
+      continue
+    if quit(choose_class):
+      return False
+    elif choose_class > 0 and choose_class <= classes_count:
+      chosen_class = classes_loaded[choose_class-1]
+      try:
+        #checks
+        if system.json_manag.save_read(name, "profile", "race") == cid_conv(chosen_class, "race_exclusive"):
+          pass
+        else:
+          print (format("yellow", "Class is exclusive for race you don't represent!"))
+          print ("\n")
+          continue
+      except KeyError:
+        pass
+      #runs if not interrupted by race_exclusivity
+      system.json_manag.save_change(name, "profile", "class", "replace", chosen_class)
+      for i in cid_conv(chosen_class, 0, True):
+        k = cid_conv(chosen_class, i)
         try:
-          #checks
-          if system.json_manag.save_read(name, "profile", "race") == cid_conv(chosen_class, "race_exclusive"):
+          if i == "class_id" or i == "descript" or i == "race_exclusive":
             pass
           else:
-            print (format("yellow", "Class is exclusive for race you don't represent!"))
-            print ("\n")
-            continue
+            system.json_manag.save_change_ins(name, "profile", i, k)
         except KeyError:
-          pass
-        #runs if not interrupted by race_exclusivity
-        system.json_manag.save_change(name, "profile", "class", "replace", chosen_class)
-        for i in cid_conv(chosen_class, 0, True):
-          k = cid_conv(chosen_class, i)
-          try:
-            if i == "class_id" or i == "descript" or i == "race_exclusive":
-              pass
-            else:
-              system.json_manag.save_change_ins(name, "profile", i, k)
-          except KeyError:
-            #detector of values that can't be added
-            print ("Unknown value:" + i + ". Skipped.")
-        manual_attribute(name)
-        break
-      else:
-        continue
-    except ValueError:  # loops back if player put non-numberic input
+          #detector of values that can't be added
+          print ("Unknown value:" + i + ". Skipped.")
+      return True
+    else:
       continue
 
 def manual_attribute(name):
@@ -149,8 +154,13 @@ def manual_attribute(name):
   listing_attributes(attribute_list)  # prints out attributes
   print ("\n")
   while True:
-    choose_atr = int(input (""))
-    if choose_atr > 0 and choose_atr <= len(attribute_list):
+    try:
+      choose_atr = int(input (""))
+    except ValueError:
+      continue
+    if quit(choose_atr):
+      return False
+    elif choose_atr > 0 and choose_atr <= len(attribute_list):
       choose_atr = attribute_list[choose_atr-1].lower()
       choose_atr = choose_atr.replace(" ", "_")
       choose_atr = ("atr_" + choose_atr)
@@ -158,12 +168,10 @@ def manual_attribute(name):
     else:
       continue
     system.json_manag.save_change(name, "profile", choose_atr, "math", 1)
-    manual_ability(name)
-    break
+    return True
 
 def manual_ability(name):
   import system.id_manag
-  import gui.interface
   from system.ref_systems.default_stats import profile
   abilities = profile.abilities
   ability_list = []
@@ -182,16 +190,18 @@ def manual_ability(name):
   while True:
     try:
       choose_abil = int(input (""))
-      if choose_abil > 0 and choose_abil <= len(ability_list):
-        choose_abil = ability_list[choose_abil-1].lower()
-        choose_abil = choose_abil.replace(" ", "_")
-        choose_abil = ("abil_" + choose_abil)
-      else:
-        continue  # previously it was calling of manual attribute, but this doesn't make sense here
-      system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
-      gui.interface.main_game(name)
     except ValueError:
       continue
+    if quit(choose_abil):
+      return False
+    elif choose_abil > 0 and choose_abil <= len(ability_list):
+      choose_abil = ability_list[choose_abil-1].lower()
+      choose_abil = choose_abil.replace(" ", "_")
+      choose_abil = ("abil_" + choose_abil)
+    else:
+      continue  # previously it was calling of manual attribute, but this doesn't make sense here # <- WTF I meant here?
+    system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
+    return True
 
 #-------------------------------------------------------
 # LIST PRINTING FUNCTIONS

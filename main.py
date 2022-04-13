@@ -3,6 +3,8 @@ system.cache.cache_manag.cache_redirect()
 from utils.text_manag import colour_formatter as format
 import gui.menu
 import traceback
+# import win_unicode_console
+# win_unicode_console.enable() <- not useful after all
 
 try:
     gui.menu.start()

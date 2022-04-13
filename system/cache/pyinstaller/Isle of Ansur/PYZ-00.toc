@@ -17,6 +17,10 @@
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\importlib\\metadata.py',
    'PYMODULE'),
+  ('importlib.abc',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\importlib\\abc.py',
+   'PYMODULE'),
   ('contextlib',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\contextlib.py',
@@ -792,10 +796,6 @@
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\csv.py',
    'PYMODULE'),
-  ('importlib.abc',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\importlib\\abc.py',
-   'PYMODULE'),
   ('importlib._bootstrap',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\importlib\\_bootstrap.py',
@@ -831,17 +831,81 @@
   ('os',
    'C:\\Users\\Ryzen 5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\os.py',
    'PYMODULE'),
-  ('stringprep',
+  ('_py_abc',
    'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\stringprep.py',
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
    'PYMODULE'),
   ('tracemalloc',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\tracemalloc.py',
    'PYMODULE'),
-  ('_py_abc',
+  ('stringprep',
    'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\stringprep.py',
+   'PYMODULE'),
+  ('win_unicode_console',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\__init__.py',
+   'PYMODULE'),
+  ('win_unicode_console.unicode_argv',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\unicode_argv.py',
+   'PYMODULE'),
+  ('ctypes.wintypes',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\wintypes.py',
+   'PYMODULE'),
+  ('win_unicode_console.raw_input',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\raw_input.py',
+   'PYMODULE'),
+  ('win_unicode_console.info',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\info.py',
+   'PYMODULE'),
+  ('win_unicode_console.readline_hook',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\readline_hook.py',
+   'PYMODULE'),
+  ('ctypes.util',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\util.py',
+   'PYMODULE'),
+  ('ctypes._aix',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\_aix.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dyld',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\macholib\\dyld.py',
+   'PYMODULE'),
+  ('ctypes.macholib',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\macholib\\__init__.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dylib',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\macholib\\dylib.py',
+   'PYMODULE'),
+  ('ctypes.macholib.framework',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\macholib\\framework.py',
+   'PYMODULE'),
+  ('win_unicode_console.console',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\console.py',
+   'PYMODULE'),
+  ('win_unicode_console.streams',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\streams.py',
+   'PYMODULE'),
+  ('win_unicode_console.file_object',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\file_object.py',
+   'PYMODULE'),
+  ('win_unicode_console.buffer',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\buffer.py',
    'PYMODULE'),
   ('gui.menu',
    'D:\\Ministerstwo '
