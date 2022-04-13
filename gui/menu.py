@@ -39,7 +39,10 @@ def start():
                 if gui.character.manual_attribute(name):
                   if gui.character.manual_ability(name):
                     first_game = True
-        else:
+        if not first_game:
+          # [here there was import of utils.repo_manag.file_deleting]
+          # delete("saves/" + name) <- it doesn't work, because for some reason file
+          # is created *after* closing the game, not during function running
           continue
     elif menu_choice == "2":
       if is_core_pack_loaded():

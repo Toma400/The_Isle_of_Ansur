@@ -19,9 +19,6 @@ def folder_creating(name):
     except OSError:
       print ("Creation of the directory %s failed" % path)
       return False
-    else:
-      #print ("Successfully created the directory %s" % path)
-      pass
 
 def profile_creating(path):
   import os
