@@ -126,9 +126,17 @@ def quit_checker (text_to_check):
     else:
         return False
 
+#---------------------------------------------------
+# ENCODER
+# Handles different encoding value
+#---------------------------------------------------
 def print_encoded (text):
     import sys
-    if sys.stdout.encoding != "UTF-8":
+    if sys.stdout.encoding != "utf-8":
+        print("ENCODE:" + sys.stdout.encoding)
+        print(text)
         text = text.encode(sys.stdout.encoding)
-        text = text.decode("UTF-8")
+        print(text)
+        text = text.decode("utf-8")
+        print(text)
     return text

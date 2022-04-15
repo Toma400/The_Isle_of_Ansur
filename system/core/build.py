@@ -52,7 +52,13 @@ class DefaultRun:
         full_export_path + "__pycache__",
         full_export_path + ".breakpoints",
         full_export_path + ".gitignore",
-        full_export_path + "test.py"
+        full_export_path + "test.py",
+        # caches
+        full_export_path + "gui/__pycache__",
+        full_export_path + "system/__pycache__",
+        full_export_path + "utils/__pycache__",
+        full_export_path + "system/core/__pycache__",
+        full_export_path + "system/cache/__pycache__"
     ]
 
 # function used to delete elements excluded in list above
@@ -63,12 +69,9 @@ def file_deleting(delete_list):
         j += 1
 
 def cache_clearing():
-    try:
-        delete("system/cache/Ministerstwo Kalibracyjne")
-        delete("system/cache/Users")
-        delete("system/cache/pyinstaller/Isle of Ansur")
-    except:
-        print(align("Cache couldn't be removed"))
+    delete("system/cache/Ministerstwo Kalibracyjne")
+    delete("system/cache/Users")
+    delete("system/cache/pyinstaller/Isle of Ansur")
 
 # main function for running builder
 def forge():
@@ -77,7 +80,6 @@ def forge():
     )
     copy_tree(DefaultRun.core_path, DefaultRun.full_export_path) # copies all files over
     file_deleting(DefaultRun.ommitted_elements) # deletes files excluded in list
-    cache_clearing()
     print(align(colour.CGREEN + "Build successful" + colour.ENDC, "centre_colour"))
 
 print(align(colour.CVIOLET + "------------------------------"))
@@ -86,3 +88,4 @@ print("\n")
 print(align("----------------------------"))
 print(align("------------------------------------------------------------------------------" + colour.ENDC))
 forge()
+cache_clearing()
