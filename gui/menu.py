@@ -1,6 +1,7 @@
 from utils.text_manag import bcolors as colour
 from utils.text_manag import align
 from utils.text_manag import colour_formatter as format
+from utils.text_manag import print_encoded as printe
 from system.settings import version_call as version_call
 from system.settings import settings as settings_check
 
@@ -18,7 +19,7 @@ def start():
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 
                                                          _/  
 ''')
-    print ("𝚃𝚑𝚎 𝙸𝚜𝚕𝚎 𝚘𝚏 𝙰𝚗𝚜𝚞𝚛\n")
+    printe ("𝚃𝚑𝚎 𝙸𝚜𝚕𝚎 𝚘𝚏 𝙰𝚗𝚜𝚞𝚛\n")
     print (align(version_call("game_version") + "\n\n", "right"))
     is_core_pack_loaded()
     print (align("--------------------", "centre"))
@@ -43,7 +44,7 @@ def start():
           # [here there was import of utils.repo_manag.file_deleting]
           # delete("saves/" + name) <- it doesn't work, because for some reason file
           # is created *after* closing the game, not during function running
-          continue
+          continue  # <- possibly unnecessary code, loop will rerun anyway
     elif menu_choice == "2":
       if is_core_pack_loaded():
         game_load()
@@ -186,7 +187,7 @@ def packs():
     packs_loaded = []
     print(align("-----------------------------------------------------------"))
     print(align(" PACKS LOADED "))
-    print(align("⊱⋅-----------------------------------------⋅⊰"))
+    printe(align("⊱⋅-----------------------------------------⋅⊰"))
     for pack_type in pack_type_helper():
       packgroup_opened = pack_loader(pack_type)
       if packgroup_opened:  # checks if specific packgroup list is not empty
@@ -227,7 +228,7 @@ def pack_settings(pack_name):
     if blacklisted(pack_name, True):  # shows up only if blacklisted
       print(format("red", "Pack disabled"))
     print(align("Type: " + pack_type_recogniser(pack_name)))
-    print(align("⊱⋅---------------------------------⋅⊰"))
+    printe(align("⊱⋅---------------------------------⋅⊰"))
     print(format("blue", p_read(pack_name, "description"), "left"))  # mod description
     print(align("-----------------------------------------------------------"))
     print(format("cyan", "URL: " + p_read(pack_name, "link")))  # link assigned

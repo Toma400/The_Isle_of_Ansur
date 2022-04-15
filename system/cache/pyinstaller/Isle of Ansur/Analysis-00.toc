@@ -868,81 +868,17 @@
   ('os',
    'C:\\Users\\Ryzen 5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\os.py',
    'PYMODULE'),
-  ('_py_abc',
+  ('stringprep',
    'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\stringprep.py',
    'PYMODULE'),
   ('tracemalloc',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\tracemalloc.py',
    'PYMODULE'),
-  ('stringprep',
+  ('_py_abc',
    'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\stringprep.py',
-   'PYMODULE'),
-  ('win_unicode_console',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\__init__.py',
-   'PYMODULE'),
-  ('win_unicode_console.unicode_argv',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\unicode_argv.py',
-   'PYMODULE'),
-  ('ctypes.wintypes',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\wintypes.py',
-   'PYMODULE'),
-  ('win_unicode_console.raw_input',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\raw_input.py',
-   'PYMODULE'),
-  ('win_unicode_console.info',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\info.py',
-   'PYMODULE'),
-  ('win_unicode_console.readline_hook',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\readline_hook.py',
-   'PYMODULE'),
-  ('ctypes.util',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\util.py',
-   'PYMODULE'),
-  ('ctypes._aix',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\_aix.py',
-   'PYMODULE'),
-  ('ctypes.macholib.dyld',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\macholib\\dyld.py',
-   'PYMODULE'),
-  ('ctypes.macholib',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\macholib\\__init__.py',
-   'PYMODULE'),
-  ('ctypes.macholib.dylib',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\macholib\\dylib.py',
-   'PYMODULE'),
-  ('ctypes.macholib.framework',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\ctypes\\macholib\\framework.py',
-   'PYMODULE'),
-  ('win_unicode_console.console',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\console.py',
-   'PYMODULE'),
-  ('win_unicode_console.streams',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\streams.py',
-   'PYMODULE'),
-  ('win_unicode_console.file_object',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\file_object.py',
-   'PYMODULE'),
-  ('win_unicode_console.buffer',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages\\win_unicode_console\\buffer.py',
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\lib\\_py_abc.py',
    'PYMODULE'),
   ('gui.menu',
    'D:\\Ministerstwo '
@@ -959,10 +895,6 @@
   ('system',
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\__init__.py',
-   'PYMODULE'),
-  ('gui.interface',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\interface.py',
    'PYMODULE'),
   ('system.id_manag',
    'D:\\Ministerstwo '
@@ -1000,6 +932,14 @@
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\mod_manag.py',
    'PYMODULE'),
+  ('gui.interface',
+   'D:\\Ministerstwo '
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\interface.py',
+   'PYMODULE'),
+  ('gui',
+   'D:\\Ministerstwo '
+   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\__init__.py',
+   'PYMODULE'),
   ('gui.character',
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\character.py',
@@ -1015,10 +955,6 @@
   ('system.save_system.initialisation',
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\save_system\\initialisation.py',
-   'PYMODULE'),
-  ('gui',
-   'D:\\Ministerstwo '
-   'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\gui\\__init__.py',
    'PYMODULE'),
   ('system.settings',
    'D:\\Ministerstwo '
@@ -1036,13 +972,13 @@
    'D:\\Ministerstwo '
    'Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\system\\cache\\__init__.py',
    'PYMODULE')],
- [('VCRUNTIME140.dll',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\VCRUNTIME140.dll',
-   'BINARY'),
-  ('python38.dll',
+ [('python38.dll',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\python38.dll',
+   'BINARY'),
+  ('VCRUNTIME140.dll',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\VCRUNTIME140.dll',
    'BINARY'),
   ('_lzma',
    'C:\\Users\\Ryzen '
@@ -1118,37 +1054,5 @@
    'D:/Ministerstwo '
    'Kalibracyjne/PyCharm_Projects/Isle_of_Ansur/system/cache/pyinstaller\\Isle '
    'of Ansur\\base_library.zip',
-   'DATA'),
-  ('climage-0.1.3.dist-info\\LICENSE',
-   'c:\\users\\ryzen '
-   '5\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\climage-0.1.3.dist-info\\LICENSE',
-   'DATA'),
-  ('climage-0.1.3.dist-info\\RECORD',
-   'c:\\users\\ryzen '
-   '5\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\climage-0.1.3.dist-info\\RECORD',
-   'DATA'),
-  ('climage-0.1.3.dist-info\\top_level.txt',
-   'c:\\users\\ryzen '
-   '5\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\climage-0.1.3.dist-info\\top_level.txt',
-   'DATA'),
-  ('climage-0.1.3.dist-info\\METADATA',
-   'c:\\users\\ryzen '
-   '5\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\climage-0.1.3.dist-info\\METADATA',
-   'DATA'),
-  ('climage-0.1.3.dist-info\\WHEEL',
-   'c:\\users\\ryzen '
-   '5\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\climage-0.1.3.dist-info\\WHEEL',
-   'DATA'),
-  ('climage-0.1.3.dist-info\\entry_points.txt',
-   'c:\\users\\ryzen '
-   '5\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\climage-0.1.3.dist-info\\entry_points.txt',
-   'DATA'),
-  ('climage-0.1.3.dist-info\\REQUESTED',
-   'c:\\users\\ryzen '
-   '5\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\climage-0.1.3.dist-info\\REQUESTED',
-   'DATA'),
-  ('climage-0.1.3.dist-info\\INSTALLER',
-   'c:\\users\\ryzen '
-   '5\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\climage-0.1.3.dist-info\\INSTALLER',
    'DATA')],
  [])

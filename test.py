@@ -14,7 +14,10 @@ from gui.menu import pack_unloader as p
 #i = Image.open("utils/assets/icon.ico")
 #i.show()
 
-import utils.repo_manag
+#import utils.repo_manag
 
-name = input("Let's delete saves for: ")
-utils.repo_manag.file_deleting("saves/" + name)
+# name = input("Let's delete saves for: ")
+# utils.repo_manag.file_deleting("saves/" + name)
+
+import sys
+print (type(sys.stdin.encoding))

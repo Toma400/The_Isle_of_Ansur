@@ -125,3 +125,10 @@ def quit_checker (text_to_check):
         return True
     else:
         return False
+
+def print_encoded (text):
+    import sys
+    if sys.stdout.encoding != "UTF-8":
+        text = text.encode(sys.stdout.encoding)
+        text = text.decode("UTF-8")
+    return text

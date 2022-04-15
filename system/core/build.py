@@ -51,7 +51,8 @@ class DefaultRun:
         full_export_path + ".idea",
         full_export_path + "__pycache__",
         full_export_path + ".breakpoints",
-        full_export_path + ".gitignore"
+        full_export_path + ".gitignore",
+        full_export_path + "test.py"
     ]
 
 # function used to delete elements excluded in list above

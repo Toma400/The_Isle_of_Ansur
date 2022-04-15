@@ -29,14 +29,16 @@ def name():
   while True:
     player_name = input ("")
     if quit(player_name):
-      return False
+      player_name = False  # return will be False
+      break
     else:
       if system.save_system.initialisation.folder_creating(player_name) == False:
         # function creating profile, if it fails then loops back to start (usually because of already existing name of character)
         continue
       else:
         json_manag.save_change(player_name, "profile", "name", "replace", player_name)
-        return player_name
+        break # return will be player_name
+  return player_name
 
 def gender(name):
   print (format("blue+", "--------------------"))
@@ -49,7 +51,8 @@ def gender(name):
   while True:
     gender = input ("")
     if quit(gender):
-      return False
+      gender = False
+      break
     elif gender == "1" or gender == "2":
       gender_name = ""
       if gender == "1":
@@ -57,9 +60,11 @@ def gender(name):
       elif gender == "2":
         gender_name = "Female"
       json_manag.save_change(name, "profile", "gender", "replace", gender_name)
-      return True
+      gender = True
+      break
     else:
       continue
+  return gender
 
 def race(name):
   from system.id_manag import rid_conv as rid_conv #garbage.py rule avoided
@@ -77,7 +82,8 @@ def race(name):
     except ValueError:
       continue
     if quit(choose_race):
-      return False
+      choose_race = False
+      break  # returns False
     elif choose_race > 0 and choose_race <= races_count:
       chosen_race = races_loaded[choose_race-1]
       system.json_manag.save_change(name, "profile", "race", "replace", chosen_race)
@@ -91,9 +97,11 @@ def race(name):
         except KeyError:
           #detector of values that can't be added
           print ("Unknown value:" + i + ". Skipped.")
-      return True
+      choose_race = True
+      break  # returns True
     else:
       continue
+  return choose_race
 
 def profession(name):
   from system.id_manag import cid_conv as cid_conv #garbage.py rule avoided
@@ -111,7 +119,8 @@ def profession(name):
     except ValueError:  # loops back if player put non-numberic input
       continue
     if quit(choose_class):
-      return False
+      choose_class = False
+      break  # returns False
     elif choose_class > 0 and choose_class <= classes_count:
       chosen_class = classes_loaded[choose_class-1]
       try:
@@ -136,9 +145,11 @@ def profession(name):
         except KeyError:
           #detector of values that can't be added
           print ("Unknown value:" + i + ". Skipped.")
-      return True
+      choose_class = True
+      break  # returns True
     else:
       continue
+  return choose_class
 
 def manual_attribute(name):
   import system.ref_systems.default_stats
@@ -159,16 +170,18 @@ def manual_attribute(name):
     except ValueError:
       continue
     if quit(choose_atr):
-      return False
+      choose_atr = False
+      break  # returns False
     elif choose_atr > 0 and choose_atr <= len(attribute_list):
       choose_atr = attribute_list[choose_atr-1].lower()
       choose_atr = choose_atr.replace(" ", "_")
       choose_atr = ("atr_" + choose_atr)
-      pass
     else:
       continue
     system.json_manag.save_change(name, "profile", choose_atr, "math", 1)
-    return True
+    choose_atr = True
+    break  # returns True
+  return choose_atr
 
 def manual_ability(name):
   import system.id_manag
@@ -193,7 +206,8 @@ def manual_ability(name):
     except ValueError:
       continue
     if quit(choose_abil):
-      return False
+      choose_abil = False
+      break  # returns False
     elif choose_abil > 0 and choose_abil <= len(ability_list):
       choose_abil = ability_list[choose_abil-1].lower()
       choose_abil = choose_abil.replace(" ", "_")
@@ -201,7 +215,9 @@ def manual_ability(name):
     else:
       continue  # previously it was calling of manual attribute, but this doesn't make sense here # <- WTF I meant here?
     system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
-    return True
+    choose_abil = True
+    break  # returns True
+  return choose_abil
 
 #-------------------------------------------------------
 # LIST PRINTING FUNCTIONS
