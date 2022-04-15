@@ -62,6 +62,14 @@ def file_deleting(delete_list):
         delete(delete_list[j])
         j += 1
 
+def cache_clearing():
+    try:
+        delete("system/cache/Ministerstwo Kalibracyjne")
+        delete("system/cache/Users")
+        delete("system/cache/pyinstaller/Isle of Ansur")
+    except:
+        print(align("Cache couldn't be removed"))
+
 # main function for running builder
 def forge():
     PyInstaller.__main__.run(
@@ -69,6 +77,7 @@ def forge():
     )
     copy_tree(DefaultRun.core_path, DefaultRun.full_export_path) # copies all files over
     file_deleting(DefaultRun.ommitted_elements) # deletes files excluded in list
+    cache_clearing()
     print(align(colour.CGREEN + "Build successful" + colour.ENDC, "centre_colour"))
 
 print(align(colour.CVIOLET + "------------------------------"))
