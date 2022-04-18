@@ -8,12 +8,16 @@ from system.settings import settings as settings_check
 import gui.character
 import gui.interface
 import system.mod_manag as sys
+import logging as log
 
 def start():
+  log.info("Initialising start menu...")
   version_call("game_version")
   if settings_check("autoimport"):
+    log.info("Autoimporting of packs enabled. Importing...")
     pack_unloader()
   while True:
+    log.info("Menu successfully loaded. Printing elements.")
     first_game = False
     print ('''\n\n|__) _|_    _ _ _   (_ |_  _  _| _     _   _  _  _|  |  . _ |_ |_ 
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 

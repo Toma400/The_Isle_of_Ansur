@@ -3,13 +3,18 @@ system.cache.cache_manag.cache_redirect()
 from utils.text_manag import colour_formatter as format
 import gui.menu
 import traceback
+import system.log_manag
+import logging as log
 # import win_unicode_console
 # win_unicode_console.enable() <- not useful after all
+
+system.log_manag.run()
 
 try:
     gui.menu.start()
 except:
     print("---------------------------------------------------------")
+    log.critical("Main chain stopped. Printing the issue.", exc_info=True)
     traceback.print_exc()
     print("\n")
     print("---------------------------------------------------------")
