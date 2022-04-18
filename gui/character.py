@@ -46,6 +46,7 @@ def gender(name):
   print (align("Choose your gender"))
   print (align("[1] Male"))
   print (align("[2] Female"))
+  print (align("[3] Non-binary"))
   print (align("---"))
   print ("\n")
   while True:
@@ -53,12 +54,14 @@ def gender(name):
     if quit(gender):
       gender = False
       break
-    elif gender == "1" or gender == "2":
+    elif gender == "1" or gender == "2" or gender == "3":
       gender_name = ""
       if gender == "1":
         gender_name = "Male"
       elif gender == "2":
         gender_name = "Female"
+      elif gender == "3":
+        gender_name = "Non-binary"
       json_manag.save_change(name, "profile", "gender", "replace", gender_name)
       gender = True
       break

@@ -8,13 +8,13 @@
    'Kalibracyjne/PyCharm_Projects/Isle_of_Ansur/system/cache/pyinstaller\\Isle '
    'of Ansur\\Isle of Ansur.exe.manifest',
    'BINARY'),
-  ('python38.dll',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\python38.dll',
-   'BINARY'),
   ('VCRUNTIME140.dll',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('python38.dll',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\python38.dll',
    'BINARY'),
   ('_lzma',
    'C:\\Users\\Ryzen '
@@ -72,13 +72,13 @@
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\DLLs\\_hashlib.pyd',
    'EXTENSION'),
-  ('libssl-1_1.dll',
-   'C:\\Users\\Ryzen '
-   '5\\AppData\\Local\\Programs\\Python\\Python38\\DLLs\\libssl-1_1.dll',
-   'BINARY'),
   ('libcrypto-1_1.dll',
    'C:\\Users\\Ryzen '
    '5\\AppData\\Local\\Programs\\Python\\Python38\\DLLs\\libcrypto-1_1.dll',
+   'BINARY'),
+  ('libssl-1_1.dll',
+   'C:\\Users\\Ryzen '
+   '5\\AppData\\Local\\Programs\\Python\\Python38\\DLLs\\libssl-1_1.dll',
    'BINARY'),
   ('libffi-7.dll',
    'C:\\Users\\Ryzen '
