@@ -10,7 +10,6 @@ def run():
 
 def name_creating(name=""):
     import time
-    import os
     name_list = ["system/logs/",
                  (time.gmtime(time.time()).tm_year), "_",
                  (time.gmtime(time.time()).tm_mon), "_",

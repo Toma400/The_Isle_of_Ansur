@@ -12,6 +12,8 @@ system.log_manag.run()
 
 try:
     gui.menu.start()
+#except KeyboardInterrupt:
+    #pass
 except:
     print("---------------------------------------------------------")
     log.critical("Main chain stopped. Printing the issue.", exc_info=True)

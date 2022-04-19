@@ -4,6 +4,7 @@ from utils.text_manag import colour_formatter as format
 from utils.text_manag import encoded as enc
 from system.settings import version_call as version_call
 from system.settings import settings as settings_check
+from system.sound_manag import play_core as music
 
 import gui.character
 import gui.interface
@@ -18,6 +19,7 @@ def start():
     pack_unloader()
   while True:
     log.info("Menu successfully loaded. Printing elements.")
+    music("menu")
     first_game = False
     print ('''\n\n|__) _|_    _ _ _   (_ |_  _  _| _     _   _  _  _|  |  . _ |_ |_ 
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 
@@ -69,6 +71,7 @@ def game_load():
   import utils.text_manag as text_manag
   import system.save_system.save_load
   log.debug("Game loading menu opened. Loading profiles.")
+
   while True:
     loaded_profiles = repo_manag.dir_checker ("saves/", "dir")
     for i in loaded_profiles:
