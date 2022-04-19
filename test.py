@@ -3,5 +3,12 @@
 # name = input("Let's delete saves for: ")
 # utils.repo_manag.file_deleting("saves/" + name)
 
-import system.log_manag
-system.log_manag.run()
+#import system.log_manag
+#system.log_manag.run()
+
+import subprocess
+
+#subprocess.Popen("C:\\Windows\\System32\\notepad.exe")
+subprocess.Popen("C:\\Users\\Ryzen 5\\Desktop\\CMDer\\cmder.exe")
+
+print("Oh!")
