@@ -1,8 +1,19 @@
 # FAQ
 Here you will find all commonly asked questions, or the ones I found important to answer.
 
+* [General Questions](faq.md#general-questions)
 * [Technical Questions](faq.md#technical-questions)
 * [Copyright Questions](faq.md#copyright-questions)
+
+***
+
+# General Questions
+## 1. How long will you maintain this game? Will you like to add new mod-supporting features once you finish it?
+I can't say anything for certain as of right now, but I will try my best to maintain 
+the game as long as it will have some issues I can fix. If there's any request for 
+specific feature (especially mod-aimed) or pull request with code adding that without 
+any issues for backcompatibility, I will also try my best to review it and introduce, 
+if it would follow general game way of thinking.
 
 ***
 
