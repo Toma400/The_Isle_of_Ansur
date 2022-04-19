@@ -37,7 +37,7 @@ def start():
     if menu_choice == "1":
       if is_core_pack_loaded():
         name = gui.character.name()
-        if name:
+        if name != "0":
           if gui.character.gender(name):
             if gui.character.race(name):
               if gui.character.profession(name):
@@ -115,7 +115,7 @@ def game_load():
       except FileNotFoundError:
         system.save_system.save_load.deep_load_error("name")  # recursiveness, call stack killer needed + redirects to main menu weirdly
         log.debug("File not found. Deleting of save cancelled.")
-    elif text_manag.quit_checker():
+    elif text_manag.quit_checker(temp_var):
       break
     else:
       log.debug("Loading of save initialised. Proceeding.")

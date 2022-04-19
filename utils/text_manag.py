@@ -117,14 +117,20 @@ def align (text, side="centre"):
 # Checks for key pressed being one of "quitter"
 # keybinds (q/0/quit or empty click)
 #---------------------------------------------------
-def quit_checker (text_to_check):
-    if text_to_check == "q"\
-    or text_to_check == "0"\
-    or text_to_check == ""\
-    or text_to_check == "quit":
-        return True
+def quit_checker (text_to_check, soft=False, *soft_keys):
+    if soft:  # used if you want to give more choice
+        if text_to_check in soft_keys:
+            return True
+        else:
+            return False
     else:
-        return False
+        if text_to_check == "q" \
+        or text_to_check == "0"\
+        or text_to_check == ""\
+        or text_to_check == "quit":
+            return True
+        else:
+            return False
 
 #---------------------------------------------------
 # ENCODER

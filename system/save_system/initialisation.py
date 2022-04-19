@@ -1,3 +1,5 @@
+import logging as log
+
 def directory_call():
   import os
   path = os.getcwd()
@@ -10,6 +12,7 @@ def folder_creating(name):
   path = "saves/" + name
   if os.path.isdir(path) == True:
     print (util.colour_formatter("yellow", "※ Not able to create player profile, the name is taken. Please use different name instead ※"))
+    log.debug("Name is taken.")
     return False
   else:
     try:
@@ -18,6 +21,7 @@ def folder_creating(name):
       return True
     except OSError:
       print ("Creation of the directory %s failed" % path)
+      log.debug("OSError occured.")
       return False
 
 def profile_creating(path):

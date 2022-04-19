@@ -16,9 +16,11 @@ from utils.text_manag import colour_formatter as format
 from utils.text_manag import quit_checker as quit
 
 import system.json_manag as json_manag
+import logging as log
 import system.mod_manag
 
 def name():
+  log.info("Initialising character setup. Opening name selection...")
   import system.save_system.initialisation
   print (format("blue+", "--------------------"))
   print ("\n")
@@ -28,19 +30,23 @@ def name():
   print ("\n")
   while True:
     player_name = input ("")
-    if quit(player_name):
-      player_name = False  # return will be False
+    if quit(player_name, True, "0"):
+      log.debug("Cancelling character setup. Coming back to menu.")
+      player_name = "0"  # return will be False
       break
     else:
       if system.save_system.initialisation.folder_creating(player_name) == False:
+        log.debug("Failed to create player directory. Printing the reason:")
         # function creating profile, if it fails then loops back to start (usually because of already existing name of character)
         continue
       else:
         json_manag.save_change(player_name, "profile", "name", "replace", player_name)
+        log.debug("Successfully created player directory. Moving to new character section.")
         break # return will be player_name
   return player_name
 
 def gender(name):
+  log.info("Opening gender selection...")
   print (format("blue+", "--------------------"))
   print ("\n")
   print (align("Choose your gender"))
@@ -52,6 +58,7 @@ def gender(name):
   while True:
     gender = input ("")
     if quit(gender):
+      log.debug("Cancelling character setup. Coming back to menu.")
       gender = False
       break
     elif gender == "1" or gender == "2" or gender == "3":
@@ -70,6 +77,7 @@ def gender(name):
   return gender
 
 def race(name):
+  log.info("Opening race selection...")
   from system.id_manag import rid_conv as rid_conv #garbage.py rule avoided
   races_loaded = system.mod_manag.rid_loader()
   races_count = len(races_loaded)
@@ -85,6 +93,7 @@ def race(name):
     except ValueError:
       continue
     if quit(choose_race):
+      log.debug("Cancelling character setup. Coming back to menu.")
       choose_race = False
       break  # returns False
     elif choose_race > 0 and choose_race <= races_count:
@@ -107,6 +116,7 @@ def race(name):
   return choose_race
 
 def profession(name):
+  log.info("Opening class selection...")
   from system.id_manag import cid_conv as cid_conv #garbage.py rule avoided
   classes_loaded = system.mod_manag.cid_loader()
   classes_count = len(classes_loaded)
@@ -122,6 +132,7 @@ def profession(name):
     except ValueError:  # loops back if player put non-numberic input
       continue
     if quit(choose_class):
+      log.debug("Cancelling character setup. Coming back to menu.")
       choose_class = False
       break  # returns False
     elif choose_class > 0 and choose_class <= classes_count:
@@ -155,6 +166,7 @@ def profession(name):
   return choose_class
 
 def manual_attribute(name):
+  log.info("Opening manual attribute selection...")
   import system.ref_systems.default_stats
   attribute_list = []
   for i in system.ref_systems.default_stats.profile.attributes:
@@ -173,6 +185,7 @@ def manual_attribute(name):
     except ValueError:
       continue
     if quit(choose_atr):
+      log.debug("Cancelling character setup. Coming back to menu.")
       choose_atr = False
       break  # returns False
     elif choose_atr > 0 and choose_atr <= len(attribute_list):
@@ -187,6 +200,7 @@ def manual_attribute(name):
   return choose_atr
 
 def manual_ability(name):
+  log.info("Opening manual ability selection...")
   import system.id_manag
   from system.ref_systems.default_stats import profile
   abilities = profile.abilities
@@ -209,6 +223,7 @@ def manual_ability(name):
     except ValueError:
       continue
     if quit(choose_abil):
+      log.debug("Cancelling character setup. Coming back to menu.")
       choose_abil = False
       break  # returns False
     elif choose_abil > 0 and choose_abil <= len(ability_list):

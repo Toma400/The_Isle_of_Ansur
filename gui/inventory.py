@@ -1,6 +1,7 @@
 import gui.interface
 import system.id_manag
 import system.json_manag
+import logging as log
 from utils.text_manag import align
 
 #-----------------------------------------------------------------------------
@@ -8,6 +9,7 @@ from utils.text_manag import align
 # Interface showing inventory items
 #-----------------------------------------------------------------------------
 def main_inv (name):
+  log.info("Opening inventory menu...")
   choice = "x"
   while choice != "q": # call stack killer: root
     path = "saves/" + name + "/in_use/inventory.json"
