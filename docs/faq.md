@@ -15,6 +15,17 @@ specific feature (especially mod-aimed) or pull request with code adding that wi
 any issues for backcompatibility, I will also try my best to review it and introduce, 
 if it would follow general game way of thinking.
 
+## 2. How much will you add before you see IoA as "finished"?
+Well, my main goal is to reintroduce whole Between Shadows and Lights content, this time
+though including all mechanics being available, despite BSaL content not giving need
+to utilise them all. Also, I want to make IoA having broad modding possibilities, so
+I can leave IoA "as is" and be sure that people can infinitely enhance it, adding new
+worlds and stories.
+
+There's a change that I will add new modules adding new lands though, so there's a chance
+that it will have way more features included and much more lore revealed with its core
+gameplay.
+
 ***
 
 # Technical Questions
