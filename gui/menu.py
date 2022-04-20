@@ -25,7 +25,7 @@ def start():
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 
                                                          _/  
 ''')
-    print (enc("𝚃𝚑𝚎 𝙸𝚜𝚕𝚎 𝚘𝚏 𝙰𝚗𝚜𝚞𝚛\n"))
+    print (enc("The Isle of Ansur\n"))
     print (align(version_call("game_version") + "\n\n", "right"))
     is_core_pack_loaded()
     print (align("--------------------", "centre"))
@@ -207,7 +207,7 @@ def packs():
     packs_loaded = []
     print(align("-----------------------------------------------------------"))
     print(align(" PACKS LOADED "))
-    print(enc(align("⊱⋅-----------------------------------------⋅⊰")))
+    print(enc(align("*-----------------------------------------*")))
     for pack_type in pack_type_helper():
       packgroup_opened = pack_loader(pack_type)
       if packgroup_opened:  # checks if specific packgroup list is not empty
@@ -249,7 +249,7 @@ def pack_settings(pack_name):
     if blacklisted(pack_name, True):  # shows up only if blacklisted
       print(format("red", "Pack disabled"))
     print(align("Type: " + pack_type_recogniser(pack_name)))
-    print(enc(align("⊱⋅---------------------------------⋅⊰")))
+    print(enc(align("*---------------------------------*")))
     print(format("blue", p_read(pack_name, "description"), "left"))  # mod description
     print(align("-----------------------------------------------------------"))
     print(format("cyan", "URL: " + p_read(pack_name, "link")))  # link assigned
