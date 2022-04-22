@@ -12,7 +12,7 @@ def main_inv (name):
   log.info("Opening inventory menu...")
   choice = "x"
   while choice != "q": # call stack killer: root
-    path = "saves/" + name + "/in_use/inventory.json"
+    path = f"saves/{name}/in_use/inventory.json"
     items = system.json_manag.json_read(path, "inventory").keys()
     print("✺---------------------------------------------------------------✺")
     inventory_items(items) # shows items from inventory being iterated here

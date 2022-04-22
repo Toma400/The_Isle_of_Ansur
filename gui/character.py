@@ -108,7 +108,7 @@ def race(name):
             system.json_manag.save_change_ins(name, "profile", i, k)
         except KeyError:
           #detector of values that can't be added
-          print ("Unknown value:" + i + ". Skipped.")
+          print (f"Unknown value: {i}. Skipped.")
       choose_race = True
       break  # returns True
     else:
@@ -158,7 +158,7 @@ def profession(name):
             system.json_manag.save_change_ins(name, "profile", i, k)
         except KeyError:
           #detector of values that can't be added
-          print ("Unknown value:" + i + ". Skipped.")
+          print (f"Unknown value: {i}. Skipped.")
       choose_class = True
       break  # returns True
     else:

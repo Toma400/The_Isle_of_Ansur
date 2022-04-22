@@ -124,7 +124,7 @@ def quit_checker (text_to_check, soft=False, *soft_keys):
         else:
             return False
     else:
-        if text_to_check == "q" \
+        if text_to_check == "q"\
         or text_to_check == "0"\
         or text_to_check == ""\
         or text_to_check == "quit":
@@ -137,7 +137,7 @@ def quit_checker (text_to_check, soft=False, *soft_keys):
 # Handles different encoding value
 #---------------------------------------------------
 def encoded (text):
-    import sys
+    #import sys
     #if sys.stdout.encoding != "utf-8":
     #    text = text.encode(sys.stdout.encoding)
     #    text = text.decode("utf-8")

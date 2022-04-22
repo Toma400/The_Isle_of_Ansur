@@ -14,7 +14,7 @@ def json_read(path, element, dict_type=False):
     else:
       return data
   except json.decoder.JSONDecodeError:
-    print ("JSON File: " + path + " does not have any arguments. Skipping.")
+    print (f"JSON File: {path} does not have any arguments. Skipping.")
 
 #--------------------------------------
 # SUBREAD
@@ -121,7 +121,7 @@ def save_read(name, category, element, dict_type=False):
     else:
       return data
   except json.decoder.JSONDecodeError:
-    print ("JSON File: " + final_path + " does not have any arguments. Skipping.")
+    print (f"JSON File: {final_path} does not have any arguments. Skipping.")
   #element tells what type of variable is needed to be read
 
 def save_change(name, category, element, change_type, change_value, in_use=True):
@@ -201,4 +201,4 @@ def load_read(name, category):
       data = json.load(json_file)
     return data
   except json.decoder.JSONDecodeError:
-    print ("JSON File: " + final_path + " does not have any arguments. Skipping.")
+    print (f"JSON File: {final_path} does not have any arguments. Skipping.")

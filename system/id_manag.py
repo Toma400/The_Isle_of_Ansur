@@ -59,10 +59,10 @@ def iid_conv (iid, element, dict_type=False):
     else:
       if dict_type == True:
         #returns values used by object as dict
-        return json_manag.json_keyread ("stats/" + iid1 + "/items.json", iid2)
+        return json_manag.json_keyread (f"stats/{iid1}/items.json", iid2)
       else:
         #returns values of object
-        return json_manag.json_subread ("stats/" + iid1 + "/items.json", iid2, element)
+        return json_manag.json_subread (f"stats/{iid1}/items.json", iid2, element)
 
 def cid_conv (cid, element, dict_type=False):
   if ":" not in cid:
@@ -78,10 +78,10 @@ def cid_conv (cid, element, dict_type=False):
     else:
       if dict_type == True:
         #returns values used by object as dict
-        return json_manag.json_keyread ("stats/" + cid1 + "/classes.json", cid2)
+        return json_manag.json_keyread (f"stats/{cid1}/classes.json", cid2)
       else:
         #returns values of object
-        return json_manag.json_subread ("stats/" + cid1 + "/classes.json", cid2, element)
+        return json_manag.json_subread (f"stats/{cid1}/classes.json", cid2, element)
 
 def rid_conv (rid, element, dict_type=False):
   if ":" not in rid:
@@ -97,7 +97,7 @@ def rid_conv (rid, element, dict_type=False):
     else:
       if dict_type == True:
         #returns values used by object as dict
-        return json_manag.json_keyread ("stats/" + rid1 + "/races.json", rid2)
+        return json_manag.json_keyread (f"stats/{rid1}/races.json", rid2)
       else:
         #returns values of object
-        return json_manag.json_subread ("stats/" + rid1 + "/races.json", rid2, element)
+        return json_manag.json_subread (f"stats/{rid1}/races.json", rid2, element)

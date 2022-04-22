@@ -49,18 +49,18 @@ def settings_changer(callout):
   elif system.json_manag.json_read(path, callout) == "realistic":
     system.json_manag.json_change_ins(path, callout, "proportional")
   # switch for boolean elements
-  elif system.json_manag.json_read(path, callout) == True:
+  elif system.json_manag.json_read(path, callout) is True:
     system.json_manag.json_change_ins(path, callout, False)
-  elif system.json_manag.json_read(path, callout) == False:
+  elif system.json_manag.json_read(path, callout) is False:
     system.json_manag.json_change_ins(path, callout, True)
   #------
   # LOGS
   #------
   if system.json_manag.json_read(path, callout) == "proportional":
-    log.debug("Switching settings for: " + callout + "to realistic.")
+    log.debug(f"Switching settings for: {callout} to realistic.")
   elif system.json_manag.json_read(path, callout) == "realistic":
-    log.debug("Switching settings for: " + callout + "to proportional.")
-  elif system.json_manag.json_read(path, callout) == True:
-    log.debug("Switching settings for: " + callout + "to False.")
-  elif system.json_manag.json_read(path, callout) == False:
-    log.debug("Switching settings for: " + callout + "to True.")
+    log.debug(f"Switching settings for: {callout} to proportional.")
+  elif system.json_manag.json_read(path, callout) is True:
+    log.debug(f"Switching settings for: {callout} to False.")
+  elif system.json_manag.json_read(path, callout) is False:
+    log.debug(f"Switching settings for: {callout} to True.")

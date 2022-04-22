@@ -67,14 +67,12 @@ def deep_load (name):
 def deep_load_error (critical=False):
   import time
   import gui.menu
-  from utils.text_manag import colour_formatter as format
-  from utils.text_manag import align as align
-  from utils.text_manag import bcolors as colour
-  if critical == True:
-    print (format("yellow", "Unfortunately that setting can't be set back to default. Please change your settings in menu to fit that save file."))
-  if critical == "name":
-    print (format("yellow", "No character profile is found with that name. Please make sure you wrote it correctly." + colour.ENDC, "centre_colour"))
-    print (format("yellow", "[case sensitivity matters]"))
-  print (format("yellow", "Redirecting to game menu."))
+  from utils.text_manag import colour_formatter as colour
+  if critical is True:
+    print (colour("yellow", "Unfortunately that setting can't be set back to default. Please change your settings in menu to fit that save file."))
+  if critical is "name":
+    print (colour("yellow", "No character profile is found with that name. Please make sure you wrote it correctly."))
+    print (colour("yellow", "[case sensitivity matters]"))
+  print (colour("yellow", "Redirecting to game menu."))
   time.sleep(1)
   gui.menu.start()

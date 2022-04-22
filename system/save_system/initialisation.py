@@ -9,7 +9,7 @@ def directory_call():
 def folder_creating(name):
   import os
   import utils.text_manag as util
-  path = "saves/" + name
+  path = f"saves/{name}"
   if os.path.isdir(path) == True:
     print (util.colour_formatter("yellow", "※ Not able to create player profile, the name is taken. Please use different name instead ※"))
     log.debug("Name is taken.")
@@ -26,7 +26,7 @@ def folder_creating(name):
 
 def profile_creating(path):
   import os
-  deeper_path = path + "/in_use"
+  deeper_path = f"{path}/in_use"
   temp_var = "/"
   save_jsons = ["quests.json", "inventory.json", "world.json", "profile.json"]
   #creating subfolder
@@ -49,7 +49,7 @@ def profile_creating(path):
 def stats_creating(path, set):
   
   if set == "profile":
-    deeper_path = path + "/profile.json"
+    deeper_path = f"{path}/profile.json"
     import json
     import system.ref_systems.default_stats
     default_stats = {}
@@ -63,7 +63,7 @@ def stats_creating(path, set):
       json.dump(default_stats, file, indent = 2)
 
   elif set == "inventory":
-    deeper_path = path + "/inventory.json"
+    deeper_path = f"{path}/inventory.json"
     import json
     import system.ref_systems.default_stats
     default_stats = {}
@@ -72,7 +72,7 @@ def stats_creating(path, set):
       json.dump(default_stats, file, indent = 2)
 
   elif set == "quests":
-    deeper_path = path + "/quests.json"
+    deeper_path = f"{path}/quests.json"
     import json
     import system.ref_systems.default_stats
     default_stats = {}
@@ -80,7 +80,7 @@ def stats_creating(path, set):
       json.dump(default_stats, file, indent = 2)
 
   elif set == "world":
-    deeper_path = path + "/world.json"
+    deeper_path = f"{path}/world.json"
     import json
     import system.ref_systems.default_stats
     default_stats = {}

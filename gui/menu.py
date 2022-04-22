@@ -91,7 +91,7 @@ def game_load():
         race = id_manag.rid_conv(json_manag.save_read(i, "profile", "race"), "descript")
         classe = id_manag.cid_conv(json_manag.save_read(i, "profile", "class"), "descript")
         locate = json_manag.save_read(i, "profile", "location")
-        print (align("[ " + colour.OKCYAN + i + colour.ENDC + " ][" + race + " - " + classe + "][ " + colour.OKCYAN + locate + colour.ENDC + " ]", "centre_colour"))
+        print (align(f"[ {colour.OKCYAN}{i}{colour.ENDC} ][{race} - {classe}][ {colour.OKCYAN}{locate}{colour.ENDC} ]", "centre_colour"))
         profile_set[str(j)] = i
         j = j + 1
       else:
@@ -215,9 +215,9 @@ def packs():
           packs_loaded.append(pack_name)
           log.debug("Successfully loaded pack: " + pack_name)
           if blacklisted(pack_name, True):
-            print(align("[ " + pack_colour(pack_type) + " ] [ " + colour.CRED + pack_name + colour.ENDC + " ] ", "centre_colour+"))
+            print(align(f"[ {pack_colour(pack_type)} ] [ {colour.CRED}{pack_name}{colour.ENDC} ] ", "centre_colour+"))
           else:
-            print(align("[ " + pack_colour(pack_type) + " ] [ " + pack_name + " ]", "centre_colour"))
+            print(align(f"[ {pack_colour(pack_type)} ] [ {pack_name} ]", "centre_colour"))
     print(align("-----------------------------------------------------------"))
     print(align(" Enter name of pack to open its settings "))
     print(align(" Use -unzip- key to unzip mod files "))
@@ -244,16 +244,16 @@ def pack_settings(pack_name):
   while True:
     print(align("-----------------------------------------------------------"))
     print(format("violet", p_read(pack_name, "name")))  # mod name
-    print(align("Pack ID: " + pack_name))
+    print(align(f"Pack ID: {pack_name}"))
     print(align("⊱⋅---------------------------------⋅⊰"))
     if blacklisted(pack_name, True):  # shows up only if blacklisted
       print(format("red", "Pack disabled"))
-    print(align("Type: " + pack_type_recogniser(pack_name)))
+    print(align(f"Type: {pack_type_recogniser(pack_name)}"))
     print(enc(align("*---------------------------------*")))
     print(format("blue", p_read(pack_name, "description"), "left"))  # mod description
     print(align("-----------------------------------------------------------"))
-    print(format("cyan", "URL: " + p_read(pack_name, "link")))  # link assigned
-    print(format("green", "Credits: " + p_read(pack_name, "credits")))  # mod credits
+    print(format("cyan", f"URL: {p_read(pack_name)}", "link"))  # link assigned
+    print(format("green", f"Credits: {p_read(pack_name)}", "credits"))  # mod credits
     print(align("-----------------------------------------------------------"))
     print("[link] Open the link")
     print("[switch] Change mod status (enabled/disabled)")

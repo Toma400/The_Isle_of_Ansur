@@ -60,8 +60,8 @@ def mod_checker (directory, name):
 def mod_reader(name, value):
   from os.path import isfile as search
   from system.json_manag import json_read as read
-  path_s = "stats/" + name + "/info.json"
-  path_w = "worlds/" + name + "/info.json"
+  path_s = f"stats/{name}/info.json"
+  path_w = f"worlds/{name}/info.json"
   if not search(path_s):
     if not search(path_w):
       if value == "name":
@@ -109,13 +109,12 @@ def id_builder(mod_id, item):
 # inside files. Return list of RIDs/CIDs.
 #--------------------------------------------------------
 def rid_loader ():
-  import system.mod_manag
   import system.json_manag
-  mods_loaded = system.mod_manag.mod_lister("stats")
+  mods_loaded = mod_lister("stats")
   races_loaded = []
   for i in mods_loaded:
     try:
-      path = "stats/" + i + "/races.json"
+      path = f"stats/{i}/races.json"
       temp_dir = len(system.json_manag.json_read(path, "list", True))
       for j in range(temp_dir):
         element = (system.json_manag.json_read(path, "list", True)[j])
@@ -126,13 +125,12 @@ def rid_loader ():
   return races_loaded
 
 def cid_loader ():
-  import system.mod_manag
   import system.json_manag
-  mods_loaded = system.mod_manag.mod_lister("stats")
+  mods_loaded = mod_lister("stats")
   classes_loaded = []
   for i in mods_loaded:
     try:
-      path = "stats/" + i + "/classes.json"
+      path = f"stats/{i}/classes.json"
       temp_dir = len(system.json_manag.json_read(path, "list", True))
       for j in range(temp_dir):
         element = (system.json_manag.json_read(path, "list", True)[j])
@@ -172,14 +170,12 @@ def name_formatter (name):
 # limit amount, prints message and backs to menu
 #--------------------------------------------------------
 def overflow_protector (list, module):
+  from utils.text_manag import colour_formatter as colour
   import time
-  import utils
-  import gui
+  import gui.menu
   import sys
   limit = sys.maxsize / 2
   if len(list) >= limit:
-    print (utils.text.align(utils.colours.bcolors.CRED +
-                                 "Limit of loaded elements for module: " + module + "reached! Terminating the game."
-                            + utils.colours.bcolors.ENDC, "centre_colour"))
+    print (colour("red", f"Limit of loaded elements for module: {module} reached! Terminating the game."))
     time.sleep(10)
-    gui.menu()
+    gui.menu.start()
