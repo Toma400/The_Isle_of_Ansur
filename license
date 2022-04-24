@@ -1,11 +1,19 @@
                           BAEDOOR LICENSE
                      Version 1, 23 April 2022
 
+                        created by Toma400
+                         (Tomasz Stępień)
+
 This license refers broadly to The Isle of Ansur (later also: IoA)
-contents, but also elements based off its lore or code.
+contents, but also elements on which IoA is based on.
+IoA content terms are in sections 1 and 3, user's creations
+in section 2, and Baedoor system license is under section 4.
+
 In case you have any doubts or questions, read EULA file or FAQ
 (located in /docs/ folder). EULA is basically more human-friendly
 form of license, since contents of both documents are similar.
+License is more precise though, so it is recommended to read it
+too, as it takes priority in any legal case.
 
 License may change in the future with next iterations.
 As an owner of the license and copyrights, I will use term "we" to
@@ -38,8 +46,8 @@ Author of said software has right to:
     within said software
   - own their rights to the software, to the limitation that:
     - they cannot do any beneficial action (term explained in EULA and
-      section 4.1) with said software
-    - they cannot contradict rights of IoA authors to their software
+      section 5.1) with said software
+    - they cannot contradict rights of IoA author to their software
 
 Author of IoA has right to:
 
@@ -55,7 +63,7 @@ as freedom of sharing culture/art for free to anyone, not as death of
 an author.
 Therefore, IoA is granted you as free game for which you do not pay for.
 This also means that you can republish it by yourself AS LONG AS IT DOES
-NOT PROVIDE YOU ANY BENEFICIAL ACTIONS (see section 4.1).
+NOT PROVIDE YOU ANY BENEFICIAL ACTIONS (see section 5.1).
 
 I request though, for the person republishing it, to check if their
 copy is safe (that means: free from viruses or hacking software, or any
@@ -67,9 +75,22 @@ own - within the license, but without author's knowledge and from their
 own copy, which is considered less reliable than official source.
 
 
-4. ADDITIONAL GLOSSARY
+4. BAEDOOR UNIVERSE & RPG SYSTEM LICENSE
+Baedoor universe, being one of the main elements of The Isle of Ansur
+game, is our own intellectual property.
+Its use outside of IoA context is restricted to be:
 
-4.1. Beneficial Actions
+  - free from requesting any beneficial actions (see section 5.1)
+  - explicitly stating use of the universe/RPG system in visible place
+    (if artistic value of the art would suffer from stating such - by,
+    for example, putting watermark on image - it is then allowed to
+    leave it without such remark; it is appreciated though to credit
+    universe/RPG system elsewhere instead)
+
+
+5. ADDITIONAL GLOSSARY
+
+5.1. Beneficial Actions
 Actions called as Beneficial actions relate to any action
 which is beneficial for sub-author (user or creator using franchise).
 This does only partly apply to publishing platforms and differ
@@ -78,7 +99,12 @@ their art (such as authors publishing entirety of their art on Discord
 servers), joining such server is not considered as "beneficial action"
 per se.
 
-Though, if sub-author has varied platforms on which they publish,
-some sort of access is required, without forcing users to join platform.
-If such platform entering requires user to pay, though, it is considered
+If platform requires user to pay for entering, it is considered
 as "beneficial action" no matter the publishing principles of sub-author.
+If sub-author has varied platforms on which they publish,
+some sort of access is required, without forcing users to join platform.
+
+Separate source of benefit (such as link on the page to Patreon account)
+which use is optional does not count towards "beneficial action".
+Although, optional use of it should be explicitly seen though, so
+no payment should be clearly shown as default.
