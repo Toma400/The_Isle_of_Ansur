@@ -3,6 +3,7 @@ Here you will find all commonly asked questions, or the ones I found important t
 
 * [General Questions](faq.md#general-questions)
 * [Technical Questions](faq.md#technical-questions)
+* [Modding Support Questions](faq.md#modding-support-questions)
 * [Copyright Questions](faq.md#copyright-questions)
 
 ***
@@ -49,6 +50,21 @@ Yes, you can. Remember though that - if you want to convert them -
 you can only convert non-realistic settings into realistic one. 
 It is protection from bugs that could come from time differences and lack of 
 statistics.
+
+***
+
+# Modding Support Questions
+## 1. Can I change my pack's name? Or my items/races/classes name?
+Yes, and no. You are absolutely free to change any `descript` names in your pack,
+since those are mutable values. 
+
+If you attempt to change names that are used for pack's ID though, do it only 
+if you never published this pack earlier. ID names are - for now, at least - immutable,
+which means that if person played the game with your pack, removing or changing these
+values will most likely crash the game.
+
+There's a chance IoA will start to handle such exceptions, but for now I can't promise
+it being worked on.
 
 ***
 
