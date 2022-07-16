@@ -118,24 +118,18 @@ def align (text, side="centre"):
 # keybinds (q/0/quit or empty click)
 #---------------------------------------------------
 def quit_checker (text_to_check, soft=False, *soft_keys):
-    if soft:  # used if you want to give more choice
-        if text_to_check in soft_keys:
-            return True
-        else:
-            return False
+    default_keys = ("q", "0", "", "quit", soft_keys)
+
+    if soft:  # checks only custom keys
+        return text_to_check in soft_keys
     else:
-        if text_to_check == "q"\
-        or text_to_check == "0"\
-        or text_to_check == ""\
-        or text_to_check == "quit":
-            return True
-        else:
-            return False
+        return text_to_check in default_keys
 
 #---------------------------------------------------
 # ENCODER
 # Handles different encoding value
 #---------------------------------------------------
+# @Deprecated
 def encoded (text):
     #import sys
     #if sys.stdout.encoding != "utf-8":

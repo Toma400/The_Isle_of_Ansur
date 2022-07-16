@@ -21,7 +21,7 @@ import system.mod_manag
 
 def name():
   log.info("Initialising character setup. Opening name selection...")
-  import system.save_system.initialisation
+  import system.save_system.initialisation as init
   print (format("blue+", "--------------------"))
   print ("\n")
   print (align("Type your character name"))
@@ -32,17 +32,16 @@ def name():
     player_name = input ("")
     if quit(player_name, True, "0"):
       log.debug("Cancelling character setup. Coming back to menu.")
-      player_name = "0"  # return will be False
-      break
+      return "0"  # return will be False
     else:
-      if system.save_system.initialisation.folder_creating(player_name) == False:
+      if init.folder_creating(player_name) == False:
         log.debug("Failed to create player directory. Printing the reason:")
-        # function creating profile, if it fails then loops back to start (usually because of already existing name of character)
+        # creates profile, if fails then loops back to start (usually because of already existing name of character)
         continue
       else:
         json_manag.save_change(player_name, "profile", "name", "replace", player_name)
         log.debug("Successfully created player directory. Moving to new character section.")
-        break # return will be player_name
+        break  # return will be player_name
   return player_name
 
 def gender(name):
@@ -59,8 +58,7 @@ def gender(name):
     gender = input ("")
     if quit(gender):
       log.debug("Cancelling character setup. Coming back to menu.")
-      gender = False
-      break
+      return False
     elif gender == "1" or gender == "2" or gender == "3":
       gender_name = ""
       if gender == "1":
@@ -70,11 +68,9 @@ def gender(name):
       elif gender == "3":
         gender_name = "Non-binary"
       json_manag.save_change(name, "profile", "gender", "replace", gender_name)
-      gender = True
-      break
+      return True
     else:
       continue
-  return gender
 
 def race(name):
   log.info("Opening race selection...")
@@ -88,15 +84,13 @@ def race(name):
   listing_races(races_loaded, rid_conv)  # prints out available races
   print ("\n")
   while True:
-    try:
-      choose_race = int(input (""))
-    except ValueError:
+    choose_race = int_check(input(""))
+    if not choose_race:
       continue
     if quit(choose_race):
       log.debug("Cancelling character setup. Coming back to menu.")
-      choose_race = False
-      break  # returns False
-    elif choose_race > 0 and choose_race <= races_count:
+      return False
+    elif 0 < choose_race <= races_count:
       chosen_race = races_loaded[choose_race-1]
       system.json_manag.save_change(name, "profile", "race", "replace", chosen_race)
       for i in rid_conv(chosen_race, 0, True):
@@ -109,11 +103,9 @@ def race(name):
         except KeyError:
           #detector of values that can't be added
           print (f"Unknown value: {i}. Skipped.")
-      choose_race = True
-      break  # returns True
+      return True
     else:
       continue
-  return choose_race
 
 def profession(name):
   log.info("Opening class selection...")
@@ -127,15 +119,13 @@ def profession(name):
   listing_classes(classes_loaded, cid_conv)  # prints out available classes
   print ("\n")
   while True:
-    try:  # checks if input is convertable to number
-      choose_class = int(input (""))
-    except ValueError:  # loops back if player put non-numberic input
+    choose_class = int_check(input(""))
+    if not choose_class:
       continue
     if quit(choose_class):
       log.debug("Cancelling character setup. Coming back to menu.")
-      choose_class = False
-      break  # returns False
-    elif choose_class > 0 and choose_class <= classes_count:
+      return False
+    elif 0 < choose_class <= classes_count:
       chosen_class = classes_loaded[choose_class-1]
       try:
         #checks
@@ -159,11 +149,9 @@ def profession(name):
         except KeyError:
           #detector of values that can't be added
           print (f"Unknown value: {i}. Skipped.")
-      choose_class = True
-      break  # returns True
+      return True
     else:
       continue
-  return choose_class
 
 def manual_attribute(name):
   log.info("Opening manual attribute selection...")
@@ -186,18 +174,15 @@ def manual_attribute(name):
       continue
     if quit(choose_atr):
       log.debug("Cancelling character setup. Coming back to menu.")
-      choose_atr = False
-      break  # returns False
-    elif choose_atr > 0 and choose_atr <= len(attribute_list):
+      return False
+    elif 0 < choose_atr <= len(attribute_list):
       choose_atr = attribute_list[choose_atr-1].lower()
       choose_atr = choose_atr.replace(" ", "_")
       choose_atr = ("atr_" + choose_atr)
     else:
       continue
     system.json_manag.save_change(name, "profile", choose_atr, "math", 1)
-    choose_atr = True
-    break  # returns True
-  return choose_atr
+    return True
 
 def manual_ability(name):
   log.info("Opening manual ability selection...")
@@ -224,18 +209,15 @@ def manual_ability(name):
       continue
     if quit(choose_abil):
       log.debug("Cancelling character setup. Coming back to menu.")
-      choose_abil = False
-      break  # returns False
-    elif choose_abil > 0 and choose_abil <= len(ability_list):
+      return False
+    elif 0 < choose_abil <= len(ability_list):
       choose_abil = ability_list[choose_abil-1].lower()
       choose_abil = choose_abil.replace(" ", "_")
       choose_abil = ("abil_" + choose_abil)
     else:
       continue  # previously it was calling of manual attribute, but this doesn't make sense here # <- WTF I meant here?
     system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
-    choose_abil = True
-    break  # returns True
-  return choose_abil
+    return True
 
 #-------------------------------------------------------
 # LIST PRINTING FUNCTIONS
@@ -265,3 +247,10 @@ def listing_abilities(ability_list):
   for i in ability_list:
     print("[" + str(j) + "][" + i + "]")
     j = j + 1
+
+# checks if value is convertable into integer
+def int_check (insert):
+  try:
+    return int(insert)
+  except ValueError:
+    return False

@@ -46,11 +46,15 @@ def start():
                 if gui.character.manual_attribute(name):
                   if gui.character.manual_ability(name):
                     first_game = True
-        if not first_game:
+        if first_game:
+          print ("Yay! Game would start if this wasn't unfinished version!") # run the game
+        # else:
           # [here there was import of utils.repo_manag.file_deleting]
           # delete("saves/" + name) <- it doesn't work, because for some reason file
           # is created *after* closing the game, not during function running
-          continue  # <- possibly unnecessary code, loop will rerun anyway
+          # continue  # <- possibly unnecessary code, loop will rerun anyway
+          # + folder creation time aside, it needs to use name of the player, so just
+          # remember that (ik its foolish to remind that obviousness)
     elif menu_choice == "2":
       if is_core_pack_loaded():
         game_load()
