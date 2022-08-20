@@ -54,7 +54,16 @@ statistics.
 ***
 
 # Modding Support Questions
-## 1. Can I change my pack's name? Or my items/races/classes name?
+## 1. I want to upload my mod. Where should I?
+You have plenty of options. Obviously, you can host whole new project as GitHub
+repository or itch.io one, for example, or share link to Google Drive/DropBox with file.  
+But, if you prefer to handle it in less clunky way, you can [join Discord server](https://discord.gg/GbTw9KqnrE)
+and share the pack with me - I will investigate it and if it works correctly, it will
+be uploaded on [Isle of Ansur Mod Repository](https://github.com/Toma400/Isle_of_Ansur_Mods_Repository)
+which is sort of mini-hosting I offer for Isle of Ansur mods (or at least officially
+made packs).
+
+## 2. Can I change my pack's name? Or my items/races/classes name?
 Yes, and no. You are absolutely free to change any `descript` names in your pack,
 since those are mutable values. 
 

@@ -4,8 +4,8 @@
 block_cipher = None
 
 
-a = Analysis(['D:/Ministerstwo Kalibracyjne/PyCharm_Projects/Isle_of_Ansur/main.py'],
-             pathex=['D:/Ministerstwo Kalibracyjne/PyCharm_Projects/Isle_of_Ansur/system/cache/pyinstaller'],
+a = Analysis(['D:\\Ministerstwo Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur/main.py'],
+             pathex=['D:\\Ministerstwo Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur/system/cache/pyinstaller'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -21,24 +21,20 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 
 exe = EXE(pyz,
-          a.scripts, 
+          a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,  
           [],
-          exclude_binaries=True,
           name='Isle of Ansur',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=False,
+          upx_exclude=[],
+          runtime_tmpdir=None,
           console=True,
           disable_windowed_traceback=False,
           target_arch=None,
           codesign_identity=None,
           entitlements_file=None , icon='D:\\Ministerstwo Kalibracyjne\\PyCharm_Projects\\Isle_of_Ansur\\utils\\assets\\icon.ico')
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas, 
-               strip=False,
-               upx=False,
-               upx_exclude=[],
-               name='Isle of Ansur')

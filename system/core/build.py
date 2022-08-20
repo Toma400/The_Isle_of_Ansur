@@ -7,6 +7,7 @@
 
 import PyInstaller.__main__
 import PyInstaller
+import os; fpath = os.path.dirname(os.path.abspath("build.py"))
 from distutils.dir_util import copy_tree
 from utils.text_manag import bcolors as colour
 from utils.text_manag import align as align
@@ -20,17 +21,16 @@ from utils.repo_manag import file_deleting as delete
 # options (when changing devices, change directories paths)
 #-----------------------------------------------------------
 class DefaultRun:
-
     # ----------------------------------------------------------------------
     # CONFIGURATION OF BUILD
     # Adjust values here to make build customised more to your needs
     # ----------------------------------------------------------------------
     # directory of the game
-    core_path = "D:/Ministerstwo Kalibracyjne/PyCharm_Projects/Isle_of_Ansur/"
+    core_path = f"{fpath}/"
     game_name = "Isle of Ansur"
     icon_path = core_path + "utils/assets/icon.ico"
     # directory for outcome
-    export_path = "D:/Ministerstwo Kalibracyjne/PyCharm_Projects/builds/"
+    export_path = "D:/Ministerstwo Kalibracyjne/PyCharm_Projects/[builds]/"
     full_export_path = export_path + game_name + "/"
     # ----------------------------------------------------------------------
     # REFERENCE DOCS
@@ -39,11 +39,12 @@ class DefaultRun:
     forge_builder = [
         core_path + "main.py",
         "--onedir",
+        "--onefile",
         "--noupx",  # if you are going to change this, please redirect upx to net source (requests library?) or import files if license allows you to do so
         "--clean",
         "--name=" + game_name,
         "--icon=" + icon_path,
-        "--distpath=" + export_path,
+        "--distpath=" + export_path + game_name + "/",
         "--workpath=" + core_path + "system/cache/pyinstaller",
         "--specpath=" + core_path + "system/cache/pyinstaller"
     ]
