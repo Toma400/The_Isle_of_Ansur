@@ -2,5 +2,5 @@
   "time_system": "proportional",
   "hunger_thirst": false,
   "permadeath": false,
-  "autoimport_of_packs": true
+  "legacy_unpacking": false
 }

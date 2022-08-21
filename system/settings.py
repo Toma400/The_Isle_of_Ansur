@@ -32,8 +32,8 @@ def settings(callout):
     return system.json_manag.json_read("system/system_settings.json", "hunger_thirst")
   elif callout == "permadeath":
     return system.json_manag.json_read("system/system_settings.json", "permadeath")
-  elif callout == "autoimport":
-    return system.json_manag.json_read("system/system_settings.json", "autoimport_of_packs")
+  elif callout == "legacy_unpacking":
+    return system.json_manag.json_read("system/system_settings.json", "legacy_unpacking")
 
 #-----------------------------
 # SETTINGS CHANGER

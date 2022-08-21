@@ -17,8 +17,8 @@ gpath = os.path.dirname(os.path.abspath("main.py"))
 def start():
   log.info("Initialising start menu...")
   version_call("game_version")
-  if settings_check("autoimport"):
-    log.info("Autoimporting of packs enabled. Importing...")
+  if not settings_check("legacy_unpacking"):
+    log.info("Autoupdating of packs enabled. Importing...")
     pack_remover()
     pack_unloader()
   while True:
@@ -180,7 +180,7 @@ def settings():
     print (align("--------------------"))
     print (align("Select setting to switch."))
     print (align("--------------------"))
-    setting_options = ["Time System", "Hunger/Thirst", "Permanent Death", "Autoimport of Packs"]
+    setting_options = ["Time System", "Hunger/Thirst", "Permanent Death", "Legacy Unpacking"]
     setting_set = {}
     j = 1
     for i in setting_options:
