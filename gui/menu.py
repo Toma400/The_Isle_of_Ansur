@@ -10,12 +10,16 @@ import gui.character
 import gui.interface
 import system.mod_manag as sys
 import logging as log
+import shutil
+import os
+gpath = os.path.dirname(os.path.abspath("main.py"))
 
 def start():
   log.info("Initialising start menu...")
   version_call("game_version")
   if settings_check("autoimport"):
     log.info("Autoimporting of packs enabled. Importing...")
+    pack_remover()
     pack_unloader()
   while True:
     log.info("Menu successfully loaded. Printing elements.")
@@ -279,6 +283,20 @@ def pack_settings(pack_name):
 # PACK UNLOADER
 # Allows unzipping mods from /pack/ dir and updating
 #----------------------------------------------------
+def pack_remover():
+  non_removable_keys = ["ansur"]
+  stats_rv = os.listdir(f"{gpath}/stats/"); worlds_rv = os.listdir(f"{gpath}/worlds/")
+  log.debug(f"gpath: {gpath}")
+  def rv(t, tc):
+    log.debug(f"Checking {t}")
+    if os.path.isdir(t) and tc not in non_removable_keys:
+      shutil.rmtree(t)
+
+  for i in stats_rv:
+    rv(f"{gpath}/stats/{i}", i)
+  for i in worlds_rv:
+    rv(f"{gpath}/worlds/{i}", i)
+
 def pack_unloader():
   log.info("Pack unloading requested.")
   import os, zipfile
