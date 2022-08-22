@@ -29,3 +29,25 @@ def format_creating(text=""):
     for i in format_list:
         text = text + str(i)
     return text
+
+def run_text():
+    from system.ref_systems.system_ref import SysRef; import os; import sys
+    text = f'''
+    ---------------------------------------------------------------------------------------
+    Hello in {SysRef.name} logging system! 
+    This is program initialisation message which will prompt you all important informations
+    on current processes. All further info will be wrote during program running.
+    
+    Printing working directory of program:
+    {os.getcwd()}    
+    Printing the path of the program:
+    {sys.path}
+    Printing vanilla modules list:
+    {SysRef.vanilla_modules}
+    
+    Printing init.toml informations:
+    Version:     {SysRef.version} 
+    Build type:  {SysRef.status}
+    ---------------------------------------------------------------------------------------
+    '''
+    return text

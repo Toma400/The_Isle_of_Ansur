@@ -30,7 +30,7 @@ def start():
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 
                                                          _/  
 ''')
-    print (enc("The Isle of Ansur\n"))
+    print (enc(f"{SysRef.name}\n"))
     print (align(version_call("game_version") + "\n\n", "right"))
     is_core_pack_loaded()
     print (align("--------------------", "centre"))
