@@ -1,3 +1,6 @@
+import os; from system.json_manag import *
+gpath = os.path.dirname(os.path.abspath("main.py"))
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -111,6 +114,21 @@ def align (text, side="centre"):
     return aligned
   else:
     print ("Alignment error")
+
+#---------------------------------------------------
+# LANGKEY
+# Used to align text to specific part of the console
+# Takes a bit different values if used with colours
+#---------------------------------------------------
+def langstring (key: str):
+    import toml; t = toml.load(f"{gpath}/system/lang/{langset()}.toml"); tr = t[key]
+    return tr
+
+def langjstring (key: str, modtype: str, modid: str = "ansur"):
+    return json_subread(f"{modtype}/{modid}/lang.json", langset(), key)
+
+def langset ():
+    return json_read("system/system_settings.json", "language")
 
 #---------------------------------------------------
 # QUIT CHECKER

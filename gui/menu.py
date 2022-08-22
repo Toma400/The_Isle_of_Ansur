@@ -2,8 +2,10 @@ from utils.text_manag import bcolors as colour
 from utils.text_manag import align
 from utils.text_manag import colour_formatter as format
 from utils.text_manag import encoded as enc
+from utils.text_manag import langstring as lstr
 from system.settings import version_call as version_call
 from system.settings import settings as settings_check
+from system.log_manag import run_text as logtxt
 from system.sound_manag import play_core as music
 from system.ref_systems.system_ref import SysRef
 
@@ -16,6 +18,7 @@ import os
 gpath = os.path.dirname(os.path.abspath("main.py"))
 
 def start():
+  log.info(logtxt())
   log.info("Initialising start menu...")
   version_call("game_version")
   if not settings_check("legacy_unpacking"):
@@ -34,11 +37,11 @@ def start():
     print (align(version_call("game_version") + "\n\n", "right"))
     is_core_pack_loaded()
     print (align("--------------------", "centre"))
-    print (align("[1] START THE GAME", "centre"))
-    print (align("[2] LOAD THE GAME", "centre"))
-    print (align("[3] SETTINGS", "centre"))
-    print (align("[4] PACKS", "centre"))
-    print (align("[5] EXIT THE GAME", "centre"))
+    print (align(lstr("menu__button_start"), "centre"))
+    print (align(lstr("menu__button_load"), "centre"))
+    print (align(lstr("menu__button_settings"), "centre"))
+    print (align(lstr("menu__button_packs"), "centre"))
+    print (align(lstr("menu__button_exit"), "centre"))
     print ("\n\n")
     menu_choice = input ("")
     if menu_choice == "1":

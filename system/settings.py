@@ -1,19 +1,23 @@
 from system.ref_systems.system_ref import SysRef
+from system.json_manag import *
 from utils.decorators import *
 
 def default_settings(callout=None):
+  language = "english"
   time_system = "proportional"
   hunger_thirst = False
   permadeath = False
-  autoimport_packs = True
+  legacy_unloading = False
+  if callout == "language":
+    return language
   if callout == "time_system":
     return time_system
   elif callout == "hunger_thirst":
     return hunger_thirst
   elif callout == "permadeath":
     return permadeath
-  elif callout == "autoimport_packs":
-    return autoimport_packs
+  elif callout == "legacy_unloading":
+    return legacy_unloading
 
 #-------------------------------
 # VERSION CALL
@@ -30,41 +34,42 @@ def version_call(selector):
 
 def settings(callout):
   import system.json_manag
-  if callout == "time_system":
-    return system.json_manag.json_read("system/system_settings.json", "time_system")
+  if callout == "language":
+    return json_read("system/system_settings.json", "language")
+  elif callout == "time_system":
+    return json_read("system/system_settings.json", "time_system")
   elif callout == "hunger_thirst":
-    return system.json_manag.json_read("system/system_settings.json", "hunger_thirst")
+    return json_read("system/system_settings.json", "hunger_thirst")
   elif callout == "permadeath":
-    return system.json_manag.json_read("system/system_settings.json", "permadeath")
+    return json_read("system/system_settings.json", "permadeath")
   elif callout == "legacy_unpacking":
-    return system.json_manag.json_read("system/system_settings.json", "legacy_unpacking")
+    return json_read("system/system_settings.json", "legacy_unpacking")
 
 #-----------------------------
 # SETTINGS CHANGER
 # Switches settings' values
 #-----------------------------
 def settings_changer(callout):
-  import system.json_manag
   import logging as log
   path = "system/system_settings.json"
   # switch for time system
-  if system.json_manag.json_read(path, callout) == "proportional":
-    system.json_manag.json_change_ins(path, callout, "realistic")
-  elif system.json_manag.json_read(path, callout) == "realistic":
-    system.json_manag.json_change_ins(path, callout, "proportional")
+  if json_read(path, callout) == "proportional":
+    json_change_ins(path, callout, "realistic")
+  elif json_read(path, callout) == "realistic":
+    json_change_ins(path, callout, "proportional")
   # switch for boolean elements
-  elif system.json_manag.json_read(path, callout) is True:
-    system.json_manag.json_change_ins(path, callout, False)
-  elif system.json_manag.json_read(path, callout) is False:
-    system.json_manag.json_change_ins(path, callout, True)
+  elif json_read(path, callout) is True:
+    json_change_ins(path, callout, False)
+  elif json_read(path, callout) is False:
+    json_change_ins(path, callout, True)
   #------
   # LOGS
   #------
-  if system.json_manag.json_read(path, callout) == "proportional":
+  if json_read(path, callout) == "proportional":
     log.debug(f"Switching settings for: {callout} to realistic.")
-  elif system.json_manag.json_read(path, callout) == "realistic":
+  elif json_read(path, callout) == "realistic":
     log.debug(f"Switching settings for: {callout} to proportional.")
-  elif system.json_manag.json_read(path, callout) is True:
+  elif json_read(path, callout) is True:
     log.debug(f"Switching settings for: {callout} to False.")
-  elif system.json_manag.json_read(path, callout) is False:
+  elif json_read(path, callout) is False:
     log.debug(f"Switching settings for: {callout} to True.")

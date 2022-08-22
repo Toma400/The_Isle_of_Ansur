@@ -15,6 +15,8 @@
 >   - Modloader accessible via menu, allowing players to see installed mods and deactivate them if needed
 > ---
 > ###Pre-alpha 2
+> - Added language support
+>   - Modders will need to adjust their packs to match language files
 > - Huge code optimalisations
 > - Log system introduced
 > - Added non-binary gender in gender creation

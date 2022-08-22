@@ -1,0 +1,5 @@
+menu__button_start    = "[1] ROZPOCZNIJ GRĘ"
+menu__button_load     = "[2] ZAŁADUJ GRĘ"
+menu__button_settings = "[3] USTAWIENIA"
+menu__button_packs    = "[4] PACZKI"
+menu__button_exit     = "[5] WYJDŹ Z GRY"
