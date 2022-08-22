@@ -95,23 +95,23 @@ def game_load():
     j = 1
     print ("\n")
     print (align("--------------------"))
-    print (align("Choose your save"))
-    print (align("[use numbers or precise name]"))
+    print (align(lstr("menu__load_choose")))
+    print (align(lstr("menu__load_choose_hint")))
     print ("\n")
     for i in loaded_profiles:
       if repo_manag.empty_checker("saves/" + i + "/in_use/profile.json") == False:
         race = id_manag.rid_conv(json_manag.save_read(i, "profile", "race"), "descript")
         classe = id_manag.cid_conv(json_manag.save_read(i, "profile", "class"), "descript")
         locate = json_manag.save_read(i, "profile", "location")
-        print (align(f"[ {colour.OKCYAN}{i}{colour.ENDC} ][{race} - {classe}][ {colour.OKCYAN}{locate}{colour.ENDC} ]", "centre_colour"))
+        print (align(f"[ {colour.OKCYAN}{i}{colour.ENDC} ][{race} - {classe}][ {colour.OKCYAN}{locate}{colour.ENDC} ]", "centre_colour")) #should be translated, ewh
         profile_set[str(j)] = i
         j = j + 1
       else:
         pass
     print ("\n")
     print (align("--------------------"))
-    print (align("[use any non-assigned button to go back to menu]"))
-    print (align("[use slash '/' before name to delete profile]"))
+    print (align(lstr("menu__load_action1")))
+    print (align(lstr("menu__load_action2")))
     print ("\n")
     temp_var = input ("")
     if "/" in temp_var:  # deleting save
@@ -122,7 +122,7 @@ def game_load():
         temp_var2 = repo_manag.dir_checker (path, "dir")
         repo_manag.file_deleting (path)
         print (align("--------------------"))
-        print (align("Profile successfully deleted!"))
+        print (align(lstr("menu__load_save_deleted")))
         print (align("--------------------"))
         time.sleep(2)
         log.info("Deleting successful!")
@@ -164,7 +164,7 @@ def special_load(name):
   #it simply saves "temp" files and tries to load them to avoid error from empty .jsons
   log.debug("Loaded save was quitted before manual save. Thankfully we got you covered! Reading automatical saves and writing them to main save...")
   print (align("--------------------"))
-  print (align("Save file wasn't saved before. Saving from in-game data."))
+  print (align(lstr("menu__load_save_unsaved")))
   print (align("--------------------"))
   system.save_system.save_load.full_save (name)
   system.save_system.save_load.deep_load (name)
@@ -182,9 +182,9 @@ def settings():
   while True:
     print ("\n")
     print (align("--------------------"))
-    print (align("Select setting to switch."))
+    print (align(lstr("menu__settings_choose")))
     print (align("--------------------"))
-    setting_options = ["Time System", "Hunger/Thirst", "Permanent Death", "Legacy Unpacking"]
+    setting_options = ["Time System", "Hunger/Thirst", "Permanent Death", "Legacy Unpacking"] #should be translated, ewh
     setting_set = {}
     j = 1
     for i in setting_options:
@@ -197,7 +197,7 @@ def settings():
       j = j + 1
     print ("\n")
     print (align("--------------------"))
-    print (align("[use any non-numerical button to go back to menu]"))
+    print (align(lstr("menu__settings_action")))
     print ("\n")
     temp_var = input ("")
     try:
@@ -218,7 +218,7 @@ def packs():
   while True:
     packs_loaded = []
     print(align("-----------------------------------------------------------"))
-    print(align(" PACKS LOADED "))
+    print(align(lstr("pack__general_info")))
     print(enc(align("*-----------------------------------------*")))
     for pack_type in pack_type_helper():
       packgroup_opened = pack_loader(pack_type)
@@ -227,13 +227,13 @@ def packs():
           packs_loaded.append(pack_name)
           log.debug("Successfully loaded pack: " + pack_name)
           if blacklisted(pack_name, True):
-            print(align(f"[ {pack_colour(pack_type)} ] [ {colour.CRED}{pack_name}{colour.ENDC} ] ", "centre_colour+"))
+            print(align(f"[ {pack_colour(pack_type)} ] [ {colour.CRED}{pack_name}{colour.ENDC} ] ", "centre_colour+")) #check later if needs to be translated
           else:
             print(align(f"[ {pack_colour(pack_type)} ] [ {pack_name} ]", "centre_colour"))
     print(align("-----------------------------------------------------------"))
-    print(align(" Enter name of pack to open its settings "))
-    print(align(" Use -unzip- key to unzip mod files "))
-    print(align(" Press -q- to leave to menu "))
+    print(align(lstr("pack__actions_opt1")))
+    print(align(lstr("pack__actions_opt2")))
+    print(align(lstr("pack__actions_opt3")))
     print(align("-----------------------------------------------------------"))
     keybind = input("").lower()
     if keybind == "q" or keybind == "quit" or keybind == "":
@@ -252,24 +252,30 @@ def pack_settings(pack_name):
   from system.mod_manag import mod_reader as p_read
   from system.mod_manag import mod_blacklister as blacklisted
   import webbrowser
+  lister_vals = [
+    lstr("pack__lister_id"),
+    lstr("pack__lister_type"),
+    lstr("pack__lister_credits")
+  ]
+  mod_name = p_read(pack_name, "name")
   print("\n")
   while True:
     print(align("-----------------------------------------------------------"))
-    print(format("violet", p_read(pack_name, "name")))  # mod name
-    print(align(f"Pack ID: {pack_name}"))
+    print(format("violet", mod_name))  # mod name
+    print(align(f"{lister_vals[0]}: {pack_name}"))
     print(align("⊱⋅---------------------------------⋅⊰"))
     if blacklisted(pack_name, True):  # shows up only if blacklisted
-      print(format("red", "Pack disabled"))
-    print(align(f"Type: {pack_type_recogniser(pack_name)}"))
+      print(format("red", lstr("pack__lister_disabled")))
+    print(align(f"{lister_vals[1]}: {pack_type_recogniser(pack_name)}"))
     print(enc(align("*---------------------------------*")))
     print(format("blue", p_read(pack_name, "description"), "left"))  # mod description
     print(align("-----------------------------------------------------------"))
-    print(format("cyan", f"URL: {p_read(pack_name)}", "link"))  # link assigned
-    print(format("green", f"Credits: {p_read(pack_name)}", "credits"))  # mod credits
+    print(format("cyan", f"URL: {mod_name}", "link"))  # link assigned
+    print(format("green", f"{lister_vals[2]}: {mod_name}", "credits"))  # mod credits
     print(align("-----------------------------------------------------------"))
-    print("[link] Open the link")
-    print("[switch] Change mod status (enabled/disabled)")
-    print("[q] Return to pack list")
+    print(lstr("pack__lister_action1"))
+    print(lstr("pack__lister_action2"))
+    print(lstr("pack__lister_action3"))
     print(align("-----------------------------------------------------------"))
     keyword = input("").lower()
     if keyword == "link":  # opens website in browser
@@ -326,7 +332,7 @@ def is_core_pack_loaded():
   # checks whether ansur globalpack is loaded
   core_checker = sys.mod_checker("both", "ansur")
   if not core_checker:
-    print(format("red", "Core files are not loaded! Restricted menu options."))
+    print(format("red", lstr("menu__warn_core_missing")))
     log.warning("Core files are not loaded! Restricting menu options.")
     return False
   else:
@@ -349,7 +355,7 @@ def pack_settings_checker(pack_name, pack_list):
       pack_settings(pack_name)
       break
     else:
-      print(format("red", "Pack with this name does not exist!"))
+      print(format("red", lstr("pack__error_not_exist")))
       break
 
 #---------------------------------------------------------------------------------------------

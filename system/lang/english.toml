@@ -1,5 +1,28 @@
-menu__button_start    = "[1] START THE GAME"
-menu__button_load     = "[2] LOAD THE GAME"
-menu__button_settings = "[3] SETTINGS"
-menu__button_packs    = "[4] PACKS"
-menu__button_exit     = "[5] EXIT THE GAME"
+menu__button_start      = "[1] START THE GAME"
+menu__button_load       = "[2] LOAD THE GAME"
+menu__button_settings   = "[3] SETTINGS"
+menu__button_packs      = "[4] PACKS"
+menu__button_exit       = "[5] EXIT THE GAME"
+
+menu__load_choose       = "Choose your save"
+menu__load_choose_hint  = "[use numbers or precise name]"
+menu__load_save_deleted = "Saved game successfully deleted!"
+menu__load_save_unsaved = "Save file wasn't saved before. Saving from in-game data."
+menu__load_action1      = "[use any non-assigned button to go back to menu]" #will be removed
+menu__load_action2      = "[use slash '/' before name to delete profile]" #will be removed
+menu__settings_choose   = "Select setting to switch"
+menu__settings_action   = "[use any non-numerical button to go back to menu]" #will be removed
+menu__warn_core_missing = "Core files are not loaded! Restricted menu options."
+
+pack__general_info      = "PACKS LOADED"
+pack__actions_opt1      = "Enter name of pack to open its settings"
+pack__actions_opt2      = "Use -unzip- key to unzip mod files"
+pack__actions_opt3      = "Press -q- to leave to menu"
+pack__lister_id         = "Pack ID"
+pack__lister_type       = "Type"
+pack__lister_credits    = "Credits"
+pack__lister_disabled   = "Pack disabled"
+pack__lister_action1    = "[link] Open the link"
+pack__lister_action2    = "[switch] Change mod status (enabled/disabled)"
+pack__lister_action3    = "[q] Return to pack list"
+pack__error_not_exist   = "Pack with this name does not exist!"
