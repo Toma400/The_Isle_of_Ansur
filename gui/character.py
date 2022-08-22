@@ -14,6 +14,7 @@
 from utils.text_manag import align
 from utils.text_manag import colour_formatter as format
 from utils.text_manag import quit_checker as quit
+from utils.text_manag import langstring as lstr
 
 import system.json_manag as json_manag
 import logging as log
@@ -24,9 +25,9 @@ def name():
   import system.save_system.initialisation as init
   print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Type your character name"))
+  print (align(lstr("game__init_charname")))
   print (align("---"))
-  print (align("Type -0- to cancel"))
+  print (align(lstr("game__init_charname_rv")))
   print ("\n")
   while True:
     player_name = input ("")
@@ -48,10 +49,10 @@ def gender(name):
   log.info("Opening gender selection...")
   print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Choose your gender"))
-  print (align("[1] Male"))
-  print (align("[2] Female"))
-  print (align("[3] Non-binary"))
+  print (align(lstr("game__init_gender1")))
+  print (align(lstr("game__init_gender2")))
+  print (align(lstr("game__init_gender3")))
+  print (align(lstr("game__init_gender4")))
   print (align("---"))
   print ("\n")
   while True:
@@ -79,7 +80,7 @@ def race(name):
   races_count = len(races_loaded)
   print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Choose your race"))
+  print (align(lstr("game__init_race")))
   print ("\n")
   listing_races(races_loaded, rid_conv)  # prints out available races
   print ("\n")
@@ -102,7 +103,7 @@ def race(name):
             system.json_manag.save_change_ins(name, "profile", i, k)
         except KeyError:
           #detector of values that can't be added
-          print (f"Unknown value: {i}. Skipped.")
+          print (f"Unknown value: {i}. Skipped.") #<- fStrings be difficult, let that be English here (GUI should make it disappear)
       return True
     else:
       continue
@@ -114,7 +115,7 @@ def profession(name):
   classes_count = len(classes_loaded)
   print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Choose your class"))
+  print (align(lstr("game__init_class")))
   print ("\n")
   listing_classes(classes_loaded, cid_conv)  # prints out available classes
   print ("\n")
@@ -132,7 +133,7 @@ def profession(name):
         if system.json_manag.save_read(name, "profile", "race") == cid_conv(chosen_class, "race_exclusive"):
           pass
         else:
-          print (format("yellow", "Class is exclusive for race you don't represent!"))
+          print (format("yellow", lstr("game__init_class_excl"))) #??????????????? this is reported to the police (GitHub tracker), such a dumb idea
           print ("\n")
           continue
       except KeyError:
@@ -148,7 +149,7 @@ def profession(name):
             system.json_manag.save_change_ins(name, "profile", i, k)
         except KeyError:
           #detector of values that can't be added
-          print (f"Unknown value: {i}. Skipped.")
+          print (f"Unknown value: {i}. Skipped.") #will leave it as it is, GUI will make it go
       return True
     else:
       continue
@@ -163,7 +164,7 @@ def manual_attribute(name):
     attribute_list.append (i)
   print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Choose attribute you want to enhance"))
+  print (align(lstr("game__init_attr")))
   print ("\n")
   listing_attributes(attribute_list)  # prints out attributes
   print ("\n")
@@ -197,7 +198,7 @@ def manual_ability(name):
     ability_list.append (i)
   print (format("blue+", "--------------------"))
   print ("\n")
-  print (align("Choose ability you want to enhance"))
+  print (align(lstr("game__init_abil")))
   print ("\n")
   j = 1
   listing_abilities(ability_list)  # prints out abilities
