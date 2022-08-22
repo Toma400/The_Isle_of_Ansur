@@ -5,6 +5,7 @@ from utils.text_manag import encoded as enc
 from system.settings import version_call as version_call
 from system.settings import settings as settings_check
 from system.sound_manag import play_core as music
+from system.ref_systems.system_ref import SysRef
 
 import gui.character
 import gui.interface
@@ -284,11 +285,9 @@ def pack_settings(pack_name):
 # Allows unzipping mods from /pack/ dir and updating
 #----------------------------------------------------
 def pack_remover():
-  non_removable_keys = ["ansur"]
+  non_removable_keys = SysRef.vanilla_modules
   stats_rv = os.listdir(f"{gpath}/stats/"); worlds_rv = os.listdir(f"{gpath}/worlds/")
-  log.debug(f"gpath: {gpath}")
   def rv(t, tc):
-    log.debug(f"Checking {t}")
     if os.path.isdir(t) and tc not in non_removable_keys:
       shutil.rmtree(t)
 
