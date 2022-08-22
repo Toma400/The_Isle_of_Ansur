@@ -1,5 +1,40 @@
-menu__button_start    = "[1] ROZPOCZNIJ GRĘ"
-menu__button_load     = "[2] ZAŁADUJ GRĘ"
-menu__button_settings = "[3] USTAWIENIA"
-menu__button_packs    = "[4] PACZKI"
-menu__button_exit     = "[5] WYJDŹ Z GRY"
+menu__button_start      = "[1] ROZPOCZNIJ GRĘ"
+menu__button_load       = "[2] ZAŁADUJ GRĘ"
+menu__button_settings   = "[3] USTAWIENIA"
+menu__button_packs      = "[4] PACZKI"
+menu__button_exit       = "[5] WYJDŹ Z GRY"
+
+menu__load_choose       = "Wybierz swój zapis gry"
+menu__load_choose_hint  = "[użyj numeru lub dokładnej nazwy]"
+menu__load_save_deleted = "Zapis gry usunięty!"
+menu__load_save_unsaved = "Zapis gry nie był poprawnie zapisany. Nadpisywanie z systemu."
+menu__load_action1      = "[użyj dowolnego niewskazanego klawisza, żeby wrócić do menu]" #will be removed
+menu__load_action2      = "[użyj '/' przed nazwą zapisu gry, żeby go usunąć]" #will be removed
+menu__settings_choose   = "Zmień ustawienie"
+menu__settings_action   = "[użyj dowolnego nie-numerycznego klawisza, żeby wrócić do menu]" #will be removed
+menu__warn_core_missing = "Podstawowe pliki nie zostały załadowane! Ograniczone opcje menu."
+
+pack__general_info      = "ZAŁADOWANE PACZKI"
+pack__actions_opt1      = "Wpisz nazwę paczki, żeby otworzyć jej opcje"
+pack__actions_opt2      = "Użyj klucza -unzip- żeby wypakować pliki moda" #this should be deprecated eventually (or made greyed out button if autoimport is on)
+pack__actions_opt3      = "Użyj -q- żeby wyjść do menu"
+pack__lister_id         = "ID Paczki"
+pack__lister_type       = "Typ"
+pack__lister_credits    = "Zasługi"
+pack__lister_disabled   = "Paczka nieaktywna"
+pack__lister_action1    = "[link] Otwórz link"
+pack__lister_action2    = "[switch] Zmień status moda (aktywny/nieaktywny)"
+pack__lister_action3    = "[q] Powróć do listy paczek"
+pack__error_not_exist   = "Paczka z tą nazwą nie istnieje!"
+
+game__init_charname     = "Wpisz imię swojej postaci"
+game__init_charname_rv  = "Wpisz -0- żeby anulować"
+game__init_gender1      = "Wybierz płeć"
+game__init_gender2      = "[1] Mężczyzna"
+game__init_gender3      = "[2] Kobieta"
+game__init_gender4      = "[3] Osoba"
+game__init_race         = "Wybierz rasę"
+game__init_class        = "Wybierz klasę"
+game__init_class_excl   = "Klasa jest ekskluzywna dla rasy, której nie reprezentujesz!" #will be removed, it is here just bc I'm dumb
+game__init_attr         = "Wybierz cechę, którą chcesz wzmocnić"
+game__init_abil         = "Wybierz umiejętność, którą chcesz wzmocnić"

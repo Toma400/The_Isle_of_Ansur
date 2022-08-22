@@ -16,7 +16,7 @@ menu__warn_core_missing = "Core files are not loaded! Restricted menu options."
 
 pack__general_info      = "PACKS LOADED"
 pack__actions_opt1      = "Enter name of pack to open its settings"
-pack__actions_opt2      = "Use -unzip- key to unzip mod files"
+pack__actions_opt2      = "Use -unzip- key to unzip mod files" #this should be deprecated eventually (or made greyed out button if autoimport is on)
 pack__actions_opt3      = "Press -q- to leave to menu"
 pack__lister_id         = "Pack ID"
 pack__lister_type       = "Type"
