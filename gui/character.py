@@ -11,6 +11,8 @@
 # * 'name' is the only continuously used variable throughout whole game, recognising the save profile and allowing
 #   game to constantly communicate with saved profile
 #-------------------------------------------------------------------------------------------------------------------
+from system.ref_systems.stats_langkey import get_lkey as alstr
+from system.ref_systems.default_stats import profile as defaults
 from utils.text_manag import align
 from utils.text_manag import colour_formatter as format
 from utils.text_manag import quit_checker as quit
@@ -156,11 +158,8 @@ def profession(name):
 
 def manual_attribute(name):
   log.info("Opening manual attribute selection...")
-  import system.ref_systems.default_stats
   attribute_list = []
-  for i in system.ref_systems.default_stats.profile.attributes: #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< LANG PART
-    i = i.replace("atr_", "")
-    i = i.title()
+  for i in defaults.attributes:
     attribute_list.append (i)
   print (format("blue+", "--------------------"))
   print ("\n")
@@ -177,9 +176,8 @@ def manual_attribute(name):
       log.debug("Cancelling character setup. Coming back to menu.")
       return False
     elif 0 < choose_atr <= len(attribute_list):
-      choose_atr = attribute_list[choose_atr-1].lower()
-      choose_atr = choose_atr.replace(" ", "_")
-      choose_atr = ("atr_" + choose_atr)
+      choose_atr = attribute_list[choose_atr-1]
+      choose_atr = str(choose_atr)
     else:
       continue
     system.json_manag.save_change(name, "profile", choose_atr, "math", 1)
@@ -188,13 +186,9 @@ def manual_attribute(name):
 def manual_ability(name):
   log.info("Opening manual ability selection...")
   import system.id_manag
-  from system.ref_systems.default_stats import profile
-  abilities = profile.abilities
+  abilities = defaults.abilities
   ability_list = []
-  for i in abilities: #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< LANG PART
-    i = i.replace("abil_", "")
-    i = i.replace("_", " ")
-    i = i.title()
+  for i in abilities:
     ability_list.append (i)
   print (format("blue+", "--------------------"))
   print ("\n")
@@ -212,9 +206,8 @@ def manual_ability(name):
       log.debug("Cancelling character setup. Coming back to menu.")
       return False
     elif 0 < choose_abil <= len(ability_list):
-      choose_abil = ability_list[choose_abil-1].lower()
-      choose_abil = choose_abil.replace(" ", "_")
-      choose_abil = ("abil_" + choose_abil)
+      choose_abil = ability_list[choose_abil-1]
+      choose_abil = str(choose_abil)
     else:
       continue  # previously it was calling of manual attribute, but this doesn't make sense here # <- WTF I meant here?
     system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
@@ -242,13 +235,15 @@ def listing_classes(classes_loaded):
 def listing_attributes(attribute_list):
   j = 1
   for i in attribute_list:
-    print ("[" + str(j) + "][" + i + "]")
+    atr_i = lstr(alstr(i))
+    print ("[" + str(j) + "][" + atr_i + "]")
     j = j+1
 
-def listing_abilities(ability_list):
+def listing_abilities(skills_list):
   j = 1
-  for i in ability_list:
-    print("[" + str(j) + "][" + i + "]")
+  for i in skills_list:
+    skl_i = lstr(alstr(i))
+    print("[" + str(j) + "][" + skl_i + "]")
     j = j + 1
 
 # checks if value is convertable into integer

@@ -4,7 +4,7 @@ import json
 def json_read(path, element, dict_type=False):
   data = {}
   try:
-    with open(path) as json_file:
+    with open(path, encoding="utf-8") as json_file:
       data = json.load(json_file)
     if dict_type == False:
       return data[element]
