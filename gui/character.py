@@ -15,6 +15,8 @@ from utils.text_manag import align
 from utils.text_manag import colour_formatter as format
 from utils.text_manag import quit_checker as quit
 from utils.text_manag import langstring as lstr
+from utils.text_manag import langjstring as jlstr
+from system.id_manag import *
 
 import system.json_manag as json_manag
 import logging as log
@@ -75,14 +77,13 @@ def gender(name):
 
 def race(name):
   log.info("Opening race selection...")
-  from system.id_manag import rid_conv as rid_conv #garbage.py rule avoided
   races_loaded = system.mod_manag.rid_loader()
   races_count = len(races_loaded)
   print (format("blue+", "--------------------"))
   print ("\n")
   print (align(lstr("game__init_race")))
   print ("\n")
-  listing_races(races_loaded, rid_conv)  # prints out available races
+  listing_races(races_loaded)  # prints out available races
   print ("\n")
   while True:
     choose_race = int_check(input(""))
@@ -110,14 +111,13 @@ def race(name):
 
 def profession(name):
   log.info("Opening class selection...")
-  from system.id_manag import cid_conv as cid_conv #garbage.py rule avoided
   classes_loaded = system.mod_manag.cid_loader()
   classes_count = len(classes_loaded)
   print (format("blue+", "--------------------"))
   print ("\n")
   print (align(lstr("game__init_class")))
   print ("\n")
-  listing_classes(classes_loaded, cid_conv)  # prints out available classes
+  listing_classes(classes_loaded)  # prints out available classes
   print ("\n")
   while True:
     choose_class = int_check(input(""))
@@ -225,16 +225,18 @@ def manual_ability(name):
 # Put as separate functions just for improved code
 # readibility above
 #-------------------------------------------------------
-def listing_races(races_loaded, rid_conv):
+def listing_races(races_loaded):
   j = 1
   for k in races_loaded:
-    print("[" + str(j) + "][" + rid_conv(k, "descript") + "]")
+    race_name = jlstr(rid_conv(k, "descript"), "stats", id_splitter(k, 0))
+    print("[" + str(j) + "][" + race_name + "]")
     j = j + 1
 
-def listing_classes(classes_loaded, cid_conv):
+def listing_classes(classes_loaded):
   j = 1
   for k in classes_loaded:
-    print("[" + str(j) + "][" + cid_conv(k, "descript") + "]")
+    class_name = jlstr(cid_conv(k, "descript"), "stats", id_splitter(k, 0))
+    print("[" + str(j) + "][" + class_name + "]")
     j = j + 1
 
 def listing_attributes(attribute_list):

@@ -38,3 +38,5 @@ game__init_class        = "Choose your class"
 game__init_class_excl   = "Class is exclusive for race you don't represent!" #will be removed, it is here just bc I'm dumb
 game__init_attr         = "Choose attribute you want to enhance"
 game__init_abil         = "Choose ability you want to enhance"
+
+system__text_load_fail  = "Text failed to load"

@@ -12,3 +12,9 @@ import subprocess
 subprocess.Popen("C:\\Users\\Ryzen 5\\Desktop\\CMDer\\cmder.exe")
 
 print("Oh!")
+
+
+
+######
+# ABILITY / ATTRIBUTE NAMINGS
+# + skills namings, as well as dexterity changed into that better version

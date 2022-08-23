@@ -1,15 +1,13 @@
 {
   "undefined": [
     {
-      "class_id": "ansur:undefined",
-      "descript": "Undefined",
+      "descript": "classes__undefined",
       "atr_charisma": 1
     }
   ],
   "fighter": [
     {
-      "class_id": "ansur:fighter",
-      "descript": "Fighter",
+      "descript": "classes__fighter",
       "abil_shortswords": 1,
       "abil_longswords": 1,
       "abil_toughness": 1,
@@ -19,8 +17,7 @@
   ],
   "archer": [
     {
-      "class_id": "ansur:archer",
-      "descript": "Archer",
+      "descript": "classes__archer",
       "abil_archery": 1,
       "abil_sneaking": 1,
       "abil_toughness": -1
@@ -28,8 +25,7 @@
   ],
   "gunslinger": [
     {
-      "class_id": "ansur:gunslinger",
-      "descript": "Gunslinger",
+      "descript": "classes__gunslinger",
       "pwr_tech": 5,
       "pwr_magic": -5,
       "abil_firearms": 2,
@@ -39,8 +35,7 @@
   ],
   "mage": [
     {
-      "class_id": "ansur:mage",
-      "descript": "Regular Mage",
+      "descript": "classes__mage",
       "pwr_magic": 5,
       "pwr_tech": -5,
       "abil_castspelling": 2,
@@ -50,8 +45,7 @@
   ],
   "trader": [
     {
-      "class_id": "ansur:trader",
-      "descript": "Trader",
+      "descript": "classes__trader",
       "abil_trade": 2,
       "abil_persuasion": 1,
       "abil_toughness": -2,
@@ -60,8 +54,7 @@
   ],
   "rogue": [
     {
-      "class_id": "ansur:rogue",
-      "descript": "Rogue",
+      "descript": "classes__rogue",
       "abil_sneaking": 1,
       "abil_lockpicking": 1,
       "abil_pickpocketing": 1,
@@ -70,8 +63,7 @@
   ],
   "assassin": [
     {
-      "class_id": "ansur:assassin",
-      "descript": "Assassin",
+      "descript": "classes__assassin",
       "abil_sneaking": 1,
       "abil_shortswords": 1,
       "abil_toughness": -2,
@@ -80,8 +72,7 @@
   ],
   "mechanic": [
     {
-      "class_id": "ansur:mechanic",
-      "descript": "Mechanic",
+      "descript": "classes__mechanic",
       "pwr_tech": 15,
       "pwr_magic": -15,
       "abil_repair": 2,
@@ -92,8 +83,7 @@
   ],
   "blacksmith": [
     {
-      "class_id": "ansur:blacksmith",
-      "descript": "Blacksmith",
+      "descript": "classes__blacksmith",
       "abil_repair": 1,
       "abil_smithery": 1,
       "abil_resource_processing": 1,
@@ -105,8 +95,7 @@
   ],
     "bard": [
     {
-      "class_id": "ansur:bard",
-      "descript": "Bard",
+      "descript": "classes__bard",
       "abil_musicality": 1,
       "abil_persuasion": 1,
       "abil_pickpocketing": 1,
@@ -115,8 +104,7 @@
   ],
   "outlander": [
     {
-      "class_id": "ansur:outlander",
-      "descript": "Outlander",
+      "descript": "classes__outlander",
       "atr_charisma": -1,
       "abil_repair": 1,
       "abil_survival": 1,
@@ -127,8 +115,7 @@
   ],
   "necromant": [
     {
-      "class_id": "ansur:necromant",
-      "descript": "Necromant",
+      "descript": "classes__necromant",
       "pwr_void": 8,
       "pwr_conn": -20,
       "pwr_tech": -5,
@@ -140,8 +127,7 @@
   ],
   "priest": [
     {
-      "class_id": "ansur:priest",
-      "descript": "Priest",
+      "descript": "classes__priest",
       "pwr_magic": 5,
       "pwr_tech": -5,
       "abil_restoration_magic": 2,
@@ -151,8 +137,7 @@
   ],
   "illusionist": [
     {
-      "class_id": "ansur:illusionist",
-      "descript": "Illusionist",
+      "descript": "classes__illusionist",
       "pwr_magic": 5,
       "pwr_tech": -5,
       "abil_transformation_magic": 2,
@@ -162,8 +147,7 @@
   ],
   "ormath_shaman": [
     {
-      "class_id": "ansur:ormath_shaman",
-      "descript": "Ormath Shaman",
+      "descript": "classes__ormath_shaman",
       "race_exclusive": "ansur:ormath",
       "pwr_conn": 10,
       "pwr_void": -10,

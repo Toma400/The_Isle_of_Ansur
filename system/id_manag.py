@@ -101,3 +101,11 @@ def rid_conv (rid, element, dict_type=False):
       else:
         #returns values of object
         return json_manag.json_subread (f"stats/{rid1}/races.json", rid2, element)
+
+def id_splitter (id_to_split, position: int = None):
+  '''Position let you choose either mod id [0] or element id [1]'''
+  id_list = id_to_split.split(":")
+  if position is None:
+    return id_list
+  else:
+    return id_list[position]

@@ -1,8 +1,7 @@
 {
   "baedoorian": [
     {
-      "race_id": "ansur:baedoorian",
-      "descript": "Human, Born in Baedoor",
+      "descript": "races__baedoorian",
       "atr_strength": 2,
       "atr_charisma": 1,
       "atr_intelligence": 1,
@@ -12,10 +11,9 @@
       "abil_persuasion": 1
     }
   ],
-  "westernwaldian": [
+  "naerian": [
     {
-      "race_id": "ansur:westernwaldian",
-      "descript": "Human, Born in WesternWald",
+      "descript": "races__naerian",
       "atr_strength": 1,
       "atr_charisma": 1,
       "atr_intelligence": 1,
@@ -26,8 +24,7 @@
   ],
   "nord": [
     {
-      "race_id": "ansur:nord",
-      "descript": "Human, Born in Northern Isles",
+      "descript": "races__nord",
       "atr_strength": 2,
       "atr_endurance": 1,
       "atr_charisma": 1,
@@ -38,8 +35,7 @@
   ],
   "lunanian": [
     {
-      "race_id": "ansur:lunanian",
-      "descript": "Human, Born in Center of Moon Continent",
+      "descript": "races__lunanian",
       "atr_strength": 1,
       "atr_endurance": 1,
       "atr_charisma": 1,
@@ -49,8 +45,7 @@
   ],
   "saphtri": [
     {
-      "race_id": "ansur:saphtri",
-      "descript": "Saphtri",
+      "descript": "races__saphtri",
       "atr_strength": -1,
       "atr_dexterity": 2,
       "atr_charisma": 1,
@@ -61,8 +56,7 @@
   ],
   "voitri": [
     {
-      "race_id": "ansur:voitri",
-      "descript": "Voitri",
+      "descript": "races__voitri",
       "atr_charisma": 1,
       "atr_dexterity": 1,
       "atr_intelligence": 2,
@@ -75,8 +69,7 @@
   ],
   "lunatri": [
     {
-      "race_id": "ansur:lunatri",
-      "descript": "Lunatri",
+      "descript": "races__lunatri",
       "atr_charisma": 1,
       "atr_dexterity": 1,
       "atr_intelligence": 1,
@@ -88,8 +81,7 @@
   ],
   "ormath": [
     {
-      "race_id": "ansur:ormath",
-      "descript": "Ormath",
+      "descript": "races__ormath",
       "atr_strength": -1,
       "atr_intelligence": 2,
       "atr_dexterity": 1,
@@ -104,8 +96,7 @@
   ],
   "ett": [
     {
-      "race_id": "ansur:ett",
-      "descript": "Ett",
+      "descript": "races__ett",
       "atr_strength": 1,
       "atr_dexterity": -1,
       "atr_intelligence": 1,
@@ -117,8 +108,7 @@
   ],
   "ghlodd": [
     {
-      "race_id": "ansur:ghlodd",
-      "descript": "Ghlodd",
+      "descript": "races__ghlodd",
       "atr_strength": 1,
       "atr_endurance": 1,
       "atr_dexterity": 2,

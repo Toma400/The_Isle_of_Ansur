@@ -16,9 +16,13 @@
 > ---
 > ###Pre-alpha 2
 > - Added language support
->   - Modders will need to adjust their packs to match language files
+>   - Modders will need to adjust their packs to match language files being required (`lang.json`)
 > - Huge code optimalisations
 > - Log system introduced
+> - Changed some IDs in vanilla elements
+>   - Old saves may be not compatibile, if they had such characteristics:
+>     - Character were of **Westernwaldian** race
+>   - In such case, please recreate your character or edit the IDs manually; no tools for conversion are made yet
 > - Added non-binary gender in gender creation
 > 
 > **Fixes:**

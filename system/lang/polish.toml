@@ -38,3 +38,5 @@ game__init_class        = "Wybierz klasę"
 game__init_class_excl   = "Klasa jest ekskluzywna dla rasy, której nie reprezentujesz!" #will be removed, it is here just bc I'm dumb
 game__init_attr         = "Wybierz cechę, którą chcesz wzmocnić"
 game__init_abil         = "Wybierz umiejętność, którą chcesz wzmocnić"
+
+system__text_load_fail  = "Tekst nie mógł się załadować"
