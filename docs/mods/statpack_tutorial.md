@@ -8,10 +8,14 @@ Statpack is set of one or more .json files adding one of following features:
 
 For each of these features it is needed respectively named .json file 
 (races.json, classes.json, items.json + crafting.json), by default, 
-placed in "stats/name_of_statpack/" directory. 
-File itself needs to contain specific keys and values.
+placed in "stats/name_of_statpack/" directory.  
+Files themselves needs to contain specific keys and values.
+
 * [General races/classes values](statpack_tutorial.md#list-of-general-player-statistics)
 * [General items values](statpack_tutorial.md#list-of-general-item-statistics)
+
+Additionally, you need to attach language file to the directory, so you will be
+able to provide translations for your mods' contents, using keys.
 
 Remember that your statpack folder name has to be lowercased and use 
 underline instead of spaces. Folder name is considered as your mod ID and 
@@ -24,7 +28,8 @@ syntax patterns). Remember that numerical values don't use quotation marks,
 same with booleans taking only `true/false` values.
 ***
 ## Races.json
-Races represent main factor of creating character statistics, adding bonuses for attributes, powers, sometimes also perks and abilities.
+Races represent main factor of creating character statistics, 
+adding bonuses for attributes, powers, sometimes also perks and abilities.
 You can start by seeing vanilla template uploaded 
 [here](https://drive.google.com/file/d/1ffEDK6phESfF4N3DQMUbyXUAc3wqlNXe/view?usp=sharing).
 
@@ -33,7 +38,7 @@ One of races uploaded can look like this:
 {
   "baedoorian": [
     {
-      "descript": "Human, Born in Baedoor",
+      "descript": "races__baedoorian",
       "atr_strength": 2,
       "atr_charisma": 1,
       "atr_intelligence": 1,
@@ -47,16 +52,21 @@ One of races uploaded can look like this:
   ]
 }
 ```
-As you see, it contains key ("baedoorian" on top) and several values. While statistics are pretty straight-forward (you can see them listed [below](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Statpack-Tutorial#list-of-general-player-statistics)), other values could be explained:
-* `key` - name of your race, following rules of creating a folder (lowercase, underline). Used as a second part for RID.
-* `race_id` - also called "RID". It is ID which will be used for race. Remember that RID is basically name of your mod's folder and key.
-* `descript` - viewable name of your race in-game.
-* `spec_diamond` - boolean value, set by default to false. Makes player ignore Tech - Magic relation penalty.
-* `spec_moon` - boolean value, set by default to false. Makes player ignore Void - Connection relation penalty.
+As you see, it contains main key ("baedoorian" on top) and several values. 
+While statistics are pretty straight-forward (you can see them listed 
+[below](statpack_tutorial.md#list-of-general-player-statistics)), 
+other values could be explained:
+
+| In file        | What is it?    | Description                                                                                                    |
+|----------------|----------------|----------------------------------------------------------------------------------------------------------------|
+| "baedoorian"   | main key       | name of your race, following rules of creating a folder (lowercase, underline). Used as a second part for RID. |
+| "descript"     | language key   | language key to viewable name of your race in-game. It refers to `lang.json` file value.                       |
+| "spec_diamond" | power modifier | boolean value, set by default to false. Makes player ignore Tech - Magic relation penalty.                     |
+| "spec_moon"    | power modifier | boolean value, set by default to false. Makes player ignore Void - Connection relation penalty.                |
 
 ## Classes.json
-Classes are almost identical to races, the difference is only focus: t
-hey mostly add abilities, and bonus for attributes is really rare. 
+Classes are almost identical to races, the difference is only focus: they 
+mostly add abilities, and bonus for attributes is really rare. 
 Perks can be added, though, same with powers. 
 Using `spec_diamond/spec_moon` is not prohibited, 
 but it's definitely lore-unfriendly, as this bonus comes only with race.
@@ -83,7 +93,6 @@ let's look:
 {
   "ayer_knife": [
     {
-      "item_id": "ansur:ayer_knife",
       "category": "weapon",
       "type": "shortsword",
       "descript": "Ayer Knife",

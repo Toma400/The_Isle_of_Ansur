@@ -158,7 +158,7 @@ def manual_attribute(name):
   log.info("Opening manual attribute selection...")
   import system.ref_systems.default_stats
   attribute_list = []
-  for i in system.ref_systems.default_stats.profile.attributes:
+  for i in system.ref_systems.default_stats.profile.attributes: #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< LANG PART
     i = i.replace("atr_", "")
     i = i.title()
     attribute_list.append (i)
@@ -191,7 +191,7 @@ def manual_ability(name):
   from system.ref_systems.default_stats import profile
   abilities = profile.abilities
   ability_list = []
-  for i in abilities:
+  for i in abilities: #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< LANG PART
     i = i.replace("abil_", "")
     i = i.replace("_", " ")
     i = i.title()
