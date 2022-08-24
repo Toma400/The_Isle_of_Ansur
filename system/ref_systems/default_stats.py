@@ -50,49 +50,59 @@ class profile:
 
   #all attributes are 8 by default
   attributes = {
-    'atr_charisma' : 8,
-    'atr_dexterity' : 8,
-    'atr_endurance' : 8,
-    'atr_intelligence' : 8,
-    'atr_strength' : 8,}
+    'atr_charisma': 8,
+    'atr_agility': 8,
+    'atr_endurance': 8,
+    'atr_intelligence': 8,
+    'atr_strength': 8,}
 
-  abilities = {
-    'abil_shortswords' : 1, #positive by default
-    'abil_longswords' : 0,
-    'abil_archery' : 1, #positive by default
-    'abil_firearms' : 0,
-    'abil_castspelling' : 0,
-    'abil_restoration_magic' : 0,
-    'abil_transformation_magic' : 0,
-    'abil_destruction_magic' : 0,
-    'abil_necromancy' : 0, #no creative change
-    'abil_connection' : 0, #no creative change
-    'abil_trade' : 1, #positive by default
-    'abil_persuasion' : 0,
-    'abil_musicality' : 0,
-    'abil_repair' : 0,
-    'abil_traps' : 0,
-    'abil_resource_processing' : 0,
-    'abil_tools' : 0,
-    'abil_smithery' : 0,
-    'abil_herbalism' : 0,
-    'abil_alchemy' : 0,
-    'abil_lockpicking' : 0,
-    'abil_sneaking' : 0,
-    'abil_trapspotting' : 0,
-    'abil_pickpocketing' : 0,
-    'abil_healing' : 0,
-    'abil_cooking' : 0,
-    'abil_survival' : 0,
-    'abil_toughness' : 0,}
+  skills = {
+    'sk_handfight': 1, #positive by default
+    'sk_shortswords': 1, #positive by default
+    'sk_longswords': 0,
+    'sk_polearms': 0,
+    'sk_archery': 1, #positive by default
+    'sk_firearms': 0,
+    'sk_spellcasting': 0,
+    'sk_restoration_magic': 0,
+    'sk_transformation_magic': 0,
+    'sk_destruction_magic': 0,
+    'sk_necromancy': 0, #no creative change
+    'sk_connection_bond': 0, #no creative change
+    'sk_trade': 1, #positive by default
+    'sk_persuasion': 1, #positive by default
+    'sk_musicality': 0,
+    'sk_repair': 0,
+    'sk_traps': 0,
+    'sk_resource_processing': 0,
+    'sk_tools': 0,
+    'sk_smithing': 0,
+    'sk_herbalism': 0,
+    'sk_alchemy': 0,
+    'sk_lockpicking': 0,
+    'sk_sneaking': 0,
+    'sk_stealing': 0,
+    'sk_trapdesigning': 0,
+    'sk_trapspotting': 0,
+    'sk_pickpocketing': 0,
+    'sk_healing': 0,
+    'sk_cooking': 0,
+    'sk_survival': 0,
+    'sk_toughness': 0,}
 
   perks = {
-    'perk_assassin_hit' : False,
-    'perk_trader_sight' : False,
-    'perk_vehicle_driving' : False,
-    'perk_toxin_immunity' : 0,
-    'perk_animal_friend' : False,
-    'perk_animal_trainer' : False,
+    'perk_assassin_hit': False,
+    'perk_trader_sight': False,
+    'perk_vehicle_driving': False,
+    'perk_toxin_immunity': 0,
+    'perk_animal_friend': False,
+    'perk_animal_trainer': False,
+    'perk_berserk': False,
+    'perk_step_on_water': False,
+    'perk_flying_monk': False,
+    'perk_vampirism': False,
+    'perk_ritual_tongue': False,
+    'perk_ancient_tongue': False
   }
 
   settings = {

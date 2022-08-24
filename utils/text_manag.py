@@ -1,4 +1,4 @@
-import os; from system.json_manag import *; import logging
+import os; from system.json_manag import *
 gpath = os.path.dirname(os.path.abspath("main.py"))
 
 class bcolors:
@@ -131,7 +131,7 @@ def langjstring (key: str, modtype: str, modid: str = "ansur"):
         try:
             read = json_read(f"{modtype}/{modid}/lang.json", "english")
         except KeyError:
-            logging.warning(f"Module {modid} does not have properly set language value for {key}. Please contact the developer of this module for help.")
+            import logging; logging.warning(f"Module {modid} does not have properly set language value for {key}. Please contact the developer of this module for help.")
             return langstring("system__text_load_fail")
     return read[key]
 

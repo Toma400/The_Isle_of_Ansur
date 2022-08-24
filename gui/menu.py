@@ -52,7 +52,7 @@ def start():
             if gui.character.race(name):
               if gui.character.profession(name):
                 if gui.character.manual_attribute(name):
-                  if gui.character.manual_ability(name):
+                  if gui.character.manual_skill(name):
                     first_game = True
         if first_game:
           print ("Yay! Game would start if this wasn't unfinished version!") # run the game

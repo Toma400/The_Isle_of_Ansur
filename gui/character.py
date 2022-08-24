@@ -181,34 +181,34 @@ def manual_attribute(name):
     system.json_manag.save_change(name, "profile", choose_atr, "math", 1)
     return True
 
-def manual_ability(name):
-  log.info("Opening manual ability selection...")
+def manual_skill(name):
+  log.info("Opening manual skill selection...")
   import system.id_manag
-  abilities = defaults.abilities
-  ability_list = []
-  for i in abilities:
-    ability_list.append (i)
+  skills = defaults.skills
+  skills_list = []
+  for i in skills:
+    skills_list.append (i)
   print (format("blue+", "--------------------"))
   print ("\n")
-  print (align(lstr("game__init_abil")))
+  print (align(lstr("game__init_skill")))
   print ("\n")
   j = 1
-  listing_abilities(ability_list)  # prints out abilities
+  listing_skills(skills_list)  # prints out abilities
   print ("\n")
   while True:
     try:
-      choose_abil = int(input (""))
+      choose_skill = int(input (""))
     except ValueError:
       continue
-    if quit(choose_abil):
+    if quit(choose_skill):
       log.debug("Cancelling character setup. Coming back to menu.")
       return False
-    elif 0 < choose_abil <= len(ability_list):
-      choose_abil = ability_list[choose_abil-1]
-      choose_abil = str(choose_abil)
+    elif 0 < choose_skill <= len(skills_list):
+      choose_skill = skills_list[choose_skill-1]
+      choose_skill = str(choose_skill)
     else:
       continue  # previously it was calling of manual attribute, but this doesn't make sense here # <- WTF I meant here?
-    system.json_manag.save_change(name, "profile", choose_abil, "math", 1)
+    system.json_manag.save_change(name, "profile", choose_skill, "math", 1)
     return True
 
 #-------------------------------------------------------
@@ -237,7 +237,7 @@ def listing_attributes(attribute_list):
     print ("[" + str(j) + "][" + atr_i + "]")
     j = j+1
 
-def listing_abilities(skills_list):
+def listing_skills(skills_list):
   j = 1
   for i in skills_list:
     skl_i = lstr(alstr(i))

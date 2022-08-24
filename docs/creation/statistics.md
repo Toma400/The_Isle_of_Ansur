@@ -16,7 +16,7 @@ Baedoor RPG system is based mostly on statistics, which are split into several c
   * [Connection](statistics.md#connection)
 * Attributes
   * [Strength](statistics.md#strength)
-  * [Dexterity](statistics.md#dexterity)
+  * [Agility](statistics.md#agility)
   * [Endurance](statistics.md#endurance)
   * [Intelligence](statistics.md#intelligence)
   * [Charisma](statistics.md#charisma)
@@ -27,7 +27,7 @@ Baedoor RPG system is based mostly on statistics, which are split into several c
     * [Archery](statistics.md#archery)
     * [Firearms](statistics.md#firearms)
   * Magic-related
-    * [Castspelling](statistics.md#castspelling)
+    * [Spellcasting](statistics.md#spellcasting)
     * [Restoration Magic](statistics.md#restoration-magic)
     * [Transformation Magic](statistics.md#transformation-magic)
     * [Destruction Magic](statistics.md#destruction-magic)
@@ -48,7 +48,7 @@ Baedoor RPG system is based mostly on statistics, which are split into several c
   * Resource-related
     * [Resource Processing](statistics.md#resource-processing)
     * [Tools](statistics.md#tools)
-    * [Smithery](statistics.md#smithery)
+    * [Smithing](statistics.md#smithing)
     * [Herbalism](statistics.md#herbalism)
     * [Alchemy](statistics.md#alchemy)
   * Survival-related
@@ -98,7 +98,7 @@ Reflects laws of universe, order and schemes, forming shapes from essences. Cont
 # Attributes
 ### Strength
 Reflects on your weight points and power.
-### Dexterity
+### Agility
 Reflects on your speed, being connected to all sneak-related actions, as well as additional actions during turns while fighting/doing actions.
 ### Endurance
 Reflects on your health points and speed of losing rest points, as well as regenerating.
@@ -117,7 +117,7 @@ Helps you fight better with any close-combat weapons with long blade.
 Helps you fight better with bows and crossbows.
 ### Firearms
 Helps you using firearms, making them more efficient and reliable.
-### Castspelling
+### Spellcasting
 Helps to perform magical actions not bound to any magic school, such as making runes, scrolls or simple spells.
 ### Restoration Magic
 Represents school of Restoration, which controls Connection-Magic relations, such as healing and plant growth.
@@ -151,7 +151,7 @@ Allows you to create various traps.
 Gives you more possibilities of processing found resources, allowing you for their further use.
 ### Tools
 Allows you to repair tools and damaged pieces.
-### Smithery
+### Smithing
 Allows you to create blacksmith-related tools, armours and weapons, and being better quality with higher levels.
 ### Herbalism
 Makes you more aware of herbs and allows you to get more details about them.

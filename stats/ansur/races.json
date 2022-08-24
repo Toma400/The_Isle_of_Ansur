@@ -7,8 +7,8 @@
       "atr_intelligence": 1,
       "atr_endurance": -1,
       "pwr_tech": 3,
-      "abil_firearms": 1,
-      "abil_persuasion": 1
+      "sk_firearms": 1,
+      "sk_persuasion": 1
     }
   ],
   "naerian": [
@@ -18,8 +18,8 @@
       "atr_charisma": 1,
       "atr_intelligence": 1,
       "pwr_magic": 2,
-      "abil_trade": 1,
-      "abil_longswords": 1
+      "sk_trade": 1,
+      "sk_longswords": 1
     }
   ],
   "nord": [
@@ -29,8 +29,8 @@
       "atr_endurance": 1,
       "atr_charisma": 1,
       "atr_intelligence": -1,
-      "abil_shortswords": 1,
-      "abil_toughness": 1
+      "sk_shortswords": 1,
+      "sk_toughness": 1
     }
   ],
   "lunanian": [
@@ -39,44 +39,44 @@
       "atr_strength": 1,
       "atr_endurance": 1,
       "atr_charisma": 1,
-      "abil_trade": 1,
-      "abil_resource_processing": 1
+      "sk_trade": 1,
+      "sk_resource_processing": 1
     }
   ],
   "saphtri": [
     {
       "descript": "races__saphtri",
       "atr_strength": -1,
-      "atr_dexterity": 2,
+      "atr_agility": 2,
       "atr_charisma": 1,
       "atr_endurance": 1,
       "pwr_conn": 1,
-      "abil_archery": 2
+      "sk_archery": 2
     }
   ],
   "voitri": [
     {
       "descript": "races__voitri",
       "atr_charisma": 1,
-      "atr_dexterity": 1,
+      "atr_agility": 1,
       "atr_intelligence": 2,
       "atr_endurance": -1,
       "pwr_magic": 4,
       "pwr_void": 2,
-      "abil_transformation_magic": 1,
-      "abil_destruction_magic": 1
+      "sk_transformation_magic": 1,
+      "sk_destruction_magic": 1
     }
   ],
   "lunatri": [
     {
       "descript": "races__lunatri",
       "atr_charisma": 1,
-      "atr_dexterity": 1,
+      "atr_agility": 1,
       "atr_intelligence": 1,
       "pwr_magic": 5,
-      "abil_transformation_magic": 1,
-      "abil_persuasion": 1,
-      "abil_alchemy": 1
+      "sk_transformation_magic": 1,
+      "sk_persuasion": 1,
+      "sk_alchemy": 1
     }
   ],
   "ormath": [
@@ -84,26 +84,26 @@
       "descript": "races__ormath",
       "atr_strength": -1,
       "atr_intelligence": 2,
-      "atr_dexterity": 1,
+      "atr_agility": 1,
       "atr_endurance": 1,
       "pwr_conn": 7,
       "pwr_magic": 2,
       "pwr_void": -20,
-      "abil_connection": 1,
-      "abil_healing": 1,
-      "abil_survival": 1
+      "sk_connection_bond": 1,
+      "sk_healing": 1,
+      "sk_survival": 1
     }
   ],
   "ett": [
     {
       "descript": "races__ett",
       "atr_strength": 1,
-      "atr_dexterity": -1,
+      "atr_agility": -1,
       "atr_intelligence": 1,
       "atr_endurance": 2,
       "pwr_tech": 6,
-      "abil_smithery": 1,
-      "abil_trap": 1
+      "sk_smithing": 1,
+      "sk_trap": 1
     }
   ],
   "ghlodd": [
@@ -111,13 +111,13 @@
       "descript": "races__ghlodd",
       "atr_strength": 1,
       "atr_endurance": 1,
-      "atr_dexterity": 2,
+      "atr_agility": 2,
       "atr_charisma": -1,
       "pwr_conn": 5,
       "pwr_tech": 1,
       "pwr_magic": 1,
-      "abil_repair": 1,
-      "abil_tools": 1,
+      "sk_repair": 1,
+      "sk_tools": 1,
       "spec_diamond": true
     }
   ]

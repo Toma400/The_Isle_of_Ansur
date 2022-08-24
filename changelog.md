@@ -18,6 +18,8 @@
 > **<span style="color:#871C2C">IT IS NOT SAFE TO CREATE MODS NOR SAVES FROM THIS POINT ON. NEXT RELEASES WILL INTRODUCE GAMEBREAKING CHANGES.</span>**  
 > <span style="color:#A44B58">Even though, changelog notes will list all technical changes which can be followed by mod creators to adjust their mods to new versions.</span>
 > 
+> - Updated to current Baedoor RPG System
+>   - Changes of several namings and added/removed some elements to match
 > - Added language support
 >   - Modders will need to adjust their packs to match language files being required (`lang.json`)
 > - Huge code optimalisations

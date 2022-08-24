@@ -1,12 +1,9 @@
+import logging as log; import system.log_manag; system.log_manag.run()
 import system.cache.cache_manag
 system.cache.cache_manag.cache_redirect()
 from utils.text_manag import colour_formatter as format
 import gui.menu
 import traceback
-import system.log_manag
-import logging as log
-
-system.log_manag.run()
 
 try:
     gui.menu.start()

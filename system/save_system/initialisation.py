@@ -56,7 +56,7 @@ def stats_creating(path, set):
     default_stats.update (system.ref_systems.default_stats.profile.not_default_stats)
     default_stats.update (system.ref_systems.default_stats.profile.general_stats)
     default_stats.update (system.ref_systems.default_stats.profile.attributes)
-    default_stats.update (system.ref_systems.default_stats.profile.abilities)
+    default_stats.update (system.ref_systems.default_stats.profile.skills)
     default_stats.update (system.ref_systems.default_stats.profile.perks)
     default_stats.update (system.ref_systems.default_stats.profile.settings)
     with open (deeper_path,'w') as file:

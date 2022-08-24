@@ -44,8 +44,8 @@ One of races uploaded can look like this:
       "atr_intelligence": 1,
       "atr_endurance": -1,
       "pwr_tech": 3,
-      "abil_firearms": 1,
-      "abil_persuasion": 1,
+      "sk_firearms": 1,
+      "sk_persuasion": 1,
       "spec_diamond": false,
       "spec_moon": false
     }
@@ -119,7 +119,7 @@ values are explained in [this section](statpack_tutorial.md#list-of-general-item
       "workplace": "anvil",
       "material_1": "ansur:iron_ingot",
       "material_2": "ansur:wooden_handle",
-      "skill_needed": "smithery",
+      "skill_needed": "smithing",
       "skill_level": 2,
       "sp_spent": 45
     }
@@ -159,40 +159,40 @@ If you want to create bonus points to specific element, use positive value
 #### Attributes
 
 `   'atr_charisma' : n`
-`   'atr_dexterity' : n`
+`   'atr_agility' : n`
 `   'atr_endurance' : n`
 `   'atr_intelligence' : n`
 `   'atr_strength' : n`
 
 #### Abilities
 
-* `   'abil_shortswords' : n`
-`   'abil_longswords' : n`
-`   'abil_archery' : n`
-`   'abil_firearms' : n`
-`   'abil_castspelling' : n`
-* `   'abil_restoration_magic' : n`
-`   'abil_transformation_magic' : n`
-`   'abil_destruction_magic' : n`
-`   'abil_necromancy' : n`
-`   'abil_connection' : n`
-* `   'abil_trade' : n`
-`   'abil_persuasion' : n`
-`   'abil_repair' : n`
-`   'abil_traps' : n`
-* `   'abil_resource_processing' : n`
-`   'abil_tools' : n`
-`   'abil_smithery' : n`
-`   'abil_herbalism' : n`
-`   'abil_alchemy' : n`
-* `   'abil_lockpicking' : n`
-`   'abil_sneaking' : n`
-`   'abil_trapspotting' : n`
-`   'abil_pickpocketing' : n`
-* `   'abil_healing' : n`
-`   'abil_cooking' : n`
-`   'abil_survival' : n`
-`   'abil_toughness' : n`
+* `   'sk_shortswords' : n`
+`   'sk_longswords' : n`
+`   'sk_archery' : n`
+`   'sk_firearms' : n`
+`   'sk_spellcasting' : n`
+* `   'sk_restoration_magic' : n`
+`   'sk_transformation_magic' : n`
+`   'sk_destruction_magic' : n`
+`   'sk_necromancy' : n`
+`   'sk_connection' : n`
+* `   'sk_trade' : n`
+`   'sk_persuasion' : n`
+`   'sk_repair' : n`
+`   'sk_traps' : n`
+* `   'sk_resource_processing' : n`
+`   'sk_tools' : n`
+`   'sk_smithing' : n`
+`   'sk_herbalism' : n`
+`   'sk_alchemy' : n`
+* `   'sk_lockpicking' : n`
+`   'sk_sneaking' : n`
+`   'sk_trapspotting' : n`
+`   'sk_pickpocketing' : n`
+* `   'sk_healing' : n`
+`   'sk_cooking' : n`
+`   'sk_survival' : n`
+`   'sk_toughness' : n`
 
 #### Perks
 Perks should have usually boolean value (true/false). Boolean perks are listed with `m`, integer (numerical) perks are listed with `n`.

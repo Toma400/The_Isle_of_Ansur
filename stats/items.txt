@@ -42,7 +42,7 @@ Well                              <<- general
 Oven                              <<- baking/cooking/food processing
 Gristmill
 Fire  
-Anvil                             <<- smithery
+Anvil                             <<- smithing
 Furnace
 Carry-on Woodprocessing Ensemble  <<- resource processing
 Herbalist String                  <<- herbalism

@@ -4,7 +4,7 @@
       "workplace": "anvil",
       "material_1": "ansur:iron_ingot",
       "material_2": "ansur:wooden_handle",
-      "skill_needed": "smithery",
+      "skill_needed": "smithing",
       "skill_level": 2,
       "sp_spent": 45,
       "repair_material": "ansur:iron_ingot"
@@ -15,7 +15,7 @@
       "workplace": "anvil",
       "material_1": "ansur:iron_ingot",
       "material_2": "ansur:wooden_handle",
-      "skill_needed": "smithery",
+      "skill_needed": "smithing",
       "skill_level": 2,
       "sp_spent": 35,
       "repair_material": "ansur:iron_ingot"
@@ -26,7 +26,7 @@
       "workplace": "anvil",
       "material_1": "ansur:iron_ingot",
       "material_2": "ansur:iron_handle",
-      "skill_needed": "smithery",
+      "skill_needed": "smithing",
       "skill_level": 3,
       "sp_spent": 60,
       "repair_material": "ansur:iron_ingot"
@@ -38,7 +38,7 @@
       "material_1": "ansur:iron_ingot",
       "material_2": "ansur:iron_ingot",
       "material_3": "ansur:iron_handle",
-      "skill_needed": "smithery",
+      "skill_needed": "smithing",
       "skill_level": 4,
       "sp_spent": 75,
       "repair_material": "ansur:iron_ingot"
@@ -50,7 +50,7 @@
       "material_1": "ansur:iron_ingot",
       "material_2": "ansur:iron_ingot",
       "material_3": "ansur:iron_handle",
-      "skill_needed": "smithery",
+      "skill_needed": "smithing",
       "skill_level": 6,
       "sp_spent": 55,
       "repair_material": "ansur:iron_ingot"
@@ -104,7 +104,7 @@
     {
       "workplace": "anvil",
       "material_1": "ansur:iron_ingot",
-      "skill_needed": "smithery",
+      "skill_needed": "smithing",
       "skill_level": 1,
       "sp_spent": 25
     }

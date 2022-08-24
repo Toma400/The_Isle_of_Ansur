@@ -47,7 +47,7 @@ Archers are good on longer distances, using ranged weapons, such as bows.
 Gunslingers are like archers, but instead of bows, they use firearms.
 > Firearms + 2,
 > Repair + 1,
-> Castspelling - 1 |||
+> Spellcasting - 1 |||
 > **Magic - 5,**
 > **Tech + 5**
 
@@ -60,7 +60,7 @@ Assassin is class for anyone who prefers silent kills than anything done from an
 
 # Mage
 Mage is universal class for any spellcaster - it doesn't give too much advantage for specific magic school, but it also doesn't limit you as much.
-> Castspelling + 2,
+> Spellcasting + 2,
 > Healing + 1,
 > Firearms - 2 |||
 > **Magic + 5,**
@@ -118,8 +118,8 @@ If you prefer trading things and dealing with prices instead of monsters, you ca
 # Mechanic
 Mechanic is class dedicated for anyone obsessed so much with technology that oil flows through your veins instead of blood. Offers a lot of bonuses, including **Vehicle Driving** perk.
 > Repair + 2,
-> Smithery + 1,
-> Castspelling - 2 |||
+> Smithing + 1,
+> Spellcasting - 2 |||
 > **Magic - 15,**
 > **Tech + 15,**
 > **Vehicle Driving Perk**
@@ -127,7 +127,7 @@ Mechanic is class dedicated for anyone obsessed so much with technology that oil
 # Blacksmith
 This class is one of these that prefer steady work instead of adventures. Blacksmith offers you various bonuses for citizenship work, but has disadvantages related to adventurous side of life.
 > Repair + 1,
-> Smithery + 1,
+> Smithing + 1,
 > Tools + 1,
 > Resource Processing + 1,
 > Shortswords - 1,

@@ -16,7 +16,7 @@
       "well": true,                     <<- general
       "oven": true,                     <<- baking/cooking/food processing
       "gristmill": true,
-      "anvil": true,                    <<- smithery
+      "anvil": true,                    <<- smithing
       "furnace": true
     }
   ]

@@ -17,4 +17,4 @@ print("Oh!")
 
 ######
 # ABILITY / ATTRIBUTE NAMINGS
-# + skills namings, as well as dexterity changed into that better version
+# + skills namings, as well as agility changed into that better version

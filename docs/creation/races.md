@@ -68,14 +68,14 @@ Lunanians are great builders and creators, having long history of creating monum
 Race of talented, delicate, yet proud beings. Their finesse is largely known across whole world, making them race of wise artists. They cultivate a lot of spiritual visions and traditions that accumulated greatly within all four thousands years of their civilisation.
 
 **Universal bonuses:**
-> Dexterity + 1,
+> Agility + 1,
 > Charisma + 1
 
 ## Saphtri
 Banished in ancient times, saphtri found their home on deserts of Arennan, becoming connected to it more and more by the time they lived there. They are known for their weird technical inventions and great archery skills.
 
 **Bonuses:**
-> Dexterity + 1,
+> Agility + 1,
 > Endurance + 1,
 > Strength - 1,
 > Archery + 2 |||
@@ -110,7 +110,7 @@ This race of small, grey-skinned being is considered as one of the most powerful
 **Bonuses:**
 > Strength - 1,
 > Intelligence + 2,
-> Dexterity + 1,
+> Agility + 1,
 > Endurance + 1,
 > Connection + 1,
 > Healing + 1,
@@ -128,8 +128,8 @@ Etts are inhabitants of Dewehr Mountains of Rossevette island, creating highly t
 > Strength + 1,
 > Intelligence + 1,
 > Endurance + 2,
-> Dexterity - 1,
-> Smithery + 1,
+> Agility - 1,
+> Smithing + 1,
 > Trap + 1 |||
 > **Tech + 3**
 
@@ -142,7 +142,7 @@ In the other hand, Ghlodds are really bound to their traditions and virtues, con
 **Bonuses:**
 > Strenght + 1,
 > Endurance + 1,
-> Dexterity + 2,
+> Agility + 2,
 > Charisma - 1,
 > Repair + 1,
 > Tools + 1 |||

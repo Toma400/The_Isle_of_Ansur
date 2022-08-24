@@ -8,19 +8,19 @@
   "fighter": [
     {
       "descript": "classes__fighter",
-      "abil_shortswords": 1,
-      "abil_longswords": 1,
-      "abil_toughness": 1,
-      "abil_firearms": -1,
-      "abil_archery": -1
+      "sk_shortswords": 1,
+      "sk_longswords": 1,
+      "sk_toughness": 1,
+      "sk_firearms": -1,
+      "sk_archery": -1
     }
   ],
   "archer": [
     {
       "descript": "classes__archer",
-      "abil_archery": 1,
-      "abil_sneaking": 1,
-      "abil_toughness": -1
+      "sk_archery": 1,
+      "sk_sneaking": 1,
+      "sk_toughness": -1
     }
   ],
   "gunslinger": [
@@ -28,9 +28,9 @@
       "descript": "classes__gunslinger",
       "pwr_tech": 5,
       "pwr_magic": -5,
-      "abil_firearms": 2,
-      "abil_repair": 1,
-      "abil_castspelling": -2
+      "sk_firearms": 2,
+      "sk_repair": 1,
+      "sk_spellcasting": -2
     }
   ],
   "mage": [
@@ -38,35 +38,35 @@
       "descript": "classes__mage",
       "pwr_magic": 5,
       "pwr_tech": -5,
-      "abil_castspelling": 2,
-      "abil_healing": 1,
-      "abil_firearms": -2
+      "sk_spellcasting": 2,
+      "sk_healing": 1,
+      "sk_firearms": -2
     }
   ],
   "trader": [
     {
       "descript": "classes__trader",
-      "abil_trade": 2,
-      "abil_persuasion": 1,
-      "abil_toughness": -2,
+      "sk_trade": 2,
+      "sk_persuasion": 1,
+      "sk_toughness": -2,
       "perk_trader_sight": true
     }
   ],
   "rogue": [
     {
       "descript": "classes__rogue",
-      "abil_sneaking": 1,
-      "abil_lockpicking": 1,
-      "abil_pickpocketing": 1,
-      "abil_toughness": -2
+      "sk_sneaking": 1,
+      "sk_lockpicking": 1,
+      "sk_pickpocketing": 1,
+      "sk_toughness": -2
     }
   ],
   "assassin": [
     {
       "descript": "classes__assassin",
-      "abil_sneaking": 1,
-      "abil_shortswords": 1,
-      "abil_toughness": -2,
+      "sk_sneaking": 1,
+      "sk_shortswords": 1,
+      "sk_toughness": -2,
       "perk_assassin_hit": true
     }
   ],
@@ -75,42 +75,42 @@
       "descript": "classes__mechanic",
       "pwr_tech": 15,
       "pwr_magic": -15,
-      "abil_repair": 2,
-      "abil_smithery": 1,
-      "abil_castspelling": -2,
+      "sk_repair": 2,
+      "sk_smithing": 1,
+      "sk_spellcasting": -2,
       "perk_vehicle_driving": true
     }
   ],
   "blacksmith": [
     {
       "descript": "classes__blacksmith",
-      "abil_repair": 1,
-      "abil_smithery": 1,
-      "abil_resource_processing": 1,
-      "abil_tools": 1,
-      "abil_shortswords": -1,
-      "abil_longswords": -1,
-      "abil_archery": -1
+      "sk_repair": 1,
+      "sk_smithing": 1,
+      "sk_resource_processing": 1,
+      "sk_tools": 1,
+      "sk_shortswords": -1,
+      "sk_longswords": -1,
+      "sk_archery": -1
     }
   ],
     "bard": [
     {
       "descript": "classes__bard",
-      "abil_musicality": 1,
-      "abil_persuasion": 1,
-      "abil_pickpocketing": 1,
-      "abil_toughness": -1
+      "sk_musicality": 1,
+      "sk_persuasion": 1,
+      "sk_pickpocketing": 1,
+      "sk_toughness": -1
     }
   ],
   "outlander": [
     {
       "descript": "classes__outlander",
       "atr_charisma": -1,
-      "abil_repair": 1,
-      "abil_survival": 1,
-      "abil_trapspotting": 1,
-      "abil_healing": 1,
-      "abil_persuasion": -1
+      "sk_repair": 1,
+      "sk_survival": 1,
+      "sk_trapspotting": 1,
+      "sk_healing": 1,
+      "sk_persuasion": -1
     }
   ],
   "necromant": [
@@ -120,9 +120,9 @@
       "pwr_conn": -20,
       "pwr_tech": -5,
       "pwr_magic": 5,
-      "abil_necromancy": 2,
-      "abil_destruction_magic": 1,
-      "abil_firearms": -2
+      "sk_necromancy": 2,
+      "sk_destruction_magic": 1,
+      "sk_firearms": -2
     }
   ],
   "priest": [
@@ -130,9 +130,9 @@
       "descript": "classes__priest",
       "pwr_magic": 5,
       "pwr_tech": -5,
-      "abil_restoration_magic": 2,
-      "abil_herbalism": 1,
-      "abil_firearms": -2
+      "sk_restoration_magic": 2,
+      "sk_herbalism": 1,
+      "sk_firearms": -2
     }
   ],
   "illusionist": [
@@ -140,9 +140,9 @@
       "descript": "classes__illusionist",
       "pwr_magic": 5,
       "pwr_tech": -5,
-      "abil_transformation_magic": 2,
-      "abil_alchemy": 1,
-      "abil_firearms": -2
+      "sk_transformation_magic": 2,
+      "sk_alchemy": 1,
+      "sk_firearms": -2
     }
   ],
   "ormath_shaman": [
@@ -151,10 +151,10 @@
       "race_exclusive": "ansur:ormath",
       "pwr_conn": 10,
       "pwr_void": -10,
-      "abil_connection": 2,
-      "abil_herbalism": 1,
-      "abil_healing": 1,
-      "abil_firearms": -2
+      "sk_connection": 2,
+      "sk_herbalism": 1,
+      "sk_healing": 1,
+      "sk_firearms": -2
     }
   ]
 }
