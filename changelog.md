@@ -23,8 +23,5 @@
 > - Huge code optimalisations
 > - Log system introduced
 > - Changed some IDs in vanilla elements
->   - Old saves may be not compatibile, if they had such characteristics:
->     - Character were of **Westernwaldian** race
->   - In such case, please recreate your character or edit the IDs manually; no tools for conversion are made yet
-> - Added non-binary gender in gender creation
+>   - Old saves will not be compatibile. Please recreate your character or edit the IDs manually; no tools for conversion are made yet
 > ---

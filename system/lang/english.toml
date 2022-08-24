@@ -29,10 +29,7 @@ pack__error_not_exist      = "Pack with this name does not exist!"
 
 game__init_charname        = "Type your character name"
 game__init_charname_rv     = "Type -0- to cancel"
-game__init_gender1         = "Choose your gender"
-game__init_gender2         = "[1] Male"
-game__init_gender3         = "[2] Female"
-game__init_gender4         = "[3] Non-binary"
+game__init_gender          = "Choose your gender"
 game__init_race            = "Choose your race"
 game__init_class           = "Choose your class"
 game__init_class_excl      = "Class is exclusive for race you don't represent!" #will be removed, it is here just bc I'm dumb
@@ -72,8 +69,11 @@ stat__sk_healing           = "Healing"
 stat__sk_cooking           = "Cooking"
 stat__sk_survival          = "Survival"
 stat__sk_toughness         = "Toughness"
+
 stat__gen_name             = "Name"
 stat__gen_gender           = "Gender"
+stat__gen_gender1          = "Male"
+stat__gen_gender2          = "Female"
 stat__gen_location         = "Location"
 
 stat__hint_hp              = "Health Points"

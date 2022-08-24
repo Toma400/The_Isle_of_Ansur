@@ -29,10 +29,7 @@ pack__error_not_exist      = "Paczka z tą nazwą nie istnieje!"
 
 game__init_charname        = "Wpisz imię swojej postaci"
 game__init_charname_rv     = "Wpisz -0- żeby anulować"
-game__init_gender1         = "Wybierz płeć"
-game__init_gender2         = "[1] Mężczyzna"
-game__init_gender3         = "[2] Kobieta"
-game__init_gender4         = "[3] Osoba"
+game__init_gender         = "Wybierz płeć"
 game__init_race            = "Wybierz rasę"
 game__init_class           = "Wybierz klasę"
 game__init_class_excl      = "Klasa jest ekskluzywna dla rasy, której nie reprezentujesz!" #will be removed, it is here just bc I'm dumb
@@ -72,8 +69,11 @@ stat__sk_healing           = "Leczenie"
 stat__sk_cooking           = "Kucharstwo"
 stat__sk_survival          = "Przetrwanie"
 stat__sk_toughness         = "Twardość"
+
 stat__gen_name             = "Imię"
 stat__gen_gender           = "Płeć"
+stat__gen_gender1          = "Mężczyzna"
+stat__gen_gender2          = "Kobieta"
 stat__gen_location         = "Lokacja"
 
 stat__hint_hp              = "Punkty życia"

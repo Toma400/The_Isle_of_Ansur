@@ -51,12 +51,12 @@ def name():
 
 def gender(name):
   log.info("Opening gender selection...")
+  g1 = lstr("stat__gen_gender1"); g2 = lstr("stat__gen_gender2")
   print (format("blue+", "--------------------"))
   print ("\n")
-  print (align(lstr("game__init_gender1")))
-  print (align(lstr("game__init_gender2")))
-  print (align(lstr("game__init_gender3")))
-  print (align(lstr("game__init_gender4")))
+  print (align(lstr("game__init_gender")))
+  print (align(f"[1] {g1}"))
+  print (align(f"[2] {g2}"))
   print (align("---"))
   print ("\n")
   while True:
@@ -64,14 +64,12 @@ def gender(name):
     if quit(gender):
       log.debug("Cancelling character setup. Coming back to menu.")
       return False
-    elif gender == "1" or gender == "2" or gender == "3":
+    elif gender == "1" or gender == "2":
       gender_name = ""
       if gender == "1":
-        gender_name = "Male"
+        gender_name = "stat__gen_gender1"
       elif gender == "2":
-        gender_name = "Female"
-      elif gender == "3":
-        gender_name = "Non-binary"
+        gender_name = "stat__gen_gender2"
       json_manag.save_change(name, "profile", "gender", "replace", gender_name)
       return True
     else:
