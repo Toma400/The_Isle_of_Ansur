@@ -25,12 +25,6 @@ def default_settings(callout=None):
 # being current. Versioning can
 # be found in docs (glossary.md).
 #-------------------------------
-@Deprecated("Direct call of SysRef class")
-def version_call(selector):
-  if selector == "game_version":
-    return f"{SysRef.status} {SysRef.version}"
-  elif selector == "save_system":
-    return f"{SysRef.save_system}"
 
 def settings(callout):
   import system.json_manag

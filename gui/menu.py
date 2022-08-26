@@ -3,7 +3,6 @@ from utils.text_manag import align
 from utils.text_manag import colour_formatter as format
 from utils.text_manag import encoded as enc
 from utils.text_manag import langstring as lstr
-from system.settings import version_call as version_call
 from system.settings import settings as settings_check
 from system.log_manag import run_text as logtxt
 from system.ref_systems.system_ref import SysRef
@@ -19,7 +18,6 @@ gpath = os.path.dirname(os.path.abspath("main.py"))
 def start():
   log.info(logtxt())
   log.info("Initialising start menu...")
-  version_call("game_version")
   if not settings_check("legacy_unpacking"):
     log.info("Autoupdating of packs enabled. Importing...")
     pack_remover()
@@ -32,7 +30,7 @@ def start():
                                                          _/  
 ''')
     print (enc(f"{SysRef.name}\n"))
-    print (align(version_call("game_version") + "\n\n", "right"))
+    print (align(f"{SysRef.status} {SysRef.version}" + "\n\n", "right"))
     is_core_pack_loaded()
     print (align("--------------------", "centre"))
     print (align(lstr("menu__button_start"), "centre"))
@@ -97,7 +95,7 @@ def game_load():
     print (align(lstr("menu__load_choose_hint")))
     print ("\n")
     for i in loaded_profiles:
-      if repo_manag.empty_checker("saves/" + i + "/in_use/profile.json") == False:
+      if repo_manag.empty_checker(f"saves/{i}/in_use/profile.json") == False:
         race = id_manag.rid_conv(json_manag.save_read(i, "profile", "race"), "descript")
         classe = id_manag.cid_conv(json_manag.save_read(i, "profile", "class"), "descript")
         locate = json_manag.save_read(i, "profile", "location")
