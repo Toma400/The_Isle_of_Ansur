@@ -130,11 +130,9 @@ def profession(name):
       chosen_class = classes_loaded[choose_class-1]
       try:
         #checks
-        if system.json_manag.save_read(name, "profile", "race") == cid_conv(chosen_class, "race_exclusive"):
-          pass
-        else:
-          print (format("yellow", lstr("game__init_class_excl"))) #??????????????? this is reported to the police (GitHub tracker), such a dumb idea
-          print ("\n")
+        if system.json_manag.save_read(name, "profile", "race") not in cid_conv(chosen_class, "race_exclusive"):
+          print(format("yellow", lstr("game__init_class_excl")))  # ??????????????? this is reported to the police (GitHub tracker), such a dumb idea
+          print("\n")
           continue
       except KeyError:
         pass

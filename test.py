@@ -18,3 +18,11 @@ print("Oh!")
 ######
 # ABILITY / ATTRIBUTE NAMINGS
 # + skills namings, as well as agility changed into that better version
+
+
+
+####
+#NEW STUFF:
+#
+# - toxin immunity is BOOLEAN
+# - race_exclusive is LIST not STR
