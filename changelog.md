@@ -11,7 +11,8 @@
 > ---
 > ###<center>Pre-alpha 3</center>
 >
-> - Further updates to Baedoor RPG System
+> - Updated to Python 3.10
+> - Further updates to match current Baedoor RPG System
 > 
 > ---
 > ###<center>Pre-alpha 2</center>
