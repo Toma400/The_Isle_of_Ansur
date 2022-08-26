@@ -6,7 +6,6 @@ from utils.text_manag import langstring as lstr
 from system.settings import version_call as version_call
 from system.settings import settings as settings_check
 from system.log_manag import run_text as logtxt
-from system.sound_manag import play_core as music
 from system.ref_systems.system_ref import SysRef
 
 import gui.character
@@ -27,7 +26,6 @@ def start():
     pack_unloader()
   while True:
     log.info("Menu successfully loaded. Printing elements.")
-    music("menu")
     first_game = False
     print ('''\n\n|__) _|_    _ _ _   (_ |_  _  _| _     _   _  _  _|  |  . _ |_ |_ 
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 
