@@ -115,9 +115,9 @@ def rid_loader ():
   for i in mods_loaded:
     try:
       path = f"stats/{i}/races.json"
-      temp_dir = len(system.json_manag.json_read(path, "list", True))
+      temp_dir = len(system.json_manag.json_read(path))
       for j in range(temp_dir):
-        element = (system.json_manag.json_read(path, "list", True)[j])
+        element = (system.json_manag.json_read(path)[j])
         races_loaded.append(id_builder(i, element))
         overflow_protector(races_loaded, "RID")
     except FileNotFoundError:
@@ -131,9 +131,9 @@ def cid_loader ():
   for i in mods_loaded:
     try:
       path = f"stats/{i}/classes.json"
-      temp_dir = len(system.json_manag.json_read(path, "list", True))
+      temp_dir = len(system.json_manag.json_read(path))
       for j in range(temp_dir):
-        element = (system.json_manag.json_read(path, "list", True)[j])
+        element = (system.json_manag.json_read(path)[j])
         classes_loaded.append(id_builder(i, element))  # previously inside append: system.json_manag.json_subread(path, element, "class_id")
         overflow_protector(classes_loaded, "CID")
     except FileNotFoundError:

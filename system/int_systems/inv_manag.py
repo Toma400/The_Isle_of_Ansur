@@ -136,7 +136,7 @@ def inv_key_reader (name, iid, element, selector):
 def inv_key_creator (name, iid, element, value, selector, slot="inventory"):
   path = "saves/" + name + "/in_use/inventory.json"
   #inventory of selected player (all slots)
-  main_dict = json_manag.json_read(path, 0, True)
+  main_dict = json_manag.json_read(path, isdict=True)
   #list of items in that inventory
   #for i in main_dict:
     #globals()['_%s' % i] = main_dict[i]

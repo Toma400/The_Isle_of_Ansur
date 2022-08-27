@@ -1,7 +1,11 @@
 #inventory is managed by its separate instance (gui/inventory.py)
-import json
+import json, os
+import logging as log
+from utils.decorators import *
+gpath = os.path.dirname(os.path.abspath("main.py"))
 
-def json_read(path, element, dict_type=False):
+@Deprecated("system.json_manag.json_read")
+def json_read_old(path, element, dict_type=False):
   data = {}
   try:
     with open(path, encoding="utf-8") as json_file:
@@ -14,7 +18,18 @@ def json_read(path, element, dict_type=False):
     else:
       return data
   except json.decoder.JSONDecodeError:
-    print (f"JSON File: {path} does not have any arguments. Skipping.")
+    log.warning (f"JSON File: {path} does not have any arguments. Skipping.")
+
+def json_read(path, element=None, isdict=False):
+  try:
+    fpath = f"{gpath}/{path}"
+    with open(fpath, encoding="utf-8") as json_file:
+      data = json.load(json_file)
+    if element is None and isdict is True: return data #returns dict
+    if element is None and isdict is False: return [*data] #returns list
+    return data[element] #returns element
+
+  except json.decoder.JSONDecodeError: log.warning (f"JSON File: {path} does not have any arguments. Skipping.")
 
 #--------------------------------------
 # SUBREAD

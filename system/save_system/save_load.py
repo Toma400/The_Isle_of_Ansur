@@ -70,7 +70,7 @@ def deep_load_error (critical=False):
   from utils.text_manag import colour_formatter as colour
   if critical is True:
     print (colour("yellow", "Unfortunately that setting can't be set back to default. Please change your settings in menu to fit that save file."))
-  if critical is "name":
+  if critical == "name":
     print (colour("yellow", "No character profile is found with that name. Please make sure you wrote it correctly."))
     print (colour("yellow", "[case sensitivity matters]"))
   print (colour("yellow", "Redirecting to game menu."))
