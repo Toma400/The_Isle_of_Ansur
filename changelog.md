@@ -13,6 +13,7 @@
 >
 > - Updated to Python 3.10
 > - Further updates to match current Baedoor RPG System
+> - Further code optimalisations
 > 
 > ---
 > ###<center>Pre-alpha 2</center>

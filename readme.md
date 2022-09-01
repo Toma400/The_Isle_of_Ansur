@@ -42,7 +42,9 @@ such early state of the game!
 
 **Baedoor Creation Set:** https://github.com/Toma400/Baedoor_Creation_Set_IoA
 
-**Docs:** https://github.com/Toma400/The_Isle_of_Ansur/wiki/Main-Mod-Types
+**Docs:**
+- Internal ones: [**Jump to files!**](docs/introduction.md)
+- URL (may be outdated): [**GitHub**](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Main-Mod-Types)
 
 # Credits
 
