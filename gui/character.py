@@ -95,7 +95,7 @@ def race(name):
     elif 0 < choose_race <= races_count:
       chosen_race = races_loaded[choose_race-1]
       system.json_manag.save_change(name, "profile", "race", "replace", chosen_race)
-      for i in rid_conv(chosen_race, 0, True):
+      for i in rid_conv(chosen_race):
         k = rid_conv(chosen_race, i)
         try:
           if i == "race_id" or i == "descript":
@@ -138,7 +138,7 @@ def profession(name):
         pass
       #runs if not interrupted by race_exclusivity
       system.json_manag.save_change(name, "profile", "class", "replace", chosen_class)
-      for i in cid_conv(chosen_class, 0, True):
+      for i in cid_conv(chosen_class):
         k = cid_conv(chosen_class, i)
         try:
           if i == "class_id" or i == "descript" or i == "race_exclusive":

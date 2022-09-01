@@ -55,7 +55,7 @@
 
 #SHORTCUT FOR RID MANAGEMENT (OUTPUT: VALUE_NAME -> VALUE)
 import system.id_manag
-for i in system.id_manag.rid_conv("ansur:baedoorian", 0, True):
+for i in system.id_manag.rid_conv("ansur:baedoorian"):
   print (i + "-> " + str(system.id_manag.rid_conv("ansur:baedoorian", i)))
 
 #POSSIBLE COMPATIBILITY THINGIES:

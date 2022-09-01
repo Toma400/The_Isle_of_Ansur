@@ -34,6 +34,16 @@ such early state of the game!
 
 **Discord:** https://discord.gg/GbTw9KqnrE
 
+# Modding
+
+---
+
+**Mods Repository:** https://github.com/Toma400/Isle_of_Ansur_Mods_Repository
+
+**Baedoor Creation Set:** https://github.com/Toma400/Baedoor_Creation_Set_IoA
+
+**Docs:** https://github.com/Toma400/The_Isle_of_Ansur/wiki/Main-Mod-Types
+
 # Credits
 
 ---
