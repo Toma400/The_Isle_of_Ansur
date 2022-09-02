@@ -3,5 +3,9 @@
   "time_system": "proportional",
   "hunger_thirst": false,
   "permadeath": false,
-  "legacy_unpacking": false
+  "legacy_unpacking": false,
+
+  "res_x": 900,
+  "res_y": 900,
+  "sound": 50
 }

@@ -1,0 +1,11 @@
+{
+  "language": "english",
+  "time_system": "proportional",
+  "hunger_thirst": false,
+  "permadeath": false,
+  "legacy_unpacking": false,
+
+  "res_x": 1000,
+  "res_y": 600,
+  "sound": 50
+}

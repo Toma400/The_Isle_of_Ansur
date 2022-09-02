@@ -25,8 +25,8 @@ def json_read(path, element=None, isdict=False):
     fpath = f"{gpath}/{path}"
     with open(fpath, encoding="utf-8") as json_file:
       data = json.load(json_file)
-    if element is None and isdict is True: return data #returns dict
-    if element is None and isdict is False: return [*data] #returns list
+    if element is None and isdict is True: return [*data] #returns dict
+    if element is None and isdict is False: return data #returns list
     return data[element] #returns element
 
   except json.decoder.JSONDecodeError: log.warning (f"JSON File: {path} does not have any arguments. Skipping.")

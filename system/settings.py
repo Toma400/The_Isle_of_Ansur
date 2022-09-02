@@ -26,8 +26,8 @@ def default_settings(callout=None):
 # be found in docs (glossary.md).
 #-------------------------------
 
+@Deprecated("core.utils | settings constants")
 def settings(callout):
-  import system.json_manag
   if callout == "language":
     return json_read("system/system_settings.json", "language")
   elif callout == "time_system":

@@ -28,7 +28,7 @@ class DefaultRun:
     # directory of the game
     core_path = f"{fpath}/"
     game_name = "Isle of Ansur"
-    icon_path = core_path + "utils/assets/icon.ico"
+    icon_path = core_path + "ioa.ico"
     # directory for outcome
     export_path = "D:/Ministerstwo Kalibracyjne/PyCharm_Projects/[builds]/"
     full_export_path = export_path + game_name + "/"
