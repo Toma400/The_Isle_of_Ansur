@@ -1,15 +1,16 @@
-import logging as log; import system.log_manag; system.log_manag.run()
+import system.log_manag; system.log_manag.run()
+from core.utils import temp_remover; temp_remover()
 import system.cache.cache_manag
 system.cache.cache_manag.cache_redirect()
 from utils.text_manag import colour_formatter as format
 import traceback
 
-from core.run_test import *
+from core.circles import *
 import gui.menu
 
 try:
     #gui.menu.start()
-    testpyg()
+    main_circle()
 except Exception:
     print("---------------------------------------------------------")
     log.critical("Main chain stopped. Printing the issue.", exc_info=True)

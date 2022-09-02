@@ -1,3 +1,6 @@
+from os.path import join, isdir, isfile
+import os
+
 def file_deleting (pathage):
   import os
   import shutil
@@ -9,16 +12,14 @@ def file_deleting (pathage):
     pass
   del shutil
 
-def dir_checker (path, separator, extension="None"):
+def dir_checker (path, separator, extension=None):
   if separator == "dir":
     from os import listdir
-    from os.path import isdir, join
     return [f for f in listdir(path) if isdir(join(path, f))]
-  elif separator == "file":
+  elif separator == "file" and extension is None:
     from os import listdir
-    from os.path import isfile, join
     return [f for f in listdir(path) if isfile(join(path, f))]
-  elif separator == "file+":
+  elif separator == "file":
     import glob
     listed = glob.glob(path + "*." + extension)
     listed2 = []
@@ -35,8 +36,4 @@ def dir_checker (path, separator, extension="None"):
     return listed2
 
 def empty_checker (path):
-  import os
-  if os.stat(path).st_size == 0:
-    return True
-  else:
-    return False
+  return os.stat(path).st_size == 0

@@ -6,6 +6,7 @@ import logging
 # set later in this module
 #--------------------------------------
 def run():
+    logging.getLogger('PIL').setLevel(logging.INFO)
     logging.basicConfig(level=logging.DEBUG, filename=name_creating(), format=format_creating())
 
 def name_creating(name=""):

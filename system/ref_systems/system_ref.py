@@ -6,7 +6,7 @@ class SysRef:
 
     name = "The Isle of Ansur"
     status = "pre alpha"
-    version = "2"
+    version = "3"
 
     save_system = "1.0"
     vanilla_modules = [

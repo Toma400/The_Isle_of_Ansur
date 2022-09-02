@@ -12,3 +12,8 @@ lang = settings_data["language"]
 svx  = settings_data["res_x"]
 svy  = settings_data["res_y"]
 sndv = settings_data["sound"]
+
+def temp_remover():
+    import shutil, os
+    if os.path.exists(f"{gpath}/_temp/"):
+        shutil.rmtree(f"{gpath}/_temp/")

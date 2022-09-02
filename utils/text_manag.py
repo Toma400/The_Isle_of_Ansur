@@ -162,3 +162,12 @@ def encoded (text):
     #    text = text.encode(sys.stdout.encoding)
     #    text = text.decode("utf-8")
     return text
+
+# Used to split the text to two parts, and if splitter position
+# is set, it re-adds splitting part to the text on this part
+def text_splitter(text, splitter, splitter_pos: int = None):
+    tlist = text.split(splitter)
+    if splitter_pos is None: return tlist
+    else:
+        tlist[splitter_pos] = tlist[splitter_pos] + splitter
+        return tlist

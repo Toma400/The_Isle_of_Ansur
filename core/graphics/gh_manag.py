@@ -8,17 +8,18 @@ from PIL import Image
 # MANAG  | them and resizing.
 #========|===========================================================
 # Basic:
-def imgLoad(path, name="", alpha=False): #name is optional, if you want to separate folder path from file for some reason
+def imgLoad(path, name="", alpha=False): # name is optional, if you want to separate folder path from file for some reason
     try:
         surface = pygame.image.load(f"{gpath}/{path}{name}")
         if alpha is False: return surface.convert()
-        return surface.convert().convert_alpha()  # for transparent textures (alpha=True)
+        return surface.convert_alpha()  # for transparent textures (alpha=True)
     except pygame.error: log.error(f"Error occured during loading texture from path [{gpath}/{path}{name}].")
     except FileNotFoundError: log.error(f"Texture from path [{gpath}/{path}{name}] not found.")
 
-def imgRes(path, name, dest_x, dest_y): #path should be folder path, written like so: [stats/]
+def imgRes(path, name, dest_x, dest_y): # path should be folder path, written like so: [stats/]
+    dir_cleaner(path)
     image = Image.open(f"{gpath}/{path}{name}")
-    image = image.resize((dest_x, dest_y)); image.save(f"{gpath}/{path}tmp_{name}")
+    image = image.resize((dest_x, dest_y)); image.save(f"{gpath}/_temp/{path}{name}")
 
 # Blits:
 def imgIter(screen, image):
@@ -26,16 +27,16 @@ def imgIter(screen, image):
         for y in range(svy // image.get_height() + 1):
             screen.blit(image, (x*image.get_width(), y*image.get_height()))
 
-def imgFull(screen, folderpath, imgname): #folderpath should be written like so: [stats/]
+def imgFull(screen, folderpath, imgname, alpha=False): # folderpath should be written like so: [stats/]
     imgRes(folderpath, imgname, svx, svy)
-    screen.blit(imgLoad(f"{folderpath}tmp_{imgname}"), (0, 0))
+    screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (0, 0))
 
-def imgPut(screen, folderpath, imgname, size_x, size_y, pos_x, pos_y): #size-pos should be cell%
+def imgPut(screen, folderpath, imgname, size_x, size_y, pos_x, pos_y, alpha=False): # size-pos should be cell%
     # folderpath should be written like so: [stats/]
-    fs_x, fs_y = returnCell(size_x, size_y)
-    fpos_x, fpos_y = returnCell(pos_x, pos_y)
+    fs_x, fs_y = returnCells(size_x, size_y)
+    fpos_x, fpos_y = returnCells(pos_x, pos_y)
     imgRes(folderpath, imgname, int(fs_x), int(fs_y))
-    screen.blit(imgLoad(f"{folderpath}tmp_{imgname}"), (fpos_x, fpos_y))
+    screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (fpos_x, fpos_y))
 
 #===========|========================================================
 # CELLS     | Cell system is made to place precisely elements on the
@@ -45,13 +46,20 @@ def imgPut(screen, folderpath, imgname, size_x, size_y, pos_x, pos_y): #size-pos
 # length for current resolution.
 #===========|========================================================
 # Single element:
-def returnCell(pos, type):
-    if type == "x": svc = svx / 100
+def returnCell(pos, axis):
+    if axis == "x": svc = svx / 100
     else: svc = svy / 100
     return pos * svc
 
 # Double element:
 def returnCells(pos_x, pos_y):
-    '''Works for both positions and length/height values'''
-    svxc = svx / 100; svyc = svy / 100 #finds out cell size
-    return pos_x * svxc, pos_y * svyc  #returns %posi into pixel posi
+    # Works for both positions and length/height values
+    svxc = svx / 100; svyc = svy / 100 # finds out cell size
+    return pos_x * svxc, pos_y * svyc  # returns %posi into pixel posi
+
+#========|===========================================================
+# HELPER | Some helping functions to keep code cleaner
+#========|===========================================================
+def dir_cleaner(path):
+    if not os.path.isdir(f"{gpath}/_temp/{path}"):
+        os.makedirs(f"{gpath}/_temp/{path}")
