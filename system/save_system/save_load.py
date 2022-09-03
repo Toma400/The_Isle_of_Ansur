@@ -39,7 +39,7 @@ def deep_load (name):
     for i in settings_checklist:
       #i - key, json_read - key value
       profile_data = system.json_manag.save_read(name, "profile", i)
-      settings_data = system.json_manag.json_read("system/system_settings.json", i)
+      settings_data = system.json_manag.json_read("settings.json", i)
       if profile_data != settings_data:
         print (util.colour_formatter("yellow", "Found difference between system settings and save settings with: " + i))
         #time system difference

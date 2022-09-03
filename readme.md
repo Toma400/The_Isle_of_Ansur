@@ -1,11 +1,10 @@
-![3YNAR1d_20x](utils/assets/logo.png)
+![3YNAR1d_20x](core/assets/visuals/logo.png)
 
 # The Isle of Ansur
 
 ---
 
-The Isle of Ansur is text-based RPG game, founded on Baedoor universe. It is written 
-solely on Python and its modules, making use of Windows terminal. 
+The Isle of Ansur is text-based RPG game, founded on Baedoor universe.
 
 Despite its oldschool character, The Isle of Ansur tries to have expansive gameplay 
 mechanics and support modding.
@@ -39,8 +38,6 @@ such early state of the game!
 ---
 
 **Mods Repository:** https://github.com/Toma400/Isle_of_Ansur_Mods_Repository
-
-**Baedoor Creation Set:** https://github.com/Toma400/Baedoor_Creation_Set_IoA
 
 **Docs:**
 - Internal ones: [**Jump to files!**](docs/introduction.md)

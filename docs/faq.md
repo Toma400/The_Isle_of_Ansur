@@ -23,9 +23,23 @@ to utilise them all. Also, I want to make IoA having broad modding possibilities
 I can leave IoA "as is" and be sure that people can infinitely enhance it, adding new
 worlds and stories.
 
-There's a change that I will add new modules adding new lands though, so there's a chance
-that it will have way more features included and much more lore revealed with its core
-gameplay.
+There's a chance that I will add new lands, so there's a possibility that it will have 
+way more features included and much more lore revealed with its core gameplay. 
+It all depends on my time, money and motivation though.
+
+## 3. If you would envision next modules / updates, what those would be?
+First development cycle, subtitled **Between Shadows and Light**, will add Ansur isle,
+expanded a bit from what was in original BSaL - so, this time you will be able to travel
+through the island, and visit second city.  
+
+Second one, which is also likely to be made, called **Xaine's Dreams**, will expand
+the lore over *oververse* concept and open modding possibilities towards more lore-friendly
+additions of dimensions and universes.  
+
+After that, nothing is really fully planned.   
+There are visions over third cycle called "Dust of the Empire", aimed on New Baedoor city, 
+and there's also vision of showcasing Agoi Archipelago islands, but I may as well 
+just end development on second cycle.
 
 ***
 

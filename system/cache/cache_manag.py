@@ -23,3 +23,12 @@ def cache_brutedel():
   utils.repo_manag.file_deleting ("system/cache/usr")
   utils.repo_manag.file_deleting ("system/cache/Ministerstwo Kalibracyjne")
   utils.repo_manag.file_deleting ("system/cache/Users")
+
+def folder_init():
+  # Creates necessary folders for .gitignore elements
+  import os; from core.utils import gpath
+  folders = [
+    f"{gpath}/core/logs", f"{gpath}/saves"
+  ]
+  for i in folders:
+    if not os.path.isdir(i): os.makedirs(i)

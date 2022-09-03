@@ -136,7 +136,7 @@ def langjstring (key: str, modtype: str, modid: str = "ansur"):
     return read[key]
 
 def langset ():
-    return json_read("system/system_settings.json", "language")
+    return json_read("settings.json", "language")
 
 #---------------------------------------------------
 # QUIT CHECKER

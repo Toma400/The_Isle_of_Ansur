@@ -7,11 +7,15 @@ import os
 # path to game's folder
 gpath = os.path.dirname(os.path.abspath("main.py"))
 # settings
-settings_data = json_read("system_settings.json") #dict
+settings_data = json_read("settings.json") #dict
 lang = settings_data["language"]
 svx  = settings_data["res_x"]
 svy  = settings_data["res_y"]
 sndv = settings_data["sound"]
+
+optv = settings_data["hunger_thirst"]
+pdth = settings_data["permadeath"]
+legu = settings_data["legacy_unpacking"]
 
 def temp_remover():
     import shutil, os

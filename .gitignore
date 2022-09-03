@@ -3,4 +3,4 @@ __pycache__
 system/cache/pyinstaller
 
 saves/
-system/logs
+core/logs

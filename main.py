@@ -1,8 +1,8 @@
 import system.log_manag; system.log_manag.run()
 from core.utils import temp_remover; temp_remover()
-import system.cache.cache_manag
-system.cache.cache_manag.cache_redirect()
-from utils.text_manag import colour_formatter as format
+import system.cache.cache_manag as cmg
+cmg.cache_redirect(); cmg.folder_init()
+from utils.text_manag import colour_formatter as cformat
 import traceback
 
 from core.circles import *
@@ -17,8 +17,8 @@ except Exception:
     traceback.print_exc()
     print("\n")
     print("---------------------------------------------------------")
-    print(format("red", "Found an error! See the message above for details"))
-    print(format("yellow", "You can send message above to developer, reporting the issue"))
+    print(cformat("red", "Found an error! See the message above for details"))
+    print(cformat("yellow", "You can send message above to developer, reporting the issue"))
     print("\n")
-    print(format("yellow", "Enter any key to close the game"))
+    print(cformat("yellow", "Enter any key to close the game"))
     temp_var = input("")

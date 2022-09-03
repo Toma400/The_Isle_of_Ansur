@@ -29,15 +29,15 @@ def default_settings(callout=None):
 @Deprecated("core.utils | settings constants")
 def settings(callout):
   if callout == "language":
-    return json_read("system/system_settings.json", "language")
+    return json_read("settings.json", "language")
   elif callout == "time_system":
-    return json_read("system/system_settings.json", "time_system")
+    return json_read("settings.json", "time_system")
   elif callout == "hunger_thirst":
-    return json_read("system/system_settings.json", "hunger_thirst")
+    return json_read("settings.json", "hunger_thirst")
   elif callout == "permadeath":
-    return json_read("system/system_settings.json", "permadeath")
+    return json_read("settings.json", "permadeath")
   elif callout == "legacy_unpacking":
-    return json_read("system/system_settings.json", "legacy_unpacking")
+    return json_read("settings.json", "legacy_unpacking")
 
 #-----------------------------
 # SETTINGS CHANGER
@@ -45,7 +45,7 @@ def settings(callout):
 #-----------------------------
 def settings_changer(callout):
   import logging as log
-  path = "system/system_settings.json"
+  path = "settings.json"
   # switch for time system
   if json_read(path, callout) == "proportional":
     json_change_ins(path, callout, "realistic")

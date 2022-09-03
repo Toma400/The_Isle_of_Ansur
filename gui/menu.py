@@ -187,7 +187,7 @@ def settings():
       i2 = i.replace("nent D", "d") #permadeath
       i2 = i2.lower().replace(" ", "_")
       i2 = i2.replace("/", "_")
-      y = system.json_manag.json_read("system/system_settings.json", i2)
+      y = system.json_manag.json_read("settings.json", i2)
       print (align("[" + str(j) + "][" + i + "][ " + colour.OKCYAN + str(y).capitalize() + colour.ENDC + " ]", "centre_colour"))
       setting_set[str(j)] = i2
       j = j + 1

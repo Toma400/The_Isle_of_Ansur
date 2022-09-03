@@ -11,7 +11,7 @@ def run():
 
 def name_creating(name=""):
     import time
-    name_list = ["system/logs/",
+    name_list = ["core/logs/",
                  (time.gmtime(time.time()).tm_year), "_",
                  (time.gmtime(time.time()).tm_mon), "_",
                  (time.gmtime(time.time()).tm_mday), "_",
