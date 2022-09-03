@@ -21,7 +21,7 @@ new classes or new items.
 Worldpack is similarly, module exclusively written for `/worlds/` path, and contain 
 any set of locations bound within "world". Worlds will be available during dialogue 
 with ship captain.  
-Exclusively though, worldpacks allow also for [custom menu panoramas](others_tutorial.md#menu-panoramas).
+Exclusively though, worldpacks allow also for [custom menu panoramas](others_tutorial.md#menu-panoramas) and [custom menu music](others_tutorial.md#menu-music).
 
 ## Globalpack
 These ones can be considered "full mods" in a way, because they introduce both features 
