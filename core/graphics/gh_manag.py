@@ -38,6 +38,14 @@ def imgPut(screen, folderpath, imgname, size_x, size_y, pos_x, pos_y, alpha=Fals
     imgRes(folderpath, imgname, int(fs_x), int(fs_y))
     screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (fpos_x, fpos_y))
 
+def imgPutRes(screen, folderpath, imgname, pos_x, pos_y, endpos_x, endpos_y, alpha=False): # variation where size is based on start-end ratio
+    # folderpath should be written like so: [stats/]
+    spos_x, spos_y = returnCells(pos_x, pos_y)
+    epos_x, epos_y = returnCells(endpos_x, endpos_y)
+    vx, vy = epos_x - spos_x, epos_y - spos_y # resolution is based on rectangle corners
+    imgRes(folderpath, imgname, int(vx), int(vy))
+    screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (spos_x, spos_y))
+
 #===========|========================================================
 # CELLS     | Cell system is made to place precisely elements on the
 #-----------┘ screen and adjust their size depending on resolution

@@ -5,7 +5,8 @@
   "permadeath": false,
   "legacy_unpacking": false,
 
+  "log_limit": 30,
   "res_x": 1000,
   "res_y": 700,
-  "sound": 40
+  "sound": 20
 }

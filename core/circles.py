@@ -5,6 +5,7 @@ from core.graphics.gh_manag import *
 
 def main_circle():
     screen = pygame.display.set_mode([svx, svy])
+    forged_events = [] # event system inspired partly by Forge API
     guitype = "menu"  # tells gui_handler which menu you are at
     music = None
 
