@@ -14,13 +14,14 @@ def main_circle():
     run = True
     while run:
 
-        for event in pygame.event.get():
+        pg_events = pygame.event.get() # variablised so it can be passed to functions w/o calling more than one per frame
+        for event in pg_events:
             if event.type == pygame.QUIT:
                 run = False
 
-        gui_handler(screen, guitype) # draws elements on a screen
+        gui_handler(screen, guitype, pg_events) # draws elements on a screen
         music_handler(music, guitype) # controls music
-        event_handler(forged_events, pygame.event.get(), guitype) # handles forged_events additions
+        event_handler(forged_events, guitype) # handles forged_events additions
         script_handler(forged_events) # handles forged_events -> scripts runs
 
         pygame.display.flip()

@@ -46,6 +46,11 @@ def imgPutRes(screen, folderpath, imgname, pos_x, pos_y, endpos_x, endpos_y, alp
     imgRes(folderpath, imgname, int(vx), int(vy))
     screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (spos_x, spos_y))
 
+# Collisions:
+def mouseCollider(st_x, st_y, end_x, end_y):
+    print (pygame.mouse.get_pos())
+    return tuple(returnCells(st_x, st_y)) < pygame.mouse.get_pos() < tuple(returnCells(end_x, end_y))
+
 #===========|========================================================
 # CELLS     | Cell system is made to place precisely elements on the
 #-----------┘ screen and adjust their size depending on resolution

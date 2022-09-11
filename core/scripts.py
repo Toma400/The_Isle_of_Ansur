@@ -2,10 +2,10 @@
 # EVENT    | Handles events happening in game and manages forged_events composition.
 # HANDLER  |
 #==========|=====================================================================================
-def event_handler(event_container: list, events, guitype):
+def event_handler(event_container: list, guitype):
 
     # "MENU" | Forged Event | Run when main menu starts
-    if guitype == "menu" and "menu" not in event_container:
+    if guitype == "menu" and "MENU" not in event_container:
         event_container.append("MENU")
 
 #==========|=====================================================================================
