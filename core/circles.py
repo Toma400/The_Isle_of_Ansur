@@ -1,6 +1,8 @@
 import pygame; pygame.init(); pygame.mixer.init()
 from core.graphics.gui_types import gui_handler
 from core.sounds.music import music_handler
+from core.scripts import script_handler
+from core.scripts import event_handler
 from core.graphics.gh_manag import *
 
 def main_circle():
@@ -18,6 +20,8 @@ def main_circle():
 
         gui_handler(screen, guitype) # draws elements on a screen
         music_handler(music, guitype) # controls music
+        event_handler(forged_events, pygame.event.get(), guitype) # handles forged_events additions
+        script_handler(forged_events) # handles forged_events -> scripts runs
 
         pygame.display.flip()
 
