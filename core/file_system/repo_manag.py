@@ -26,6 +26,35 @@ def dir_checker (path, separator, extension=None, no_path=False):
     return listed
 
 #================|========================================
+# LISTERS        | Lists things within said directory
+#================|========================================
+def dir_lister (path):
+  from os import listdir
+  from os.path import isdir, join
+  return [f for f in listdir(path) if isdir(join(path, f))]
+
+def file_lister (path, ext=None):
+  if ext is None:
+    from os import listdir
+    from os.path import isfile, join
+    return [f for f in listdir(path) if isfile(join(path, f))]
+  else:
+    import glob; listed = glob.glob(path + "*." + ext); listed2 = []
+    for i in listed:
+      i = i.replace(path, "")
+      listed2.append(i.replace("." + ext, ""))
+    return listed2
+
+def deep_file_lister (path, ext=None):
+  list1 = file_lister(path, ext)
+  while len(dir_lister(path)) > 0: # searches in nested directories
+    for i in dir_lister(path):
+      path = f"{path}/{i}/"
+      ilist = file_lister(path, ext)
+      for j in ilist: list1.append(j)
+  return list1
+
+#================|========================================
 # UNSPAGHETTIERS | Making code a bit cleaner
 #================|========================================
 def no_pather(given_list, path):

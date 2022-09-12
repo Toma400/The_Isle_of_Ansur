@@ -28,8 +28,8 @@ These ones can be considered "full mods" in a way, because they introduce both f
 from previous types. Therefore they can not only tell new story and offer quests 
 (Worldpack), but also introduce new items (Statpack) obtainable within that world. 
 Globalpack uses both paths listed and requires both to be run.
-***
-## Scripts
+
+## [Scripts](scripts_tutorial.md)
 Scripts are additional data that can be written in Python and run in specific situation
 in game. They are complementary aspect of the game, yet they still need to be properly
 introduced.

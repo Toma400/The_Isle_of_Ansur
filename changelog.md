@@ -14,7 +14,8 @@
 > - **Full overhaul of file system**
 > - **Switching to graphical interface**
 > - Expanded modding possibilities
->   - Modders now can add their custom background images
+>   - **Scripting system allowing you to implement Python code during gameplay**
+>   - Modders now can add their custom background images and music
 > - Updated to Python 3.10
 > - Further updates to match current Baedoor RPG System
 > - Further code optimalisations

@@ -22,7 +22,7 @@ def main_circle():
         gui_handler(screen, guitype, pg_events) # draws elements on a screen
         music_handler(music, guitype) # controls music
         event_handler(forged_events, guitype) # handles forged_events additions
-        script_handler(forged_events) # handles forged_events -> scripts runs
+        script_handler(forged_events, screen, pg_events) # handles forged_events -> scripts runs
 
         pygame.display.flip()
 
