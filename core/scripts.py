@@ -1,5 +1,3 @@
-from core.file_system.repo_manag import deep_file_lister
-import logging as log
 #==========|=====================================================================================
 # EVENT    | Handles events happening in game and manages forged_events composition.
 # HANDLER  |
@@ -16,7 +14,6 @@ def event_handler(event_container: list, guitype):
 #==========|=====================================================================================
 def script_handler(event_container: list, screen, pg_events):
 
-    script_loader()
     for i in ioaScript.subclasses:
         try:
             if i.event in event_container:
@@ -33,9 +30,3 @@ class ioaScript:
         cls.subclasses.append(cls)
     def __init__(self):
         pass
-
-def script_loader():
-    for x in deep_file_lister(f"scripts/", ext="py"):  # | imports all modules from /scripts/ folder
-        x1 = x.replace("\\", "."); x2 = x1.replace("\\", "."); x2 = x2.replace("//", "."); x2 = x2.replace("//", ".")
-        log.debug(f"Script is being imported: [{x2}]")
-        __import__(x2)
