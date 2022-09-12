@@ -1,8 +1,10 @@
 from core.file_system.repo_manag import dir_checker
+from system.ref_systems.system_ref import SysRef
 from utils.text_manag import text_splitter as tspl
 from system.mod_manag import mod_lister
+from core.graphics.gh_manag import *
 from core.utils import *
-import os, random
+import os, random, pygame
 
 # Background menu image handler
 def bg_screen():
@@ -25,3 +27,9 @@ def bgp_screen(bgs: list):
         if "%PR_" in m:
             bgsp.append(m)
     return random.choice(bgsp)
+
+def run_screen():
+    screen = pygame.display.set_mode([svx, svy])
+    pygame.display.set_caption(SysRef.name)
+    pygame.display.set_icon(imgLoad("core/assets/visuals/", "logo.png"))
+    return screen

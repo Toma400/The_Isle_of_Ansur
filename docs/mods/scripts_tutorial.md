@@ -48,7 +48,7 @@ event = "NAME_OF_THE_EVENT"
 ```
 Variable needs to be *String* type of data and refer to any existing Forged Event 
 [which you can see here](scripts_tutorial.md#events). You cannot create script for
-several events at once - for that purpose, just create new one.  
+several events at once - for that purpose, just create new script for each event.  
 Once you decide on event you want to use, you will need to create running function:
 ```python
 def run(self, *args):
@@ -57,21 +57,32 @@ def run(self, *args):
 What is important, is use of `*args` element. No matter how many [pre-given arguments](scripts_tutorial.md#arguments)
 you use, adding it at the end is crucial, as it will maintain all other unused arguments.  
 For example, here we use `pg_events` argument, but not `screen` one:
+
 ```python
+# imported logging
+import logging
+
+
 def run(self, pg_events, *args):
-   for event in pg_events:
-       if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-           print("Hello World!")
+    for event in pg_events:
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            logging.debug("Player clicked left mouse button!")
 ```
 Even if you used all currently implemented arguments, it's safer to put it at the end,
 because it will make your script future-proof.
 
 ### Arguments
-Here is list of arguments for **run()** function:  
+Arguments are additional data given by game to you, so you can use it to control your
+code. Depending on argument type, it can either condition some actions, or allow you
+to create those actions.
+
+Here is list of arguments for **run()** function. Please remember about using `*args`
+as the last argument!  
 ``fg_events`` - used to access Forged events (internal IoA event system)  
 ``pg_events`` - used to access PyGame events  
 ``screen``- used to interfere with currently used screen  
 
 ### Events
-Here is list of events currently used in vanilla:  
+Here is list of Forged Events currently used in vanilla. If you are confused about
+terminology, please refer to [glossary](/docs/glossary.md#events).  
 ``MENU`` - used to indicate entering main menu

@@ -33,6 +33,7 @@ def format_creating(text=""):
 
 def run_text():
     from system.ref_systems.system_ref import SysRef; import os; import sys
+    from core.file_system.repo_manag import deep_file_lister; scripts = deep_file_lister(f"scripts/", ext="py")
     text = f'''
     ---------------------------------------------------------------------------------------
     Hello in {SysRef.name} logging system! 
@@ -42,9 +43,12 @@ def run_text():
     Printing working directory of program:
     {os.getcwd()}    
     Printing the path of the program:
-    {sys.path}
+    {sys.path[0]}
+    
     Printing vanilla modules list:
     {SysRef.vanilla_modules}
+    Printing scripts:
+    {scripts}
     
     Printing init.toml informations:
     Version:     {SysRef.version} 

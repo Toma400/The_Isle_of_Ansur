@@ -33,7 +33,21 @@ IDs are generated dynamically with every data loading.
 ### MORE IN-DEPTH ELEMENTS 
 
 ---
-None by far.
+###### Events
+Several types of events are used in Isle of Ansur game, and it's useful to know the
+differences between them:
+1. **Forged Events** (abbrev: fg)  
+   Forged Events depicts all events happening in game, be it currently opened screen type,
+   events happening to player or just some technical backgrounds. Those are listed in
+   their respective list, and can be checked by scripts and worldpacks to condition some
+   actions.  
+   List of Forged Events is available in [script tutorial section](mods/scripts_tutorial.md#events).
+
+
+3. **PyGame Events** (abbrev: pg)  
+   PyGame events are all events created by PyGame and are listed [here](https://www.pygame.org/docs/ref/event.html).
+   Those can be checked in scripts to customise some game behaviours, for example recognising
+   player's input through keyboard and mouse.
 
 ---
 

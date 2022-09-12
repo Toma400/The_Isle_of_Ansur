@@ -28,7 +28,7 @@ def gui_handler(screen, guitype, pg_events):
             put_text(screen, text=f"Packs", font="ferrum.otf", size=30, pos_x=44, pos_y=46, colour="#654619")
             put_text(screen, text=f"Exit", font="ferrum.otf", size=30, pos_x=44, pos_y=52, colour="#654619")
 
-            for event in pg_events:
-                if mouseCollider(44, 52, 48, 55.5):
-                    put_text(screen, text=f"Exit", font="ferrum.otf", size=30, pos_x=44, pos_y=52, colour="#7C613B")
-                    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: run = False
+            if mouseCollider(44, 52, 48, 55.5):
+                put_text(screen, text=f"Exit", font="ferrum.otf", size=30, pos_x=44, pos_y=52, colour="#7C613B")
+                for event in pg_events:
+                    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: pygame.quit()
