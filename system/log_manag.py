@@ -31,6 +31,10 @@ def format_creating(text=""):
         text = text + str(i)
     return text
 
+def run_path():
+    import os, sys; spath = os.path.dirname(os.path.abspath("main.py"))
+    sys.path.insert(0, f'{spath}')
+
 def run_text():
     from system.ref_systems.system_ref import SysRef; import os; import sys
     from core.file_system.repo_manag import deep_file_lister; scripts = deep_file_lister(f"scripts/", ext="py")
@@ -43,7 +47,7 @@ def run_text():
     Printing working directory of program:
     {os.getcwd()}    
     Printing the path of the program:
-    {sys.path[0]}
+    {sys.path}
     
     Printing vanilla modules list:
     {SysRef.vanilla_modules}

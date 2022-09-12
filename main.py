@@ -1,4 +1,4 @@
-import system.log_manag as lg; lg.run()
+import system.log_manag as lg; lg.run(); lg.run_path()
 import logging; logging.debug(lg.run_text())
 from core.utils import temp_remover; temp_remover()
 import system.cache.cache_manag as cmg
