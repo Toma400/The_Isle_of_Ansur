@@ -2,6 +2,17 @@
 Scripts are Python classes which can change behaviour of the game via Python code, in
 most direct way.
 
+**List of contents**
+- [Creating new script](scripts_tutorial.md#creating-new-script)
+- [Using events to run code](scripts_tutorial.md#using-events-to-run-code)
+- [Arguments](scripts_tutorial.md#arguments)
+- [Events](scripts_tutorial.md#events)
+
+**Can be useful**  
+- [Example script file](/scripts/example_script.py)  
+- [PyGame events documentation](https://www.pygame.org/docs/ref/event.html)
+
+---
 ### Creating new script
 To create new script, you simply need to create new Python file in `/scripts/` folder.  
 You can put it inside folders there if you want to organise it better, IoA will read
