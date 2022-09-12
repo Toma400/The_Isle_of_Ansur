@@ -21,12 +21,14 @@ def gui_handler(screen, guitype, pg_events):
             imgFull(screen, folderpath=bgs[0], imgname=bgs[1])
             imgPut(screen, folderpath="core/assets/visuals/", imgname="logo.png", size_x=80, size_y=16, pos_x=10, pos_y=3, alpha=True)
             put_text(screen, text=f"{SysRef.status} {SysRef.version}", font="ferrum.otf", size=20, pos_x=0.5, pos_y=97, colour="#4F3920")
-            #put_text(screen, text=f"Dudu!", font="ferrum.otf", size=20, pos_x=0, pos_y=0, colour="#4F3920")
+
+            put_text(screen, text=f"New Game", font="ferrum.otf", size=30, pos_x=44, pos_y=28, colour="#654619")
+            put_text(screen, text=f"Load Game", font="ferrum.otf", size=30, pos_x=44, pos_y=34, colour="#654619")
+            put_text(screen, text=f"Settings", font="ferrum.otf", size=30, pos_x=44, pos_y=40, colour="#654619")
+            put_text(screen, text=f"Packs", font="ferrum.otf", size=30, pos_x=44, pos_y=46, colour="#654619")
+            put_text(screen, text=f"Exit", font="ferrum.otf", size=30, pos_x=44, pos_y=52, colour="#654619")
 
             for event in pg_events:
-                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                    pass
-                    #put_text(screen, text=f"We won that!", font="ferrum.otf", size=20, pos_x=5, pos_y=0, colour="#4F3920")
-                if event.type == pygame.MOUSEMOTION and mouseCollider(0, 0, 10, 10):
-                    pass
-                    #put_text(screen, text=f"{SysRef.status} {SysRef.version}", font="ferrum.otf", size=21, pos_x=0.5, pos_y=97, colour="#654724")
+                if mouseCollider(44, 52, 48, 55.5):
+                    put_text(screen, text=f"Exit", font="ferrum.otf", size=30, pos_x=44, pos_y=52, colour="#7C613B")
+                    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: run = False

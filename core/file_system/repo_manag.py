@@ -1,4 +1,5 @@
 from os.path import join, isdir, isfile
+import os, shutil
 
 #================|========================================
 # DIR FUNCTIONS  | To orientate between dirs and files
@@ -24,6 +25,16 @@ def dir_checker (path, separator, extension=None, no_path=False):
     listed = glob.glob(path + "*")
     if no_path: return no_pather(listed, path)
     return listed
+
+# Checks if directory is empty
+def empty_checker (path):
+  return os.stat(path).st_size == 0
+
+# "Safe" file deleter (flexible towards both folders and files)
+def deleter (pathage):
+  try: shutil.rmtree(pathage)
+  except NotADirectoryError: os.remove(pathage)
+  except FileNotFoundError: pass
 
 #================|========================================
 # LISTERS        | Lists things within said directory

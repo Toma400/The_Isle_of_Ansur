@@ -292,6 +292,7 @@ def pack_settings(pack_name):
 def pack_remover():
   non_removable_keys = SysRef.vanilla_modules
   stats_rv = os.listdir(f"{gpath}/stats/"); worlds_rv = os.listdir(f"{gpath}/worlds/")
+  scripts_rv = os.listdir(f"{gpath}/scripts/")
   def rv(t, tc):
     if os.path.isdir(t) and tc not in non_removable_keys:
       shutil.rmtree(t)
@@ -300,6 +301,8 @@ def pack_remover():
     rv(f"{gpath}/stats/{i}", i)
   for i in worlds_rv:
     rv(f"{gpath}/worlds/{i}", i)
+  for i in scripts_rv:
+    rv(f"{gpath}/scripts/{i}", i)
 
 def pack_unloader():
   log.info("Pack unloading requested.")

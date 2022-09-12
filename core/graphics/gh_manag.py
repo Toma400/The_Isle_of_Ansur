@@ -47,11 +47,6 @@ def imgPutRes(screen, folderpath, imgname, pos_x, pos_y, endpos_x, endpos_y, alp
     imgRes(folderpath, imgname, int(vx), int(vy))
     screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (spos_x, spos_y))
 
-# Collisions:
-@RequiresImprovement
-def mouseCollider(st_x, st_y, end_x, end_y):
-    return tuple(returnCells(st_x, st_y)) < pygame.mouse.get_pos() < tuple(returnCells(end_x, end_y))
-
 #===========|========================================================
 # CELLS     | Cell system is made to place precisely elements on the
 #-----------┘ screen and adjust their size depending on resolution
@@ -70,6 +65,16 @@ def returnCells(pos_x, pos_y):
     # Works for both positions and length/height values
     svxc = svx / 100; svyc = svy / 100 # finds out cell size
     return pos_x * svxc, pos_y * svyc  # returns %posi into pixel posi
+
+
+#========|===========================================================
+# COLLIS | Checks whether element collides with another
+#========|===========================================================
+# Simple mouse collider:
+def mouseCollider(st_x, st_y, end_x, end_y):
+    pos0 = tuple(returnCells(st_x, st_y))[0] <= pygame.mouse.get_pos()[0] <= tuple(returnCells(end_x, end_y))[0]
+    pos1 = tuple(returnCells(st_x, st_y))[1] <= pygame.mouse.get_pos()[1] <= tuple(returnCells(end_x, end_y))[1]
+    return pos0 and pos1
 
 #========|===========================================================
 # HELPER | Some helping functions to keep code cleaner
