@@ -1,5 +1,5 @@
 from system.ref_systems.system_ref import SysRef
-from core.scrolls.text_manag import put_text
+from core.graphics.text_manag import put_text
 from core.graphics.gh_system import bg_screen
 from core.graphics.gh_manag import *
 
@@ -28,6 +28,14 @@ def gui_handler(screen, guitype, pg_events):
             put_text(screen, text=f"Packs", font="ferrum.otf", size=30, pos_x=44, pos_y=46, colour="#654619")
             put_text(screen, text=f"Exit", font="ferrum.otf", size=30, pos_x=44, pos_y=52, colour="#654619")
 
+            if mouseCollider(44, 28, 54, 31.5):
+                put_text(screen, text=f"New Game", font="ferrum.otf", size=30, pos_x=44, pos_y=28, colour="#7C613B")
+            if mouseCollider(44, 34, 55, 37.5):
+                put_text(screen, text=f"Load Game", font="ferrum.otf", size=30, pos_x=44, pos_y=34, colour="#7C613B")
+            if mouseCollider(44, 40, 52.5, 43.5):
+                put_text(screen, text=f"Settings", font="ferrum.otf", size=30, pos_x=44, pos_y=40, colour="#7C613B")
+            if mouseCollider(44, 46, 49.5, 49.5):
+                put_text(screen, text=f"Packs", font="ferrum.otf", size=30, pos_x=44, pos_y=46, colour="#7C613B")
             if mouseCollider(44, 52, 48, 55.5):
                 put_text(screen, text=f"Exit", font="ferrum.otf", size=30, pos_x=44, pos_y=52, colour="#7C613B")
                 for event in pg_events:

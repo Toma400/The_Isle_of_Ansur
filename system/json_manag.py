@@ -4,7 +4,7 @@ import logging as log
 from utils.decorators import *
 gpath = os.path.dirname(os.path.abspath("main.py"))
 
-@Deprecated("system.json_manag.json_read")
+@Deprecated("core.file_system.json_manag.json_read")
 def json_read_old(path, element, dict_type=False):
   data = {}
   try:
@@ -20,6 +20,7 @@ def json_read_old(path, element, dict_type=False):
   except json.decoder.JSONDecodeError:
     log.warning (f"JSON File: {path} does not have any arguments. Skipping.")
 
+@Deprecated("core.file_system.json_manag.json_read")
 def json_read(path, element=None, isdict=False):
   try:
     fpath = f"{gpath}/{path}"

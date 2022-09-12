@@ -1,6 +1,7 @@
 from core.file_system.repo_manag import deep_file_lister
-from system.json_manag import json_read
-import os, logging
+from core.file_system.json_manag import json_read
+import logging as log
+import os
 
 #===========|==================================================
 # CONSTANTS | Used regularly in other parts of the code
@@ -26,5 +27,5 @@ def temp_remover():
 def script_loader():
     for x in deep_file_lister(f"scripts/", ext="py"):  # | imports all modules from /scripts/ folder
         x1 = x.replace("\\", "."); x2 = x1.replace("\\", "."); x2 = x2.replace("//", "."); x2 = x2.replace("//", ".")
-        logging.debug(f"Script is being imported: [{x2}]")
+        log.debug(f"Script is being imported: [{x2}]")
         __import__(x2)

@@ -44,7 +44,7 @@ differences between them:
    List of Forged Events is available in [script tutorial section](mods/scripts_tutorial.md#events).
 
 
-3. **PyGame Events** (abbrev: pg)  
+2. **PyGame Events** (abbrev: pg)  
    PyGame events are all events created by PyGame and are listed [here](https://www.pygame.org/docs/ref/event.html).
    Those can be checked in scripts to customise some game behaviours, for example recognising
    player's input through keyboard and mouse.

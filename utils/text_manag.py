@@ -1,4 +1,5 @@
 import os; from system.json_manag import *
+from utils.decorators import *
 gpath = os.path.dirname(os.path.abspath("main.py"))
 
 class bcolors:
@@ -120,10 +121,12 @@ def align (text, side="centre"):
 # Used to align text to specific part of the console
 # Takes a bit different values if used with colours
 #---------------------------------------------------
+@Deprecated("core.graphics.text_manag.langstring")
 def langstring (key: str):
     import toml; t = toml.load(f"{gpath}/system/lang/{langset()}.toml"); tr = t[key]
     return tr
 
+@Deprecated("core.graphics.text_manag.langjstring")
 def langjstring (key: str, modtype: str, modid: str = "ansur"):
     try:
         read = json_read(f"{modtype}/{modid}/lang.json", langset())
@@ -135,6 +138,7 @@ def langjstring (key: str, modtype: str, modid: str = "ansur"):
             return langstring("system__text_load_fail")
     return read[key]
 
+@Deprecated("core.utils :: lang")
 def langset ():
     return json_read("settings.json", "language")
 

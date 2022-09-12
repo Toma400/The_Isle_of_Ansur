@@ -17,7 +17,7 @@ class ExampleScript(ioaScript):
     # screen - if you want to interfere with screen
     # pg_events - if you want to use PyGame events
     #====================================================================
-    def run(self, *args):
+    def run(self, *args, **kwargs):
         pass # here you write your code
 
     #====================================================================
