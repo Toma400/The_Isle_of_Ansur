@@ -147,6 +147,7 @@ def langset ():
 # Checks for key pressed being one of "quitter"
 # keybinds (q/0/quit or empty click)
 #---------------------------------------------------
+@Deprecated("Will be removed once pre-alpha 3 is done.")
 def quit_checker (text_to_check, soft=False, *soft_keys):
     default_keys = ("q", "0", "", "quit", soft_keys)
 
