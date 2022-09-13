@@ -70,7 +70,7 @@ def returnCells(pos_x, pos_y):
 # COLLIS | Checks whether element collides with another
 #========|===========================================================
 # Simple mouse collider using cells:
-def mouseCollider(st_x, st_y, end_x, end_y):
+def mouseColliderCell(st_x, st_y, end_x, end_y):
     pos0 = tuple(returnCells(st_x, st_y))[0] <= pygame.mouse.get_pos()[0] <= tuple(returnCells(end_x, end_y))[0]
     pos1 = tuple(returnCells(st_x, st_y))[1] <= pygame.mouse.get_pos()[1] <= tuple(returnCells(end_x, end_y))[1]
     return pos0 and pos1

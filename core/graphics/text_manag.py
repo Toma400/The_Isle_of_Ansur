@@ -5,20 +5,8 @@ from core.utils import *
 # TEXT     | Allows to blit text on the screen
 # PUTTERS  |
 #==========|========================================================
-# Simple text renderer, without scaling, using absolute cell positions instead
-def put_text (screen, text, font_cat, size, pos_x, pos_y, colour=None, bg_colour=None):
-    if colour is None: colour = (0, 0, 0) # default text colour is black
-    pos_x = returnCell(pos_x, "x")
-    pos_y = returnCell(pos_y, "y")
-    font = font_handler(category=font_cat)
-    # 'size' is not cell-related because this would restrict precision
-    #======================================
-    fontobj = Font(f"{gpath}/core/assets/fonts/{font}", size)
-    txtobj = fontobj.render(text, True, colour, bg_colour)
-    screen.blit(txtobj, (pos_x, pos_y))
-
 # Text renderer using scaling and alignment
-def put_sctext (screen, text, font_cat, size, pos_x=0, pos_y=0, align_x=None, align_y=None, colour=None, bg_colour=None):
+def put_text (screen, text, font_cat, size, pos_x=0, pos_y=0, align_x=None, align_y=None, colour=None, bg_colour=None):
     if colour is None: colour = (0, 0, 0) # default text colour is black
     font = font_handler(category=font_cat)
     #======================================
@@ -34,6 +22,18 @@ def put_sctext (screen, text, font_cat, size, pos_x=0, pos_y=0, align_x=None, al
     txtobj = fontobj.render(text, True, colour, bg_colour)
     screen.blit(txtobj, (pos_x, pos_y))
     return pos_x, pos_y, pos_x+fontobjs[0], pos_y+fontobjs[1] # returns starting and ending position in (x, y, x2, y2) manner
+
+# Simple text renderer, without scaling, using absolute cell positions instead
+def put_abstext (screen, text, font_cat, size, pos_x, pos_y, colour=None, bg_colour=None):
+    if colour is None: colour = (0, 0, 0) # default text colour is black
+    pos_x = returnCell(pos_x, "x")
+    pos_y = returnCell(pos_y, "y")
+    font = font_handler(category=font_cat)
+    # 'size' is not cell-related because this would restrict precision
+    #======================================
+    fontobj = Font(f"{gpath}/core/assets/fonts/{font}", size)
+    txtobj = fontobj.render(text, True, colour, bg_colour)
+    screen.blit(txtobj, (pos_x, pos_y))
 
 def put_loretext(lang):
     pass # placeholder function for lore text, which will not be translateable through langkeys, but
