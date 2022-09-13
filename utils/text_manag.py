@@ -123,7 +123,7 @@ def align (text, side="centre"):
 #---------------------------------------------------
 @Deprecated("core.graphics.text_manag.langstring")
 def langstring (key: str):
-    import toml; t = toml.load(f"{gpath}/system/lang/{langset()}.toml"); tr = t[key]
+    import toml; t = toml.load(f"{gpath}/core/lang/{langset()}.toml"); tr = t[key]
     return tr
 
 @Deprecated("core.graphics.text_manag.langjstring")

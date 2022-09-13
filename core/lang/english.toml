@@ -1,8 +1,8 @@
-menu__button_start         = "[1] START THE GAME"
-menu__button_load          = "[2] LOAD THE GAME"
-menu__button_settings      = "[3] SETTINGS"
-menu__button_packs         = "[4] PACKS"
-menu__button_exit          = "[5] EXIT THE GAME"
+menu__button_start         = "New Game"
+menu__button_load          = "Load Game"
+menu__button_settings      = "Settings"
+menu__button_packs         = "Packs"
+menu__button_exit          = "Exit"
 
 menu__load_choose          = "Choose your save"
 menu__load_choose_hint     = "[use numbers or precise name]"

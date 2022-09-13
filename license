@@ -1,5 +1,5 @@
                           BAEDOOR LICENSE
-                     Version 1, 23 April 2022
+                    Version 1.1, 23 April 2022
 
                         created by Toma400
                          (Tomasz Stępień)
@@ -23,8 +23,9 @@ describe myself.
 1. GENERAL LICENSE
 The Isle of Ansur contents (by that we mean code, assets, universe and
 all content that is made for it by other people and published with
-any association to IoA product) belong to the author.
-As an author, I prohibit any use of said contents without my consent,
+any association to IoA product) belong to the author, unless stated
+otherwise (exceptions are located in docs/credits.md path).
+As an author, I prohibit any use of my contents without my consent,
 with exception of:
 
   - playing the game
@@ -108,3 +109,6 @@ Separate source of benefit (such as link on the page to Patreon account)
 which use is optional does not count towards "beneficial action".
 Although, optional use of it should be explicitly seen though, so
 no payment should be clearly shown as default.
+
+---
+Version 1.1 is slightly updated variant of v1.0. Date: 13 September 2022

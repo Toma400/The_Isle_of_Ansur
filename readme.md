@@ -41,7 +41,7 @@ such early state of the game!
 
 **Docs:**
 - Internal ones: [**Jump to files!**](docs/introduction.md)
-- URL (may be outdated): [**GitHub**](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Main-Mod-Types)
+- URL (outdated): [**GitHub**](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Main-Mod-Types)
 
 # Credits
 

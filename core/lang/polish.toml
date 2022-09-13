@@ -1,8 +1,8 @@
-menu__button_start         = "[1] ROZPOCZNIJ GRĘ"
-menu__button_load          = "[2] ZAŁADUJ GRĘ"
-menu__button_settings      = "[3] USTAWIENIA"
-menu__button_packs         = "[4] PACZKI"
-menu__button_exit          = "[5] WYJDŹ Z GRY"
+menu__button_start         = "Rozpocznij grę"
+menu__button_load          = "Załaduj grę"
+menu__button_settings      = "Ustawienia"
+menu__button_packs         = "Paczki"
+menu__button_exit          = "Wyjdź"
 
 menu__load_choose          = "Wybierz swój zapis gry"
 menu__load_choose_hint     = "[użyj numeru lub dokładnej nazwy]"
