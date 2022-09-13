@@ -23,7 +23,7 @@ def main_circle():
                 run = False
 
         gui_handler(screen, guitype, pg_events) # draws elements on a screen and sets interactions
-        music_handler(music, guitype) # controls music
+        music_handler(music, guitype)  # controls music
         event_handler(forged_events, guitype) # handles forged_events additions
         script_handler(forged_events, screen, pg_events) # handles forged_events -> scripts runs
 
