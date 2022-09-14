@@ -23,8 +23,8 @@ def main_circle():
             if event.type == pygame.QUIT:
                 tev.append("end")
 
+        music = music_handler(music, guitype, forged_events)  # controls music
         gui_handler(screen, guitype, forged_events, pg_events, tev, bgs) # draws elements on a screen and sets interactions
-        music_handler(music, guitype)  # controls music
         event_handler(forged_events, guitype) # handles forged_events additions
         script_handler(forged_events, screen, pg_events) # handles forged_events -> scripts runs
 

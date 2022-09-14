@@ -1,3 +1,5 @@
+lang__name                 = "Polski" #this value has to be your own language name, translated
+
 menu__button_start         = "Rozpocznij grę"
 menu__button_load          = "Załaduj grę"
 menu__button_settings      = "Ustawienia"
@@ -5,8 +7,10 @@ menu__button_packs         = "Paczki"
 menu__button_exit          = "Wyjdź"
 
 menu__sett_general         = "Ogólne"
+menu__sett_general_lang    = "Język"
+menu__sett_general_music   = "Głośność muzyki"
 menu__sett_tech            = "Techniczne"
-menu__sett_tech_legacy     = "Legacy Unpacking"
+menu__sett_tech_legacy     = "Manualna obsługa modów"
 menu__sett_tech_log_limit  = "Limit dzienników"
 menu__sett_tech_log_rv     = "Usuń dzienniki"
 menu__sett_back            = "Powrót do menu"

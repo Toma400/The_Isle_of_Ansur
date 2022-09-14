@@ -1,3 +1,5 @@
+lang__name                 = "English" #this value has to be your own language name, translated
+
 menu__button_start         = "New Game"
 menu__button_load          = "Load Game"
 menu__button_settings      = "Settings"
@@ -5,6 +7,8 @@ menu__button_packs         = "Packs"
 menu__button_exit          = "Exit"
 
 menu__sett_general         = "General"
+menu__sett_general_lang    = "Language"
+menu__sett_general_music   = "Music Volume"
 menu__sett_tech            = "Technical"
 menu__sett_tech_legacy     = "Legacy Unpacking"
 menu__sett_tech_log_limit  = "Log Limit"

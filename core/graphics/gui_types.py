@@ -73,11 +73,31 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs):
                     guitype[0] = switch_scr(screen, "menu")
                     guitype[1] = None
 
-            # ==================================================
+            #==================================================
             # submenu handler
             match guitype[1]:
                 case "settings_general":
-                    pass
+                    gt1ln = put_text(screen, text=langstring("menu__sett_general_lang"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#4E3510")
+                    gt1ms = put_text(screen, text=langstring("menu__sett_general_music"),   font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#4E3510")
+
+                    # settings values
+                    put_text(screen, text=langstring("lang__name"), font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856")  # language
+                    put_text(screen, text=str(scx("sndv")),         font_cat="menu", size=30, pos_x=87, pos_y=20, colour="#1A5856")  # music volume
+
+                    # ==================================================
+                    # hovering & clicking events
+                    if mouseColliderPx(gt1ln[0], gt1ln[1], gt1ln[2], gt1ln[3]):
+                        put_text(screen, text=langstring("menu__sett_general_lang"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#7C613B")
+                        if mouseRec(pg_events):
+                            set_change("language")
+
+                    if mouseColliderPx(gt1ms[0], gt1ms[1], gt1ms[2], gt1ms[3]):
+                        put_text(screen, text=langstring("menu__sett_general_music"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#7C613B")
+                        if mouseRec(pg_events):
+                            set_change("sound", 1); fg_events.append("SNDV_CHG")
+                        if mouseRec(pg_events, 3):
+                            if scx("sndv") > 1: set_change("sound", -1); fg_events.append("SNDV_CHG")
+
                 case "settings_tech":
                     gt2lu = put_text(screen, text=langstring("menu__sett_tech_legacy"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#4E3510")
                     gt2gl = put_text(screen, text=langstring("menu__sett_tech_log_limit"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#4E3510")
