@@ -1,11 +1,12 @@
 from core.utils import *
 
-def set_change(key):
+def set_change(key, value=None):
   setval = json_read("settings.json", key)
   if type(setval) is bool:
       json_change("settings.json", key, not setval)
       log.debug(f"Switching settings for: {key} to {not setval}.")
-
+  if type(setval) is int and type(value) is int:
+      json_change_ins("settings.json", key, value)
   # switch for time system
   #if json_read(path, key) == "proportional":
   #  json_change_ins(path, key, "realistic")

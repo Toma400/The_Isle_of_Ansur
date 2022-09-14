@@ -29,6 +29,5 @@ def main_circle():
         script_handler(forged_events, screen, pg_events) # handles forged_events -> scripts runs
 
         pygame.display.flip()
-        if "SC_REF" in forged_events: importlib.reload(cr.utils); forged_events.remove("SC_REF"); guitype = switch_scr(screen, guitype)
 
     temp_remover(); pygame.quit()

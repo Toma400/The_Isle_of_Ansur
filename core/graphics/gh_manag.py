@@ -1,8 +1,6 @@
-from system.ref_systems.system_ref import SysRef
 from core.utils import *
 from PIL import Image
 import logging as log
-import core as cr
 import pygame
 
 #========|===========================================================
@@ -25,12 +23,12 @@ def imgRes(path, name, dest_x, dest_y): # path should be folder path, written li
 
 # Blits:
 def imgIter(screen, image):
-    for x in range(svx // image.get_width() + 1):
-        for y in range(svy // image.get_height() + 1):
+    for x in range(scx("svx") // image.get_width() + 1):
+        for y in range(scx("svy") // image.get_height() + 1):
             screen.blit(image, (x*image.get_width(), y*image.get_height()))
 
 def imgFull(screen, folderpath, imgname, alpha=False): # folderpath should be written like so: [stats/]
-    imgRes(folderpath, imgname, svx, svy)
+    imgRes(folderpath, imgname, scx("svx"), scx("svy"))
     screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (0, 0))
 
 def imgPut(screen, folderpath, imgname, size_x, size_y, pos_x, pos_y, alpha=False): # size-pos should be cell%
@@ -58,14 +56,14 @@ def imgPutRes(screen, folderpath, imgname, pos_x, pos_y, endpos_x, endpos_y, alp
 #===========|========================================================
 # Single element:
 def returnCell(pos, axis):
-    if axis == "x": svc = svx / 100
-    else: svc = svy / 100
+    if axis == "x": svc = scx("svx") / 100
+    else: svc = scx("svy") / 100
     return pos * svc
 
 # Double element:
 def returnCells(pos_x, pos_y):
     # Works for both positions and length/height values
-    svxc = svx / 100; svyc = svy / 100 # finds out cell size
+    svxc = scx("svx") / 100; svyc = scx("svy") / 100 # finds out cell size
     return pos_x * svxc, pos_y * svyc  # returns %posi into pixel posi
 
 

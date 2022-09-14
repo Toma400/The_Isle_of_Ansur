@@ -10,7 +10,7 @@ import shutil
 #=======================================================================================
 # Remover of pack's unzipped contents
 def pack_remover():
-  if not legu: # checks if Legacy Unpacking isn't used
+  if not scx("legu"): # checks if Legacy Unpacking isn't used
     non_removable_keys = SysRef.vanilla_modules
     stats_rv = os.listdir(f"{gpath}/stats/"); worlds_rv = os.listdir(f"{gpath}/worlds/")
     scripts_rv = os.listdir(f"{gpath}/scripts/"); scripts_frv = file_lister(f"{gpath}/scripts/")

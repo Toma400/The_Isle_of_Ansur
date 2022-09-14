@@ -1,6 +1,6 @@
 from core.sounds.sd_system import bg_music
-from core.utils import sndv
 from pygame.mixer import *
+from core.utils import *
 
 def music_handler(music_playing, guitype):
 
@@ -9,7 +9,7 @@ def music_handler(music_playing, guitype):
         match guitype[0]:
 
             case "menu":
-                music_playing = Sound(bg_music()); music_playing.set_volume(sndv/100)
+                music_playing = Sound(bg_music()); music_playing.set_volume(scx("sndv")/100)
                 music_playing.play(fade_ms=2000)
 
     else: # for situations when sound should be interrupted

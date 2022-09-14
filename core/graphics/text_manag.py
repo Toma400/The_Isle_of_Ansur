@@ -51,8 +51,8 @@ def put_lore(lang):
 def font_handler (category: str, font=None):
     match category:
         case "menu":
-            if lang == "polish": font = "ferrum.otf" #TO FIX
-            else:                font = "ferrum.otf"
+            if scx("lang") == "polish": font = "ferrum.otf" #TO FIX
+            else:                       font = "ferrum.otf"
     return font
 
 # Sets position of text depending on its render size and cell position/alignment set
@@ -76,12 +76,13 @@ def text_replacer (text_size, align_x=None, align_y=None, x_pos=0, y_pos=0, x_en
 # Takes a bit different values if used with colours
 #===================================================================
 def langstring (key: str):
+    lang = scx("lang")
     import toml; t = toml.load(f"{gpath}/core/lang/{lang}.toml")
     return t[key]
 
 def langjstring (key: str, modtype: str, modid: str = "ansur"):
     try:
-        read = json_read(f"{modtype}/{modid}/lang.json", lang)
+        read = json_read(f"{modtype}/{modid}/lang.json", scx("lang"))
     except KeyError:
         try:
             read = json_read(f"{modtype}/{modid}/lang.json", "english")

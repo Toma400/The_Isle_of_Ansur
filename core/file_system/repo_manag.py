@@ -1,4 +1,5 @@
 from os.path import join, isdir, isfile
+from core.utils import *
 import os, shutil
 
 #================|========================================
@@ -35,6 +36,25 @@ def deleter (pathage):
   try: shutil.rmtree(pathage)
   except NotADirectoryError: os.remove(pathage)
   except FileNotFoundError: pass
+
+# Log deleting function ('num' should be None if manually removed)
+def logs_deleting (num: int = None):
+  all_logs = file_lister("/core/logs/", "log"); all_logs.sort()
+  full_num = len(all_logs); to_remove = []
+  if num is not None:
+    if full_num > num-1:
+      delnum = full_num - (num-1); ui = 1
+      for u in all_logs:
+        if ui < delnum:
+          to_remove.append(u); ui = ui+1
+  for i in all_logs:
+    try:
+      if num is None: #| by default removes all logs
+        deleter(f"{gpath}/core/logs/{i}.log")
+      elif full_num > num-1: #| removes only specific amount of logs
+        if i in to_remove: deleter(f"{gpath}/core/logs/{i}.log")
+    except PermissionError: continue
+  if num is None: log.debug("Removed all logs with request of the user.")
 
 #================|========================================
 # LISTERS        | Lists things within said directory

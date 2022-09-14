@@ -1,5 +1,5 @@
 from core.graphics.text_manag import put_abstext, put_text, langstring
-from system.ref_systems.system_ref import SysRef
+from core.file_system.repo_manag import logs_deleting
 from core.file_system.set_manag import set_change
 from core.graphics.gh_manag import *
 
@@ -84,9 +84,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs):
                     gt2gr = put_text(screen, text=langstring("menu__sett_tech_log_rv"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=28, colour="#4E3510")
 
                     # settings values
-                    if legu: put_text(screen, text=langstring("gen__enabled"),  font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856") # legacy unpacking
-                    else: put_text(screen,    text=langstring("gen__disabled"), font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856")
-                    put_text(screen,          text=str(lglm),                   font_cat="menu", size=30, pos_x=87, pos_y=20, colour="#1A5856") # log limit number
+                    if scx("legu"): put_text(screen, text=langstring("gen__enabled"), font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856") # legacy unpacking
+                    else: put_text(screen,    text=langstring("gen__disabled"),       font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856")
+                    put_text(screen,          text=str(scx("lglm")),                  font_cat="menu", size=30, pos_x=87, pos_y=20, colour="#1A5856") # log limit number
 
                     #==================================================
                     # hovering & clicking events
@@ -94,10 +94,15 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs):
                         put_text(screen, text=langstring("menu__sett_tech_legacy"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("legacy_unpacking")
-                            fg_events.append("SC_REF")
 
                     if mouseColliderPx(gt2gl[0], gt2gl[1], gt2gl[2], gt2gl[3]):
                         put_text(screen, text=langstring("menu__sett_tech_log_limit"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#7C613B")
+                        if mouseRec(pg_events):
+                            set_change("log_limit", 1)
+                        if mouseRec(pg_events, 3):
+                            if scx("lglm") > 1: set_change("log_limit", -1)
 
                     if mouseColliderPx(gt2gr[0], gt2gr[1], gt2gr[2], gt2gr[3]):
                         put_text(screen, text=langstring("menu__sett_tech_log_rv"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=28, colour="#7C613B")
+                        if mouseRec(pg_events):
+                            logs_deleting()

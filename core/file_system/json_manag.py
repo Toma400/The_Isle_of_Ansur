@@ -23,7 +23,7 @@ def json_change(path, key, dest_value):
 
 # Changes .json file in more specific way
 def json_change_adv(path, key, dest_value, change_type):
-  temp_dict = json_read(path, key)
+  temp_dict = json_read(path)
   match change_type:
 
     #math is intended to change int value (use negative value for 'math' to substract)
