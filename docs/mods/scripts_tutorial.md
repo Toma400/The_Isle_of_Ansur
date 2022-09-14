@@ -88,4 +88,5 @@ and `*kwargs` as last arguments!
 Here is list of Forged Events currently used in vanilla. If you are confused about
 terminology, please refer to [glossary](/docs/glossary.md#events).  
 
-``MENU`` - used to indicate entering main menu
+``MENU`` - used to indicate entering main menu  
+``SC_REF`` - call used to refresh menu, usually stays for one frame

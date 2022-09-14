@@ -2,6 +2,7 @@ from system.ref_systems.system_ref import SysRef
 from system.json_manag import *
 from utils.decorators import *
 
+@Deprecated("core.file_system.settings_manag.def_set")
 def default_settings(callout=None):
   language = "english"
   time_system = "proportional"
@@ -43,6 +44,7 @@ def settings(callout):
 # SETTINGS CHANGER
 # Switches settings' values
 #-----------------------------
+@Deprecated("core.file_system.settings_manag.set_change")
 def settings_changer(callout):
   import logging as log
   path = "settings.json"

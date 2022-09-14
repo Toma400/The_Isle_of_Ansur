@@ -66,6 +66,7 @@ def json_write(path, dictionary):
 # * adding variables to .jsons
 # * removing variables from .jsons
 #--------------------------------------------------------------
+@Deprecated("core.file_system.json_manag.json_change / json_change_adv")
 def json_change(path, element, change_type, change_value):
   temp_dict = {}
   #simply replacing value with new one (usually for string variables)
@@ -111,6 +112,7 @@ def json_change(path, element, change_type, change_value):
 # type of value. From obvious reasons, more convenient for
 # automating, having less broad use instead.
 #--------------------------------------------------------------
+@Deprecated("core.file_system.json_manag.json_change_ins")
 def json_change_ins(path, element, change_value, extended_math=False):
   #basically variable type insensitive variant of json_change()
   #detects type and redirects for its type; automation friendly 

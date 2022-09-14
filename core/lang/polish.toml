@@ -4,6 +4,11 @@ menu__button_settings      = "Ustawienia"
 menu__button_packs         = "Paczki"
 menu__button_exit          = "Wyjdź"
 
+menu__sett_general         = "Ogólne"
+menu__sett_tech            = "Techniczne"
+menu__sett_tech_legacy     = "Legacy Unpacking"
+menu__sett_tech_log_limit  = "Limit dzienników"
+menu__sett_tech_log_rv     = "Usuń dzienniki"
 menu__sett_back            = "Powrót do menu"
 
 menu__load_choose          = "Wybierz swój zapis gry"
@@ -109,5 +114,8 @@ stat__perk_flying_monk     = "Latający kapłan"
 stat__perk_vampirism       = "Wampiryzm"
 stat__perk_ritual_tongue   = "Języki rytualne"
 stat__perk_ancient_tongue  = "Język starożytnych architektów"
+
+gen__enabled               = "Włączone"
+gen__disabled              = "Wyłączone"
 
 system__text_load_fail     = "Tekst nie mógł się załadować"

@@ -1,6 +1,8 @@
+from system.ref_systems.system_ref import SysRef
 from core.utils import *
 from PIL import Image
 import logging as log
+import core as cr
 import pygame
 
 #========|===========================================================
@@ -82,10 +84,18 @@ def mouseColliderPx(st_x, st_y, end_x, end_y):
     pos1 = (st_x, st_y)[1] <= pygame.mouse.get_pos()[1] <= (end_x, end_y)[1]
     return pos0 and pos1
 
+# Returns whether specific mouse button is pressed (by default = left)
+def mouseRec(pg_events, mouse_button=1):
+    for event in pg_events:
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == mouse_button:
+            return True
+    return False
+
 
 #========|===========================================================
 # HELPER | Some helping functions to keep code cleaner
 #========|===========================================================
+# Used to switch screen. Put this return in respective guitype[pos]
 def switch_scr(screen, gui_aimed):
     screen.fill("#000000")
     return gui_aimed

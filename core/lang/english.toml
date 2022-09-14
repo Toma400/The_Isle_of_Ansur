@@ -4,6 +4,11 @@ menu__button_settings      = "Settings"
 menu__button_packs         = "Packs"
 menu__button_exit          = "Exit"
 
+menu__sett_general         = "General"
+menu__sett_tech            = "Technical"
+menu__sett_tech_legacy     = "Legacy Unpacking"
+menu__sett_tech_log_limit  = "Log Limit"
+menu__sett_tech_log_rv     = "Remove Logs"
 menu__sett_back            = "Back to menu"
 
 menu__load_choose          = "Choose your save"
@@ -109,5 +114,8 @@ stat__perk_flying_monk     = "Flying Priest"
 stat__perk_vampirism       = "Vampirism"
 stat__perk_ritual_tongue   = "Ritual Tongues"
 stat__perk_ancient_tongue  = "Ancient Architects' Tongue"
+
+gen__enabled               = "Enabled"
+gen__disabled              = "Disabled"
 
 system__text_load_fail     = "Text failed to load"

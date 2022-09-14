@@ -1,7 +1,7 @@
 from core.file_system.repo_manag import deep_file_lister
-from core.file_system.json_manag import json_read
+from core.file_system.json_manag import *
 import logging as log
-import os
+import os, importlib
 
 #===========|==================================================
 # CONSTANTS | Used regularly in other parts of the code
@@ -15,9 +15,11 @@ svx  = settings_data["res_x"]
 svy  = settings_data["res_y"]
 sndv = settings_data["sound"]
 
+lglm = settings_data["log_limit"]
+legu = settings_data["legacy_unpacking"]
+
 optv = settings_data["hunger_thirst"]
 pdth = settings_data["permadeath"]
-legu = settings_data["legacy_unpacking"]
 
 def temp_remover():
     import shutil, os

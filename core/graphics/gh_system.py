@@ -7,7 +7,7 @@ from core.utils import *
 import os, random, pygame
 
 # Background menu image handler
-def bg_screen():
+def bgm_screen():
     worldpacks = mod_lister("worlds"); bgs = []
     for i in worldpacks:
         tpath = f"{gpath}/worlds/{i}/assets/backgrounds/"

@@ -24,7 +24,7 @@ def put_text (screen, text, font_cat, size, pos_x=0, pos_y=0, align_x=None, alig
     )
     txtobj = fontobj.render(text, True, colour, bg_colour)
     screen.blit(txtobj, (pos_x, pos_y))
-    return pos_x, pos_y, pos_x+fontobjs[0], pos_y+fontobjs[1] # returns starting and ending position in (x, y, x2, y2) manner
+    return pos_x, pos_y, pos_x+fontobjs[0], pos_y+fontobjs[1] # returns starting and ending position in (x, y, x2, y2) manner [px, not cell%]
 
 # Simple text renderer, without scaling, using absolute cell positions instead
 def put_abstext (screen, text, font_cat, size, pos_x, pos_y, colour=None, bg_colour=None):
