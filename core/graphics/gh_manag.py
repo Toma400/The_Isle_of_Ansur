@@ -46,6 +46,7 @@ def imgPutRes(screen, folderpath, imgname, pos_x, pos_y, endpos_x, endpos_y, alp
     imgRes(folderpath, imgname, int(vx), int(vy))
     screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (spos_x, spos_y))
 
+
 #===========|========================================================
 # CELLS     | Cell system is made to place precisely elements on the
 #-----------┘ screen and adjust their size depending on resolution
@@ -81,9 +82,14 @@ def mouseColliderPx(st_x, st_y, end_x, end_y):
     pos1 = (st_x, st_y)[1] <= pygame.mouse.get_pos()[1] <= (end_x, end_y)[1]
     return pos0 and pos1
 
+
 #========|===========================================================
 # HELPER | Some helping functions to keep code cleaner
 #========|===========================================================
+def switch_scr(screen, gui_aimed):
+    screen.fill("#000000")
+    return gui_aimed
+
 def dir_cleaner(path):
     if not os.path.isdir(f"{gpath}/_temp/{path}"):
         os.makedirs(f"{gpath}/_temp/{path}")

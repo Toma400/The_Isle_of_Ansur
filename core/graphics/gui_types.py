@@ -13,7 +13,7 @@ from core.graphics.gh_manag import *
 #==============================================================================================================
 def gui_handler(screen, guitype, pg_events, tev):
 
-    match guitype:
+    match guitype[0]:
 
         case "menu":
             bgs = bg_screen() # selects menu panorama
@@ -34,9 +34,25 @@ def gui_handler(screen, guitype, pg_events, tev):
                 put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=30, align_x="center", pos_y=34, colour="#7C613B")
             if mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
                 put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
+                for event in pg_events:
+                    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: guitype[0] = switch_scr(screen, "settings")
+
             if mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
                 put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#7C613B")
             if mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]):
                 put_text(screen, text=langstring("menu__button_exit"), font_cat="menu", size=30, align_x="center", pos_y=52, colour="#7C613B")
                 for event in pg_events:
                     if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: tev.append("end")
+
+        #==============================================================================================================
+        case "settings":
+            bgs = bg_screen()
+
+            imgFull(screen, folderpath=bgs[0], imgname=bgs[1])
+
+            gtx = put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#654619")
+
+            if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
+                put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#7C613B")
+                for event in pg_events:
+                    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: guitype[0] = switch_scr(screen, "menu")

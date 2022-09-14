@@ -6,7 +6,7 @@ def music_handler(music_playing, guitype):
 
     if not get_busy(): # checks if music ended
 
-        match guitype:
+        match guitype[0]:
 
             case "menu":
                 music_playing = Sound(bg_music()); music_playing.set_volume(sndv/100)

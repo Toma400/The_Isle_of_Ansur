@@ -11,7 +11,7 @@ def main_circle():
 
     script_loader() # loads all scripts to be used by script_handler
     forged_events = [] # event system inspired partly by Forge API
-    guitype = "menu"  # tells gui_handler which menu you are at
+    guitype = ["menu"]  # tells gui_handler which menu you are at
     music = None
 
     tev = []

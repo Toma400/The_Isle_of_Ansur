@@ -4,6 +4,8 @@ menu__button_settings      = "Settings"
 menu__button_packs         = "Packs"
 menu__button_exit          = "Exit"
 
+menu__sett_back            = "Back to menu"
+
 menu__load_choose          = "Choose your save"
 menu__load_choose_hint     = "[use numbers or precise name]"
 menu__load_save_deleted    = "Saved game successfully deleted!"
