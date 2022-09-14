@@ -1,4 +1,4 @@
-from system.ref_systems.system_ref import SysRef
+from system.ref_systems.system_ref import *
 from core.file_system.repo_manag import deep_file_lister
 from core.file_system.json_manag import *
 import logging as log

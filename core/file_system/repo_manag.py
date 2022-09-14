@@ -1,7 +1,7 @@
+from system.ref_systems.system_ref import *
 from os.path import join, isdir, isfile
-from core.utils import *
-import os, shutil
-
+from os import listdir
+import os, shutil, logging
 #================|========================================
 # DIR FUNCTIONS  | To orientate between dirs and files
 #================|========================================
@@ -39,7 +39,7 @@ def deleter (pathage):
 
 # Log deleting function ('num' should be None if manually removed)
 def logs_deleting (num: int = None):
-  all_logs = file_lister("/core/logs/", "log"); all_logs.sort()
+  all_logs = file_lister("core/logs\\", "log"); all_logs.sort()
   full_num = len(all_logs); to_remove = []
   if num is not None:
     if full_num > num-1:
@@ -54,20 +54,16 @@ def logs_deleting (num: int = None):
       elif full_num > num-1: #| removes only specific amount of logs
         if i in to_remove: deleter(f"{gpath}/core/logs/{i}.log")
     except PermissionError: continue
-  if num is None: log.debug("Removed all logs with request of the user.")
+  if num is None: logging.debug("Removed all logs with request of the user.")
 
 #================|========================================
 # LISTERS        | Lists things within said directory
 #================|========================================
 def dir_lister (path):
-  from os import listdir
-  from os.path import isdir, join
   return [f for f in listdir(path) if isdir(join(path, f))]
 
 def file_lister (path, ext=None):
   if ext is None:
-    from os import listdir
-    from os.path import isfile, join
     return [f for f in listdir(path) if isfile(join(path, f))]
   else:
     import glob; listed = glob.glob(path + "*." + ext); listed2 = []

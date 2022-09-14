@@ -7,6 +7,7 @@ def set_change(key, value=None):
       log.debug(f"Switching settings for: {key} to {not setval}.")
   if type(setval) is int and type(value) is int:
       json_change_ins("settings.json", key, value)
+      log.debug(f"Switching settings for: {key} with appended value of {value}.")
   # switch for time system
   #if json_read(path, key) == "proportional":
   #  json_change_ins(path, key, "realistic")

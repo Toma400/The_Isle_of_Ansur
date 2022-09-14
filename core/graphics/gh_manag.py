@@ -95,7 +95,7 @@ def mouseRec(pg_events, mouse_button=1):
 #========|===========================================================
 # Used to switch screen. Put this return in respective guitype[pos]
 def switch_scr(screen, gui_aimed):
-    screen.fill("#000000")
+    screen.fill("#000000"); log.debug(f"Switching screen to guitype value: [{gui_aimed}]")
     return gui_aimed
 
 def dir_cleaner(path):
