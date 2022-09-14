@@ -12,7 +12,6 @@ Use table of contents below to navigate.
 
 ## <center>Licenses</center>
 #### Fonts
-- **Credit Valley** font use is based on [Typodermic Fonts Desktop license](https://typodermicfonts.com/license/).
 - **Ferrum** font [was released to public domain](https://www.1001fonts.com/ferrum-font.html).
 
 #### Logos
