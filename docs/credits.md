@@ -12,6 +12,7 @@ Use table of contents below to navigate.
 
 ## <center>Licenses</center>
 #### Fonts
+- **Cohaerentia** font use is based on [SIL Open Font License](http://scripts.sil.org/OFL) and is bundled with the game by its rights.
 - **Ferrum** font [was released to public domain](https://www.1001fonts.com/ferrum-font.html).
 
 #### Logos

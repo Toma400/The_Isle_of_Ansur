@@ -51,7 +51,7 @@ def put_lore(lang):
 def font_handler (category: str, font=None):
     match category:
         case "menu":
-            if scx("lang") == "polish": font = "ferrum.otf" #TO FIX
+            if scx("lang") == "polish": font = "cohaerentia_reg_bold.ttf" #TO FIX
             else:                       font = "ferrum.otf"
     return font
 
