@@ -1,5 +1,6 @@
 from core.utils import *
 
+# changes settings depending on passed value type (automation similar to json_change_ins)
 def set_change(key, value=None):
     setval = json_read("settings.json", key)
     if type(setval) is bool:
@@ -17,10 +18,12 @@ def set_change(key, value=None):
         if value == "rev": json_change("settings.json", key, list_iter(set_lists(key), setval, True))
         log.debug(f"Switching settings for: {key} to {list_iter(set_lists(key), setval)}.")
 
+# lists to iterate over by list_iter
 def set_lists(key):
     match key:
         case "language": return ["english", "polish"]
 
+# returns default value of specific settings
 def def_set(callout):
     set_dict = {
         "language":         "english",
@@ -32,13 +35,13 @@ def def_set(callout):
     }
     return set_dict[callout]
 
-# Returns next element from the list
+# Returns next (or previous) element from the list
 def list_iter(lv: list, element, rev=False):
-    lv = list(dict.fromkeys(lv)); lv.sort() # removes any duplicates and sorts languages alphabetically
+    lv = list(dict.fromkeys(lv)); lv.sort() # removes any duplicates and sorts list vals alphabetically
     ind = lv.index(element)
-    if not rev:
+    if not rev: # return next element (default)
         if ind+1 >= len(lv): ind = -1
         return lv[ind+1]
-    else:
+    else: # return previous element
         if ind-1 < 0: ind = len(lv)
         return lv[ind-1]
