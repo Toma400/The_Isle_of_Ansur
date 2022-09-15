@@ -1,5 +1,5 @@
 {
-  "language": "polish",
+  "language": "english",
   "time_system": "proportional",
   "hunger_thirst": false,
   "permadeath": false,
@@ -7,5 +7,5 @@
   "log_limit": 30,
   "res_x": 1000,
   "res_y": 700,
-  "sound": 40
+  "sound": 0
 }

@@ -12,7 +12,8 @@ Use table of contents below to navigate.
 
 ## <center>Licenses</center>
 #### Fonts
-- **Cohaerentia** font use is based on [SIL Open Font License](http://scripts.sil.org/OFL) and is bundled with the game by its rights.
+- **Cohaerentia**, **Cinzel** and **Radius FG** fonts use is based on [SIL Open Font License](http://scripts.sil.org/OFL) and is bundled with the game by its rights.
+- **Mirra** font is developed by Oksana Tkachenko at HSE Art and Design School. Its use is based on its Creative Commons license.
 - **Ferrum** font [was released to public domain](https://www.1001fonts.com/ferrum-font.html).
 
 #### Logos
