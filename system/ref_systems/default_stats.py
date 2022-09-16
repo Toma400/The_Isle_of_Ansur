@@ -1,5 +1,5 @@
 #temporary .py file, just to list all variables that will be needed in RPG system
-from system.ref_systems.system_ref import SysRef
+from core.system_ref import SysRef
 
 class profile:
 

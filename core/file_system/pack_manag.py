@@ -1,4 +1,3 @@
-from system.ref_systems.system_ref import SysRef
 from core.file_system.repo_manag import file_lister
 from core.utils import *
 import shutil

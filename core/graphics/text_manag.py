@@ -6,7 +6,7 @@ from core.utils import *
 # PUTTERS  |
 #==========|========================================================
 # Text renderer using scaling and alignment
-def put_text (screen, text, font_cat, size, pos_x=0, pos_y=0, align_x=None, align_y=None, colour=None, bg_colour=None, endpos_x=None, endpos_y=None):
+def put_text (screen, text, font_cat, size, pos_x=0, pos_y=0, align_x=None, align_y=None, colour=None, bg_colour=None, endpos_x=None, endpos_y=None, no_blit=False):
     if colour is None: colour = (0, 0, 0) # default text colour is black
     font = font_handler(category=font_cat)
     #======================================
@@ -23,7 +23,7 @@ def put_text (screen, text, font_cat, size, pos_x=0, pos_y=0, align_x=None, alig
         y_endpos=endpos_y   #    this serves as alternative for alignment and determine ending points of a text surface
     )
     txtobj = fontobj.render(text, True, colour, bg_colour)
-    screen.blit(txtobj, (pos_x, pos_y))
+    if not no_blit: screen.blit(txtobj, (pos_x, pos_y))
     return pos_x, pos_y, pos_x+fontobjs[0], pos_y+fontobjs[1] # returns starting and ending position in (x, y, x2, y2) manner [px, not cell%]
 
 # Simple text renderer, without scaling, using absolute cell positions instead
@@ -37,6 +37,23 @@ def put_abstext (screen, text, font_cat, size, pos_x, pos_y, colour=None, bg_col
     fontobj = Font(f"{gpath}/core/assets/fonts/{font}", size)
     txtobj = fontobj.render(text, True, colour, bg_colour)
     screen.blit(txtobj, (pos_x, pos_y))
+
+# Text renderer for long strings, allows for line breaks and dynamic resizing | text_spacing_y uses pixels for bigger precision, the rest operates on cell%
+def put_rectext (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing: tuple = (0, 0), req_size=100, colour=None, bg_colour=None, text_spacing_y=5):
+    # variables required for further work
+    available_x = returnCell(endrect_x, "x") - returnCell(rect_x, "x") - returnCell(rect_spacing[0], "x") * 2  # rectangle of available size (x axis)
+    available_y = returnCell(endrect_y, "y") - returnCell(rect_y, "y") - returnCell(rect_spacing[1], "y") * 2  # rectangle of available size (y axis)
+    pos_x, pos_y = rect_x + rect_spacing[0], rect_y + rect_spacing[1] # starting position for text
+    while True:
+        put_x, put_y, put_x2, put_y2 = put_text(screen, text, font_cat, req_size, pos_x, pos_y, colour=colour, bg_colour=bg_colour, no_blit=True)
+        req_x, req_y = put_x2 - put_x, put_y2 - put_y # rectangle of text, to compare with available below
+        if req_x <= available_x: return put_text(screen, text, font_cat, req_size, pos_x, pos_y, colour=colour, bg_colour=bg_colour)
+        else:
+            exceed_ratio = req_x / available_x # how many times text given exceeds available space
+            if exceed_ratio*(req_y+text_spacing_y) > available_y: req_size -= 1; continue
+            else:
+                text_len = len(text)
+
 
 def put_lore(lang):
     pass # placeholder function for lore text, which will not be translateable through langkeys, but

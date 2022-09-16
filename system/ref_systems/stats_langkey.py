@@ -1,10 +1,10 @@
 vals = {
     # ATTRIBUTES
-    'atr_charisma':               "stat__atr_charisma",
+    'atr_charisma':             "stat__atr_charisma",
     'atr_agility':              "stat__atr_agility",
-    'atr_endurance':              "stat__atr_endurance",
-    'atr_intelligence':           "stat__atr_intelligence",
-    'atr_strength':               "stat__atr_strength",
+    'atr_endurance':            "stat__atr_endurance",
+    'atr_intelligence':         "stat__atr_intelligence",
+    'atr_strength':             "stat__atr_strength",
 
     # SKILLS
     'sk_handfight':             "stat__sk_handfight",

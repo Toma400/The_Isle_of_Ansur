@@ -30,7 +30,7 @@ def def_set(callout):
         "res_x":            1000,
         "res_y":            700,
         "sound":            40,
-        "log_limit":        30,
+        "log_limit":        15,
         "legacy_unloading": False
     }
     return set_dict[callout]

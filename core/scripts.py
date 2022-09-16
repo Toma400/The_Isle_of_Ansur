@@ -5,8 +5,10 @@
 def event_handler(event_container: list, guitype):
 
     # "MENU" | Forged Event | Run when main menu starts
-    if guitype == "menu" and "MENU" not in event_container:
+    if guitype[0] == "menu" and "MENU" not in event_container:
         event_container.append("MENU")
+    if guitype[0] != "menu" and "MENU" in event_container:
+        event_container.remove("MENU")
 
 #==========|=====================================================================================
 # SCRIPT   | Handles scripts running depending on forged_events. Currently needs implementation.

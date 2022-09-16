@@ -5,7 +5,7 @@ from utils.text_manag import encoded as enc
 from utils.text_manag import langstring as lstr
 from system.settings import settings as settings_check
 from system.log_manag import run_text as logtxt
-from system.ref_systems.system_ref import SysRef
+from core.system_ref import SysRef
 
 import gui.character
 import gui.interface

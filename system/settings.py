@@ -1,4 +1,3 @@
-from system.ref_systems.system_ref import SysRef
 from system.json_manag import *
 from utils.decorators import *
 
@@ -27,7 +26,7 @@ def default_settings(callout=None):
 # be found in docs (glossary.md).
 #-------------------------------
 
-@Deprecated("core.utils | settings constants")
+@Deprecated("core.utils | scx")
 def settings(callout):
   if callout == "language":
     return json_read("settings.json", "language")

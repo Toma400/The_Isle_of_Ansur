@@ -4,8 +4,8 @@
   "hunger_thirst": false,
   "permadeath": false,
   "legacy_unpacking": false,
-  "log_limit": 30,
+  "log_limit": 15,
   "res_x": 1000,
   "res_y": 700,
-  "sound": 0
+  "sound": 40
 }

@@ -36,7 +36,7 @@ def run_path():
     sys.path.insert(0, f'{spath}')
 
 def run_text():
-    from system.ref_systems.system_ref import SysRef; import os; import sys
+    from core.system_ref import SysRef; import os; import sys
     from core.file_system.repo_manag import deep_file_lister; scripts = deep_file_lister(f"scripts/", ext="py")
     text = f'''
     ---------------------------------------------------------------------------------------

@@ -1,8 +1,8 @@
-from system.ref_systems.system_ref import *
 from core.file_system.repo_manag import deep_file_lister
 from core.file_system.json_manag import *
+from core.system_ref import *
+import os, sys, shutil
 import logging as log
-import os, importlib
 
 #===========|==================================================
 # CONSTANTS | Used regularly in other parts of the code
@@ -26,7 +26,6 @@ optv = json_read("settings.json")["hunger_thirst"]
 pdth = json_read("settings.json")["permadeath"]
 
 def temp_remover():
-    import shutil, os
     if os.path.exists(f"{gpath}/_temp/"):
         shutil.rmtree(f"{gpath}/_temp/")
 

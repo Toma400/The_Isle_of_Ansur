@@ -38,8 +38,8 @@ additions of dimensions and universes.
 
 After that, nothing is really fully planned.   
 There are visions over third cycle called "Dust of the Empire", aimed on New Baedoor city, 
-and there's also vision of showcasing Agoi Archipelago islands, but I may as well 
-just end development on second cycle.
+and there's also vision of showcasing Agoi Archipelago islands and Nferth, but I may 
+as well just end development on second cycle.
 
 ***
 
