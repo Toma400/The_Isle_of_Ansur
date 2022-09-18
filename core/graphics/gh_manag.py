@@ -66,6 +66,11 @@ def returnCells(pos_x, pos_y):
     svxc = scx("svx") / 100; svyc = scx("svy") / 100 # finds out cell size
     return pos_x * svxc, pos_y * svyc  # returns %posi into pixel posi
 
+# Pixels to cell%:
+def revCell(pos, axis):
+    if axis == "x": svc = scx("svx") / 100
+    else: svc = scx("svy") / 100
+    return pos / svc
 
 #========|===========================================================
 # COLLIS | Checks whether element collides with another

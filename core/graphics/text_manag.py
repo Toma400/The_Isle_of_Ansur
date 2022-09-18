@@ -1,4 +1,4 @@
-from core.graphics.gh_manag import returnCell
+from core.graphics.gh_manag import returnCell, revCell
 from pygame.font import Font
 from core.utils import *
 #==========|========================================================
@@ -39,21 +39,20 @@ def put_abstext (screen, text, font_cat, size, pos_x, pos_y, colour=None, bg_col
     screen.blit(txtobj, (pos_x, pos_y))
 
 # Text renderer for long strings, allows for line breaks and dynamic resizing | text_spacing_y uses pixels for bigger precision, the rest operates on cell%
-def put_rectext (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing: tuple = (0, 0), req_size=100, colour=None, bg_colour=None, text_spacing_y=5):
-    # variables required for further work
-    available_x = returnCell(endrect_x, "x") - returnCell(rect_x, "x") - returnCell(rect_spacing[0], "x") * 2  # rectangle of available size (x axis)
-    available_y = returnCell(endrect_y, "y") - returnCell(rect_y, "y") - returnCell(rect_spacing[1], "y") * 2  # rectangle of available size (y axis)
-    pos_x, pos_y = rect_x + rect_spacing[0], rect_y + rect_spacing[1] # starting position for text
-    while True:
-        put_x, put_y, put_x2, put_y2 = put_text(screen, text, font_cat, req_size, pos_x, pos_y, colour=colour, bg_colour=bg_colour, no_blit=True)
-        req_x, req_y = put_x2 - put_x, put_y2 - put_y # rectangle of text, to compare with available below
-        if req_x <= available_x: return put_text(screen, text, font_cat, req_size, pos_x, pos_y, colour=colour, bg_colour=bg_colour)
-        else:
-            exceed_ratio = req_x / available_x # how many times text given exceeds available space
-            if exceed_ratio*(req_y+text_spacing_y) > available_y: req_size -= 1; continue
-            else:
-                text_len = len(text)
+def put_rectext (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing: tuple = (0, 0), req_size=100, colour=None, bg_colour=None, text_spacing=0.2):
+    height_given = endrect_y - rect_y
 
+    while True:
+        givlist = txt_split(text, [screen, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing, req_size, colour, bg_colour, text_spacing]) # list of lines for text
+        line_height = revCell(text_spacing, "y") + revCell(txt_rect_size(text, font_cat, req_size, screen)[1], "y") # checks height of line (font height + spacing)
+        if height_given < len(givlist) * line_height: # checks if all lines will fit given space (if not, reduces font size)
+            req_size -= 1
+        else:
+            for i in givlist:
+                pos_x, pos_y = rect_x + rect_spacing[0], rect_y + rect_spacing[1]  # starting position for text (with user-given gap, default 0 / 0)
+                put_text(screen, i, font_cat, req_size, pos_x, pos_y, colour=colour, bg_colour=bg_colour)
+                rect_y += revCell(text_spacing, "y") + revCell(txt_rect_size(text, font_cat, req_size, screen)[1], "y")
+            break
 
 def put_lore(lang):
     pass # placeholder function for lore text, which will not be translateable through langkeys, but
@@ -107,3 +106,62 @@ def langjstring (key: str, modtype: str, modid: str = "ansur"):
             log.warning(f"Module {modid} does not have properly set language value for {key}. Please contact the developer of this module for help.")
             return langstring("system__text_load_fail")
     return read[key]
+
+#==========|========================================================
+# TEXT     | Splits text into list of lines, checking if size fits
+# SPLITTER | rectangle given
+#          | It splits at sentences and linebreak characters ("@*")
+#==========|========================================================
+def txt_split (text_given: str, tdata: list):
+    out_lines = []  # final outcome of function, list of separate lines to print
+
+    while text_given != "":
+        text_given = text_given.split()  # list of words from text
+        line_break = False               # after string is detected to not fit into line, this disables checking of later words to not "jump across"
+        text_going = ""                  # string which will be rendered in current line
+        text_leaving = ""                # string which will be splitted in next line
+        sep = ""                         # separator initially is "", to make sentence not have space before first word
+
+        for i in text_given:
+            temp_going = text_going + sep + i # string which checks if text can extend with next word
+            if txt_rect_manag(tdata[0], temp_going, tdata[1], tdata[2], tdata[3], tdata[4], tdata[5], tdata[6], tdata[7], tdata[8], tdata[9], tdata[10], do_blit=False) and line_break is False:
+                if "@*" in i:
+                    text_going += sep + i.replace("@*", "")
+                    line_break = True # forces end of the line
+                else: text_going += sep + i
+            else: # if string is too long
+                text_leaving += sep + i
+                line_break = True # makes loop not be able to overwrite previous string after reaching limit (w/o it, shorter word could get into original string, outside of order)
+            sep = " " # separator changes to space after first loop run
+        out_lines.append(text_going)
+        text_given = text_leaving # left string is given to next iteration
+
+    return out_lines
+
+# Returns size of text rectangle (<->)
+def txt_rect_size (text, font_cat, size, screen):
+    put_x, put_y, put_x2, put_y2 = put_text(screen, text, font_cat, size, 0, 0, no_blit=True)
+    req_x, req_y = put_x2 - put_x, put_y2 - put_y  # rectangle of text
+    return req_x, req_y
+
+#==========|========================================================
+# TEXT     | Splits text into list of lines, checking if size fits
+# SPLITTER | rectangle given
+#          | It splits at sentences and linebreak characters ("@*")
+#==========|========================================================
+def txt_rect_manag (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing: tuple = (0, 0), req_size=100, colour=None, bg_colour=None, text_spacing=0.2, do_blit=True):
+    # variables required for further work
+    available_x = returnCell(endrect_x, "x") - returnCell(rect_x, "x") - returnCell(rect_spacing[0], "x") * 2  # rectangle of available size (x axis)
+    available_y = returnCell(endrect_y, "y") - returnCell(rect_y, "y") - returnCell(rect_spacing[1], "y") * 2  # rectangle of available size (y axis)
+    pos_x, pos_y = rect_x + rect_spacing[0], rect_y + rect_spacing[1] # starting position for text (with user-given gap, default 0 / 0)
+    req_x, req_y = txt_rect_size(text, font_cat, req_size, screen)    # gets size of text rectangle, to compare below
+    #----------------------------------------------------------
+    # Checker if required <-> is enough to fit available length
+    if req_x <= available_x and req_y+text_spacing <= available_y:
+        if do_blit:
+            put_text(screen, text, font_cat, req_size, pos_x, pos_y, colour=colour, bg_colour=bg_colour) # default: blits the text in respective position
+        else: return True # used by put_rectext (returns info that this line can be printed)
+    else:
+        return False
+
+# out_lines.len() * y_height <= available_y /// if not = resize -1

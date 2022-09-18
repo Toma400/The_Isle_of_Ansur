@@ -1,4 +1,4 @@
-from core.graphics.text_manag import put_abstext, put_text, langstring
+from core.graphics.text_manag import put_abstext, put_text, put_rectext, langstring
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
 from core.graphics.gh_manag import *
