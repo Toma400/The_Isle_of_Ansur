@@ -1,5 +1,5 @@
 from system.json_manag import *
-from utils.decorators import *
+from core.decorators import *
 
 @Deprecated("core.file_system.settings_manag.def_set")
 def default_settings(callout=None):

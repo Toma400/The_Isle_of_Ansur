@@ -8,7 +8,7 @@ def set_change(key, value=None):
         log.debug(f"Switching settings for: {key} to {not setval}.")
     elif type(setval) is int and type(value) is int:
         json_change_ins("settings.json", key, value)
-        log.debug(f"Switching settings for: {key} with appended value of {value}.")
+        log.debug(f"Switching settings for: {key} with appended value of {value}. End value: {value+setval}.")
     elif type(setval) is int and "set=" in value:
         fval = value.replace("set=", ""); fval = int(fval)
         json_change("settings.json", key, fval)

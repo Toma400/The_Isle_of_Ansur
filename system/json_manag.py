@@ -1,7 +1,7 @@
 #inventory is managed by its separate instance (gui/inventory.py)
 import json, os
 import logging as log
-from utils.decorators import *
+from core.decorators import *
 gpath = os.path.dirname(os.path.abspath("main.py"))
 
 @Deprecated("core.file_system.json_manag.json_read")

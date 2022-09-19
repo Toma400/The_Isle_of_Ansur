@@ -1,5 +1,5 @@
-import os; from system.json_manag import *
-from utils.decorators import *
+from system.json_manag import *
+from core.decorators import *
 gpath = os.path.dirname(os.path.abspath("main.py"))
 
 class bcolors:
@@ -61,6 +61,7 @@ class bcolors:
 #------------------------------------------------------------------
 # TEXT FORMATTERS
 #------------------------------------------------------------------
+@Deprecated("This system is targeted at quenched terminal version")
 def colour_formatter(colour, text, alignment="centre", keying="c"):
     # ------------------------
     # colour bounding
@@ -91,6 +92,7 @@ def colour_formatter(colour, text, alignment="centre", keying="c"):
 # Used to align text to specific part of the console
 # Takes a bit different values if used with colours
 #---------------------------------------------------
+@Deprecated("This system is targeted at quenched terminal version")
 def align (text, side="centre"):
   if side == "left":
     aligned = '{:<65}'.format(text)
@@ -160,7 +162,7 @@ def quit_checker (text_to_check, soft=False, *soft_keys):
 # ENCODER
 # Handles different encoding value
 #---------------------------------------------------
-# @Deprecated
+@Deprecated("This system is targeted at quenched terminal version")
 def encoded (text):
     #import sys
     #if sys.stdout.encoding != "utf-8":

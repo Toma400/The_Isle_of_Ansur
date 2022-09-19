@@ -1,5 +1,5 @@
 from os.path import join, isdir, isfile
-from utils.decorators import *
+from core.decorators import *
 import os, shutil
 
 @Deprecated("core.file_system.repo_manag.deleter()")
