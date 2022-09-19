@@ -39,20 +39,24 @@ def put_abstext (screen, text, font_cat, size, pos_x, pos_y, colour=None, bg_col
     screen.blit(txtobj, (pos_x, pos_y))
 
 # Text renderer for long strings, allows for line breaks and dynamic resizing | text_spacing_y uses pixels for bigger precision, the rest operates on cell%
-def put_rectext (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing: tuple = (0, 0), req_size=100, colour=None, bg_colour=None, text_spacing=0.2):
+def put_rectext (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing: tuple = (0, 0), req_size=50, colour=None, bg_colour=None, text_spacing=0.2):
+    givlist = txt_split(text, [screen, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing,
+                               req_size, colour, bg_colour, text_spacing]) # list of lines for text
     height_given = endrect_y - rect_y
 
     while True:
-        givlist = txt_split(text, [screen, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing, req_size, colour, bg_colour, text_spacing]) # list of lines for text
         line_height = revCell(text_spacing, "y") + revCell(txt_rect_size(text, font_cat, req_size, screen)[1], "y") # checks height of line (font height + spacing)
         if height_given < len(givlist) * line_height: # checks if all lines will fit given space (if not, reduces font size)
             req_size -= 1
-        else:
-            for i in givlist:
-                pos_x, pos_y = rect_x + rect_spacing[0], rect_y + rect_spacing[1]  # starting position for text (with user-given gap, default 0 / 0)
-                put_text(screen, i, font_cat, req_size, pos_x, pos_y, colour=colour, bg_colour=bg_colour)
-                rect_y += revCell(text_spacing, "y") + revCell(txt_rect_size(text, font_cat, req_size, screen)[1], "y")
-            break
+            givlist = txt_split(text, [screen, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing,
+                                       req_size, colour, bg_colour, text_spacing]) # list of lines for text
+            continue
+        break
+
+    for i in givlist:
+        pos_x, pos_y = rect_x + rect_spacing[0], rect_y + rect_spacing[1]  # starting position for text (with user-given gap, default 0 / 0)
+        put_text(screen, i, font_cat, req_size, pos_x, pos_y, colour=colour, bg_colour=bg_colour)
+        rect_y += revCell(text_spacing, "y") + revCell(txt_rect_size(text, font_cat, req_size, screen)[1], "y") - rect_spacing[1] # minus to make only first line use rect_spacing
 
 def put_lore(lang):
     pass # placeholder function for lore text, which will not be translateable through langkeys, but
@@ -149,7 +153,7 @@ def txt_rect_size (text, font_cat, size, screen):
 # SPLITTER | rectangle given
 #          | It splits at sentences and linebreak characters ("@*")
 #==========|========================================================
-def txt_rect_manag (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing: tuple = (0, 0), req_size=100, colour=None, bg_colour=None, text_spacing=0.2, do_blit=True):
+def txt_rect_manag (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing: tuple = (0, 0), req_size=50, colour=None, bg_colour=None, text_spacing=0.2, do_blit=True):
     # variables required for further work
     available_x = returnCell(endrect_x, "x") - returnCell(rect_x, "x") - returnCell(rect_spacing[0], "x") * 2  # rectangle of available size (x axis)
     available_y = returnCell(endrect_y, "y") - returnCell(rect_y, "y") - returnCell(rect_spacing[1], "y") * 2  # rectangle of available size (y axis)

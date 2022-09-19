@@ -22,7 +22,8 @@ class TestScript(ioaScript):
         stringed = '''
         I want to test something, if text can fit the screen correctly! Let's say, I have ambitions to write really long paragraph here!@* Like really, why should I care about space?
         '''
-        put_rectext(screen, stringed, "menu", 5, 70, 25, 80, req_size=20)
+        put_rectext(screen, stringed, "menu", 5, 70, 25, 95, req_size=20)
+        #put_rectext(screen, stringed, "menu", 55, 70, 95, 95)
 
     #====================================================================
     # You need to create __init__() function and make it return super()
