@@ -7,6 +7,7 @@ menu__button_packs         = "Packs"
 menu__button_exit          = "Exit"
 
 menu__sett_general         = "General"
+menu__sett_general_res     = "Screen Resolution"
 menu__sett_general_lang    = "Language"
 menu__sett_general_music   = "Music Volume"
 menu__sett_tech            = "Technical"

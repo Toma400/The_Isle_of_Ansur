@@ -7,6 +7,7 @@ menu__button_packs         = "Paczki"
 menu__button_exit          = "Wyjdź"
 
 menu__sett_general         = "Ogólne"
+menu__sett_general_res     = "Rozdzielczość Ekranu"
 menu__sett_general_lang    = "Język"
 menu__sett_general_music   = "Głośność muzyki"
 menu__sett_tech            = "Techniczne"

@@ -1,6 +1,7 @@
 from core.graphics.text_manag import put_abstext, put_text, put_rectext, langstring
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
+from core.graphics.gh_system import run_screen
 from core.graphics.gh_manag import *
 
 #===========|==================================================================================================
@@ -11,7 +12,7 @@ from core.graphics.gh_manag import *
 #------------
 # pg_events | Those used here should ONLY refer to their display functionalities related to actually used GUI
 #==============================================================================================================
-def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs):
+def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
 
     match guitype[0]:
 
@@ -80,24 +81,45 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs):
             # submenu handler
             match guitype[1]:
                 case "settings_general":
-                    gt1ln = put_text(screen, text=langstring("menu__sett_general_lang"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#4E3510")
-                    gt1ms = put_text(screen, text=langstring("menu__sett_general_music"),   font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#4E3510")
+                    gt1rs = put_text(screen, text=langstring("menu__sett_general_res"),     font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#4E3510")
+                    gt1ln = put_text(screen, text=langstring("menu__sett_general_lang"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#4E3510")
+                    gt1ms = put_text(screen, text=langstring("menu__sett_general_music"),   font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=28, colour="#4E3510")
 
                     # settings values
-                    put_text(screen, text=langstring("lang__name"), font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856")  # language
-                    put_text(screen, text=str(scx("sndv")),         font_cat="menu", size=30, pos_x=87, pos_y=20, colour="#1A5856")  # music volume
+                    res_ratio = str(scx("svx")) + " : " + str(scx("svy"))
+                    put_text(screen, text=res_ratio,                font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856")  # resolution
+                    put_text(screen, text=langstring("lang__name"), font_cat="menu", size=30, pos_x=87, pos_y=20, colour="#1A5856")  # language
+                    put_text(screen, text=str(scx("sndv")),         font_cat="menu", size=30, pos_x=87, pos_y=28, colour="#1A5856")  # music volume
 
                     # ==================================================
                     # hovering & clicking events
+                    if mouseColliderPx(gt1rs[0], gt1rs[1], gt1rs[2], gt1rs[3]):
+                        put_text(screen, text=langstring("menu__sett_general_res"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#7C613B")
+                        if mouseRec(pg_events, 1):
+                            from win32api import GetSystemMetrics
+                            if scx("svx") < GetSystemMetrics(0): set_change("res_x", 100)       # if not full screen, increase x size by 100
+                            else:                                set_change("res_x", "set=400") # if full screen reached, set x size to 0
+                            dyn_screen[0] = run_screen()  # resets the screen
+                        if mouseRec(pg_events, 3):
+                            from win32api import GetSystemMetrics
+                            if scx("svy") < GetSystemMetrics(1): set_change("res_y", 100)       # if not full screen, increase x size by 100
+                            else:                                set_change("res_y", "set=400") # if full screen reached, set x size to 0
+                            dyn_screen[0] = run_screen()  # resets the screen
+                        if mouseRec(pg_events, 2):
+                            from win32api import GetSystemMetrics
+                            if res_ratio != "1000 : 700": set_change("res_x", "set=1000"); set_change("res_y", "set=700") # changes res to default
+                            else:                         set_change("res_x", f"set={GetSystemMetrics(0)}"); set_change("res_y", f"set={GetSystemMetrics(1)}") # changes to full screen
+                            dyn_screen[0] = run_screen() # resets the screen
+
                     if mouseColliderPx(gt1ln[0], gt1ln[1], gt1ln[2], gt1ln[3]):
-                        put_text(screen, text=langstring("menu__sett_general_lang"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#7C613B")
+                        put_text(screen, text=langstring("menu__sett_general_lang"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("language")
                         if mouseRec(pg_events, 3):
                             set_change("language", "rev")
 
                     if mouseColliderPx(gt1ms[0], gt1ms[1], gt1ms[2], gt1ms[3]):
-                        put_text(screen, text=langstring("menu__sett_general_music"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#7C613B")
+                        put_text(screen, text=langstring("menu__sett_general_music"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=28, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("sound", 1); fg_events.append("SNDV_CHG")
                         if mouseRec(pg_events, 3):

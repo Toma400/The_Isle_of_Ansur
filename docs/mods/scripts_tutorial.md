@@ -82,7 +82,7 @@ and `*kwargs` as last arguments!
 
 ``fg_events`` - used to access Forged events (internal IoA event system)  
 ``pg_events`` - used to access PyGame events  
-``screen``- used to interfere with currently used screen  
+``screen``- used to interfere with currently used screen (variable in itself is read-only) 
 
 ### Events
 Here is list of Forged Events currently used in vanilla. If you are confused about

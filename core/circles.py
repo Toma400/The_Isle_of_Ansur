@@ -7,7 +7,7 @@ from core.graphics.gh_system import *
 from core.graphics.gh_manag import *
 
 def main_circle():
-    screen = run_screen()
+    dyn_screen = [run_screen()] # list instead of variable allows for further use of run_screen() in gui_handler (both read-write, unlike 'screen' below)
     bgs = bgm_screen()  # selects menu panorama
 
     script_loader() # loads all scripts to be used by script_handler
@@ -18,13 +18,15 @@ def main_circle():
     tev = []
     while not tev:
 
+        screen = dyn_screen[0] # read-only, but simpler value to be used by most features
+
         pg_events = pygame.event.get() # variablised so it can be passed to functions w/o calling more than one per frame
         for event in pg_events:
             if event.type == pygame.QUIT:
                 tev.append("end")
 
         music = music_handler(music, guitype, forged_events)  # controls music
-        gui_handler(screen, guitype, forged_events, pg_events, tev, bgs) # draws elements on a screen and sets interactions
+        gui_handler(screen, guitype, forged_events, pg_events, tev, bgs, dyn_screen) # draws elements on a screen and sets interactions
         event_handler(forged_events, guitype) # handles forged_events additions
         script_handler(forged_events, screen, pg_events) # handles forged_events -> scripts runs
 

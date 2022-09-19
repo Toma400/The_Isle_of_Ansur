@@ -72,6 +72,15 @@ def revCell(pos, axis):
     else: svc = scx("svy") / 100
     return pos / svc
 
+# Constructs cell% for user-given length (can be used for nested cells):
+def nestCell(pos, comparation):
+    svc = comparation / 100
+    return pos * svc
+
+# Constructs cell% for two user-given lengths (can be used for nested cells):
+def nestCells(pos_x, pos_y, comp_x, comp_y):
+    return nestCell(pos_x, comp_x), nestCell(pos_y, comp_y)
+
 #========|===========================================================
 # COLLIS | Checks whether element collides with another
 #========|===========================================================

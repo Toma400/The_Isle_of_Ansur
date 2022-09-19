@@ -28,6 +28,8 @@ def bgp_screen(bgs: list):
     return random.choice(bgsp)
 
 def run_screen():
+    pygame.display.quit(); pygame.display.init()
+
     screen = pygame.display.set_mode([scx("svx"), scx("svy")])
     pygame.display.set_caption(SysRef.name)
     pygame.display.set_icon(imgLoad("core/assets/visuals/", "logo.png"))
