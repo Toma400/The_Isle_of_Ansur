@@ -7,5 +7,8 @@
   "log_limit": 15,
   "res_x": 1920,
   "res_y": 1080,
-  "sound": 40
+  "sound": 40,
+  "listbox_mode": "proportional",
+  "listbox_amount": 5,
+  "listbox_size": 1.0
 }

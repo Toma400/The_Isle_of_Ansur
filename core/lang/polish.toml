@@ -14,6 +14,7 @@ menu__sett_tech            = "Techniczne"
 menu__sett_tech_legacy     = "Manualna obsługa modów"
 menu__sett_tech_log_limit  = "Limit dzienników"
 menu__sett_tech_log_rv     = "Usuń dzienniki"
+menu__sett_tech_listbox    = "Tryb list"
 menu__sett_back            = "Powrót do menu"
 
 menu__load_choose          = "Wybierz swój zapis gry"
@@ -122,5 +123,7 @@ stat__perk_ancient_tongue  = "Język starożytnych architektów"
 
 gen__enabled               = "Włączone"
 gen__disabled              = "Wyłączone"
+gen__proportional          = "Proporcjonalne"
+gen__sized                 = "Rozmiarowe"
 
 system__text_load_fail     = "Tekst nie mógł się załadować"

@@ -21,3 +21,8 @@ Use table of contents below to navigate.
 
 #### Images
 - **Maps** are made using Inkarnate software, which [allows for non-commercial use of said assets](https://inkarnate.s3.amazonaws.com/inkarnate-terms-of-use-june-2020.pdf).
+
+#### Music
+- **COAG Menu** file is created by [CO.AG Music channel](https://www.youtube.com/channel/UCcavSftXHgxLBWwLDm_bNvA)
+  and used based on both copyright-free permission given indirectly, as well as permission
+  given directly by the author. Song used is [Dark Atmospheric background music. - Post Apocalyptic](https://youtu.be/4l_PxLFbdHQ).

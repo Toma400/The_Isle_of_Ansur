@@ -19,6 +19,7 @@ def scx(setn=None): # used for checking current settings status
         case "sndv": return sdata["sound"]
         case "lglm": return sdata["log_limit"]
         case "legu": return sdata["legacy_unpacking"]
+        case "lbmd": return sdata["listbox_mode"]
         case other:  return sdata
 
 # hunger_thirst and permadeath are marked as deprecated now (see https://github.com/Toma400/The_Isle_of_Ansur/issues/16#issuecomment-1247081222)

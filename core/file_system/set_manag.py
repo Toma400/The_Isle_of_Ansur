@@ -13,6 +13,9 @@ def set_change(key, value=None):
         fval = value.replace("set=", ""); fval = int(fval)
         json_change("settings.json", key, fval)
         log.debug(f"Switching settings for: {key} to {value}.")
+    elif type(setval) is float and type(value) is float:
+        json_change_ins("settings.json", key, value)
+        log.debug(f"Switching settings for: {key} with appended value of {value}. End value: {value + setval}.")
     else:
         if value is None: json_change("settings.json", key, list_iter(set_lists(key), setval))
         if value == "rev": json_change("settings.json", key, list_iter(set_lists(key), setval, True))
@@ -22,6 +25,7 @@ def set_change(key, value=None):
 def set_lists(key):
     match key:
         case "language": return ["english", "polish"]
+        case "listbox_mode": return ["proportional", "sized"]
 
 # returns default value of specific settings
 def def_set(callout):
@@ -31,7 +35,8 @@ def def_set(callout):
         "res_y":            700,
         "sound":            40,
         "log_limit":        15,
-        "legacy_unloading": False
+        "legacy_unloading": False,
+        "listbox_mode":     "proportional"
     }
     return set_dict[callout]
 
