@@ -22,22 +22,31 @@ def json_change(path, key, dest_value):
   with open (path, 'w') as file: json.dump(temp_dict, file, indent=2)
 
 # Changes .json file in more specific way
-def json_change_adv(path, key, dest_value, change_type):
+def json_change_adv(path, key, dest_value, change_type, float_round: int = None):
   temp_dict = json_read(path)
   match change_type:
 
     #math is intended to change int value (use negative value for 'math' to substract)
-    case "math": temp_dict[key] = int(temp_dict[key]) + int(dest_value)
+    case "math":
+      if type(dest_value) == int:   temp_dict[key] = int(temp_dict[key]) + int(dest_value)
+      if type(dest_value) == float: temp_dict[key] = float(temp_dict[key]) + float(dest_value)
 
-    case "math*": temp_dict[key] = int(temp_dict[key]) * int(dest_value)
+    case "math*":
+      if type(dest_value) == int:   temp_dict[key] = int(temp_dict[key]) * int(dest_value)
+      if type(dest_value) == float: temp_dict[key] = float(temp_dict[key]) * float(dest_value)
 
-    case "math/": temp_dict[key] = int(temp_dict[key]) / int(dest_value)
+    case "math/":
+      if type(dest_value) == int:   temp_dict[key] = int(temp_dict[key]) / int(dest_value)
+      if type(dest_value) == float: temp_dict[key] = float(temp_dict[key]) / float(dest_value)
 
     #var_add is intended to be dict; can be useful with version updaters especially
     case "var_add": temp_dict.update (dest_value)
 
     #var_add, but for deleting; change_value can be anything in this case
     case "var_del": temp_dict.remove (key)
+
+  if float_round is not None: # used to shorten float
+    temp_dict[key] = round(temp_dict[key], float_round)
 
   with open (path, 'w') as file: json.dump(temp_dict, file, indent=2)
 
@@ -47,10 +56,10 @@ def json_change_adv(path, key, dest_value, change_type):
 #---------------|
 # According to old docs: useful for dicts with various types of variables, which needs to be looped.
 #===============================================================================================================
-def json_change_ins(path, key, dest_value, extended_math=False):
+def json_change_ins(path, key, dest_value, extended_math=False, floatr: int = None):
   if not extended_math:
-    if type(dest_value) == int:
-      json_change_adv(path, key, dest_value, "math")
+    if type(dest_value) == int or type(dest_value) == float:
+      json_change_adv(path, key, dest_value, "math", float_round=floatr)
     elif type(dest_value) == str or type(dest_value) == bool:
       json_change(path, key, dest_value)
   elif extended_math == "*": json_change_adv(path, key, dest_value, "math*")

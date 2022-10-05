@@ -3,9 +3,13 @@ from core.utils import *
 # changes settings depending on passed value type (automation similar to json_change_ins)
 def set_change(key, value=None):
     setval = json_read("settings.json", key)
+
+    # booleans
     if type(setval) is bool:
         json_change("settings.json", key, not setval)
         log.debug(f"Switching settings for: {key} to {not setval}.")
+
+    # integers
     elif type(setval) is int and type(value) is int:
         json_change_ins("settings.json", key, value)
         log.debug(f"Switching settings for: {key} with appended value of {value}. End value: {value+setval}.")
@@ -13,9 +17,17 @@ def set_change(key, value=None):
         fval = value.replace("set=", ""); fval = int(fval)
         json_change("settings.json", key, fval)
         log.debug(f"Switching settings for: {key} to {value}.")
+
+    # floats
     elif type(setval) is float and type(value) is float:
-        json_change_ins("settings.json", key, value)
-        log.debug(f"Switching settings for: {key} with appended value of {value}. End value: {value + setval}.")
+        json_change_ins("settings.json", key, value, floatr=1)
+        log.debug(f"Switching settings for: {key} with appended value of {value}. End value: {value + round(setval, 1)}.")
+    elif type(setval) is float and "set=" in value:
+        fval = value.replace("set=", ""); fval = float(fval)
+        json_change("settings.json", key, fval)
+        log.debug(f"Switching settings for: {key} to {value}.")
+
+    # list iterations
     else:
         if value is None: json_change("settings.json", key, list_iter(set_lists(key), setval))
         if value == "rev": json_change("settings.json", key, list_iter(set_lists(key), setval, True))
@@ -36,7 +48,9 @@ def def_set(callout):
         "sound":            40,
         "log_limit":        15,
         "legacy_unloading": False,
-        "listbox_mode":     "proportional"
+        "listbox_mode":     "proportional",
+        "listbox_amount":   5,
+        "listbox_size":     1.0
     }
     return set_dict[callout]
 

@@ -138,12 +138,16 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
                     gt2gl = put_text(screen, text=langstring("menu__sett_tech_log_limit"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#4E3510")
                     gt2gr = put_text(screen, text=langstring("menu__sett_tech_log_rv"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=28, colour="#4E3510")
                     gt2lb = put_text(screen, text=langstring("menu__sett_tech_listbox"),   font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=36, colour="#4E3510")
+                    gt2la = put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=44, colour="#4E3510")
+                    gt2ls = put_text(screen, text=langstring("menu__sett_tech_lb_size"),   font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=52, colour="#4E3510")
 
                     # settings values
                     if scx("legu"): put_text(screen, text=langstring("gen__enabled"), font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856") # legacy unpacking
                     else: put_text(screen,    text=langstring("gen__disabled"),       font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856")
                     put_text(screen,          text=str(scx("lglm")),                  font_cat="menu", size=30, pos_x=87, pos_y=20, colour="#1A5856") # log limit number
                     put_text(screen,          text=langstring(f"gen__{lbmode}"),      font_cat="menu", size=30, pos_x=87, pos_y=36, colour="#1A5856") # listbox mode
+                    put_text(screen,          text=str(scx("lbam")),                  font_cat="menu", size=30, pos_x=87, pos_y=44, colour="#1A5856") # listbox elements amount
+                    put_text(screen,          text=str(scx("lbsz")),                  font_cat="menu", size=30, pos_x=87, pos_y=52, colour="#1A5856") # listbox elements size
 
                     #==================================================
                     # hovering & clicking events
@@ -170,6 +174,24 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
                             set_change("listbox_mode")
                         if mouseRec(pg_events, 3):
                             set_change("listbox_mode", "rev")
+
+                    if mouseColliderPx(gt2la[0], gt2la[1], gt2la[2], gt2la[3]) and lbmode == "proportional":
+                        put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=44, colour="#7C613B")
+                        if mouseRec(pg_events):
+                            set_change("listbox_amount", 1)
+                        if mouseRec(pg_events, 3):
+                            if scx("lbam") > 1: set_change("listbox_amount", -1)
+                        if mouseRec(pg_events, 2):
+                            set_change("listbox_amount", "set=5")
+
+                    if mouseColliderPx(gt2ls[0], gt2ls[1], gt2ls[2], gt2ls[3]) and lbmode == "sized":
+                        put_text(screen, text=langstring("menu__sett_tech_lb_size"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=52, colour="#7C613B")
+                        if mouseRec(pg_events):
+                            set_change("listbox_size", 0.1)
+                        if mouseRec(pg_events, 3):
+                            if scx("lbsz") > 0.5: set_change("listbox_size", -0.1)
+                        if mouseRec(pg_events, 2):
+                            set_change("listbox_size", "set=1.0")
 
         #==============================================================================================================
         case "pack_manag":
