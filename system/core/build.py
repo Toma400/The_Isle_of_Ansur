@@ -59,7 +59,9 @@ class DefaultRun:
         full_export_path + "system/__pycache__",
         full_export_path + "utils/__pycache__",
         full_export_path + "system/core/__pycache__",
-        full_export_path + "system/cache/__pycache__"
+        full_export_path + "system/cache/__pycache__",
+        full_export_path + "system/cache/pyinstaller",
+        full_export_path.replace("/[builds]/", f"{game_name}/system/cache/pyinstaller")
     ]
 
 # function used to delete elements excluded in list above
