@@ -186,23 +186,29 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
                         if mouseRec(pg_events, 3):
                             set_change("listbox_mode", "rev")
 
-                    if mouseColliderPx(gt2la[0], gt2la[1], gt2la[2], gt2la[3]) and lbmode == "proportional":
-                        put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=44, colour="#7C613B")
-                        if mouseRec(pg_events):
-                            set_change("listbox_amount", 1)
-                        if mouseRec(pg_events, 3):
-                            if scx("lbam") > 1: set_change("listbox_amount", -1)
-                        if mouseRec(pg_events, 2):
-                            set_change("listbox_amount", "set=5")
+                    if mouseColliderPx(gt2la[0], gt2la[1], gt2la[2], gt2la[3]):
+                        if lbmode == "proportional":
+                            put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=44, colour="#7C613B")
+                            if mouseRec(pg_events):
+                                set_change("listbox_amount", 1)
+                            if mouseRec(pg_events, 3):
+                                if scx("lbam") > 1: set_change("listbox_amount", -1)
+                            if mouseRec(pg_events, 2):
+                                set_change("listbox_amount", "set=5")
+                        else: # if mode is inactive
+                            put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=44, colour="#4F4C49")
 
-                    if mouseColliderPx(gt2ls[0], gt2ls[1], gt2ls[2], gt2ls[3]) and lbmode == "sized":
-                        put_text(screen, text=langstring("menu__sett_tech_lb_size"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=52, colour="#7C613B")
-                        if mouseRec(pg_events):
-                            set_change("listbox_size", 0.1)
-                        if mouseRec(pg_events, 3):
-                            if scx("lbsz") > 0.5: set_change("listbox_size", -0.1)
-                        if mouseRec(pg_events, 2):
-                            set_change("listbox_size", "set=1.0")
+                    if mouseColliderPx(gt2ls[0], gt2ls[1], gt2ls[2], gt2ls[3]):
+                        if lbmode == "sized":
+                            put_text(screen, text=langstring("menu__sett_tech_lb_size"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=52, colour="#7C613B")
+                            if mouseRec(pg_events):
+                                set_change("listbox_size", 0.1)
+                            if mouseRec(pg_events, 3):
+                                if scx("lbsz") > 0.5: set_change("listbox_size", -0.1)
+                            if mouseRec(pg_events, 2):
+                                set_change("listbox_size", "set=1.0")
+                        else: # if mode is inactive
+                            put_text(screen, text=langstring("menu__sett_tech_lb_size"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=52, colour="#4F4C49")
 
         #==============================================================================================================
         case "pack_manag":
