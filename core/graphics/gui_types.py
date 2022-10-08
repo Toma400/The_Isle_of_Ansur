@@ -23,30 +23,38 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
             imgPut(screen, folderpath="core/assets/visuals/", imgname="logo.png", size_x=80, size_y=16, pos_x=10, pos_y=3, alpha=True)
             put_abstext(screen, text=f"{SysRef.status} {SysRef.version}", font_cat="menu", size=20, pos_x=0.5, pos_y=97, colour="#4F3920")
 
-            gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour="#4E3510")
-            gt2 = put_text(screen, text=langstring("menu__button_load"),     font_cat="menu", size=30, align_x="center", pos_y=34, colour="#4E3510")
-            gt3 = put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#4E3510")
-            gt4 = put_text(screen, text=langstring("menu__button_packs"),    font_cat="menu", size=30, align_x="center", pos_y=46, colour="#4E3510")
-            gt5 = put_text(screen, text=langstring("menu__button_exit"),     font_cat="menu", size=30, align_x="center", pos_y=52, colour="#4E3510")
+            gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour="#4F4C49")
+            gt2 = put_text(screen, text=langstring("menu__button_load"),     font_cat="menu", size=30, align_x="center", pos_y=34, colour="#4F4C49")
+            gt3 = put_text(screen, text=langstring("menu__button_arena"),    font_cat="menu", size=30, align_x="center", pos_y=40, colour="#4F4C49")
+            gt4 = put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#4E3510")
+            gt5 = put_text(screen, text=langstring("menu__button_packs"),    font_cat="menu", size=30, align_x="center", pos_y=52, colour="#4F4C49")
+            gt6 = put_text(screen, text=langstring("menu__button_exit"),     font_cat="menu", size=30, align_x="center", pos_y=58, colour="#4E3510")
 
             #==================================================
             # hovering & clicking events
             if mouseColliderPx(gt1[0], gt1[1], gt1[2], gt1[3]):
-                put_text(screen, text=langstring("menu__button_start"), font_cat="menu", size=30, align_x="center", pos_y=28, colour="#7C613B")
+                #put_text(screen, text=langstring("menu__button_start"), font_cat="menu", size=30, align_x="center", pos_y=28, colour="#7C613B")
+                pass
             if mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
-                put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=30, align_x="center", pos_y=34, colour="#7C613B")
+                #put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=30, align_x="center", pos_y=34, colour="#7C613B")
+                pass
+
             if mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
-                put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
+                #put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
+                pass
+
+            if mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
+                put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#7C613B")
                 if mouseRec(pg_events):
                     guitype[0] = switch_scr(screen, "settings")
 
-            if mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
-                put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#7C613B")
+            if mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]):
+                #put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=52, colour="#7C613B")
                 if mouseRec(pg_events):
                     guitype[0] = switch_scr(screen, "pack_manag")
 
-            if mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]):
-                put_text(screen, text=langstring("menu__button_exit"), font_cat="menu", size=30, align_x="center", pos_y=52, colour="#7C613B")
+            if mouseColliderPx(gt6[0], gt6[1], gt6[2], gt6[3]):
+                put_text(screen, text=langstring("menu__button_exit"), font_cat="menu", size=30, align_x="center", pos_y=58, colour="#7C613B")
                 if mouseRec(pg_events):
                     tev.append("end")
 
@@ -81,6 +89,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
             # submenu handler
             match guitype[1]:
                 case "settings_general":
+                    put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour="#7C613B")
+
                     gt1rs = put_text(screen, text=langstring("menu__sett_general_res"),     font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#4E3510")
                     gt1ln = put_text(screen, text=langstring("menu__sett_general_lang"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#4E3510")
                     gt1ms = put_text(screen, text=langstring("menu__sett_general_music"),   font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=28, colour="#4E3510")
@@ -132,6 +142,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
                                 set_change("sound", f"set={dfsd}"); fg_events.append("SNDV_CHG")
 
                 case "settings_tech":
+                    put_text(screen, text=langstring("menu__sett_tech"), font_cat="menu", size=30, pos_x=5, pos_y=22, colour="#7C613B")
                     lbmode = scx("lbmd")
 
                     gt2lu = put_text(screen, text=langstring("menu__sett_tech_legacy"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#4E3510")

@@ -2,6 +2,7 @@ lang__name                 = "Polski" #this value has to be your own language na
 
 menu__button_start         = "Rozpocznij grę"
 menu__button_load          = "Załaduj grę"
+menu__button_arena         = "Arena"
 menu__button_settings      = "Ustawienia"
 menu__button_packs         = "Paczki"
 menu__button_exit          = "Wyjdź"
