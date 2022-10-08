@@ -22,6 +22,7 @@ def scx(setn=None): # used for checking current settings status
         case "lbmd": return sdata["listbox_mode"]
         case "lbam": return sdata["listbox_amount"]
         case "lbsz": return sdata["listbox_size"]
+        case "txts": return sdata["text_size"]
         case other:  return sdata
 
 # hunger_thirst and permadeath are marked as deprecated now (see https://github.com/Toma400/The_Isle_of_Ansur/issues/16#issuecomment-1247081222)

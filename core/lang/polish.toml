@@ -18,6 +18,7 @@ menu__sett_tech_log_rv     = "Usuń dzienniki"
 menu__sett_tech_listbox    = "Tryb list"
 menu__sett_tech_lb_amount  = "Ilość elementów list"
 menu__sett_tech_lb_size    = "Wielkość elementów list"
+menu__sett_tech_text_size  = "Wielkość tekstu"
 menu__sett_back            = "Powrót do menu"
 
 menu__load_choose          = "Wybierz swój zapis gry"

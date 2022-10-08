@@ -91,20 +91,20 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
                 case "settings_general":
                     put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour="#7C613B")
 
-                    gt1rs = put_text(screen, text=langstring("menu__sett_general_res"),     font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#4E3510")
-                    gt1ln = put_text(screen, text=langstring("menu__sett_general_lang"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#4E3510")
-                    gt1ms = put_text(screen, text=langstring("menu__sett_general_music"),   font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=28, colour="#4E3510")
+                    gt1rs = put_text(screen, text=langstring("menu__sett_general_res"),     font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=12, colour="#4E3510")
+                    gt1ln = put_text(screen, text=langstring("menu__sett_general_lang"),    font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour="#4E3510")
+                    gt1ms = put_text(screen, text=langstring("menu__sett_general_music"),   font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=28, colour="#4E3510")
 
                     # settings values
                     res_ratio = str(scx("svx")) + " : " + str(scx("svy"))
-                    put_text(screen, text=res_ratio,                font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856")  # resolution
-                    put_text(screen, text=langstring("lang__name"), font_cat="menu", size=30, pos_x=87, pos_y=20, colour="#1A5856")  # language
-                    put_text(screen, text=str(scx("sndv")),         font_cat="menu", size=30, pos_x=87, pos_y=28, colour="#1A5856")  # music volume
+                    put_text(screen, text=res_ratio,                font_cat="menu", size=30, pos_x=82, pos_y=12, colour="#1A5856")  # resolution
+                    put_text(screen, text=langstring("lang__name"), font_cat="menu", size=30, pos_x=82, pos_y=20, colour="#1A5856")  # language
+                    put_text(screen, text=str(scx("sndv")),         font_cat="menu", size=30, pos_x=82, pos_y=28, colour="#1A5856")  # music volume
 
                     # ==================================================
                     # hovering & clicking events
                     if mouseColliderPx(gt1rs[0], gt1rs[1], gt1rs[2], gt1rs[3]):
-                        put_text(screen, text=langstring("menu__sett_general_res"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#7C613B")
+                        put_text(screen, text=langstring("menu__sett_general_res"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=12, colour="#7C613B")
                         if mouseRec(pg_events, 1):
                             from win32api import GetSystemMetrics
                             if scx("svx") < GetSystemMetrics(0): set_change("res_x", 100)       # if not full screen, increase x size by 100
@@ -122,14 +122,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
                             dyn_screen[0] = run_screen() # resets the screen
 
                     if mouseColliderPx(gt1ln[0], gt1ln[1], gt1ln[2], gt1ln[3]):
-                        put_text(screen, text=langstring("menu__sett_general_lang"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#7C613B")
+                        put_text(screen, text=langstring("menu__sett_general_lang"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("language")
                         if mouseRec(pg_events, 3):
                             set_change("language", "rev")
 
                     if mouseColliderPx(gt1ms[0], gt1ms[1], gt1ms[2], gt1ms[3]):
-                        put_text(screen, text=langstring("menu__sett_general_music"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=28, colour="#7C613B")
+                        put_text(screen, text=langstring("menu__sett_general_music"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=28, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("sound", 1); fg_events.append("SNDV_CHG")
                         if mouseRec(pg_events, 3):
@@ -147,49 +147,51 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
                     if lbmode == "sized": sm1col = "#4F4C49"; sm2col = "#4E3510"
                     else:                 sm1col = "#4E3510"; sm2col = "#4F4C49"
 
-                    gt2lu = put_text(screen, text=langstring("menu__sett_tech_legacy"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#4E3510")
-                    gt2gl = put_text(screen, text=langstring("menu__sett_tech_log_limit"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#4E3510")
-                    gt2gr = put_text(screen, text=langstring("menu__sett_tech_log_rv"),    font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=28, colour="#4E3510")
-                    gt2lb = put_text(screen, text=langstring("menu__sett_tech_listbox"),   font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=36, colour="#4E3510")
-                    gt2la = put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=44,    colour=sm1col)
-                    gt2ls = put_text(screen, text=langstring("menu__sett_tech_lb_size"),   font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=52,    colour=sm2col)
+                    gt2lu = put_text(screen, text=langstring("menu__sett_tech_legacy"),    font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=12, colour="#4E3510")
+                    gt2gl = put_text(screen, text=langstring("menu__sett_tech_log_limit"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour="#4E3510")
+                    gt2gr = put_text(screen, text=langstring("menu__sett_tech_log_rv"),    font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=28, colour="#4E3510")
+                    gt2lb = put_text(screen, text=langstring("menu__sett_tech_listbox"),   font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=36, colour="#4E3510")
+                    gt2la = put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=44,    colour=sm1col)
+                    gt2ls = put_text(screen, text=langstring("menu__sett_tech_lb_size"),   font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=52,    colour=sm2col)
+                    gt2ts = put_text(screen, text=langstring("menu__sett_tech_text_size"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=60, colour="#4E3510")
 
                     # settings values
-                    if scx("legu"): put_text(screen, text=langstring("gen__enabled"), font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856") # legacy unpacking
-                    else: put_text(screen,    text=langstring("gen__disabled"),       font_cat="menu", size=30, pos_x=87, pos_y=12, colour="#1A5856")
-                    put_text(screen,          text=str(scx("lglm")),                  font_cat="menu", size=30, pos_x=87, pos_y=20, colour="#1A5856") # log limit number
-                    put_text(screen,          text=langstring(f"gen__{lbmode}"),      font_cat="menu", size=30, pos_x=87, pos_y=36, colour="#1A5856") # listbox mode
-                    put_text(screen,          text=str(scx("lbam")),                  font_cat="menu", size=30, pos_x=87, pos_y=44, colour="#1A5856") # listbox elements amount
-                    put_text(screen,          text=str(scx("lbsz")),                  font_cat="menu", size=30, pos_x=87, pos_y=52, colour="#1A5856") # listbox elements size
+                    if scx("legu"): put_text(screen, text=langstring("gen__enabled"), font_cat="menu", size=30, pos_x=82, pos_y=12, colour="#1A5856") # legacy unpacking
+                    else: put_text(screen,    text=langstring("gen__disabled"),       font_cat="menu", size=30, pos_x=82, pos_y=12, colour="#1A5856")
+                    put_text(screen,          text=str(scx("lglm")),                  font_cat="menu", size=30, pos_x=82, pos_y=20, colour="#1A5856") # log limit number
+                    put_text(screen,          text=langstring(f"gen__{lbmode}"),      font_cat="menu", size=30, pos_x=82, pos_y=36, colour="#1A5856") # listbox mode
+                    put_text(screen,          text=str(scx("lbam")),                  font_cat="menu", size=30, pos_x=82, pos_y=44, colour="#1A5856") # listbox elements amount
+                    put_text(screen,          text=str(scx("lbsz")),                  font_cat="menu", size=30, pos_x=82, pos_y=52, colour="#1A5856") # listbox elements size
+                    put_text(screen,          text=str(scx("txts")),                  font_cat="menu", size=30, pos_x=82, pos_y=60, colour="#1A5856") # text size
 
                     #==================================================
                     # hovering & clicking events
                     if mouseColliderPx(gt2lu[0], gt2lu[1], gt2lu[2], gt2lu[3]):
-                        put_text(screen, text=langstring("menu__sett_tech_legacy"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=12, colour="#7C613B")
+                        put_text(screen, text=langstring("menu__sett_tech_legacy"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=12, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("legacy_unpacking")
 
                     if mouseColliderPx(gt2gl[0], gt2gl[1], gt2gl[2], gt2gl[3]):
-                        put_text(screen, text=langstring("menu__sett_tech_log_limit"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=20, colour="#7C613B")
+                        put_text(screen, text=langstring("menu__sett_tech_log_limit"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("log_limit", 1)
                         if mouseRec(pg_events, 3):
                             if scx("lglm") > 1: set_change("log_limit", -1)
 
                     if mouseColliderPx(gt2gr[0], gt2gr[1], gt2gr[2], gt2gr[3]):
-                        put_text(screen, text=langstring("menu__sett_tech_log_rv"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=28, colour="#7C613B")
+                        put_text(screen, text=langstring("menu__sett_tech_log_rv"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=28, colour="#7C613B")
                         if mouseRec(pg_events):
                             logs_deleting()
 
                     if mouseColliderPx(gt2lb[0], gt2lb[1], gt2lb[2], gt2lb[3]):
-                        put_text(screen, text=langstring(f"menu__sett_tech_listbox"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=36, colour="#7C613B")
+                        put_text(screen, text=langstring(f"menu__sett_tech_listbox"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=36, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("listbox_mode")
                         if mouseRec(pg_events, 3):
                             set_change("listbox_mode", "rev")
 
                     if mouseColliderPx(gt2la[0], gt2la[1], gt2la[2], gt2la[3]) and lbmode == "proportional":
-                        put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=44, colour="#7C613B")
+                        put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=44, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("listbox_amount", 1)
                         if mouseRec(pg_events, 3):
@@ -198,13 +200,22 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
                             set_change("listbox_amount", "set=5")
 
                     if mouseColliderPx(gt2ls[0], gt2ls[1], gt2ls[2], gt2ls[3]) and lbmode == "sized":
-                        put_text(screen, text=langstring("menu__sett_tech_lb_size"), font_cat="menu", size=30, align_x="right", pos_x=15, pos_y=52, colour="#7C613B")
+                        put_text(screen, text=langstring("menu__sett_tech_lb_size"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=52, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("listbox_size", 0.1)
                         if mouseRec(pg_events, 3):
                             if scx("lbsz") > 0.5: set_change("listbox_size", -0.1)
                         if mouseRec(pg_events, 2):
                             set_change("listbox_size", "set=1.0")
+
+                    if mouseColliderPx(gt2ts[0], gt2ts[1], gt2ts[2], gt2ts[3]):
+                        put_text(screen, text=langstring("menu__sett_tech_text_size"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=60, colour="#7C613B")
+                        if mouseRec(pg_events):
+                            set_change("text_size", 0.1)
+                        if mouseRec(pg_events, 3):
+                            if scx("txts") > 0.5: set_change("text_size", -0.1)
+                        if mouseRec(pg_events, 2):
+                            set_change("text_size", "set=1.0")
 
         #==============================================================================================================
         case "pack_manag":

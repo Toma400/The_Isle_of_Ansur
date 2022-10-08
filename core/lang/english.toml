@@ -18,6 +18,7 @@ menu__sett_tech_log_rv     = "Remove Logs"
 menu__sett_tech_listbox    = "List Mode"
 menu__sett_tech_lb_amount  = "List Elements Amount"
 menu__sett_tech_lb_size    = "List Elements Size"
+menu__sett_tech_text_size  = "Text Size"
 menu__sett_back            = "Back to menu"
 
 menu__load_choose          = "Choose your save"
