@@ -1,10 +1,10 @@
 import pygame; pygame.init(); pygame.mixer.init()
+from core.graphics.gh_system import run_screen, bgm_screen
 from core.graphics.gui_types import gui_handler
 from core.sounds.music import music_handler
 from core.scripts import script_handler
 from core.scripts import event_handler
-from core.graphics.gh_system import *
-from core.graphics.gh_manag import *
+from core.utils import *
 
 def main_circle():
     dyn_screen = [run_screen()] # list instead of variable allows for further use of run_screen() in gui_handler (both read-write, unlike 'screen' below)

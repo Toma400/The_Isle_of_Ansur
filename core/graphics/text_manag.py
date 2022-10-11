@@ -133,6 +133,8 @@ def txt_split (text_given: str, tdata: list):
         text_leaving = ""                # string which will be splitted in next line
         sep = ""                         # separator initially is "", to make sentence not have space before first word
 
+        out_lines_add = out_lines.append # for fastening up looped code
+
         for i in text_given:
             temp_going = text_going + sep + i # string which checks if text can extend with next word
             if txt_rect_manag(tdata[0], temp_going, tdata[1], tdata[2], tdata[3], tdata[4], tdata[5], tdata[6], tdata[7], tdata[8], tdata[9], tdata[10], do_blit=False) and line_break is False:
@@ -144,7 +146,7 @@ def txt_split (text_given: str, tdata: list):
                 text_leaving += sep + i
                 line_break = True # makes loop not be able to overwrite previous string after reaching limit (w/o it, shorter word could get into original string, outside of order)
             sep = " " # separator changes to space after first loop run
-        out_lines.append(text_going)
+        out_lines_add(text_going)
         text_given = text_leaving # left string is given to next iteration
 
     return out_lines

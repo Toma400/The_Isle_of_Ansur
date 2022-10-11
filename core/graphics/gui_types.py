@@ -21,9 +21,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
 
             imgFull(screen, folderpath=bgs[0], imgname=bgs[1])
             imgPut(screen, folderpath="core/assets/visuals/", imgname="logo.png", size_x=80, size_y=16, pos_x=10, pos_y=3, alpha=True)
-            put_abstext(screen, text=f"{SysRef.status} {SysRef.version}", font_cat="menu", size=20, pos_x=0.5, pos_y=97, colour="#4F3920")
+            put_abstext(screen, text=f"{SysRef.status} {SysRef.version}", font_cat="menu", size=22, pos_x=0.5, pos_y=96, colour="#4F3920")
 
-            gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour="#4F4C49")
+            gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour="#4E3510")
             gt2 = put_text(screen, text=langstring("menu__button_load"),     font_cat="menu", size=30, align_x="center", pos_y=34, colour="#4F4C49")
             gt3 = put_text(screen, text=langstring("menu__button_arena"),    font_cat="menu", size=30, align_x="center", pos_y=40, colour="#4F4C49")
             gt4 = put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#4E3510")
@@ -33,12 +33,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
             #==================================================
             # hovering & clicking events
             if mouseColliderPx(gt1[0], gt1[1], gt1[2], gt1[3]):
-                #put_text(screen, text=langstring("menu__button_start"), font_cat="menu", size=30, align_x="center", pos_y=28, colour="#7C613B")
-                pass
+                put_text(screen, text=langstring("menu__button_start"), font_cat="menu", size=30, align_x="center", pos_y=28, colour="#7C613B")
+                if mouseRec(pg_events):
+                    guitype[0] = switch_scr(screen, "new_game")
+                    guitype[1] = switch_scr(screen, "gender")
+
             if mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
                 #put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=30, align_x="center", pos_y=34, colour="#7C613B")
                 pass
-
             if mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
                 #put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
                 pass
@@ -50,8 +52,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
 
             if mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]):
                 #put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=52, colour="#7C613B")
-                if mouseRec(pg_events):
-                    guitype[0] = switch_scr(screen, "pack_manag")
+                #if mouseRec(pg_events):
+                #    guitype[0] = switch_scr(screen, "pack_manag")
+                pass
 
             if mouseColliderPx(gt6[0], gt6[1], gt6[2], gt6[3]):
                 put_text(screen, text=langstring("menu__button_exit"), font_cat="menu", size=30, align_x="center", pos_y=58, colour="#7C613B")
@@ -240,6 +243,32 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
 
             if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
                 put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#7C613B")
+                if mouseRec(pg_events):
+                    guitype[0] = switch_scr(screen, "menu")
+                    guitype[1] = None
+
+        # ==============================================================================================================
+        case "new_game":
+            ccrt_col = {"active": "#354A07", "not_set": "#4F4C49"}
+            imgFull(screen, "core/assets/visuals/", "menu_background.jpg")
+
+            put_text(screen, text=langstring("menu__button_start"),        font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
+            gtx = put_text(screen, text=langstring("menu__sett_back"),     font_cat="menu", size=30, align_x="center", pos_y=92, colour="#4E3510")
+
+            mn1 = put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=ccrt_col["active"])
+            mn2 = put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=ccrt_col["not_set"])
+            mn3 = put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=ccrt_col["not_set"])
+            mn4 = put_text(screen, text=langstring("ccrt__gen_category4"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=34, colour=ccrt_col["not_set"])
+            mn5 = put_text(screen, text=langstring("ccrt__gen_category5"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=42, colour=ccrt_col["not_set"])
+            mn6 = put_text(screen, text=langstring("ccrt__gen_category6"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=50, colour=ccrt_col["not_set"])
+            mn7 = put_text(screen, text=langstring("ccrt__gen_category7"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=58, colour=ccrt_col["not_set"])
+            mn8 = put_text(screen, text=langstring("ccrt__gen_category8"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=66, colour=ccrt_col["not_set"])
+            mn9 = put_text(screen, text=langstring("ccrt__gen_category9"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=74, colour=ccrt_col["not_set"])
+
+            # ==================================================
+            # hovering & clicking events
+            if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
+                put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, align_x="center", pos_y=92, colour="#7C613B")
                 if mouseRec(pg_events):
                     guitype[0] = switch_scr(screen, "menu")
                     guitype[1] = None
