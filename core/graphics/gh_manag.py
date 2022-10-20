@@ -16,10 +16,11 @@ def imgLoad(path, name="", alpha=False): # name is optional, if you want to sepa
     except pygame.error: log.error(f"Error occured during loading texture from path [{gpath}/{path}{name}].")
     except FileNotFoundError: log.error(f"Texture from path [{gpath}/{path}{name}] not found.")
 
-def imgRes(path, name, dest_x, dest_y): # path should be folder path, written like so: [stats/]
+def imgRes(path, name, dest_x, dest_y, variation=""): # path should be folder path, written like so: [stats/]
+    # "variation" let you make two or three versions of the same img by naming it differently (for example: icon_name.png)
     dir_cleaner(path)
     image = Image.open(f"{gpath}/{path}{name}")
-    image = image.resize((dest_x, dest_y)); image.save(f"{gpath}/_temp/{path}{name}")
+    image = image.resize((dest_x, dest_y)); image.save(f"{gpath}/_temp/img/{path}{variation}{name}")
 
 # Blits:
 def imgIter(screen, image):
@@ -29,23 +30,28 @@ def imgIter(screen, image):
 
 def imgFull(screen, folderpath, imgname, alpha=False): # folderpath should be written like so: [stats/]
     imgRes(folderpath, imgname, scx("svx"), scx("svy"))
-    screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (0, 0))
+    screen.blit(imgLoad(f"_temp/img/{folderpath}{imgname}", alpha=alpha), (0, 0))
 
-def imgPut(screen, folderpath, imgname, size_x, size_y, pos_x, pos_y, alpha=False): # size-pos should be cell%
+def imgPut(screen, folderpath, imgname, size_x, size_y, pos_x, pos_y, alpha=False, no_blit=False): # size-pos should be cell%
     # folderpath should be written like so: [stats/]
     fs_x, fs_y = returnCells(size_x, size_y)
     fpos_x, fpos_y = returnCells(pos_x, pos_y)
     imgRes(folderpath, imgname, int(fs_x), int(fs_y))
-    screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (fpos_x, fpos_y))
+    if no_blit: return imgLoad(f"_temp/img/{folderpath}{imgname}", alpha=alpha), (fpos_x, fpos_y) # for listboxes use
+    else: screen.blit(imgLoad(f"_temp/img/{folderpath}{imgname}", alpha=alpha), (fpos_x, fpos_y)) # for normal use
 
-def imgPutRes(screen, folderpath, imgname, pos_x, pos_y, endpos_x, endpos_y, alpha=False): # variation where size is based on start-end ratio
+def imgPutRes(screen, folderpath, imgname, pos_x, pos_y, endpos_x, endpos_y, alpha=False, no_blit=False, variation=""): # variation where size is based on start-end ratio
     # folderpath should be written like so: [stats/]
     spos_x, spos_y = returnCells(pos_x, pos_y)
     epos_x, epos_y = returnCells(endpos_x, endpos_y)
     vx, vy = epos_x - spos_x, epos_y - spos_y # resolution is based on rectangle corners
-    imgRes(folderpath, imgname, int(vx), int(vy))
-    screen.blit(imgLoad(f"_temp/{folderpath}{imgname}", alpha=alpha), (spos_x, spos_y))
+    imgRes(folderpath, imgname, int(vx), int(vy), variation)
+    if no_blit: return imgLoad(f"_temp/img/{folderpath}{variation}{imgname}", alpha=alpha), (spos_x, spos_y) # for listboxes use
+    else: screen.blit(imgLoad(f"_temp/img/{folderpath}{variation}{imgname}", alpha=alpha), (spos_x, spos_y)) # for normal use
 
+# Blit manager (requires pyGame tuple of (image data, position tuple))
+def rendPut(screen, data: tuple):
+    screen.blit(data[0], data[1])
 
 #===========|========================================================
 # CELLS     | Cell system is made to place precisely elements on the
@@ -113,5 +119,5 @@ def switch_scr(screen, gui_aimed):
     return gui_aimed
 
 def dir_cleaner(path):
-    if not os.path.isdir(f"{gpath}/_temp/{path}"):
-        os.makedirs(f"{gpath}/_temp/{path}")
+    if not os.path.isdir(f"{gpath}/_temp/img/{path}"):
+        os.makedirs(f"{gpath}/_temp/img/{path}")

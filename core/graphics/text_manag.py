@@ -158,9 +158,9 @@ def txt_rect_size (text, font_cat, size, screen):
     return req_x, req_y
 
 #==========|========================================================
-# TEXT     | Splits text into list of lines, checking if size fits
-# SPLITTER | rectangle given
-#          | It splits at sentences and linebreak characters ("@*")
+# ????     | ------
+# ???????? | ------
+#          | ------
 #==========|========================================================
 def txt_rect_manag (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing: tuple = (0, 0), req_size=50, colour=None, bg_colour=None, text_spacing=0.2, do_blit=True):
     # variables required for further work
