@@ -87,6 +87,14 @@ def nestCell(pos, comparation):
 def nestCells(pos_x, pos_y, comp_x, comp_y):
     return nestCell(pos_x, comp_x), nestCell(pos_y, comp_y)
 
+# Small function to return ratio-related aspects
+def ratioCell(value: int = None, rev_mode=False):
+    retval = None
+    match rev_mode:
+        case False: to_px = returnCell(value, "y"); retval = revCell(to_px, "x") # returns % for x-axis based on the same % of y-axis (useful for square based on y-axis)
+        case True:  to_px = returnCell(value, "x"); retval = revCell(to_px, "y") # reverse to above, returns % for y-axis; much rarer use, I suppose
+    return retval
+
 #========|===========================================================
 # COLLIS | Checks whether element collides with another
 #========|===========================================================

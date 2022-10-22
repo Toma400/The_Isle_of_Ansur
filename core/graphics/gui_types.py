@@ -264,6 +264,16 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
             mn7 = put_text(screen, text=langstring("ccrt__gen_category7"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=58, colour=ccrt_col["not_set"])
             mn8 = put_text(screen, text=langstring("ccrt__gen_category8"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=66, colour=ccrt_col["not_set"])
             mn9 = put_text(screen, text=langstring("ccrt__gen_category9"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=74, colour=ccrt_col["not_set"])
+            # ------------------------------
+            # GENDER = male/female
+            # RACE   = choice of races
+            # CLASS  = choice of classes
+            # NAME   = choice of name + avatar (based on race)
+            # POINTS = manual
+            # RELIG  = choice of religion
+            # ORIGIN = choice of origin paths (appendable by mods, possible worldpack inits) + manual biography if you will
+            # SETTINGS
+            # SUMMARY
 
             # ==================================================
             # hovering & clicking events
