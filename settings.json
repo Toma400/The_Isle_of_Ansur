@@ -1,0 +1,15 @@
+{
+  "language": "english",
+  "time_system": "proportional",
+  "hunger_thirst": false,
+  "permadeath": false,
+  "legacy_unpacking": false,
+  "log_limit": 15,
+  "res_x": 1000,
+  "res_y": 700,
+  "sound": 40,
+  "listbox_mode": "proportional",
+  "listbox_amount": 5,
+  "listbox_size": 1.0,
+  "text_size": 1.0
+}
