@@ -11,8 +11,9 @@ def projectbuild(name):
     mkdir(f"bcs/projects/{name}")
 
 def projectexport(name):
-    obj = zipfile.ZipFile(f"mods/{name}.zip", mode="a")
-    obj.write(f"bcs/projects/{name}")
+    obj = zipfile.ZipFile(f"mods/{name}.zip", mode="w")
+    for i in listdir(f"bcs/projects/{name}/"):
+        obj.write(f"bcs/projects/{name}/{i}", arcname=i)
 
 def helpblit():
     return (
