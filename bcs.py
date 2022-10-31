@@ -1,6 +1,8 @@
 # BCS SHOULD BE GENERATOR
 # So project folder should not have structure for mod, but rather instructions
 # Folder structure should appear only when you click on "export" button, and should be in _bcs folder (sort of _temp variant)
+from kivy.uix.widget import Widget
+from kivy.app import App
 from os import listdir, mkdir
 import shutil
 import zipfile, json
@@ -30,6 +32,16 @@ def projectexport(name):
     projectgenerator(name) #-> results on _bcs/projects/{name} folder getting resources
 
     obj = zipfile.ZipFile(f"mods/{name}.zip", mode="w")
-    for i in listdir(f"_bcs/projects/{name}/"):
-        obj.write(f"_bcs/projects/{name}/{i}", arcname=i)
-    shutil.rmtree(f"_bcs/")
+    for i in listdir(f"_bcs/export/"):
+        obj.write(f"_bcs/export/{i}", arcname=i)
+    shutil.rmtree(f"_bcs")
+
+class BCSWidget(Widget):
+    pass
+
+class BCS(App):
+    def build(self):
+        return BCSWidget()
+
+if __name__ == '__main__':
+    BCS().run()
