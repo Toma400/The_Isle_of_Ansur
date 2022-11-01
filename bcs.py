@@ -2,6 +2,7 @@
 # So project folder should not have structure for mod, but rather instructions
 # Folder structure should appear only when you click on "export" button, and should be in _bcs folder (sort of _temp variant)
 from kivy.uix.widget import Widget
+from kivy.lang import Builder
 from kivy.app import App
 from os import listdir, mkdir
 import shutil
@@ -44,4 +45,5 @@ class BCS(App):
         return BCSWidget()
 
 if __name__ == '__main__':
+    Builder.load_file('bcs/bcs.kv')
     BCS().run()

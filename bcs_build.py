@@ -18,7 +18,7 @@ class DefaultRun:
   # directory of the game
   core_path = f"{fpath}/"
   game_name = "Baedoor Creation Set"
-  icon_path = core_path + "bcs/bcs.ico"
+  icon_path = core_path + "bcs/assets/graphical/bcs.ico"
   # directory for outcome
   export_path = "D:/Ministerstwo Kalibracyjne/PyCharm_Projects/[builds]/"
   full_export_path = export_path + "Isle of Ansur" + "/"
