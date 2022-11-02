@@ -12,8 +12,6 @@ from distutils.dir_util import copy_tree
 from utils.text_manag import bcolors as colour
 from utils.text_manag import align as align
 from utils.repo_manag import file_deleting as delete
-from core.decorators import Deprecated
-
 #-----------------------------------------------------------
 # FORGE
 # Function used to execute pyInstaller commands precised
@@ -21,7 +19,6 @@ from core.decorators import Deprecated
 # References DefaultRun class as configurator for all
 # options (when changing devices, change directories paths)
 #-----------------------------------------------------------
-@Deprecated("build [in main dir]")
 class DefaultRun:
     # ----------------------------------------------------------------------
     # CONFIGURATION OF BUILD
@@ -67,21 +64,18 @@ class DefaultRun:
     ]
 
 # function used to delete elements excluded in list above
-@Deprecated("build [in main dir]")
 def file_deleting(delete_list):
     j = 0
     for i in delete_list:
         delete(delete_list[j])
         j += 1
 
-@Deprecated("build [in main dir]")
 def cache_clearing():
     delete("system/cache/Ministerstwo Kalibracyjne")
     delete("system/cache/Users")
     delete("system/cache/pyinstaller/Isle of Ansur")
 
 # main function for running builder
-@Deprecated("build [in main dir]")
 def forge():
     PyInstaller.__main__.run(
         DefaultRun.forge_builder

@@ -10,7 +10,6 @@ from core.utils import temp_remover, scx; temp_remover()
 from core.file_system.repo_manag import logs_deleting, folder_init
 folder_init()
 logs_deleting(scx("lglm"))
-import traceback
 #===========================================================================
 # WELCOME IN THE ISLE OF ANSUR
 #-------------------------------

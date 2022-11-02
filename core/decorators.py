@@ -29,6 +29,7 @@ def Deprecated(func_rdir: str = None):
             Recommended alternative for deprecated function (module.func path): [{func_rdir}].
             ----
             ''')
+            print (f"Using deprecated function {func.__name__}. Use function: {func_rdir} instead!")
             func(*args, **kwargs)
             return func(*args, **kwargs)
 
