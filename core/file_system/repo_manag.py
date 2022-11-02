@@ -82,6 +82,18 @@ def deep_file_lister (path, ext=None):
   return list1
 
 #================|========================================
+# SYSTEM RELATED | Related to system file operations
+#================|========================================
+# Creates necessary folders for .gitignore elements
+def folder_init():
+  import os
+  folders = [
+    f"{gpath}/core/logs", f"{gpath}/saves"
+  ]
+  for i in folders:
+    if not os.path.isdir(i): os.makedirs(i)
+
+#================|========================================
 # UNSPAGHETTIERS | Making code a bit cleaner
 #================|========================================
 def no_pather(given_list, path):

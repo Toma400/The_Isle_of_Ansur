@@ -7,7 +7,7 @@
 The Isle of Ansur is text-based RPG game, founded on Baedoor universe.
 
 Despite its oldschool character, The Isle of Ansur tries to have expansive gameplay 
-mechanics and support modding.
+mechanics and support modding in modern approach.
 
 # Current Progress Status
 

@@ -1,3 +1,5 @@
+from core.decorators import Deprecated
+
 #old function to regular deleting of cache if redirect is not turned on
 def cache_deleting():
   import utils.repo_manag
@@ -24,6 +26,7 @@ def cache_brutedel():
   utils.repo_manag.file_deleting ("system/cache/Ministerstwo Kalibracyjne")
   utils.repo_manag.file_deleting ("system/cache/Users")
 
+@Deprecated("core.file_system.repo_manag.folder_init")
 def folder_init():
   # Creates necessary folders for .gitignore elements
   import os; from core.utils import gpath

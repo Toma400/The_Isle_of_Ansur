@@ -7,8 +7,8 @@ import system.log_manag as lg; lg.run(); lg.run_path()
 import logging; logging.debug(lg.run_text())
 #===========================================================================
 from core.utils import temp_remover, scx; temp_remover()
-import system.cache.cache_manag as cmg; cmg.folder_init()
-from core.file_system.repo_manag import logs_deleting
+from core.file_system.repo_manag import logs_deleting, folder_init
+folder_init()
 logs_deleting(scx("lglm"))
 import traceback
 #===========================================================================
