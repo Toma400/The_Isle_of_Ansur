@@ -38,3 +38,7 @@ def script_loader():
         x1 = x.replace("\\", "."); x2 = x1.replace("\\", "."); x2 = x2.replace("//", "."); x2 = x2.replace("//", ".")
         log.debug(f"Script is being imported: [{x2}]")
         __import__(x2)
+
+def refunc(*funcs): # does all functions in sequential order (non-return ones)
+    for i in funcs:
+        i
