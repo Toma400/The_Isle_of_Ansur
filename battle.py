@@ -1,7 +1,8 @@
 import pygame; pygame.init(); pygame.mixer.init()
-from elements.objects import Screen, Image
+from elements.objects import Screen, Image, Button
 
 screen = Screen()
+tev = []
 
 def re(*funcs): # does all functions in sequential order (non-return ones)
     for i in funcs:
@@ -11,14 +12,16 @@ def res(img, dest, pos, screend):
     re(img.resize(dest),
        screend.put_image(img, pos))
 
-while True:
+while not tev:
     screen.set().fill("#000000")
-    img1 = screen.put_image(img=Image(path="", name="ioa.png"), pos=(0, 0))
+    button1 = Button((15, 15), (15, 15), Image("", "ioa.png"), screen)
 
-    res(img1, (900, 900), (0, 0), screend=screen)
-    # ^ is equivalent to v | solves object looping issue + spaghetti code
-    #--------------------------------------------------------------------
-    #img1.resize((900, 900))
-    #screen.put_image(img=img1, pos=(0, 0))
+    if button1.is_pressed():
+        res(Image("assets/weapons/", "golden_scimitar.png"), (300, 300), (0, 0), screen)
+
+    events = pygame.event.get()
+    for event in events:
+        if event.type == pygame.QUIT:
+            tev.append("end")
 
     pygame.display.flip()

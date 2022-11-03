@@ -1,2 +1,0 @@
-class Weapons:
-    pass

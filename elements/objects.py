@@ -1,4 +1,5 @@
 from PIL import Image as PILImage
+from elements.utils import *
 import pygame, os
 
 gpath = os.path.dirname(os.path.abspath("battle.py"))
@@ -44,7 +45,8 @@ class Screen:
         self.screen = set()
 
     def put_image (self, img: Image, pos: tuple):
-        self.set().blit(img.load(), pos)
+        cellpos = returnCells(pos)
+        self.set().blit(img.load(), cellpos)
         return img
 
     def set(self):
@@ -60,3 +62,19 @@ class Screen:
     def force_update():
         pygame.display.quit()
         pygame.display.init()
+
+class Button:
+
+    def __init__(self, size: tuple, pos: tuple, img: Image, screen: Screen):
+        self.size   = returnCells(size)
+        self.rawpos = pos
+        self.pos    = returnCells(pos)
+        self.img    = img
+        self.rect   = pygame.rect.Rect((self.pos[0], self.pos[1]),
+                                       (self.size[0], self.size[1]))
+
+        self.img.resize(self.size)
+        screen.put_image(self.img, self.rawpos)
+
+    def is_pressed(self):
+        return self.rect.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed()[0]
