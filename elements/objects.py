@@ -11,12 +11,14 @@ def dir_cleaner(path):
 
 class Image:
 
-    def __init__(self, path: str, name: str = ""):
+    def __init__(self, path: str, name: str):
+        self.ipath = path                    # img path
+        self.iname = name                    # img name
         self.spath = f"{path}{name}"         # shortened path
         self.fpath = f"{gpath}/{path}{name}" # full path
 
     def resize(self, dest: tuple):
-        dir_cleaner (f"{self.spath}")
+        dir_cleaner (f"{self.ipath}")
 
         # PIL operation on file
         image = PILImage.open(self.fpath)
@@ -33,7 +35,7 @@ class Image:
 class Screen:
 
     title = "BattleTest"
-    icon  = Image(path="ioa.png")
+    icon  = Image(path="", name="ioa.png")
     res_x = res_x
     res_y = res_y
 
@@ -43,6 +45,7 @@ class Screen:
 
     def put_image (self, img: Image, pos: tuple):
         self.set().blit(img.load(), pos)
+        return img
 
     def set(self):
         self.screen = pygame.display.set_mode((self.res_x, self.res_y))
