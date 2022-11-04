@@ -42,18 +42,28 @@ class Screen:
 
     def __init__(self):
         pygame.display.init()
+        self.tick   = 0
         self.screen = set()
 
     def put_image (self, img: Image, pos: tuple):
-        cellpos = returnCells(pos)
-        self.set().blit(img.load(), cellpos)
-        return img
+        if self.get_tick("M"):
+            cellpos = returnCells(pos)
+            self.set().blit(img.load(), cellpos)
+            return img
 
     def set(self):
         self.screen = pygame.display.set_mode((self.res_x, self.res_y))
         pygame.display.set_caption(self.title)
         pygame.display.set_icon(self.icon.load())
         return self.screen
+
+    def ticking(self):
+        self.tick += 1
+
+    def get_tick(self, mode="M"):
+        match mode:
+            case "M": return self.tick % 2 == 0
+            case "S": return self.tick % 2500 == 0
 
     def update(self):
         self.set().fill("#000000")
@@ -62,6 +72,13 @@ class Screen:
     def force_update():
         pygame.display.quit()
         pygame.display.init()
+
+class Menu:
+
+    def __init__(self, screen: Screen):
+        self.screen_list = [screen]
+        self.screen      = self.screen_list[0]
+        self.menus       = (None, None, None, None, None) # handler for menu types (0 - main, 1-4 - submenus)
 
 class Button:
 
