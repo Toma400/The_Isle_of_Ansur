@@ -47,3 +47,13 @@ def RequiresImprovement(func):
         return func(*args, **kwargs)
 
     return wrapper_func
+
+def Callable(func):
+    '''Used for class methods which return self - signifies methods which can be used during object initialising (onelined)'''
+
+    @functools.wraps(func)
+    def wrapper_func(*args, **kwargs):
+        func(*args, **kwargs)
+        return args[0]
+
+    return wrapper_func

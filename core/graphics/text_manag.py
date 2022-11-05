@@ -1,4 +1,5 @@
 from core.graphics.gh_manag import returnCell, revCell
+from core.decorators import Callable
 from pygame.font import Font
 from core.utils import *
 #==========|========================================================
@@ -69,6 +70,7 @@ def put_lore(lang):
     pass # placeholder function for lore text, which will not be translateable through langkeys, but
     # refer to specific Baedoor fonts, such as ghloddish (or, later, trish and so on); font will
     # be automatically used based on language
+    return ""
 
 #==========|========================================================
 # FONT     | Decides on font used depending on category and language
@@ -180,3 +182,64 @@ def txt_rect_manag (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y
 # adjusts size to modifier in settings
 def txt_size (size):
     return int(size*scx("txts"))
+
+#==========|========================================================
+# TEXT     | Used for objectify text features in cleaner way
+# OBJECT   |
+#          |
+#==========|========================================================
+class Text:
+
+    lang      : str   = scx("lang")
+    txt_colour: tuple = (0, 0, 0)
+    bg_colour : tuple = None
+
+    def __init__(self, text: str, pos: tuple, fonts: str, size: int):
+        self.text       = text
+        self.key        = text
+        self.pos        = pos
+        self.size       = size
+        self.txt_font   = self.font(fonts).txt_font
+        self.fontobj    = Font(f"{gpath}/core/assets/fonts/{self.txt_font}", txt_size(size))
+
+    @Callable
+    def colour(self, tcol: tuple = (0, 0, 0), bcol: tuple = None):
+        self.txt_colour = tcol
+        self.bg_colour  = bcol
+
+    @Callable
+    def font(self, font_cat):
+        if "lore:" not in font_cat: self.txt_font = font_handler(category=font_cat)
+        else:                       self.txt_font = put_lore(font_cat)
+
+    @Callable
+    def put(self, screen):
+        txtobj = self.fontobj.render(self.text, True,
+                                     self.txt_colour, self.bg_colour)
+        screen.blit(txtobj, (self.pos[0], self.pos[1]))
+
+    @Callable
+    def move(self, dest: tuple):
+        self.pos = dest
+
+    def langstring(self):
+        import toml; t = toml.load(f"{gpath}/core/lang/{self.lang}.toml")
+        self.text = t[self.key]
+
+    def langjstring(self, modtype: str, modid: str = "ansur"):
+        try:
+            read = json_read(f"{modtype}/{modid}/lang.json", self.lang)
+        except KeyError:
+            try:
+                read = json_read(f"{modtype}/{modid}/lang.json", "english")
+            except KeyError:
+                log.warning(
+                    f"Module {modid} does not have properly set language value for {self.key}. Please contact the developer of this module for help.")
+                return langstring("system__text_load_fail")
+        self.text = read[self.key]
+
+
+
+    # used for text covering specific rectangle
+    def field(self):
+        pass
