@@ -37,3 +37,15 @@ def run_screen():
             pygame.display.set_icon(imgLoad("core/assets/visuals/", "logo.png"))
             return screen
         except pygame.error: continue
+
+class Screen:
+
+    def __init__(self):
+        self.dyn_screen = [run_screen()]
+        self.panorama   = bgm_screen()
+        self.screen     = self.dyn_screen[0]
+
+    def reset(self):
+        self.dyn_screen[0] = run_screen()
+        self.screen        = self.dyn_screen[0]
+        return self.screen

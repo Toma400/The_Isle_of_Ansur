@@ -1,4 +1,4 @@
-from core.graphics.text_manag import put_abstext, put_text, put_rectext, langstring
+from core.graphics.text_manag import put_abstext, put_text, langstring
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
 from core.graphics.gh_system import run_screen
@@ -12,14 +12,14 @@ from core.graphics.gh_manag import *
 #------------
 # pg_events | Those used here should ONLY refer to their display functionalities related to actually used GUI
 #==============================================================================================================
-def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
+def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     match guitype[0]:
 
         #==============================================================================================================
         case "menu":
 
-            imgFull(screen, folderpath=bgs[0], imgname=bgs[1])
+            imgFull(screen, folderpath=dyn_screen.panorama[0], imgname=dyn_screen.panorama[1])
             imgPut(screen, folderpath="core/assets/visuals/", imgname="logo.png", size_x=80, size_y=16, pos_x=10, pos_y=3, alpha=True)
             put_abstext(screen, text=f"{SysRef.status} {SysRef.version}", font_cat="menu", size=22, pos_x=0.5, pos_y=96, colour="#4F3920")
 
@@ -112,17 +112,17 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, bgs, dyn_screen):
                             from win32api import GetSystemMetrics
                             if scx("svx") < GetSystemMetrics(0): set_change("res_x", 100)       # if not full screen, increase x size by 100
                             else:                                set_change("res_x", "set=400") # if full screen reached, set x size to 0
-                            dyn_screen[0] = run_screen()  # resets the screen
+                            screen = dyn_screen.reset() # resets the screen
                         if mouseRec(pg_events, 3):
                             from win32api import GetSystemMetrics
                             if scx("svy") < GetSystemMetrics(1): set_change("res_y", 100)       # if not full screen, increase x size by 100
                             else:                                set_change("res_y", "set=400") # if full screen reached, set x size to 0
-                            dyn_screen[0] = run_screen()  # resets the screen
+                            screen = dyn_screen.reset() # resets the screen
                         if mouseRec(pg_events, 2):
                             from win32api import GetSystemMetrics
                             if res_ratio != "1000 : 700": set_change("res_x", "set=1000"); set_change("res_y", "set=700") # changes res to default
                             else:                         set_change("res_x", f"set={GetSystemMetrics(0)}"); set_change("res_y", f"set={GetSystemMetrics(1)}") # changes to full screen
-                            dyn_screen[0] = run_screen() # resets the screen
+                            screen = dyn_screen.reset() # resets the screen
 
                     if mouseColliderPx(gt1ln[0], gt1ln[1], gt1ln[2], gt1ln[3]):
                         put_text(screen, text=langstring("menu__sett_general_lang"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour="#7C613B")
