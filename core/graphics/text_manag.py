@@ -222,6 +222,12 @@ class Text:
     def move(self, dest: tuple):
         self.pos = dest
 
+    def lstr(self): # shortener for `langstring`
+        self.langstring()
+
+    def ljstr(self, modtype: str, modid: str = "ansur"): # shortener for `langjstring`
+        self.langjstring(modtype=modtype, modid=modid)
+
     def langstring(self):
         import toml; t = toml.load(f"{gpath}/core/lang/{self.lang}.toml")
         self.text = t[self.key]

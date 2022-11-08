@@ -46,6 +46,7 @@ class Screen:
         self.screen     = self.dyn_screen[0]
 
     def reset(self):
+        """hard refresh of screen | should reassign currently used 'screen' variable"""
         self.dyn_screen[0] = run_screen()
         self.screen        = self.dyn_screen[0]
         return self.screen

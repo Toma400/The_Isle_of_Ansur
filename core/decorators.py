@@ -2,6 +2,7 @@ import functools
 import logging
 
 def SoftDeprecated(func):
+    """Used to indicate functions with flaws, but having no direct alternatives, so user need to come up with their own solutions"""
     @functools.wraps(func)
     def wrapper_func(*args, **kwargs):
         logging.debug(f'''
@@ -16,6 +17,7 @@ def SoftDeprecated(func):
 
 
 def Deprecated(func_rdir: str = None):
+    """Used for functions which are no longer supported and may be removed in future versions (contrary to @DeprecationWarning, allows for run)"""
     def DecDeprecated(func):
         @functools.wraps(func)
         def wrapper_func(*args, **kwargs):
@@ -29,7 +31,6 @@ def Deprecated(func_rdir: str = None):
             Recommended alternative for deprecated function (module.func path): [{func_rdir}].
             ----
             ''')
-            print (f"Using deprecated function {func.__name__}. Use function: {func_rdir} instead!")
             func(*args, **kwargs)
             return func(*args, **kwargs)
 
@@ -39,7 +40,7 @@ def Deprecated(func_rdir: str = None):
 
 
 def RequiresImprovement(func):
-    '''Serves as a placeholder decorator to signify code which is not readable enough'''
+    """Serves as a placeholder decorator to signify code which is not readable enough"""
 
     @functools.wraps(func)
     def wrapper_func(*args, **kwargs):
@@ -49,7 +50,7 @@ def RequiresImprovement(func):
     return wrapper_func
 
 def Callable(func):
-    '''Used for class methods which return self - signifies methods which can be used during object initialising (onelined)'''
+    """Used for class methods which return self - signifies methods which can be used during object initialising (onelined)"""
 
     @functools.wraps(func)
     def wrapper_func(*args, **kwargs):
