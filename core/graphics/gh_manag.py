@@ -72,11 +72,28 @@ def returnCells(pos_x, pos_y):
     svxc = scx("svx") / 100; svyc = scx("svy") / 100 # finds out cell size
     return pos_x * svxc, pos_y * svyc  # returns %posi into pixel posi
 
+# Any paired element
+def iterateCells(values: tuple):
+    axis = 2; values = list(values)
+    for no, i in enumerate(values):
+        if not axis % 2: values[no] = returnCell(i, "x")
+        else:            values[no] = returnCell(i, "y")
+        axis += 1
+    return tuple(values)
+
 # Pixels to cell%:
 def revCell(pos, axis):
     if axis == "x": svc = scx("svx") / 100
     else: svc = scx("svy") / 100
     return pos / svc
+
+def iterateRevCells(values: tuple):
+    axis = 2; values = list(values)
+    for no, i in enumerate(values):
+        if not axis % 2: values[no] = revCell(i, "x")
+        else:            values[no] = revCell(i, "y")
+        axis += 1
+    return tuple(values)
 
 # Constructs cell% for user-given length (can be used for nested cells):
 def nestCell(pos, comparation):

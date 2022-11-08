@@ -1,4 +1,4 @@
-from core.graphics.text_manag import put_abstext, put_text, langstring
+from core.graphics.text_manag import put_abstext, put_text, langstring, Text
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
 from core.graphics.gh_system import run_screen
@@ -29,6 +29,10 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             gt4 = put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#4E3510")
             gt5 = put_text(screen, text=langstring("menu__button_packs"),    font_cat="menu", size=30, align_x="center", pos_y=52, colour="#4F4C49")
             gt6 = put_text(screen, text=langstring("menu__button_exit"),     font_cat="menu", size=30, align_x="center", pos_y=58, colour="#4E3510")
+
+            gt7 = Text(text=langstring("menu__button_exit"),     fonts="menu", size=30, pos=(50,64)).colour(tcol="#4E3510").put(screen)
+            gt7 = Text(text=langstring("menu__button_settings"), fonts="menu", size=30, pos=(50,70)).colour(tcol="#4E3510").put(screen)
+            gt7 = Text(text=langstring("menu__button_packs"),    fonts="menu", size=30, pos=(50,76)).colour(tcol="#4E3510").put(screen)
 
             #==================================================
             # hovering & clicking events

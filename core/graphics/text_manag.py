@@ -1,6 +1,6 @@
 import pygame.rect
 
-from core.graphics.gh_manag import returnCell, revCell
+from core.graphics.gh_manag import returnCell, revCell, iterateCells, iterateRevCells
 from core.decorators import Callable
 from pygame.font import Font
 from core.utils import *
@@ -192,31 +192,43 @@ def txt_size (size):
 #==========|========================================================
 class Text:
 
-    txt_colour: tuple = (0, 0, 0)
-    bg_colour : tuple = None
+    txt_colour = (0, 0, 0)
+    bg_colour  = None
 
     def __init__(self, text: str, pos: tuple, fonts: str, size: int):
+        """
+        text  | Raw text or language key
+        pos   | Tuple of starting x/y and (optional) end x/y values. Work on cell% system.
+              | Use either two or four values inside the tuple.
+        fonts | Specified font category. Use "lore:" prefix to use lore fonts.
+        size  | Initial size of the text. Will be adjusted to text size settings.
+
+        @Callable functions return themselves, so can be written in one line, after the dot.
+        """
         self.lang:  str = scx("lang")
         self.text       = text
         self.key        = text
-        self.pos        = pos
+        self.pos        = iterateCells(pos)         # px value (based on cell%)
+        self.cellpos    = iterateRevCells(self.pos) # cell%    (based on px)
         self.size       = size
         self.txt_font   = self.font(fonts).txt_font
         self.fontobj    = Font(f"{gpath}/core/assets/fonts/{self.txt_font}", txt_size(size))
         self.is_rect    = len(pos) == 4 # checks if position given is simple (len=2) or rectangular (len=4)
-        self.rect       = pygame.rect.Rect(pos) if self.is_rect else None
+        self.rect       = pygame.rect.Rect(pos) if self.is_rect else self.field()
 
         # shorteners for functions
         self.lstr       = self.langstring
         self.ljstr      = self.langjstring
 
     @Callable
-    def colour(self, tcol: tuple = (0, 0, 0), bcol: tuple = None):
+    def colour(self, tcol=(0, 0, 0), bcol=None):
+        """Changes default colour of the text"""
         self.txt_colour = tcol
         self.bg_colour  = bcol
 
     @Callable
     def font(self, font_cat):
+        """Chooses font depending on category ('lore:' prefix allows for use of lore fonts)"""
         if "lore:" not in font_cat: self.txt_font = font_handler(category=font_cat)
         else:                       self.txt_font = put_lore(font_cat.replace("lore:", ""))
 
@@ -228,7 +240,12 @@ class Text:
 
     @Callable
     def move(self, dest: tuple):
+        """Changes initial position of the text. Needs reusing of `put()` if done after blitting text."""
         self.pos = dest
+
+    @Callable
+    def resize(self, dest: int):
+        pass
 
     @Callable
     def langstring(self):
@@ -250,8 +267,14 @@ class Text:
                 return langstring("system__text_load_fail")
         self.text = read[self.key]
 
+    def collider(self):
+        return self.rect.collidepoint(pygame.mouse.get_pos())
 
+    def pressed(self, mb: int = 0):
+        return self.collider() and pygame.mouse.get_pressed()[mb]
 
-    # used for text covering specific rectangle
     def field(self):
-        pass
+        """Used to determine rectangle of the text if not given (for len(pos)=2)"""
+        rendsize = self.fontobj.size(self.text)
+        return pygame.rect.Rect(self.pos[0], self.pos[1],
+                                self.pos[0]+rendsize[0], self.pos[1]+rendsize[1])
