@@ -1,3 +1,5 @@
+import pygame.rect
+
 from core.graphics.gh_manag import returnCell, revCell
 from core.decorators import Callable
 from pygame.font import Font
@@ -190,17 +192,23 @@ def txt_size (size):
 #==========|========================================================
 class Text:
 
-    lang      : str   = scx("lang")
     txt_colour: tuple = (0, 0, 0)
     bg_colour : tuple = None
 
     def __init__(self, text: str, pos: tuple, fonts: str, size: int):
+        self.lang:  str = scx("lang")
         self.text       = text
         self.key        = text
         self.pos        = pos
         self.size       = size
         self.txt_font   = self.font(fonts).txt_font
         self.fontobj    = Font(f"{gpath}/core/assets/fonts/{self.txt_font}", txt_size(size))
+        self.is_rect    = len(pos) == 4 # checks if position given is simple (len=2) or rectangular (len=4)
+        self.rect       = pygame.rect.Rect(pos) if self.is_rect else None
+
+        # shorteners for functions
+        self.lstr       = self.langstring
+        self.ljstr      = self.langjstring
 
     @Callable
     def colour(self, tcol: tuple = (0, 0, 0), bcol: tuple = None):
@@ -210,7 +218,7 @@ class Text:
     @Callable
     def font(self, font_cat):
         if "lore:" not in font_cat: self.txt_font = font_handler(category=font_cat)
-        else:                       self.txt_font = put_lore(font_cat)
+        else:                       self.txt_font = put_lore(font_cat.replace("lore:", ""))
 
     @Callable
     def put(self, screen):
@@ -222,17 +230,15 @@ class Text:
     def move(self, dest: tuple):
         self.pos = dest
 
-    def lstr(self): # shortener for `langstring`
-        self.langstring()
-
-    def ljstr(self, modtype: str, modid: str = "ansur"): # shortener for `langjstring`
-        self.langjstring(modtype=modtype, modid=modid)
-
+    @Callable
     def langstring(self):
+        """Converts -text- passed to the value of respective key in main language file"""
         import toml; t = toml.load(f"{gpath}/core/lang/{self.lang}.toml")
         self.text = t[self.key]
 
+    @Callable
     def langjstring(self, modtype: str, modid: str = "ansur"):
+        """Converts -text- passed to the value of respective key in language file of pack with specified type & ID"""
         try:
             read = json_read(f"{modtype}/{modid}/lang.json", self.lang)
         except KeyError:
