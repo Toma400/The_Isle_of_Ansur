@@ -49,6 +49,16 @@ def RequiresImprovement(func):
 
     return wrapper_func
 
+def HelperMethod(func):
+    """Serves as indicator that the function is not destined to be used outside of the class (i.e. being called by instance)"""
+
+    @functools.wraps(func)
+    def wrapper_func(*args, **kwargs):
+        func(*args, **kwargs)
+        return func(*args, **kwargs)
+
+    return wrapper_func
+
 def Callable(func):
     """Used for class methods which return self - signifies methods which can be used during object initialising (onelined)"""
 

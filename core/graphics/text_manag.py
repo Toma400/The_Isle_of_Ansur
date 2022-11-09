@@ -1,7 +1,7 @@
 import pygame.rect
 
 from core.graphics.gh_manag import returnCell, revCell, iterateCells, iterateRevCells
-from core.decorators import Callable
+from core.decorators import Callable, HelperMethod
 from pygame.font import Font
 from core.utils import *
 #==========|========================================================
@@ -200,6 +200,9 @@ class Text:
         text  | Raw text or language key
         pos   | Tuple of starting x/y and (optional) end x/y values. Work on cell% system.
               | Use either two or four values inside the tuple.
+              | Can specify alignment - use "c" to signify center, negative values for
+              | down/right and positive for default handling (up/left). Values cannot
+              | exceed 100.
         fonts | Specified font category. Use "lore:" prefix to use lore fonts.
         size  | Initial size of the text. Will be adjusted to text size settings.
 
@@ -208,13 +211,17 @@ class Text:
         self.lang:  str = scx("lang")
         self.text       = text
         self.key        = text
-        self.pos        = iterateCells(pos)         # px value (based on cell%)
-        self.cellpos    = iterateRevCells(self.pos) # cell%    (based on px)
+        # font / sizes
         self.size       = size
         self.txt_font   = self.font(fonts).txt_font
         self.fontobj    = Font(f"{gpath}/core/assets/fonts/{self.txt_font}", txt_size(size))
+        self.txt_size   = self.fontobj.size(self.text) # size of currently rendered text
+        # positions
+        self.pos        = self.pos_unpacker(pos)           # px value (based on cell%/align given)
+        self.cellpos    = self.iterate_rev_cells(self.pos) # cell%    (based on previous calculations)
+        # square objects
         self.is_rect    = len(pos) == 4 # checks if position given is simple (len=2) or rectangular (len=4)
-        self.rect       = pygame.rect.Rect(pos) if self.is_rect else self.field()
+        self.rect       = pygame.rect.Rect(self.pos) if self.is_rect else self.field()
 
         # shorteners for functions
         self.lstr       = self.langstring
@@ -241,11 +248,13 @@ class Text:
     @Callable
     def move(self, dest: tuple):
         """Changes initial position of the text. Needs reusing of `put()` if done after blitting text."""
-        self.pos = dest
+        self.pos        = self.pos_unpacker(dest)          # px value (based on cell%/align given)
+        self.cellpos    = self.iterate_rev_cells(self.pos) # cell%    (based on previous calculations)
+        self.rect       = pygame.rect.Rect(self.pos) if self.is_rect else self.field()
 
     @Callable
     def resize(self, dest: int):
-        pass
+        pass # update fontobj, txt_size and size ig
 
     @Callable
     def langstring(self):
@@ -268,13 +277,47 @@ class Text:
         self.text = read[self.key]
 
     def collider(self):
+        """Returns if mouse was colliding with the text"""
         return self.rect.collidepoint(pygame.mouse.get_pos())
 
     def pressed(self, mb: int = 0):
+        """Returns if mouse was colliding with the text when specific mouse button was pressed"""
         return self.collider() and pygame.mouse.get_pressed()[mb]
 
+    @HelperMethod
+    def pos_unpacker(self, dest_tp: tuple):
+        def iterate_varied_cells(values: tuple):
+            no = 0; values = list(values)
+            for i in values:
+                if type(i) == int and 100 >= i >= 0:
+                    if not no+2 % 2: values[no] = returnCell(i, "x")
+                    else:            values[no] = returnCell(i, "y")
+                if type(i) == int and -100 <= i < 0:
+                    ic = i*-1
+                    if not no+2 % 2: values[no] = returnCell(100, "x") - self.txt_size[0] - returnCell(ic, "x")
+                    else:            values[no] = returnCell(100, "y") - self.txt_size[1] - returnCell(ic, "y")
+                if type(i) == str and i == "c" and no < 2:
+                    if not no+2 % 2: values[no] = returnCell(100, "x") / 2 - self.txt_size[0] / 2
+                    else:            values[no] = returnCell(100, "y") / 2 - self.txt_size[1] / 2
+                else:
+                    log.error(f"Text cell values: {values} are not proper (are not integer, proper string, or exceed 100). Crash is to be expected.")
+                no += 1
+            return tuple(values)
+        return iterate_varied_cells(dest_tp)
+
+    @HelperMethod
+    def iterate_rev_cells(self, values: tuple):
+        no = 0; values = list(values)
+        for i in values:
+            if not no+2 % 2: values[no] = revCell(i, "x")
+            else:            values[no] = revCell(i, "y")
+            no += 1
+        return tuple(values)
+
+    @HelperMethod
     def field(self):
         """Used to determine rectangle of the text if not given (for len(pos)=2)"""
-        rendsize = self.fontobj.size(self.text)
-        return pygame.rect.Rect(self.pos[0], self.pos[1],
-                                self.pos[0]+rendsize[0], self.pos[1]+rendsize[1])
+        return pygame.rect.Rect(self.pos[0],
+                                self.pos[1],
+                                self.txt_size[0],
+                                self.txt_size[1])
