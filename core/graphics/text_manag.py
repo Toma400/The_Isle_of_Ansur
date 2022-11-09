@@ -286,6 +286,8 @@ class Text:
 
     @HelperMethod
     def pos_unpacker(self, dest_tp: tuple):
+        if len(dest_tp) > 4: raise ValueError (f"Text object -pos- argument cannot take more than four arguments. Arguments given: {len(dest_tp)}.")
+
         def iterate_varied_cells(values: tuple):
             no = 0; values = list(values)
             for i in values:
@@ -299,6 +301,9 @@ class Text:
                 if type(i) == str and i == "c" and no < 2:
                     if not no+2 % 2: values[no] = returnCell(100, "x") / 2 - self.txt_size[0] / 2
                     else:            values[no] = returnCell(100, "y") / 2 - self.txt_size[1] / 2
+                    if self.is_rect: values[no+2] = "c"
+                if type(i) == str and i == "c" and no >= 2:
+                    values[no] = values[no-2]
                 else:
                     log.error(f"Text cell values: {values} are not proper (are not integer, proper string, or exceed 100). Crash is to be expected.")
                 no += 1

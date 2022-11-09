@@ -1,5 +1,6 @@
+from core.decorators import HelperMethod, Callable
+from PIL import Image as PILImage
 from core.utils import *
-from PIL import Image
 import logging as log
 import pygame
 
@@ -19,7 +20,7 @@ def imgLoad(path, name="", alpha=False): # name is optional, if you want to sepa
 def imgRes(path, name, dest_x, dest_y, variation=""): # path should be folder path, written like so: [stats/]
     # "variation" let you make two or three versions of the same img by naming it differently (for example: icon_name.png)
     dir_cleaner(path)
-    image = Image.open(f"{gpath}/{path}{name}")
+    image = PILImage.open(f"{gpath}/{path}{name}")
     image = image.resize((dest_x, dest_y)); image.save(f"{gpath}/_temp/img/{path}{variation}{name}")
 
 # Blits:
@@ -146,3 +147,50 @@ def switch_scr(screen, gui_aimed):
 def dir_cleaner(path):
     if not os.path.isdir(f"{gpath}/_temp/img/{path}"):
         os.makedirs(f"{gpath}/_temp/img/{path}")
+
+#==========|========================================================
+# IMAGE    | Used for objectify image features
+# OBJECT   |
+#          |
+#==========|========================================================
+class Image:
+
+    alpha = True # transparency
+
+    def __init__(self, path: str, file: str):
+        """
+        path | Folder path to the image, without file itself (needs to end with "/")
+        file | File name with extension
+        """
+        self.path    = path
+        self.imgname = file
+        self.load    = self.reload()
+
+        # shorteners for functions
+        self.res     = self.resize
+
+    @Callable
+    def swap_alpha(self):
+        self.alpha = not self.alpha
+        self.load  = self.reload()
+
+    @Callable
+    def resize(self, size: tuple, variation: str = ""):
+        dir_cleaner(self.path)
+        image = PILImage.open(f"{gpath}/{self.path}{self.imgname}")
+        image = image.resize(size); image.save(f"{gpath}/_temp/img/{self.path}{variation}{self.imgname}")
+
+        self.imgname = f"{variation}{self.imgname}"
+        self.load = self.reload()
+
+    def put(self):
+        pass
+
+    @HelperMethod
+    def reload(self):
+        try:
+            surface = pygame.image.load(f"{gpath}/{self.path}{self.imgname}")
+            if self.alpha is False: return surface.convert()
+            else:                   return surface.convert_alpha()
+        except pygame.error:      log.error(f"Error occured during loading texture from path [{gpath}/{self.path}{self.imgname}].")
+        except FileNotFoundError: log.error(f"Texture from path [{gpath}/{self.path}{self.imgname}] not found.")
