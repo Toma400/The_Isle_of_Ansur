@@ -7,8 +7,6 @@ from core.scripts import event_handler
 from core.utils import *
 
 def main_circle():
-    #dyn_screen = [run_screen()] # list instead of variable allows for further use of run_screen() in gui_handler (both read-write, unlike 'screen' below)
-    #bgs = bgm_screen()  # selects menu panorama
     dyn_screen = Screen()
 
     script_loader() # loads all scripts to be used by script_handler

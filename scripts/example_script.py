@@ -12,10 +12,11 @@ class ExampleScript(ioaScript):
     #-----------------------------
     # Arguments for run() can be:
     #-----------------------------
-    # *args - put it always if you do not use all of elements below:
+    # *args - put it always, even if arguments below are used:
     #---
     # screen    - if you want to interfere with screen
     # pg_events - if you want to use PyGame events
+    # fg_events - if you want to access IoA events
     #====================================================================
     def run(self, *args, **kwargs):
         pass # here you write your code

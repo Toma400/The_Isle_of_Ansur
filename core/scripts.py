@@ -1,3 +1,4 @@
+import logging as log
 #==========|=====================================================================================
 # EVENT    | Handles events happening in game and manages forged_events composition.
 # HANDLER  |
@@ -24,7 +25,7 @@ def script_handler(event_container: list, screen, pg_events):
         try:
             if i.event in event_container:
                 i.run(i, screen, pg_events, fg_events=event_container)
-        except AttributeError: pass
+        except AttributeError: ioaScript.subclasses.remove(i); log.warning(f"Script [{i.__name__}] had AttributeError. Removing it from running scripts...")
 
 #==========|=====================================================================================
 # HELPERS  | Functions to clean up code above
