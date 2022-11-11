@@ -246,11 +246,11 @@ class Text:
         screen.blit(txtobj, (self.pos[0], self.pos[1]))
 
     @Callable
-    def move(self, dest: tuple):
+    def move(self, dest: tuple): # <------------------ THIS IS NOT "MOVE", BUT RATHER "BLIT ALTERNATIVE"
         """Changes initial position of the text. Needs reusing of `put()` if done after blitting text."""
         self.pos        = self.pos_unpacker(dest)          # px value (based on cell%/align given)
         self.cellpos    = self.iterate_rev_cells(self.pos) # cell%    (based on previous calculations)
-        self.rect       = pygame.rect.Rect(self.pos) if self.is_rect else self.field()
+        self.update()
 
     @Callable
     def resize(self, dest: int):
@@ -260,21 +260,21 @@ class Text:
     def langstring(self):
         """Converts -text- passed to the value of respective key in main language file"""
         import toml; t = toml.load(f"{gpath}/core/lang/{self.lang}.toml")
-        self.text = t[self.key]
+        self.text     = t[self.key]
+        self.update()
 
     @Callable
     def langjstring(self, modtype: str, modid: str = "ansur"):
         """Converts -text- passed to the value of respective key in language file of pack with specified type & ID"""
-        try:
-            read = json_read(f"{modtype}/{modid}/lang.json", self.lang)
+        try: read = json_read(f"{modtype}/{modid}/lang.json", self.lang)
         except KeyError:
-            try:
-                read = json_read(f"{modtype}/{modid}/lang.json", "english")
+            try: read = json_read(f"{modtype}/{modid}/lang.json", "english")
             except KeyError:
                 log.warning(
                     f"Module {modid} does not have properly set language value for {self.key}. Please contact the developer of this module for help.")
                 return langstring("system__text_load_fail")
-        self.text = read[self.key]
+        self.text     = read[self.key]
+        self.update()
 
     def collider(self):
         """Returns if mouse was colliding with the text"""
@@ -285,20 +285,26 @@ class Text:
         return self.collider() and pygame.mouse.get_pressed()[mb]
 
     @HelperMethod
+    def update(self):
+        """Updates the object with crucial elements (collisions)"""
+        self.txt_size = self.fontobj.size(self.text)
+        self.rect     = self.field()
+
+    @HelperMethod
     def pos_unpacker(self, dest_tp: tuple):
         if len(dest_tp) > 4: raise ValueError (f"Text object -pos- argument cannot take more than four arguments. Arguments given: {len(dest_tp)}.")
 
         def iterate_varied_cells(values: tuple):
             no = 0; values = list(values)
             for i in values:
-                if type(i) == int and 100 >= i >= 0:
+                if type(i) == int and 100 >= i >= 0: # alignment: default (left/above)
                     if not no+2 % 2: values[no] = returnCell(i, "x")
                     else:            values[no] = returnCell(i, "y")
-                if type(i) == int and -100 <= i < 0:
+                if type(i) == int and -100 <= i < 0: # alignment: reverse (right/bottom)
                     ic = i*-1
                     if not no+2 % 2: values[no] = returnCell(100, "x") - self.txt_size[0] - returnCell(ic, "x")
                     else:            values[no] = returnCell(100, "y") - self.txt_size[1] - returnCell(ic, "y")
-                if type(i) == str and i == "c" and no < 2:
+                if type(i) == str and i == "c" and no < 2: # alignment: center
                     if not no+2 % 2: values[no] = returnCell(100, "x") / 2 - self.txt_size[0] / 2
                     else:            values[no] = returnCell(100, "y") / 2 - self.txt_size[1] / 2
                     if self.is_rect: values[no+2] = "c"

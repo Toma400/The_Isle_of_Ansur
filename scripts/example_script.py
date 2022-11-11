@@ -14,7 +14,7 @@ class ExampleScript(ioaScript):
     #-----------------------------
     # *args - put it always if you do not use all of elements below:
     #---
-    # screen - if you want to interfere with screen
+    # screen    - if you want to interfere with screen
     # pg_events - if you want to use PyGame events
     #====================================================================
     def run(self, *args, **kwargs):
