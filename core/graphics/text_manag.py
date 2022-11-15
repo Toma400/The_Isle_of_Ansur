@@ -219,6 +219,7 @@ class Text:
         # positions
         self.pos        = self.pos_unpacker(pos)           # px value (based on cell%/align given)
         self.cellpos    = self.iterate_rev_cells(self.pos) # cell%    (based on previous calculations)
+        self.rawpos     = pos
         # square objects
         self.is_rect    = len(pos) == 4 # checks if position given is simple (len=2) or rectangular (len=4)
         self.rect       = pygame.rect.Rect(self.pos) if self.is_rect else self.field()
@@ -284,10 +285,16 @@ class Text:
         """Returns if mouse was colliding with the text when specific mouse button was pressed"""
         return self.collider() and pygame.mouse.get_pressed()[mb]
 
+    #================|===========================================================================================
+    # HELPER SECTION | Used in callable methods <> should be avoided to be called in instance (outside of class)
+    #================|===========================================================================================
     @HelperMethod
     def update(self):
         """Updates the object with crucial elements (collisions)"""
+        self.fontobj  = Font(f"{gpath}/core/assets/fonts/{self.txt_font}", txt_size(self.size))
         self.txt_size = self.fontobj.size(self.text)
+        self.pos      = self.pos_unpacker(self.rawpos)
+        self.cellpos  = self.iterate_rev_cells(self.pos)
         self.rect     = self.field()
 
     @HelperMethod
