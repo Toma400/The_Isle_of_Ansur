@@ -64,15 +64,15 @@ def rendPut(screen, data: tuple):
 #===========|========================================================
 # Single element:
 def returnCell(pos, axis):
+    """Returns pixels of specific % of screen passed"""
     if axis == "x": svc = scx("svx") / 100
-    else: svc = scx("svy") / 100
-    return pos * svc
+    else:           svc = scx("svy") / 100
+    return int(pos * svc)
 
 # Double element:
 def returnCells(pos_x, pos_y):
-    # Works for both positions and length/height values
-    svxc = scx("svx") / 100; svyc = scx("svy") / 100 # finds out cell size
-    return pos_x * svxc, pos_y * svyc  # returns %posi into pixel posi
+    """Returns pixels of specific % of screen passed"""
+    return returnCell(pos_x, "x"), returnCell(pos_y, "y")
 
 # Any paired element
 def iterateCells(values: tuple):
@@ -86,8 +86,8 @@ def iterateCells(values: tuple):
 # Pixels to cell%:
 def revCell(pos, axis):
     if axis == "x": svc = scx("svx") / 100
-    else: svc = scx("svy") / 100
-    return pos / svc
+    else:           svc = scx("svy") / 100
+    return int(pos / svc)
 
 def iterateRevCells(values: tuple):
     axis = 2; values = list(values)
@@ -212,8 +212,6 @@ class Image:
 
     @HelperMethod
     def pos_unpacker(self, dest_tp: tuple):
-        if len(dest_tp)   == 4: retval = returnCells(dest_tp[0], dest_tp[1]), returnCells(dest_tp[2], dest_tp[3]); retval = tuple(tuple(map(int, tup)) for tup in retval)
-        elif len(dest_tp) == 2: retval = returnCells(dest_tp[0], dest_tp[1]);                                      retval = tuple(map(int, retval))
+        if len(dest_tp)   == 4: return returnCells(dest_tp[0], dest_tp[1]), returnCells(dest_tp[2], dest_tp[3])
+        elif len(dest_tp) == 2: return returnCells(dest_tp[0], dest_tp[1])
         else:                   raise ValueError(f"Invalid value amount for -pos- argument of Image object (should be 2 or 4). Values given: {len(dest_tp)}.")
-
-        return retval
