@@ -1,6 +1,6 @@
 import pygame; pygame.init(); pygame.mixer.init()
-from core.graphics.gh_system import run_screen, bgm_screen, Screen
 from core.graphics.gui_types import gui_handler
+from core.graphics.gh_system import Screen
 from core.sounds.music import music_handler
 from core.scripts import script_handler
 from core.scripts import event_handler

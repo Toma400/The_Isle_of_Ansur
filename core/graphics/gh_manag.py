@@ -1,4 +1,4 @@
-from core.decorators import HelperMethod, Callable
+from core.decorators import HelperMethod, Callable, Deprecated, SoftDeprecated
 from PIL import Image as PILImage
 from operator import sub
 from core.utils import *
@@ -11,6 +11,7 @@ import pygame
 #========|===========================================================
 # Basic:
 def imgLoad(path, name="", alpha=False): # name is optional, if you want to separate folder path from file for some reason
+    """Function-aimed alternative to Image.reload()"""
     try:
         surface = pygame.image.load(f"{gpath}/{path}{name}")
         if alpha is False: return surface.convert()
@@ -18,6 +19,7 @@ def imgLoad(path, name="", alpha=False): # name is optional, if you want to sepa
     except pygame.error: log.error(f"Error occured during loading texture from path [{gpath}/{path}{name}].")
     except FileNotFoundError: log.error(f"Texture from path [{gpath}/{path}{name}] not found.")
 
+@Deprecated("core.graphics.gh_manag.Image")
 def imgRes(path, name, dest_x, dest_y, variation=""): # path should be folder path, written like so: [stats/]
     # "variation" let you make two or three versions of the same img by naming it differently (for example: icon_name.png)
     dir_cleaner(path)
@@ -25,15 +27,18 @@ def imgRes(path, name, dest_x, dest_y, variation=""): # path should be folder pa
     image = image.resize((dest_x, dest_y)); image.save(f"{gpath}/_temp/img/{path}{variation}{name}")
 
 # Blits:
+@Deprecated("core.graphics.gh_manag.Image")
 def imgIter(screen, image):
     for x in range(scx("svx") // image.get_width() + 1):
         for y in range(scx("svy") // image.get_height() + 1):
             screen.blit(image, (x*image.get_width(), y*image.get_height()))
 
+@Deprecated("core.graphics.gh_manag.Image")
 def imgFull(screen, folderpath, imgname, alpha=False): # folderpath should be written like so: [stats/]
     imgRes(folderpath, imgname, scx("svx"), scx("svy"))
     screen.blit(imgLoad(f"_temp/img/{folderpath}{imgname}", alpha=alpha), (0, 0))
 
+@Deprecated("core.graphics.gh_manag.Image")
 def imgPut(screen, folderpath, imgname, size_x, size_y, pos_x, pos_y, alpha=False, no_blit=False): # size-pos should be cell%
     # folderpath should be written like so: [stats/]
     fs_x, fs_y = returnCells(size_x, size_y)
@@ -42,6 +47,7 @@ def imgPut(screen, folderpath, imgname, size_x, size_y, pos_x, pos_y, alpha=Fals
     if no_blit: return imgLoad(f"_temp/img/{folderpath}{imgname}", alpha=alpha), (fpos_x, fpos_y) # for listboxes use
     else: screen.blit(imgLoad(f"_temp/img/{folderpath}{imgname}", alpha=alpha), (fpos_x, fpos_y)) # for normal use
 
+@Deprecated("core.graphics.gh_manag.Image")
 def imgPutRes(screen, folderpath, imgname, pos_x, pos_y, endpos_x, endpos_y, alpha=False, no_blit=False, variation=""): # variation where size is based on start-end ratio
     # folderpath should be written like so: [stats/]
     spos_x, spos_y = returnCells(pos_x, pos_y)
@@ -194,11 +200,41 @@ class Image:
         self.load    = self.reload()
 
     @Callable
-    def put(self, screen):
+    def size(self, dest: tuple):
+        """Allows for setting up size of the image. Only works if object's -pos- had two values passed. Uses cell% as values"""
+        if self.fpos: raise ValueError(f"""Tried using -size- method on Image having rectangular position. Method should be used only for objects using two values for -pos- argument""")
+        else:
+            override = (self.rawpos[0], self.rawpos[1], self.rawpos[0]+dest[0], self.rawpos[1]+dest[1])
+            self.rawpos = override
+            self.fpos   = True
+            self.pos    = self.pos_unpacker(override)
+
+    @Callable
+    def full(self):
+        """Resizes the image to cover whole screen. Used mostly for panorama and backgrounds. Common variation name: -full-"""
+        override = (0, 0, 100, 100)
+        self.rawpos = override
+        self.fpos   = True
+        self.pos    = self.pos_unpacker(override)
+
+    @Callable
+    def put(self, screen, variation: str = None):
+        """Blits the image on given position, or on given rectangle (resizing the image).
+        variation | Allows for setting name for resized image (recommended when using -full- method)"""
         if not self.fpos: screen.blit(self.load, self.pos)
         else:
-            self.resize(tuple(map(sub, self.pos[1], self.pos[0]))) # resizes the image to match the rectangle given
+            self.resize(tuple(map(sub, self.pos[1], self.pos[0])), variation) # resizes the image to match the rectangle given
             screen.blit(self.load, self.pos[0])
+
+    @Callable
+    def iterblit(self, screen):
+        """Blits the image in tileable fashion across given rectangle (in contrary of -put- method). You can still resize image itself earlier to manipulate size of image"""
+        if not self.fpos: raise ValueError("Tried using -iter- method on Image having two values for -pos- argument, while said method require four values.")
+        else:
+            aimed = self.pos[1]
+            for x in range(aimed[0] // self.load.get_width() + 1):
+                for y in range(aimed[1] // self.load.get_height() + 1):
+                    screen.blit(self.load, (x * self.load.get_width(), y * self.load.get_height()))
 
     @HelperMethod
     def reload(self):

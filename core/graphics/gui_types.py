@@ -19,8 +19,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         #==============================================================================================================
         case "menu":
 
-            imgFull(screen, folderpath=dyn_screen.panorama[0], imgname=dyn_screen.panorama[1])
-            imgPut(screen, folderpath="core/assets/visuals/", imgname="logo.png", size_x=80, size_y=16, pos_x=10, pos_y=3, alpha=True)
+            Image(path=dyn_screen.panorama[0], file=dyn_screen.panorama[1], pos=(0, 0)).full().put(screen)
+            Image(path="core/assets/visuals/", file="logo.png",             pos=(10, 3, 90, 19)).put(screen)
             put_abstext(screen, text=f"{SysRef.status} {SysRef.version}", font_cat="menu", size=22, pos_x=0.5, pos_y=96, colour="#4F3920")
 
             gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour="#4E3510")
