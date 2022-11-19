@@ -1,5 +1,6 @@
 from core.decorators import HelperMethod, Callable
 from PIL import Image as PILImage
+from operator import sub
 from core.utils import *
 import logging as log
 import pygame
@@ -157,40 +158,62 @@ class Image:
 
     alpha = True # transparency
 
-    def __init__(self, path: str, file: str):
+    def __init__(self, path: str, file: str, pos: tuple):
         """
-        path | Folder path to the image, without file itself (needs to end with "/")
+        path | Folder path to the image (should end with "/")
         file | File name with extension
+        pos  | Coordinates of the image (tuple of two or four values). If tuple has four values, it will draw rectangle and resize image to fit within it.
+             | You can use -ratioCell- to match positions to squared form:
+             |    (0, 0, ratioCell(10), 10) <--- will return square of height of 10% of screen and exact width (of 10%*ratio)
         """
         self.path    = path
         self.imgname = file
         self.load    = self.reload()
+        self.rawpos  = pos
+        self.fpos    = len(pos) == 4           # tells if position given is rectangular (will disable optional size argument + resizing)
+        self.pos     = self.pos_unpacker(pos)
 
         # shorteners for functions
         self.res     = self.resize
 
     @Callable
     def swap_alpha(self):
+        """Swaps alpha of the image"""
         self.alpha = not self.alpha
         self.load  = self.reload()
 
     @Callable
     def resize(self, size: tuple, variation: str = ""):
+        """Resizes the image, creating a copy in _temp folder. Uses px values, so returnCells() method in arguments is required to get cell% values"""
         dir_cleaner(self.path)
-        image = PILImage.open(f"{gpath}/{self.path}{self.imgname}")
-        image = image.resize(size); image.save(f"{gpath}/_temp/img/{self.path}{variation}{self.imgname}")
+        image = PILImage.open(f"{self.path}{self.imgname}")
 
-        self.imgname = f"{variation}{self.imgname}"
-        self.load = self.reload()
+        self.path    = f"_temp/img/{self.path}"         # changing path to _temp
+        self.imgname = f"{variation}{self.imgname}"     # changing img name to include variation
+        image        = image.resize(size); image.save(f"{self.path}{self.imgname}")
+        self.load    = self.reload()
 
-    def put(self):
-        pass
+    @Callable
+    def put(self, screen):
+        if not self.fpos: screen.blit(self.load, self.pos)
+        else:
+            self.resize(tuple(map(sub, self.pos[1], self.pos[0]))) # resizes the image to match the rectangle given
+            screen.blit(self.load, self.pos[0])
 
     @HelperMethod
     def reload(self):
+        """Main updating method after working on image file, reloads image"""
         try:
             surface = pygame.image.load(f"{gpath}/{self.path}{self.imgname}")
             if self.alpha is False: return surface.convert()
             else:                   return surface.convert_alpha()
         except pygame.error:      log.error(f"Error occured during loading texture from path [{gpath}/{self.path}{self.imgname}].")
         except FileNotFoundError: log.error(f"Texture from path [{gpath}/{self.path}{self.imgname}] not found.")
+
+    @HelperMethod
+    def pos_unpacker(self, dest_tp: tuple):
+        if len(dest_tp)   == 4: retval = returnCells(dest_tp[0], dest_tp[1]), returnCells(dest_tp[2], dest_tp[3]); retval = tuple(tuple(map(int, tup)) for tup in retval)
+        elif len(dest_tp) == 2: retval = returnCells(dest_tp[0], dest_tp[1]);                                      retval = tuple(map(int, retval))
+        else:                   raise ValueError(f"Invalid value amount for -pos- argument of Image object (should be 2 or 4). Values given: {len(dest_tp)}.")
+
+        return retval

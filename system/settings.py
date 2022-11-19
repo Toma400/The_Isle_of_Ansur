@@ -26,7 +26,7 @@ def default_settings(callout=None):
 # be found in docs (glossary.md).
 #-------------------------------
 
-@Deprecated("core.utils | scx")
+@Deprecated("core.utils.scx")
 def settings(callout):
   if callout == "language":
     return json_read("settings.json", "language")
