@@ -1,4 +1,4 @@
-from core.decorators import HelperMethod, Callable, Deprecated, SoftDeprecated
+from core.decorators import HelperMethod, Callable, Deprecated
 from PIL import Image as PILImage
 from operator import sub
 from core.utils import *
@@ -251,3 +251,14 @@ class Image:
         if len(dest_tp)   == 4: return returnCells(dest_tp[0], dest_tp[1]), returnCells(dest_tp[2], dest_tp[3])
         elif len(dest_tp) == 2: return returnCells(dest_tp[0], dest_tp[1])
         else:                   raise ValueError(f"Invalid value amount for -pos- argument of Image object (should be 2 or 4). Values given: {len(dest_tp)}.")
+
+    def inspect(self):
+        insp = (f"""
+        Inspector >>> printing values of requested Image:
+        =============================================================
+        Filepath:    {self.path}{self.imgname}
+        RawPosition: {self.rawpos}
+           NonRaw:   {self.pos}
+        IsAlpha:     {self.alpha}
+        """)
+        print(insp); logging.info(insp); return insp

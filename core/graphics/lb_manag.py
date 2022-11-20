@@ -1,14 +1,80 @@
-from core.graphics.gh_manag import returnCell, revCell, nestCell, rendPut, imgPutRes
+from core.graphics.gh_manag import returnCell, returnCells, revCell, nestCell, nestCells, rendPut, imgPutRes, Image
+from core.decorators import Callable, HelperMethod
 from core.graphics.text_manag import put_text
 from core.utils import scx
-import pygame
+from enum import Enum, auto
+import pygame, logging
 
 #========|===========================================================
 # LISTBX | Values to state:
 #--------|---------------
 #        | x/y/end_x/end_y = % of screen
 #========|===========================================================
-class ListBoxPattern:
+class PatternType(Enum):
+    IMAGE = auto()
+    TEXT  = auto()
+
+#def pattern_builder(ptype: PatternType.name, *args, **kwargs):
+#    match ptype:
+#        case PatternType.IMAGE: return Image(*args, **kwargs)
+#        case PatternType.TEXT:  return None
+
+#example_pattern = [
+#    pattern_builder(PatternType.IMAGE, path="core/assets/visuals/", file="skill_1.jpg", pos=(0, 0, 10, 10))
+#]
+
+class ListBox:
+
+    element_cap   = scx("lbam")
+    pattern: list = None
+
+    def __init__(self, main_rect: tuple):
+        """
+        main_rect | Tuple of cell% values to draw main rectangle
+        """
+        # Raw values (cell%, as passed, just after some checks to validate their values)
+        self.raw_mnrect  = self.tuple_test(main_rect, "-main_rect-") #| Main rectangle (containing list elements)
+        self.raw_elrect  = self.elrect_builder(self.raw_mnrect)      #| Element rectangle (containing patterns)
+
+        self.mnrect      = returnCells(self.raw_mnrect[0], self.raw_mnrect[1]), returnCells(self.raw_mnrect[2], self.raw_mnrect[3])
+        self.elrect      = returnCells(self.raw_elrect[0], self.raw_elrect[1])
+
+    #@Callable
+    #def build_pattern(self, ptype: PatternType, pos: tuple, *args, **kwargs):
+    #    if len(pos) != 4: raise ValueError(f"Pattern -pos- argument has to contain 4 values.")
+    #    repos = nestCells(pos[0], pos[1], self.elrect[0], self.elrect[1]), nestCells(pos[2], pos[3], self.elrect[2], self.elrect[3])
+    #    print(repos)
+        #match ptype:
+        #    case PatternType.IMAGE: self.pattern.append(Image(pos=repos, *args, **kwargs))
+        #    case PatternType.TEXT:  self.pattern.append(None)
+
+    @Callable
+    def put(self, screen):
+        for i in self.pattern:
+            i.put(screen)
+
+    @HelperMethod
+    def tuple_test(self, checked: tuple, checktype: str = ""):
+        if len(checked) != 4:                                      raise ValueError(f"Passed {checktype} argument with {len(checked)} values instead of 4.")
+        if checked[2]-checked[0] < 0 or checked[3]-checked[1] < 0: raise ValueError(f"Passed {checktype} argument with values of negative rectangle.")
+        return checked
+
+    @HelperMethod
+    def elrect_builder(self, base: tuple):
+        return base[2]-base[0], (base[3]-base[1]) // self.element_cap
+
+    def inspect(self):
+        insp = (f"""
+        Inspector >>> printing values of requested ListBox:
+        =============================================================
+        RawMainRect:    {self.raw_mnrect}
+           NonRaw:      {self.mnrect}
+        RawElementRect: {self.raw_elrect}
+           NonRaw:      {self.elrect}
+        """)
+        print(insp); logging.info(insp); return insp
+
+class OldListBoxPattern:
 
     def __init__(self, *args, **kwargs):
         self.rects = {}
@@ -23,7 +89,7 @@ class ListBoxPattern:
 
         # issue: RectObj must be nested, meanwhile its creation is outside of scope (it does not know ListBoxRect to refer)
 
-class ListBox:
+class OldListBox:
 
     @staticmethod
     def range_counter(page: int): # for listbox ranges visualised on screen, based on settings value
@@ -33,7 +99,7 @@ class ListBox:
             case 2:     return (scx("lbam"),            page * scx("lbam") - 1) # page_2: 5-9 for '5' value
             case other: return ((page-1) * scx("lbam"), page * scx("lbam") - 1) # page_3+: 10-14, 15-19, ... for '5' value
 
-    def __init__(self, x, y, end_x, end_y, reflist: list, pattern: ListBoxPattern):
+    def __init__(self, x, y, end_x, end_y, reflist: list, pattern: OldListBoxPattern):
         self.rect = pygame.Rect(returnCell(x, "x"),
                                 returnCell(y, "y"),
                                 returnCell(end_x, "x"),
