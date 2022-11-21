@@ -262,3 +262,28 @@ class Image:
         IsAlpha:     {self.alpha}
         """)
         print(insp); logging.info(insp); return insp
+
+class NestedImage(Image):
+
+    def __init__(self, path: str, file: str, pos: tuple):
+        """
+        Takes temporary arguments, same as Image class. With difference:
+        pos | in NestedImage it takes relative coordinates, which will
+            | be adjusted to rectangle when -nest- method is used
+        Do not use inherited methods before
+        """
+        self.temppath = path
+        self.tempfile = file
+        self.temppos  = pos
+
+    @Callable
+    def nest(self, nestpos: tuple):
+        """Adjusts given -pos- to rectangle in which Image is nested. Needs four values inside tuple"""
+        if len(nestpos) != 4: raise ValueError(f"Passed argument to -nest- method with {len(nestpos)} values instead of required 4.")
+
+        self.temppos        = tuple(i+nestpos[0] for i in self.temppos)
+
+    @Callable
+    def sup(self):
+        """Should be called only once, after using -nest- method"""
+        super().__init__(self.temppath, self.tempfile, self.temppos)

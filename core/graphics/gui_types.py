@@ -67,7 +67,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
         #==============================================================================================================
         case "settings":
-            imgFull(screen, "core/assets/visuals/", "menu_background.jpg")
+            Image("core/assets/visuals/", "menu_background.jpg", (0, 0)).full().put(screen)
 
             put_text(screen, text=langstring("menu__button_settings"),    font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
             gt1 = put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour="#4E3510")
@@ -226,7 +226,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
         #==============================================================================================================
         case "pack_manag":
-            imgFull(screen, "core/assets/visuals/", "menu_background.jpg")
+            Image("core/assets/visuals/", "menu_background.jpg", (0, 0)).full().put(screen)
 
             put_text(screen, text=langstring("menu__button_packs"),       font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
             #gt1 = put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour="#4E3510")
@@ -254,7 +254,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         # ==============================================================================================================
         case "new_game":
             ccrt_col = {"active": "#354A07", "not_set": "#4F4C49"}
-            imgFull(screen, "core/assets/visuals/", "menu_background.jpg")
+            Image("core/assets/visuals/", "menu_background.jpg", (0, 0)).full().put(screen)
 
             put_text(screen, text=langstring("menu__button_start"),        font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
             gtx = put_text(screen, text=langstring("menu__sett_back"),     font_cat="menu", size=30, align_x="center", pos_y=92, colour="#4E3510")

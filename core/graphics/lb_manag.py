@@ -30,7 +30,7 @@ class ListBox:
 
     def __init__(self, main_rect: tuple):
         """
-        main_rect | Tuple of cell% values to draw main rectangle
+        main_rect | Tuple of cell% values to draw main rectangle (needs to have four values)
         """
         # Raw values (cell%, as passed, just after some checks to validate their values)
         self.raw_mnrect  = self.tuple_test(main_rect, "-main_rect-") #| Main rectangle (containing list elements)
@@ -55,7 +55,7 @@ class ListBox:
 
     @HelperMethod
     def tuple_test(self, checked: tuple, checktype: str = ""):
-        if len(checked) != 4:                                      raise ValueError(f"Passed {checktype} argument with {len(checked)} values instead of 4.")
+        if len(checked) != 4:                                      raise ValueError(f"Passed {checktype} argument with {len(checked)} values instead of required 4.")
         if checked[2]-checked[0] < 0 or checked[3]-checked[1] < 0: raise ValueError(f"Passed {checktype} argument with values of negative rectangle.")
         return checked
 
