@@ -9,6 +9,10 @@ def run():
     guiobj     = dyn_screen.gui       # all objects used later to be drawn
     pg_gui     = dyn_screen.gui_manag # pygame_gui manager
 
+    bcs_events = {
+        "sl_in": None
+    }
+
     clock = pygame.time.Clock()
     con = []
     while not con:
@@ -20,9 +24,14 @@ def run():
             if event.type == pygame.QUIT or pygame.key.get_pressed()[pygame.K_ESCAPE]:
                 con.append("end")
 
+            if event.type == pygame_gui.UI_SELECTION_LIST_NEW_SELECTION:
+                bcs_events["sl_in"] = event.text
+            if event.type == pygame_gui.UI_SELECTION_LIST_DROPPED_SELECTION:
+                bcs_events["sl_in"] = None
+
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == guiobj.login__enter:
-                    print('Hello World!')
+                if event.ui_element == guiobj.login__enter and bcs_events["sl_in"] is not None:
+                    print (bcs_events["sl_in"])
 
             pg_gui.process_events(event)
 
