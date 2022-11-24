@@ -27,7 +27,7 @@ class DefaultRun:
   # https://github.com/pyinstaller/pyinstaller/blob/v4.5.1/doc/usage.rst
   # ----------------------------------------------------------------------
   forge_builder = [
-    core_path + "bcs.py",
+    core_path + "bcset.py",
     "--onedir",
     "--onefile",
     "--noupx",

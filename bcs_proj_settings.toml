@@ -1,2 +1,0 @@
-"manual_ids" = false     # if false (default), item IDs for example, will be category driven = {category}_{id_given}. If true, you will fully control the id
-"ids_used"   = ["ansur"]
