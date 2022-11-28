@@ -68,3 +68,22 @@ def cell(value, axis):
 
 def cells(x, y):
     return cell(x, GH.X), cell(y, GH.Y)
+
+def rev_cell(value, axis):
+    return int(value / (GH.W[axis] // 100))
+
+def rev_cells(x, y):
+    return rev_cell(x, GH.X), rev_cell(y, GH.Y)
+
+def ratio_cell(value: int = None, rev_mode=False):
+    """Used to get square-like rectangles"""
+    retval = None
+    match rev_mode:
+        case False: to_px = cell(value, GH.Y); retval = rev_cell(to_px, GH.X) # returns % for x-axis based on the same % of y-axis (useful for square based on y-axis)
+        case True:  to_px = cell(value, GH.X); retval = rev_cell(to_px, GH.Y) # reverse to above, returns % for y-axis; much rarer use, I suppose
+    return retval
+
+def ratio_adv(value: int = None, rev_mode=False):
+    """Used to automate both values"""
+    if rev_mode: return cell(value, GH.X),             cell(ratio_cell(value, True), GH.Y)
+    else:        return cell(ratio_cell(value), GH.X), cell(value, GH.Y)

@@ -5,7 +5,7 @@ import pygame_gui
 
 def run():
     dyn_screen = Screen()             # pygame screen
-    guitype    = ["menu", None]       # gui category being currently used
+    guitype    = ["login", None]      # gui category being currently used
     guiobj     = dyn_screen.gui       # all objects used later to be drawn
     pg_gui     = dyn_screen.gui_manag # pygame_gui manager
 
@@ -16,7 +16,7 @@ def run():
     clock = pygame.time.Clock()
     con = []
     while not con:
-        delta = clock.tick(60) / 1000.0
+        delta  = clock.tick(60) / 1000.0
         screen = dyn_screen.screen  # read-only, but simpler value to be used by most features
 
         pg_events = pygame.event.get()  # variablised so it can be passed to functions w/o calling more than one per frame
@@ -33,6 +33,7 @@ def run():
                 if event.ui_element == guiobj.login__enter and bcs_events["sl_in"] is not None:
                     print (bcs_events["sl_in"])
 
+            guiobj.menus(guitype[0])  # gui initialiser
             pg_gui.process_events(event)
 
 
