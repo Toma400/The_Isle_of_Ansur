@@ -33,7 +33,6 @@ def run():
                 if event.ui_element == guiobj.login__enter and bcs_events["sl_in"] is not None:
                     print (bcs_events["sl_in"])
 
-            guiobj.menus(guitype[0])  # gui initialiser
             pg_gui.process_events(event)
 
 
