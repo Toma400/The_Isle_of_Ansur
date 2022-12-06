@@ -1,7 +1,6 @@
 from core.graphics.text_manag import put_abstext, put_text, langstring, Text
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
-from core.graphics.gh_system import run_screen
 from core.graphics.gh_manag import *
 
 #===========|==================================================================================================
@@ -20,7 +19,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         case "menu":
 
             Image(path=dyn_screen.panorama[0], file=dyn_screen.panorama[1], pos=(0, 0)).full().put(screen)
-            Image(path="core/assets/visuals/", file="logo.png",             pos=(10, 3, 90, 19)).put(screen)
+            dyn_screen.gui("menu__gh_logo").put(screen)
+
             put_abstext(screen, text=f"{SysRef.status} {SysRef.version}", font_cat="menu", size=22, pos_x=0.5, pos_y=96, colour="#4F3920")
 
             gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour="#4E3510")
@@ -67,7 +67,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
         #==============================================================================================================
         case "settings":
-            Image("core/assets/visuals/", "menu_background.jpg", (0, 0)).full().put(screen)
+            dyn_screen.gui("menu__gh_background").full().put(screen)
 
             put_text(screen, text=langstring("menu__button_settings"),    font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
             gt1 = put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour="#4E3510")
@@ -226,7 +226,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
         #==============================================================================================================
         case "pack_manag":
-            Image("core/assets/visuals/", "menu_background.jpg", (0, 0)).full().put(screen)
+            dyn_screen.gui("menu__gh_background").full().put(screen)
 
             put_text(screen, text=langstring("menu__button_packs"),       font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
             #gt1 = put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour="#4E3510")

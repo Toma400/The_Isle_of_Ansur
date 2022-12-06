@@ -1,6 +1,7 @@
 from core.file_system.repo_manag import dir_checker
 from utils.text_manag import text_splitter as tspl
 from system.mod_manag import mod_lister
+from core.graphics.gui_objects import GUI_Helper
 from core.graphics.gh_manag import *
 from core.utils import *
 import os, random, pygame
@@ -44,9 +45,13 @@ class Screen:
         self.dyn_screen = [run_screen()]
         self.panorama   = bgm_screen()
         self.screen     = self.dyn_screen[0]
+        self.objects    = GUI_Helper()
 
     def reset(self):
         """hard refresh of screen | should reassign currently used 'screen' variable"""
         self.dyn_screen[0] = run_screen()
         self.screen        = self.dyn_screen[0]
         return self.screen
+
+    def gui(self, value: str):
+        return self.objects.get_element(value)

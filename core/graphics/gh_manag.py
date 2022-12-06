@@ -105,7 +105,8 @@ def iterateRevCells(values: tuple):
 
 # Constructs cell% for user-given length (can be used for nested cells):
 def nestCell(pos, comparation):
-    svc = comparation / 100
+    if comparation != 0: svc = comparation / 100
+    else:                svc = pos / 100
     return pos * svc
 
 # Constructs cell% for two user-given lengths (can be used for nested cells):
@@ -151,6 +152,7 @@ def switch_scr(screen, gui_aimed):
     screen.fill("#000000"); log.debug(f"Switching screen to guitype value: [{gui_aimed}]")
     return gui_aimed
 
+# Checks if temp directory exists, and if not, then creates one
 def dir_cleaner(path):
     if not os.path.isdir(f"{gpath}/_temp/img/{path}"):
         os.makedirs(f"{gpath}/_temp/img/{path}")
@@ -181,6 +183,8 @@ class Image:
 
         # shorteners for functions
         self.res     = self.resize
+        self.col     = self.collision
+        self.is_res  = False                   # check for resizing
 
     @Callable
     def swap_alpha(self):
@@ -191,11 +195,14 @@ class Image:
     @Callable
     def resize(self, size: tuple, variation: str = ""):
         """Resizes the image, creating a copy in _temp folder. Uses px values, so returnCells() method in arguments is required to get cell% values"""
-        dir_cleaner(self.path)
         image = PILImage.open(f"{self.path}{self.imgname}")
 
-        self.path    = f"_temp/img/{self.path}"         # changing path to _temp
-        self.imgname = f"{variation}{self.imgname}"     # changing img name to include variation
+        if self.is_res is False:                            # debugging feature to avoid looped relocation of path (bug #75)
+            dir_cleaner(self.path)                          # prepare _temp directory
+            self.path    = f"_temp/img/{self.path}"         # changing path to _temp
+            self.imgname = f"{variation}{self.imgname}"     # changing img name to include variation
+            self.is_res  = True
+
         image        = image.resize(size); image.save(f"{self.path}{self.imgname}")
         self.load    = self.reload()
 
@@ -236,6 +243,11 @@ class Image:
                 for y in range(aimed[1] // self.load.get_height() + 1):
                     screen.blit(self.load, (x * self.load.get_width(), y * self.load.get_height()))
 
+    def collision(self):
+        """Returns whether mouse is colliding with the image"""
+        rect_py = pygame.rect.Rect(self.pos[0], self.pos[1], self.load.get_width(), self.load.get_height())
+        return rect_py.collidepoint(pygame.mouse.get_pos())
+
     @HelperMethod
     def reload(self):
         """Main updating method after working on image file, reloads image"""
@@ -270,7 +282,7 @@ class NestedImage(Image):
         Takes temporary arguments, same as Image class. With difference:
         pos | in NestedImage it takes relative coordinates, which will
             | be adjusted to rectangle when -nest- method is used
-        Do not use inherited methods before
+        Do not use inherited methods before running -sup- method
         """
         self.temppath = path
         self.tempfile = file
@@ -281,7 +293,7 @@ class NestedImage(Image):
         """Adjusts given -pos- to rectangle in which Image is nested. Needs four values inside tuple"""
         if len(nestpos) != 4: raise ValueError(f"Passed argument to -nest- method with {len(nestpos)} values instead of required 4.")
 
-        self.temppos        = tuple(i+nestpos[0] for i in self.temppos)
+        self.temppos        = tuple(nestCell(i, nestpos[self.temppos.index(i)]) for i in self.temppos)
 
     @Callable
     def sup(self):
