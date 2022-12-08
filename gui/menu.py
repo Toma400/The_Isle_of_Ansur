@@ -5,7 +5,7 @@ from utils.text_manag import encoded as enc
 from utils.text_manag import langstring as lstr
 from system.settings import settings as settings_check
 from system.log_manag import run_text as logtxt
-from core.system_ref import SysRef
+from core.utils import sysref
 
 import gui.character
 import gui.interface
@@ -29,8 +29,8 @@ def start():
 |__)(-|_\)/(-(-| )  __)| )(_|(_|(_)\)/_)  (_|| )(_|  |__|(_)| )|_ 
                                                          _/  
 ''')
-    print (enc(f"{SysRef.name}\n"))
-    print (align(f"{SysRef.status} {SysRef.version}" + "\n\n", "right"))
+    print (enc(f"{sysref('name')}\n"))
+    print (align(f"{sysref('status')} {sysref('version')}" + "\n\n", "right"))
     is_core_pack_loaded()
     print (align("--------------------", "centre"))
     print (align(lstr("menu__button_start"), "centre"))
@@ -290,7 +290,7 @@ def pack_settings(pack_name):
 # Allows unzipping mods from /pack/ dir and updating
 #----------------------------------------------------
 def pack_remover():
-  non_removable_keys = SysRef.vanilla_modules
+  non_removable_keys = sysref("vanilla_modules")
   stats_rv = os.listdir(f"{gpath}/stats/"); worlds_rv = os.listdir(f"{gpath}/worlds/")
   scripts_rv = os.listdir(f"{gpath}/scripts/")
   def rv(t, tc):

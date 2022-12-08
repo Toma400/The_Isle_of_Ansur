@@ -22,8 +22,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             dyn_screen.gui("menu__gh_logo").put(screen)
 
             if dyn_screen.update and scx("vch"):
-                put_abstext(screen, text=langstring("menu__update"),          font_cat="menu", size=22, pos_x=0.5, pos_y=92, colour="#B0CA60")
-            put_abstext(screen,     text=f"{SysRef.status} {SysRef.version}", font_cat="menu", size=22, pos_x=0.5, pos_y=96, colour="#4F3920")
+                put_abstext(screen, text=langstring("menu__update"),                font_cat="menu", size=22, pos_x=0.5, pos_y=92, colour="#B0CA60")
+            put_abstext(screen,     text=f"{sysref('status')} {sysref('version')}", font_cat="menu", size=22, pos_x=0.5, pos_y=96, colour="#4F3920")
 
             gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour="#4E3510")
             gt2 = put_text(screen, text=langstring("menu__button_load"),     font_cat="menu", size=30, align_x="center", pos_y=34, colour="#4F4C49")

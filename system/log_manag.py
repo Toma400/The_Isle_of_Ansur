@@ -36,11 +36,11 @@ def run_path():
     sys.path.insert(0, f'{spath}')
 
 def run_text():
-    from core.system_ref import SysRef; import os; import sys
+    from core.utils import sysref; import os; import sys
     from core.file_system.repo_manag import deep_file_lister; scripts = deep_file_lister(f"scripts/", ext="py")
     text = f'''
     ---------------------------------------------------------------------------------------
-    Hello in {SysRef.name} logging system! 
+    Hello in {sysref('name')} logging system! 
     This is program initialisation message which will prompt you all important informations
     on current processes. All further info will be wrote during program running.
     
@@ -50,13 +50,13 @@ def run_text():
     {sys.path}
     
     Printing vanilla modules list:
-    {SysRef.vanilla_modules}
+    {sysref('vanilla_modules')}
     Printing scripts:
     {scripts}
     
     Printing init.toml informations:
-    Version:     {SysRef.version} 
-    Build type:  {SysRef.status}
+    Version:     {sysref('version')} 
+    Build type:  {sysref('status')}
     ---------------------------------------------------------------------------------------
     '''
     return text

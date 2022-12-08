@@ -1,7 +1,8 @@
 from os.path import join, isdir, isfile
-from core.system_ref import *
 from os import listdir
 import os, shutil, logging
+
+gpath = os.path.dirname(os.path.abspath("main.py"))
 #================|========================================
 # DIR FUNCTIONS  | To orientate between dirs and files
 #================|========================================
@@ -86,7 +87,6 @@ def deep_file_lister (path, ext=None):
 #================|========================================
 # Creates necessary folders for .gitignore elements
 def folder_init():
-  import os
   folders = [
     f"{gpath}/core/logs", f"{gpath}/saves"
   ]

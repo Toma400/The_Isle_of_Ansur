@@ -1,5 +1,5 @@
 #temporary .py file, just to list all variables that will be needed in RPG system
-from core.system_ref import SysRef
+from core.utils import sysref
 
 class profile:
 
@@ -103,7 +103,7 @@ class profile:
   }
 
   settings = {
-    "save_system":   f"{SysRef.save_system}",
+    "save_system":   f"{sysref('save_system')}",
     "time_system":   settings_checker("time_system"),
     "hunger_thirst": settings_checker("hunger_thirst"),
     "permadeath":    settings_checker("permadeath"),
