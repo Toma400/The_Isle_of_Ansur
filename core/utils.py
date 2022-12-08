@@ -55,7 +55,6 @@ def version_checker():
             chars = re.sub("[0-9]+", "", ver)
             nums  = re.sub("[^0-9]", "", ver)
             ver = f"{nums}.{ord(chars)-97}"
-        print (ver)
         return float(ver)
 
     gitfile = requests.get("https://raw.githubusercontent.com/Toma400/The_Isle_of_Ansur/Alpha/core/system_ref.toml?ref=Alpha")
