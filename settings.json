@@ -11,5 +11,6 @@
   "listbox_mode": "proportional",
   "listbox_amount": 5,
   "listbox_size": 1.0,
-  "text_size": 1.0
+  "text_size": 1.0,
+  "bcs_theme": "default"
 }

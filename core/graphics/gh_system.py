@@ -46,6 +46,7 @@ class Screen:
         self.panorama   = bgm_screen()
         self.screen     = self.dyn_screen[0]
         self.objects    = GUI_Helper()
+        self.update     = version_checker()
 
     def reset(self):
         """hard refresh of screen | should reassign currently used 'screen' variable"""

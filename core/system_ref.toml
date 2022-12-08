@@ -10,8 +10,8 @@ release_status  = "pre alpha"
 release_version = "2"
 
 # CYCLE
-cname = "Between Shadows and Light"
-cycle = "0"
+cycle_name   = "Between Shadows and Light"
+cycle_number = "0"
 
 # TECHNICAL
 save_system = "1.0"

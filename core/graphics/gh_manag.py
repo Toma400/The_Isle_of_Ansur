@@ -225,7 +225,7 @@ class Image:
         self.pos    = self.pos_unpacker(override)
 
     @Callable
-    def put(self, screen, variation: str = None):
+    def put(self, screen, variation: str = ""):
         """Blits the image on given position, or on given rectangle (resizing the image).
         variation | Allows for setting name for resized image (recommended when using -full- method)"""
         if not self.fpos: screen.blit(self.load, self.pos)
