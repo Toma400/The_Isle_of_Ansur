@@ -21,8 +21,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             Image(path=dyn_screen.panorama[0], file=dyn_screen.panorama[1], pos=(0, 0)).full().put(screen, "full")
             dyn_screen.gui("menu__gh_logo").put(screen)
 
-            if dyn_screen.update:
-                put_abstext(screen, text=f"Update is available!",             font_cat="menu", size=22, pos_x=0.5, pos_y=92, colour="#B0CA60")
+            if dyn_screen.update and scx("vch"):
+                put_abstext(screen, text=langstring("menu__update"),          font_cat="menu", size=22, pos_x=0.5, pos_y=92, colour="#B0CA60")
             put_abstext(screen,     text=f"{SysRef.status} {SysRef.version}", font_cat="menu", size=22, pos_x=0.5, pos_y=96, colour="#4F3920")
 
             gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour="#4E3510")
@@ -163,10 +163,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     gt2la = put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=44,    colour=sm1col)
                     gt2ls = put_text(screen, text=langstring("menu__sett_tech_lb_size"),   font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=52,    colour=sm2col)
                     gt2ts = put_text(screen, text=langstring("menu__sett_tech_text_size"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=60, colour="#4E3510")
+                    gt2vn = put_text(screen, text=langstring("menu__sett_tech_ver_notif"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=68, colour="#4E3510")
 
                     # settings values
                     if scx("legu"): put_text(screen, text=langstring("gen__enabled"), font_cat="menu", size=30, pos_x=82, pos_y=12, colour="#1A5856") # legacy unpacking
                     else: put_text(screen,    text=langstring("gen__disabled"),       font_cat="menu", size=30, pos_x=82, pos_y=12, colour="#1A5856")
+                    if scx("vch"): put_text(screen, text=langstring("gen__enabled"),  font_cat="menu", size=30, pos_x=82, pos_y=68, colour="#1A5856") # version notification
+                    else: put_text(screen,    text=langstring("gen__disabled"),       font_cat="menu", size=30, pos_x=82, pos_y=68, colour="#1A5856")
                     put_text(screen,          text=str(scx("lglm")),                  font_cat="menu", size=30, pos_x=82, pos_y=20, colour="#1A5856") # log limit number
                     put_text(screen,          text=langstring(f"gen__{lbmode}"),      font_cat="menu", size=30, pos_x=82, pos_y=36, colour="#1A5856") # listbox mode
                     put_text(screen,          text=str(scx("lbam")),                  font_cat="menu", size=30, pos_x=82, pos_y=44, colour="#1A5856") # listbox elements amount
@@ -225,6 +228,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                             if scx("txts") > 0.5: set_change("text_size", -0.1)
                         if mouseRec(pg_events, 2):
                             set_change("text_size", "set=1.0")
+
+                    if mouseColliderPx(gt2vn[0], gt2vn[1], gt2vn[2], gt2vn[3]):
+                        put_text(screen, text=langstring("menu__sett_tech_ver_notif"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=68, colour="#7C613B")
+                        if mouseRec(pg_events):
+                            set_change("version_checker")
 
         #==============================================================================================================
         case "pack_manag":

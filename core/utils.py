@@ -20,10 +20,10 @@ def scx(setn=None): # used for checking current settings status
         case "sndv": return sdata["sound"]
         case "lglm": return sdata["log_limit"]
         case "legu": return sdata["legacy_unpacking"]
-        case "lbmd": return sdata["listbox_mode"]   #!
+        case "lbmd": return sdata["listbox_mode"]
         case "lbam": return sdata["listbox_amount"]
-        case "lbsz": return sdata["listbox_size"]   #!
-        # case "vch" (version checker)
+        case "lbsz": return sdata["listbox_size"]
+        case "vch":  return sdata["version_checker"]
         case "txts": return sdata["text_size"]
         case other:  return sdata
 
