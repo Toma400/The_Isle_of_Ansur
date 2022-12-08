@@ -1,6 +1,6 @@
 from core.file_system.repo_manag import deep_file_lister
 from core.file_system.json_manag import *
-import os, sys, shutil, toml
+import os, sys, shutil, toml, re
 import logging as log
 import requests
 
@@ -50,11 +50,19 @@ def version_checker():
     def stcomp(status): # simplifies status type comparisons
         return ["pre alpha", "alpha", "pre beta", "beta", "release"].index(status)
 
+    def sbv(ver): # tells if version is major (1, 2) or minor (1b, 1c)
+        if any(not char.isdigit() for char in ver):
+            chars = re.sub("[0-9]+", "", ver)
+            nums  = re.sub("[^0-9]", "", ver)
+            ver = f"{nums}.{ord(chars)-97}"
+        print (ver)
+        return float(ver)
+
     gitfile = requests.get("https://raw.githubusercontent.com/Toma400/The_Isle_of_Ansur/Alpha/core/system_ref.toml?ref=Alpha")
     if gitfile.status_code == 200:
         gitfile = toml.loads(gitfile.text)
         if stcomp(gitfile["release_status"]) > stcomp(sysref("release_status")): return True
-        elif int(gitfile["release_version"]) > int(sysref("release_version")):   return True
+        elif sbv(gitfile["release_version"]) > sbv(sysref("release_version")):   return True
         else:                                                                    log.info(f"Running actual version: [{sysref('release_status')} {sysref('release_version')}]")
     else: log.info(f"Attempted to request version checking, but the status of request was {gitfile.status_code}.")
     return False
