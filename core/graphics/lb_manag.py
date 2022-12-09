@@ -1,9 +1,56 @@
-from core.graphics.gh_manag import returnCell, returnCells, revCell, nestCell, nestCells, rendPut, imgPutRes, Image
+from core.graphics.gh_manag import returnCell, returnCells, revCell, nestCell, rendPut, imgPutRes, iterateCells
 from core.decorators import Callable, HelperMethod
 from core.graphics.text_manag import put_text
 from core.utils import scx
 from enum import Enum, auto
 import pygame, logging
+
+class ListBox:
+
+    element_cap = scx("lbam")
+    #raw_spacing = 2                                       #| spacing between entry and background (in cell%)
+    #spacing     = (returnCells(raw_spacing, raw_spacing)) #| spacing converted (in px)
+    # - background image/colour/ornament (bgrect? or mnrect?)
+    # - entry image/colour/ornament
+
+    def __init__(self, main_rect: tuple):
+        """
+        main_rect | Tuple of cell% values to draw main rectangle (needs to have four values)
+        """
+        # Raw values (cell%, as passed, just after some checks to validate their values)
+        self.raw_mnrect  = self.tuple_test(main_rect, "-main_rect-") #| Main rectangle (containing list elements)
+
+        # Pixel values (cell% converted to px)
+        self.mnrect     = iterateCells((self.raw_mnrect[0], self.raw_mnrect[1],  #| Coordinates of main rectangle
+                                        self.raw_mnrect[2], self.raw_mnrect[3]))
+        self.mnrectsize = (self.mnrect[2]-self.mnrect[0],                        #| Size of main rectangle (simplifier for pygame system)
+                           self.mnrect[3]-self.mnrect[1])
+        self.enspacing  = (self.mnrectsize[1]//self.element_cap)                 #| Size of each entry element (Y axis)
+        self.enrectsize = (self.mnrectsize[0],                                   #| Size of entry elements (X = same as main
+                           self.enspacing)                                       #|                         Y = main/element cap)
+
+    @Callable
+    def put(self, screen):
+        pygame.draw.rect(screen, "#CDD084", pygame.Rect(self.mnrect[0], self.mnrect[1], self.mnrectsize[0], self.mnrectsize[1]))
+        from random import randint
+        rem = 0
+        for i in range(self.element_cap):
+            col = (randint(0, 255), randint(0, 255), randint(0, 255))
+            pygame.draw.rect(screen, col, pygame.Rect(self.mnrect[0],     self.mnrect[1] + rem,
+                                                      self.mnrectsize[0], self.mnrect[1] + rem + self.enspacing))
+            rem += self.enspacing
+
+    @HelperMethod
+    def tuple_test(self, checked: tuple, checktype: str = ""):
+        if len(checked) != 4:                                      raise ValueError(f"Passed {checktype} argument with {len(checked)} values instead of required 4.")
+        if checked[2]-checked[0] < 0 or checked[3]-checked[1] < 0: raise ValueError(f"Passed {checktype} argument with values of negative rectangle.")
+        return checked
+
+    @HelperMethod
+    def lb_ratio(self, value: int, axis: int): # axis takes int (x = 0, y = 1)
+        if axis == 0: ax = "x"
+        else:         ax = "y"
+        return nestCell(value, self.mnrectsize[axis])
 
 #========|===========================================================
 # LISTBX | Values to state:
@@ -23,7 +70,7 @@ class PatternType(Enum):
 #    pattern_builder(PatternType.IMAGE, path="core/assets/visuals/", file="skill_1.jpg", pos=(0, 0, 10, 10))
 #]
 
-class ListBox:
+class SemiOldListBox:
 
     element_cap   = scx("lbam")
     pattern: list = None

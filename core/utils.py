@@ -1,5 +1,6 @@
 from core.file_system.repo_manag import deep_file_lister
 from core.file_system.json_manag import *
+from core.decorators import Deprecated
 import os, sys, shutil, toml, re
 import logging as log
 import requests
@@ -26,13 +27,14 @@ def scx(setn=None): # used for checking current settings status
         case "txts": return sdata["text_size"]
         case other:  return sdata
 
-def sysref(refn):
+def sysref(refn): # reads value from system reference file
     sdata = toml.load("core/system_ref.toml")
     return sdata[refn]
 
-# hunger_thirst and permadeath are marked as deprecated now (see https://github.com/Toma400/The_Isle_of_Ansur/issues/16#issuecomment-1247081222)
-optv = json_read("settings.json")["hunger_thirst"]
-pdth = json_read("settings.json")["permadeath"]
+@Deprecated("hunger_thirst and permadeath are marked as deprecated now (see https://github.com/Toma400/The_Isle_of_Ansur/issues/16#issuecomment-1247081222)")
+class DeprecatedSettings:
+    optv = json_read("settings.json")["hunger_thirst"]
+    pdth = json_read("settings.json")["permadeath"]
 
 def temp_remover():
     if os.path.exists(f"{gpath}/_temp/"):
