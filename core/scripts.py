@@ -19,12 +19,12 @@ def event_handler(event_container: list, guitype):
 # SCRIPT   | Handles scripts running depending on forged_events. Currently needs implementation.
 # HANDLER  |
 #==========|=====================================================================================
-def script_handler(event_container: list, screen, pg_events):
+def script_handler(event_container: list, screen, pg_events, dyn_screen):
 
     for i in ioaScript.subclasses:
         try:
             if i.event in event_container:
-                i.run(i, screen, pg_events, fg_events=event_container)
+                i.run(i, screen, pg_events, fg_events=event_container, fg_core=dyn_screen)
         except AttributeError: ioaScript.subclasses.remove(i); log.warning(f"Script [{i.__name__}] had AttributeError. Removing it from running scripts...")
 
 #==========|=====================================================================================

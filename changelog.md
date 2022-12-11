@@ -16,6 +16,8 @@
 > - Expanded modding possibilities
 >   - **Scripting system allowing you to implement Python code during gameplay**
 >   - Modders now can add their custom background images and music
+> - Some QoL additions
+>   - Update notification system which will notify about possibility to update the game
 > - Updated to Python 3.10
 > - Further updates to match current Baedoor RPG System
 > - Further code optimalisations

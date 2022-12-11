@@ -1,4 +1,5 @@
-from core.graphics.gh_manag import Image
+from core.graphics.lb_manag import ListBox, ListBoxPattern
+from core.graphics.gh_manag import Image, NestedImage
 
 class GUI_Helper:
     """ [ GUI HELPER ]
@@ -18,6 +19,9 @@ class GUI_Helper:
     # MENU
     menu__gh_logo       = Image(path="core/assets/visuals/", file="logo.png",            pos=(10, 3, 90, 19))
     menu__gh_background = Image(path="core/assets/visuals/", file="menu_background.jpg", pos=(0, 0))
+
+    menu__gh_testpt     = ListBoxPattern(NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, 100, 100)))
+    menu__gh_test       = ListBox((10, 10, 30, 50), pattern=menu__gh_testpt)
 
     @classmethod
     def get_element(cls, element: str):

@@ -23,7 +23,7 @@ class TestScript(ioaScript):
     # pg_events - if you want to use PyGame events
     # fg_events - if you want to access IoA events
     #====================================================================
-    def run(self, screen, *args, **kwargs):
+    def run(self, screen, pg_events, fg_events, fg_core, *args, **kwargs):
 
         pass
 
@@ -46,8 +46,7 @@ class TestScript(ioaScript):
         #    #   pattern_builder(PatternType.IMAGE, path="core/assets/visuals/", file=ij, pos=(0, 0, 20, 100))   # <--- needs "ratio" type of positioning (but for nested stuff)
         #    #   pattern_builder(PatternType.IMAGE, path="core/assets/visuals/", file=ik, pos=(20, 0, 100, 100))
         #    ]
-        alvp = ListBoxPattern(NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, 100, 100)))
-        alv = ListBox((10, 10, 30, 50), pattern=alvp).put(screen)
+        alv = fg_core.gui("menu__gh_test").put(screen)
         # print(f"""
         # MATH COMPARISON:
         #

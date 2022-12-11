@@ -16,11 +16,10 @@ class ListBoxPattern:
         """
         self.elements = args
 
-class ListBox:
+class ListBox: # HELLO! TODAY I WILL SHOW YOU HOW MODULAR LISTBOXES ARE!
 
     segment_cap = scx("lbam")
-    #raw_spacing = 2                                       #| spacing between entry and background (in cell%)
-    #spacing     = (returnCells(raw_spacing, raw_spacing)) #| spacing converted (in px)
+    rws         = 5                                       #| spacing between segment and background (in px) [rws = raw_spacing]
     # - background image/colour/ornament (bgrect? or mnrect?)
     # - entry image/colour/ornament
 
@@ -36,7 +35,8 @@ class ListBox:
                                         self.raw_mnrect[2], self.raw_mnrect[3]))
         self.mnrectsize = (self.mnrect[2]-self.mnrect[0],                        #| Size of main rectangle (simplifier for pygame system)
                            self.mnrect[3]-self.mnrect[1])
-        self.sgspacing  = (self.mnrectsize[1] // self.segment_cap)               #| Size of each entry segment (Y axis)
+        self.sgspacing  = (self.mnrectsize[1] // self.segment_cap -              #| Size of each entry segment (Y axis)
+                           self.rws*2 / self.segment_cap)
         self.sgrectsize = (self.mnrectsize[0],                                   #| Size of entry segments (X = same as main
                            self.sgspacing)                                       #|                         Y = main/segment cap)
 
@@ -48,23 +48,25 @@ class ListBox:
         # Listbox parts
         self.mnrectobj  = pygame.Rect(self.mnrect[0],     self.mnrect[1],        #| PygameRect of whole listbox area
                                       self.mnrectsize[0], self.mnrectsize[1])
+        self.mnrectobj_ = self.build_background()                                #| PygameRect of whole listbox area (with spacings)
         self.segments   = self.build_segments()                                  #| PygameRect (List) of listbox segments
 
         # Elements
         self.pattern    = pattern.elements
-        self.elements   = self.build_elements()
+        #self.elements   = self.build_elements()
 
     @Callable
-    def put(self, screen):
-        #pygame.draw.rect(screen, "#CDD084", self.mnrectobj)
+    def put(self, screen): # [!]
+        pygame.draw.rect(screen, "#CDD084", self.mnrectobj)
+        pygame.draw.rect(screen, (0, 50, 10), self.mnrectobj_)
         from random import randint
         rem = 0
         for sg in self.segments:
             col = (randint(0, 255), randint(0, 255), randint(0, 255))
             pygame.draw.rect(screen, col, sg)
             rem += self.sgspacing
-        for el in self.elements:
-            el.put(screen, variation="lb_")
+        # for el in self.elements:
+        #     el.put(screen, variation="lb_")
 
     def collision(self, screen):
         """Returns index of element currently collided with mouse"""
@@ -81,21 +83,34 @@ class ListBox:
         rem      = 0
 
         for i in range(self.segment_cap):
-            elements.append(pygame.Rect(self.mnrect[0], self.mnrect[1] + rem,
-                                        self.mnrectsize[0], self.sgspacing))
+            elements.append(pygame.Rect(self.mnrectobj_[0], self.mnrectobj_[1] + rem,
+                                        self.mnrectobj_[2], self.sgspacing))
             rem += self.sgspacing
         return elements
 
     @HelperMethod
     def build_elements(self):
-        elements = []
-        for sg in self.segments:
-            for el in self.pattern:
-                el.nest((sg[0],       sg[1],
-                         sg[0]+sg[2], sg[1]+sg[3]))
-                el.sup()
-                elements.append(el)
-        return elements
+        pass
+        # elements = []
+        # for sg in self.segments:
+        #     for el in self.pattern:
+        #         el.nest((sg[0],       sg[1],
+        #                  sg[0]+sg[2], sg[1]+sg[3]))
+        #         el.sup()
+        #         elements.append(el)
+        # return elements
+        #------------------------------------->>>
+        # for sg in self.segments:
+        #     for el in self.pattern:
+        #         el.nest((sg[0],       sg[1],
+        #                  sg[0]+sg[2], sg[1]+sg[3]))
+        #         el.sup()
+        #         yield el
+
+    @HelperMethod
+    def build_background(self):
+        return pygame.Rect(self.mnrect[0]+self.rws,       self.mnrect[1]+self.rws,
+                           self.mnrectsize[0]-self.rws*2, self.mnrectsize[1]-self.rws*2)
 
     @HelperMethod
     def tuple_test(self, checked: tuple, checktype: str = ""):
