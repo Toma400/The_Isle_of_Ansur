@@ -1,7 +1,7 @@
 from core.scripts import ioaScript
 from core.graphics.gh_manag import rendPut, imgPutRes, returnCell, revCell, ratioCell, Image, NestedImage
 from core.graphics.text_manag import put_rectext, put_text, Text
-from core.graphics.lb_manag import put_listbox, preset_list, ListBox, PatternType
+from core.graphics.lb_manag import put_listbox, preset_list, ListBox, ListBoxPattern
 from core.utils import refunc as rei
 from core.utils import scx
 #=======================================
@@ -46,46 +46,48 @@ class TestScript(ioaScript):
         #    #   pattern_builder(PatternType.IMAGE, path="core/assets/visuals/", file=ij, pos=(0, 0, 20, 100))   # <--- needs "ratio" type of positioning (but for nested stuff)
         #    #   pattern_builder(PatternType.IMAGE, path="core/assets/visuals/", file=ik, pos=(20, 0, 100, 100))
         #    ]
-
-        alv = ListBox((10, 10, 30, 50)).put(screen)
-        print(f"""
-        MATH COMPARISON:
-        
-        Screen resolution: ({scx('svx')}, {scx('svy')})
-        Elements limit:    ({scx('lbam')}
-        
-        ===============================
-        EXPECTED VALUES
-        Rect given (%)  = (10%:x, 10%:y, 30%:x, 50%:y) [x/y = resolution]
-        Rect given (px) = (100  , 70   , 300  , 350  )
-        
-        ACHIEVED VALUES
-        Rect given (px) = {alv.mnrect}
-        
-        ===============================
-        EXPECTED SIZE VALUES
-        Rect size (px) = (200, 280)                    [substr: 2-1, 4-3]
-        
-        ACHIEVED SIZE VALUES
-        Rect size (px) = {alv.mnrectsize}
-        
-        ===============================
-        EXPECTED RATIO
-        Ratio size (%)  = (10%:RSx)   (10%:RSy)
-        Ratio size (px) = (20)        (28)
-        
-        ACHIEVED RATIO
-        Ratio size (px) = {alv.lb_ratio(10, 0)} | {alv.lb_ratio(10, 1)}
-        
-        ===============================
-        EXPECTED ENTRY VALUES
-        Rect requested (%)  = (RSx <> RSy / {scx('lbam')})
-        Rect requested (px) = (200 <> 280 / {scx('lbam')})
-                                     ({280 // scx('lbam')})
-        
-        ACHIEVED ENTRY VALUES
-        Rect requested (px) = {alv.enrectsize}
-        """)
+        alvp = ListBoxPattern(NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, 100, 100)))
+        alv = ListBox((10, 10, 30, 50), pattern=alvp).put(screen)
+        # print(f"""
+        # MATH COMPARISON:
+        #
+        # Screen resolution: ({scx('svx')}, {scx('svy')})
+        # Elements limit:    ({scx('lbam')}
+        #
+        # ===============================
+        # EXPECTED VALUES
+        # Rect given (%)  = (10%:x, 10%:y, 30%:x, 50%:y) [x/y = resolution]
+        # Rect given (px) = (100  , 70   , 300  , 350  )
+        #
+        # ACHIEVED VALUES
+        # Rect given (px) = {alv.mnrect}
+        #
+        # ===============================
+        # EXPECTED SIZE VALUES
+        # Rect size (px) = (200, 280)                    [substr: 2-1, 4-3]
+        #
+        # ACHIEVED SIZE VALUES
+        # Rect size (px) = {alv.mnrectsize}
+        #
+        # ===============================
+        # EXPECTED RATIO
+        # Ratio size (%)  = (10%:RSx)   (10%:RSy)
+        # Ratio size (px) = (20)        (28)
+        #
+        # ACHIEVED RATIO
+        # Ratio size (px) = {alv.lb_ratio(10, 0)} | {alv.lb_ratio(10, 1)}
+        #
+        # ===============================
+        # EXPECTED ENTRY VALUES
+        # Rect requested (%)  = (RSx <> RSy / {scx('lbam')})
+        # Rect requested (px) = (200 <> 280 / {scx('lbam')})
+        #                              ({280 // scx('lbam')})
+        #
+        # ACHIEVED ENTRY VALUES
+        # Rect requested (px) = {alv.enrectsize}
+        # """)
+        print(alv.collision(screen))
+        #print(alv.elements)
 
         #i = [NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, ratioCell(10), 10)),
         #     NestedImage("core/assets/visuals/", "skill_1.jpg", (ratioCell(10), 10, ratioCell(20), 20)),

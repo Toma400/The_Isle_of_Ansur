@@ -5,40 +5,97 @@ from core.utils import scx
 from enum import Enum, auto
 import pygame, logging
 
+class ListBoxPattern:
+
+    def __init__(self, *args):
+        """
+        args | Should contain elements which will be nested inside each iteration of listbox segment
+             | Only Nested[Object] form, such as:
+             | - NestedImage
+             | - NestedText
+        """
+        self.elements = args
+
 class ListBox:
 
-    element_cap = scx("lbam")
+    segment_cap = scx("lbam")
     #raw_spacing = 2                                       #| spacing between entry and background (in cell%)
     #spacing     = (returnCells(raw_spacing, raw_spacing)) #| spacing converted (in px)
     # - background image/colour/ornament (bgrect? or mnrect?)
     # - entry image/colour/ornament
 
-    def __init__(self, main_rect: tuple):
+    def __init__(self, main_rect: tuple, pattern: ListBoxPattern):
         """
         main_rect | Tuple of cell% values to draw main rectangle (needs to have four values)
         """
         # Raw values (cell%, as passed, just after some checks to validate their values)
-        self.raw_mnrect  = self.tuple_test(main_rect, "-main_rect-") #| Main rectangle (containing list elements)
+        self.raw_mnrect  = self.tuple_test(main_rect, "-main_rect-")             #| Main rectangle (containing list elements)
 
         # Pixel values (cell% converted to px)
         self.mnrect     = iterateCells((self.raw_mnrect[0], self.raw_mnrect[1],  #| Coordinates of main rectangle
                                         self.raw_mnrect[2], self.raw_mnrect[3]))
         self.mnrectsize = (self.mnrect[2]-self.mnrect[0],                        #| Size of main rectangle (simplifier for pygame system)
                            self.mnrect[3]-self.mnrect[1])
-        self.enspacing  = (self.mnrectsize[1]//self.element_cap)                 #| Size of each entry element (Y axis)
-        self.enrectsize = (self.mnrectsize[0],                                   #| Size of entry elements (X = same as main
-                           self.enspacing)                                       #|                         Y = main/element cap)
+        self.sgspacing  = (self.mnrectsize[1] // self.segment_cap)               #| Size of each entry segment (Y axis)
+        self.sgrectsize = (self.mnrectsize[0],                                   #| Size of entry segments (X = same as main
+                           self.sgspacing)                                       #|                         Y = main/segment cap)
+
+        # Listbox statuses
+        self.index_num  = 0                                                      #| Current index of segments, only starting value
+        self.index_set  = [self.index_num,                                       #| Current index of segments, double value
+                           self.index_num + self.segment_cap]                    #|                            (from - to)
+
+        # Listbox parts
+        self.mnrectobj  = pygame.Rect(self.mnrect[0],     self.mnrect[1],        #| PygameRect of whole listbox area
+                                      self.mnrectsize[0], self.mnrectsize[1])
+        self.segments   = self.build_segments()                                  #| PygameRect (List) of listbox segments
+
+        # Elements
+        self.pattern    = pattern.elements
+        self.elements   = self.build_elements()
 
     @Callable
     def put(self, screen):
-        pygame.draw.rect(screen, "#CDD084", pygame.Rect(self.mnrect[0], self.mnrect[1], self.mnrectsize[0], self.mnrectsize[1]))
+        #pygame.draw.rect(screen, "#CDD084", self.mnrectobj)
         from random import randint
         rem = 0
-        for i in range(self.element_cap):
+        for sg in self.segments:
             col = (randint(0, 255), randint(0, 255), randint(0, 255))
-            pygame.draw.rect(screen, col, pygame.Rect(self.mnrect[0],     self.mnrect[1] + rem,
-                                                      self.mnrectsize[0], self.mnrect[1] + rem + self.enspacing))
-            rem += self.enspacing
+            pygame.draw.rect(screen, col, sg)
+            rem += self.sgspacing
+        for el in self.elements:
+            el.put(screen, variation="lb_")
+
+    def collision(self, screen):
+        """Returns index of element currently collided with mouse"""
+        if self.mnrectobj.collidepoint(pygame.mouse.get_pos()):
+            for sg in self.segments:
+                if sg.collidepoint(pygame.mouse.get_pos()):
+                    pygame.draw.rect(screen, (0, 0, 0), sg)
+                    return self.segments.index(sg)
+        return None
+
+    @HelperMethod
+    def build_segments(self):
+        elements = []
+        rem      = 0
+
+        for i in range(self.segment_cap):
+            elements.append(pygame.Rect(self.mnrect[0], self.mnrect[1] + rem,
+                                        self.mnrectsize[0], self.sgspacing))
+            rem += self.sgspacing
+        return elements
+
+    @HelperMethod
+    def build_elements(self):
+        elements = []
+        for sg in self.segments:
+            for el in self.pattern:
+                el.nest((sg[0],       sg[1],
+                         sg[0]+sg[2], sg[1]+sg[3]))
+                el.sup()
+                elements.append(el)
+        return elements
 
     @HelperMethod
     def tuple_test(self, checked: tuple, checktype: str = ""):
@@ -46,7 +103,7 @@ class ListBox:
         if checked[2]-checked[0] < 0 or checked[3]-checked[1] < 0: raise ValueError(f"Passed {checktype} argument with values of negative rectangle.")
         return checked
 
-    @HelperMethod
+    @HelperMethod # [!]
     def lb_ratio(self, value: int, axis: int): # axis takes int (x = 0, y = 1)
         if axis == 0: ax = "x"
         else:         ax = "y"
