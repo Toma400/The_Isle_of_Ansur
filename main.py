@@ -3,7 +3,7 @@
 import sys; sys.pycache_prefix = "_temp/cache"
 #----------------------------------
 # Logging system
-import system.log_manag as lg; lg.run(); lg.run_path()
+import core.file_system.log_manag as lg; lg.run(); lg.run_path()
 import logging; logging.debug(lg.run_text())
 #===========================================================================
 from core.utils import temp_remover, scx; temp_remover()

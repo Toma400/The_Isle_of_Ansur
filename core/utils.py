@@ -39,6 +39,8 @@ class DeprecatedSettings:
 def temp_remover():
     if os.path.exists(f"{gpath}/_temp/"):
         shutil.rmtree(f"{gpath}/_temp/")
+    if os.path.exists(f"{gpath}/__pycache__/"):
+        shutil.rmtree(f"{gpath}/__pycache__/")
 
 def script_loader():
     for x in deep_file_lister(f"scripts/", ext="py"):  # | imports all modules from /scripts/ folder

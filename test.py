@@ -30,16 +30,20 @@
 import pygame, sys
 from pygame.locals import QUIT
 
-pygame.init()
-DISPLAYSURF = pygame.display.set_mode((400, 300))
-pygame.display.set_caption('Hello World!')
-i = 0
-while True:
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
-    if (0, 0) < pygame.mouse.get_pos() < (10, 10):
-        i+= 1
-    print(i)
-    pygame.display.update()
+# pygame.init()
+# DISPLAYSURF = pygame.display.set_mode((400, 300))
+# pygame.display.set_caption('Hello World!')
+# i = 0
+# while True:
+#     for event in pygame.event.get():
+#         if event.type == QUIT:
+#             pygame.quit()
+#             sys.exit()
+#     if (0, 0) < pygame.mouse.get_pos() < (10, 10):
+#         i+= 1
+#     print(i)
+#     pygame.display.update()
+
+import sys; sys.pycache_prefix = "_temp/cache"
+from core.utils import temp_remover
+temp_remover()

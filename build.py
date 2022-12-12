@@ -4,14 +4,15 @@
 # pyInstaller. All needed documentation is written here
 # in further comment blocks.
 #-----------------------------------------------------------
+import sys; sys.pycache_prefix = "_temp/cache"
 
 import PyInstaller.__main__
 import PyInstaller
 import os; fpath = os.path.dirname(os.path.abspath("build.py"))
+from core.file_system.repo_manag import file_lister
+from core.utils import temp_remover; temp_remover()
 from distutils.dir_util import copy_tree
-from utils.text_manag import bcolors as colour
-from utils.text_manag import align as align
-from utils.repo_manag import file_deleting as delete
+import stat, shutil, traceback
 #-----------------------------------------------------------
 # FORGE
 # Function used to execute pyInstaller commands precised
@@ -48,32 +49,37 @@ class DefaultRun:
         "--specpath=" + core_path + "system/cache/pyinstaller"
     ]
     ommitted_elements = [  # list of files that are deleted after finishing the build
+        full_export_path + ".git",
         full_export_path + ".idea",
-        full_export_path + "__pycache__",
         full_export_path + ".breakpoints",
         full_export_path + ".gitignore",
         full_export_path + "test.py",
         # caches
+        full_export_path + "_temp",
+        full_export_path + "__pycache__",
         full_export_path + "gui/__pycache__",
         full_export_path + "system/__pycache__",
         full_export_path + "utils/__pycache__",
         full_export_path + "system/core/__pycache__",
         full_export_path + "system/cache/__pycache__",
-        full_export_path + "system/cache/pyinstaller",
-        full_export_path.replace("/[builds]/", f"{game_name}/system/cache/pyinstaller")
+        full_export_path + "system/cache/pyinstaller"
+
+        # LOGS + .GIT
     ]
 
 # function used to delete elements excluded in list above
 def file_deleting(delete_list):
-    j = 0
-    for i in delete_list:
-        delete(delete_list[j])
-        j += 1
+    def on_rm_error(func, path, exc_info):
+        os.chmod(path, stat.S_IWRITE)
+        os.unlink(path)
 
-def cache_clearing():
-    delete("system/cache/Ministerstwo Kalibracyjne")
-    delete("system/cache/Users")
-    delete("system/cache/pyinstaller/Isle of Ansur")
+    for i in delete_list:
+        try:
+            shutil.rmtree(i, onerror=on_rm_error)
+        except FileNotFoundError: pass
+
+    for l in file_lister(f"{DefaultRun.full_export_path}core/logs/"):
+        os.remove(f"{DefaultRun.full_export_path}core/logs/{l}")
 
 # main function for running builder
 def forge():
@@ -81,13 +87,17 @@ def forge():
         DefaultRun.forge_builder
     )
     copy_tree(DefaultRun.core_path, DefaultRun.full_export_path) # copies all files over
-    file_deleting(DefaultRun.ommitted_elements) # deletes files excluded in list
-    print(align(colour.CGREEN + "Build successful" + colour.ENDC, "centre_colour"))
+    file_deleting(DefaultRun.ommitted_elements)                  # deletes files excluded in list
 
-print(align(colour.CVIOLET + "------------------------------"))
-print(align(" ISLE OF ANSUR BUILD CONSTRUCTOR "))
+#================================================================================================================
+print('{:^65}'.format("\33[35m    ------------------------------"))
+print('{:^65}'.format(" ISLE OF ANSUR BUILD CONSTRUCTOR "))
 print("\n")
-print(align("----------------------------"))
-print(align("------------------------------------------------------------------------------" + colour.ENDC))
-forge()
-cache_clearing()
+print('{:^65}'.format("----------------------------"))
+print('{:^65}'.format("------------------------------------------------------------------------- \033[0m"))
+try:
+    forge()
+    print('{:^75}'.format("\033[92m Build successful \033[0m"))
+except:
+    traceback.print_exc()
+temp_remover()
