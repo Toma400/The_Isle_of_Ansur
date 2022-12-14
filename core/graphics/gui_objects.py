@@ -16,13 +16,16 @@ class GUI_Helper:
     tx | text
     """
 
-    # MENU
-    menu__gh_logo       = Image(path="core/assets/visuals/", file="logo.png",            pos=(10, 3, 90, 19))
-    menu__gh_background = Image(path="core/assets/visuals/", file="menu_background.jpg", pos=(0, 0))
+    def __init__(self):
+        # MENU
+        self.menu__gh_logo       = Image(path="core/assets/visuals/", file="logo.png",            pos=(10, 3, 90, 19))
+        self.menu__gh_background = Image(path="core/assets/visuals/", file="menu_background.jpg", pos=(0, 0))
 
-    menu__gh_testpt     = ListBoxPattern(NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, 100, 100)))
-    menu__gh_test       = ListBox((10, 10, 30, 50), pattern=menu__gh_testpt)
+        self.menu__gh_testpt     = ListBoxPattern(NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, 100, 100)))
+        self.menu__gh_test       = ListBox((10, 10, 30, 50), pattern=self.menu__gh_testpt)
 
-    @classmethod
-    def get_element(cls, element: str):
-        return cls.__getattribute__(cls, element)
+    def get_element(self, element: str):
+        return self.__getattribute__(element)
+
+    def restart(self):
+        self.__init__()

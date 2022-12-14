@@ -52,6 +52,7 @@ class Screen:
         """hard refresh of screen | should reassign currently used 'screen' variable"""
         self.dyn_screen[0] = run_screen()
         self.screen        = self.dyn_screen[0]
+        self.objects.restart()
         return self.screen
 
     def gui(self, value: str):

@@ -10,7 +10,6 @@ import PyInstaller.__main__
 import PyInstaller
 import os; fpath = os.path.dirname(os.path.abspath("build.py"))
 from core.file_system.repo_manag import file_lister
-from core.utils import temp_remover; temp_remover()
 from distutils.dir_util import copy_tree
 import stat, shutil, traceback
 #-----------------------------------------------------------
@@ -63,8 +62,6 @@ class DefaultRun:
         full_export_path + "system/core/__pycache__",
         full_export_path + "system/cache/__pycache__",
         full_export_path + "system/cache/pyinstaller"
-
-        # LOGS + .GIT
     ]
 
 # function used to delete elements excluded in list above
@@ -100,4 +97,3 @@ try:
     print('{:^75}'.format("\033[92m Build successful \033[0m"))
 except:
     traceback.print_exc()
-temp_remover()
