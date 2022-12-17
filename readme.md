@@ -43,6 +43,17 @@ such early state of the game!
 - Internal ones: [**Jump to files!**](docs/introduction.md)
 - URL (outdated): [**GitHub**](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Main-Mod-Types)
 
+# Contribution
+
+---
+
+Currently contributions are closed. You can reach to developer by pull request or contacting
+directly, but it will most likely be rejected.  
+For anyone who would like to contribute anyway, here are principles that should be followed:
+
+**[?? Principles For Code Contribution](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Code-Contribution-Principles)**  
+**[?? Principles For Assets Contribution](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Assets-Contribution-Principles)**
+
 # Credits
 
 ---
