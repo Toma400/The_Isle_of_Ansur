@@ -16,10 +16,11 @@ class GUI_Helper:
     tx | text
     """
 
-    def __init__(self):
+    def __init__(self, panorama):
         # MENU
         self.menu__gh_logo       = Image(path="core/assets/visuals/", file="logo.png",            pos=(10, 3, 90, 19))
         self.menu__gh_background = Image(path="core/assets/visuals/", file="menu_background.jpg", pos=(0, 0))
+        self.menu__gh_panorama   = Image(path=panorama[0],            file=panorama[1],           pos=(0, 0)).full()
 
         self.menu__gh_testpt     = ListBoxPattern(NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, 100, 100)))
         self.menu__gh_test       = ListBox((10, 10, 30, 50), pattern=self.menu__gh_testpt)

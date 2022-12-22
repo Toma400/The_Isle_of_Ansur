@@ -18,7 +18,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         #==============================================================================================================
         case "menu":
 
-            Image(path=dyn_screen.panorama[0], file=dyn_screen.panorama[1], pos=(0, 0)).full().put(screen, "full")
+            dyn_screen.gui("menu__gh_panorama").put(screen, "full_")
             dyn_screen.gui("menu__gh_logo").put(screen)
 
             if dyn_screen.update and scx("vch"):

@@ -45,7 +45,7 @@ class Screen:
         self.dyn_screen = [run_screen()]
         self.panorama   = bgm_screen()
         self.screen     = self.dyn_screen[0]
-        self.objects    = GUI_Helper()
+        self.objects    = GUI_Helper(self.panorama)
         self.update     = version_checker()
 
     def reset(self):
