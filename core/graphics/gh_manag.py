@@ -104,14 +104,17 @@ def iterateRevCells(values: tuple):
     return tuple(values)
 
 # Constructs cell% for user-given length (can be used for nested cells):
-def nestCell(pos, comparation):
-    if comparation != 0: svc = comparation / 100
-    else:                svc = pos / 100
-    return pos * svc
+def nestCell(pos, comparation, spacing=0, axis="x"):
+    """
+    pos         | int: cell% | Relative coordinate
+    comparation | int: px    | Outer rectangle (usually size, not position)
+    spacing     | int: cell% | Used for moving the result value
+    axis        | str: x / y | Determine axis on which cell% value is based
 
-# Constructs cell% for two user-given lengths (can be used for nested cells):
-def nestCells(pos_x, pos_y, comp_x, comp_y):
-    return nestCell(pos_x, comp_x), nestCell(pos_y, comp_y)
+    Returns cell% value, converted from raw pos/comparation calculations
+    """
+    svc = comparation / 100
+    return int(revCell(pos * svc, axis) + spacing)
 
 # Small function to return ratio-related aspects
 def ratioCell(value: int = None, rev_mode=False):
@@ -125,18 +128,21 @@ def ratioCell(value: int = None, rev_mode=False):
 # COLLIS | Checks whether element collides with another
 #========|===========================================================
 # Simple mouse collider using cells:
+@Deprecated("pygame::collidepoint")
 def mouseColliderCell(st_x, st_y, end_x, end_y):
     pos0 = tuple(returnCells(st_x, st_y))[0] <= pygame.mouse.get_pos()[0] <= tuple(returnCells(end_x, end_y))[0]
     pos1 = tuple(returnCells(st_x, st_y))[1] <= pygame.mouse.get_pos()[1] <= tuple(returnCells(end_x, end_y))[1]
     return pos0 and pos1
 
 # Alternative mouse collider using pixels
+@Deprecated("pygame::collidepoint")
 def mouseColliderPx(st_x, st_y, end_x, end_y):
     pos0 = (st_x, st_y)[0] <= pygame.mouse.get_pos()[0] <= (end_x, end_y)[0]
     pos1 = (st_x, st_y)[1] <= pygame.mouse.get_pos()[1] <= (end_x, end_y)[1]
     return pos0 and pos1
 
 # Returns whether specific mouse button is pressed (by default = left)
+@Deprecated("pygame.mouse.get_pressed()")
 def mouseRec(pg_events, mouse_button=1):
     for event in pg_events:
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == mouse_button:
@@ -183,7 +189,7 @@ class Image:
 
         # shorteners for functions
         self.res     = self.resize
-        self.col     = self.collision
+        self.col     = self.collider
         self.is_res  = False                   # check for resizing
 
     @Callable
@@ -243,10 +249,14 @@ class Image:
                 for y in range(aimed[1] // self.load.get_height() + 1):
                     screen.blit(self.load, (x * self.load.get_width(), y * self.load.get_height()))
 
-    def collision(self):
+    def collider(self):
         """Returns whether mouse is colliding with the image"""
         rect_py = pygame.rect.Rect(self.pos[0], self.pos[1], self.load.get_width(), self.load.get_height())
         return rect_py.collidepoint(pygame.mouse.get_pos())
+
+    def pressed(self, mb: int = 0):
+        """Returns if mouse was colliding with the text when specific mouse button was pressed"""
+        return self.collider() and pygame.mouse.get_pressed()[mb]
 
     @HelperMethod
     def reload(self):
@@ -290,10 +300,28 @@ class NestedImage(Image):
 
     @Callable
     def nest(self, nestpos: tuple):
-        """Adjusts given -pos- to rectangle in which Image is nested. Needs four values inside tuple"""
+        """Adjusts given -pos- to rectangle in which Image is nested. Needs four values inside tuple, creating outer rectangle (in %)."""
+
         if len(nestpos) != 4: raise ValueError(f"Passed argument to -nest- method with {len(nestpos)} values instead of required 4.")
 
-        self.temppos        = tuple(nestCell(i, nestpos[self.temppos.index(i)]) for i in self.temppos)
+        temppos_math = [] #| temp list to operate in the loop
+        nestpos_size = {"x": returnCell(nestpos[2], "x") - returnCell(nestpos[0], "x"), #| size of the nestpos
+                        "y": returnCell(nestpos[3], "y") - returnCell(nestpos[1], "y")}
+        movement     = {"x": nestpos[0],                                                #| first two values which are needed to adjust positions
+                        "y": nestpos[1]}
+
+        # used in_range() below to get correct index (-> multiple occurences in list, index yields first occurence)
+        for i in range(len(self.temppos)):
+            if i % 2 == 0: axis = "x" #| choosing axis
+            else:          axis = "y"
+
+            nestval = nestCell(self.temppos[i],    #| relative position being compared to:
+                               nestpos_size[axis], #|   └-> outer rectangle size
+                               movement[axis],     #| pushing the value further if requested
+                               axis)
+            temppos_math.append(nestval)
+
+        self.temppos        = tuple(ing for ing in temppos_math)
 
     @Callable
     def sup(self):

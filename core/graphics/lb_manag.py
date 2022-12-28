@@ -1,8 +1,9 @@
-from core.graphics.gh_manag import returnCell, returnCells, revCell, nestCell, rendPut, imgPutRes, iterateCells
-from core.decorators import Callable, HelperMethod
+from core.graphics.gh_manag import returnCell, returnCells, revCell, nestCell, rendPut, imgPutRes, iterateCells, NestedImage
+from core.decorators import Callable, HelperMethod, EventListener, RequiresImprovement
 from core.graphics.text_manag import put_text
 from core.utils import scx
 from enum import Enum, auto
+from random import randint
 import pygame, logging
 
 class ListBoxPattern:
@@ -16,10 +17,16 @@ class ListBoxPattern:
         """
         self.elements = args
 
-class ListBox: # HELLO! TODAY I WILL SHOW YOU HOW MODULAR LISTBOXES ARE!
+class ListBox:
 
     segment_cap = scx("lbam")
-    rws         = 5                                       #| spacing between segment and background (in px) [rws = raw_spacing]
+    rws         = 10                                      #| spacing between segment and background (in px) [rws = raw_spacing]
+
+    def_bgdeco  = "#CDD084"                               #| default decorator colours : background
+    def_sgdeco  = "#B6BB47"                               #| default decorator colours : segment
+    # def_rsgdeco = (randint(0, 255),                       #|                           : segment, randomised
+    #                randint(0, 255),                       #|                             (10 randomised colours to pick)
+    #                randint(0, 255) for i in range(10))
     # - background image/colour/ornament (bgrect? or mnrect?)
     # - entry image/colour/ornament
 
@@ -55,11 +62,21 @@ class ListBox: # HELLO! TODAY I WILL SHOW YOU HOW MODULAR LISTBOXES ARE!
         self.pattern    = pattern.elements
         #self.elements   = self.build_elements()
 
+        # Decorations
+        self.bgdeco     = None                                                   #| Background listbox art
+        self.sgdeco     = None                                                   #| Segment art
+
+        # States
+        self.selected   = None                                                   #| Stores active segment (None if is not active)
+
     @Callable
     def put(self, screen): # [!]
-        pygame.draw.rect(screen, "#CDD084", self.mnrectobj)
-        pygame.draw.rect(screen, (0, 50, 10), self.mnrectobj_)
-        from random import randint
+        pygame.draw.rect(screen, "#CDD084",   self.mnrectobj)
+        #pygame.draw.rect(screen, (0, 50, 10), self.mnrectobj_)
+
+        if self.bgdeco is not None: self.bgdeco.put(screen, "lb_")
+        if self.sgdeco is not None: self.sgdeco.put(screen, "lb_")
+
         rem = 0
         for sg in self.segments:
             col = (randint(0, 255), randint(0, 255), randint(0, 255))
@@ -68,7 +85,15 @@ class ListBox: # HELLO! TODAY I WILL SHOW YOU HOW MODULAR LISTBOXES ARE!
         # for el in self.elements:
         #     el.put(screen, variation="lb_")
 
-    def collision(self, screen):
+    @Callable
+    def decor(self, bgdeco: NestedImage = None, sgdeco: NestedImage = None):
+        """Used to customise elements of the listbox, such as graphical representation of each element"""
+        if bgdeco is not None:
+            self.bgdeco = bgdeco.nest((self.raw_mnrect[0], self.raw_mnrect[1],
+                                       self.raw_mnrect[2], self.raw_mnrect[3])).sup()
+        if sgdeco is not None: pass
+
+    def collider(self, screen):
         """Returns index of element currently collided with mouse"""
         if self.mnrectobj.collidepoint(pygame.mouse.get_pos()):
             for sg in self.segments:
@@ -76,6 +101,15 @@ class ListBox: # HELLO! TODAY I WILL SHOW YOU HOW MODULAR LISTBOXES ARE!
                     pygame.draw.rect(screen, (0, 0, 0), sg)
                     return self.segments.index(sg)
         return None
+
+    @RequiresImprovement # requires double-clicking sometimes
+    @EventListener
+    def pressed(self, screen, mb: int = 0):
+        """Changes active index to selected one, or to None, if already selected"""
+        if pygame.mouse.get_pressed()[mb]:
+            if self.collider(screen) is not None:
+                if self.selected != self.collider(screen): self.selected = self.collider(screen)
+                else:                                      self.selected = None
 
     @HelperMethod
     def build_segments(self):
@@ -117,12 +151,6 @@ class ListBox: # HELLO! TODAY I WILL SHOW YOU HOW MODULAR LISTBOXES ARE!
         if len(checked) != 4:                                      raise ValueError(f"Passed {checktype} argument with {len(checked)} values instead of required 4.")
         if checked[2]-checked[0] < 0 or checked[3]-checked[1] < 0: raise ValueError(f"Passed {checktype} argument with values of negative rectangle.")
         return checked
-
-    @HelperMethod # [!]
-    def lb_ratio(self, value: int, axis: int): # axis takes int (x = 0, y = 1)
-        if axis == 0: ax = "x"
-        else:         ax = "y"
-        return nestCell(value, self.mnrectsize[axis])
 
 #========|===========================================================
 # LISTBX | Values to state:
