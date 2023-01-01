@@ -22,11 +22,14 @@ class GUI_Helper:
         self.menu__gh_background = Image(path="core/assets/visuals/", file="menu_background.jpg", pos=(0, 0))
         self.menu__gh_panorama   = Image(path=panorama[0],            file=panorama[1],           pos=(0, 0)).full()
 
+        self.alvb = NestedImage("core/assets/visuals/", "dunaj.jpg", (0, 0, 100, 100))
+        self.alvn = NestedImage("core/assets/visuals/", "denaj.png", (0, 0, 100, 100))
         self.menu__gh_testpt     = ListBoxPattern(NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, 100, 100)))
-        self.menu__gh_test       = ListBox((10, 10, 30, 50), pattern=self.menu__gh_testpt)
+        self.menu__gh_test       = ListBox((10, 10, 30, 50), pattern=self.menu__gh_testpt).decor(bgdeco=self.alvb,
+                                                                                                 sgdeco=self.alvn)
 
     def get_element(self, element: str):
         return self.__getattribute__(element)
 
-    def restart(self):
-        self.__init__()
+    def restart(self, panorama):
+        self.__init__(panorama)
