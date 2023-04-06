@@ -3,6 +3,7 @@ from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
 from core.graphics.gh_manag import *
 
+def upd_click(upd, pgv): return mouseColliderPx(upd[0], upd[1], upd[2], upd[3]) and mouseRec(pgv)
 #===========|==================================================================================================
 # GUI       | Handles rendering of elements on the screen, putting out respective set of images and texts.
 # HANDLER   |
@@ -22,7 +23,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             dyn_screen.gui("menu__gh_logo").put(screen)
 
             if dyn_screen.update and scx("vch"):
-                put_text(screen, text=langstring("menu__update"),                font_cat="menu", size=22, align_x="center", pos_y=96, colour="#B0CA60")
+                upd = put_text(screen, text=langstring("menu__update"),          font_cat="menu", size=22, align_x="center", pos_y=96, colour="#B0CA60")
+                if upd_click(upd, pg_events): update() # GitHub repo
             put_abstext(screen,  text=f"{sysref('status')} {sysref('version')}", font_cat="menu", size=22, pos_x=0.5,        pos_y=96, colour="#4F3920")
 
             gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour="#4E3510")
