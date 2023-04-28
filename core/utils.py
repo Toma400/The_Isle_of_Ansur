@@ -70,6 +70,11 @@ def version_checker():
     else: log.info(f"Attempted to request version checking, but the status of request was {gitfile.status_code}.")
     return False
 
+def update():
+    """Currently redirects to the website"""
+    import webbrowser; url = "https://github.com/Toma400/The_Isle_of_Ansur/releases"
+    webbrowser.open(url, new=0, autoraise=True)
+
 def refunc(*funcs): # does all functions in sequential order (non-return ones)
     for i in funcs:
         i
