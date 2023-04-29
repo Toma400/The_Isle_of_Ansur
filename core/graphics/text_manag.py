@@ -82,8 +82,9 @@ def put_lore(lang):
 def font_handler (category: str, font=None):
     match category:
         case "menu":
-            if scx("lang") == "polish": font = "ferrum.otf"
-            else:                       font = "ferrum.otf"
+            if scx("lang")   == "polish":    font = "ferrum.otf"
+            elif scx("lang") == "hungarian": font = "verve_hun.otf"
+            else:                            font = "ferrum.otf"
     return font
 
 # Sets position of text depending on its render size and cell position/alignment set

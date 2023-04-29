@@ -15,6 +15,7 @@ Use table of contents below to navigate.
 - **Cohaerentia**, **Cinzel** and **Radius FG** fonts use is based on [SIL Open Font License](http://scripts.sil.org/OFL) and is bundled with the game by its rights.
 - **Mirra** font is developed by Oksana Tkachenko at HSE Art and Design School. Its use is based on its Creative Commons license.
 - **Ferrum** font [was released to public domain](https://www.1001fonts.com/ferrum-font.html).
+- **Verve Hun** font is **Verve** font edited to contain full set of Hungarian glyphs. [It is free to use](https://www.1001fonts.com/verve-font.html).
 
 #### Logos
 - Logo were used using [Textcraft](https://textcraft.net/) website, relying on their [privacy policy](https://textcraft.net/terms.php).
