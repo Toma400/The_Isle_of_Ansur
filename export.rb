@@ -15,12 +15,13 @@ folderset = [
 ]
 
 def full_folder(zf, path)
+    puts "|D: #{path}"
     zf.add(path, path)
-    for item in Dir.entries(path)
+    for item in Dir["#{path}/*"]
         if File.file?(item)
-            zipfile.get_output_stream(item) { |i| i.puts File.open(item); }
+            puts "|F: #{item}"
+            zf.get_output_stream(item) { |i| i.puts File.open(item) }
         else
-            puts "#{path}::#{item}"
             full_folder(zf, item)
         end
     end
@@ -39,11 +40,10 @@ begin
     puts "Preceeding to zip files and directories:"
 
     for item in fileset
-        puts "|T: #{item}"
+        puts "|F: #{item}"
         zipfile.get_output_stream(item) { |i| i.puts File.open(item); }
     end
     for folder in folderset
-        puts "|F: #{folder}"
         full_folder(zipfile, folder)
     end
 
