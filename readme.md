@@ -1,4 +1,4 @@
-![](bcs/assets/graphical/bcsx.png)
+![](bcs/assets/graphical/bcs.png)
 
 <center>
 

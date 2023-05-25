@@ -5,7 +5,7 @@ import std/sequtils
 import std/logging
 import std/times
 import system
-import nigui # either this
+import nigui
 import lapis
 import os
 
@@ -27,6 +27,12 @@ if dirExists("bcs"): log.log(lvlDebug, "Integrity check: Main BCS folder found!"
 try:
   # --- UTIL ELEMENTS ---
   let bcs_name = "Baedoor Creation Set"
+  let version  = "1.0.0-pre"
+  # BCS Versioning (IoA cycles)
+  # 1.x - 0
+  # 2.x - 1..3
+  # 3.x - 4..5
+  # 4.x - 6..7..
 
   for i in get_mods(PT.MODS):
     log.log(lvlInfo, "Mod overview: <" & $i & "> found.")
@@ -53,7 +59,8 @@ try:
   var projsLabel  = newLabel(langstr("login__listbox"))
   block lB: # labelsBoard
     landScreen.add(projsLabel)
-    projsLabel.minHeight = 50
+    projsLabel.yTextAlign = YTextAlign_Center
+    projsLabel.minHeight   = 40
 
   var enterButton  = newButton(langstr("login__open"))
   var addButton    = newButton(langstr("login__add"))
