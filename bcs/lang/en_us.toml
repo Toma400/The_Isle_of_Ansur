@@ -1,4 +1,4 @@
 "login__listbox"  = "Projects:"
-"login__enter"    = "Enter the project"
+"login__open"     = "Open the project"
 "login__add"      = "Add new project"
 "login__remove"   = "Remove project"
