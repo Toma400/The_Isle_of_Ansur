@@ -1,7 +1,9 @@
 import std/typeinfo
 import std/sequtils
 import system/io
+import strutils
 import std/os
+import nigui
 import utils
 import json
 
@@ -35,5 +37,10 @@ proc langstr* (key: string): string =
 
 proc get_mods* (pt: PT): seq[string] =
   case pt:
-    of PT.MODS:     return toSeq(walkFiles("mods/"))
+    of PT.MODS:     return toSeq(walkFiles("mods/*"))
     of PT.PROJECTS: return toSeq(walkDirs("bcs/projects/"))
+
+proc window_update* (window: Window) =
+  window.width    = parseInt(settings("res_x"))
+  window.height   = parseInt(settings("res_y"))
+  window.iconPath = bcsd() & "/bcs/assets/graphical/bcs.png"
