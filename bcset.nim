@@ -1,5 +1,6 @@
 # ------- NIM BCSET -------
 import bcs/operators
+import bcs/gh_manag
 import std/strutils
 import std/sequtils
 import std/logging
@@ -37,9 +38,9 @@ if dirExists("bcs"): log.log(lvlDebug, "Integrity check: Main BCS folder found!"
 try:
 
   for i in get_mods(PT.MODS):
-    log.log(lvlInfo, "Mod overview: <" & $i & "> found.")
+    log.log(lvlInfo, "Mods browsing: [" & $i & "] found.")
   for j in get_mods(PT.PROJECTS):
-    log.log(lvlInfo, "Project overview: <" & $j & "> found.")
+    log.log(lvlInfo, "Projects browsing: [" & $j & "] found.")
 
   # --- BCS MAIN RUN ---
   app.init()
@@ -47,23 +48,39 @@ try:
   var window   = newWindow(bcs_name)
   var logo     = newImage()
   block bI: # basicInitialisation
-    logo.loadFromFile("bcs/assets/graphical/bcs.png") # loading the logo
+    block aI: # assetsInitialisation
+      logo.loadFromFile("bcs/assets/graphical/bcs.png") # loading the logo
     window_update(window)                             # updating resolution
 
   # screens
-  var landScreen = newLayoutContainer(Layout_Vertical)
-  var logoScreen = newLayoutContainer(Layout_Vertical)
-  block pLS: # projectListScreen
-    landScreen.padding = 6      # setting screen settings
-    logoScreen.padding = 6
-    landScreen.add(logoScreen)  # adding screens
-    window.add(landScreen)        # main screen
+  var startScreen = newLayoutContainer(Layout_Horizontal)
+  var landScreen  = newLayoutContainer(Layout_Vertical)
+  var projScreen  = newLayoutContainer(Layout_Vertical)
+  var logoScreen  = newLayoutContainer(Layout_Vertical)
+  block sN: # screenNavigation
+    block screenSettings:
+      block landScreenSettings:
+        landScreen.padding = 35
+        landScreen.spacing = 3
+      block projScreenSettings:
+        projScreen.padding = 25
+        projScreen.spacing = 3
+      block logoScreenSettings:
+        logoScreen.padding = 500
+        logoScreen.spacing = 3
+    block screenAdding:
+      window.add(startScreen)     # main screen
+      startScreen.add(landScreen)   # buttons
+      startScreen.add(projScreen)   # project list
+      startScreen.add(logoScreen)   # logo image
 
-  var projsLabel  = newLabel(langstr("login__listbox"))
+  var projLabel  = newLabel(langstr("login__listbox"))
   block lB: # labelsBoard
-    landScreen.add(projsLabel)
-    projsLabel.yTextAlign = YTextAlign_Center
-    projsLabel.minHeight   = 40
+    projScreen.add(projLabel)
+    projLabel.yTextAlign = YTextAlign_Center
+
+  var projList = newComboBox(get_mods(PT.PROJECTS))
+  projScreen.add(projList)
 
   var enterButton  = newButton(langstr("login__open"))
   var addButton    = newButton(langstr("login__add"))
@@ -72,6 +89,13 @@ try:
     landScreen.add(enterButton)
     landScreen.add(addButton)
     landScreen.add(removeButton)
+
+  logoScreen.onDraw = proc (event: DrawEvent) =
+    let canvas = event.control.canvas
+    block cO: # canvasOperations
+      # canvas.areaColor = rgb(30, 30, 30) # dark grey
+      # canvas.fill()
+      canvas.drawImage(logo, 0, 30)
 
   window.show()
   app.run()
