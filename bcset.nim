@@ -9,6 +9,15 @@ import system
 import nigui
 import lapis
 import os
+# TODO:
+# - make text under logo
+# - set all widths properly, so containers take space that they are meant to take (not-context-dependent)
+# - resizable elements, so as window resizes, elements resize too
+# - make logo smaller
+# - make "create new project" element show small box that allow you to create new project (dir) and update project list
+# - make list of projects and "entering" segment that - for the time listboxes are not a thing - always enter first project
+#
+# - update checker (?) and button that allows you to update files?
 
 # --- UTIL ELEMENTS ---
 let bcs_name = "Baedoor Creation Set"
@@ -95,7 +104,15 @@ try:
     block cO: # canvasOperations
       # canvas.areaColor = rgb(30, 30, 30) # dark grey
       # canvas.fill()
-      canvas.drawImage(logo, 0, 30)
+      canvas.drawImage(logo, x=returnCell(20, AXES.X),     y=returnCell(6, AXES.Y),
+                             width=returnCell(33, AXES.X))
+      canvas.drawTextCentered(bcs_name, x=returnCell(30, AXES.X),      y=returnCell(52, AXES.Y),
+                                        width=returnCell(10, AXES.X), height=returnCell(3, AXES.Y))
+      canvas.drawTextCentered(bcs_ver,  x=returnCell(32, AXES.X),      y=returnCell(55, AXES.Y),
+                                        width=returnCell(10, AXES.X), height=returnCell(3, AXES.Y))
+
+  enterButton.onClick = proc (event: ClickEvent) =
+    log.log(lvlDebug, projList.value)
 
   window.show()
   app.run()
