@@ -45,4 +45,4 @@ except Exception:
   log.log(lvlFatal, $getCurrentExceptionMsg())
 
 finally:
-  discard # removing of too many logs
+  bcsFinalisation()

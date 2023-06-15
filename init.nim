@@ -1,4 +1,7 @@
+import bcs/operators
+import std/algorithm
 import std/strutils
+import std/sequtils
 import std/logging
 import std/times
 import os
@@ -34,3 +37,15 @@ proc bcsInit* (): FileLogger =
   if dirExists("bcs"):            log.log(lvlDebug, "Integrity check: Main BCS folder found!") else: log.log(lvlError, "Integrity check: Failed to find main BCS folder.")
 
   return log
+
+proc bcsFinalisation* (rm_all = false) =
+  # --- Removing of redundant logs ---
+  var logs = toSeq(walkFiles("bcs/logs/*.log")); logs.sort
+  if rm_all == false:
+    let lim  = parseInt(settings("log_limit"))
+    if logs.len > lim:
+      let del_num = logs.len - lim
+      for ui in 0 ..< del_num:
+        removeFile(logs[ui])
+  else:
+    for u in logs: removeFile(u)
