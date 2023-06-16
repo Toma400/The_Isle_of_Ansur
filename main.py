@@ -9,7 +9,6 @@ import logging; logging.debug(lg.run_text())
 from core.utils import temp_remover, scx; temp_remover()
 from core.file_system.repo_manag import logs_deleting, folder_init
 folder_init()
-logs_deleting(scx("lglm"))
 #===========================================================================
 # WELCOME IN THE ISLE OF ANSUR
 #-------------------------------
@@ -33,3 +32,5 @@ try:
     main_circle()
 except Exception:
     log.critical("Main chain stopped. Printing the issue.", exc_info=True)
+finally:
+    logs_deleting(scx("lglm"))

@@ -37,25 +37,23 @@ def deleter (pathage):
   try: shutil.rmtree(pathage)
   except NotADirectoryError: os.remove(pathage)
   except FileNotFoundError: pass
+  except PermissionError:
+    print(f"Couldn't remove file {pathage} due to invalid permission.")
 
 # Log deleting function ('num' should be None if manually removed)
 def logs_deleting (num: int = None):
   all_logs = file_lister("core/logs\\", "log"); all_logs.sort()
-  full_num = len(all_logs); to_remove = []
+  full_num = len(all_logs)
   if num is not None:
-    if full_num > num-1:
-      delnum = full_num - (num-1); ui = 1
-      for u in all_logs:
-        if ui < delnum:
-          to_remove.append(u); ui = ui+1
-  for i in all_logs:
-    try:
-      if num is None: #| by default removes all logs
-        deleter(f"{gpath}/core/logs/{i}.log")
-      elif full_num > num-1: #| removes only specific amount of logs
-        if i in to_remove: deleter(f"{gpath}/core/logs/{i}.log")
-    except PermissionError: continue
-  if num is None: logging.debug("Removed all logs with request of the user.")
+    if full_num > num:
+      del_num = full_num - num
+      for ui, u in enumerate(all_logs):
+        if ui < del_num:
+          print(u)
+          deleter(f"{gpath}/core/logs/{u}.log")
+  else:
+    for u in all_logs: deleter(f"{gpath}/core/logs/{u}.log")
+    logging.debug("Removed all logs with request of the user.")
 
 #================|========================================
 # LISTERS        | Lists things within said directory
