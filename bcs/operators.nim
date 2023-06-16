@@ -7,6 +7,15 @@ import nigui
 import utils
 import json
 
+# --- UTIL ELEMENTS ---
+const bcs_name* = "Baedoor Creation Set"
+const bcs_ver*  = "1.0.0-pre"
+# BCS Versioning (IoA cycles)
+# 1.x - 0
+# 2.x - 1..3
+# 3.x - 4..5
+# 4.x - 6..7..
+
 type
   PT* = enum
     MODS, PROJECTS
@@ -54,3 +63,8 @@ proc windowInit* (window: Window, res = (0, 0)) =
     window.width    = res[0]
     window.height   = res[1]
   window.iconPath = bcsd() & "/bcs/assets/graphical/bcs.png"
+
+proc windowUpdate* (window: Window, name = bcs_name) =
+  for sub in window.control.childControls:
+    sub.dispose()
+  window.title = name

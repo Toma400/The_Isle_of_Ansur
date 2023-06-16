@@ -4,15 +4,16 @@ import ../../init
 import std/strutils
 import std/logging
 import std/tables
+import proj_main
 import nigui
 # pre-loading later functions
 proc entryReg      (window: Window, screens: Table[string, LayoutContainer], buttons: Table[string, Button], projects: ComboBox, project_label: Label)
-proc entryDraw     (screens: Table[string, LayoutContainer], images: Table[string, Image])
-proc entrySettings (screens: Table[string, LayoutContainer])
+proc entryDraw     (window: Window, screens: Table[string, LayoutContainer], images: Table[string, Image])
+proc entrySettings (window: Window, screens: Table[string, LayoutContainer])
 
 #[ --- MAIN BODY --- ]#
 proc entryScreen* (window: Window, images: Table[string, Image], log: FileLogger) =
-    windowInit(window, res=(700, 470)) # update for entryScreen
+    windowInit(window, res=(700, 500)) # update for entryScreen
     let mainScreen = newLayoutContainer(Layout_Horizontal)
     let left       = newLayoutContainer(Layout_Vertical)
     let right      = newLayoutContainer(Layout_Vertical)
@@ -28,27 +29,33 @@ proc entryScreen* (window: Window, images: Table[string, Image], log: FileLogger
     let projLabel = newLabel(langstr("login__listbox"))
     let projList  = newComboBox(get_mods(PT.PROJECTS))
 
-    #
-    # enterButton.onClick = proc (event: ClickEvent) =
-    #   log.log(lvlDebug, projList.value)
+    enterButton.onClick = proc (event: ClickEvent) =
+      log.log(lvlInfo, "Entering the project with name -" & projList.value & "-")
+      windowUpdate(window, bcs_name & ": " & projList.value)
+      mainProjScreen(window, images, log)
 
-    entrySettings(screens)
+    entrySettings(window, screens)
     entryReg(window, screens, buttons, projList, projLabel)
-    entryDraw(screens, images)
+    entryDraw(window, screens, images)
 
-proc entrySettings (screens: Table[string, LayoutContainer]) =
+proc entrySettings (window: Window, screens: Table[string, LayoutContainer]) =
     block wExperimental:
-      screens["left"].padding   = 50
-      screens["right"].padding  = 200
-      screens["name"].padding   = 70
+      #[ WIDTH ]#
+      screens["left"].width  = returnAdjCell(50, AXES.X, 3, window.width)
+      screens["right"].width = returnAdjCell(50, AXES.X, 3, window.width)
+      screens["name"].width  = returnAdjCell(20, AXES.X, -2, window.width)
+      #[ HEIGHT ]#
+      screens["left"].height  = returnAdjCell(100, AXES.Y, 9, window.height)
+      screens["right"].height = returnAdjCell(100, AXES.Y, 9, window.height)
+      screens["name"].height  = returnAdjCell(10, AXES.Y, 1, window.height)
     block wAlign:
-      screens["left"].xAlign    = XAlign_Center #.setInnerSize((parseInt(settings("res_x"))/2).int,  (parseInt(settings("res_y"))))
-      screens["right"].xAlign   = XAlign_Center #.setInnerSize((parseInt(settings("res_x"))/2).int, (parseInt(settings("res_y"))))
+      screens["left"].xAlign    = XAlign_Center
+      screens["right"].xAlign   = XAlign_Center
       screens["name"].xAlign    = XAlign_Center
       screens["buttons"].xAlign = XAlign_Center
     block wFrames:
       screens["left"].frame    = newFrame()
-      screens["right"].frame   = newFrame(bcs_name & ", version: " & bcs_ver)
+      screens["right"].frame   = newFrame()
       screens["buttons"].frame = newFrame()
 
 proc entryReg (window: Window, screens: Table[string, LayoutContainer], buttons: Table[string, Button], projects: ComboBox, project_label: Label) =
@@ -66,26 +73,22 @@ proc entryReg (window: Window, screens: Table[string, LayoutContainer], buttons:
       screens["left"].add(project_label)
       screens["left"].add(projects)
 
-proc entryDraw (screens: Table[string, LayoutContainer], images: Table[string, Image]) =
+proc entryDraw (window: Window, screens: Table[string, LayoutContainer], images: Table[string, Image]) =
     #[ RIGHT SCREEN ]#
     screens["right"].onDraw = proc (event: DrawEvent) =
       let canvas = event.control.canvas
-      canvas.drawImage(images["logo"], x=returnCell(5, AXES.X),
-                                       y=returnCell(6, AXES.Y),
-                                       width=returnCell(33, AXES.X))
+      canvas.drawImage(images["logo"], x=returnAdjCell(5, AXES.X, context=window.width),
+                                       y=returnAdjCell(6, AXES.Y, context=window.height),
+                                       width=returnAdjCell(40, AXES.X, context=window.width))
 
     #[ LEFT SCREEN ]#
     screens["name"].onDraw = proc (event: DrawEvent) =
       let canvas = event.control.canvas
-      canvas.drawText(bcs_name, x=returnCell(-0.25, AXES.X),
-                                y=returnCell(0, AXES.Y))
-      # canvas.drawText(bcs_ver, x=returnCell(0, AXES.X),
-      #                          y=returnCell(10, AXES.Y))
-      canvas.drawTextCentered(bcs_name, x=returnCell(-0.25, AXES.X),
-                                        y=returnCell(0, AXES.Y),
-                                        width=returnCell(10, AXES.X),
-                                        height=returnCell(3, AXES.Y))
-      canvas.drawTextCentered(bcs_ver, x=returnCell(2, AXES.X),
-                                       y=returnCell(10, AXES.Y),
-                                       width=returnCell(10, AXES.X),
-                                       height=returnCell(3, AXES.Y))
+      canvas.drawTextCentered(bcs_name, x=0,
+                                        y=0,
+                                        width=returnAdjCell(20, AXES.X, context=window.width),
+                                        height=returnAdjCell(3, AXES.Y, context=window.height))
+      canvas.drawTextCentered(bcs_ver, x=0,
+                                       y=20,
+                                       width=returnAdjCell(22, AXES.X, context=window.width),
+                                       height=returnAdjCell(3, AXES.Y, context=window.height))

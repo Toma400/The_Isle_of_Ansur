@@ -6,14 +6,6 @@ import std/logging
 import std/times
 import os
 
-# --- UTIL ELEMENTS ---
-const bcs_name* = "Baedoor Creation Set"
-const bcs_ver*  = "1.0.0-pre"
-# BCS Versioning (IoA cycles)
-# 1.x - 0
-# 2.x - 1..3
-# 3.x - 4..5
-# 4.x - 6..7..
 let lnm = "bcs/logs/" & format(now(), "yyyy MM dd HH mm").replace(" ", "_") & ".log"
 
 proc bcsInit* (): FileLogger =
