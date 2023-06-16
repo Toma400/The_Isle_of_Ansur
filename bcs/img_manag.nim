@@ -32,6 +32,12 @@ proc returnCell* (pos: int, axis: AXES): int =
   else:              svc = parseInt(settings("res_y")) / 100
   return (pos.float * svc).int
 
+proc returnCell* (pos: float, axis: AXES): int =
+  var svc: float
+  if axis == AXES.X: svc = parseInt(settings("res_x")) / 100
+  else:              svc = parseInt(settings("res_y")) / 100
+  return (pos * svc).int
+
 # Returns pixels of specific % of screen passed
 proc returnCells* (pos_x: int, pos_y: int): seq[int] =
     return @[returnCell(pos_x, AXES.X),

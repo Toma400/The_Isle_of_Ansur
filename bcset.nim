@@ -35,7 +35,6 @@ try:
   var window = newWindow(bcs_name)
   var images = getGuiImages()
   block:
-    window.update() # updating resolution
     entryScreen(window, images, log) # initial screen run
 
     window.show()

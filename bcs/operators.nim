@@ -46,7 +46,11 @@ proc get_mods* (pt: PT): seq[string] =
     of PT.MODS:     return rm_tail(toSeq(walkFiles("mods/*")),        tail=r"mods\")
     of PT.PROJECTS: return rm_tail(toSeq(walkDirs("bcs/projects/*")), tail=r"bcs\projects\")
 
-proc update* (window: Window) =
-  window.width    = parseInt(settings("res_x"))
-  window.height   = parseInt(settings("res_y"))
+proc windowInit* (window: Window, res = (0, 0)) =
+  if res == (0, 0):
+    window.width    = parseInt(settings("res_x"))
+    window.height   = parseInt(settings("res_y"))
+  else:
+    window.width    = res[0]
+    window.height   = res[1]
   window.iconPath = bcsd() & "/bcs/assets/graphical/bcs.png"
