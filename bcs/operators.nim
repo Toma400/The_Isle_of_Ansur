@@ -1,5 +1,7 @@
 import std/typeinfo
 import std/sequtils
+import std/logging
+import std/tables
 import system/io
 import strutils
 import std/os

@@ -4,12 +4,13 @@ import ../../init
 import std/strutils
 import std/logging
 import std/tables
+import entry_new
 import proj_main
 import nigui
 # pre-loading later functions
-proc entryReg      (window: Window, screens: Table[string, LayoutContainer], buttons: Table[string, Button], projects: ComboBox, project_label: Label)
+proc entryReg      (window: Window, screens: Table[string, LayoutContainer], buttons: Table[string, Button], projects: ComboBox, pre_label: Label, project_label: Label)
 proc entryDraw     (window: Window, screens: Table[string, LayoutContainer], images: Table[string, Image])
-proc entrySettings (window: Window, screens: Table[string, LayoutContainer])
+proc entrySettings (window: Window, screens: Table[string, LayoutContainer], project_label: Label)
 
 #[ --- MAIN BODY --- ]#
 proc entryScreen* (window: Window, images: Table[string, Image], log: FileLogger) =
@@ -23,23 +24,27 @@ proc entryScreen* (window: Window, images: Table[string, Image], log: FileLogger
 
     let enterButton  = newButton(langstr("login__open"))
     let addButton    = newButton(langstr("login__add"))
-    let removeButton = newButton(langstr("login__remove"))
+    let removeButton = newButton(langstr("login__remove")); removeButton.enabled = false
     let buttons      = { "enter": enterButton, "add": addButton, "remove": removeButton }.toTable
 
-    let projLabel = newLabel(langstr("login__listbox"))
+    let prejLabel = newLabel("______________________")
+    let projLabel = newLabel("\n " & langstr("login__listbox") & "   \n")
     let projList  = newComboBox(get_mods(PT.PROJECTS))
 
     enterButton.onClick = proc (event: ClickEvent) =
-      log.log(lvlInfo, "Entering the project with name -" & projList.value & "-")
-      windowUpdate(window, bcs_name & ": " & projList.value)
-      mainProjScreen(window, images, log)
+      enterProject(window, images, log, projList.value)
 
-    entrySettings(window, screens)
-    entryReg(window, screens, buttons, projList, projLabel)
+    addButton.onClick = proc (event: ClickEvent) =
+      createNewProject(window, images, log)
+
+    entrySettings(window, screens, projLabel)
+    entryReg(window, screens, buttons, projList, prejLabel, projLabel)
     entryDraw(window, screens, images)
 
-proc entrySettings (window: Window, screens: Table[string, LayoutContainer]) =
+proc entrySettings (window: Window, screens: Table[string, LayoutContainer], project_label: Label) =
     block wExperimental:
+      project_label.fontSize = 18
+    block wSize:
       #[ WIDTH ]#
       screens["left"].width  = returnAdjCell(50, AXES.X, 3, window.width)
       screens["right"].width = returnAdjCell(50, AXES.X, 3, window.width)
@@ -49,6 +54,7 @@ proc entrySettings (window: Window, screens: Table[string, LayoutContainer]) =
       screens["right"].height = returnAdjCell(100, AXES.Y, 9, window.height)
       screens["name"].height  = returnAdjCell(10, AXES.Y, 1, window.height)
     block wAlign:
+      screens["main"].xAlign    = XAlign_Center
       screens["left"].xAlign    = XAlign_Center
       screens["right"].xAlign   = XAlign_Center
       screens["name"].xAlign    = XAlign_Center
@@ -58,7 +64,7 @@ proc entrySettings (window: Window, screens: Table[string, LayoutContainer]) =
       screens["right"].frame   = newFrame()
       screens["buttons"].frame = newFrame()
 
-proc entryReg (window: Window, screens: Table[string, LayoutContainer], buttons: Table[string, Button], projects: ComboBox, project_label: Label) =
+proc entryReg (window: Window, screens: Table[string, LayoutContainer], buttons: Table[string, Button], projects: ComboBox, pre_label: Label, project_label: Label) =
     block wScreens:
       window.add(screens["main"])
       screens["main"].add(screens["left"])
@@ -70,6 +76,7 @@ proc entryReg (window: Window, screens: Table[string, LayoutContainer], buttons:
       screens["buttons"].add(buttons["add"])
       screens["buttons"].add(buttons["remove"])
     block wOther:
+      screens["left"].add(pre_label)
       screens["left"].add(project_label)
       screens["left"].add(projects)
 

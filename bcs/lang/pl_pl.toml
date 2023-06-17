@@ -1,4 +1,8 @@
-"login__listbox"  = "Projekty:"
-"login__open"     = "Otwórz projekt"
-"login__add"      = "Dodaj nowy projekt"
-"login__remove"   = "Usuń projekt"
+"login__listbox"   = "Projekty"
+"login__open"      = "Otwórz projekt"
+"login__add"       = "Dodaj nowy projekt"
+"login__remove"    = "Usuń projekt"
+"login__add_new"   = "Stwórz i wejdź"
+"login__add_can"   = "Anuluj"
+
+"project__scripts" = "Skrypty"
