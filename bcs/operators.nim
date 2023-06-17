@@ -21,6 +21,13 @@ const bcs_ver*  = "1.0.0-pre"
 type
   PT* = enum
     MODS, PROJECTS
+  Skylight* = object
+    win*: Window
+    con*: LayoutContainer
+proc init* (s: Skylight): Skylight =
+  s.win.add(s.con)
+  s.con.setSize(s.win.width, s.win.height)
+  return s
 
 # --- here starts
 proc bcsd* (): string =
@@ -66,7 +73,7 @@ proc windowInit* (window: Window, res = (0, 0)) =
     window.height   = res[1]
   window.iconPath = bcsd() & "/bcs/assets/graphical/bcs.png"
 
-proc windowUpdate* (window: Window, name = bcs_name) =
-  for sub in window.control.childControls:
-    sub.dispose()
-  window.title = name
+proc windowUpdate* (skylight: Skylight, name = bcs_name) =
+  for sub in skylight.con.childControls:
+    skylight.con.remove(sub)
+  skylight.win.title = name

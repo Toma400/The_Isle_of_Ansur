@@ -5,4 +5,12 @@
 "login__add_new"   = "Create and enter"
 "login__add_can"   = "Cancel"
 
-"project__scripts" = "Scripts"
+"project__themes"    = "Themes"
+"project__panoramas" = "Panoramas"
+"project__music"     = "Music"
+"project__scripts"   = "Scripts"
+
+"project__races"     = "Races"
+"project__classes"   = "Classes"
+"project__items"     = "Items"
+"project__entities"  = "Entities"

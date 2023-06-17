@@ -32,12 +32,14 @@ try:
   # --- BCS MAIN RUN ---
   app.init()
 
-  var window = newWindow(bcs_name)
-  var images = getGuiImages()
+  var screen   = newLayoutContainer(Layout_Horizontal)
+  var window   = newWindow(bcs_name)
+  var skylight = Skylight(win: window, con: screen).init()
+  var images   = getGuiImages()
   block:
-    entryScreen(window, images, log) # initial screen run
+    entryScreen(skylight, images, log) # initial screen run
 
-    window.show()
+    skylight.win.show()
     app.run()
 
 except Exception:

@@ -6,7 +6,7 @@ import std/os
 import proj_main
 import nigui
 
-proc createNewProject* (bgwindow: Window, images: Table[string, Image], log: FileLogger) =
+proc createNewProject* (bgwindow: Skylight, images: Table[string, Image], log: FileLogger) =
     let prL = get_mods(PT.PROJECTS)
     var window = newWindow(langstr("login__add"))
     windowInit(window, res=(300, 110))

@@ -8,13 +8,13 @@ import entry_new
 import proj_main
 import nigui
 # pre-loading later functions
-proc entryReg      (window: Window, screens: Table[string, LayoutContainer], buttons: Table[string, Button], projects: ComboBox, pre_label: Label, project_label: Label)
-proc entryDraw     (window: Window, screens: Table[string, LayoutContainer], images: Table[string, Image])
-proc entrySettings (window: Window, screens: Table[string, LayoutContainer], project_label: Label)
+proc entryReg      (skylight: Skylight, screens: Table[string, LayoutContainer], buttons: Table[string, Button], projects: ComboBox, pre_label: Label, project_label: Label)
+proc entryDraw     (skylight: Skylight, screens: Table[string, LayoutContainer], images: Table[string, Image])
+proc entrySettings (skylight: Skylight, screens: Table[string, LayoutContainer], project_label: Label)
 
 #[ --- MAIN BODY --- ]#
-proc entryScreen* (window: Window, images: Table[string, Image], log: FileLogger) =
-    windowInit(window, res=(700, 500)) # update for entryScreen
+proc entryScreen* (skylight: Skylight, images: Table[string, Image], log: FileLogger) =
+    windowInit(skylight.win, res=(700, 420)) # update for entryScreen
     let mainScreen = newLayoutContainer(Layout_Horizontal)
     let left       = newLayoutContainer(Layout_Vertical)
     let right      = newLayoutContainer(Layout_Vertical)
@@ -32,27 +32,27 @@ proc entryScreen* (window: Window, images: Table[string, Image], log: FileLogger
     let projList  = newComboBox(get_mods(PT.PROJECTS))
 
     enterButton.onClick = proc (event: ClickEvent) =
-      enterProject(window, images, log, projList.value)
+      enterProject(skylight, images, log, projList.value)
 
     addButton.onClick = proc (event: ClickEvent) =
-      createNewProject(window, images, log)
+      createNewProject(skylight, images, log)
 
-    entrySettings(window, screens, projLabel)
-    entryReg(window, screens, buttons, projList, prejLabel, projLabel)
-    entryDraw(window, screens, images)
+    entrySettings(skylight, screens, projLabel)
+    entryReg(skylight, screens, buttons, projList, prejLabel, projLabel)
+    entryDraw(skylight, screens, images)
 
-proc entrySettings (window: Window, screens: Table[string, LayoutContainer], project_label: Label) =
+proc entrySettings (skylight: Skylight, screens: Table[string, LayoutContainer], project_label: Label) =
     block wExperimental:
       project_label.fontSize = 18
     block wSize:
       #[ WIDTH ]#
-      screens["left"].width  = returnAdjCell(50, AXES.X, 3, window.width)
-      screens["right"].width = returnAdjCell(50, AXES.X, 3, window.width)
-      screens["name"].width  = returnAdjCell(20, AXES.X, -2, window.width)
+      screens["left"].width  = returnAdjCell(50, AXES.X, 3, skylight.win.width)
+      screens["right"].width = returnAdjCell(50, AXES.X, 3, skylight.win.width)
+      screens["name"].width  = returnAdjCell(20, AXES.X, -2, skylight.win.width)
       #[ HEIGHT ]#
-      screens["left"].height  = returnAdjCell(100, AXES.Y, 9, window.height)
-      screens["right"].height = returnAdjCell(100, AXES.Y, 9, window.height)
-      screens["name"].height  = returnAdjCell(10, AXES.Y, 1, window.height)
+      screens["left"].height  = returnAdjCell(100, AXES.Y, 9, skylight.win.height - returnCell(4, AXES.Y))
+      screens["right"].height = returnAdjCell(100, AXES.Y, 9, skylight.win.height - returnCell(4, AXES.Y))
+      screens["name"].height  = returnAdjCell(10, AXES.Y, 1, skylight.win.height)
     block wAlign:
       screens["main"].xAlign    = XAlign_Center
       screens["left"].xAlign    = XAlign_Center
@@ -64,9 +64,9 @@ proc entrySettings (window: Window, screens: Table[string, LayoutContainer], pro
       screens["right"].frame   = newFrame()
       screens["buttons"].frame = newFrame()
 
-proc entryReg (window: Window, screens: Table[string, LayoutContainer], buttons: Table[string, Button], projects: ComboBox, pre_label: Label, project_label: Label) =
+proc entryReg (skylight: Skylight, screens: Table[string, LayoutContainer], buttons: Table[string, Button], projects: ComboBox, pre_label: Label, project_label: Label) =
     block wScreens:
-      window.add(screens["main"])
+      skylight.con.add(screens["main"])
       screens["main"].add(screens["left"])
       screens["main"].add(screens["right"])
       screens["left"].add(screens["name"])
@@ -80,22 +80,22 @@ proc entryReg (window: Window, screens: Table[string, LayoutContainer], buttons:
       screens["left"].add(project_label)
       screens["left"].add(projects)
 
-proc entryDraw (window: Window, screens: Table[string, LayoutContainer], images: Table[string, Image]) =
+proc entryDraw (skylight: Skylight, screens: Table[string, LayoutContainer], images: Table[string, Image]) =
     #[ RIGHT SCREEN ]#
     screens["right"].onDraw = proc (event: DrawEvent) =
       let canvas = event.control.canvas
-      canvas.drawImage(images["logo"], x=returnAdjCell(5, AXES.X, context=window.width),
-                                       y=returnAdjCell(6, AXES.Y, context=window.height),
-                                       width=returnAdjCell(40, AXES.X, context=window.width))
+      canvas.drawImage(images["logo"], x=returnAdjCell(5, AXES.X, context=skylight.win.width),
+                                       y=returnAdjCell(6, AXES.Y, context=skylight.win.height),
+                                       width=returnAdjCell(40, AXES.X, context=skylight.win.width))
 
     #[ LEFT SCREEN ]#
     screens["name"].onDraw = proc (event: DrawEvent) =
       let canvas = event.control.canvas
       canvas.drawTextCentered(bcs_name, x=0,
                                         y=0,
-                                        width=returnAdjCell(20, AXES.X, context=window.width),
-                                        height=returnAdjCell(3, AXES.Y, context=window.height))
+                                        width=returnAdjCell(20, AXES.X, context=skylight.win.width),
+                                        height=returnAdjCell(3, AXES.Y, context=skylight.win.height))
       canvas.drawTextCentered(bcs_ver, x=0,
                                        y=20,
-                                       width=returnAdjCell(22, AXES.X, context=window.width),
-                                       height=returnAdjCell(3, AXES.Y, context=window.height))
+                                       width=returnAdjCell(22, AXES.X, context=skylight.win.width),
+                                       height=returnAdjCell(3, AXES.Y, context=skylight.win.height))

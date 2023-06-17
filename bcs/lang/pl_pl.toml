@@ -5,4 +5,12 @@
 "login__add_new"   = "Stwórz i wejdź"
 "login__add_can"   = "Anuluj"
 
-"project__scripts" = "Skrypty"
+"project__themes"    = "Motywy"
+"project__panoramas" = "Panoramy"
+"project__music"     = "Muzyka"
+"project__scripts"   = "Skrypty"
+
+"project__races"     = "Rasy"
+"project__classes"   = "Klasy"
+"project__items"     = "Przedmioty"
+"project__entities"  = "Istoty"
