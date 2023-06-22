@@ -1,5 +1,6 @@
 import pygame.rect
 
+from core.file_system.theme_manag import font_handler
 from core.graphics.gh_manag import returnCell, revCell, iterateCells, iterateRevCells
 from core.decorators import Callable, HelperMethod
 from pygame.font import Font
@@ -11,7 +12,7 @@ from core.utils import *
 # Text renderer using scaling and alignment
 def put_text (screen, text, font_cat, size, pos_x=0, pos_y=0, align_x=None, align_y=None, colour=None, bg_colour=None, endpos_x=None, endpos_y=None, no_blit=False, raw=False):
     if colour is None: colour = (0, 0, 0) # default text colour is black
-    font = font_handler(category=font_cat)
+    font = font_handler(font_cat)
     #======================================
     fontobj = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size))
     fontobjs = fontobj.size(text) # tuple of rendered text size
@@ -35,7 +36,7 @@ def put_abstext (screen, text, font_cat, size, pos_x, pos_y, colour=None, bg_col
     if colour is None: colour = (0, 0, 0) # default text colour is black
     pos_x = returnCell(pos_x, "x")
     pos_y = returnCell(pos_y, "y")
-    font = font_handler(category=font_cat)
+    font = font_handler(font_cat)
     # 'size' is not cell-related because this would restrict precision
     #======================================
     fontobj = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size))
@@ -79,7 +80,8 @@ def put_lore(lang):
 # HANDLER  | You can pass font manually (use category=None then)
 #==========|========================================================
 # Fonts change because not all fonts support specific alphabets
-def font_handler (category: str, font=None):
+@Deprecated("core.file_system.theme_manag.font_handler")
+def font_handler_depr (category: str, font=None):
     match category:
         case "menu":
             if scx("lang")   == "polish":    font = "ferrum.otf"
@@ -238,7 +240,7 @@ class Text:
     @Callable
     def font(self, font_cat):
         """Chooses font depending on category ('lore:' prefix allows for use of lore fonts)"""
-        if "lore:" not in font_cat: self.txt_font = font_handler(category=font_cat)
+        if "lore:" not in font_cat: self.txt_font = font_handler(font_cat)
         else:                       self.txt_font = put_lore(font_cat.replace("lore:", ""))
 
     @Callable

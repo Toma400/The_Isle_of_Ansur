@@ -1,4 +1,5 @@
-from core.graphics.text_manag import font_handler, txt_size
+from core.file_system.theme_manag import font_handler
+from core.graphics.text_manag import txt_size
 from core.graphics.gh_manag import returnCell
 from core.utils import gpath
 from pygame.font import Font

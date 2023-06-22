@@ -49,7 +49,6 @@ def logs_deleting (num: int = None):
       del_num = full_num - num
       for ui, u in enumerate(all_logs):
         if ui < del_num:
-          print(u)
           deleter(f"{gpath}/core/logs/{u}.log")
   else:
     for u in all_logs: deleter(f"{gpath}/core/logs/{u}.log")
