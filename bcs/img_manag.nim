@@ -57,3 +57,11 @@ proc returnCells* (pos_x: int, pos_y: int): seq[int] =
 # Performs adjustment of container elements; 'it' shortens
 proc returnAdjCell* (pos: int, axis: AXES, it = 1, context = 0): int =
   returnCell(pos-(1*it), axis, context)
+
+proc horizLine* (length: int = 36, hls: string = "─"): Label =
+  var ihls = ""
+  for nm in 1..length:
+    ihls = ihls & hls
+  let hl = newLabel(ihls)
+  hl.xTextAlign = XTextAlign_Center
+  return hl
