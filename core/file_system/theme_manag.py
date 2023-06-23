@@ -5,6 +5,7 @@ import toml
 #==================================================
 # GENERAL
 #==================================================
+fallback_id = toml.load(f"core/system_ref.toml")["vanilla_modules"][0]
 # 1. guide.toml for themes
 # 2. theme.toml from theme searched
 
@@ -13,14 +14,15 @@ import toml
 # = ""
 #   -------------------> ansur
 
+
 # Checks for currently used theme (theme can be changed in settings or by mod)
 def get_theme():
     tf = toml.load(f"themes/guide.toml")
-    if tf["behaviour"]["prioritised_id"] == "": return toml.load(f"core/system_ref.toml")["vanilla_modules"][0]
+    if tf["behaviour"]["prioritised_id"] == "": return fallback_id
     else:                                       return tf["behaviour"]["prioritised_id"]
 
-def get_theme_file():
-    return toml.load(f"themes/{get_theme()}/theme.toml")
+def get_theme_file(id: str = get_theme()):
+    return toml.load(f"themes/{id}/theme.toml")
 #==================================================
 # FONTS
 #==================================================
@@ -53,3 +55,10 @@ def font_handler(context: str, language: str = scx("lang"), overwrite: str = Non
     #[ standard handling ]#
     try:    return get_theme_file()["fonts"][context][language]
     except: return get_theme_file()["fonts"][context]["_"]
+
+
+def bg_handler(context: str, split = False):
+    try:    bg_img = get_theme_file()["backgrounds"][context];            id = get_theme()
+    except: bg_img = get_theme_file(fallback_id)["backgrounds"][context]; id = fallback_id
+    if split is False: return f"themes/{id}/assets/{bg_img}"
+    else:              return f"themes/{id}/assets/", bg_img
