@@ -1,11 +1,12 @@
 [backgrounds]
+logo = "ioa_logo.png"
 menu = "menu_background.jpg"
 
 [colours]
 
 
 [fonts.general]
-font_size = 1.0
+font_size = 1.0   # fallback value (if not specificed precisely later)
 
 [fonts.menu]
 _         = ["ferrum.otf",    "1.0"]
