@@ -14,7 +14,7 @@ def put_text (screen, text, font_cat, size, pos_x=0, pos_y=0, align_x=None, alig
     if colour is None: colour = (0, 0, 0) # default text colour is black
     font = font_handler(font_cat)
     #======================================
-    fontobj = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size))
+    fontobj = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size, font_cat))
     fontobjs = fontobj.size(text) # tuple of rendered text size
     pos_x, pos_y = text_replacer(
         fontobjs,
@@ -39,33 +39,33 @@ def put_abstext (screen, text, font_cat, size, pos_x, pos_y, colour=None, bg_col
     font = font_handler(font_cat)
     # 'size' is not cell-related because this would restrict precision
     #======================================
-    fontobj = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size))
+    fontobj = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size, font_cat))
     txtobj = fontobj.render(text, True, colour, bg_colour)
     screen.blit(txtobj, (pos_x, pos_y))
 
 # Text renderer for long strings, allows for line breaks and dynamic resizing | text_spacing_y uses pixels for bigger precision, the rest operates on cell%
 def put_rectext (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing: tuple = (0, 0), req_size=50, colour=None, bg_colour=None, text_spacing=0.2, no_blit=False):
     givlist = txt_split(text, [screen, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing,
-                               txt_size(req_size), colour, bg_colour, text_spacing]) # list of lines for text
+                               txt_size(req_size, font_cat), colour, bg_colour, text_spacing]) # list of lines for text
     height_given = endrect_y - rect_y
     retlist = [] # for no_blit
 
     while True:
-        line_height = revCell(text_spacing, "y") + revCell(txt_rect_size(text, font_cat, txt_size(req_size), screen)[1], "y") # checks height of line (font height + spacing)
+        line_height = revCell(text_spacing, "y") + revCell(txt_rect_size(text, font_cat, txt_size(req_size, font_cat), screen)[1], "y") # checks height of line (font height + spacing)
         if height_given < len(givlist) * line_height: # checks if all lines will fit given space (if not, reduces font size)
             req_size -= 1
             givlist = txt_split(text, [screen, font_cat, rect_x, rect_y, endrect_x, endrect_y, rect_spacing,
-                                       txt_size(req_size), colour, bg_colour, text_spacing]) # list of lines for text
+                                       txt_size(req_size, font_cat), colour, bg_colour, text_spacing]) # list of lines for text
             continue
         break
 
     for i in givlist:
         pos_x, pos_y = rect_x + rect_spacing[0], rect_y + rect_spacing[1]  # starting position for text (with user-given gap, default 0 / 0)
         if no_blit: # used for listboxes or when you need to delay blitting text
-            retlist.append(put_text(screen, i, font_cat, txt_size(req_size), pos_x, pos_y, colour=colour, bg_colour=bg_colour, no_blit=True, raw=True))
+            retlist.append(put_text(screen, i, font_cat, txt_size(req_size, font_cat), pos_x, pos_y, colour=colour, bg_colour=bg_colour, no_blit=True, raw=True))
         else: # normal use
-            put_text(screen, i, font_cat, txt_size(req_size), pos_x, pos_y, colour=colour, bg_colour=bg_colour)
-        rect_y += revCell(text_spacing, "y") + revCell(txt_rect_size(text, font_cat, txt_size(req_size), screen)[1], "y") - rect_spacing[1] # minus to make only first line use rect_spacing
+            put_text(screen, i, font_cat, txt_size(req_size, font_cat), pos_x, pos_y, colour=colour, bg_colour=bg_colour)
+        rect_y += revCell(text_spacing, "y") + revCell(txt_rect_size(text, font_cat, txt_size(req_size, font_cat), screen)[1], "y") - rect_spacing[1] # minus to make only first line use rect_spacing
 
     if no_blit: return retlist
 
@@ -185,8 +185,8 @@ def txt_rect_manag (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y
         return False
 
 # adjusts size to modifier in settings
-def txt_size (size):
-    return int((size*scx("txts"))*font_size())
+def txt_size (size, context=None):
+    return int((size*scx("txts"))*font_size(context))
 
 #==========|========================================================
 # TEXT     | Used for objectify text features in cleaner way
@@ -198,7 +198,7 @@ class Text:
     txt_colour = (0, 0, 0)
     bg_colour  = None
 
-    def __init__(self, text: str, pos: tuple, fonts: str, size: int):
+    def __init__(self, text: str, pos: tuple, fonts: str, size: int, context: str):
         """
         text  | Raw text or language key
         pos   | Tuple of starting x/y and (optional) end x/y values. Work on cell% system.
@@ -216,8 +216,9 @@ class Text:
         self.key        = text
         # font / sizes
         self.size       = size
+        self.context    = context
         self.txt_font   = self.font(fonts).txt_font
-        self.fontobj    = Font(f"{gpath}/core/assets/fonts/{self.txt_font}", txt_size(size))
+        self.fontobj    = Font(f"{gpath}/core/assets/fonts/{self.txt_font}", txt_size(size, context))
         self.txt_size   = self.fontobj.size(self.text) # size of currently rendered text
         # positions
         self.pos        = self.pos_unpacker(pos)           # px value (based on cell%/align given)
@@ -294,7 +295,7 @@ class Text:
     @HelperMethod
     def update(self):
         """Updates the object with crucial elements (collisions)"""
-        self.fontobj  = Font(f"{gpath}/core/assets/fonts/{self.txt_font}", txt_size(self.size))
+        self.fontobj  = Font(f"{gpath}/core/assets/fonts/{self.txt_font}", txt_size(self.size, self.context))
         self.txt_size = self.fontobj.size(self.text)
         self.pos      = self.pos_unpacker(self.rawpos)
         self.cellpos  = self.iterate_rev_cells(self.pos)

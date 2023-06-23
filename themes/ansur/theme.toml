@@ -8,6 +8,6 @@ menu = "menu_background.jpg"
 font_size = 1.0
 
 [fonts.menu]
-_         = "ferrum.otf"
-polish    = "ferrum.otf"    # broken
-hungarian = "verve_hun.otf"
+_         = ["ferrum.otf",    "1.0"]
+polish    = ["ferrum.otf",    "1.0"]    # broken
+hungarian = ["verve_hun.otf", "1.0"]

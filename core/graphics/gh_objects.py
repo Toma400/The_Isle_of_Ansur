@@ -22,7 +22,7 @@ class InputBox:
 
         else: self.background = "#E6E3D3" # default dark cream background
         # Font setup -------------------------------------------------
-        if font is not None: self.font = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size))
+        if font is not None: self.font = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size, font_cat))
         else:                self.font = font_handler(category="menu")
 
         # Other variables --------------------------------------------
