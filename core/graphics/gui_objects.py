@@ -19,15 +19,15 @@ class GUI_Helper:
 
     def __init__(self, panorama):
         # MENU
-        self.menu__gh_logo       = Image(path="core/assets/visuals/",      file="logo.png",                  pos=(10, 3, 90, 19))
+        self.menu__gh_logo       = Image(path=bg_handler("logo", True)[0], file=bg_handler("logo", True)[1], pos=(10, 1, 90, 22))
         self.menu__gh_background = Image(path=bg_handler("menu", True)[0], file=bg_handler("menu", True)[1], pos=(0, 0))
         self.menu__gh_panorama   = Image(path=panorama[0],                 file=panorama[1],                 pos=(0, 0)).full()
 
-        #self.alvb                = NestedImage("core/assets/visuals/", "dunaj.jpg", (0, 0, 100, 100)) # probably temporary, as everything below (listbox testing)
-        #self.alvn                = NestedImage("core/assets/visuals/", "denaj.png", (0, 0, 100, 100))
-        #self.menu__gh_testpt     = ListBoxPattern(NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, 100, 100)))
-        #self.menu__gh_test       = ListBox((10, 10, 30, 50), pattern=self.menu__gh_testpt).decor(bgdeco=self.alvb,
-        #                                                                                         sgdeco=self.alvn)
+        # self.alvb                = NestedImage("core/assets/visuals/", "dunaj.jpg", (0, 0, 100, 100)) # probably temporary, as everything below (listbox testing)
+        # self.alvn                = NestedImage("core/assets/visuals/", "denaj.png", (0, 0, 100, 100))
+        # self.menu__gh_testpt     = ListBoxPattern(NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, 100, 100)))
+        # self.menu__gh_test       = ListBox((10, 10, 30, 50), pattern=self.menu__gh_testpt).decor(bgdeco=self.alvb,
+        #                                                                                          sgdeco=self.alvn)
 
     def get_element(self, element: str):
         return self.__getattribute__(element)
