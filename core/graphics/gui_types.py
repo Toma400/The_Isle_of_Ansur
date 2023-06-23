@@ -1,4 +1,5 @@
 from core.graphics.text_manag import put_abstext, put_text, langstring, Text
+from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
 from core.graphics.gh_manag import *
@@ -23,16 +24,16 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             dyn_screen.gui("menu__gh_logo").put(screen)
 
             if dyn_screen.update and scx("vch"):
-                upd = put_text(screen, text=langstring("menu__update"),          font_cat="menu", size=22, align_x="center", pos_y=96, colour="#B0CA60")
+                upd = put_text(screen, text=langstring("menu__update"), font_cat="menu", size=22, align_x="center", pos_y=96, colour=fCol.OTHER.value)
                 if upd_click(upd, pg_events): update() # GitHub repo
-            put_abstext(screen,  text=f"{sysref('status')} {sysref('version')}", font_cat="menu", size=22, pos_x=0.5,        pos_y=96, colour="#4F3920")
+            put_abstext(screen, text=f"{sysref('status')} {sysref('version')}", font_cat="menu", size=22, pos_x=0.5, pos_y=96, colour=fCol.BACKGROUND.value)
 
-            gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour="#4E3510")
-            gt2 = put_text(screen, text=langstring("menu__button_load"),     font_cat="menu", size=30, align_x="center", pos_y=34, colour="#4F4C49")
-            gt3 = put_text(screen, text=langstring("menu__button_arena"),    font_cat="menu", size=30, align_x="center", pos_y=40, colour="#4F4C49")
-            gt4 = put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#4E3510")
-            gt5 = put_text(screen, text=langstring("menu__button_packs"),    font_cat="menu", size=30, align_x="center", pos_y=52, colour="#4F4C49")
-            gt6 = put_text(screen, text=langstring("menu__button_exit"),     font_cat="menu", size=30, align_x="center", pos_y=58, colour="#4E3510")
+            gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour=fCol.ENABLED.value)
+            gt2 = put_text(screen, text=langstring("menu__button_load"),     font_cat="menu", size=30, align_x="center", pos_y=34, colour=fCol.DISABLED.value)
+            gt3 = put_text(screen, text=langstring("menu__button_arena"),    font_cat="menu", size=30, align_x="center", pos_y=40, colour=fCol.DISABLED.value)
+            gt4 = put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour=fCol.ENABLED.value)
+            gt5 = put_text(screen, text=langstring("menu__button_packs"),    font_cat="menu", size=30, align_x="center", pos_y=52, colour=fCol.DISABLED.value)
+            gt6 = put_text(screen, text=langstring("menu__button_exit"),     font_cat="menu", size=30, align_x="center", pos_y=58, colour=fCol.ENABLED.value)
 
             #gt7 = Text(text=langstring("menu__button_exit"),     fonts="menu", size=30, pos=(50,64)).colour(tcol="#4E3510").put(screen)
             #gt7 = Text(text=langstring("menu__button_settings"), fonts="menu", size=30, pos=(50,70)).colour(tcol="#4E3510").put(screen)
@@ -41,7 +42,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             #==================================================
             # hovering & clicking events
             if mouseColliderPx(gt1[0], gt1[1], gt1[2], gt1[3]):
-                put_text(screen, text=langstring("menu__button_start"), font_cat="menu", size=30, align_x="center", pos_y=28, colour="#7C613B")
+                put_text(screen, text=langstring("menu__button_start"), font_cat="menu", size=30, align_x="center", pos_y=28, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     guitype[0] = switch_scr(screen, "new_game")
                     guitype[1] = switch_scr(screen, "gender")

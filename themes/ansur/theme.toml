@@ -2,8 +2,12 @@
 logo = "ioa_logo.png"
 menu = "menu_background.jpg"
 
-[colours]
-
+[fonts.colours]
+disabled   = "#4F4C49"
+enabled    = "#4E3510"
+hovered    = "#7C613B"
+background = "#4F3920"
+other      = "#B0CA60"
 
 [fonts.general]
 font_size = 1.0   # fallback value (if not specificed precisely later)
