@@ -1,4 +1,5 @@
 from core.file_system.repo_manag import dir_checker
+from core.file_system.theme_manag import bg_handler
 from utils.text_manag import text_splitter as tspl
 from system.mod_manag import mod_lister
 from core.graphics.gui_objects import GUI_Helper
@@ -35,7 +36,7 @@ def run_screen():
 
             screen = pygame.display.set_mode([scx("svx"), scx("svy")])
             pygame.display.set_caption(sysref("name"))
-            pygame.display.set_icon(imgLoad("core/assets/visuals/", "logo.png"))
+            pygame.display.set_icon(imgLoad(bg_handler("icon", True)[0], bg_handler("icon", True)[1]))
             return screen
         except pygame.error: continue
 

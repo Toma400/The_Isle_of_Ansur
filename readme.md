@@ -1,4 +1,4 @@
-![3YNAR1d_20x](core/assets/visuals/logo.png)
+![](themes/ansur/assets/ioa_logo.png)
 
 # The Isle of Ansur
 
