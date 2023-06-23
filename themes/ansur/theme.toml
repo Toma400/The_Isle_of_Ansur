@@ -5,8 +5,7 @@ menu = "menu_background.jpg"
 
 
 [fonts.general]
-font_size = 0 # placeholder value
-# size that will be adjusted, so you can use also v. big and v. weird fonts and still make it work with current resolution/graphical system of IoA
+font_size = 1.0
 
 [fonts.menu]
 _         = "ferrum.otf"

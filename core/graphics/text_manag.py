@@ -1,6 +1,6 @@
 import pygame.rect
 
-from core.file_system.theme_manag import font_handler
+from core.file_system.theme_manag import font_handler, font_size
 from core.graphics.gh_manag import returnCell, revCell, iterateCells, iterateRevCells
 from core.decorators import Callable, HelperMethod
 from pygame.font import Font
@@ -186,7 +186,7 @@ def txt_rect_manag (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y
 
 # adjusts size to modifier in settings
 def txt_size (size):
-    return int(size*scx("txts"))
+    return int((size*scx("txts"))*font_size())
 
 #==========|========================================================
 # TEXT     | Used for objectify text features in cleaner way

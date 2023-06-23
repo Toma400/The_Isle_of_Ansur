@@ -55,9 +55,12 @@ def font_handler(context: str, language: str = scx("lang"), overwrite: str = Non
     #[ standard handling ]#
     try:    return get_theme_file()["fonts"][context][language]
     except: return get_theme_file()["fonts"][context]["_"]
+# Returns font size modifier (default to 1.0)
+def font_size():
+    return get_theme_file()["fonts"]["general"]["font_size"]
 
-
-def bg_handler(context: str, split = False):
+# Returns address of image that will show up in menu backgrounds
+def bg_handler(context: str, split=False):
     try:    bg_img = get_theme_file()["backgrounds"][context];            id = get_theme()
     except: bg_img = get_theme_file(fallback_id)["backgrounds"][context]; id = fallback_id
     if split is False: return f"themes/{id}/assets/{bg_img}"
