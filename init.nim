@@ -23,10 +23,10 @@ proc bcsInit* (): FileLogger =
 
   # Integrity checking
   if fileExists("settings.json"): log.log(lvlDebug, "Integrity check: Settings file found!")   else: log.log(lvlError, "Integrity check: Failed to find settings file.")
-  if dirExists("bcs/assets"):     log.log(lvlDebug, "Integrity check: Assets folder found!")   else: log.log(lvlError, "Integrity check: Failed to find assets folder.")
-  if dirExists("bcs/themes"):     log.log(lvlDebug, "Integrity check: Themes folder found!")   else: log.log(lvlError, "Integrity check: Failed to find themes folder.")
-  if dirExists("bcs/lang"):       log.log(lvlDebug, "Integrity check: Language folder found!") else: log.log(lvlError, "Integrity check: Failed to find language folder.")
   if dirExists("bcs"):            log.log(lvlDebug, "Integrity check: Main BCS folder found!") else: log.log(lvlError, "Integrity check: Failed to find main BCS folder.")
+  if dirExists("bcs/lang"):       log.log(lvlDebug, "Integrity check: Language folder found!") else: log.log(lvlError, "Integrity check: Failed to find language folder.")
+  if dirExists("bcs/assets"):     log.log(lvlDebug, "Integrity check: Assets folder found!")   else: log.log(lvlError, "Integrity check: Failed to find assets folder.")
+  #if dirExists("bcs/themes"):     log.log(lvlDebug, "Integrity check: Themes folder found!")   else: log.log(lvlError, "Integrity check: Failed to find themes folder.")
 
   return log
 

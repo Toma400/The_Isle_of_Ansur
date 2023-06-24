@@ -22,8 +22,7 @@ import os
 
 var log = bcsInit()
 
-try:
-
+proc ioaRun* (): Skylight =
   for i in get_mods(PT.MODS):
     log.log(lvlInfo, "Mods browsing: [" & $i & "] found.")
   for j in get_mods(PT.PROJECTS):
@@ -39,8 +38,12 @@ try:
   block:
     entryScreen(skylight, images, log) # initial screen run
 
-    skylight.win.show()
-    app.run()
+  return skylight
+
+try:
+  var run = ioaRun()
+  run.win.show()
+  app.run()
 
 except Exception:
   log.log(lvlFatal, $getCurrentExceptionMsg())

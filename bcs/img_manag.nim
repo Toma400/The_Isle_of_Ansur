@@ -11,12 +11,12 @@ const imgp_list = {
 }.toTable
 
 proc getGuiImages* (): Table[string, Image] =
-  var imgl = initTable[string, Image]()
-  for imgi, imgp in imgp_list:
-    let img = newImage()
-    img.loadFromFile(imgp)
-    imgl[imgi] = img
-  return imgl
+    var imgl = initTable[string, Image]()
+    for imgi, imgp in imgp_list:
+      let img = newImage()
+      img.loadFromFile(imgp)
+      imgl[imgi] = img
+    return imgl
 
 #[-----------------------------------------------------------
  GRAPHIC SUPPLIERS
@@ -27,27 +27,27 @@ type
 
 # Calculates percents depending on context (nestedCell, kind of)
 proc parseCell (pos: int, context: int): int =
-  var svc = context / 100
-  return (pos.float * svc).int
+    var svc = context / 100
+    return (pos.float * svc).int
 
 # Returns pixels of specific % of screen passed
 proc returnCell* (pos: int, axis: AXES, context = 0): int =
-  var svc: float
-  if context == 0:
-    if axis == AXES.X: svc = parseInt(settings("res_x")) / 100
-    else:              svc = parseInt(settings("res_y")) / 100
-    return (pos.float * svc).int
-  else:
-    return parseCell(pos, context)
+    var svc: float
+    if context == 0:
+      if axis == AXES.X: svc = parseInt(settings("res_x")) / 100
+      else:              svc = parseInt(settings("res_y")) / 100
+      return (pos.float * svc).int
+    else:
+      return parseCell(pos, context)
 
 proc returnCell* (pos: float, axis: AXES, context = 0): int =
-  var svc: float
-  if context == 0:
-    if axis == AXES.X: svc = parseInt(settings("res_x")) / 100
-    else:              svc = parseInt(settings("res_y")) / 100
-    return (pos * svc).int
-  else:
-    return parseCell(pos.int, context)
+    var svc: float
+    if context == 0:
+      if axis == AXES.X: svc = parseInt(settings("res_x")) / 100
+      else:              svc = parseInt(settings("res_y")) / 100
+      return (pos * svc).int
+    else:
+      return parseCell(pos.int, context)
 
 # Returns pixels of specific % of screen passed
 proc returnCells* (pos_x: int, pos_y: int): seq[int] =
@@ -56,12 +56,18 @@ proc returnCells* (pos_x: int, pos_y: int): seq[int] =
 
 # Performs adjustment of container elements; 'it' shortens
 proc returnAdjCell* (pos: int, axis: AXES, it = 1, context = 0): int =
-  returnCell(pos-(1*it), axis, context)
+    returnCell(pos-(1*it), axis, context)
+
+proc boundText* (text: string, bound_ov = " "): string =
+    var bound = bound_ov
+    for ix in 0..(text.len/2).int:
+        bound = bound & bound_ov
+    return bound & text & bound
 
 proc horizLine* (length: int = 36, hls: string = "─"): Label =
-  var ihls = ""
-  for nm in 1..length:
-    ihls = ihls & hls
-  let hl = newLabel(ihls)
-  hl.xTextAlign = XTextAlign_Center
-  return hl
+    var ihls = ""
+    for nm in 1..length:
+      ihls = ihls & hls
+    let hl = newLabel(ihls)
+    hl.xTextAlign = XTextAlign_Center
+    return hl

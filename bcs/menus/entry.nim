@@ -4,7 +4,7 @@ import ../../init
 import std/strutils
 import std/logging
 import std/tables
-import entry_new
+import new_entry
 import proj_main
 import nigui
 # pre-loading later functions

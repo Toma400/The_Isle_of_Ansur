@@ -5,6 +5,9 @@
 "login__add_new"   = "Create and enter"
 "login__add_can"   = "Cancel"
 
+"project__new_id" = "New ID"
+"project__export" = "Export project"
+
 "project__fonts"     = "Fonts"
 "project__panoramas" = "Panoramas"
 "project__music"     = "Music"
