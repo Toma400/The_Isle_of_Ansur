@@ -15,13 +15,6 @@ proc mainProjScreen* (skylight: Skylight, images: Table[string, Image], pj: var 
     for pjids in pj.ids:
         pj.lge(lvlInfo, "Loading project " & pj.name & ". Recognised ID: " & pjids)
 
-    #[--->]#
-    # let regtest = ["some_great_project", "Some Great Project", "Some_great_project", "some_great_project!"]
-    # for em in regtest:
-    #   let o = newID(pj, em)
-    #   if o.isOk:  echo "Creating " & em
-    #   if o.isErr: echo o.error()
-    #[<---]#
     let mainScreen   = newLayoutContainer(Layout_Vertical)
     let upScreen     = newLayoutContainer(Layout_Horizontal)  # upper bar
     let downScreen   = newLayoutContainer(Layout_Horizontal)  # lower bar

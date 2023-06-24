@@ -1,3 +1,4 @@
+import std/strutils
 import std/logging
 import std/re
 import results
@@ -14,6 +15,11 @@ type
 
 type R = Result[int, string]
 
+proc lpe* (pj: var IoaProject, lvl: Level, text: string)
+#[-----------------------------------------------------]#
+#[ MAIN BODY                                           ]#
+#[-----------------------------------------------------]#
+#[ --- IDs --- ]#
 proc loadIDs (pj_name: string): seq[string] =
     var ids = newSeq[string]()
     for kind, path in walkDir("bcs/projects/" & pj_name, true):
@@ -22,18 +28,25 @@ proc loadIDs (pj_name: string): seq[string] =
         else:     discard
     return ids
 
+#[ Creates new project ID ]#
 proc newID* (pj: var IoaProject, id: string): R =
     for l in id:
-      if not match($l, re"\w"):
-        result.err "Couldn't create new ID [" & id & "] as it contained forbidden characters."
+      if l notin Letters + {'_'}:
+        return err("Couldn't create new ID [" & id & "] as it contained forbidden characters.")
     createDir("bcs/projects/" & pj.name & "/" & id)
+    pj.lpe(lvlInfo, "Created ID [" & id & "] successfully.")
     pj.ids.add(id)
-    result.ok(0)
+    ok(0)
 
-#[ syntactic sugar function to ease logging system ]#
+#[ Syntactic sugar function to ease logging system ]#
 proc lge* (pj: var IoaProject, lvl: Level, text: string) =
     pj.log.log(lvl, text)
 
+#[ Project-dependent variant ]#
+proc lpe* (pj: var IoaProject, lvl: Level, text: string) =
+    pj.lge(lvl, "[" & pj.name & "] " & text)
+
+#[ Constructor for IoaProject ]#
 proc buildProject* (pj_name: string, log: FileLogger): IoaProject =
     return IoaProject(name: pj_name,
                       ids:  loadIDs(pj_name),
