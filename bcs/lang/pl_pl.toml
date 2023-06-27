@@ -5,8 +5,16 @@
 "login__add_new"   = "Stwórz i wejdź"
 "login__add_can"   = "Anuluj"
 
-"project__new_id" = "Nowe ID"
-"project__export" = "Eksport projektu"
+"project__new_id"   = "Nowe ID"
+"project__export"   = "Eksport projektu"
+"project__generate" = "Generuj pliki moda"
+"project__add"      = "Dodaj ID"
+"project__add_new"  = "Stwórz"
+"project__add_can"  = "Anuluj"
+"project__add_inf"  = "ID może zawierać jedynie litery a-z i podkreślenie. Jeżeli użyjesz wielkich liter, zostaną one zmienione na małe"
+"project__add_suc"  = "Udało się stworzyć ID"
+"project__add_fai"  = "Nie udało się stworzyć ID"
+"project__add_ok"   = "Potwierdź"
 
 "project__fonts"     = "Czcionki"
 "project__panoramas" = "Panoramy"

@@ -5,8 +5,16 @@
 "login__add_new"   = "Create and enter"
 "login__add_can"   = "Cancel"
 
-"project__new_id" = "New ID"
-"project__export" = "Export project"
+"project__new_id"   = "New ID"
+"project__export"   = "Export project"
+"project__generate" = "Generate mod package"
+"project__add"      = "Add new ID"
+"project__add_new"  = "Create"
+"project__add_can"  = "Cancel"
+"project__add_inf"  = "ID can only use a-z characters and underscore. If you enter uppercase letters, they will be converted into lowercase"
+"project__add_suc"  = "Creation of ID succeeded"
+"project__add_fai"  = "Creation of ID failed"
+"project__add_ok"   = "Confirm"
 
 "project__fonts"     = "Fonts"
 "project__panoramas" = "Panoramas"
