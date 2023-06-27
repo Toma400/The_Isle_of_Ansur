@@ -28,6 +28,16 @@ proc init* (s: Skylight): Skylight =
   s.win.add(s.con)
   s.con.setSize(s.win.width, s.win.height)
   return s
+proc debug* (s: Skylight): string =
+  proc e (father: Control, str: var string): string =
+    str = str & "["
+    for c in father.childControls:
+        str = str & ".LayoutContainer."
+        str = e(c, str)
+    str = str & "]"
+    return str
+  var es = ""
+  return s.con.e(es)
 
 # --- here starts
 proc bcsd* (): string =
@@ -75,5 +85,5 @@ proc windowInit* (window: Window, res = (0, 0)) =
 
 proc windowUpdate* (skylight: Skylight, name = bcs_name) =
   for sub in skylight.con.childControls:
-    skylight.con.remove(sub)
+    sub.hide()
   skylight.win.title = name
