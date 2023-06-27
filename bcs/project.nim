@@ -1,6 +1,6 @@
 import std/strutils
+import std/unicode
 import std/logging
-import std/re
 import results
 import os
 #[ BEAUTIFUL MODULES ]#
@@ -13,9 +13,9 @@ type
     ids*:  seq[string]  #[ IDs used by project ]#
     log*:  FileLogger   #[ Logger utility ]#
 
-type R = Result[int, string]
+type R* = Result[int, string]
 
-proc lpe* (pj: var IoaProject, lvl: Level, text: string)
+proc lpe* (pj: IoaProject, lvl: Level, text: string)
 #[-----------------------------------------------------]#
 #[ MAIN BODY                                           ]#
 #[-----------------------------------------------------]#
@@ -29,21 +29,22 @@ proc loadIDs (pj_name: string): seq[string] =
     return ids
 
 #[ Creates new project ID ]#
-proc newID* (pj: var IoaProject, id: string): R =
+proc newID* (pj: var IoaProject, id: var string): R =
     for l in id:
       if l notin Letters + {'_'}:
         return err("Couldn't create new ID [" & id & "] as it contained forbidden characters.")
+    id = toLower(id) # it is there because non-convertable elements are picked above (err-safe)
     createDir("bcs/projects/" & pj.name & "/" & id)
     pj.lpe(lvlInfo, "Created ID [" & id & "] successfully.")
     pj.ids.add(id)
     ok(0)
 
 #[ Syntactic sugar function to ease logging system ]#
-proc lge* (pj: var IoaProject, lvl: Level, text: string) =
+proc lge* (pj: IoaProject, lvl: Level, text: string) =
     pj.log.log(lvl, text)
 
 #[ Project-dependent variant ]#
-proc lpe* (pj: var IoaProject, lvl: Level, text: string) =
+proc lpe* (pj: IoaProject, lvl: Level, text: string) =
     pj.lge(lvl, "[" & pj.name & "] " & text)
 
 #[ Constructor for IoaProject ]#

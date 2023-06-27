@@ -6,6 +6,7 @@ import std/strutils
 import std/sequtils
 import std/logging
 import std/tables
+import questionable
 import system
 import nigui
 import init
@@ -22,18 +23,20 @@ import os
 
 var log = bcsInit()
 
-proc ioaRun* (): Skylight =
-  for i in get_mods(PT.MODS):
-    log.log(lvlInfo, "Mods browsing: [" & $i & "] found.")
-  for j in get_mods(PT.PROJECTS):
-    log.log(lvlInfo, "Projects browsing: [" & $j & "] found.")
+proc ioaRun* (skylight_passed: ?Skylight): Skylight =
+  # Used when
+  proc ioaStart(): Skylight =
+    for i in get_mods(PT.MODS):     log.log(lvlInfo, "Mods browsing: [" & $i & "] found.")
+    for j in get_mods(PT.PROJECTS): log.log(lvlInfo, "Projects browsing: [" & $j & "] found.")
+    app.init()
+
+    var screen   = newLayoutContainer(Layout_Horizontal)
+    var window   = newWindow(bcs_name)
+    var skylight = Skylight(win: window, con: screen).init()
+    return skylight
 
   # --- BCS MAIN RUN ---
-  app.init()
-
-  var screen   = newLayoutContainer(Layout_Horizontal)
-  var window   = newWindow(bcs_name)
-  var skylight = Skylight(win: window, con: screen).init()
+  var skylight = skylight_passed |? ioaStart()
   var images   = getGuiImages()
   block:
     entryScreen(skylight, images, log) # initial screen run
@@ -41,7 +44,7 @@ proc ioaRun* (): Skylight =
   return skylight
 
 try:
-  var run = ioaRun()
+  var run = ioaRun(Skylight.none)
   run.win.show()
   app.run()
 
