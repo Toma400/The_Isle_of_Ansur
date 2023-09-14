@@ -1,4 +1,5 @@
 from nimfire/utils import getScreenRes
+import std/tables
 import nimfire/colors
 import nimfire/image
 import nimfire/draw
@@ -9,6 +10,8 @@ import items
 
 var w = initWindow((1200, 800), "Isle of Ansur: Battle Test", bg_colour=MORNING_BLUE)
 
+let lists_items = gatherItems()
+
 var pick_menu   = newSection(newRect((0, 0), (1200, 800), MORNING_BLUE))
 var battle_menu = newSection(newRect((0, 0), (1200, 800), MORNING_BLUE))
 var player = newPlayer(100, Gender.M)
@@ -17,6 +20,10 @@ var cmenu  = pick_menu      # current menu being used
 # equip(p, c)
 # echo $p
 var img_fem = newImage("assets/female.png")
+
+for item in lists_items.keys:
+   echo "=========================================================="
+   echo lists_items[item].debug
 
 w.drawSection(cmenu) # initial drawing (will need redrawing only when action is done)
 

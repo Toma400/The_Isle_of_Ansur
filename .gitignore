@@ -1,2 +1,5 @@
 /_temp/
 /.idea/highlightedFiles.xml
+
+/data/items/template.tomlv
+battle.rb

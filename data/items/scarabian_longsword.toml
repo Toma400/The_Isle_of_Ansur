@@ -1,0 +1,14 @@
+[main]
+name     = "Scarabian Longsword"
+origin   = "desolatus"
+material = "scarabia"
+subclass = "longsword"
+
+[statistics]
+attack_low     = 10
+attack_high    = 20
+attack_type    = "slash"
+
+[crafting]
+quality_low  = "solid"
+quality_high = "hardened"

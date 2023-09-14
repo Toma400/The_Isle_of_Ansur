@@ -1,0 +1,14 @@
+[main]
+name     = "Baedoorian Iron Shortsword"
+origin   = "baedoorian"
+material = "iron"
+subclass = "shortsword"
+
+[statistics]
+attack_low     = 5
+attack_high    = 15
+attack_type    = "slash"
+
+[crafting]
+quality_low  = "weak"
+quality_high = "sturdy"
