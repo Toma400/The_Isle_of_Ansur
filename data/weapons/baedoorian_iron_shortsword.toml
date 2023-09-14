@@ -1,0 +1,22 @@
+[main]
+name     = "Baedoorian Iron Shortsword"
+origin   = "baedoorian"
+material = "iron"
+quality  = "sturdy"
+class    = "sword"
+subclass = "shortsword"
+
+[statistics]
+attack_low     = 5
+attack_high    = 15
+attack_type    = "slashing"
+attack_special = [] # let you add magic elements being used (fire, ice, etc.)
+
+[ioa_exclusive]
+durability = 250
+weight     = 1.5
+price      = 22
+skill_req  = {"shortswords" = 0}
+
+[non_applicable]
+id = [] # nil equivalent

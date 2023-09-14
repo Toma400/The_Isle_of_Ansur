@@ -1,0 +1,23 @@
+[main]
+name = "Bandit"
+
+[statistics]
+hp = 100
+mp = 0
+
+[resistances]
+melee_cut  = 0
+melee_stab = 0
+magic_fire = 0
+magic_ice  = 0
+
+[equipment]
+backpack  = []
+main_hand = ""
+side_hand = ""
+helmet     = ""
+chestplate = []
+leggings   = []
+boots      = ""
+amulets    = []
+rings      = []
