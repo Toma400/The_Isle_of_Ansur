@@ -5,7 +5,7 @@ from system.mod_manag import mod_lister
 from core.graphics.gui_objects import GUI_Helper
 from core.graphics.gh_manag import *
 from core.utils import *
-import os, random, pygame
+import os, random, pygame, pygame_gui
 
 # Background menu image handler
 def bgm_screen():
@@ -40,18 +40,24 @@ def run_screen():
             return screen
         except pygame.error: continue
 
+def run_pgui():
+    return pygame_gui.UIManager((scx("svx"), scx("svy")))
+
 class Screen:
 
     def __init__(self):
-        self.dyn_screen = [run_screen()]
+        self.dyn_screen = [run_screen()]            # PyGame main screen (use 'self.screen' instead)
         self.panorama   = bgm_screen()
-        self.screen     = self.dyn_screen[0]
+        self.pgui       = run_pgui()                # PyGameGUI manager
+        self.screen     = self.dyn_screen[0]        # Main handler for PyGame main screen
         self.objects    = GUI_Helper(self.panorama)
         self.update     = version_checker()
+        self.clock      = pygame.time.Clock()       # Clock (mostly to hold PyGameGUI processes)
 
     def reset(self):
         """hard refresh of screen | should reassign currently used 'screen' variable"""
         self.dyn_screen[0] = run_screen()
+        self.pgui          = run_pgui()
         self.screen        = self.dyn_screen[0]
         self.objects.restart(self.panorama)
         return self.screen
