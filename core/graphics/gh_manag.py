@@ -158,6 +158,11 @@ def switch_scr(screen, gui_aimed):
     screen.fill("#000000"); log.debug(f"Switching screen to guitype value: [{gui_aimed}]")
     return gui_aimed
 
+def switch_gscr(dscreen, screen, gui_aimed):
+    dscreen.clear_pgui()
+    screen.fill("#000000"); log.debug(f"Switching screen to guitype value: [{gui_aimed}]")
+    return gui_aimed
+
 # Checks if temp directory exists, and if not, then creates one
 def dir_cleaner(path):
     if not os.path.isdir(f"{gpath}/_temp/img/{path}"):

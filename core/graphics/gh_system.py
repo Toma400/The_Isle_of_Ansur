@@ -1,5 +1,6 @@
 from core.file_system.repo_manag import dir_checker
 from core.file_system.theme_manag import bg_handler
+from core.gui.registry.pgui_objects import PGUI_Helper
 from utils.text_manag import text_splitter as tspl
 from system.mod_manag import mod_lister
 from core.graphics.gui_objects import GUI_Helper
@@ -50,8 +51,9 @@ class Screen:
         self.panorama   = bgm_screen()
         self.pgui       = run_pgui()                # PyGameGUI manager
         self.screen     = self.dyn_screen[0]        # Main handler for PyGame main screen
-        self.objects    = GUI_Helper(self.panorama)
-        self.update     = version_checker()
+        self.objects    = GUI_Helper(self.panorama) # Registry of GUI objects
+        self.pobjects   = PGUI_Helper()             # Registry of PyGameGUI objects
+        self.update     = version_checker()         # Bool value of whether game is up-to-date
         self.clock      = pygame.time.Clock()       # Clock (mostly to hold PyGameGUI processes)
 
     def reset(self):
@@ -64,3 +66,12 @@ class Screen:
 
     def gui(self, value: str):
         return self.objects.get_element(value)
+
+    def put_pgui(self, value: str):
+        """Reveals GUI element currently being hidden"""
+        self.pobjects.get_element(value).visible = True
+
+    def clear_pgui(self):
+        """Flushes out all visibility of elements currently shown (used by 'switch_gscr' func)"""
+        for pgui_e in self.pobjects.get_elements():
+            self.pobjects.get_element(pgui_e).visible = False
