@@ -1,9 +1,9 @@
 from core.file_system.repo_manag import dir_checker
 from core.file_system.theme_manag import bg_handler
+from core.gui.registry.gui_objects import GUI_Helper
 from core.gui.registry.pgui_objects import PGUI_Helper
 from utils.text_manag import text_splitter as tspl
 from system.mod_manag import mod_lister
-from core.graphics.gui_objects import GUI_Helper
 from core.graphics.gh_manag import *
 from core.utils import *
 import os, random, pygame, pygame_gui
