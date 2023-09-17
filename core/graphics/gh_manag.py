@@ -154,11 +154,13 @@ def mouseRec(pg_events, mouse_button=1):
 # HELPER | Some helping functions to keep code cleaner
 #========|===========================================================
 # Used to switch screen. Put this return in respective guitype[pos]
+@Deprecated("Temporarily deprecated in favour of 'switch_gscr'. To be restored when PyGameGUI support is dropped.")
 def switch_scr(screen, gui_aimed):
     screen.fill("#000000"); log.debug(f"Switching screen to guitype value: [{gui_aimed}]")
     return gui_aimed
 
 def switch_gscr(dscreen, screen, gui_aimed):
+    """Requires dynamic_screen instead of its [0] value - important to switch argument during transition"""
     dscreen.clear_pgui()
     screen.fill("#000000"); log.debug(f"Switching screen to guitype value: [{gui_aimed}]")
     return gui_aimed

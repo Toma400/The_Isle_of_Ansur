@@ -44,8 +44,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             if mouseColliderPx(gt1[0], gt1[1], gt1[2], gt1[3]):
                 put_text(screen, text=langstring("menu__button_start"), font_cat="menu", size=30, align_x="center", pos_y=28, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
-                    guitype[0] = switch_scr(screen, "new_game")
-                    guitype[1] = switch_scr(screen, "gender")
+                    guitype[0] = switch_gscr(dyn_screen, screen, "new_game")
+                    guitype[1] = switch_gscr(dyn_screen, screen, "gender")
 
             if mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
                 #put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=30, align_x="center", pos_y=34, colour="#7C613B")
@@ -57,12 +57,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             if mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
                 put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#7C613B")
                 if mouseRec(pg_events):
-                    guitype[0] = switch_scr(screen, "settings")
+                    guitype[0] = switch_gscr(dyn_screen, screen, "settings")
 
             if mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]):
                 #put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=52, colour="#7C613B")
                 #if mouseRec(pg_events):
-                #    guitype[0] = switch_scr(screen, "pack_manag")
+                #    guitype[0] = switch_gscr(dyn_screen, screen, "pack_manag")
                 pass
 
             if mouseColliderPx(gt6[0], gt6[1], gt6[2], gt6[3]):
@@ -84,17 +84,17 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             if mouseColliderPx(gt1[0], gt1[1], gt1[2], gt1[3]):
                 put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour="#7C613B")
                 if mouseRec(pg_events):
-                    guitype[1] = switch_scr(screen, "settings_general")
+                    guitype[1] = switch_gscr(dyn_screen, screen, "settings_general")
 
             if mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
                 put_text(screen, text=langstring("menu__sett_tech"), font_cat="menu", size=30, pos_x=5, pos_y=22, colour="#7C613B")
                 if mouseRec(pg_events):
-                    guitype[1] = switch_scr(screen, "settings_tech")
+                    guitype[1] = switch_gscr(dyn_screen, screen, "settings_tech")
 
             if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
                 put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#7C613B")
                 if mouseRec(pg_events):
-                    guitype[0] = switch_scr(screen, "menu")
+                    guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                     guitype[1] = None
 
             #==================================================
@@ -251,17 +251,17 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             #if mouseColliderPx(gt1[0], gt1[1], gt1[2], gt1[3]):
             #    put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour="#7C613B")
             #    if mouseRec(pg_events):
-            #        guitype[1] = switch_scr(screen, "settings_general")
+            #        guitype[1] = switch_gscr(dyn_screen, screen, "settings_general")
 
             #if mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
             #    put_text(screen, text=langstring("menu__sett_tech"), font_cat="menu", size=30, pos_x=5, pos_y=22, colour="#7C613B")
             #    if mouseRec(pg_events):
-            #        guitype[1] = switch_scr(screen, "settings_tech")
+            #        guitype[1] = switch_gscr(dyn_screen, screen, "settings_tech")
 
             if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
                 put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#7C613B")
                 if mouseRec(pg_events):
-                    guitype[0] = switch_scr(screen, "menu")
+                    guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                     guitype[1] = None
 
         # ==============================================================================================================
@@ -297,5 +297,5 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
                 put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, align_x="center", pos_y=92, colour="#7C613B")
                 if mouseRec(pg_events):
-                    guitype[0] = switch_scr(screen, "menu")
+                    guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                     guitype[1] = None
