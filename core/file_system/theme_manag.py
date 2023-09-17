@@ -20,7 +20,8 @@ class Fallback:
 
 
 # Checks for currently used theme (theme can be changed in settings or by mod)
-def get_theme():
+def get_theme() -> str:
+    """Returns ID of current theme"""
     tf = toml.load(f"themes/guide.toml")
     if tf["behaviour"]["prioritised_id"] == "": return Fallback.id
     else:                                       return tf["behaviour"]["prioritised_id"]
