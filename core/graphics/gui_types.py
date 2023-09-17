@@ -47,25 +47,25 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     guitype[0] = switch_gscr(dyn_screen, screen, "new_game")
                     guitype[1] = switch_gscr(dyn_screen, screen, "gender")
 
-            if mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
+            elif mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
                 #put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=30, align_x="center", pos_y=34, colour="#7C613B")
                 pass
-            if mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
+            elif mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
                 #put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
                 pass
 
-            if mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
+            elif mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
                 put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#7C613B")
                 if mouseRec(pg_events):
                     guitype[0] = switch_gscr(dyn_screen, screen, "settings")
 
-            if mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]):
+            elif mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]):
                 #put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=52, colour="#7C613B")
                 #if mouseRec(pg_events):
                 #    guitype[0] = switch_gscr(dyn_screen, screen, "pack_manag")
                 pass
 
-            if mouseColliderPx(gt6[0], gt6[1], gt6[2], gt6[3]):
+            elif mouseColliderPx(gt6[0], gt6[1], gt6[2], gt6[3]):
                 put_text(screen, text=langstring("menu__button_exit"), font_cat="menu", size=30, align_x="center", pos_y=58, colour="#7C613B")
                 if mouseRec(pg_events):
                     tev.append("end")
@@ -86,12 +86,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 if mouseRec(pg_events):
                     guitype[1] = switch_gscr(dyn_screen, screen, "settings_general")
 
-            if mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
+            elif mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
                 put_text(screen, text=langstring("menu__sett_tech"), font_cat="menu", size=30, pos_x=5, pos_y=22, colour="#7C613B")
                 if mouseRec(pg_events):
                     guitype[1] = switch_gscr(dyn_screen, screen, "settings_tech")
 
-            if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
+            elif mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
                 put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#7C613B")
                 if mouseRec(pg_events):
                     guitype[0] = switch_gscr(dyn_screen, screen, "menu")
@@ -122,31 +122,31 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                             if scx("svx") < GetSystemMetrics(0): set_change("res_x", 100)       # if not full screen, increase x size by 100
                             else:                                set_change("res_x", "set=400") # if full screen reached, set x size to 0
                             screen = dyn_screen.reset() # resets the screen
-                        if mouseRec(pg_events, 3):
+                        elif mouseRec(pg_events, 3):
                             from win32api import GetSystemMetrics
                             if scx("svy") < GetSystemMetrics(1): set_change("res_y", 100)       # if not full screen, increase x size by 100
                             else:                                set_change("res_y", "set=400") # if full screen reached, set x size to 0
                             screen = dyn_screen.reset() # resets the screen
-                        if mouseRec(pg_events, 2):
+                        elif mouseRec(pg_events, 2):
                             from win32api import GetSystemMetrics
                             if res_ratio != "1000 : 700": set_change("res_x", "set=1000"); set_change("res_y", "set=700") # changes res to default
                             else:                         set_change("res_x", f"set={GetSystemMetrics(0)}"); set_change("res_y", f"set={GetSystemMetrics(1)}") # changes to full screen
                             screen = dyn_screen.reset() # resets the screen
 
-                    if mouseColliderPx(gt1ln[0], gt1ln[1], gt1ln[2], gt1ln[3]):
+                    elif mouseColliderPx(gt1ln[0], gt1ln[1], gt1ln[2], gt1ln[3]):
                         put_text(screen, text=langstring("menu__sett_general_lang"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("language")
-                        if mouseRec(pg_events, 3):
+                        elif mouseRec(pg_events, 3):
                             set_change("language", "rev")
 
-                    if mouseColliderPx(gt1ms[0], gt1ms[1], gt1ms[2], gt1ms[3]):
+                    elif mouseColliderPx(gt1ms[0], gt1ms[1], gt1ms[2], gt1ms[3]):
                         put_text(screen, text=langstring("menu__sett_general_music"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=28, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("sound", 1); fg_events.append("SNDV_CHG")
-                        if mouseRec(pg_events, 3):
+                        elif mouseRec(pg_events, 3):
                             if scx("sndv") > 0: set_change("sound", -1); fg_events.append("SNDV_CHG")
-                        if mouseRec(pg_events, 2):
+                        elif mouseRec(pg_events, 2):
                             if scx("sndv") != 0: # turn off the music
                                 set_change("sound", "set=0"); fg_events.append("SNDV_CHG")
                             else: # set volume to default
@@ -186,26 +186,26 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         if mouseRec(pg_events):
                             set_change("legacy_unpacking")
 
-                    if mouseColliderPx(gt2gl[0], gt2gl[1], gt2gl[2], gt2gl[3]):
+                    elif mouseColliderPx(gt2gl[0], gt2gl[1], gt2gl[2], gt2gl[3]):
                         put_text(screen, text=langstring("menu__sett_tech_log_limit"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("log_limit", 1)
-                        if mouseRec(pg_events, 3):
+                        elif mouseRec(pg_events, 3):
                             if scx("lglm") > 1: set_change("log_limit", -1)
 
-                    if mouseColliderPx(gt2gr[0], gt2gr[1], gt2gr[2], gt2gr[3]):
+                    elif mouseColliderPx(gt2gr[0], gt2gr[1], gt2gr[2], gt2gr[3]):
                         put_text(screen, text=langstring("menu__sett_tech_log_rv"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=28, colour="#7C613B")
                         if mouseRec(pg_events):
                             logs_deleting()
 
-                    if mouseColliderPx(gt2lb[0], gt2lb[1], gt2lb[2], gt2lb[3]):
+                    elif mouseColliderPx(gt2lb[0], gt2lb[1], gt2lb[2], gt2lb[3]):
                         put_text(screen, text=langstring(f"menu__sett_tech_listbox"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=36, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("listbox_mode")
                         if mouseRec(pg_events, 3):
                             set_change("listbox_mode", "rev")
 
-                    if mouseColliderPx(gt2la[0], gt2la[1], gt2la[2], gt2la[3]) and lbmode == "proportional":
+                    elif mouseColliderPx(gt2la[0], gt2la[1], gt2la[2], gt2la[3]) and lbmode == "proportional":
                         put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=44, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("listbox_amount", 1)
@@ -214,7 +214,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         if mouseRec(pg_events, 2):
                             set_change("listbox_amount", "set=5")
 
-                    if mouseColliderPx(gt2ls[0], gt2ls[1], gt2ls[2], gt2ls[3]) and lbmode == "sized":
+                    elif mouseColliderPx(gt2ls[0], gt2ls[1], gt2ls[2], gt2ls[3]) and lbmode == "sized":
                         put_text(screen, text=langstring("menu__sett_tech_lb_size"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=52, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("listbox_size", 0.1)
@@ -223,16 +223,16 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         if mouseRec(pg_events, 2):
                             set_change("listbox_size", "set=1.0")
 
-                    if mouseColliderPx(gt2ts[0], gt2ts[1], gt2ts[2], gt2ts[3]):
+                    elif mouseColliderPx(gt2ts[0], gt2ts[1], gt2ts[2], gt2ts[3]):
                         put_text(screen, text=langstring("menu__sett_tech_text_size"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=60, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("text_size", 0.1)
-                        if mouseRec(pg_events, 3):
+                        elif mouseRec(pg_events, 3):
                             if scx("txts") > 0.5: set_change("text_size", -0.1)
-                        if mouseRec(pg_events, 2):
+                        elif mouseRec(pg_events, 2):
                             set_change("text_size", "set=1.0")
 
-                    if mouseColliderPx(gt2vn[0], gt2vn[1], gt2vn[2], gt2vn[3]):
+                    elif mouseColliderPx(gt2vn[0], gt2vn[1], gt2vn[2], gt2vn[3]):
                         put_text(screen, text=langstring("menu__sett_tech_ver_notif"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=68, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("version_checker")

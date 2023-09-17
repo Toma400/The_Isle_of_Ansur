@@ -160,7 +160,7 @@ def switch_scr(screen, gui_aimed):
     return gui_aimed
 
 def switch_gscr(dscreen, screen, gui_aimed):
-    """Requires dynamic_screen instead of its [0] value - important to switch argument during transition"""
+    """Requires dynamic_screen additionally to clear PyGameGUI elements - 'screen' isn't dropped though as Python rejects filling list element"""
     dscreen.clear_pgui()
     screen.fill("#000000"); log.debug(f"Switching screen to guitype value: [{gui_aimed}]")
     return gui_aimed
