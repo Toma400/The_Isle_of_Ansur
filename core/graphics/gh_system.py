@@ -52,7 +52,7 @@ class Screen:
         self.pgui       = run_pgui()                # PyGameGUI manager
         self.screen     = self.dyn_screen[0]        # Main handler for PyGame main screen
         self.objects    = GUI_Helper(self.panorama) # Registry of GUI objects
-        self.pobjects   = PGUI_Helper()             # Registry of PyGameGUI objects
+        self.pobjects   = PGUI_Helper(self.pgui)    # Registry of PyGameGUI objects
         self.update     = version_checker()         # Bool value of whether game is up-to-date
         self.clock      = pygame.time.Clock()       # Clock (mostly to hold PyGameGUI processes)
 
@@ -62,6 +62,7 @@ class Screen:
         self.pgui          = run_pgui()
         self.screen        = self.dyn_screen[0]
         self.objects.restart(self.panorama)
+        self.pobjects.restart(self.pgui)
         return self.screen
 
     def gui(self, value: str):
@@ -69,9 +70,8 @@ class Screen:
 
     def put_pgui(self, value: str):
         """Reveals GUI element currently being hidden"""
-        self.pobjects.get_element(value).visible = True
+        self.pobjects.show_element(value)
 
     def clear_pgui(self):
         """Flushes out all visibility of elements currently shown (used by 'switch_gscr' func)"""
-        for pgui_e in self.pobjects.get_elements():
-            self.pobjects.get_element(pgui_e).visible = False
+        self.pobjects.hide_elements()

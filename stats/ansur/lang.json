@@ -32,7 +32,11 @@
     "classes__ormath_shaman":     "Ormath Shaman",
     "classes__black_priest":      "Black Priest",
     "classes__flying_monk":       "Flying Monk",
-    "classes__stepping_on_water": "Stepping-On-Water"
+    "classes__stepping_on_water": "Stepping-On-Water",
+
+    "gender__male":       "Man",
+    "gender__female":     "Woman",
+    "gender__non_binary": "Non-binary"
   },
   "polish": {
     "races__baedoorian":          "Człowiek, urodzony w Baedoor",
@@ -67,6 +71,10 @@
     "classes__ormath_shaman":     "Ormacki Szaman",
     "classes__black_priest":      "Czarny Kapłan",
     "classes__flying_monk":       "Latający Mnich",
-    "classes__stepping_on_water": "Kroczący-Po-Wodzie"
+    "classes__stepping_on_water": "Kroczący-Po-Wodzie",
+
+    "gender__male":       "Mężczyzna",
+    "gender__female":     "Kobieta",
+    "gender__non_binary": "Osoba niebinarna"
   }
 }

@@ -1,0 +1,14 @@
+{
+    "male": {
+      "key": "gender__male",
+      "rules": ""
+    },
+    "female": {
+      "key": "gender__female",
+      "rules": ""
+    },
+    "non-binary": {
+      "key": "gender__non_binary",
+      "rules": ""
+    }
+}
