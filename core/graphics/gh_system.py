@@ -68,6 +68,10 @@ class Screen:
     def gui(self, value: str):
         return self.objects.get_element(value)
 
+    def get_pgui_choice(self, value: str) -> str or None:
+        """Gets currently selected entry in GUI element (available only for some types)"""
+        return self.pobjects.get_element_choice(value)
+
     def put_pgui(self, value: str):
         """Reveals GUI element currently being hidden"""
         self.pobjects.show_element(value)

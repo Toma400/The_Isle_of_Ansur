@@ -26,7 +26,7 @@ class Gender:
     def __str__(self) -> str:
         return self.langstr()
 
-def getGender (gid: str) -> Gender:
+def getGender(gid: str) -> Gender:
     """Gender constructor that uses GID instead of explicit __init__ constructor. Resource-heavy in iteration compared to getGenders()"""
     gid_ems = gid.split(":")
 
@@ -37,7 +37,7 @@ def getGender (gid: str) -> Gender:
 
     return Gender(name=gid_ems[1], tr_key=returnKey(), mod_id=gid_ems[0])
 
-def getGenders () -> list[Gender]:
+def getGenders() -> list[Gender]:
     """Main gatherer of gender data during load/reload"""
     ret: list[Gender] = []
     for stat_pack in mod_lister("stats"):
@@ -48,7 +48,15 @@ def getGenders () -> list[Gender]:
                     ret.append(Gender(gender, pjf[gender]["key"], stat_pack))
     return ret
 
-def getGendersStrings () -> list[str]:
+def getGendersTuple() -> list[(str, str)]:
+    """PyGame_GUI - friendly variant of Gender getter, returning tuple of <translation, GID>"""
+    ret: list[(str, Gender)] = []
+    for gc in getGenders():
+        ret.append((gc.langstr(), gc.gid()))
+    return ret
+
+@Deprecated("Use <getGendersTuple> and UISelectionBox instead.")
+def getGendersStrings() -> list[str]:
     """PyGame_GUI - friendly variant of Gender comparison. Should be deprecated in the future."""
     ret: list[str] = []
     for gc in getGenders():
@@ -56,7 +64,7 @@ def getGendersStrings () -> list[str]:
     return ret
 
 @Deprecated("This serves more as an example on how to resolve issues with string-based identification. Use docstring way instead.")
-def getGenderFromList (list_pos: int) -> Gender:
+def getGenderFromList(list_pos: int) -> Gender:
     """More of an example how to get Gender object from purely string"""
     # getGendersStrings[10] == getGenderFromList(10) == getGenders[10]
     return getGenders()[list_pos]
