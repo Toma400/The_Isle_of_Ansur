@@ -16,6 +16,11 @@ def mod_lister (directory, system="full"):
     path = "worlds/"
     mod_loaded = dir_check(path, "dir")
     return lister(mod_loaded, system)
+  elif directory == "themes":
+    # checks whether mod is in worlds directory
+    path = "themes/"
+    mod_loaded = dir_check(path, "dir")
+    return lister(mod_loaded, system)
   elif directory == "all":
     #lists all mods altogether
     path1 = "stats/"
