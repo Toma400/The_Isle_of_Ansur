@@ -1,4 +1,5 @@
 from pygame_gui.elements.ui_drop_down_menu import UIDropDownMenu, UISelectionList
+from core.gui.manag.pgui_wrapper import getCurrentID, getCurrentText
 from core.data.player.gender import getGendersTuple
 import pygame
 
@@ -15,7 +16,7 @@ class PGUI_Helper:
 
     def __init__(self, manager):
         #self.char__lb_race = UIDropDownMenu(options_list=getGendersStrings(), relative_rect=pygame.Rect((400, 100), (400, 50)), starting_option=getGendersStrings()[0], manager=manager)
-        self.char__lb_race = UISelectionList(item_list=getGendersTuple(), relative_rect=pygame.Rect((400, 100), (400, 75)), manager=manager)
+        self.char__lb_gender = UISelectionList(item_list=getGendersTuple(), relative_rect=pygame.Rect((400, 100), (400, 75)), manager=manager)
         self.hide_elements()
 
     def get_element(self, element: str):
@@ -38,7 +39,7 @@ class PGUI_Helper:
     def get_element_choice(self, element: str) -> str or None:
         """Returns selected element of the GUI (available only for some GUI types)"""
         match type(self.get_element(element)):
-           case UISelectionList: return self.get_element(element).get_single_selection() # should return ID, not translation
+           case UISelectionList: return getCurrentID(self.get_element(element)) # should return ID, not translation
 
     def restart(self, manager):
         """Restarts whole initialisation process of the class"""
