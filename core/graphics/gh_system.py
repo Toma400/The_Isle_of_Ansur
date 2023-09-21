@@ -4,6 +4,7 @@ from core.gui.registry.gui_objects import GUI_Helper
 from core.gui.registry.pgui_objects import PGUI_Helper
 from utils.text_manag import text_splitter as tspl
 from system.mod_manag import mod_lister
+from core.data.journey import Journey
 from core.graphics.gh_manag import *
 from core.utils import *
 import os, random, pygame, pygame_gui
@@ -55,6 +56,7 @@ class Screen:
         self.pobjects   = PGUI_Helper(self.pgui)    # Registry of PyGameGUI objects
         self.update     = version_checker()         # Bool value of whether game is up-to-date
         self.clock      = pygame.time.Clock()       # Clock (mostly to hold PyGameGUI processes)
+        self.journey    = Journey()                 # Main game handler
 
     def reset(self):
         """hard refresh of screen | should reassign currently used 'screen' variable"""
@@ -68,9 +70,13 @@ class Screen:
     def gui(self, value: str):
         return self.objects.get_element(value)
 
-    def get_pgui_choice(self, value: str) -> str or None:
+    def get_pgui_choice(self, value: str) -> str | None:
         """Gets currently selected entry in GUI element (available only for some types)"""
         return self.pobjects.get_element_choice(value)
+
+    def get_pgui_index(self, value: str) -> int | None:
+        """Gets currently selected entry in GUI element (available only for some types)"""
+        return self.pobjects.get_element_index(value)
 
     def put_pgui(self, value: str):
         """Reveals GUI element currently being hidden"""
