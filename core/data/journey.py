@@ -3,6 +3,8 @@ import logging as log
 import os
 
 class Journey:
+    # keys that are iterated over during save | -inidata- keys should match TOML keys
+    keys_saved = ["gender"]
 
     def __init__(self):
         # character creation stages finished
@@ -50,16 +52,17 @@ class Journey:
     #=================================================================================================
     def setInit(self, stat: str, value: str | int | bool | list):
         """Used only during character creation, fills dict with statistics for initial save (later save is used instead)"""
-        self.inidata[stat] = value
+        if stat in self.keys_saved:
+            self.inidata[stat] = value
+        else: raise KeyError(f"Attempted to write incorrect key: {stat} into -inidata-")
 
     def validateInit(self):
-        # keys that are iterated over during save | -inidata- keys should match TOML keys
-        keys_saved = ["gender"]
-        for k in keys_saved:
+        for k in self.keys_saved:
             if k not in self.inidata:
                 log.log(log.ERROR, f"Couldn't find {k} in -inidata- dictionary. Printing dictionary contents:")
                 for entry, value in self.inidata:
                     log.log(log.INFO, f"- {entry}: {value}")
+                raise KeyError("Raising crash due to the issue above.")
 
     def init(self):
         """Initial buffer save, run once when character is created. Single use of -self.inidata-"""

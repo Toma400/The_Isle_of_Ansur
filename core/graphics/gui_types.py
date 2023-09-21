@@ -266,12 +266,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
         # ==============================================================================================================
         case "new_game":
-            ccrt_col = {"active": "#354A07", "not_set": "#4F4C49"}
+            ccrt_col = {"active": "#354A07", "set": "", "not_set": "#4F4C49"}
             dyn_screen.gui("menu__gh_background").full().put(screen)
-            dyn_screen.put_pgui("char__lb_gender")
-            if dyn_screen.get_pgui_choice("char__lb_gender") is not None:
-                print(dyn_screen.get_pgui_choice("char__lb_gender"))
-            #Image("core/assets/visuals/", "menu_background.jpg", (0, 0)).full().put(screen) # probably to delete, as it doesn't work anymore w/ new theme system
 
             put_text(screen, text=langstring("menu__button_start"),        font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
             gtx = put_text(screen, text=langstring("menu__sett_back"),     font_cat="menu", size=30, align_x="center", pos_y=92, colour="#4E3510")
@@ -295,6 +291,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             # ORIGIN = choice of origin paths (appendable by mods, possible worldpack inits) + manual biography if you will
             # SETTINGS
             # SUMMARY
+
+            dyn_screen.put_pgui("char__lb_gender")
+            if dyn_screen.get_pgui_index("char__lb_gender") is not None:
+                dyn_screen.journey.setInit("gender", dyn_screen.get_pgui_choice("char__lb_gender"))
+                print(dyn_screen.journey.inidata)
 
             # ==================================================
             # hovering & clicking events
