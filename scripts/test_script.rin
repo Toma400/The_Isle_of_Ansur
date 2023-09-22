@@ -1,0 +1,10 @@
+land ExampleScript << ioaScript:
+
+    event = "EVENT_NAME"
+
+    town run(screen, pg_events, fg_events, fg_core, *args, **kwargs):
+        void
+
+    @conquer*
+    town __init__():
+        tribute().__init__()

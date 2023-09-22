@@ -46,7 +46,12 @@ class TestScript(ioaScript):
         #    #   pattern_builder(PatternType.IMAGE, path="core/assets/visuals/", file=ij, pos=(0, 0, 20, 100))   # <--- needs "ratio" type of positioning (but for nested stuff)
         #    #   pattern_builder(PatternType.IMAGE, path="core/assets/visuals/", file=ik, pos=(20, 0, 100, 100))
         #    ]
-        alv = fg_core.gui("menu__gh_test").put(screen)
+
+        #aldt = ListBoxPattern(None).build_element(None, None)
+
+            # alv = fg_core.gui("menu__gh_test").put(screen)
+            # alv.pressed(screen)
+            # print(alv.selected)
         # print(f"""
         # MATH COMPARISON:
         #
@@ -85,7 +90,7 @@ class TestScript(ioaScript):
         # ACHIEVED ENTRY VALUES
         # Rect requested (px) = {alv.enrectsize}
         # """)
-        print(alv.collision(screen))
+        #print(alv.collision(screen))
         #print(alv.elements)
 
         #i = [NestedImage("core/assets/visuals/", "skill_1.jpg", (0, 0, ratioCell(10), 10)),
