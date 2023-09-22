@@ -2,6 +2,7 @@ from core.graphics.text_manag import put_abstext, put_text, langstring, Text
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
+from core.data.journey import Journey
 from core.graphics.gh_manag import *
 
 def upd_click(upd, pgv): return mouseColliderPx(upd[0], upd[1], upd[2], upd[3]) and mouseRec(pgv)
@@ -137,8 +138,10 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         put_text(screen, text=langstring("menu__sett_general_lang"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour="#7C613B")
                         if mouseRec(pg_events):
                             set_change("language")
+                            dyn_screen.soft_reset()
                         elif mouseRec(pg_events, 3):
                             set_change("language", "rev")
+                            dyn_screen.soft_reset()
 
                     elif mouseColliderPx(gt1ms[0], gt1ms[1], gt1ms[2], gt1ms[3]):
                         put_text(screen, text=langstring("menu__sett_general_music"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=28, colour="#7C613B")
@@ -292,10 +295,20 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             # SETTINGS
             # SUMMARY
 
-            dyn_screen.put_pgui("char__lb_gender")
-            if dyn_screen.get_pgui_index("char__lb_gender") is not None:
-                dyn_screen.journey.setInit("gender", dyn_screen.get_pgui_choice("char__lb_gender"))
-                print(dyn_screen.journey.inidata)
+            #==================================================
+            # submenu handler
+            match guitype[1]:
+                case "gender":
+                    # stage management (updating colours & setting currently selected one) -- TODO (unfinished)
+                    dyn_screen.journey.stage = 0
+                    if dyn_screen.journey.stages[0]: # will work also when you clicked back (__reinit__ Journey) [stages/inidata are not resetted]
+                        mn2 = put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.ENABLED.value)
+                    # mn2.colour = fCol.ENABLED.value if dyn_screen.journey.stages[0] is True else fCol.DISABLED.value #<- This is not object! Can't edit its values!
+
+                    dyn_screen.put_pgui("char__lb_gender")
+                    if dyn_screen.get_pgui_index("char__lb_gender") is not None:
+                        dyn_screen.journey.setInit("gender", dyn_screen.get_pgui_choice("char__lb_gender"))
+                        dyn_screen.journey.stages[0] = True
 
             # ==================================================
             # hovering & clicking events
@@ -304,3 +317,6 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 if mouseRec(pg_events):
                     guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                     guitype[1] = None
+
+            elif mouseColliderPx(mn2[0], mn2[1], mn2[2], mn2[3]) and dyn_screen.journey.stages[0] is True:
+                pass

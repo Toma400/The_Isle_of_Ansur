@@ -7,6 +7,9 @@
 
 ---
 ## Pre-alpha builds
+- [Pre-alpha 3](#centerpre-alpha-3center)
+- [Pre-alpha 2](#centerpre-alpha-2center)
+- [Pre-alpha 1](#centerpre-alpha-1center)
 
 > ---
 > ###<center>Pre-alpha 3</center>
@@ -16,11 +19,11 @@
 > - Expanded modding possibilities
 >   - **Scripting system allowing you to implement Python code during gameplay**
 >   - Modders now can add their custom background images and music
+>   - Added `themepack` which controls several aesthetical elements 
 > - Some QoL additions
 >   - Update notification system which will notify about possibility to update the game
 > - Updated to Python 3.10
 > - Further updates to match current Baedoor RPG System
-> - Further code optimalisations
 > 
 > ---
 > ###<center>Pre-alpha 2</center>

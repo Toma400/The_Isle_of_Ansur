@@ -12,7 +12,7 @@ class Journey:
         #                                                             [religion, origin]
         #                                                                          [settings, summary]
         self.stages  : list[bool]  = [False, False, False, False, False, False, False, False, False]
-        self.stage   : int or None = None # selected stage of stages where we are at
+        self.stage   : int or None = None # selected stage of -stages- (above)
         self.name    : str or None = None # only none when game not loaded/character not created
         self.inidata : dict        = {} # dict held only during initial creation (used for -self.init-)
         # PATHS

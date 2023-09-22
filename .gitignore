@@ -5,3 +5,9 @@ system/cache/pyinstaller
 saves/
 core/logs
 _temp
+
+core/assets/visuals/skill_1.jpg
+core/assets/visuals/skill_2.jpg
+core/assets/visuals/skill_3.jpg
+core/assets/visuals/denaj.png
+core/assets/visuals/dunaj.jpg
