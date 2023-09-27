@@ -15,3 +15,10 @@ def getCurrentIndex(slist: UISelectionList) -> int | None:
             return i
         i += 1
     return None
+
+def resetSelected(slist: UISelectionList):
+    """Used to reset selection of UISelectionList. Immediate breaking is used to optimise, but it is designed for single-selection."""
+    for item in slist.item_list:
+        if item['selected']:
+            item['selected'] = False
+            break

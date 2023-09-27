@@ -87,6 +87,10 @@ class Screen:
         """Reveals GUI element currently being hidden"""
         self.pobjects.show_element(value)
 
+    def reset_pgui(self):
+        """Resets PGUI elements to their default state"""
+        self.pobjects.reset_selection_list_all()
+
     def clear_pgui(self):
         """Flushes out all visibility of elements currently shown (used by 'switch_gscr' func)"""
         self.pobjects.hide_elements()

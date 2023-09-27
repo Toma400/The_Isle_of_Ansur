@@ -1,5 +1,5 @@
 from pygame_gui.elements.ui_drop_down_menu import UISelectionList
-from core.gui.manag.pgui_wrapper import getCurrentID, getCurrentIndex
+from core.gui.manag.pgui_wrapper import getCurrentID, getCurrentIndex, resetSelected
 from core.data.player.gender import getGendersTuple
 import pygame
 
@@ -45,6 +45,16 @@ class PGUI_Helper:
         """Returns selected element of the GUI, as index number"""
         match type(self.get_element(element)):
             case UISelectionList: return getCurrentIndex(self.get_element(element))
+
+    def reset_selection_list(self, element: str):
+        """Resets selected element of the GUI, usually putting it in its default state"""
+        match type(self.get_element(element)):
+            case UISelectionList: resetSelected(self.get_element(element))
+
+    def reset_selection_list_all(self):
+        """Resets all elements of the GUI, putting them in their default state"""
+        for pobj in self.get_elements():
+            self.reset_selection_list(pobj)
 
     def restart(self, manager):
         """Restarts whole initialisation process of the class"""
