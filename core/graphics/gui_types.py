@@ -285,7 +285,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             mn8 = put_text(screen, text=langstring("ccrt__gen_category8"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=66, colour=ccrt_col["not_set"])
             mn9 = put_text(screen, text=langstring("ccrt__gen_category9"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=74, colour=ccrt_col["not_set"])
             # ------------------------------
-            # GENDER = male/female
+            # GENDER = male/female/other
             # RACE   = choice of races
             # CLASS  = choice of classes
             # NAME   = choice of name + avatar (based on race)
@@ -306,8 +306,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     # mn2.colour = fCol.ENABLED.value if dyn_screen.journey.stages[0] is True else fCol.DISABLED.value #<- This is not object! Can't edit its values!
 
                     dyn_screen.put_pgui("char__lb_gender")
-                    if dyn_screen.get_pgui_index("char__lb_gender") is not None:
-                        dyn_screen.journey.setInit("gender", dyn_screen.get_pgui_choice("char__lb_gender"))
+                    gender_choice = dyn_screen.get_pgui_choice("char__lb_gender")
+                    if gender_choice is not None:
+                        dyn_screen.journey.setInit("gender", gender_choice)
                         dyn_screen.journey.stages[0] = True
                     else:
                         dyn_screen.journey.stages[0] = False
