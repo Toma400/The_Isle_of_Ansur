@@ -1,0 +1,16 @@
+{
+    "key": "races__baedoorian",
+    "attributes": {
+        "strength":      2,
+        "charisma":      1,
+        "intelligence":  1,
+        "endurance":    -1
+    },
+    "power": {
+        "tech": 3
+    },
+    "skill": {
+        "firearms":   1,
+        "persuasion": 1
+    }
+}
