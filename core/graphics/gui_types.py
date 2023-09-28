@@ -313,6 +313,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     else:
                         dyn_screen.journey.stages[0] = False
 
+                case "race":
+                    pass
+
             # ==================================================
             # hovering & clicking events
             if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
@@ -322,5 +325,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     guitype[1] = None
                     dyn_screen.reset_pgui()
 
+            elif mouseColliderPx(mn1[0], mn1[1], mn1[2], mn1[3]):
+                put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=fCol.HOVERED.value)
+                if mouseRec(pg_events):
+                    guitype[1] = switch_gscr(dyn_screen, screen, "gender")
+                    dyn_screen.reset_pgui()
+
             elif mouseColliderPx(mn2[0], mn2[1], mn2[2], mn2[3]) and dyn_screen.journey.stages[0] is True:
-                print("!")
+                put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.HOVERED.value)
+                if mouseRec(pg_events):
+                    guitype[1] = switch_gscr(dyn_screen, screen, "race")
+                    dyn_screen.reset_pgui()
