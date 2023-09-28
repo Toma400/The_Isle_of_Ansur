@@ -1,10 +1,11 @@
-from core.data.player.gender import Gender
+from core.data.player.gender import Gender, getGenders
+from core.data.player.race import Race, getRaces
 import logging as log
 import os
 
 class Journey:
     # keys that are iterated over during save | -inidata- keys should match TOML keys
-    keys_saved = ["gender"]
+    keys_saved = ["gender", "race"]
 
     def __init__(self):
         # character creation stages finished
@@ -20,6 +21,9 @@ class Journey:
         self.savedir  : str = f"saves/{self.name}/adventure" # adventure save (manual)
         self.cycledir : str = f"saves/{self.name}/cycle"     # cyclic save (autosave) -- WIP
         self.arenadir : str = f"saves/{self.name}/arena"     # arena save (multiplayer)
+        # MOD HOLDERS (cache-like | TODO: experimental section, may be removed)
+        self.genders : list[Gender] = getGenders()
+        self.races   : list[Race]   = getRaces()
 
     #=================================================================================================
     # - COMMON PROCEDURES -
@@ -69,6 +73,7 @@ class Journey:
         self.validateInit() # checks if all keys are in -inidata-
         ret = "" # initial string : followed by next lines appended below:
         ret += f"gender = {self.inidata['gender']}" + "\n"
+        ret += f"race   = {self.inidata['race']}"   + "\n"
         with open(f"{self.buffdir}/main.toml", "r+") as f:
             f.write(ret)
 

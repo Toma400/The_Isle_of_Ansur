@@ -28,6 +28,10 @@ class Race:
                 self.cache = json.load(jf)
         return self.cache[attribute]
 
+    def getc(self, category: str, attribute: str) -> str | int | float | list | dict | None:
+        """Returns attribute from category dict. Used mostly with sections like -skills- or -attrs- by Races"""
+        return self.get(category)[attribute]
+
     def __repr__(self) -> str:
         return self.langstr()
 
@@ -45,7 +49,7 @@ def getRace(rid: str) -> Race:
 
     return Race(name=rid_ems[1], tr_key=returnKey(), mod_id=rid_ems[0])
 
-def getGenders() -> list[Race]:
+def getRaces() -> list[Race]:
     """Main gatherer of race data during load/reload"""
     ret: list[Race] = []
     for stat_pack in mod_lister("stats"):
