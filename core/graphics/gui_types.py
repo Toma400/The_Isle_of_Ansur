@@ -298,29 +298,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             # ==================================================
             # visualisation of menu picked/active
             for nm in range(0, 8):
+                # visualisation of whether option is possible to click
                 if dyn_screen.journey.stages[nm] is True:
                     put_text(screen, text=langstring(f"ccrt__gen_category{nm+2}"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18+(8*nm), colour=fCol.ENABLED.value)
-            # MANUALLY --- v ---
-            # if dyn_screen.journey.stages[0] is True:
-            #     put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.ENABLED.value)
-            # if dyn_screen.journey.stages[1] is True:
-            #     put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=fCol.ENABLED.value)
-            # if dyn_screen.journey.stages[2] is True:
-            #     put_text(screen, text=langstring("ccrt__gen_category4"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=34, colour=fCol.ENABLED.value)
-            # if dyn_screen.journey.stages[3] is True:
-            #     put_text(screen, text=langstring("ccrt__gen_category5"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=42, colour=fCol.ENABLED.value)
-
-            match dyn_screen.journey.stage:
-                case 0: put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=ccrt_col["active"])
-                case 1: put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=ccrt_col["active"])
-                case 2: put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=ccrt_col["active"])
-                case 3: put_text(screen, text=langstring("ccrt__gen_category4"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=34, colour=ccrt_col["active"])
-                case 4: pass
-                case 5: pass
-                case 6: pass
-                case 7: pass
-                case 8: pass
-                case _: pass
+                # visualisation of which option is currently active
+                if dyn_screen.journey.stage == nm:
+                    put_text(screen, text=langstring(f"ccrt__gen_category{nm+1}"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10+(8*nm), colour=ccrt_col["active"])
 
             #==================================================
             # submenu handler
@@ -363,7 +346,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stages[1] = False
 
                 case "class":
-                    pass
+                    dyn_screen.journey.stage = 2
 
             # ==================================================
             # hovering & clicking events
