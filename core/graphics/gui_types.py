@@ -301,7 +301,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 case "gender":
                     # stage management (updating colours & setting currently selected one) -- TODO (unfinished)
                     dyn_screen.journey.stage = 0
-                    if dyn_screen.journey.stages[0] is True: # will work also when you clicked back (__reinit__ Journey) [stages/inidata are not resetted]
+                    if dyn_screen.journey.stages[0] is True:
                         mn2 = put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.ENABLED.value)
                     # mn2.colour = fCol.ENABLED.value if dyn_screen.journey.stages[0] is True else fCol.DISABLED.value #<- This is not object! Can't edit its values!
 
@@ -314,6 +314,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stages[0] = False
 
                 case "race":
+                    dyn_screen.journey.stage = 0
+                    # there should be proper 'highlighting' system here
+
+                    dyn_screen.put_pgui("char__lb_race")
+
+                case "class":
                     pass
 
             # ==================================================
@@ -335,4 +341,10 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     guitype[1] = switch_gscr(dyn_screen, screen, "race")
+                    dyn_screen.reset_pgui()
+
+            elif mouseColliderPx(mn3[0], mn3[1], mn3[2], mn3[3]) and dyn_screen.journey.stages[1] is True:
+                put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=fCol.HOVERED.value)
+                if mouseRec(pg_events):
+                    guitype[1] = switch_gscr(dyn_screen, screen, "class")
                     dyn_screen.reset_pgui()
