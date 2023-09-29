@@ -275,7 +275,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             put_text(screen, text=langstring("menu__button_start"),        font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
             gtx = put_text(screen, text=langstring("menu__sett_back"),     font_cat="menu", size=30, align_x="center", pos_y=92, colour="#4E3510")
 
-            mn1 = put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=ccrt_col["active"])
+            mn1 = put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=fCol.ENABLED.value)
             mn2 = put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=ccrt_col["not_set"])
             mn3 = put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=ccrt_col["not_set"])
             mn4 = put_text(screen, text=langstring("ccrt__gen_category4"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=34, colour=ccrt_col["not_set"])
@@ -298,13 +298,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             # ==================================================
             # visualisation of menu picked/active
             if dyn_screen.journey.stages[0] is True:
-                mn2 = put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.ENABLED.value)
+                put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.ENABLED.value)
             if dyn_screen.journey.stages[1] is True:
-                mn3 = put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=fCol.ENABLED.value)
+                put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=fCol.ENABLED.value)
 
             match dyn_screen.journey.stage:
-                case 0: mn1 = put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=ccrt_col["active"])
-                case 1: mn2 = put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=ccrt_col["active"])
+                case 0: put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=ccrt_col["active"])
+                case 1: put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=ccrt_col["active"])
                 case 2: pass
                 case 3: pass
                 case 4: pass
@@ -313,6 +313,21 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
             #==================================================
             # submenu handler
+
+            # ----- V this code basically automatically handles every guitype[1] V --------
+            # (requires only editing -stage_number- for equivalent number)
+
+            # stage_number = {"gender": 0, "race": 1}
+            # dyn_screen.journey.stage = stage_number[guitype[1]]
+            #
+            # dyn_screen.put_pgui(f"char__lb_{guitype[1]}")
+            # choice = dyn_screen.get_pgui_choice(f"char__lb_{guitype[1]}")
+            # if choice is not None:
+            #     dyn_screen.journey.setInit(guitype[1], choice)
+            #     dyn_screen.journey.stages[dyn_screen.journey.stage] = True
+            # else:
+            #     dyn_screen.journey.stages[dyn_screen.journey.stage] = False
+
             match guitype[1]:
                 case "gender":
                     dyn_screen.journey.stage = 0
