@@ -1,5 +1,5 @@
 {
-    "key": "races__naerian",
+    "key": "races__kaerian",
     "attributes": {
         "strength":      1,
         "charisma":      1,
@@ -8,7 +8,7 @@
     "power": {
         "magic": 2
     },
-    "skill": {
+    "skills": {
         "trade":      1,
         "longswords": 1
     }

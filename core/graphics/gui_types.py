@@ -295,15 +295,27 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             # SETTINGS
             # SUMMARY
 
+            # ==================================================
+            # visualisation of menu picked/active
+            if dyn_screen.journey.stages[0] is True:
+                mn2 = put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.ENABLED.value)
+            if dyn_screen.journey.stages[1] is True:
+                mn3 = put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=fCol.ENABLED.value)
+
+            match dyn_screen.journey.stage:
+                case 0: mn1 = put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=ccrt_col["active"])
+                case 1: mn2 = put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=ccrt_col["active"])
+                case 2: pass
+                case 3: pass
+                case 4: pass
+                case 5: pass
+                case _: pass
+
             #==================================================
             # submenu handler
             match guitype[1]:
                 case "gender":
-                    # stage management (updating colours & setting currently selected one) -- TODO (unfinished)
                     dyn_screen.journey.stage = 0
-                    if dyn_screen.journey.stages[0] is True:
-                        mn2 = put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.ENABLED.value)
-                    # mn2.colour = fCol.ENABLED.value if dyn_screen.journey.stages[0] is True else fCol.DISABLED.value #<- This is not object! Can't edit its values!
 
                     dyn_screen.put_pgui("char__lb_gender")
                     gender_choice = dyn_screen.get_pgui_choice("char__lb_gender")
@@ -314,10 +326,15 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stages[0] = False
 
                 case "race":
-                    dyn_screen.journey.stage = 0
-                    # there should be proper 'highlighting' system here
+                    dyn_screen.journey.stage = 1
 
                     dyn_screen.put_pgui("char__lb_race")
+                    race_choice = dyn_screen.get_pgui_choice("char__lb_race")
+                    if race_choice is not None:
+                        dyn_screen.journey.setInit("race", race_choice)
+                        dyn_screen.journey.stages[1] = True
+                    else:
+                        dyn_screen.journey.stages[1] = False
 
                 case "class":
                     pass
