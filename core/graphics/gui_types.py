@@ -305,6 +305,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 if dyn_screen.journey.stage == nm:
                     put_text(screen, text=langstring(f"ccrt__gen_category{nm+1}"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10+(8*nm), colour=ccrt_col["active"])
 
+            # https://github.com/Toma400/The_Isle_of_Ansur/commit/5305aef7e9b3b0cce483a30ade7cbc3f1e006e57 <- old (more manual) code for above ^
+
             #==================================================
             # submenu handler
 
@@ -348,6 +350,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 case "class":
                     dyn_screen.journey.stage = 2
 
+                    dyn_screen.put_pgui("char__lb_class")
+
             # ==================================================
             # hovering & clicking events
             if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
@@ -374,3 +378,5 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 if mouseRec(pg_events):
                     guitype[1] = switch_gscr(dyn_screen, screen, "class")
                     dyn_screen.reset_pgui()
+
+            print(dyn_screen.journey.inidata)

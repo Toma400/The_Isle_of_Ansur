@@ -55,7 +55,7 @@ def getRaces() -> list[Race]:
     for stat_pack in mod_lister("stats"):
         if exists(f"stats/{stat_pack}/races"):
             for race_file in walkdir(f"stats/{stat_pack}/races/*.json"):
-                race_name = race_file.replace(f"stats/{stat_pack}/races", "").replace(".json", "")
+                race_name = race_file.replace(f"stats/{stat_pack}/races", "").replace(".json", "").strip("\\")
                 with open(race_file) as jf:
                     pjf = json.load(jf)
                     ret.append(Race(race_name, pjf["key"], stat_pack))
@@ -63,7 +63,7 @@ def getRaces() -> list[Race]:
 
 def getRacesTuple() -> list[(str, str)]:
     """PyGame_GUI - friendly variant of Race getter, returning tuple of <translation, RID>"""
-    ret: list[(str, Race)] = []
+    ret: list[(str, str)] = []
     for rc in getRaces():
         ret.append((rc.langstr(), rc.rid()))
     return ret
