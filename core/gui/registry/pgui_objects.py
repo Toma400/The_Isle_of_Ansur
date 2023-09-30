@@ -55,6 +55,11 @@ class PGUI_Helper:
         match type(self.get_element(element)):
             case UISelectionList: resetSelected(self.get_element(element))
 
+    def overwrite_selection_list(self, element: str, overwrite: list[str] | list[(str, str)]):
+        """Overwrites item list of selected element"""
+        match type(self.get_element(element)):
+            case UISelectionList: self.get_element(element).set_item_list(overwrite)
+
     def reset_selection_list_all(self):
         """Resets all elements of the GUI, putting them in their default state"""
         for pobj in self.get_elements():

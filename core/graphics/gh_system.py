@@ -83,6 +83,10 @@ class Screen:
         """Gets currently selected entry in GUI element (available only for some types)"""
         return self.pobjects.get_element_index(value)
 
+    def set_pgui_element(self, value: str, overwrite):
+        """Overwrites GUI element's contents (available only for some types)"""
+        self.pobjects.overwrite_selection_list(value, overwrite)
+
     def put_pgui(self, value: str):
         """Reveals GUI element currently being hidden"""
         self.pobjects.show_element(value)

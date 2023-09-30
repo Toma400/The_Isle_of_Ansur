@@ -2,6 +2,7 @@ from core.graphics.text_manag import put_abstext, put_text, langstring, Text
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
+from core.data.player.profession import getClassesTuple
 from core.data.journey import Journey
 from core.graphics.gh_manag import *
 
@@ -350,6 +351,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 case "class":
                     dyn_screen.journey.stage = 2
 
+                    dyn_screen.set_pgui_element("char__lb_class", getClassesTuple(dyn_screen.journey.inidata["race"]))
                     dyn_screen.put_pgui("char__lb_class")
 
             # ==================================================
