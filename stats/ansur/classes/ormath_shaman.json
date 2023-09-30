@@ -1,0 +1,14 @@
+{
+    "key": "classes__ormath_shaman",
+    "races_exclusive": ["ansur:ormath"],
+    "power": {
+        "connection":  10,
+        "void":       -10
+    },
+    "skills": {
+        "connection": 2,
+        "herbalism":  1,
+        "healing":    1,
+        "firearms":  -2
+    }
+}

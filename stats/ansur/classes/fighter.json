@@ -1,0 +1,10 @@
+{
+    "key": "classes__fighter",
+    "skills": {
+        "shortswords": 1,
+        "longswords":  1,
+        "toughness":   1,
+        "firearms":   -1,
+        "archery":    -1
+    }
+}

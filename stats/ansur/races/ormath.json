@@ -1,0 +1,19 @@
+{
+    "key": "races__ormath",
+    "attributes": {
+        "strength":     -1,
+        "intelligence":  2,
+        "agility":       1,
+        "endurance":     1
+    },
+    "power": {
+        "connection": 7,
+        "magic":      2,
+        "void":     -20
+    },
+    "skills": {
+        "connection_bond": 1,
+        "healing":         1,
+        "survival":        1
+    }
+}
