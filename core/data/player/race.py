@@ -73,6 +73,10 @@ def getRaceNames(rid: str, gid: str) -> list[(str, str)]:
     """Returns list of names derived from race JSON. Uses tuple for compatibility with PyGame GUI system"""
     ret = []
     try:
-        for name in getRace(rid).getc("names", agnostic_id(gid)):
-            ret.append((name, name))
+        try: # checks for 'female'/'male' etc.
+            for name in getRace(rid).getc("names", agnostic_id(gid)):
+                ret.append((name, name))
+        except: # checks for 'ansur:female'/'ansur:male' etc.
+            for name in getRace(rid).getc("names", gid):
+                ret.append((name, name))
     finally: return ret

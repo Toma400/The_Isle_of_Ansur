@@ -1,0 +1,51 @@
+races__baedoorian = "Human, Born in Baedoor"
+races__kaerian    = "Human, Born in Kaer"
+races__ormath     = "Ormath"
+
+classes__undefined     = "Undefined"
+classes__fighter       = "Fighter"
+classes__ormath_shaman = "Ormath Shaman"
+
+gender__male       = "Man"
+gender__female     = "Woman"
+gender__non_binary = "Non-binary"
+
+races__baedoorian_descr = '''
+<b>Baedoorians</b> are fiery human culture that is known for their love for conquest, but also arts and sophisticated political culture.
+They also inherit a lot of technological knowledge from jitadeans.
+<br><br>
+ Strength +2<br>
+ Charisma +1<br>
+ Intelligence +1<br>
+ Endurance -1
+'''
+races__kaerian_descr = '''
+<b>Kaerians</b> are rebellious human culture that were living in Kaer for longest time, mastering their forest magic.
+Once baedoorians conquered their lands, kaerians revolted for decades to finally end their slavery.
+'''
+races__ormath_descr = '''
+<b>Ormaths</b> are tribes of Arennan desert, lead by the shaman who knows tongues of winds.
+Their willpower is strong and they are used to harsh environment.
+'''
+classes__undefined_descr = '''
+Those picking <b>undefined</b> class do not have focus on any specific skill, but they learn experience quicker.
+
+ Charisma +1
+'''
+classes__fighter_descr = '''
+<b>Fighters</b> are great dealing with melee fight and all kinds of swords.
+
+ Shortswords +1<br>
+ Longswords +1<br>
+ Toughness +1<br>
+ Firearms -1<br>
+ Archery -1
+'''
+classes__ormath_shaman_descr = '''
+<b>Ormath shaman</b> is special class that let you control environment by shamanic spirit.
+
+ Connection +2<br>
+ Herbalism +1<br>
+ Healing +1<br>
+ Firearms -2
+'''

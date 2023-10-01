@@ -34,7 +34,7 @@
     "classes__flying_monk":       "Flying Monk",
     "classes__stepping_on_water": "Stepping-On-Water",
 
-    "races__baedoorian_descr": "<b>Baedoorians</b> are fiery human culture that is known for their love for conquest, but also arts and sophisticated political culture. They also inherit a lot of technological knowledge from jitadeans.",
+    "races__baedoorian_descr": "<b>Baedoorians</b> are fiery human culture that is known for their love for conquest, but also arts and sophisticated political culture. They also inherit a lot of technological knowledge from jitadeans. <br><br> Strength +2 <br> Charisma +1 <br> Intelligence +1 <br> Endurance -1",
     "races__kaerian_descr":    "<b>Kaerians</b> are rebellious human culture that were living in Kaer for longest time, mastering their forest magic. Once baedoorians conquered their lands, kaerians revolted for decades to finally end their slavery.",
     "races__ormath_descr":     "<b>Ormaths</b> are tribes of Arennan desert, lead by the shaman who knows tongues of winds. Their willpower is strong and they are used to harsh environment.",
 
