@@ -14,15 +14,20 @@ def run():
     logging.getLogger('PIL').setLevel(logging.INFO)
     logging.basicConfig(level=logging.DEBUG, filename=name_creating(), format=format_creating())
 
+def df(value: int) -> str:
+    """Sets double numbers, so for example -9- becomes -09-"""
+    if len(f"{value}") == 1:
+        return f"0{value}"
+    else: return f"{value}"
 
 def name_creating(name=""):
     name_list = ["core/logs/",
-                 (time.gmtime(time.time()).tm_year), "_",
-                 (time.gmtime(time.time()).tm_mon),  "_",
-                 (time.gmtime(time.time()).tm_mday), "_",
-                 (time.gmtime(time.time()).tm_hour), "_",
-                 (time.gmtime(time.time()).tm_min),  "_",
-                 (time.gmtime(time.time()).tm_sec),  "_log.log"]
+                 time.gmtime(time.time()).tm_year,     "_",
+                 df(time.gmtime(time.time()).tm_mon),  "_",
+                 df(time.gmtime(time.time()).tm_mday), "_",
+                 df(time.gmtime(time.time()).tm_hour), "_",
+                 df(time.gmtime(time.time()).tm_min),  "_",
+                 df(time.gmtime(time.time()).tm_sec),  "_log.log"]
     for i in name_list:
         name = name + str(i)
     return name
