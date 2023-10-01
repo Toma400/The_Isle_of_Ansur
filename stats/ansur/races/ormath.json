@@ -1,5 +1,6 @@
 {
     "key": "races__ormath",
+    "info": "races__ormath_descr",
     "attributes": {
         "strength":     -1,
         "intelligence":  2,

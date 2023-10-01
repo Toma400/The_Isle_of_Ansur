@@ -1,5 +1,6 @@
 {
     "key": "classes__ormath_shaman",
+    "info": "classes__ormath_shaman_descr",
     "races_exclusive": ["ansur:ormath"],
     "power": {
         "connection":  10,

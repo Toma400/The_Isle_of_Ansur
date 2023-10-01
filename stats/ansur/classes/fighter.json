@@ -1,5 +1,6 @@
 {
     "key": "classes__fighter",
+    "info": "classes__fighter_descr",
     "skills": {
         "shortswords": 1,
         "longswords":  1,

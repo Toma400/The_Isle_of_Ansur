@@ -1,5 +1,6 @@
 {
     "key": "races__kaerian",
+    "info": "races__kaerian_descr",
     "attributes": {
         "strength":      1,
         "charisma":      1,

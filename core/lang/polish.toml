@@ -33,7 +33,7 @@ ccrt__gen_category7        = "Historia postaci"
 ccrt__gen_category8        = "Ustawienia rozgrywki"
 ccrt__gen_category9        = "Podsumowanie"
 
-ccrt__gender               = "Gender is social construct"
+ccrt__gender               = "Wybór płci wpływa delikatnie na dialogi oraz elementy rozgrywki."
 # end
 
 menu__load_choose          = "Wybierz swój zapis gry"

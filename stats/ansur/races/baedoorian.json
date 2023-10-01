@@ -1,5 +1,6 @@
 {
     "key": "races__baedoorian",
+    "info": "races__baedoorian_descr",
     "attributes": {
         "strength":      2,
         "charisma":      1,
