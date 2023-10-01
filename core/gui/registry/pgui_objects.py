@@ -21,9 +21,11 @@ class PGUI_Helper:
 
     def __init__(self, manager):
         self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),    relative_rect=pygame.Rect((400, 100), (400, 75)),  manager=manager)
-        self.char__tb_gender = UITextBox      (html_text=lstr("ccrt__gender"), relative_rect=pygame.Rect((400, 200), (400, 300)), manager=manager)
-        self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),      relative_rect=pygame.Rect((400, 100), (400, 300)), manager=manager)
-        self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),    relative_rect=pygame.Rect((400, 100), (400, 300)), manager=manager)
+        self.char__tb_gender = UITextBox      (html_text=lstr("ccrt__gender"), relative_rect=pygame.Rect((400, 200), (400, 200)), manager=manager)
+        self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),      relative_rect=pygame.Rect((400, 100), (400, 200)), manager=manager)
+        self.char__tb_race   = UITextBox      (html_text="",                   relative_rect=pygame.Rect((400, 325), (400, 200)), manager=manager)
+        self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),    relative_rect=pygame.Rect((400, 100), (400, 200)), manager=manager)
+        self.char__tb_class  = UITextBox      (html_text="",                   relative_rect=pygame.Rect((400, 325), (400, 200)), manager=manager)
         # self.char__lb_name   = UISelectionList(item_list=[],                relative_rect=pygame.Rect((400, 100), (400, 300)), manager=manager)
         # self.char__tb_name   = UITextEntryLine(                             relative_rect=pygame.Rect((400, 450), (400, 75)),  manager=manager) # set_text, get_text
         self.hide_elements()
@@ -47,30 +49,29 @@ class PGUI_Helper:
 
     def get_element_choice(self, element: str) -> str | None:
         """Returns selected element of the GUI (available only for some GUI types)"""
-        match type(self.get_element(element)):
-           case UISelectionList: return getCurrentID(self.get_element(element)) # should return ID, not translation
+        match self.get_element(element).__module__:
+           case UISelectionList.__module__: return getCurrentID(self.get_element(element)) # should return ID, not translation
 
     def get_element_index(self, element: str) -> int | None:
         """Returns selected element of the GUI, as index number"""
-        match type(self.get_element(element)):
-            case UISelectionList: return getCurrentIndex(self.get_element(element))
+        match self.get_element(element).__module__:
+            case UISelectionList.__module__: return getCurrentIndex(self.get_element(element))
 
-    def reset_selection_list(self, element: str):
+    def set_default(self, element: str):
         """Resets selected element of the GUI, usually putting it in its default state"""
-        match type(self.get_element(element)):
-            case UISelectionList: resetSelected(self.get_element(element))
+        match self.get_element(element).__module__:
+            case UISelectionList.__module__: resetSelected(self.get_element(element))
 
     def set_value(self, element: str, overwrite):
         """Overwrites item list of selected element"""
-        match type(self.get_element(element)):
-            case UISelectionList: self.get_element(element).set_item_list(overwrite)
-        match type(self.get_element(element)):
-            case UITextBox:       self.get_element(element).set_text(overwrite)
+        match self.get_element(element).__module__:
+            case UISelectionList.__module__: self.get_element(element).set_item_list(overwrite)
+            case UITextBox.__module__:       self.get_element(element).set_text(overwrite)
 
     def reset_selection_list_all(self):
         """Resets all elements of the GUI, putting them in their default state"""
         for pobj in self.get_elements():
-            self.reset_selection_list(pobj)
+            self.set_default(pobj)
 
     def restart(self, manager):
         """Restarts whole initialisation process of the class"""
