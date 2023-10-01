@@ -23,16 +23,3 @@ def langjstring (key: str, modtype: str, modid: str = "ansur") -> str:
                 f"Module {modid} does not have properly set language value for {key}. Please contact the developer of this module for help.")
             return langstring("system__text_load_fail")
     return read[key]
-
-@Deprecated("langjstring")
-def langjstringdepr (key: str, modtype: str, modid: str = "ansur"):
-    try:
-        read = json_read(f"{modtype}/{modid}/lang.json", scx("lang"))
-    except KeyError:
-        try:
-            read = json_read(f"{modtype}/{modid}/lang.json", "english")
-        except KeyError:
-            log.warning(
-                f"Module {modid} does not have properly set language value for {key}. Please contact the developer of this module for help.")
-            return langstring("system__text_load_fail")
-    return read[key]

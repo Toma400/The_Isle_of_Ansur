@@ -33,3 +33,13 @@ def pack_remover():
       rv(f"{gpath}/scripts/{i}", i)
     for i in scripts_frv:
       os.remove(i)
+
+def agnostic_id(string: str) -> str:
+    if "ansur:" in string:
+        return string.replace("ansur:", "")
+    return string
+
+def agnostic_id_rev(string: str) -> str:
+    if ":" not in string:
+      return f"ansur:{string}"
+    return string

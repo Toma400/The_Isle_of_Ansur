@@ -11,12 +11,12 @@ gender__female     = "Woman"
 gender__non_binary = "Non-binary"
 
 races__baedoorian_descr = '''
-<b>Baedoorians</b> are fiery human culture that is known for their love for conquest, but also arts and sophisticated political culture.
+<b>Baedoorians</b> are fiery human culture known for their love for conquest, but also arts and sophisticated political play.
 They also inherit a lot of technological knowledge from jitadeans.
-<br><br>
- Strength +2<br>
- Charisma +1<br>
- Intelligence +1<br>
+
+ Strength +2
+ Charisma +1
+ Intelligence +1
  Endurance -1
 '''
 races__kaerian_descr = '''
@@ -35,17 +35,17 @@ Those picking <b>undefined</b> class do not have focus on any specific skill, bu
 classes__fighter_descr = '''
 <b>Fighters</b> are great dealing with melee fight and all kinds of swords.
 
- Shortswords +1<br>
- Longswords +1<br>
- Toughness +1<br>
- Firearms -1<br>
+ Shortswords +1
+ Longswords +1
+ Toughness +1
+ Firearms -1
  Archery -1
 '''
 classes__ormath_shaman_descr = '''
 <b>Ormath shaman</b> is special class that let you control environment by shamanic spirit.
 
- Connection +2<br>
- Herbalism +1<br>
- Healing +1<br>
+ Connection +2
+ Herbalism +1
+ Healing +1
  Firearms -2
 '''
