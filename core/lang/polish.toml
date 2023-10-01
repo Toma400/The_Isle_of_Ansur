@@ -33,6 +33,9 @@ ccrt__gen_category7        = "Historia postaci"
 ccrt__gen_category8        = "Ustawienia rozgrywki"
 ccrt__gen_category9        = "Podsumowanie"
 
+ccrt__gender               = "Gender is social construct"
+# end
+
 menu__load_choose          = "Wybierz swój zapis gry"
 menu__load_choose_hint     = "[użyj numeru lub dokładnej nazwy]"
 menu__load_save_deleted    = "Zapis gry usunięty!"

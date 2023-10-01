@@ -330,6 +330,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     dyn_screen.journey.stage = 0
 
                     dyn_screen.put_pgui("char__lb_gender")
+                    dyn_screen.put_pgui("char__tb_gender")
                     gender_choice = dyn_screen.get_pgui_choice("char__lb_gender")
                     if gender_choice is not None:
                         dyn_screen.journey.setInit("gender", gender_choice)

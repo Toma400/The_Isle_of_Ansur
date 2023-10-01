@@ -33,6 +33,9 @@ ccrt__gen_category7        = "Character Origin"
 ccrt__gen_category8        = "Gameplay Settings"
 ccrt__gen_category9        = "Summary"
 
+ccrt__gender               = "Choice of gender affects slightly dialogues and some minor gameplay features."
+# end
+
 menu__load_choose          = "Choose your save"
 menu__load_choose_hint     = "[use numbers or precise name]"
 menu__load_save_deleted    = "Saved game successfully deleted!"

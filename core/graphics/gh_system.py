@@ -75,21 +75,21 @@ class Screen:
     def gui(self, value: str):
         return self.objects.get_element(value)
 
-    def get_pgui_choice(self, value: str) -> str | None:
+    def get_pgui_choice(self, element: str) -> str | None:
         """Gets currently selected entry in GUI element (available only for some types)"""
-        return self.pobjects.get_element_choice(value)
+        return self.pobjects.get_element_choice(element)
 
-    def get_pgui_index(self, value: str) -> int | None:
+    def get_pgui_index(self, element: str) -> int | None:
         """Gets currently selected entry in GUI element (available only for some types)"""
-        return self.pobjects.get_element_index(value)
+        return self.pobjects.get_element_index(element)
 
-    def set_pgui_element(self, value: str, overwrite):
+    def set_pgui_element(self, element: str, overwrite):
         """Overwrites GUI element's contents (available only for some types)"""
-        self.pobjects.overwrite_selection_list(value, overwrite)
+        self.pobjects.set_value(element, overwrite)
 
-    def put_pgui(self, value: str):
+    def put_pgui(self, element: str):
         """Reveals GUI element currently being hidden"""
-        self.pobjects.show_element(value)
+        self.pobjects.show_element(element)
 
     def reset_pgui(self, complete=False):
         """Resets PGUI elements to their default state"""

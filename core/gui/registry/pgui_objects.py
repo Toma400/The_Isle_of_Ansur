@@ -1,4 +1,7 @@
+from pygame_gui.elements.ui_text_entry_line import UITextEntryLine
 from pygame_gui.elements.ui_drop_down_menu import UISelectionList
+from pygame_gui.elements.ui_text_box import UITextBox
+from core.gui.manag.langstr import langstring as lstr
 from core.gui.manag.pgui_wrapper import getCurrentID, getCurrentIndex, resetSelected
 from core.data.player.profession import getClassesTuple
 from core.data.player.gender import getGendersTuple
@@ -17,10 +20,12 @@ class PGUI_Helper:
     """
 
     def __init__(self, manager):
-        #self.char__lb_race = UIDropDownMenu(options_list=getGendersStrings(), relative_rect=pygame.Rect((400, 100), (400, 50)), starting_option=getGendersStrings()[0], manager=manager)
-        self.char__lb_gender = UISelectionList(item_list=getGendersTuple(), relative_rect=pygame.Rect((400, 100), (400, 75)),  manager=manager)
-        self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),   relative_rect=pygame.Rect((400, 100), (400, 300)), manager=manager)
-        self.char__lb_class  = UISelectionList(item_list=getClassesTuple(), relative_rect=pygame.Rect((400, 100), (400, 300)), manager=manager)
+        self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),    relative_rect=pygame.Rect((400, 100), (400, 75)),  manager=manager)
+        self.char__tb_gender = UITextBox      (html_text=lstr("ccrt__gender"), relative_rect=pygame.Rect((400, 200), (400, 300)), manager=manager)
+        self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),      relative_rect=pygame.Rect((400, 100), (400, 300)), manager=manager)
+        self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),    relative_rect=pygame.Rect((400, 100), (400, 300)), manager=manager)
+        # self.char__lb_name   = UISelectionList(item_list=[],                relative_rect=pygame.Rect((400, 100), (400, 300)), manager=manager)
+        # self.char__tb_name   = UITextEntryLine(                             relative_rect=pygame.Rect((400, 450), (400, 75)),  manager=manager) # set_text, get_text
         self.hide_elements()
 
     def get_element(self, element: str):
@@ -55,10 +60,12 @@ class PGUI_Helper:
         match type(self.get_element(element)):
             case UISelectionList: resetSelected(self.get_element(element))
 
-    def overwrite_selection_list(self, element: str, overwrite: list[str] | list[(str, str)]):
+    def set_value(self, element: str, overwrite):
         """Overwrites item list of selected element"""
         match type(self.get_element(element)):
             case UISelectionList: self.get_element(element).set_item_list(overwrite)
+        match type(self.get_element(element)):
+            case UITextBox:       self.get_element(element).set_text(overwrite)
 
     def reset_selection_list_all(self):
         """Resets all elements of the GUI, putting them in their default state"""
