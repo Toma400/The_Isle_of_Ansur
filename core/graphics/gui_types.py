@@ -344,6 +344,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     race_choice = dyn_screen.get_pgui_choice("char__lb_race")
                     if race_choice is not None:
                         dyn_screen.journey.setInit("race", race_choice)
+                        dyn_screen.set_pgui_element("char__lb_class", getClassesTuple(dyn_screen.journey.inidata["race"])) # sets next listbox
                         dyn_screen.journey.stages[1] = True
                     else:
                         dyn_screen.journey.stages[1] = False
@@ -351,8 +352,16 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 case "class":
                     dyn_screen.journey.stage = 2
 
-                    dyn_screen.set_pgui_element("char__lb_class", getClassesTuple(dyn_screen.journey.inidata["race"]))
                     dyn_screen.put_pgui("char__lb_class")
+                    class_choice = dyn_screen.get_pgui_choice("char__lb_class")
+                    if class_choice is not None:
+                        dyn_screen.journey.setInit("class", class_choice)
+                        dyn_screen.journey.stages[2] = True
+                    else:
+                        dyn_screen.journey.stages[2] = False
+
+                case "name_avatar":
+                    dyn_screen.journey.stage = 3
 
             # ==================================================
             # hovering & clicking events
@@ -361,7 +370,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 if mouseRec(pg_events):
                     guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                     guitype[1] = None
-                    dyn_screen.reset_pgui()
+                    dyn_screen.reset_pgui(True)
 
             elif mouseColliderPx(mn1[0], mn1[1], mn1[2], mn1[3]):
                 put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=fCol.HOVERED.value)
@@ -379,6 +388,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     guitype[1] = switch_gscr(dyn_screen, screen, "class")
+                    dyn_screen.reset_pgui()
+
+            elif mouseColliderPx(mn4[0], mn4[1], mn4[2], mn4[3]) and dyn_screen.journey.stages[2] is True:
+                put_text(screen, text=langstring("ccrt__gen_category4"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=34, colour=fCol.HOVERED.value)
+                if mouseRec(pg_events):
+                    guitype[1] = switch_gscr(dyn_screen, screen, "name_avatar")
                     dyn_screen.reset_pgui()
 
             print(dyn_screen.journey.inidata)

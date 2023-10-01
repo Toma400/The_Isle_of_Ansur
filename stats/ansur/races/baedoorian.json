@@ -12,5 +12,32 @@
     "skills": {
         "firearms":   1,
         "persuasion": 1
+    },
+    "names": {
+        "male": [
+            "Aegar",
+            "Algor",
+            "Altiner",
+            "Dominic",
+            "Entar",
+            "Evilar",
+            "Fadest",
+            "Fathur",
+            "Frode",
+            "Hadan",
+            "Marvin",
+            "Mes",
+            "Norran",
+            "Nyver",
+            "Ovlan",
+            "Tom"
+        ],
+        "female": [
+            "Hanyah",
+            "Lorat",
+            "Nyvera",
+            "Sana",
+            "Veronica"
+        ]
     }
 }
