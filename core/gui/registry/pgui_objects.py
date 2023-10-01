@@ -26,8 +26,8 @@ class PGUI_Helper:
         self.char__tb_race   = UITextBox      (html_text="",                   relative_rect=pygame.Rect((400, 325), (400, 200)), manager=manager)
         self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),    relative_rect=pygame.Rect((400, 100), (400, 200)), manager=manager)
         self.char__tb_class  = UITextBox      (html_text="",                   relative_rect=pygame.Rect((400, 325), (400, 200)), manager=manager)
-        # self.char__lb_name   = UISelectionList(item_list=[],                relative_rect=pygame.Rect((400, 100), (400, 300)), manager=manager)
-        self.char__ti_name   = UITextEntryLine(                                relative_rect=pygame.Rect((400, 325), (400, 50)),  manager=manager) # set_text, get_text
+        self.char__lb_name   = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((400, 100), (400, 200)), manager=manager)
+        self.char__ti_name   = UITextEntryLine(                                relative_rect=pygame.Rect((400, 325), (400, 50)),  manager=manager)
         self.hide_elements()
 
     def get_element(self, element: str):
@@ -50,7 +50,7 @@ class PGUI_Helper:
     def get_value(self, element: str) -> str | None:
         """Returns value of selected GUI element (available only for some GUI types)"""
         match self.get_element(element).__module__:
-            case UISelectionList.__module__: return getCurrentID(self.get_element(element)) # should return ID, not translation
+            case UISelectionList.__module__: return getCurrentID(self.get_element(element))
             case UITextEntryLine.__module__: return self.get_element(element).text
 
     def get_element_index(self, element: str) -> int | None:
@@ -68,6 +68,7 @@ class PGUI_Helper:
         match self.get_element(element).__module__:
             case UISelectionList.__module__: self.get_element(element).set_item_list(overwrite)
             case UITextBox.__module__:       self.get_element(element).set_text(overwrite)
+            case UITextEntryLine.__module__: self.get_element(element).set_text(overwrite)
 
     def reset_selection_list_all(self):
         """Resets all elements of the GUI, putting them in their default state"""

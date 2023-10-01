@@ -3,8 +3,8 @@ from core.gui.manag.langstr import langjstring as ljstr
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
-from core.data.player.race import getRace
 from core.data.player.profession import getClassesTuple, getClass
+from core.data.player.race import getRace, getRaceNames
 from core.data.journey import Journey
 from core.graphics.gh_manag import *
 
@@ -348,8 +348,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     race_choice = dyn_screen.get_pgui_choice("char__lb_race")
                     if race_choice is not None:
                         dyn_screen.journey.setInit("race", race_choice)
-                        dyn_screen.set_pgui_element("char__tb_race", ljstr(getRace(race_choice).get("info"), "stats", getRace(race_choice).mod_id))
-                        dyn_screen.set_pgui_element("char__lb_class", getClassesTuple(dyn_screen.journey.inidata["race"])) # sets next listbox
+                        dyn_screen.set_pgui_element("char__tb_race",  ljstr(getRace(race_choice).get("info"), "stats", getRace(race_choice).mod_id)) # sets infobox
+                        dyn_screen.set_pgui_element("char__lb_class", getClassesTuple(dyn_screen.journey.inidata["race"]))                           # sets class listbox
+                        dyn_screen.set_pgui_element("char__lb_name",  getRaceNames(race_choice, dyn_screen.journey.inidata["gender"]))               # sets name listbox
                         dyn_screen.journey.stages[1] = True
                     else:
                         dyn_screen.journey.stages[1] = False
@@ -362,7 +363,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     class_choice = dyn_screen.get_pgui_choice("char__lb_class")
                     if class_choice is not None:
                         dyn_screen.journey.setInit("class", class_choice)
-                        dyn_screen.set_pgui_element("char__tb_class", ljstr(getClass(class_choice).get("info"), "stats", getClass(class_choice).mod_id))
+                        dyn_screen.set_pgui_element("char__tb_class", ljstr(getClass(class_choice).get("info"), "stats", getClass(class_choice).mod_id)) # sets infobox
                         dyn_screen.journey.stages[2] = True
                     else:
                         dyn_screen.journey.stages[2] = False
@@ -371,7 +372,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     dyn_screen.journey.stage = 3
 
                     dyn_screen.put_pgui("char__ti_name")
+                    dyn_screen.put_pgui("char__lb_name")
                     name_choice = dyn_screen.get_pgui_choice("char__ti_name")
+                    name_pick   = dyn_screen.get_pgui_choice("char__lb_name")
+                    print(name_pick)
+                    if name_pick is not None:
+                        dyn_screen.set_pgui_element("char__ti_name", name_pick)
+                        dyn_screen.reset_pgui()
                     if name_choice != "":
                         dyn_screen.journey.setInit("name", name_choice)
                         dyn_screen.journey.stages[3] = True

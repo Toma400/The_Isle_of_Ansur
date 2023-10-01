@@ -1,3 +1,4 @@
+from core.file_system.pack_manag import agnostic_id
 from core.gui.manag.langstr import langjstring
 from system.mod_manag import mod_lister
 from glob import glob as walkdir
@@ -67,3 +68,11 @@ def getRacesTuple() -> list[(str, str)]:
     for rc in getRaces():
         ret.append((rc.langstr(), rc.rid()))
     return ret
+
+def getRaceNames(rid: str, gid: str) -> list[(str, str)]:
+    """Returns list of names derived from race JSON. Uses tuple for compatibility with PyGame GUI system"""
+    ret = []
+    try:
+        for name in getRace(rid).getc("names", agnostic_id(gid)):
+            ret.append((name, name))
+    finally: return ret
