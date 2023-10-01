@@ -27,7 +27,7 @@ class PGUI_Helper:
         self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),    relative_rect=pygame.Rect((400, 100), (400, 200)), manager=manager)
         self.char__tb_class  = UITextBox      (html_text="",                   relative_rect=pygame.Rect((400, 325), (400, 200)), manager=manager)
         # self.char__lb_name   = UISelectionList(item_list=[],                relative_rect=pygame.Rect((400, 100), (400, 300)), manager=manager)
-        # self.char__tb_name   = UITextEntryLine(                             relative_rect=pygame.Rect((400, 450), (400, 75)),  manager=manager) # set_text, get_text
+        self.char__ti_name   = UITextEntryLine(                                relative_rect=pygame.Rect((400, 325), (400, 50)),  manager=manager) # set_text, get_text
         self.hide_elements()
 
     def get_element(self, element: str):
@@ -47,10 +47,11 @@ class PGUI_Helper:
         for uie in self.get_elements():
             self.get_element(uie).hide()
 
-    def get_element_choice(self, element: str) -> str | None:
-        """Returns selected element of the GUI (available only for some GUI types)"""
+    def get_value(self, element: str) -> str | None:
+        """Returns value of selected GUI element (available only for some GUI types)"""
         match self.get_element(element).__module__:
-           case UISelectionList.__module__: return getCurrentID(self.get_element(element)) # should return ID, not translation
+            case UISelectionList.__module__: return getCurrentID(self.get_element(element)) # should return ID, not translation
+            case UITextEntryLine.__module__: return self.get_element(element).text
 
     def get_element_index(self, element: str) -> int | None:
         """Returns selected element of the GUI, as index number"""

@@ -77,7 +77,7 @@ class Screen:
 
     def get_pgui_choice(self, element: str) -> str | None:
         """Gets currently selected entry in GUI element (available only for some types)"""
-        return self.pobjects.get_element_choice(element)
+        return self.pobjects.get_value(element)
 
     def get_pgui_index(self, element: str) -> int | None:
         """Gets currently selected entry in GUI element (available only for some types)"""

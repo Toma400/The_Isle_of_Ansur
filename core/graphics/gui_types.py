@@ -370,6 +370,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 case "name_avatar":
                     dyn_screen.journey.stage = 3
 
+                    dyn_screen.put_pgui("char__ti_name")
+                    name_choice = dyn_screen.get_pgui_choice("char__ti_name")
+                    if name_choice != "":
+                        dyn_screen.journey.setInit("name", name_choice)
+                        dyn_screen.journey.stages[3] = True
+                    else:
+                        dyn_screen.journey.stages[3] = False
+
             # ==================================================
             # hovering & clicking events
             if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
