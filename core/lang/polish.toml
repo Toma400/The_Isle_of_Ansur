@@ -34,6 +34,12 @@ ccrt__gen_category8        = "Ustawienia rozgrywki"
 ccrt__gen_category9        = "Podsumowanie"
 
 ccrt__gender               = "Wybór płci wpływa delikatnie na dialogi oraz elementy rozgrywki."
+
+stat__atr_charisma         = "Charyzma"
+stat__atr_agility          = "Zręczność"
+stat__atr_endurance        = "Wytrzymałość"
+stat__atr_intelligence     = "Inteligencja"
+stat__atr_strength         = "Siła"
 # end
 
 menu__load_choose          = "Wybierz swój zapis gry"
@@ -68,11 +74,6 @@ game__init_class_excl      = "Klasa jest ekskluzywna dla rasy, której nie repre
 game__init_attr            = "Wybierz cechę, którą chcesz wzmocnić"
 game__init_skill           = "Wybierz umiejętność, którą chcesz wzmocnić"
 
-stat__atr_charisma         = "Charyzma"
-stat__atr_agility          = "Zręczność"
-stat__atr_endurance        = "Wytrzymałość"
-stat__atr_intelligence     = "Inteligencja"
-stat__atr_strength         = "Siła"
 stat__sk_handfight         = "Walka wręcz"
 stat__sk_shortswords       = "Broń krótka"
 stat__sk_longswords        = "Broń długa"

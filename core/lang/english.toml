@@ -34,6 +34,12 @@ ccrt__gen_category8        = "Gameplay Settings"
 ccrt__gen_category9        = "Summary"
 
 ccrt__gender               = "Choice of gender affects slightly dialogues and some minor gameplay features."
+
+stat__atr_charisma         = "Charisma"
+stat__atr_agility          = "Agility"
+stat__atr_endurance        = "Endurance"
+stat__atr_intelligence     = "Intelligence"
+stat__atr_strength         = "Strength"
 # end
 
 menu__load_choose          = "Choose your save"
@@ -68,11 +74,6 @@ game__init_class_excl      = "Class is exclusive for race you don't represent!" 
 game__init_attr            = "Choose attribute you want to enhance"
 game__init_skill           = "Choose ability you want to enhance"
 
-stat__atr_charisma         = "Charisma"
-stat__atr_agility          = "Agility"
-stat__atr_endurance        = "Endurance"
-stat__atr_intelligence     = "Intelligence"
-stat__atr_strength         = "Strength"
 stat__sk_handfight         = "Handfight"
 stat__sk_shortswords       = "Shortswords"
 stat__sk_longswords        = "Longswords"
