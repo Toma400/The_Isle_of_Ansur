@@ -3,9 +3,12 @@ from pygame_gui.elements.ui_drop_down_menu import UISelectionList
 from pygame_gui.elements.ui_text_box import UITextBox
 from core.gui.manag.langstr import langstring as lstr
 from core.gui.manag.pgui_wrapper import getCurrentID, getCurrentIndex, resetSelected
+from core.data.player.attributes import getAttributesTuple
+from core.data.player.skills import getSkillsTuple
 from core.data.player.profession import getClassesTuple
 from core.data.player.gender import getGendersTuple
 from core.data.player.race import getRacesTuple
+from core.gui.manag.pc import toPxX, toPxY
 import pygame
 
 class PGUI_Helper:
@@ -20,14 +23,17 @@ class PGUI_Helper:
     """
 
     def __init__(self, manager):
-        self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),    relative_rect=pygame.Rect((400, 100), (400, 75)),  manager=manager)
-        self.char__tb_gender = UITextBox      (html_text=lstr("ccrt__gender"), relative_rect=pygame.Rect((400, 200), (400, 200)), manager=manager)
-        self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),      relative_rect=pygame.Rect((400, 100), (400, 200)), manager=manager)
-        self.char__tb_race   = UITextBox      (html_text="",                   relative_rect=pygame.Rect((400, 325), (400, 200)), manager=manager)
-        self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),    relative_rect=pygame.Rect((400, 100), (400, 200)), manager=manager)
-        self.char__tb_class  = UITextBox      (html_text="",                   relative_rect=pygame.Rect((400, 325), (400, 200)), manager=manager)
-        self.char__lb_name   = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((400, 100), (400, 200)), manager=manager)
-        self.char__ti_name   = UITextEntryLine(                                relative_rect=pygame.Rect((400, 325), (400, 50)),  manager=manager)
+        self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),    relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(8))),  manager=manager)
+        self.char__tb_gender = UITextBox      (html_text=lstr("ccrt__gender"), relative_rect=pygame.Rect((toPxX(40), toPxX(14)), (toPxX(40), toPxX(15))), manager=manager)
+        self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),      relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
+        self.char__tb_race   = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
+        self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),    relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
+        self.char__tb_class  = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
+        self.char__lb_name   = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
+        self.char__ti_name   = UITextEntryLine(                                relative_rect=pygame.Rect((toPxX(40), toPxX(27)), (toPxX(40), 50)),        manager=manager)
+        # ---
+        self.char__lb_attrs  = UISelectionList(item_list=getAttributesTuple(), relative_rect=pygame.Rect((toPxX(40), toPxX(6)), (175, 200)), manager=manager)
+        self.char__lb_skills = UISelectionList(item_list=getSkillsTuple(),     relative_rect=pygame.Rect((600, 100), (175, 200)), manager=manager)
         self.hide_elements()
 
     def get_element(self, element: str):
