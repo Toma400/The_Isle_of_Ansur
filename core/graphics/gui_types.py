@@ -133,8 +133,10 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                             screen = dyn_screen.reset() # resets the screen
                         elif mouseRec(pg_events, 2):
                             from win32api import GetSystemMetrics
-                            if res_ratio != "1000 : 700": set_change("res_x", "set=1000"); set_change("res_y", "set=700") # changes res to default
-                            else:                         set_change("res_x", f"set={GetSystemMetrics(0)}"); set_change("res_y", f"set={GetSystemMetrics(1)}") # changes to full screen
+                            if res_ratio != "1000 : 700": # changes res to default
+                                set_change("res_x", "set=1000"); set_change("res_y", "set=700"); set_change("text_size", "set=1.0")
+                            else:                         # changes to full screen
+                                set_change("res_x", f"set={GetSystemMetrics(0)}"); set_change("res_y", f"set={GetSystemMetrics(1)}"); set_change("text_size", "set=1.5")
                             screen = dyn_screen.reset() # resets the screen
 
                     elif mouseColliderPx(gt1ln[0], gt1ln[1], gt1ln[2], gt1ln[3]):
