@@ -1,4 +1,4 @@
-from core.file_system.repo_manag import deep_file_lister
+from core.data.pack_manag.packs import getScripts
 from core.utils import sysref
 import logging
 import time
@@ -49,7 +49,7 @@ def run_path():
 
 
 def run_text():
-    scripts = deep_file_lister(f"scripts/", ext="py")
+    scripts = getScripts()
     text = f'''
     ---------------------------------------------------------------------------------------
     Hello in {sysref('name')} logging system! 
