@@ -1,15 +1,19 @@
+from os.path import exists
 import functools
 import logging
+
+NO_DEPR = exists(".nodepr")
 
 def SoftDeprecated(func):
     """Used to indicate functions with flaws, but having no direct alternatives, so user need to come up with their own solutions"""
     @functools.wraps(func)
     def wrapper_func(*args, **kwargs):
-        logging.debug(f'''
-        Used function marked as soft-deprecated: [{func.__name__}].
-        It is recommended to not use it, if there's a way to create code in clearer way, but this function will work normally.
-        Soft-deprecation is used for features that can't be put other way, but their current implementation is code-inefficient.
-        ''')
+        if not NO_DEPR:
+            logging.debug(f'''
+            Used function marked as soft-deprecated: [{func.__name__}].
+            It is recommended to not use it, if there's a way to create code in clearer way, but this function will work normally.
+            Soft-deprecation is used for features that can't be put other way, but their current implementation is code-inefficient.
+            ''')
         func(*args, **kwargs)
         return func(*args, **kwargs)
 
@@ -21,16 +25,17 @@ def Deprecated(func_rdir: str = None):
     def DecDeprecated(func):
         @functools.wraps(func)
         def wrapper_func(*args, **kwargs):
-            logging.debug(f'''
-            Used deprecated function: [{func.__name__}].
-            It is recommended to not use it and update your code, as deprecated functions are not getting any support and have most
-            likely their alternatives already. Code will work, but can break in future versions.
-
-            If there's recommended alternative for the function, it is written below:
-            ----
-            Recommended alternative for deprecated function (module.func path): [{func_rdir}].
-            ----
-            ''')
+            if not NO_DEPR:
+                logging.debug(f'''
+                Used deprecated function: [{func.__name__}].
+                It is recommended to not use it and update your code, as deprecated functions are not getting any support and have most
+                likely their alternatives already. Code will work, but can break in future versions.
+    
+                If there's recommended alternative for the function, it is written below:
+                ----
+                Recommended alternative for deprecated function (module.func path): [{func_rdir}].
+                ----
+                ''')
             func(*args, **kwargs)
             return func(*args, **kwargs)
 
@@ -64,6 +69,20 @@ def Callable(func):
 
     @functools.wraps(func)
     def wrapper_func(*args, **kwargs):
+        func(*args, **kwargs)
+        return args[0]
+
+    return wrapper_func
+
+@RequiresImprovement
+def EventListener(func):
+    """Used for class methods which listen to specific event and can change state of the object during it"""
+
+    @functools.wraps(func)
+    def wrapper_func(*args, **kwargs):
+        logging.debug(f"""
+        Event is being run! Event Listener: {func.__name__}
+        """)
         func(*args, **kwargs)
         return args[0]
 
