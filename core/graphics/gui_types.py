@@ -177,15 +177,15 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     gt2vn = put_text(screen, text=langstring("menu__sett_tech_ver_notif"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=68, colour="#4E3510")
 
                     # settings values
-                    if scx("legu"): put_text(screen, text=langstring("gen__enabled"), font_cat="menu", size=30, pos_x=82, pos_y=12, colour="#1A5856") # legacy unpacking
-                    else: put_text(screen,    text=langstring("gen__disabled"),       font_cat="menu", size=30, pos_x=82, pos_y=12, colour="#1A5856")
-                    if scx("vch"): put_text(screen, text=langstring("gen__enabled"),  font_cat="menu", size=30, pos_x=82, pos_y=68, colour="#1A5856") # version notification
-                    else: put_text(screen,    text=langstring("gen__disabled"),       font_cat="menu", size=30, pos_x=82, pos_y=68, colour="#1A5856")
-                    put_text(screen,          text=str(scx("lglm")),                  font_cat="menu", size=30, pos_x=82, pos_y=20, colour="#1A5856") # log limit number
-                    put_text(screen,          text=langstring(f"gen__{lbmode}"),      font_cat="menu", size=30, pos_x=82, pos_y=36, colour="#1A5856") # listbox mode
-                    put_text(screen,          text=str(scx("lbam")),                  font_cat="menu", size=30, pos_x=82, pos_y=44, colour="#1A5856") # listbox elements amount
-                    put_text(screen,          text=str(scx("lbsz")),                  font_cat="menu", size=30, pos_x=82, pos_y=52, colour="#1A5856") # listbox elements size
-                    put_text(screen,          text=str(scx("txts")),                  font_cat="menu", size=30, pos_x=82, pos_y=60, colour="#1A5856") # text size
+                    if scx("legu"): put_text(screen, text=langstring("gen__enabled"),  font_cat="menu", size=30, pos_x=82, pos_y=12, colour="#1A5856") # legacy unpacking
+                    else:           put_text(screen, text=langstring("gen__disabled"), font_cat="menu", size=30, pos_x=82, pos_y=12, colour="#1A5856")
+                    if scx("vch"):  put_text(screen, text=langstring("gen__enabled"),  font_cat="menu", size=30, pos_x=82, pos_y=68, colour="#1A5856") # version notification
+                    else:           put_text(screen, text=langstring("gen__disabled"), font_cat="menu", size=30, pos_x=82, pos_y=68, colour="#1A5856")
+                    put_text(screen, text=str(scx("lglm")),             font_cat="menu", size=30, pos_x=82, pos_y=20, colour="#1A5856") # log limit number
+                    put_text(screen, text=langstring(f"gen__{lbmode}"), font_cat="menu", size=30, pos_x=82, pos_y=36, colour="#1A5856") # listbox mode
+                    put_text(screen, text=str(scx("lbam")),             font_cat="menu", size=30, pos_x=82, pos_y=44, colour="#1A5856") # listbox elements amount
+                    put_text(screen, text=str(scx("lbsz")),             font_cat="menu", size=30, pos_x=82, pos_y=52, colour="#1A5856") # listbox elements size
+                    put_text(screen, text=str(scx("txts")),             font_cat="menu", size=30, pos_x=82, pos_y=60, colour="#1A5856") # text size
 
                     #==================================================
                     # hovering & clicking events

@@ -79,4 +79,6 @@ def getRaceNames(rid: str, gid: str) -> list[(str, str)]:
         except: # checks for 'ansur:female'/'ansur:male' etc.
             for name in getRace(rid).getc("names", gid):
                 ret.append((name, name))
-    finally: return ret
+    finally:
+        ret.sort()
+        return ret
