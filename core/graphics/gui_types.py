@@ -350,10 +350,10 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     race_choice = dyn_screen.get_pgui_choice("char__lb_race")
                     if race_choice is not None:
                         if dyn_screen.journey.inidata["race"] != race_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
+                            dyn_screen.journey.setInit("race", race_choice)
                             dyn_screen.set_pgui_element("char__tb_race",  ljstr(getRace(race_choice).get("info"), "stats", getRace(race_choice).mod_id)) # sets infobox
                             dyn_screen.set_pgui_element("char__lb_class", getClassesTuple(dyn_screen.journey.inidata["race"]))                           # sets class listbox
                             dyn_screen.set_pgui_element("char__lb_name",  getRaceNames(race_choice, dyn_screen.journey.inidata["gender"]))               # sets name listbox
-                        dyn_screen.journey.setInit("race", race_choice)
                         dyn_screen.journey.stages[1] = True
                     else:
                         dyn_screen.journey.stages[1] = False
@@ -366,8 +366,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     class_choice = dyn_screen.get_pgui_choice("char__lb_class")
                     if class_choice is not None:
                         if dyn_screen.journey.inidata["class"] != class_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
+                            dyn_screen.journey.setInit("class", class_choice)
                             dyn_screen.set_pgui_element("char__tb_class", ljstr(getClass(class_choice).get("info"), "stats", getClass(class_choice).mod_id)) # sets infobox
-                        dyn_screen.journey.setInit("class", class_choice)
                         dyn_screen.journey.stages[2] = True
                     else:
                         dyn_screen.journey.stages[2] = False
