@@ -33,7 +33,7 @@ def getPacks(kind: PackTypes = None) -> dict[list[str]] | list[str]:
     else:
         ret = []
         for pack in walkdir(f"{kind.value}/*/"):
-            ret.append(pack)
+            ret.append(pack.replace(kind.value, "").strip(r"\\"))
     return ret
 
 def getGlobalPacks() -> list[str]:

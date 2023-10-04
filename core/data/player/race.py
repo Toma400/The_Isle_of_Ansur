@@ -1,4 +1,4 @@
-from core.data.pack_manag.id import agnostic_id
+from core.data.pack_manag.id import agnosticID
 from core.gui.manag.langstr import langjstring
 from system.mod_manag import mod_lister
 from glob import glob as walkdir
@@ -74,7 +74,7 @@ def getRaceNames(rid: str, gid: str) -> list[(str, str)]:
     ret = []
     try:                                                             # searches for gender specified by GID
         try: # checks for 'female'/'male' etc.
-            for name in getRace(rid).getc("names", agnostic_id(gid)):
+            for name in getRace(rid).getc("names", agnosticID(gid)):
                 ret.append((name, name))
         except: # checks for 'ansur:female'/'ansur:male' etc.
             for name in getRace(rid).getc("names", gid):

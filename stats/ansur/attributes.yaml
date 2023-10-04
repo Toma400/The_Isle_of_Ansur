@@ -1,0 +1,19 @@
+strength:
+  key:  "stat__atr_strength"
+  info: "stat__atr_strength_descr"
+
+endurance:
+  key:  "stat__atr_endurance"
+  info: "stat__atr_endurance_descr"
+
+agility:
+  key:  "stat__atr_agility"
+  info: "stat__atr_agility_descr"
+
+intelligence:
+  key:  "stat__atr_intelligence"
+  info: "stat__atr_intelligence_descr"
+
+charisma:
+  key:  "stat__atr_charisma"
+  info: "stat__atr_charisma_descr"

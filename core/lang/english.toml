@@ -34,18 +34,6 @@ ccrt__gen_category8        = "Gameplay Settings"
 ccrt__gen_category9        = "Summary"
 
 ccrt__gender               = "Choice of gender affects slightly dialogues and some minor gameplay features."
-
-stat__atr_charisma         = "Charisma"
-stat__atr_agility          = "Agility"
-stat__atr_endurance        = "Endurance"
-stat__atr_intelligence     = "Intelligence"
-stat__atr_strength         = "Strength"
-
-stat__atr_charisma_descr     = "Charisma"
-stat__atr_agility_descr      = "Agility"
-stat__atr_endurance_descr    = "Endurance"
-stat__atr_intelligence_descr = "Intelligence"
-stat__atr_strength_descr     = "Strength"
 # end
 
 menu__load_choose          = "Choose your save"

@@ -10,6 +10,12 @@ gender__male       = "Man"
 gender__female     = "Woman"
 gender__non_binary = "Non-binary"
 
+stat__atr_charisma     = "Charisma"
+stat__atr_agility      = "Agility"
+stat__atr_endurance    = "Endurance"
+stat__atr_intelligence = "Intelligence"
+stat__atr_strength     = "Strength"
+
 races__baedoorian_descr = '''
 <b>Baedoorians</b> are fiery human culture known for their love for conquest, but also arts and sophisticated political play.
 They also inherit a lot of technological knowledge from jitadeans.
@@ -48,4 +54,19 @@ classes__ormath_shaman_descr = '''
  Herbalism +1
  Healing +1
  Firearms -2
+'''
+stat__atr_charisma_descr     = '''
+
+'''
+stat__atr_agility_descr      = '''
+
+'''
+stat__atr_endurance_descr    = '''
+
+'''
+stat__atr_intelligence_descr = '''
+
+'''
+stat__atr_strength_descr     = '''
+
 '''

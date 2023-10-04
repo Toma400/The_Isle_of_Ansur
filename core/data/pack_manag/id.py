@@ -11,12 +11,12 @@ from enum import Enum
 #     LID: "LocationID"
 #     HID: "ChestID"
 
-def agnostic_id(string: str) -> str:
+def agnosticID(string: str) -> str:
     if "ansur:" in string:
         return string.replace("ansur:", "")
     return string
 
-def agnostic_id_rev(string: str) -> str:
+def agnosticIDRev(string: str) -> str:
     if ":" not in string:
       return f"ansur:{string}"
     return string
