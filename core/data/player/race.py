@@ -1,4 +1,4 @@
-from core.file_system.pack_manag import agnostic_id
+from core.data.pack_manag.id import agnostic_id
 from core.gui.manag.langstr import langjstring
 from system.mod_manag import mod_lister
 from glob import glob as walkdir
