@@ -1,7 +1,9 @@
 from core.data.pack_manag.packs import PackTypes, getPacks
-from core.data.pack_manag.id import agnosticID
+from core.data.pack_manag.id import agnosticID, absoluteID
 from core.gui.manag.langstr import langjstring as ljstr
 from core.file_system.parsers import loadYAML
+from core.data.player.profession import getClass
+from core.data.player.race import getRace
 from os.path import exists
 
 from system.mod_manag import mod_lister
@@ -54,4 +56,23 @@ def getAttributesTuple() -> list[(str, str)]:
     ret = []
     for attr in getAttributes():
         ret.append((attr.langstr(), f"{attr.aid}"))
+    return ret
+
+def getAttributesTupleAdjusted(cid: str, rid: str) -> list[(str, str)]:
+    """Variant that also gets numerical representation of attributes. Works separately"""
+    pre = {attr.aid(): DEFAULT_ATTR for attr in getAttributes()}
+    ret = []
+    try:
+        race = getRace(rid).get("attributes")
+        for attr_id in race:
+            pre[absoluteID(attr_id)] += race[attr_id]
+    except KeyError: pass
+    finally:
+        try:
+            clss = getClass(cid).get("attributes")
+            for attr_id in clss:
+                pre[absoluteID(attr_id)] += clss[attr_id]
+        except KeyError: pass
+    for attr_id in pre:
+        ret.append((f"{getAttribute(attr_id).langstr()}: {pre[attr_id]}", attr_id))
     return ret

@@ -22,14 +22,14 @@ class Race:
         """Returns langstring of object based on currently used language"""
         return langjstring(key=self.key, modtype="stats", modid=self.mod_id)
 
-    def get(self, attribute: str) -> str | int | float | list | dict | None:
+    def get(self, attribute: str) -> str | int | float | list | dict:
         """Returns specific attribute from Race file. Any reuse of the same object reads from cache to optimise I/O"""
         if self.cache is None:
             with open(f"stats/{self.mod_id}/races/{self.name}.json") as jf:
                 self.cache = json.load(jf)
         return self.cache[attribute]
 
-    def getc(self, category: str, attribute: str) -> str | int | float | list | dict | None:
+    def getc(self, category: str, attribute: str) -> str | int | float | list | dict:
         """Returns attribute from category dict. Used mostly with sections like -skills- or -attrs- by Races"""
         return self.get(category)[attribute]
 

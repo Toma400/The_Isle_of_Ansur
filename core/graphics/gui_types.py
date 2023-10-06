@@ -3,6 +3,7 @@ from core.gui.manag.langstr import langjstring as ljstr
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
+from core.data.player.attributes import getAttributesTupleAdjusted
 from core.data.player.profession import getClassesTuple, getClass
 from core.data.player.race import getRace, getRaceNames
 from core.data.journey import Journey
@@ -390,6 +391,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                 case "point_distribution":
                     dyn_screen.journey.stage = 4
+
+                    dyn_screen.put_pgui("char__lb_attrs")
+                    dyn_screen.set_pgui_element("char__lb_attrs", getAttributesTupleAdjusted(dyn_screen.journey.inidata["class"], dyn_screen.journey.inidata["race"]))
 
             # ==================================================
             # hovering & clicking events

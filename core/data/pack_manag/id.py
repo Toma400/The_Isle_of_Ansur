@@ -16,7 +16,8 @@ def agnosticID(string: str) -> str:
         return string.replace("ansur:", "")
     return string
 
-def agnosticIDRev(string: str) -> str:
+def absoluteID(string: str) -> str:
+    """Converts """
     if ":" not in string:
       return f"ansur:{string}"
     return string

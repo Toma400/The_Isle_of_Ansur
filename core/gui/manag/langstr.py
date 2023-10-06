@@ -9,12 +9,11 @@ import toml
 #===================================================================
 def langstring (key: str) -> str:
     try:
-        t = toml.load(f"{gpath}/core/lang/{scx('lang')}.toml")
+        return toml.load(f"{gpath}/core/lang/{scx('lang')}.toml")[key]
     except:
         log.warning(
             f"Internal language file does not have properly set language value for {key}.")
         return langstring("system__text_load_fail")
-    return t[key]
 
 def langjstring (key: str, modtype: str, modid: str = "ansur") -> str:
     try:
