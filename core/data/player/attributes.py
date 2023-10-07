@@ -47,7 +47,7 @@ def getAttributes() -> list[Attribute]:
 
 def getAttribute(aid: str) -> Attribute:
     for attr in getAttributes():
-        if attr.name == agnosticID(aid):
+        if attr.aid() == absoluteID(aid):
             return attr
     raise KeyError(f"Cannot find attribute of AID: {aid}.")
 

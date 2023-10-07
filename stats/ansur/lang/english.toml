@@ -16,6 +16,18 @@ stat__atr_endurance    = "Endurance"
 stat__atr_intelligence = "Intelligence"
 stat__atr_strength     = "Strength"
 
+stat__sk_shortswords     = "Shortswords"
+stat__sk_longswords      = "Longswords"
+stat__sk_archery         = "Archery"
+stat__sk_firearms        = "Firearms"
+stat__sk_persuasion      = "Persuasion"
+stat__sk_trade           = "Trade"
+stat__sk_toughness       = "Toughness"
+stat__sk_healing         = "Healing"
+stat__sk_survival        = "Survival"
+stat__sk_herbalism       = "Herbalism"
+stat__sk_connection_bond = "Connection Bond"
+
 races__baedoorian_descr = '''
 <b>Baedoorians</b> are fiery human culture known for their love for conquest, but also arts and sophisticated political play.
 They also inherit a lot of technological knowledge from jitadeans.
@@ -55,18 +67,51 @@ classes__ormath_shaman_descr = '''
  Healing +1
  Firearms -2
 '''
-stat__atr_charisma_descr     = '''
+stat__atr_charisma_descr       = '''
 
 '''
-stat__atr_agility_descr      = '''
+stat__atr_agility_descr        = '''
 
 '''
-stat__atr_endurance_descr    = '''
+stat__atr_endurance_descr      = '''
 
 '''
-stat__atr_intelligence_descr = '''
+stat__atr_intelligence_descr   = '''
 
 '''
-stat__atr_strength_descr     = '''
+stat__atr_strength_descr       = '''
+
+'''
+stat__sk_shortswords_descr     = '''
+
+'''
+stat__sk_longswords_descr      = '''
+
+'''
+stat__sk_archery_descr         = '''
+
+'''
+stat__sk_firearms_descr        = '''
+
+'''
+stat__sk_persuasion_descr      = '''
+
+'''
+stat__sk_trade_descr           = '''
+
+'''
+stat__sk_toughness_descr       = '''
+
+'''
+stat__sk_healing_descr         = '''
+
+'''
+stat__sk_survival_descr        = '''
+
+'''
+stat__sk_herbalism_descr       = '''
+
+'''
+stat__sk_connection_bond_descr = '''
 
 '''

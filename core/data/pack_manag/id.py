@@ -12,12 +12,13 @@ from enum import Enum
 #     HID: "ChestID"
 
 def agnosticID(string: str) -> str:
+    """Converts IDs into non-ID based ones. Currently investigated against `absoluteID` in issue #84"""
     if "ansur:" in string:
         return string.replace("ansur:", "")
     return string
 
 def absoluteID(string: str) -> str:
-    """Converts """
+    """Converts vague IDs into absolute ones, making core modules comparable in system"""
     if ":" not in string:
       return f"ansur:{string}"
     return string
