@@ -435,7 +435,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     dyn_screen.put_pgui("char__lb_orig")
                     dyn_screen.put_pgui("char__tb_orig")
+                    dyn_screen.put_pgui("char__ti_hist")
+                    dyn_screen.put_pgui("char__tb_hist")
                     orig_choice = dyn_screen.get_pgui_choice("char__lb_orig")
+                    history_txt = dyn_screen.get_pgui_choice("char__ti_hist")
+                    if history_txt is not None:
+                        if dyn_screen.journey.inidata["history"] != history_txt: # sets history textbox
+                            dyn_screen.journey.setInit("history", history_txt)
+                            dyn_screen.set_pgui_element("char__tb_hist", history_txt)
                     if orig_choice is not None:
                         if dyn_screen.journey.inidata["origin"] != orig_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
                             dyn_screen.journey.setInit("origin", orig_choice)

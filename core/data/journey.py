@@ -5,7 +5,7 @@ import os
 
 class Journey:
     # keys that are iterated over during save | -inidata- keys should match TOML keys
-    keys_saved = ["gender", "race", "class", "name", "attr", "skill", "religion", "origin"]
+    keys_saved = ["gender", "race", "class", "name", "attr", "skill", "religion", "origin", "history"]
 
     def __init__(self):
         # character creation stages finished
@@ -77,6 +77,10 @@ class Journey:
         ret += f"race     = {self.inidata['race']}"     + "\n"
         ret += f"class    = {self.inidata['class']}"    + "\n"
         ret += f"religion = {self.inidata['religion']}" + "\n"
+        ret += f"origin   = {self.inidata['origin']}"   + "\n"
+        ret += f"history  = \'\'\'"                     + "\n"
+        ret += f"{self.inidata['history']}"             + "\n"
+        ret += f"\'\'\'"                                + "\n"
         with open(f"{self.buffdir}/main.toml", "r+") as f:
             f.write(ret)
 

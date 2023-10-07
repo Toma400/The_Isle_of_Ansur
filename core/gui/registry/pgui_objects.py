@@ -39,8 +39,10 @@ class PGUI_Helper:
         self.char__lb_rel    = UISelectionList(item_list=getReligionsTuple(),  relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
         self.char__tb_rel    = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
         # ---
-        self.char__lb_orig   = UISelectionList(item_list=getOriginsTuple(),    relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
-        self.char__tb_orig   = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
+        self.char__lb_orig   = UISelectionList(item_list=getOriginsTuple(),    relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(44))), manager=manager)
+        self.char__tb_orig   = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(60), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
+        self.char__ti_hist   = UITextEntryLine(                                relative_rect=pygame.Rect((toPxX(60), toPxX(26)), (toPxX(20), toPxX(2))),  manager=manager)
+        self.char__tb_hist   = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(60), toPxX(28)), (toPxX(20), toPxX(22))), manager=manager)
         self.hide_elements()
 
     def get_element(self, element: str):
