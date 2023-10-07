@@ -21,6 +21,10 @@ class Class:
         """Returns langstring of object based on currently used language"""
         return langjstring(key=self.key, modtype="stats", modid=self.mod_id)
 
+    def descr(self) -> str:
+        """Returns description of Class taken from -key[_descr]-"""
+        return langjstring(f"{self.key}_descr", "stats", self.mod_id)
+
     def get(self, attribute: str) -> str | int | float | list | dict:
         """Returns specific attribute from Class file. Any reuse of the same object reads from cache to optimise I/O"""
         if self.cache is None:

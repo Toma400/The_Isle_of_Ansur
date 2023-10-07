@@ -32,8 +32,8 @@ class PGUI_Helper:
         self.char__lb_name   = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
         self.char__ti_name   = UITextEntryLine(                                relative_rect=pygame.Rect((toPxX(40), toPxX(27)), (toPxX(40), 50)),        manager=manager)
         # ---
-        self.char__lb_attrs  = UISelectionList(item_list=getAttributesTuple(), relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
-        self.char__lb_skills = UISelectionList(item_list=getSkillsTuple(),     relative_rect=pygame.Rect((toPxX(60), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
+        self.char__lb_attrs  = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
+        self.char__lb_skills = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((toPxX(60), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
         self.char__tb_stats  = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
         self.hide_elements()
 

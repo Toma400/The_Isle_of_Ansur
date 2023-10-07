@@ -3,8 +3,8 @@ from core.gui.manag.langstr import langjstring as ljstr
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
-from core.data.player.attributes import getAttributesTupleAdjusted
-from core.data.player.skills import getSkillsTupleAdjusted
+from core.data.player.attributes import getAttributesTupleAdjusted, getAttribute
+from core.data.player.skills import getSkillsTupleAdjusted, getSkill
 from core.data.player.profession import getClassesTuple, getClass
 from core.data.player.race import getRace, getRaceNames
 from core.data.journey import Journey
@@ -353,9 +353,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     if race_choice is not None:
                         if dyn_screen.journey.inidata["race"] != race_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
                             dyn_screen.journey.setInit("race", race_choice)
-                            dyn_screen.set_pgui_element("char__tb_race",  ljstr(getRace(race_choice).get("info"), "stats", getRace(race_choice).mod_id)) # sets infobox
-                            dyn_screen.set_pgui_element("char__lb_class", getClassesTuple(dyn_screen.journey.inidata["race"]))                           # sets class listbox
-                            dyn_screen.set_pgui_element("char__lb_name",  getRaceNames(race_choice, dyn_screen.journey.inidata["gender"]))               # sets name listbox
+                            dyn_screen.set_pgui_element("char__tb_race",  getRace(race_choice).descr())                                    # sets infobox
+                            dyn_screen.set_pgui_element("char__lb_class", getClassesTuple(dyn_screen.journey.inidata["race"]))             # sets class listbox
+                            dyn_screen.set_pgui_element("char__lb_name",  getRaceNames(race_choice, dyn_screen.journey.inidata["gender"])) # sets name listbox
                         dyn_screen.journey.stages[1] = True
                     else:
                         dyn_screen.journey.stages[1] = False
@@ -369,7 +369,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     if class_choice is not None:
                         if dyn_screen.journey.inidata["class"] != class_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
                             dyn_screen.journey.setInit("class", class_choice)
-                            dyn_screen.set_pgui_element("char__tb_class", ljstr(getClass(class_choice).get("info"), "stats", getClass(class_choice).mod_id)) # sets infobox
+                            dyn_screen.set_pgui_element("char__tb_class", getClass(class_choice).descr()) # sets infobox
                         dyn_screen.journey.stages[2] = True
                     else:
                         dyn_screen.journey.stages[2] = False
@@ -391,12 +391,24 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stages[3] = False
 
                 case "point_distribution":
-                    dyn_screen.journey.stage = 4
+                    if dyn_screen.journey.stage != 4:
+                        dyn_screen.journey.stage = 4
+                        dyn_screen.set_pgui_element("char__lb_attrs",  getAttributesTupleAdjusted(dyn_screen.journey.inidata["class"], dyn_screen.journey.inidata["race"]))
+                        dyn_screen.set_pgui_element("char__lb_skills", getSkillsTupleAdjusted    (dyn_screen.journey.inidata["class"], dyn_screen.journey.inidata["race"]))
 
                     dyn_screen.put_pgui("char__lb_attrs")
                     dyn_screen.put_pgui("char__lb_skills")
-                    dyn_screen.set_pgui_element("char__lb_attrs",  getAttributesTupleAdjusted(dyn_screen.journey.inidata["class"], dyn_screen.journey.inidata["race"]))
-                    dyn_screen.set_pgui_element("char__lb_skills", getSkillsTupleAdjusted    (dyn_screen.journey.inidata["class"], dyn_screen.journey.inidata["race"]))
+                    dyn_screen.put_pgui("char__tb_stats")
+                    attr_choice  = dyn_screen.get_pgui_choice("char__lb_attrs")
+                    skill_choice = dyn_screen.get_pgui_choice("char__lb_skills")
+                    if attr_choice is not None:
+                        if dyn_screen.journey.inidata["attr"] != attr_choice:
+                            dyn_screen.journey.setInit("attr", attr_choice)
+                            dyn_screen.set_pgui_element("char__tb_stats", getAttribute(attr_choice).descr()) # sets infobox
+                    if skill_choice is not None:
+                        if dyn_screen.journey.inidata["skill"] != skill_choice:
+                            dyn_screen.journey.setInit("skill", skill_choice)
+                            dyn_screen.set_pgui_element("char__tb_stats", getSkill(skill_choice).descr()) # sets infobox
 
             # ==================================================
             # hovering & clicking events
