@@ -6,6 +6,7 @@ from enum import Enum
 #     GID: "GenderID"
 #     AID: "AttributeID"
 #     SID: "SkillID"
+#    RLID: "ReligionID"
 #     # planned
 #     EID: "EntityID"
 #     LID: "LocationID"

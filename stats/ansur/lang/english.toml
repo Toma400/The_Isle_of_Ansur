@@ -33,6 +33,9 @@ stat__sk_herbalism           = "Herbalism"
 stat__sk_cooking             = "Cooking"
 stat__sk_connection_bond     = "Connection Bond"
 
+religion__theism  = "Theism (Non-specific)"
+religion__atheism = "Atheism"
+
 races__baedoorian_descr = '''
 <b>Baedoorians</b> are fiery human culture known for their love for conquest, but also arts and sophisticated political play.
 They also inherit a lot of technological knowledge from jitadeans.
@@ -133,5 +136,12 @@ stat__sk_cooking_descr = '''
 
 '''
 stat__sk_connection_bond_descr = '''
+
+'''
+
+religion__theism_descr = '''
+
+'''
+religion__atheism_descr = '''
 
 '''
