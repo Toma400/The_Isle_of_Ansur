@@ -3,8 +3,7 @@ from pygame_gui.elements.ui_drop_down_menu import UISelectionList
 from pygame_gui.elements.ui_text_box import UITextBox
 from core.gui.manag.langstr import langstring as lstr
 from core.gui.manag.pgui_wrapper import getCurrentID, getCurrentIndex, resetSelected
-from core.data.player.attributes import getAttributesTuple
-from core.data.player.skills import getSkillsTuple
+from core.data.player.religion import getReligionsTuple
 from core.data.player.profession import getClassesTuple
 from core.data.player.gender import getGendersTuple
 from core.data.player.race import getRacesTuple
@@ -35,6 +34,9 @@ class PGUI_Helper:
         self.char__lb_attrs  = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
         self.char__lb_skills = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((toPxX(60), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
         self.char__tb_stats  = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
+        # ---
+        self.char__lb_rel    = UISelectionList(item_list=getReligionsTuple(),  relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
+        self.char__tb_rel    = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
         self.hide_elements()
 
     def get_element(self, element: str):

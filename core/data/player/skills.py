@@ -11,7 +11,7 @@ DEFAULT_SK = 0
 class Skill:
 
     def __init__(self, name: str, tr_key: str, mod_id: str):
-        self.name   : str = name    # name ID (used for GID)
+        self.name   : str = name    # name ID (used for SID)
         self.key    : str = tr_key  # translation key
         self.mod_id : str = mod_id  # mod ID
 

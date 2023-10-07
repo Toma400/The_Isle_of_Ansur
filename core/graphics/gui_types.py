@@ -7,6 +7,7 @@ from core.data.player.attributes import getAttributesTupleAdjusted, getAttribute
 from core.data.player.skills import getSkillsTupleAdjusted, getSkill
 from core.data.player.profession import getClassesTuple, getClass
 from core.data.player.race import getRace, getRaceNames
+from core.data.player.religion import getReligion
 from core.data.journey import Journey
 from core.graphics.gh_manag import *
 
@@ -416,6 +417,17 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                 case "religion":
                     dyn_screen.journey.stage = 5
+
+                    dyn_screen.put_pgui("char__lb_rel")
+                    dyn_screen.put_pgui("char__tb_rel")
+                    rl_choice = dyn_screen.get_pgui_choice("char__lb_rel")
+                    if rl_choice is not None:
+                        if dyn_screen.journey.inidata["religion"] != rl_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
+                            dyn_screen.journey.setInit("religion", rl_choice)
+                            dyn_screen.set_pgui_element("char__tb_rel", getReligion(rl_choice).descr()) # sets infobox
+                        dyn_screen.journey.stages[5] = True
+                    else:
+                        dyn_screen.journey.stages[5] = False
 
             # ==================================================
             # hovering & clicking events

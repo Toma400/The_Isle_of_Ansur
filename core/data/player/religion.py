@@ -1,8 +1,8 @@
 from core.data.pack_manag.packs import getPacks, PackTypes
 from core.gui.manag.langstr import langjstring
-from core.file_system.parsers import loadJSON
 from glob import glob as walkdir
 from os.path import exists
+import json
 
 class Religion:
 
@@ -34,7 +34,9 @@ def getReligion(rlid: str) -> Religion:
     rlid_ems = rlid.split(":")
 
     def returnKey() -> str: # returns translation key
-        return loadJSON(f"stats/{rlid_ems[0]}/religions/{rlid_ems[1]}.json")["key"]
+        with open(f"stats/{rlid_ems[0]}/religions/{rlid_ems[1]}.json") as jf:
+            pjf = json.load(jf)
+            return pjf["key"]
 
     return Religion(name=rlid_ems[1], tr_key=returnKey(), mod_id=rlid_ems[0])
 
@@ -45,8 +47,9 @@ def getReligions() -> list[Religion]:
         if exists(f"stats/{stat_pack}/religions"):
             for rl_file in walkdir(f"stats/{stat_pack}/religions/*.json"):
                 rl_name = rl_file.replace(f"stats/{stat_pack}/religions", "").replace(".json", "").strip("\\")
-                pjf = loadJSON(rl_file)
-                ret.append(Religion(rl_name, pjf["key"], stat_pack))
+                with open(rl_file) as jf:
+                    pjf = json.load(jf)
+                    ret.append(Religion(rl_name, pjf["key"], stat_pack))
     return ret
 
 def getReligionsTuple() -> list[(str, str)]:
