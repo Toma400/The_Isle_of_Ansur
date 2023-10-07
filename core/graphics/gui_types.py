@@ -451,6 +451,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     else:
                         dyn_screen.journey.stages[6] = False
 
+                case "gameplay_settings":
+                    dyn_screen.journey.stage = 7
+
             # ==================================================
             # hovering & clicking events
             if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
@@ -500,6 +503,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 put_text(screen, text=langstring("ccrt__gen_category7"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=58, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     guitype[1] = switch_gscr(dyn_screen, screen, "origin")
+                    dyn_screen.reset_pgui()
+
+            elif mouseColliderPx(mn8[0], mn8[1], mn8[2], mn8[3]) and guitype[1] == "origin" and dyn_screen.journey.stages[6] is True:
+                put_text(screen, text=langstring("ccrt__gen_category8"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=66, colour=fCol.HOVERED.value)
+                if mouseRec(pg_events):
+                    guitype[1] = switch_gscr(dyn_screen, screen, "gameplay_settings")
                     dyn_screen.reset_pgui()
 
 

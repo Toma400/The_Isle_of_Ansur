@@ -42,21 +42,32 @@ origin__wanderer = "Wanderer"
 # DESCRIPTIONS
 #================================================================================================================================
 races__baedoorian_descr = '''
-<b>Baedoorians</b> are fiery human culture known for their love for conquest, but also arts and sophisticated political play.
-They also inherit a lot of technological knowledge from jitadeans.
+Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
+What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
+Despite those shortcomings, their assimilation skills let them be very expansive kind, filling most of places in Baedoor universe.
 
- Strength +2
- Charisma +1
- Intelligence +1
- Endurance -1
+Inhabitants of Baedoor are descendants of jitadians, and as such they are great sailors, invested in technology and trade, with love to some sophisticated political play and artistry.
+Unlike their grandfathers however, Baedoor culture was forged by fiery aristocrats and as such, it tends to get more hermetic, yet the passion built by many aristocratic homes drives the culture towards new discoveries and conquests.
+Currently, Baedoor civilisation is considered as one of the most technologically advanced in whole universe.
 '''
 races__kaerian_descr = '''
-<b>Kaerians</b> are rebellious human culture that were living in Kaer for longest time, mastering their forest magic.
-Once baedoorians conquered their lands, kaerians revolted for decades to finally end their slavery.
+Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
+What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
+Despite those shortcomings, their assimilation skills let them be very expansive kind, filling most of places in Baedoor universe.
+
+Kaer humans are known to be inhabitants of Kaer, dark lands on the south of Baedoor. It is bundled name that counts both Serj and those with serj blood who lived in mixed marriages with Baedoor occupants or other races living in Kaer.
+Serj built their unique civilisation in forests alongside kehts, keeping mostly north part of the island. Their history is tainted with many wars, mostly with kehts, which really depleted their military strength.
+Despite that, serj humans were very talented in processing mined goods and craft of wooden and clay furniture, as well as savage in fight, even with very poor equipment.
+Nowadays, serj population is much smaller than it used to be, but free of Empire's chains, they slowly come back to their old power, trying to restitute their historical cities near eastern mountain range.
 '''
 races__ormath_descr = '''
-<b>Ormaths</b> are tribes of Arennan desert, lead by the shaman who knows tongues of winds.
-Their willpower is strong and they are used to harsh environment.
+Ormath race is quite odd race of short, grayskinned beings living in tribes on Arennan desert. They are heavily structured in their hierarchical societies built around Elders and most importantly, Shaman being the guide of whole tribe.
+They also perform many daily activities in groups, either of families and friends, or whole tribe. This community focus is one of recurring qualities of ormath race.
+Aside of that, ormaths are used to harsh environment, which resulted in them getting strong immunity system and survival abilities.
+
+Faith makes huge part of ormath's life, however unlike structured religions, this race connects to the wind being natural occurence on Arennan desert. Shamans are sometimes called as "those who knows tongue of winds".
+Ormaths believe wind is a driving force of all spirits, guiding souls of those who passed away, and bringing new beings to life.
+There are many spirits in ormaths demonology, which also explains why shamans are considered as protective mediators, often calming down those spirits that try to bring chaos to the tribe, sometimes even by literal fight with the element.
 '''
 classes__undefined_descr = '''
 Those picking <b>undefined</b> class do not have focus on any specific skill, but they learn experience quicker.
@@ -145,12 +156,16 @@ stat__sk_connection_bond_descr = '''
 '''
 
 religion__theism_descr = '''
+You believe in some kind of external forces, be it God or some spirits, but you don't necessarily know or want to investigate. Or you just find this topic overall too vague to find the truth.
 
+This choice brings no advantages, disadvantages nor obligations. Pick it if you want to declare being a theist without any side-effects of concrete faith.
 '''
 religion__atheism_descr = '''
+You don't believe in anything supernatural, despite Baedoor having magical phenomenons, you find them proven by science and not worth depicting as anything beyond clever tricks.
 
+This choice brings no advantages, disadvantages nor obligations.
 '''
 
 origin__wanderer_descr = '''
-You find yourself travelling to the West Baedoor on ship. You don't know what to do with your life, but decided to try your luck with simply escaping your current daily life.
+You find yourself travelling to the West Baedoor on ship. You don't know what to do with your life, but decided to try your luck with simply escaping your current daily routines and search for some work in the most cosmopolitan city in current era.
 '''
