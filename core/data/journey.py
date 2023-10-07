@@ -5,7 +5,7 @@ import os
 
 class Journey:
     # keys that are iterated over during save | -inidata- keys should match TOML keys
-    keys_saved = ["gender", "race", "class", "name", "attr", "skill", "religion"]
+    keys_saved = ["gender", "race", "class", "name", "attr", "skill", "religion", "origin"]
 
     def __init__(self):
         # character creation stages finished

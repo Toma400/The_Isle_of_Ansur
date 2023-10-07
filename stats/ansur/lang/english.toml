@@ -36,6 +36,11 @@ stat__sk_connection_bond     = "Connection Bond"
 religion__theism  = "Theism (Non-specific)"
 religion__atheism = "Atheism"
 
+origin__wanderer = "Wanderer"
+
+#================================================================================================================================
+# DESCRIPTIONS
+#================================================================================================================================
 races__baedoorian_descr = '''
 <b>Baedoorians</b> are fiery human culture known for their love for conquest, but also arts and sophisticated political play.
 They also inherit a lot of technological knowledge from jitadeans.
@@ -144,4 +149,8 @@ religion__theism_descr = '''
 '''
 religion__atheism_descr = '''
 
+'''
+
+origin__wanderer_descr = '''
+You find yourself travelling to the West Baedoor on ship. You don't know what to do with your life, but decided to try your luck with simply escaping your current daily life.
 '''

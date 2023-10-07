@@ -8,6 +8,7 @@ from core.data.player.skills import getSkillsTupleAdjusted, getSkill
 from core.data.player.profession import getClassesTuple, getClass
 from core.data.player.race import getRace, getRaceNames
 from core.data.player.religion import getReligion
+from core.data.player.origin import getOrigin
 from core.data.journey import Journey
 from core.graphics.gh_manag import *
 
@@ -429,6 +430,20 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     else:
                         dyn_screen.journey.stages[5] = False
 
+                case "origin":
+                    dyn_screen.journey.stage = 6
+
+                    dyn_screen.put_pgui("char__lb_orig")
+                    dyn_screen.put_pgui("char__tb_orig")
+                    orig_choice = dyn_screen.get_pgui_choice("char__lb_orig")
+                    if orig_choice is not None:
+                        if dyn_screen.journey.inidata["origin"] != orig_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
+                            dyn_screen.journey.setInit("origin", orig_choice)
+                            dyn_screen.set_pgui_element("char__tb_orig", getOrigin(orig_choice).descr()) # sets infobox
+                        dyn_screen.journey.stages[6] = True
+                    else:
+                        dyn_screen.journey.stages[6] = False
+
             # ==================================================
             # hovering & clicking events
             if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
@@ -473,5 +488,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 if mouseRec(pg_events):
                     guitype[1] = switch_gscr(dyn_screen, screen, "religion")
                     dyn_screen.reset_pgui()
+
+            elif mouseColliderPx(mn7[0], mn7[1], mn7[2], mn7[3]) and guitype[1] == "religion" and dyn_screen.journey.stages[5] is True:
+                put_text(screen, text=langstring("ccrt__gen_category7"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=58, colour=fCol.HOVERED.value)
+                if mouseRec(pg_events):
+                    guitype[1] = switch_gscr(dyn_screen, screen, "origin")
+                    dyn_screen.reset_pgui()
+
 
             print(dyn_screen.journey.inidata)

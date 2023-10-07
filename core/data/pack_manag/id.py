@@ -7,6 +7,7 @@ from enum import Enum
 #     AID: "AttributeID"
 #     SID: "SkillID"
 #    RLID: "ReligionID"
+#     OID: "OriginID"
 #     # planned
 #     EID: "EntityID"
 #     LID: "LocationID"
