@@ -409,6 +409,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         if dyn_screen.journey.inidata["skill"] != skill_choice:
                             dyn_screen.journey.setInit("skill", skill_choice)
                             dyn_screen.set_pgui_element("char__tb_stats", getSkill(skill_choice).descr()) # sets infobox
+                        if attr_choice is not None: # 'are both selected?' (put here to minimise performance cost)
+                            dyn_screen.journey.stages[4] = True
+                        else:
+                            dyn_screen.journey.stages[4] = False
+
+                case "religion":
+                    dyn_screen.journey.stage = 5
 
             # ==================================================
             # hovering & clicking events
@@ -447,6 +454,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 put_text(screen, text=langstring("ccrt__gen_category5"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=42, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     guitype[1] = switch_gscr(dyn_screen, screen, "point_distribution")
+                    dyn_screen.reset_pgui()
+
+            elif mouseColliderPx(mn6[0], mn6[1], mn6[2], mn6[3]) and guitype[1] == "point_distribution" and dyn_screen.journey.stages[4] is True:
+                put_text(screen, text=langstring("ccrt__gen_category6"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=50, colour=fCol.HOVERED.value)
+                if mouseRec(pg_events):
+                    guitype[1] = switch_gscr(dyn_screen, screen, "religion")
                     dyn_screen.reset_pgui()
 
             print(dyn_screen.journey.inidata)

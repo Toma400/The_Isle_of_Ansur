@@ -1,36 +1,52 @@
 #== COMBAT ====================================================
 shortswords:
-  key:  "stat__sk_shortswords"
+  key: "stat__sk_shortswords"
 
 longswords:
-  key:  "stat__sk_longswords"
+  key: "stat__sk_longswords"
 
 archery:
-  key:  "stat__sk_archery"
+  key: "stat__sk_archery"
 
 firearms:
-  key:  "stat__sk_firearms"
+  key: "stat__sk_firearms"
 
 #== SOCIAL ====================================================
 persuasion:
-  key:  "stat__sk_persuasion"
+  key: "stat__sk_persuasion"
 
 trade:
-  key:  "stat__sk_trade"
+  key: "stat__sk_trade"
+
+#== MAGIC =====================================================
+destruction_magic:
+  key: "stat__sk_destruction_magic"
 
 #== GENERAL ===================================================
 toughness:
-  key:  "stat__sk_toughness"
+  key: "stat__sk_toughness"
 
 healing:
-  key:  "stat__sk_healing"
+  key: "stat__sk_healing"
 
 survival:
-  key:  "stat__sk_survival"
+  key: "stat__sk_survival"
+
+tools:
+  key: "stat__sk_tools"
+
+repair:
+  key: "stat__sk_repair"
+
+resource_processing:
+  key: "stat__sk_resource_processing"
 
 herbalism:
-  key:  "stat__sk_herbalism"
+  key: "stat__sk_herbalism"
+
+cooking:
+  key: "stat__sk_cooking"
 
 #== SPECIAL ===================================================
 connection_bond:
-  key:  "stat__sk_connection_bond"
+  key: "stat__sk_connection_bond"
