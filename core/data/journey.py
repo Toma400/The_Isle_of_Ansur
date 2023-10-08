@@ -21,9 +21,6 @@ class Journey:
         self.savedir  : str = f"saves/{self.name}/adventure" # adventure save (manual)
         self.cycledir : str = f"saves/{self.name}/cycle"     # cyclic save (autosave) -- WIP
         self.arenadir : str = f"saves/{self.name}/arena"     # arena save (multiplayer)
-        # MOD HOLDERS (cache-like | TODO: experimental section, may be removed)
-        self.genders : list[Gender] = getGenders()
-        self.races   : list[Race]   = getRaces()
 
     #=================================================================================================
     # - COMMON PROCEDURES -
@@ -70,6 +67,7 @@ class Journey:
 
     def init(self):
         """Initial buffer save, run once when character is created. Single use of -self.inidata-"""
+        self.name = self.inidata["name"]
         self.validateInit() # checks if all keys are in -inidata-
         ret = "" # initial string : followed by next lines appended below:
         ret += f"name     = {self.inidata['name']}"     + "\n"

@@ -34,6 +34,13 @@ ccrt__gen_category8        = "Gameplay Settings"
 ccrt__gen_category9        = "Summary"
 
 ccrt__gender               = "Choice of gender affects slightly dialogues and some minor gameplay features."
+ccrt__sett_hardcore        = "Permadeath"
+ccrt__sett_hardcore_descr  = "Will lock the game after death, not allowing you to load it."
+ccrt__end_name             = "Name"
+ccrt__end_save             = "Save"
+ccrt__end_save_add         = '''
+Character won't be available in current version, as it doesn't feature gameplay. It will be possible to load the profile later.
+'''
 # end
 
 menu__load_choose          = "Choose your save"

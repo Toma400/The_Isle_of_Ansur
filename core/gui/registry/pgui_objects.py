@@ -23,26 +23,28 @@ class PGUI_Helper:
     """
 
     def __init__(self, manager):
-        self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),    relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(8))),  manager=manager)
-        self.char__tb_gender = UITextBox      (html_text=lstr("ccrt__gender"), relative_rect=pygame.Rect((toPxX(40), toPxX(14)), (toPxX(40), toPxX(15))), manager=manager)
-        self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),      relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
-        self.char__tb_race   = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
-        self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),    relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
-        self.char__tb_class  = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
-        self.char__lb_name   = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
-        self.char__ti_name   = UITextEntryLine(                                relative_rect=pygame.Rect((toPxX(40), toPxX(27)), (toPxX(40), 50)),        manager=manager)
+        self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),                 relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(8))),  manager=manager)
+        self.char__tb_gender = UITextBox      (html_text=lstr("ccrt__gender"),              relative_rect=pygame.Rect((toPxX(40), toPxX(14)), (toPxX(40), toPxX(15))), manager=manager)
+        self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),                   relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
+        self.char__tb_race   = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
+        self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),                 relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
+        self.char__tb_class  = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
+        self.char__lb_name   = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
+        self.char__ti_name   = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(40), toPxX(27)), (toPxX(40), 50)),        manager=manager)
         # ---
-        self.char__lb_attrs  = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
-        self.char__lb_skills = UISelectionList(item_list=[],                   relative_rect=pygame.Rect((toPxX(60), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
-        self.char__tb_stats  = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
+        self.char__lb_attrs  = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
+        self.char__lb_skills = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(60), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
+        self.char__tb_stats  = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
         # ---
-        self.char__lb_rel    = UISelectionList(item_list=getReligionsTuple(),  relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
-        self.char__tb_rel    = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
+        self.char__lb_rel    = UISelectionList(item_list=getReligionsTuple(),               relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
+        self.char__tb_rel    = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
         # ---
-        self.char__lb_orig   = UISelectionList(item_list=getOriginsTuple(),    relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(44))), manager=manager)
-        self.char__tb_orig   = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(60), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
-        self.char__ti_hist   = UITextEntryLine(                                relative_rect=pygame.Rect((toPxX(60), toPxX(26)), (toPxX(20), toPxX(2))),  manager=manager)
-        self.char__tb_hist   = UITextBox      (html_text="",                   relative_rect=pygame.Rect((toPxX(60), toPxX(28)), (toPxX(20), toPxX(22))), manager=manager)
+        self.char__lb_orig   = UISelectionList(item_list=getOriginsTuple(),                 relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(44))), manager=manager)
+        self.char__tb_orig   = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(60), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
+        self.char__ti_hist   = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(60), toPxX(26)), (toPxX(20), toPxX(2))),  manager=manager)
+        self.char__tb_hist   = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(60), toPxX(28)), (toPxX(20), toPxX(22))), manager=manager)
+        # ---
+        self.char__tb_pdth   = UITextBox      (html_text=lstr("ccrt__sett_hardcore_descr"), relative_rect=pygame.Rect((toPxX(50), toPxY(10)), (toPxX(40), 50)),        manager=manager)
         self.hide_elements()
 
     def get_element(self, element: str):

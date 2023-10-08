@@ -1,5 +1,6 @@
-from core.graphics.text_manag import put_abstext, put_text, langstring, Text
-from core.gui.manag.langstr import langjstring as ljstr
+from core.graphics.text_manag import put_abstext, put_text, Text
+from core.gui.manag.langstr import langstring
+from core.gui.manag.pc import toPxX, toPxY
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
@@ -452,7 +453,20 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stages[6] = False
 
                 case "gameplay_settings":
-                    dyn_screen.journey.stage = 7
+                    if dyn_screen.journey.stage != 7:
+                        dyn_screen.journey.stage     = 7
+                        dyn_screen.journey.stages[7] = True
+
+                    put_text(screen, text=langstring("ccrt__sett_hardcore"), font_cat="menu", size=30, pos_x=30, pos_y=10, colour=fCol.DISABLED.value)
+                    dyn_screen.put_pgui("char__tb_pdth")
+
+                case "summary":
+                    if dyn_screen.journey.stage != 8:
+                        dyn_screen.journey.stage     = 8
+                        dyn_screen.journey.stages[8] = True
+
+                    put_text(screen, text=langstring("ccrt__end_name"),       font_cat="menu", size=30, pos_x=toPxX(30), pos_y=toPxY(10), colour=fCol.OTHER.value)
+                    put_text(screen, text=dyn_screen.journey.inidata["name"], font_cat="menu", size=30, pos_x=toPxX(40), pos_y=toPxY(10), colour=fCol.OTHER.value)
 
             # ==================================================
             # hovering & clicking events
@@ -509,6 +523,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 put_text(screen, text=langstring("ccrt__gen_category8"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=66, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     guitype[1] = switch_gscr(dyn_screen, screen, "gameplay_settings")
+                    dyn_screen.reset_pgui()
+
+
+            elif mouseColliderPx(mn9[0], mn9[1], mn9[2], mn9[3]) and guitype[1] == "gameplay_settings" and dyn_screen.journey.stages[7] is True:
+                put_text(screen, text=langstring("ccrt__gen_category9"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=74, colour=fCol.HOVERED.value)
+                if mouseRec(pg_events):
+                    guitype[1] = switch_gscr(dyn_screen, screen, "summary")
                     dyn_screen.reset_pgui()
 
 
