@@ -462,11 +462,28 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                 case "summary":
                     if dyn_screen.journey.stage != 8:
-                        dyn_screen.journey.stage     = 8
-                        dyn_screen.journey.stages[8] = True
+                        dyn_screen.journey.stage = 8
 
-                    put_text(screen, text=langstring("ccrt__end_name"),       font_cat="menu", size=30, pos_x=toPxX(30), pos_y=toPxY(10), colour=fCol.OTHER.value)
-                    put_text(screen, text=dyn_screen.journey.inidata["name"], font_cat="menu", size=30, pos_x=toPxX(40), pos_y=toPxY(10), colour=fCol.OTHER.value)
+                    put_text(screen, text=langstring("ccrt__end_name"),                                  font_cat="menu", size=30, pos_x=40, pos_y=10, colour=fCol.ENABLED.value)
+                    put_text(screen, text=dyn_screen.journey.inidata["name"],                            font_cat="menu", size=30, pos_x=50, pos_y=10, colour=fCol.DISABLED.value)
+                    put_text(screen, text=langstring("ccrt__end_race"),                                  font_cat="menu", size=30, pos_x=40, pos_y=18, colour=fCol.ENABLED.value)
+                    put_text(screen, text=getRace(dyn_screen.journey.inidata["race"]).langstr(),         font_cat="menu", size=30, pos_x=50, pos_y=18, colour=fCol.DISABLED.value)
+                    put_text(screen, text=langstring("ccrt__end_class"),                                 font_cat="menu", size=30, pos_x=40, pos_y=26, colour=fCol.ENABLED.value)
+                    put_text(screen, text=getClass(dyn_screen.journey.inidata["class"]).langstr(),       font_cat="menu", size=30, pos_x=50, pos_y=26, colour=fCol.DISABLED.value)
+                    put_text(screen, text=langstring("ccrt__end_religion"),                              font_cat="menu", size=30, pos_x=40, pos_y=34, colour=fCol.ENABLED.value)
+                    put_text(screen, text=getReligion(dyn_screen.journey.inidata["religion"]).langstr(), font_cat="menu", size=30, pos_x=50, pos_y=34, colour=fCol.DISABLED.value)
+                    put_text(screen, text=langstring("ccrt__end_origin"),                                font_cat="menu", size=30, pos_x=40, pos_y=42, colour=fCol.ENABLED.value)
+                    put_text(screen, text=getOrigin(dyn_screen.journey.inidata["origin"]).langstr(),     font_cat="menu", size=30, pos_x=50, pos_y=42, colour=fCol.DISABLED.value)
+
+                    # save button
+                    sv_bt = put_text(screen, text=langstring("ccrt__end_save"), font_cat="menu", size=30, pos_x=58, pos_y=65, colour=fCol.ENABLED.value)
+                    dyn_screen.put_pgui("char__temp_warn")
+
+                    # set variable later on and make new render when hovered && ifs for getting around
+                    if mouseColliderPx(sv_bt[0], sv_bt[1], sv_bt[2], sv_bt[3]):
+                        put_text(screen, text=langstring("ccrt__end_save"), font_cat="menu", size=30, pos_x=58, pos_y=65, colour=fCol.HOVERED.value)
+                        if mouseRec(pg_events):
+                            pass
 
             # ==================================================
             # hovering & clicking events

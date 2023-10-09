@@ -45,6 +45,7 @@ class PGUI_Helper:
         self.char__tb_hist   = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(60), toPxX(28)), (toPxX(20), toPxX(22))), manager=manager)
         # ---
         self.char__tb_pdth   = UITextBox      (html_text=lstr("ccrt__sett_hardcore_descr"), relative_rect=pygame.Rect((toPxX(50), toPxY(10)), (toPxX(40), 50)),        manager=manager)
+        self.char__temp_warn = UITextBox      (html_text=lstr("ccrt__end_save_warn"),       relative_rect=pygame.Rect((toPxX(45), toPxY(70)), (toPxX(30), 100)),       manager=manager)
         self.hide_elements()
 
     def get_element(self, element: str):
