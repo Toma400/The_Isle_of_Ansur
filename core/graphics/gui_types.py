@@ -1,6 +1,6 @@
 from core.graphics.text_manag import put_abstext, put_text, Text
 from core.gui.manag.langstr import langstring
-from core.gui.manag.pc import toPxX, toPxY
+from core.file_system.save_manag import listSaves
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
@@ -307,7 +307,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
             # ==================================================
             # visualisation of menu picked/active
-            for nm in range(0, 8):
+            for nm in range(0, 9):
                 # visualisation of whether option is possible to click
                 if dyn_screen.journey.stages[nm] is True:
                     put_text(screen, text=langstring(f"ccrt__gen_category{nm+2}"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18+(8*nm), colour=fCol.ENABLED.value)
@@ -318,22 +318,6 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             # https://github.com/Toma400/The_Isle_of_Ansur/commit/5305aef7e9b3b0cce483a30ade7cbc3f1e006e57 <- old (more manual) code for above ^
 
             #==================================================
-            # submenu handler
-
-            # ----- V this code basically automatically handles every guitype[1] V --------
-            # (requires only editing -stage_number- for equivalent number)
-
-            # stage_number = {"gender": 0, "race": 1}
-            # dyn_screen.journey.stage = stage_number[guitype[1]]
-            #
-            # dyn_screen.put_pgui(f"char__lb_{guitype[1]}")
-            # choice = dyn_screen.get_pgui_choice(f"char__lb_{guitype[1]}")
-            # if choice is not None:
-            #     dyn_screen.journey.setInit(guitype[1], choice)
-            #     dyn_screen.journey.stages[dyn_screen.journey.stage] = True
-            # else:
-            #     dyn_screen.journey.stages[dyn_screen.journey.stage] = False
-
             match guitype[1]:
                 case "gender":
                     dyn_screen.journey.stage = 0
@@ -379,6 +363,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                 case "name_avatar":
                     dyn_screen.journey.stage = 3
+                    saves = listSaves()
 
                     dyn_screen.put_pgui("char__ti_name")
                     dyn_screen.put_pgui("char__lb_name")
@@ -387,11 +372,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     if name_pick is not None:
                         dyn_screen.set_pgui_element("char__ti_name", name_pick)
                         dyn_screen.reset_pgui()
-                    if name_choice != "":
+                    if name_choice != "" and name_choice not in saves:
                         dyn_screen.journey.setInit("name", name_choice)
                         dyn_screen.journey.stages[3] = True
                     else:
                         dyn_screen.journey.stages[3] = False
+                        if name_choice in saves:
+                            put_text(screen, langstring("ccrt__name_exists"), font_cat="menu", size=30, pos_x=50, pos_y=55, colour=fCol.OTHER.value)
 
                 case "point_distribution":
                     if dyn_screen.journey.stage != 4:
@@ -457,8 +444,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stage     = 7
                         dyn_screen.journey.stages[7] = True
 
-                    put_text(screen, text=langstring("ccrt__sett_hardcore"), font_cat="menu", size=30, pos_x=30, pos_y=10, colour=fCol.DISABLED.value)
+                    match dyn_screen.journey.settings["permadeath"]:
+                        case True: pdeath_col = fCol.ENABLED.value
+                        case _:    pdeath_col = fCol.DISABLED.value
+                    pdeath = put_text(screen, text=langstring("ccrt__sett_hardcore"), font_cat="menu", size=30, pos_x=30, pos_y=10, colour=pdeath_col)
                     dyn_screen.put_pgui("char__tb_pdth")
+                    if mouseColliderPx(pdeath[0], pdeath[1], pdeath[2], pdeath[3]):
+                        if mouseRec(pg_events):
+                            dyn_screen.journey.settings["permadeath"] = not dyn_screen.journey.settings["permadeath"]
 
                 case "summary":
                     if dyn_screen.journey.stage != 8:
@@ -483,7 +476,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     if mouseColliderPx(sv_bt[0], sv_bt[1], sv_bt[2], sv_bt[3]):
                         put_text(screen, text=langstring("ccrt__end_save"), font_cat="menu", size=30, pos_x=58, pos_y=65, colour=fCol.HOVERED.value)
                         if mouseRec(pg_events):
-                            pass
+                            print(dyn_screen.journey.inidata)
 
             # ==================================================
             # hovering & clicking events
@@ -546,8 +539,6 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             elif mouseColliderPx(mn9[0], mn9[1], mn9[2], mn9[3]) and guitype[1] == "gameplay_settings" and dyn_screen.journey.stages[7] is True:
                 put_text(screen, text=langstring("ccrt__gen_category9"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=74, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
+                    dyn_screen.journey.setInit("settings", dyn_screen.journey.settings) # saving current game settings in 'inidata'
                     guitype[1] = switch_gscr(dyn_screen, screen, "summary")
                     dyn_screen.reset_pgui()
-
-
-            print(dyn_screen.journey.inidata)

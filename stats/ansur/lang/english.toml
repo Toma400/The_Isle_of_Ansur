@@ -10,11 +10,11 @@ gender__male       = "Man"
 gender__female     = "Woman"
 gender__non_binary = "Non-binary"
 
-stat__atr_charisma     = "Charisma"
+stat__atr_strength     = "Strength"
 stat__atr_agility      = "Agility"
 stat__atr_endurance    = "Endurance"
+stat__atr_charisma     = "Charisma"
 stat__atr_intelligence = "Intelligence"
-stat__atr_strength     = "Strength"
 
 stat__sk_shortswords         = "Shortswords"
 stat__sk_longswords          = "Longswords"
@@ -70,28 +70,15 @@ Ormaths believe wind is a driving force of all spirits, guiding souls of those w
 There are many spirits in ormaths demonology, which also explains why shamans are considered as protective mediators, often calming down those spirits that try to bring chaos to the tribe, sometimes even by literal fight with the element.
 '''
 classes__undefined_descr = '''
-Those picking <b>undefined</b> class do not have focus on any specific skill, but they learn experience quicker.
 
- Charisma +1
 '''
 classes__fighter_descr = '''
-<b>Fighters</b> are great dealing with melee fight and all kinds of swords.
 
- Shortswords +1
- Longswords +1
- Toughness +1
- Firearms -1
- Archery -1
 '''
 classes__ormath_shaman_descr = '''
-<b>Ormath shaman</b> is special class that let you control environment by shamanic spirit.
 
- Connection +2
- Herbalism +1
- Healing +1
- Firearms -2
 '''
-stat__atr_charisma_descr = '''
+stat__atr_strength_descr = '''
 
 '''
 stat__atr_agility_descr = '''
@@ -100,10 +87,10 @@ stat__atr_agility_descr = '''
 stat__atr_endurance_descr = '''
 
 '''
-stat__atr_intelligence_descr = '''
+stat__atr_charisma_descr = '''
 
 '''
-stat__atr_strength_descr = '''
+stat__atr_intelligence_descr = '''
 
 '''
 stat__sk_shortswords_descr = '''

@@ -5,17 +5,18 @@ import os
 
 class Journey:
     # keys that are iterated over during save | -inidata- keys should match TOML keys
-    keys_saved = ["gender", "race", "class", "name", "attr", "skill", "religion", "origin", "history"]
+    keys_saved = ["gender", "race", "class", "name", "attr", "skill", "religion", "origin", "history", "settings"]
 
     def __init__(self):
         # character creation stages finished
         #                           [gender, race, class, name, points]
         #                                                             [religion, origin]
         #                                                                          [settings, summary]
-        self.stages  : list[bool]  = [False, False, False, False, False, False, False, False, False]
-        self.stage   : int or None = None                             # selected stage of -stages- (above)
-        self.name    : str or None = None                             # only none when game not loaded/character not created
-        self.inidata : dict        = {k: "" for k in self.keys_saved} # dict held only during initial creation (used for -self.init-)
+        self.stages   : list[bool]  = [False, False, False, False, False, False, False, False, False]
+        self.stage    : int or None = None                             # selected stage of -stages- (above)
+        self.name     : str or None = None                             # only none when game not loaded/character not created
+        self.inidata  : dict        = {k: "" for k in self.keys_saved} # dict held only during initial creation (used for -self.init-)
+        self.settings : dict        = {"permadeath": False}            # dict holding default game settings
         # PATHS
         self.buffdir  : str = f"saves/{self.name}/buffer"    # buffer save
         self.savedir  : str = f"saves/{self.name}/adventure" # adventure save (manual)
