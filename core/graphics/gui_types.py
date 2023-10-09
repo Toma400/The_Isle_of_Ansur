@@ -388,17 +388,18 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     dyn_screen.put_pgui("char__lb_attrs")
                     dyn_screen.put_pgui("char__lb_skills")
-                    dyn_screen.put_pgui("char__tb_stats")
+                    dyn_screen.put_pgui("char__tb_attrs")
+                    dyn_screen.put_pgui("char__tb_skills")
                     attr_choice  = dyn_screen.get_pgui_choice("char__lb_attrs")
                     skill_choice = dyn_screen.get_pgui_choice("char__lb_skills")
                     if attr_choice is not None:
                         if dyn_screen.journey.inidata["attr"] != attr_choice:
                             dyn_screen.journey.setInit("attr", attr_choice)
-                            dyn_screen.set_pgui_element("char__tb_stats", getAttribute(attr_choice).descr()) # sets infobox
+                            dyn_screen.set_pgui_element("char__tb_attrs", getAttribute(attr_choice).descr()) # sets infobox
                     if skill_choice is not None:
                         if dyn_screen.journey.inidata["skill"] != skill_choice:
                             dyn_screen.journey.setInit("skill", skill_choice)
-                            dyn_screen.set_pgui_element("char__tb_stats", getSkill(skill_choice).descr()) # sets infobox
+                            dyn_screen.set_pgui_element("char__tb_skills", getSkill(skill_choice).descr()) # sets infobox
                         if attr_choice is not None: # 'are both selected?' (put here to minimise performance cost)
                             dyn_screen.journey.stages[4] = True
                         else:
