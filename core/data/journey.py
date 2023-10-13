@@ -1,5 +1,6 @@
 from core.data.player.gender import Gender, getGenders
 from core.data.player.race import Race, getRaces
+from core.utils import sysref
 import logging as log
 import os
 
@@ -68,19 +69,36 @@ class Journey:
 
     def init(self):
         """Initial buffer save, run once when character is created. Single use of -self.inidata-"""
+        # TODO: IMPORTANT
+        # This piece is saving into `presave` which needs to be yet reloaded and redistributed
+        # - in the future, stats should be separate from 'history' being its own TOML file
+        # - samely, there will be statistics as hardcoded numbers
+        # - currently, there is no redistribution of numbers (class+race+manual) for stats
+        #   so things can change if pre-alpha 4 changes statistics
+        # - once game is started, those should be evaluated once and then not change unless
+        #   it was meant to change by gameplay (but not overall stat changes), like training
+        # - in short: this is not proper save, it should be redone to be split onto multiple files
+        #   and have better structure
+        # - ! This way no migration software will be required, or if it will be, it should work
+        #   only once or so
         self.name = self.inidata["name"]
         self.validateInit() # checks if all keys are in -inidata-
         ret = "" # initial string : followed by next lines appended below:
+        # ret += f"save_ver = {sysref('release_status')}:{sysref('release_version')}" + "\n"
+        # ^ this will be useful once proper save is used, now we can just simply check 'is presave.toml existing'
         ret += f"name     = {self.inidata['name']}"     + "\n"
         ret += f"gender   = {self.inidata['gender']}"   + "\n"
         ret += f"race     = {self.inidata['race']}"     + "\n"
         ret += f"class    = {self.inidata['class']}"    + "\n"
         ret += f"religion = {self.inidata['religion']}" + "\n"
         ret += f"origin   = {self.inidata['origin']}"   + "\n"
+        ret += f"attr     = {self.inidata['attr']}"     + "\n" #
+        ret += f"skill    = {self.inidata['skill']}"    + "\n" #
         ret += f"history  = \'\'\'"                     + "\n"
         ret += f"{self.inidata['history']}"             + "\n"
         ret += f"\'\'\'"                                + "\n"
-        with open(f"{self.buffdir}/main.toml", "r+") as f:
+        # level, xp and all that should be put when TODO is done, alongside banks, chests and inventory
+        with open(f"{self.buffdir}/presave.toml", "r+") as f:
             f.write(ret)
 
     #=================================================================================================
