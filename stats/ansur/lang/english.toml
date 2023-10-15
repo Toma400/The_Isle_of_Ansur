@@ -38,7 +38,6 @@ stat__sk_common_magic_wind           = "Wind"
 stat__sk_common_magic_ice            = "Ice"
 stat__sk_common_magic_water          = "Water"
 stat__sk_common_magic_ground         = "Ground"
-stat__sk_common_magic_connection     = "Connection Bond"
 stat__sk_common_magic_destruction    = "Destruction"
 stat__sk_common_magic_absorption     = "Absorption"
 stat__sk_common_magic_illusion       = "Illusion"
@@ -142,37 +141,37 @@ stat__atr_intelligence_descr = '''
 
 '''
 stat__sk_handfight_descr = '''
-
+Measures how well you can fight with your own fists, without any other weapon being used. Useful especially in disputes with other drunk adventurers in taverns.
 '''
 stat__sk_shortswords_descr = '''
-
+Your capability to use any small, fast swords, such as knives, daggers, but also short swords, sabres and other weapons with not too heavy blade. Affects aim, critical hits and damage done.
 '''
 stat__sk_longswords_descr = '''
-
+Tells how easily you can fight using heavy swords of various kinds. Affects aim, critical hits and damage done.
 '''
 stat__sk_blunts_descr = '''
-
+Describes your skill with using blunts of various kinds, from axes, hammers, to halberds of various kinds. Affects aim, critical hits and damage done.
 '''
 stat__sk_polearms_descr = '''
-
+Measures your efficiency with using spears and all pierce-centered weapons. Affects aim, critical hits and damage done.
 '''
 stat__sk_aim__descr = '''
-
+Affects how well you aim with ranged weapons of all sorts. It doesn't affect aim fully, as it is skill combined with weapon you are using in specific moment, but has huge effect on how accurate shot you will make.
 '''
 stat__sk_throwing_descr = '''
-
+Describes your experience with throwable weapons, such as javelins, throwable knives and other weapons of that matter. Affects aim, critical hits and damage done.
 '''
 stat__sk_archery_descr = '''
-
+Tells about your abilities with using bows of various kinds and their effectiveness in fight. Affects aim, critical hits and damage done.
 '''
 stat__sk_crossbows_descr = '''
-
+Shows your capabilities to hold and use crossbows, a slower, but more accurate equivalent of bow. Affects aim, critical hits and damage done.
 '''
 stat__sk_light_firearms_descr = '''
-
+Gives insight into how good shooter you are using revolvers and pistols. Affects aim, critical hits and damage done.
 '''
 stat__sk_heavy_firearms_descr = '''
-
+Measures how effective you are using heavy firearms, such as rifles and shotguns. Affects aim, critical hits and damage done.
 '''
 stat__sk_spellcasting_descr = '''
 
@@ -206,9 +205,6 @@ stat__sk_common_magic_water_descr = '''
 
 '''
 stat__sk_common_magic_ground_descr = '''
-
-'''
-stat__sk_common_magic_connection_descr = '''
 
 '''
 stat__sk_common_magic_destruction_descr = '''

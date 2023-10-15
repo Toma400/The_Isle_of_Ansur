@@ -58,8 +58,6 @@ common_magic:
             - key: "stat__sk_common_magic_water"
         - ground:
             - key: "stat__sk_common_magic_ground"
-        - connection:
-            - key: "stat__sk_common_magic_connection"
     - kinds:
         - destruction:
             - key: "stat__sk_common_magic_destruction"
@@ -180,11 +178,3 @@ toughness:
 
 survival:
   key: "stat__sk_survival"
-
-
-#== SPECIAL ===================================================
-#connection_bond:
-#  races_exclusive: ["ansur:ormath"]
-#  key: "stat__sk_connection_bond"
-#
-# ^ 2 for ormath shaman, 1 for ormath race (to rethink if right numbers)
