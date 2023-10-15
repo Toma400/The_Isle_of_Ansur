@@ -57,15 +57,27 @@ stat__sk_mores_casting               = "Mores Casting"
 stat__sk_unsealing                   = "Unsealing"
 stat__sk_trade                       = "Trade"
 stat__sk_persuasion                  = "Persuasion"
+stat__sk_lockpicking                 = "Lockpicking"
+stat__sk_sneaking                    = "Sneaking"
+stat__sk_pickpocketing               = "Pickpocketing"
+stat__sk_traps_designing             = "Traps Designing"
+stat__sk_traps_spotting              = "Traps Spotting"
+stat__sk_hunting                     = "Hunting"
+stat__sk_fishing                     = "Fishing"
+stat__sk_sewing                      = "Sewing"
+stat__sk_carpentry                   = "Carpentry"
+stat__sk_pottery                     = "Pottery"
+stat__sk_stonemasonry                = "Stonemasonry"
+stat__sk_ore_processing              = "Ore Processing"
+stat__sk_smithing                    = "Smithing"
+stat__sk_herbalism                   = "Herbalism"
+stat__sk_alchemy                     = "Alchemy"
+stat__sk_cooking                     = "Cooking"
 stat__sk_toughness                   = "Toughness"
 stat__sk_healing                     = "Healing"
 stat__sk_survival                    = "Survival"
 stat__sk_tools                       = "Tools"
 stat__sk_repair                      = "Repair"
-stat__sk_resource_processing         = "Resource Processing"
-stat__sk_herbalism                   = "Herbalism"
-stat__sk_cooking                     = "Cooking"
-stat__sk_connection_bond             = "Connection Bond"
 
 religion__theism  = "Theism (Non-specific)"
 religion__atheism = "Atheism"
@@ -250,6 +262,54 @@ stat__sk_trade_descr = '''
 
 '''
 stat__sk_persuasion_descr = '''
+
+'''
+stat__sk_lockpicking_descr = '''
+
+'''
+stat__sk_sneaking_descr = '''
+
+'''
+stat__sk_pickpocketing_descr = '''
+
+'''
+stat__sk_traps_designing_descr = '''
+
+'''
+stat__sk_traps_spotting_descr = '''
+
+'''
+stat__sk_hunting_descr = '''
+
+'''
+stat__sk_fishing_descr = '''
+
+'''
+stat__sk_sewing_descr = '''
+
+'''
+stat__sk_carpentry_descr = '''
+
+'''
+stat__sk_pottery_descr = '''
+
+'''
+stat__sk_stonemasonry_descr = '''
+
+'''
+stat__sk_ore_processing_descr = '''
+
+'''
+stat__sk_smithing_descr = '''
+
+'''
+stat__sk_herbalism_descr = '''
+
+'''
+stat__sk_alchemy_descr = '''
+
+'''
+stat__sk_cooking_descr = '''
 
 '''
 stat__sk_toughness_descr = '''

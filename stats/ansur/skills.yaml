@@ -110,7 +110,54 @@ persuasion:
   key: "stat__sk_persuasion"
 
 #== ROGUE =====================================================
+lockpicking:
+  key: "stat__sk_lockpicking"
 
+sneaking:
+  key: "stat__sk_sneaking"
+
+pickpocketing:
+  key: "stat__sk_pickpocketing"
+
+traps_designing:
+  key: "stat__sk_traps_designing"
+
+traps_spotting:
+  key: "stat__sk_traps_spotting"
+
+#== CRAFTING ==================================================
+hunting:
+  key: "stat__sk_hunting"
+
+fishing:
+  key: "stat__sk_fishing"
+
+sewing:
+  key: "stat__sk_sewing"
+
+carpentry:
+  key: "stat__sk_carpentry"
+
+pottery:
+  key: "stat__sk_pottery"
+
+stonemasonry:
+  key: "stat__sk_stonemasonry"
+
+ore_processing:
+  key: "stat__sk_ore_processing"
+
+smithing:
+  key: "stat__sk_smithing"
+
+herbalism:
+  key: "stat__sk_herbalism"
+
+alchemy:
+  key: "stat__sk_alchemy"
+
+cooking:
+  key: "stat__sk_cooking"
 
 #== GENERAL ===================================================
 toughness:
@@ -131,11 +178,6 @@ repair:
 resource_processing:
   key: "stat__sk_resource_processing"
 
-herbalism:
-  key: "stat__sk_herbalism"
-
-cooking:
-  key: "stat__sk_cooking"
 
 #== SPECIAL ===================================================
 #connection_bond:
