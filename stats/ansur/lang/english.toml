@@ -16,27 +16,56 @@ stat__atr_endurance    = "Endurance"
 stat__atr_charisma     = "Charisma"
 stat__atr_intelligence = "Intelligence"
 
-stat__sk_handfight           = "Handfight"
-stat__sk_shortswords         = "Shortswords"
-stat__sk_longswords          = "Longswords"
-stat__sk_blunts              = "Blunts"
-stat__sk_polearms            = "Polearms"
-stat__sk_aim                 = "Aim"
-stat__sk_throwing            = "Throwing"
-stat__sk_archery             = "Archery"
-stat__sk_firearms            = "Firearms"
-stat__sk_persuasion          = "Persuasion"
-stat__sk_trade               = "Trade"
-stat__sk_destruction_magic   = "Destruction Magic"
-stat__sk_toughness           = "Toughness"
-stat__sk_healing             = "Healing"
-stat__sk_survival            = "Survival"
-stat__sk_tools               = "Tools"
-stat__sk_repair              = "Repair"
-stat__sk_resource_processing = "Resource Processing"
-stat__sk_herbalism           = "Herbalism"
-stat__sk_cooking             = "Cooking"
-stat__sk_connection_bond     = "Connection Bond"
+stat__sk_handfight                   = "Handfight"
+stat__sk_shortswords                 = "Shortswords"
+stat__sk_longswords                  = "Longswords"
+stat__sk_blunts                      = "Blunts"
+stat__sk_polearms                    = "Polearms"
+stat__sk_aim                         = "Aim"
+stat__sk_throwing                    = "Throwing"
+stat__sk_archery                     = "Archery"
+stat__sk_crossbows                   = "Crossbows"
+stat__sk_light_firearms              = "Light Firearms"
+stat__sk_heavy_firearms              = "Heavy Firearms"
+stat__sk_spellcasting                = "Spellcasting"
+stat__sk_common_magic                = "Common Magic"
+stat__sk_path_magic                  = "Path Magic"
+stat__sk_common_magic_void           = "Void"
+stat__sk_common_magic_fire           = "Fire"
+stat__sk_common_magic_electricity    = "Electricity"
+stat__sk_common_magic_soul           = "Soul"
+stat__sk_common_magic_wind           = "Wind"
+stat__sk_common_magic_ice            = "Ice"
+stat__sk_common_magic_water          = "Water"
+stat__sk_common_magic_ground         = "Ground"
+stat__sk_common_magic_connection     = "Connection Bond"
+stat__sk_common_magic_destruction    = "Destruction"
+stat__sk_common_magic_absorption     = "Absorption"
+stat__sk_common_magic_illusion       = "Illusion"
+stat__sk_common_magic_transformation = "Transformation"
+stat__sk_common_magic_evocation      = "Evocation"
+stat__sk_common_magic_restoration    = "Restoration"
+stat__sk_path_magic_dream            = "Dream Path"
+stat__sk_path_magic_death            = "Death Path"
+stat__sk_path_magic_erd              = "Erd Path"
+stat__sk_path_magic_lunatri          = "Higher Tri Path"
+stat__sk_path_magic_ormath           = "Ormath Path"
+stat__sk_path_magic_terten           = "Terten Path"
+stat__sk_path_magic_keht             = "Keht Path"
+stat__sk_scrolls_writing             = "Scrolls Writing"
+stat__sk_mores_casting               = "Mores Casting"
+stat__sk_unsealing                   = "Unsealing"
+stat__sk_trade                       = "Trade"
+stat__sk_persuasion                  = "Persuasion"
+stat__sk_toughness                   = "Toughness"
+stat__sk_healing                     = "Healing"
+stat__sk_survival                    = "Survival"
+stat__sk_tools                       = "Tools"
+stat__sk_repair                      = "Repair"
+stat__sk_resource_processing         = "Resource Processing"
+stat__sk_herbalism                   = "Herbalism"
+stat__sk_cooking                     = "Cooking"
+stat__sk_connection_bond             = "Connection Bond"
 
 religion__theism  = "Theism (Non-specific)"
 religion__atheism = "Atheism"
@@ -122,16 +151,105 @@ stat__sk_throwing_descr = '''
 stat__sk_archery_descr = '''
 
 '''
-stat__sk_firearms_descr = '''
+stat__sk_crossbows_descr = '''
 
 '''
-stat__sk_persuasion_descr = '''
+stat__sk_light_firearms_descr = '''
+
+'''
+stat__sk_heavy_firearms_descr = '''
+
+'''
+stat__sk_spellcasting_descr = '''
+
+'''
+# <----------------
+stat__sk_common_magic_descr = '''
+
+'''
+stat__sk_path_magic_descr = '''
+
+'''
+stat__sk_common_magic_void_descr = '''
+
+'''
+stat__sk_common_magic_fire_descr = '''
+
+'''
+stat__sk_common_magic_electricity_descr = '''
+
+'''
+stat__sk_common_magic_soul_descr = '''
+
+'''
+stat__sk_common_magic_wind_descr = '''
+
+'''
+stat__sk_common_magic_ice_descr = '''
+
+'''
+stat__sk_common_magic_water_descr = '''
+
+'''
+stat__sk_common_magic_ground_descr = '''
+
+'''
+stat__sk_common_magic_connection_descr = '''
+
+'''
+stat__sk_common_magic_destruction_descr = '''
+
+'''
+stat__sk_common_magic_absorption_descr = '''
+
+'''
+stat__sk_common_magic_illusion_descr = '''
+
+'''
+stat__sk_common_magic_transformation_descr = '''
+
+'''
+stat__sk_common_magic_evocation_descr = '''
+
+'''
+stat__sk_common_magic_restoration_descr = '''
+
+'''
+stat__sk_path_magic_dream_descr = '''
+
+'''
+stat__sk_path_magic_death_descr = '''
+
+'''
+stat__sk_path_magic_erd_descr = '''
+
+'''
+stat__sk_path_magic_lunatri_descr = '''
+
+'''
+stat__sk_path_magic_ormath_descr = '''
+
+'''
+stat__sk_path_magic_terten_descr = '''
+
+'''
+stat__sk_path_magic_keht_descr = '''
+
+'''
+# <----------------
+stat__sk_scrolls_writing_descr = '''
+
+'''
+stat__sk_mores_casting_descr = '''
+
+'''
+stat__sk_unsealing_descr = '''
 
 '''
 stat__sk_trade_descr = '''
 
 '''
-stat__sk_destruction_magic_descr = '''
+stat__sk_persuasion_descr = '''
 
 '''
 stat__sk_toughness_descr = '''

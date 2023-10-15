@@ -25,38 +25,92 @@ throwing:
 archery:
   key: "stat__sk_archery"
 
-firearms:
-  key: "stat__sk_firearms"
+crossbows:
+  key: "stat__sk_crossbows"
+
+light_firearms:
+  key: "stat__sk_light_firearms"
+
+heavy_firearms:
+  key: "stat__sk_heavy_firearms"
+
+#== MAGIC =====================================================
+spellcasting:
+  key: "stat__sk_spellcasting"
+
+common_magic:
+  key: "stat__sk_common_magic"
+  sub:
+    - elements:
+        - void:
+            - key: "stat__sk_common_magic_void"
+        - fire:
+            - key: "stat__sk_common_magic_fire"
+        - electricity:
+            - key: "stat__sk_common_magic_electricity"
+        - soul:
+            - key: "stat__sk_common_magic_soul"
+        - wind:
+            - key: "stat__sk_common_magic_wind"
+        - ice:
+            - key: "stat__sk_common_magic_ice"
+        - water:
+            - key: "stat__sk_common_magic_water"
+        - ground:
+            - key: "stat__sk_common_magic_ground"
+        - connection:
+            - key: "stat__sk_common_magic_connection"
+    - kinds:
+        - destruction:
+            - key: "stat__sk_common_magic_destruction"
+        - absorption:
+            - key: "stat__sk_common_magic_absorption"
+        - illusion:
+            - key: "stat__sk_common_magic_illusion"
+        - transformation:
+            - key: "stat__sk_common_magic_transformation"
+        - evocation:
+            - key: "stat__sk_common_magic_evocation"
+        - restoration:
+            - key: "stat__sk_common_magic_restoration"
+
+path_magic:
+  key: "stat__sk_path_magic"
+  sub:
+    - path:
+        - dream_magic:
+            - key: "stat__sk_path_magic_dream"
+        - death_magic:
+            - key: "stat__sk_path_magic_death"
+        - erd_magic:
+            - key: "stat__sk_path_magic_erd"
+        - lunatri_magic:
+            - key: "stat__sk_path_magic_lunatri"
+        - ormath_magic:
+            - key: "stat__sk_path_magic_ormath"
+        - terten_magic:
+            - key: "stat__sk_path_magic_terten"
+        - keht_magic:
+            - key: "stat__sk_path_magic_keht"
+
+scrolls_writing:
+  key: "stat__sk_scrolls_writing"
+
+mores_casting:
+  key: "stat__sk_mores_casting"
+
+unsealing:
+  key: "stat__sk_unsealing"
 
 #== SOCIAL ====================================================
-persuasion:
-  key: "stat__sk_persuasion"
-
 trade:
   key: "stat__sk_trade"
 
-#== MAGIC =====================================================
-destruction_magic:
-  key: "stat__sk_destruction_magic"
+persuasion:
+  key: "stat__sk_persuasion"
 
-#common_magic:
-#  key: ""
-#  sub:
-#    - elements:
-#        - void:
-#            - key: ""
-#        - connection:
-#            - key: ""
-#    - kinds:
-#        - destruction:
-#            - key: ""
-#
-#path_magic:
-#  key: ""
-#  sub:
-#    - path:
-#        - dream magic:
-#            - key: ""
+#== ROGUE =====================================================
+
 
 #== GENERAL ===================================================
 toughness:
