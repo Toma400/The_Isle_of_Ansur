@@ -10,5 +10,8 @@ agility:
 intelligence:
   key:  "stat__atr_intelligence"
 
+perception:
+  key:  "stat__atr_perception"
+
 charisma:
   key:  "stat__atr_charisma"

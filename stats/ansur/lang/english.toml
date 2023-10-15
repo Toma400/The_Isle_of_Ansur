@@ -14,6 +14,7 @@ stat__atr_strength     = "Strength"
 stat__atr_agility      = "Agility"
 stat__atr_endurance    = "Endurance"
 stat__atr_charisma     = "Charisma"
+stat__atr_perception   = "Perception"
 stat__atr_intelligence = "Intelligence"
 
 stat__sk_handfight                   = "Handfight"
@@ -137,6 +138,9 @@ stat__atr_endurance_descr = '''
 stat__atr_charisma_descr = '''
 
 '''
+stat__atr_perception_descr = '''
+
+'''
 stat__atr_intelligence_descr = '''
 
 '''
@@ -155,7 +159,7 @@ Describes your skill with using blunts of various kinds, from axes, hammers, to 
 stat__sk_polearms_descr = '''
 Measures your efficiency with using spears and all pierce-centered weapons. Affects aim, critical hits and damage done.
 '''
-stat__sk_aim__descr = '''
+stat__sk_aim_descr = '''
 Affects how well you aim with ranged weapons of all sorts. It doesn't affect aim fully, as it is skill combined with weapon you are using in specific moment, but has huge effect on how accurate shot you will make.
 '''
 stat__sk_throwing_descr = '''
@@ -287,43 +291,47 @@ stat__sk_pickpocketing_descr = '''
 Tells on ability to steal money from someone's pocket without them noticing. It is heavily connected to sneaking skill.
 '''
 stat__sk_traps_designing_descr = '''
-
+Affects on how good your traps will be when created and set, deciding on their quality and speed of installing them in location.
 '''
 stat__sk_traps_spotting_descr = '''
-
+Tells how easily you can spot elements of the environment destined to be trap of some form. Heavily connected to perception.
 '''
 stat__sk_hunting_descr = '''
-
+Hunting is a craft of properly skinning the animals hunted and preparing them for being a usable resource. Additionally, this skill affects your efficiency in finding animals to hunt.
 '''
 stat__sk_fishing_descr = '''
-
+Fishing allows for better preparation of fishes that were gathered. Additionally, this skill affects your efficiency when fishing.
 '''
 stat__sk_sewing_descr = '''
-
+Sewing is a craft of making clothes from leather and other non-metallic materials. Proficiency in it let you craft various clothing types from various materials.
 '''
 stat__sk_carpentry_descr = '''
-
+Carpentry is art of turning wood into furniture or other forms, ranging even to instruments. It is very useful when dealing with any wood materials for utility items.
 '''
 stat__sk_pottery_descr = '''
-
+Pottery holds a proud place of skills allowing you to manufacture items from natural resources, in this case it being clay. Pottery mostly revolve around creating dishes, but not only those.
+In very specific cases and backgrounds you can even create composite armours out of ceramics, which is also pottery field of interest.
 '''
 stat__sk_stonemasonry_descr = '''
-
+Stonemasonry is workmanship of turning stone into items of various purposes. It can be used to craft furniture or sculptures, usually being good choice of artisans residing in richer towns.
 '''
 stat__sk_ore_processing_descr = '''
-
+Ore processing is responsible for proper extraction of metals from ores, as well as producing alloys of various kinds. It is partially connected to smithing, but only if you want to be self-dependent on metal delivery.
 '''
 stat__sk_smithing_descr = '''
-
+Smithing is always needed craft of creating various items from metals.
+It is often perceived as military practice, but unlike most popular purpose of producing weapons and armours, smithing can be used for all kinds of craft, including even cutlery or pots forging.
 '''
 stat__sk_herbalism_descr = '''
-
+Good herbalism skills allow you to correctly recognise and understand purpose of various herbs and plants.
+This is great especially in conjunction with alchemy, being herbalism further expansion.
 '''
 stat__sk_alchemy_descr = '''
-
+Alchemy is craft of creating potions and mixtures, as well as poisons and other types of fluids that affect you or your environment.
+Plants are often used in alchemic recipes, which makes it great following skill to master along the way.
 '''
 stat__sk_cooking_descr = '''
-
+Cooking let you prepare good meals and execute more advanced recipes into tasty, healthy meal helping you with everyday struggles.
 '''
 stat__sk_wound_treatment_descr = '''
 
