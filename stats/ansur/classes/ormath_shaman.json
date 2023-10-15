@@ -7,9 +7,8 @@
         "void":       -10
     },
     "skills": {
-        "connection_bond": 2,
-        "herbalism":       1,
-        "healing":         1,
-        "firearms":       -2
+        "herbalism":        1,
+        "wound_treatment":  1,
+        "firearms":        -2
     }
 }

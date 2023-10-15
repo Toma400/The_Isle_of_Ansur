@@ -11,8 +11,8 @@
         "tech": 3
     },
     "skills": {
-        "firearms":   1,
-        "persuasion": 1
+        "light_firearms": 1,
+        "persuasion":     1
     },
     "names": {
         "male": [

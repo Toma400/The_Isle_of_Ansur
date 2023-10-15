@@ -13,8 +13,7 @@
         "void":     -20
     },
     "skills": {
-        "connection_bond": 1,
-        "healing":         1,
-        "survival":        1
+        "wound_treatment":  1,
+        "survival":         1
     }
 }

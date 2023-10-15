@@ -159,24 +159,27 @@ alchemy:
 cooking:
   key: "stat__sk_cooking"
 
-#== GENERAL ===================================================
+#== PERSONAL ==================================================
+wound_treatment:
+  key: "stat__sk_wound_treatment"
+
+horse_riding:
+  key: "stat__sk_horse_riding"
+
+boat_driving:
+  key: "stat__sk_boat_driving"
+
+animal_taming:
+  key: "stat__sk_animal_taming"
+
+musicality:
+  key: "stat__sk_musicality"
+
 toughness:
   key: "stat__sk_toughness"
 
-healing:
-  key: "stat__sk_healing"
-
 survival:
   key: "stat__sk_survival"
-
-tools:
-  key: "stat__sk_tools"
-
-repair:
-  key: "stat__sk_repair"
-
-resource_processing:
-  key: "stat__sk_resource_processing"
 
 
 #== SPECIAL ===================================================

@@ -2,10 +2,10 @@
     "key": "classes__fighter",
     "info": "classes__fighter_descr",
     "skills": {
-        "shortswords": 1,
-        "longswords":  1,
-        "toughness":   1,
-        "firearms":   -1,
-        "archery":    -1
+        "shortswords":     1,
+        "longswords":      1,
+        "toughness":       1,
+        "heavy_firearms": -1,
+        "archery":        -1
     }
 }

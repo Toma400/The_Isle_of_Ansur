@@ -73,11 +73,13 @@ stat__sk_smithing                    = "Smithing"
 stat__sk_herbalism                   = "Herbalism"
 stat__sk_alchemy                     = "Alchemy"
 stat__sk_cooking                     = "Cooking"
+stat__sk_wound_treatment             = "Wound Treatment"
+stat__sk_horse_riding                = "Horse Riding"
+stat__sk_boat_driving                = "Boat Driving"
+stat__sk_animal_taming               = "Animal Taming"
+stat__sk_musicality                  = "Musicality"
 stat__sk_toughness                   = "Toughness"
-stat__sk_healing                     = "Healing"
 stat__sk_survival                    = "Survival"
-stat__sk_tools                       = "Tools"
-stat__sk_repair                      = "Repair"
 
 religion__theism  = "Theism (Non-specific)"
 religion__atheism = "Atheism"
@@ -312,31 +314,25 @@ stat__sk_alchemy_descr = '''
 stat__sk_cooking_descr = '''
 
 '''
+stat__sk_wound_treatment_descr = '''
+
+'''
+stat__sk_horse_riding_descr = '''
+
+'''
+stat__sk_boat_driving_descr = '''
+
+'''
+stat__sk_animal_taming_descr = '''
+
+'''
+stat__sk_musicality_descr = '''
+
+'''
 stat__sk_toughness_descr = '''
 
 '''
-stat__sk_healing_descr = '''
-
-'''
 stat__sk_survival_descr = '''
-
-'''
-stat__sk_tools_descr = '''
-
-'''
-stat__sk_repair_descr = '''
-
-'''
-stat__sk_resource_processing_descr = '''
-
-'''
-stat__sk_herbalism_descr = '''
-
-'''
-stat__sk_cooking_descr = '''
-
-'''
-stat__sk_connection_bond_descr = '''
 
 '''
 
