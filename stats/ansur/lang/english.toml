@@ -16,8 +16,13 @@ stat__atr_endurance    = "Endurance"
 stat__atr_charisma     = "Charisma"
 stat__atr_intelligence = "Intelligence"
 
+stat__sk_handfight           = "Handfight"
 stat__sk_shortswords         = "Shortswords"
 stat__sk_longswords          = "Longswords"
+stat__sk_blunts              = "Blunts"
+stat__sk_polearms            = "Polearms"
+stat__sk_aim                 = "Aim"
+stat__sk_throwing            = "Throwing"
 stat__sk_archery             = "Archery"
 stat__sk_firearms            = "Firearms"
 stat__sk_persuasion          = "Persuasion"
@@ -93,10 +98,25 @@ stat__atr_charisma_descr = '''
 stat__atr_intelligence_descr = '''
 
 '''
+stat__sk_handfight_descr = '''
+
+'''
 stat__sk_shortswords_descr = '''
 
 '''
 stat__sk_longswords_descr = '''
+
+'''
+stat__sk_blunts_descr = '''
+
+'''
+stat__sk_polearms_descr = '''
+
+'''
+stat__sk_aim__descr = '''
+
+'''
+stat__sk_throwing_descr = '''
 
 '''
 stat__sk_archery_descr = '''

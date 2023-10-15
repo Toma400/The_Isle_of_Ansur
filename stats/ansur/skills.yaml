@@ -1,9 +1,26 @@
+manual_excl: ["common_magic", "path_magic"]
+
 #== COMBAT ====================================================
+handfight:
+  key: "stat__sk_handfight"
+
 shortswords:
   key: "stat__sk_shortswords"
 
 longswords:
   key: "stat__sk_longswords"
+
+blunts:
+  key: "stat__sk_blunts"
+
+polearms:
+  key: "stat__sk_polearms"
+
+aim:
+  key: "stat__sk_aim"
+
+throwing:
+  key: "stat__sk_throwing"
 
 archery:
   key: "stat__sk_archery"
@@ -21,6 +38,25 @@ trade:
 #== MAGIC =====================================================
 destruction_magic:
   key: "stat__sk_destruction_magic"
+
+#common_magic:
+#  key: ""
+#  sub:
+#    - elements:
+#        - void:
+#            - key: ""
+#        - connection:
+#            - key: ""
+#    - kinds:
+#        - destruction:
+#            - key: ""
+#
+#path_magic:
+#  key: ""
+#  sub:
+#    - path:
+#        - dream magic:
+#            - key: ""
 
 #== GENERAL ===================================================
 toughness:
@@ -48,5 +84,8 @@ cooking:
   key: "stat__sk_cooking"
 
 #== SPECIAL ===================================================
-connection_bond:
-  key: "stat__sk_connection_bond"
+#connection_bond:
+#  races_exclusive: ["ansur:ormath"]
+#  key: "stat__sk_connection_bond"
+#
+# ^ 2 for ormath shaman, 1 for ormath race (to rethink if right numbers)

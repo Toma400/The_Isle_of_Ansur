@@ -6,7 +6,10 @@ from core.file_system.parsers import loadYAML
 from core.data.pack_manag.id import absoluteID
 from os.path import exists
 
-DEFAULT_SK = 0
+DEFAULT_SK = 0               # default starting value for skill
+RESERVED   = [               # reserved keywords in `skill.yaml`, serving unique purpose:
+              "manual_excl"    # excluded in manual (player) selection
+             ]
 
 class Skill:
 
@@ -33,14 +36,17 @@ class Skill:
     def __str__(self) -> str:
         return self.langstr()
 
-def getSkills() -> list[Skill]:
+def getSkills(manual_excl: bool = False) -> list[Skill]:
     """Main gatherer of skills available in game"""
     ret: list[Skill] = []
     for stat_pack in getPacks(PackTypes.STAT_PACK):
         if exists(f"stats/{stat_pack}/skills.yaml"):
             pjf = loadYAML(f"stats/{stat_pack}/skills.yaml")
+            skx = pjf.get("manual_excl", [])
             for sk in pjf.keys():
-                ret.append(Skill(sk, pjf[sk]["key"], stat_pack))
+                if sk not in RESERVED:
+                    if manual_excl is False or sk not in skx:
+                        ret.append(Skill(sk, pjf[sk]["key"], stat_pack))
     return ret
 
 def getSkill(sid: str) -> Skill:
@@ -56,9 +62,9 @@ def getSkillsTuple() -> list[(str, str)]:
         ret.append((sk.langstr(), f"{sk.sid}"))
     return ret
 
-def getSkillsTupleAdjusted(cid: str, rid: str) -> list[(str, str)]:
+def getSkillsTupleAdjusted(cid: str, rid: str, manual_excl: bool) -> list[(str, str)]:
     """Variant that also gets numerical representation of skills. Works separately"""
-    pre = {sk.sid(): DEFAULT_SK for sk in getSkills()}
+    pre = {sk.sid(): DEFAULT_SK for sk in getSkills(manual_excl)}
     ret = []
     try:
         race = getRace(rid).get("skills")
