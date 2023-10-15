@@ -1,4 +1,5 @@
 from core.graphics.text_manag import put_abstext, put_text, Text
+from core.gui.menus.load import loadGame
 from core.gui.manag.langstr import langstring
 from core.file_system.save_manag import listSaves
 from core.file_system.theme_manag import FontColour as fCol
@@ -37,8 +38,10 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 if upd_click(upd, pg_events): update() # GitHub repo
             put_abstext(screen, text=f"{sysref('status')} {sysref('version')}", font_cat="menu", size=22, pos_x=0.5, pos_y=96, colour=fCol.BACKGROUND.value)
 
+            gt2c = fCol.DISABLED.value if len(listSaves()) == 0 else fCol.ENABLED.value # handles whether button for 'load' is available or not
+
             gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour=fCol.ENABLED.value)
-            gt2 = put_text(screen, text=langstring("menu__button_load"),     font_cat="menu", size=30, align_x="center", pos_y=34, colour=fCol.DISABLED.value)
+            gt2 = put_text(screen, text=langstring("menu__button_load"),     font_cat="menu", size=30, align_x="center", pos_y=34, colour=gt2c)
             gt3 = put_text(screen, text=langstring("menu__button_arena"),    font_cat="menu", size=30, align_x="center", pos_y=40, colour=fCol.DISABLED.value)
             gt4 = put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour=fCol.ENABLED.value)
             gt5 = put_text(screen, text=langstring("menu__button_packs"),    font_cat="menu", size=30, align_x="center", pos_y=52, colour=fCol.DISABLED.value)
@@ -57,8 +60,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     guitype[1] = switch_gscr(dyn_screen, screen, "gender")
 
             elif mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
-                #put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=30, align_x="center", pos_y=34, colour="#7C613B")
-                pass
+                if len(listSaves()) > 0:
+                    put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=30, align_x="center", pos_y=34, colour="#7C613B")
+                    if mouseRec(pg_events):
+                        guitype[0] = switch_gscr(dyn_screen, screen, "load")
+
             elif mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
                 #put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
                 pass
@@ -78,6 +84,10 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 put_text(screen, text=langstring("menu__button_exit"), font_cat="menu", size=30, align_x="center", pos_y=58, colour="#7C613B")
                 if mouseRec(pg_events):
                     tev.append("end")
+
+        #==============================================================================================================
+        case "load":
+            loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen)
 
         #==============================================================================================================
         case "settings":
@@ -384,7 +394,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     if dyn_screen.journey.stage != 4:
                         dyn_screen.journey.stage = 4
                         dyn_screen.set_pgui_element("char__lb_attrs",  getAttributesTupleAdjusted(dyn_screen.journey.inidata["class"], dyn_screen.journey.inidata["race"]))
-                        dyn_screen.set_pgui_element("char__lb_skills", getSkillsTupleAdjusted    (dyn_screen.journey.inidata["class"], dyn_screen.journey.inidata["race"]))
+                        dyn_screen.set_pgui_element("char__lb_skills", getSkillsTupleAdjusted    (dyn_screen.journey.inidata["class"], dyn_screen.journey.inidata["race"], manual_excl=True))
 
                     dyn_screen.put_pgui("char__lb_attrs")
                     dyn_screen.put_pgui("char__lb_skills")
@@ -478,6 +488,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         put_text(screen, text=langstring("ccrt__end_save"), font_cat="menu", size=30, pos_x=58, pos_y=65, colour=fCol.HOVERED.value)
                         if mouseRec(pg_events):
                             print(dyn_screen.journey.inidata)
+                            # pass
 
             # ==================================================
             # hovering & clicking events

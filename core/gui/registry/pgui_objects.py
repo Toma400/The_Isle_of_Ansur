@@ -3,6 +3,7 @@ from pygame_gui.elements.ui_drop_down_menu import UISelectionList
 from pygame_gui.elements.ui_text_box import UITextBox
 from core.gui.manag.langstr import langstring as lstr
 from core.gui.manag.pgui_wrapper import getCurrentID, getCurrentIndex, resetSelected
+from core.file_system.save_manag import listSaves
 from core.data.player.religion import getReligionsTuple
 from core.data.player.origin import getOriginsTuple
 from core.data.player.profession import getClassesTuple
@@ -47,6 +48,8 @@ class PGUI_Helper:
         # ---
         self.char__tb_pdth   = UITextBox      (html_text=lstr("ccrt__sett_hardcore_descr"), relative_rect=pygame.Rect((toPxX(50), toPxY(10)), (toPxX(40), 50)),        manager=manager)
         self.char__temp_warn = UITextBox      (html_text=lstr("ccrt__end_save_warn"),       relative_rect=pygame.Rect((toPxX(45), toPxY(70)), (toPxX(30), 100)),       manager=manager)
+        # ---
+        self.load__saves     = UISelectionList(item_list=listSaves(),                       relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
         self.hide_elements()
 
     def get_element(self, element: str):
