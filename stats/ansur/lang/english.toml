@@ -20,6 +20,7 @@ stat__atr_intelligence = "Intelligence"
 stat__sk_handfight                   = "Handfight"
 stat__sk_shortswords                 = "Shortswords"
 stat__sk_longswords                  = "Longswords"
+stat__sk_axes                        = "Axes"
 stat__sk_blunts                      = "Blunts"
 stat__sk_polearms                    = "Polearms"
 stat__sk_aim                         = "Aim"
@@ -28,6 +29,10 @@ stat__sk_archery                     = "Archery"
 stat__sk_crossbows                   = "Crossbows"
 stat__sk_light_firearms              = "Light Firearms"
 stat__sk_heavy_firearms              = "Heavy Firearms"
+stat__sk_light_armour                = "Light Armour"
+stat__sk_medium_armour               = "Medium Armour"
+stat__sk_heavy_armour                = "Heavy Armour"
+stat__sk_blocking                    = "Blocking"
 stat__sk_spellcasting                = "Spellcasting"
 stat__sk_common_magic                = "Common Magic"
 stat__sk_path_magic                  = "Path Magic"
@@ -160,8 +165,11 @@ Your capability to use any small, fast swords, such as knives, daggers, but also
 stat__sk_longswords_descr = '''
 Tells how easily you can fight using heavy swords of various kinds. Affects aim, critical hits and damage done.
 '''
+stat__sk_axes_descr = '''
+Defines how well you use axes and halberds. Affects aim, critical hits and damage done.
+'''
 stat__sk_blunts_descr = '''
-Describes your skill with using blunts of various kinds, from axes, hammers, to halberds of various kinds. Affects aim, critical hits and damage done.
+Describes your skill with using blunts of various kinds, from hammers to clubs of various kinds. Affects aim, critical hits and damage done.
 '''
 stat__sk_polearms_descr = '''
 Measures your efficiency with using spears and all pierce-centered weapons. Affects aim, critical hits and damage done.
@@ -183,6 +191,18 @@ Gives insight into how good shooter you are using revolvers and pistols. Affects
 '''
 stat__sk_heavy_firearms_descr = '''
 Measures how effective you are using heavy firearms, such as rifles and shotguns. Affects aim, critical hits and damage done.
+'''
+stat__sk_light_armour_descr = '''
+Shows your performance using light armour, such as regular clothing and armours made from leather-like materials and hardness.
+'''
+stat__sk_medium_armour_descr = '''
+Tells how well you perform using medium armour, being all kinds of lightweight metals and armours made from composited materials, like chainmails and scale variants.
+'''
+stat__sk_heavy_armour_descr = '''
+This skill is responsible on how good you can use heavy armour, which consists usually of pieces that are made fully out of specific metals, or metals that are hard to penetrate, but also heavy in exchange.
+'''
+stat__sk_blocking_descr = '''
+Blocking describes your skill in parrying attacks with your shield or another weapon.
 '''
 stat__sk_spellcasting_descr = '''
 Influences your skills in magic, influencing its success and learning effectiveness.
@@ -359,7 +379,7 @@ stat__sk_athletics_descr = '''
 Athletics decide on how fast you move and perform actions related to your body condition, such as running and swimming.
 '''
 stat__sk_toughness_descr = '''
-This is physical resistance, affecting how much damage you deflect both without and with armour. It also affects your blocking attempts with shield or another weapon.
+This is physical resistance, affecting how much damage you deflect without armour.
 '''
 stat__sk_survival_descr = '''
 Survivality means all skills to live in difficult environments and conditions, including also body adaptation. Helps immensely in many various cases, however almost always not directly.

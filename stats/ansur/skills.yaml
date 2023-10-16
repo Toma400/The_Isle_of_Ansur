@@ -10,6 +10,9 @@ shortswords:
 longswords:
   key: "stat__sk_longswords"
 
+axes:
+  key: "stat__sk_axes"
+
 blunts:
   key: "stat__sk_blunts"
 
@@ -33,6 +36,18 @@ light_firearms:
 
 heavy_firearms:
   key: "stat__sk_heavy_firearms"
+
+light_armour:
+  key: "stat__sk_light_armour"
+
+medium_armour:
+  key: "stat__sk_medium_armour"
+
+heavy_armour:
+  key: "stat__sk_heavy_armour"
+
+blocking:
+  key: "stat__sk_blocking"
 
 #== MAGIC =====================================================
 spellcasting:
