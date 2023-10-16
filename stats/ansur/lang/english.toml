@@ -78,6 +78,7 @@ stat__sk_horse_riding                = "Horse Riding"
 stat__sk_boat_driving                = "Boat Driving"
 stat__sk_animal_taming               = "Animal Taming"
 stat__sk_musicality                  = "Musicality"
+stat__sk_athletics                   = "Athletics"
 stat__sk_toughness                   = "Toughness"
 stat__sk_survival                    = "Survival"
 
@@ -118,31 +119,37 @@ Ormaths believe wind is a driving force of all spirits, guiding souls of those w
 There are many spirits in ormaths demonology, which also explains why shamans are considered as protective mediators, often calming down those spirits that try to bring chaos to the tribe, sometimes even by literal fight with the element.
 '''
 classes__undefined_descr = '''
-
+Undefined class does not take any precise advantage like other choices, but let you learn everything faster.
+It is basically a choice of everything and nothing - you get less, for later to get more.
 '''
 classes__fighter_descr = '''
-
+Fighter is class dedicated for melee fights, especially situations where swords are extensively used.
+It invests heavily in training of its physical strengths.
 '''
 classes__ormath_shaman_descr = '''
-
+Ormath shaman is unique class only available for ormaths. It comes with ability to perform ormath magic, as ormath shamans are the only ones that are experienced with performing it extensively.
+While you no longer have obligations towards your tribe, being lone adventurer, remember about your roots, as they will follow you forever.
 '''
 stat__atr_strength_descr = '''
-
+Strength is all about power of your muscles, thus affecting every action performed on those. From melee fight effectivity to inventory load, it is all dependant on this attribute.
 '''
 stat__atr_agility_descr = '''
-
+Agility is an art of moving, and thus it affects heavily many situations you will need to use that - how flexible you get with close fights, how fast you travel, how easily you can manage escaping from dangerous situation.
 '''
 stat__atr_endurance_descr = '''
-
+Endurance let your body get resilient to harsh situations on longer periods, and affect things like your stamina or food loss.
 '''
 stat__atr_charisma_descr = '''
-
+Charisma is what people find about you - investing in it let you more easily convince others of your rights and sometimes even avoid situations where no other path was felt possible.
+It is heavily attribute set on societal interactions.
 '''
 stat__atr_perception_descr = '''
-
+Perception is responsible for all situations where you need to aim on something or have quick reflex.
+It helps you encountering traps, ambushes, hunting animals, but also partially aids aiming with ranged weapons.
 '''
 stat__atr_intelligence_descr = '''
-
+Intelligence is mostly a factor of getting the most out of your brain, affecting your level of understanding the world around you.
+It heavily affects magic, but also general skills as a whole.
 '''
 stat__sk_handfight_descr = '''
 Measures how well you can fight with your own fists, without any other weapon being used. Useful especially in disputes with other drunk adventurers in taverns.
@@ -334,25 +341,28 @@ stat__sk_cooking_descr = '''
 Cooking let you prepare good meals and execute more advanced recipes into tasty, healthy meal helping you with everyday struggles.
 '''
 stat__sk_wound_treatment_descr = '''
-
+Lets you perform treatments on various wounds and heal faster.
 '''
 stat__sk_horse_riding_descr = '''
-
+Measures your experience with horse riding, affecting your travel speed with them, as well as fight.
 '''
 stat__sk_boat_driving_descr = '''
-
+Showcases your experience with boats, affecting your travel speed and fight effectiveness.
 '''
 stat__sk_animal_taming_descr = '''
-
+Describes how well you can communicate with animals and tame them. Depending on animal hostility different experience levels are needed.
 '''
 stat__sk_musicality_descr = '''
-
+Tells how good of a musician you are, allowing you to play more complex songs and use variety of instruments.
+'''
+stat__sk_athletics_descr = '''
+Athletics decide on how fast you move and perform actions related to your body condition, such as running and swimming.
 '''
 stat__sk_toughness_descr = '''
-
+This is physical resistance, affecting how much damage you deflect both without and with armour. It also affects your blocking attempts with shield or another weapon.
 '''
 stat__sk_survival_descr = '''
-
+Survivality means all skills to live in difficult environments and conditions, including also body adaptation. Helps immensely in many various cases, however almost always not directly.
 '''
 
 religion__theism_descr = '''

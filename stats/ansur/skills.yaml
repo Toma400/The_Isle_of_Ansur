@@ -173,6 +173,9 @@ animal_taming:
 musicality:
   key: "stat__sk_musicality"
 
+athletics:
+  key: "stat__sk_athletics"
+
 toughness:
   key: "stat__sk_toughness"
 
