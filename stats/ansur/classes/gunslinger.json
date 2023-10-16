@@ -1,0 +1,19 @@
+{
+    "key": "classes__gunslinger",
+    "skills": {
+        "light_firearms": 2,
+        "aim":            2,
+        "smithing":       1
+    },
+    "skills_major": [
+        "light_firearms",
+        "aim",
+        "light_armour"
+    ],
+    "skills_minor": [
+        "heavy_firearms",
+        "smithing",
+        "wound_treatment",
+        "horse_riding"
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "key": "classes__sharpshooter",
+    "skills": {
+        "aim":            3,
+        "heavy_firearms": 2
+    },
+    "skills_major": [
+        "heavy_firearms",
+        "aim",
+        "light_armour"
+    ],
+    "skills_minor": [
+        "light_firearms",
+        "smithing",
+        "wound_treatment",
+        "crossbows"
+    ]
+}
