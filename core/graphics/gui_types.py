@@ -412,8 +412,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                             dyn_screen.set_pgui_element("char__tb_skills", getSkill(skill_choice).descr()) # sets infobox
                         if attr_choice is not None: # 'are both selected?' (put here to minimise performance cost)
                             dyn_screen.journey.stages[4] = True
-                        else:
-                            dyn_screen.journey.stages[4] = False
+                    if (skill_choice is None) or (attr_choice is None):
+                        dyn_screen.journey.stages[4] = False
 
                 case "religion":
                     dyn_screen.journey.stage = 5
