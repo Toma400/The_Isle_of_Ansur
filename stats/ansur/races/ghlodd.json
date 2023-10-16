@@ -1,0 +1,34 @@
+{
+    "key": "races__ghlodd",
+    "attributes": {
+        "agility":       2,
+        "endurance":     1,
+        "intelligence":  1
+    },
+    "power": {
+        "connection": 5,
+        "tech":       1,
+        "magic":      1
+    },
+    "skills": {
+        "light_firearms": 1,
+        "smithing":       1,
+        "survival":       1
+    },
+    "magic": {
+        "elements": {
+            "fire": 1
+        },
+        "kinds": {
+            "destruction": 1
+        }
+    },
+    "names": {
+        "male": [
+            "T'sheit"
+        ]
+    },
+    "perks": [
+        "no_tech_penalty"
+    ]
+}

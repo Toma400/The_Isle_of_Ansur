@@ -1,5 +1,6 @@
 from core.data.player.gender import Gender, getGenders
 from core.data.player.race import Race, getRaces
+from core.data.pack_manag.packs import getPacks
 from core.utils import sysref
 import logging as log
 import os
@@ -84,8 +85,6 @@ class Journey:
         self.name = self.inidata["name"]
         self.validateInit() # checks if all keys are in -inidata-
         ret = "" # initial string : followed by next lines appended below:
-        # ret += f"save_ver = {sysref('release_status')}:{sysref('release_version')}" + "\n"
-        # ^ this will be useful once proper save is used, now we can just simply check 'is presave.toml existing'
         ret += f"name     = {self.inidata['name']}"     + "\n"
         ret += f"gender   = {self.inidata['gender']}"   + "\n"
         ret += f"race     = {self.inidata['race']}"     + "\n"
@@ -97,6 +96,11 @@ class Journey:
         ret += f"history  = \'\'\'"                     + "\n"
         ret += f"{self.inidata['history']}"             + "\n"
         ret += f"\'\'\'"                                + "\n"
+
+        # ret += f"save_ver = {sysref('release_status')}:{sysref('release_version')}" + "\n"
+        # ^ this will be useful once proper save is used, now we can just simply check 'is presave.toml existing'
+        ret += f"mods     = {getPacks()}"               + "\n"
+
         # level, xp and all that should be put when TODO is done, alongside banks, chests and inventory
         with open(f"{self.buffdir}/presave.toml", "r+") as f:
             f.write(ret)

@@ -1,0 +1,15 @@
+improved_learning:
+  type: "integer"
+  key:  ""
+
+toxin_absorption:
+  type: "integer"
+  key:  ""
+
+connection_bond:
+  type: "integer"
+  key:  ""
+
+no_tech_penalty:
+  type: "boolean"
+  key:  ""

@@ -1,6 +1,7 @@
 races__baedoorian = "Human, Born in Baedoor"
 races__kaerian    = "Human, Born in Kaer"
 races__ormath     = "Ormath"
+races__ghlodd     = "Ghlodd"
 
 classes__undefined     = "Undefined"
 classes__swordsman     = "Swordsman"
@@ -124,6 +125,17 @@ Aside of that, ormaths are used to harsh environment, which resulted in them get
 Faith makes huge part of ormath's life, however unlike structured religions, this race connects to the wind being natural occurence on Arennan desert. Shamans are sometimes called as "those who knows tongue of winds".
 Ormaths believe wind is a driving force of all spirits, guiding souls of those who passed away, and bringing new beings to life.
 There are many spirits in ormaths demonology, which also explains why shamans are considered as protective mediators, often calming down those spirits that try to bring chaos to the tribe, sometimes even by literal fight with the element.
+'''
+races__ghlodd_descr = '''
+Ghlodd race is considered as one of the oldest ones in the universe. Existing since world's birth, they lived under the surface of their enormous deserty continent, Seiteh, cultivating their rich artistic traditions and religion.
+As legends tell us, they were lead by Guiding God to the surface, leaving their lenghty cave systems in most cases, in favour of surface world.
+
+Ghlodds are weird, deformed creatures, consisting of huge face and barely any limbs to interact with outside, with existing ones being either malformed, short ones, or non-existent.
+What they lack in body, however, they more than make up on their psyche. Ghlodds make one of the wisest and most intelligent races, being both great technologists and magicians.
+They often try to use that to benefit their lacking bodies, overcoming that to great lengths - oldest centuries are known for Ghloddish Empire being one of the most powerful forces known, conquering many surrounding lands.
+
+Ghlodds are hot-headed and loving war, but they also value highly their social values, such as religion, community and family. They find spirituality to be the most enriching aspect of the world, making them huge advocates for art of any kind.
+Their traditions are highly rooted in societal system that seems very odd to foreigners, making ghloddish culture feel hermetic until it is analysed more in-depth through books or simple talk with Seiteh inhabitants.
 '''
 classes__undefined_descr = '''
 Undefined class does not take any precise advantage like other choices, but let you learn everything faster.
