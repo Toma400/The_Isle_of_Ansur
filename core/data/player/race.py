@@ -58,12 +58,15 @@ def getRaces() -> list[Race]:
     """Main gatherer of race data during load/reload"""
     ret: list[Race] = []
     for stat_pack in mod_lister("stats"):
+        locret: list[Race] = [] # used for easier ordering-per-mod
         if exists(f"stats/{stat_pack}/races"):
             for race_file in walkdir(f"stats/{stat_pack}/races/*.json"):
                 race_name = race_file.replace(f"stats/{stat_pack}/races", "").replace(".json", "").strip("\\")
                 with open(race_file) as jf:
                     pjf = json.load(jf)
-                    ret.append(Race(race_name, pjf["key"], stat_pack))
+                    locret.append(Race(race_name, pjf["key"], stat_pack))
+        locret.sort(key=lambda x: x.langstr()) # sorts alphabetically races for statpack
+        ret += locret
     return ret
 
 def getRacesTuple() -> list[(str, str)]:
