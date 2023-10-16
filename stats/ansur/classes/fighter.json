@@ -1,11 +1,20 @@
 {
     "key": "classes__fighter",
-    "info": "classes__fighter_descr",
     "skills": {
-        "shortswords":     1,
-        "longswords":      1,
-        "toughness":       1,
-        "heavy_firearms": -1,
-        "archery":        -1
-    }
+        "shortswords": 2,
+        "longswords":  2,
+        "toughness":   1
+    },
+    "skills_major": [
+        "shortswords",
+        "longswords",
+        "blocking",
+        "heavy_armour"
+    ],
+    "skills_minor": [
+        "toughness",
+        "blunts",
+        "axes",
+        "medium_armour"
+    ]
 }

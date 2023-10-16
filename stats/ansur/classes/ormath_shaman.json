@@ -1,14 +1,34 @@
 {
     "key": "classes__ormath_shaman",
-    "info": "classes__ormath_shaman_descr",
     "races_exclusive": ["ansur:ormath"],
     "power": {
         "connection":  10,
         "void":       -10
     },
     "skills": {
-        "herbalism":        1,
-        "wound_treatment":  1,
-        "firearms":        -2
+        "wound_treatment":  2,
+        "spellcasting":     2,
+        "herbalism":        1
+    },
+    "skills_major": [
+        "wound_treatment",
+        "spellcasting",
+        "herbalism"
+    ],
+    "skills_minor": [
+        "survival",
+        "animal_taming"
+    ],
+    "magic": {
+        "elements": {
+            "wind": 4
+        },
+        "kinds": {
+            "illusion":  1,
+            "evocation": 1
+        }
+    },
+    "perks": {
+        "connection_bond": 50
     }
 }

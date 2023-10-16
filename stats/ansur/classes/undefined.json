@@ -1,7 +1,9 @@
 {
     "key": "classes__undefined",
-    "info": "classes__undefined_descr",
     "attributes": {
         "charisma": 1
+    },
+    "perks": {
+        "ansur:improved_learning": 50
     }
 }
