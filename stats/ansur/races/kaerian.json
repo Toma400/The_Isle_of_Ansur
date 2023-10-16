@@ -1,16 +1,21 @@
 {
     "key": "races__kaerian",
-    "info": "races__kaerian_descr",
     "attributes": {
         "strength":      1,
         "charisma":      1,
-        "intelligence":  1
+        "intelligence":  2
     },
     "power": {
         "magic": 2
     },
     "skills": {
         "trade":      1,
+        "smithing":   1,
         "longswords": 1
+    },
+    "magic": {
+        "kinds": {
+            "evocation": 1
+        }
     }
 }

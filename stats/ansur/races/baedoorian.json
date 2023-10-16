@@ -1,9 +1,8 @@
 {
     "key": "races__baedoorian",
-    "info": "races__baedoorian_descr",
     "attributes": {
         "strength":      2,
-        "charisma":      1,
+        "charisma":      2,
         "intelligence":  1,
         "endurance":    -1
     },
@@ -11,6 +10,7 @@
         "tech": 3
     },
     "skills": {
+        "trade":          1,
         "light_firearms": 1,
         "persuasion":     1
     },

@@ -1,19 +1,19 @@
 {
     "key": "races__ormath",
-    "info": "races__ormath_descr",
     "attributes": {
-        "strength":     -1,
         "intelligence":  2,
+        "endurance":     2,
         "agility":       1,
-        "endurance":     1
+        "strength":     -1
     },
     "power": {
         "connection": 7,
         "magic":      2,
-        "void":     -20
+        "void":     -10
     },
     "skills": {
         "wound_treatment":  1,
-        "survival":         1
+        "survival":         1,
+        "hunting":          1
     }
 }
