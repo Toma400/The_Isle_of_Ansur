@@ -1,0 +1,13 @@
+{
+    "key": "races__lunanians",
+    "attributes": {
+        "strength":      2,
+        "perception":    1,
+        "endurance":     1
+    },
+    "skills": {
+        "pottery":    1,
+        "trading":    1,
+        "longswords": 1
+    }
+}

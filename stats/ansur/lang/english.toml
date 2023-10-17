@@ -3,6 +3,7 @@ races__kaerian    = "Human, Born in Kaer"
 races__jitadian   = "Human, Born in Jitado"
 races__mesinpean  = "Human, Born in Mesinpean"
 races__mrran      = "Human, Born in Eimr"
+races__lunanians  = "Human, Born in Moon Continent"
 races__ormath     = "Ormath"
 races__ghlodd     = "Ghlodd"
 races__lunatri    = "Lunatri"
@@ -153,6 +154,15 @@ Eimr inhabitants, also known as mrrans, are humans born as smithing workers and 
 Frequent wars between mrran tribes and also foreigners invading their lands - including most known Ghloddish Empire occupation - made their culture shattered into many distinct forms.
 This makes Eimr a place of not ending tensions, but also creates one of the most intricate political arenas in current world. The country that eventually arose from semi-united tribes is now fighting for their sovereign pride and identity.
 Thus, Mrrans are relentless warriors, knowledgeable when it comes to craftmanship just as well.
+'''
+races__lunanians_descr = '''
+Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
+What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
+Despite those shortcomings, their assimilation skills let them be very expansive kind, filling most of places in Baedoor universe.
+
+Lunanians are general name for all civilisations of humans living on Moon Continent. While a bit overly broad, this kind of humans is known for often producing excellent pottery.
+Their culture of many countries bordering with each other forged their skills of trading, as well as fighting, as there were just equal amount of tensions between many kingdoms of those lands.
+This makes lunanians pretty diverse group that are capable for varied tasks to be done swiftly.
 '''
 races__ormath_descr = '''
 Ormath race is quite odd race of short, grayskinned beings living in tribes on Arennan desert. They are heavily structured in their hierarchical societies built around Elders and most importantly, Shaman being the guide of whole tribe.
