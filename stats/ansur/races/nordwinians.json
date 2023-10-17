@@ -1,0 +1,13 @@
+{
+    "key": "races__nordwinians",
+    "attributes": {
+        "strength":  2,
+        "charisma":  1,
+        "endurance": 1
+    },
+    "skills": {
+        "carpentry":  1,
+        "axes":       1,
+        "smithing":   1
+    }
+}

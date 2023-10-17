@@ -1,15 +1,16 @@
-races__baedoorian = "Human, Born in Baedoor"
-races__kaerian    = "Human, Born in Kaer"
-races__jitadian   = "Human, Born in Jitado"
-races__mesinpean  = "Human, Born in Mesinpean"
-races__mrran      = "Human, Born in Eimr"
-races__lunanians  = "Human, Born in Moon Continent"
-races__ormath     = "Ormath"
-races__ghlodd     = "Ghlodd"
-races__lunatri    = "Lunatri"
-races__voitri     = "Voitri"
-races__saphtri    = "Saphtri"
-races__pahtri     = "Pahtri"
+races__baedoorian  = "Human, Born in Baedoor"
+races__kaerian     = "Human, Born in Kaer"
+races__jitadian    = "Human, Born in Jitado"
+races__mesinpean   = "Human, Born in Mesinpean"
+races__mrran       = "Human, Born in Eimr"
+races__lunanians   = "Human, Born in Moon Continent"
+races__nordwinians = "Human, Born in Northern Isles"
+races__ormath      = "Ormath"
+races__ghlodd      = "Ghlodd"
+races__lunatri     = "Lunatri"
+races__voitri      = "Voitri"
+races__saphtri     = "Saphtri"
+races__pahtri      = "Pahtri"
 
 classes__undefined     = "Undefined"
 classes__swordsman     = "Swordsman"
@@ -163,6 +164,15 @@ Despite those shortcomings, their assimilation skills let them be very expansive
 Lunanians are general name for all civilisations of humans living on Moon Continent. While a bit overly broad, this kind of humans is known for often producing excellent pottery.
 Their culture of many countries bordering with each other forged their skills of trading, as well as fighting, as there were just equal amount of tensions between many kingdoms of those lands.
 This makes lunanians pretty diverse group that are capable for varied tasks to be done swiftly.
+'''
+races__nordwinians_descr = '''
+Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
+What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
+Despite those shortcomings, their assimilation skills let them be very expansive kind, filling most of places in Baedoor universe.
+
+Nordwinians are harsh people of the North, often seen by their symbolics, like axe or fur. Despite those stereotypical characterisation, they are quite often equipped with long swords and chainmails.
+They are fiery warriors, but they are also skilled craftmans when it comes to wood use, able to create furniture and many detailed artworks with their high dedication to carpentry.
+With high dedication to tradition, they cultivate their community rituals and celebrate with feasts. They are known for many festival hold during the year.
 '''
 races__ormath_descr = '''
 Ormath race is quite odd race of short, grayskinned beings living in tribes on Arennan desert. They are heavily structured in their hierarchical societies built around Elders and most importantly, Shaman being the guide of whole tribe.
