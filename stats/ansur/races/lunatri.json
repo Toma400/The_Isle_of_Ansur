@@ -1,0 +1,29 @@
+{
+    "key": "races__lunatri",
+    "attributes": {
+        "intelligence": 3,
+        "charisma":     1
+    },
+    "power": {
+        "magic": 8
+    },
+    "skills": {
+        "spellcasting": 1,
+        "herbalism":    1,
+        "alchemy":      1
+    },
+    "magic": {
+        "kinds": {
+            "illusion":       2,
+            "transformation": 2,
+            "evocation":      2
+        }
+    },
+    "names": {
+        "male": [
+            "Ain",
+            "Ainji",
+            "Delai"
+        ]
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "key": "races__pahtri",
+    "attributes": {
+        "perception":    3,
+        "agility":       1,
+        "intelligence":  1,
+        "strength":     -1
+    },
+    "power": {
+        "magic": 5
+    },
+    "skills": {
+        "herbalism":    2,
+        "spellcasting": 1
+    },
+    "magic": {
+        "elements": {
+            "earth": 2,
+            "wind":  1
+        },
+        "kinds": {
+            "illusion":   1,
+            "evocation":  2
+        }
+    }
+}

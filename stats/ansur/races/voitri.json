@@ -1,0 +1,33 @@
+{
+    "key": "races__voitri",
+    "attributes": {
+        "intelligence": 2,
+        "agility":      1,
+        "perception":   1
+    },
+    "power": {
+        "magic": 8
+    },
+    "skills": {
+        "spellcasting": 2,
+        "longswords":   1
+    },
+    "magic": {
+        "elements": {
+            "void": 1
+        },
+        "kinds": {
+            "destruction":    3,
+            "transformation": 1,
+            "evocation":      1
+        }
+    },
+    "names": {
+        "male": [
+            "Ainji",
+            "Heiyn",
+            "Heyn",
+            "Riyell"
+        ]
+    }
+}

@@ -71,8 +71,8 @@ common_magic:
             - key: "stat__sk_common_magic_ice"
         - water:
             - key: "stat__sk_common_magic_water"
-        - ground:
-            - key: "stat__sk_common_magic_ground"
+        - earth:
+            - key: "stat__sk_common_magic_earth"
     - kinds:
         - destruction:
             - key: "stat__sk_common_magic_destruction"

@@ -1,0 +1,35 @@
+{
+    "key": "races__saphtri",
+    "attributes": {
+        "agility":      2,
+        "perception":   1,
+        "intelligence": 1
+    },
+    "power": {
+        "magic": 3
+    },
+    "skills": {
+        "archery":  1,
+        "hunting":  1,
+        "survival": 1
+    },
+    "magic": {
+        "elements": {
+            "wind": 2
+        },
+        "kinds": {
+            "absorption": 1,
+            "illusion":   1
+        }
+    },
+    "names": {
+        "male": [
+            "Ainji",
+            "Asaai",
+            "Hes"
+        ],
+        "female": [
+            "Vei"
+        ]
+    }
+}

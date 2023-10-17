@@ -2,6 +2,10 @@ races__baedoorian = "Human, Born in Baedoor"
 races__kaerian    = "Human, Born in Kaer"
 races__ormath     = "Ormath"
 races__ghlodd     = "Ghlodd"
+races__lunatri    = "Lunatri"
+races__voitri     = "Voitri"
+races__saphtri    = "Saphtri"
+races__pahtri     = "Pahtri"
 
 classes__undefined     = "Undefined"
 classes__swordsman     = "Swordsman"
@@ -46,7 +50,7 @@ stat__sk_common_magic_soul           = "Soul"
 stat__sk_common_magic_wind           = "Wind"
 stat__sk_common_magic_ice            = "Ice"
 stat__sk_common_magic_water          = "Water"
-stat__sk_common_magic_ground         = "Ground"
+stat__sk_common_magic_earth          = "Earth"
 stat__sk_common_magic_destruction    = "Destruction"
 stat__sk_common_magic_absorption     = "Absorption"
 stat__sk_common_magic_illusion       = "Illusion"
@@ -136,6 +140,48 @@ They often try to use that to benefit their lacking bodies, overcoming that to g
 
 Ghlodds are hot-headed and loving war, but they also value highly their social values, such as religion, community and family. They find spirituality to be the most enriching aspect of the world, making them huge advocates for art of any kind.
 Their traditions are highly rooted in societal system that seems very odd to foreigners, making ghloddish culture feel hermetic until it is analysed more in-depth through books or simple talk with Seiteh inhabitants.
+'''
+races__lunatri_descr = '''
+Tri race is one of the oldest races in universe, with their origin being unknown. Some people claim that they were the ones to be first sentient lives and all other races evolved from them, either by deforming or transforming.
+That claim however is rarely brought, as they share a lot of differences with other races and it wouldn't be likely without mass gods interventions for it to happen.
+All tris are considered as bright and skilled in variety of works, but also proficient in magic. Tris are known to be most influencial mages, often preferring very theatrical ways to perform rituals.
+They are known for their love of art, theatre and traditions of similar character.
+
+Lunatris are tris living on West Moon, enormous island consisting of many tri clans spread across. Despite efforts to unite them - which partially succeeded - they are very bound to their specific community.
+This kind of tris are especially fond on studying many subjects, making them curious of the world around them.
+Despite that characteristics, not many lunatris travel outside of Moon Islands territory, sticking to their motherland.
+'''
+races__voitri_descr = '''
+Tri race is one of the oldest races in universe, with their origin being unknown. Some people claim that they were the ones to be first sentient lives and all other races evolved from them, either by deforming or transforming.
+That claim however is rarely brought, as they share a lot of differences with other races and it wouldn't be likely without mass gods interventions for it to happen.
+All tris are considered as bright and skilled in variety of works, but also proficient in magic. Tris are known to be most influencial mages, often preferring very theatrical ways to perform rituals.
+They are known for their love of art, theatre and traditions of similar character.
+
+Voitri are descendants of Voitori clan that left Moon continent in times of Pre-Era. Those tris landed on Rossevette island and began forming their own form of tri culture.
+They value honour above anything else and also are interested in more chaotic forms of magic, making them much more dangerous warriors than any other tri kind.
+While being more militaristic, their interests in art and other fields of culture doesn't differ heavily - they still find a lot of joy in studying and discovering.
+Unlike lunatris, they are often very happy to travel to foreign lands, often as mercenaries or guides.
+'''
+races__saphtri_descr = '''
+Tri race is one of the oldest races in universe, with their origin being unknown. Some people claim that they were the ones to be first sentient lives and all other races evolved from them, either by deforming or transforming.
+That claim however is rarely brought, as they share a lot of differences with other races and it wouldn't be likely without mass gods interventions for it to happen.
+All tris are considered as bright and skilled in variety of works, but also proficient in magic. Tris are known to be most influencial mages, often preferring very theatrical ways to perform rituals.
+They are known for their love of art, theatre and traditions of similar character.
+
+Saphtri is desert kind of tri and are much more versed in technology than other tris. However, unlike humans, saphtric tech is focused on manipulating mechanical compositions and could be even understood as form of art.
+From tools to machines, saphtric tech is often using physical abilities of materials to the extreme, making them unique and difficult to be trained on for those who are used to classic form of technology.
+Saphtris are much more strange than their peers from other lands and their culture is found to be hermetic, preserving a bit different kind of religious practices and cultural heritage.
+'''
+races__pahtri_descr = '''
+Tri race is one of the oldest races in universe, with their origin being unknown. Some people claim that they were the ones to be first sentient lives and all other races evolved from them, either by deforming or transforming.
+That claim however is rarely brought, as they share a lot of differences with other races and it wouldn't be likely without mass gods interventions for it to happen.
+All tris are considered as bright and skilled in variety of works, but also proficient in magic. Tris are known to be most influencial mages, often preferring very theatrical ways to perform rituals.
+They are known for their love of art, theatre and traditions of similar character.
+
+Pahtris are quite obscure tri kind, living on archipelagos on the west of Rossevette. It is quite unclear when they arrived there, and it is even theoretised they migrated from West Moon much before any tris tried to.
+They differ heavily from all other tris, being shorter and much more tribalic in their behaviour.
+Despite their appearance and culture being so unlike tris, they share similarities in abilities and love to traditions, however the latter is also vastly separate.
+Pahtris were the only race to not be under Baedoor Empire ruling per se, as despite being conquered, Karos Archipelago were never occupied militarily. Pahtris were offered a lot of sovereignty, which let them preserve their culture intact.
 '''
 classes__undefined_descr = '''
 Undefined class does not take any precise advantage like other choices, but let you learn everything faster.
@@ -257,8 +303,8 @@ Ice is semi-ordered element made out of water element. Almost ironical concept o
 stat__sk_common_magic_water_descr = '''
 Water is ordered element that controls delicate, yet powerful force of water. While not exactly destructive, water becomes very dangerous when taken with patience.
 '''
-stat__sk_common_magic_ground_descr = '''
-Ground is ordered element that answers for dirt and all that is on the ground. While alone it can be powerful, causing masterful magicians to create local earthquake, its biggest potential lies in connection with other elements, allowing you for even small vulcano eruptions.
+stat__sk_common_magic_earth_descr = '''
+Earth is ordered element that answers for dirt and all that is on the ground. While alone it can be powerful, causing masterful magicians to create local earthquake, its biggest potential lies in connection with other elements, allowing you for even small vulcano eruptions.
 '''
 stat__sk_common_magic_destruction_descr = '''
 Destruction gravitates towards annihilation and various form of reducing living aspect of reality. This makes it the most powerful, yet closest to uncontrollable form of Void.
