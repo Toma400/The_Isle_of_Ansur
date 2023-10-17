@@ -10,6 +10,6 @@ connection_bond:
   type: "integer"
   key:  ""
 
-no_tech_penalty:
+diamond_soul: # no tech/mgck penalty
   type: "boolean"
   key:  ""
