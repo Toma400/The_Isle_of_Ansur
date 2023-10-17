@@ -28,7 +28,7 @@
             "T'sheit"
         ]
     },
-    "perks": [
-        "no_tech_penalty"
-    ]
+    "perks": {
+        "diamond_soul": 100
+    }
 }
