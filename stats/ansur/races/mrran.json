@@ -1,0 +1,12 @@
+{
+    "key": "races__mrran",
+    "attributes": {
+        "strength":      2,
+        "endurance":     2
+    },
+    "skills": {
+        "ore_processing": 1,
+        "smithing":       1,
+        "blunts":         1
+    }
+}

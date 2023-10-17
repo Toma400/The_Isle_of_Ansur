@@ -2,6 +2,7 @@ races__baedoorian = "Human, Born in Baedoor"
 races__kaerian    = "Human, Born in Kaer"
 races__jitadian   = "Human, Born in Jitado"
 races__mesinpean  = "Human, Born in Mesinpean"
+races__mrran      = "Human, Born in Eimr"
 races__ormath     = "Ormath"
 races__ghlodd     = "Ghlodd"
 races__lunatri    = "Lunatri"
@@ -142,6 +143,16 @@ Despite those shortcomings, their assimilation skills let them be very expansive
 Mesinpeans are one of the older human inhabitants, living in one of the most diverse environment of Mes Inpea island. Their country was considered as one of the most powerful at the time of Pre Era, competing with Ghloddish Empire in significance.
 While mesinpeans do not possess any unique traits when it comes to military or magic, they are excellent workers, and as such they are talented to many craftmanships, exceeding others.
 Mesinpean culture was also very influential in terms of building for many civilisations at the time, emphasising Mes Inpea's power, unlike Ghloddish Empire, entirely on cultural field.
+'''
+races__mrran_descr = '''
+Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
+What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
+Despite those shortcomings, their assimilation skills let them be very expansive kind, filling most of places in Baedoor universe.
+
+Eimr inhabitants, also known as mrrans, are humans born as smithing workers and hardworking farmers, trying to make ends meet on unforgiving lands of Eimr.
+Frequent wars between mrran tribes and also foreigners invading their lands - including most known Ghloddish Empire occupation - made their culture shattered into many distinct forms.
+This makes Eimr a place of not ending tensions, but also creates one of the most intricate political arenas in current world. The country that eventually arose from semi-united tribes is now fighting for their sovereign pride and identity.
+Thus, Mrrans are relentless warriors, knowledgeable when it comes to craftmanship just as well.
 '''
 races__ormath_descr = '''
 Ormath race is quite odd race of short, grayskinned beings living in tribes on Arennan desert. They are heavily structured in their hierarchical societies built around Elders and most importantly, Shaman being the guide of whole tribe.
