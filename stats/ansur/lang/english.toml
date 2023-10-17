@@ -1,6 +1,7 @@
 races__baedoorian = "Human, Born in Baedoor"
 races__kaerian    = "Human, Born in Kaer"
 races__jitadian   = "Human, Born in Jitado"
+races__mesinpean  = "Human, Born in Mesinpean"
 races__ormath     = "Ormath"
 races__ghlodd     = "Ghlodd"
 races__lunatri    = "Lunatri"
@@ -128,8 +129,19 @@ What this race gains from being very fluid however, it loses on mastery. Human b
 Despite those shortcomings, their assimilation skills let them be very expansive kind, filling most of places in Baedoor universe.
 
 Jitadians are skilled technicians and sailors, known for being forefront of tech advancements in oldest times. They are also great gunsmiths, creating quality firearms, several of which are considered classic equipment for various armies.
-While the country weakened in international significance over Old Era, it is still considered as one of the most influential to this day.
-Jitadians tend to invest heavily in economy, which makes Jitado one of the most prosperous places basically since beginning of times, being resilient even in times of crisis.
+Whole gunsmithing industry is considered as jitadians advancement, with separate path from ghloddish tech that also introduced firearms, but built on very different technology.
+
+While Jitado country weakened in international significance over Old Era, it is still considered as one of the most influential to this day.
+Jitadians tend to invest heavily in economy, which makes Jitado one of the most prosperous places since beginning of times, being resilient even in times of crisis.
+'''
+races__mesinpean_descr = '''
+Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
+What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
+Despite those shortcomings, their assimilation skills let them be very expansive kind, filling most of places in Baedoor universe.
+
+Mesinpeans are one of the older human inhabitants, living in one of the most diverse environment of Mes Inpea island. Their country was considered as one of the most powerful at the time of Pre Era, competing with Ghloddish Empire in significance.
+While mesinpeans do not possess any unique traits when it comes to military or magic, they are excellent workers, and as such they are talented to many craftmanships, exceeding others.
+Mesinpean culture was also very influential in terms of building for many civilisations at the time, emphasising Mes Inpea's power, unlike Ghloddish Empire, entirely on cultural field.
 '''
 races__ormath_descr = '''
 Ormath race is quite odd race of short, grayskinned beings living in tribes on Arennan desert. They are heavily structured in their hierarchical societies built around Elders and most importantly, Shaman being the guide of whole tribe.
