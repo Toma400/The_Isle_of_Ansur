@@ -16,6 +16,9 @@ classes__undefined     = "Undefined"
 classes__swordsman     = "Swordsman"
 classes__gunslinger    = "Gunslinger"
 classes__sharpshooter  = "Sharpshooter"
+classes__archer        = "Archer"
+classes__rogue         = "Rogue"
+classes__bard          = "Bard"
 classes__ormath_shaman = "Ormath Shaman"
 
 gender__male       = "Man"
@@ -249,6 +252,18 @@ Gunslingers are knowledgeable fighters using firearms as their main weapon of ch
 '''
 classes__sharpshooter_descr = '''
 Sharpshooters are masters of distances, knowing how to hit targets from unbelievable distances, having their faithful rifle near them.
+'''
+classes__archer_descr = '''
+Archer knows well how to handle bows and utilise them to their maximum capabilities. It is also trained in case anything goes wrong, knowing how to use knives in critical situation.
+'''
+classes__rogue_descr = '''
+Rogues are knowledgeable both in thievery and silent murders, making them pretty powerful, diverse group to fill any faction needing services done quietly.
+'''
+classes__assassin_descr = '''
+Assassins are army of shadows, discussing politics with rulers at day, murdering them at night. Masters of deadly weapons, on both ranged and close range.
+'''
+classes__bard_descr = '''
+Bard loves singing and playing music in taverns, but it can also get some money in less official ways, in case something goes south in artistic career.
 '''
 classes__ormath_shaman_descr = '''
 Ormath shaman is unique class only available for ormaths. It comes with ability to perform ormath magic, as ormath shamans are the only ones that are experienced with performing it extensively.

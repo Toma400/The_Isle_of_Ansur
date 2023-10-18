@@ -1,0 +1,18 @@
+{
+    "key": "classes__rogue",
+    "skills": {
+        "sneaking":      2,
+        "lockpicking":   2,
+        "pickpocketing": 1
+    },
+    "skills_major": [
+        "sneaking",
+        "lockpicking",
+        "pickpocketing",
+        "traps_spotting"
+    ],
+    "skills_minor": [
+        "shortswords",
+        "survival"
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "key": "classes__bard",
+    "skills": {
+        "musicality": 2,
+        "persuasion": 2,
+        "sneaking":   1
+    },
+    "skills_major": [
+        "musicality",
+        "persuasion",
+        "sneaking"
+    ],
+    "skills_minor": [
+        "shortswords",
+        "pickpocketing",
+        "survival"
+    ]
+}

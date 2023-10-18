@@ -1,0 +1,19 @@
+{
+    "key": "classes__archer",
+    "skills": {
+        "archery":      2,
+        "aim":          2,
+        "light_armour": 1
+    },
+    "skills_major": [
+        "archery",
+        "aim",
+        "light_armour"
+    ],
+    "skills_minor": [
+        "shortswords",
+        "sneaking",
+        "crossbows",
+        "blocking"
+    ]
+}

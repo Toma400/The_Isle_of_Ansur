@@ -1,0 +1,22 @@
+{
+    "key": "classes__assassin",
+    "skills": {
+        "sneaking":     2,
+        "shortswords":  2,
+        "persuasion":   1
+    },
+    "skills_major": [
+        "sneaking",
+        "shortswords",
+        "throwing"
+    ],
+    "skills_minor": [
+        "traps_spotting",
+        "traps_designing",
+        "alchemy",
+        "persuasion"
+    ],
+    "perk": {
+        "assassins_hit": 100
+    }
+}

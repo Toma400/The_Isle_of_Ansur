@@ -13,3 +13,7 @@ connection_bond:
 diamond_soul: # no tech/mgck penalty
   type: "boolean"
   key:  ""
+
+assassins_hit:
+  type: "boolean"
+  key:  ""
