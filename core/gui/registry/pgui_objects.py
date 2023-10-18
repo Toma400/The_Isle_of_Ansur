@@ -51,6 +51,7 @@ class PGUI_Helper:
         # ---
         self.load__saves     = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
         self.load__descr     = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(50), toPxY(45)), (toPxX(40), toPxY(30))), manager=manager)
+        self.char__ti_name.set_forbidden_characters("forbidden_file_path")
         self.hide_elements()
 
     def get_element(self, element: str):
