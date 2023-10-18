@@ -152,4 +152,8 @@ gen__disabled              = "Disabled"
 gen__proportional          = "Proportional"
 gen__sized                 = "Sized"
 
+pack__themes               = "Themepack"
+pack__worlds               = "Worldpack"
+pack__stats                = "Statpack"
+
 system__text_load_fail     = "Text failed to load"
