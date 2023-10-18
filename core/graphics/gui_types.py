@@ -331,10 +331,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             #==================================================
             match guitype[1]:
                 case "gender":
-                    dyn_screen.journey.stage = 0
+                    if dyn_screen.journey.stage != 0:
+                        dyn_screen.journey.stage = 0
+                        dyn_screen.put_pgui("char__lb_gender")
+                        dyn_screen.put_pgui("char__tb_gender")
 
-                    dyn_screen.put_pgui("char__lb_gender")
-                    dyn_screen.put_pgui("char__tb_gender")
                     gender_choice = dyn_screen.get_pgui_choice("char__lb_gender")
                     if gender_choice is not None:
                         dyn_screen.journey.setInit("gender", gender_choice)
@@ -343,10 +344,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stages[0] = False
 
                 case "race":
-                    dyn_screen.journey.stage = 1
+                    if dyn_screen.journey.stage != 1:
+                        dyn_screen.journey.stage = 1
+                        dyn_screen.put_pgui("char__lb_race")
+                        dyn_screen.put_pgui("char__tb_race")
 
-                    dyn_screen.put_pgui("char__lb_race")
-                    dyn_screen.put_pgui("char__tb_race")
                     race_choice = dyn_screen.get_pgui_choice("char__lb_race")
                     if race_choice is not None:
                         if dyn_screen.journey.inidata["race"] != race_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
@@ -359,10 +361,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stages[1] = False
 
                 case "class":
-                    dyn_screen.journey.stage = 2
+                    if dyn_screen.journey.stage != 2:
+                        dyn_screen.journey.stage = 2
+                        dyn_screen.put_pgui("char__lb_class")
+                        dyn_screen.put_pgui("char__tb_class")
 
-                    dyn_screen.put_pgui("char__lb_class")
-                    dyn_screen.put_pgui("char__tb_class")
                     class_choice = dyn_screen.get_pgui_choice("char__lb_class")
                     if class_choice is not None:
                         if dyn_screen.journey.inidata["class"] != class_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
@@ -373,11 +376,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stages[2] = False
 
                 case "name_avatar":
-                    dyn_screen.journey.stage = 3
+                    if dyn_screen.journey.stage != 3:
+                        dyn_screen.journey.stage = 3
+                        dyn_screen.put_pgui("char__ti_name")
+                        dyn_screen.put_pgui("char__lb_name")
+
                     saves = listSaves()
 
-                    dyn_screen.put_pgui("char__ti_name")
-                    dyn_screen.put_pgui("char__lb_name")
                     name_choice = dyn_screen.get_pgui_choice("char__ti_name")
                     name_pick   = dyn_screen.get_pgui_choice("char__lb_name")
                     if name_pick is not None:
@@ -396,11 +401,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stage = 4
                         dyn_screen.set_pgui_element("char__lb_attrs",  getAttributesTupleAdjusted(dyn_screen.journey.inidata["class"], dyn_screen.journey.inidata["race"]))
                         dyn_screen.set_pgui_element("char__lb_skills", getSkillsTupleAdjusted    (dyn_screen.journey.inidata["class"], dyn_screen.journey.inidata["race"], manual_excl=True))
+                        dyn_screen.put_pgui("char__lb_attrs")
+                        dyn_screen.put_pgui("char__lb_skills")
+                        dyn_screen.put_pgui("char__tb_attrs")
+                        dyn_screen.put_pgui("char__tb_skills")
 
-                    dyn_screen.put_pgui("char__lb_attrs")
-                    dyn_screen.put_pgui("char__lb_skills")
-                    dyn_screen.put_pgui("char__tb_attrs")
-                    dyn_screen.put_pgui("char__tb_skills")
                     attr_choice  = dyn_screen.get_pgui_choice("char__lb_attrs")
                     skill_choice = dyn_screen.get_pgui_choice("char__lb_skills")
                     if attr_choice is not None:
@@ -417,10 +422,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stages[4] = False
 
                 case "religion":
-                    dyn_screen.journey.stage = 5
+                    if dyn_screen.journey.stage != 5:
+                        dyn_screen.journey.stage = 5
+                        dyn_screen.put_pgui("char__lb_rel")
+                        dyn_screen.put_pgui("char__tb_rel")
 
-                    dyn_screen.put_pgui("char__lb_rel")
-                    dyn_screen.put_pgui("char__tb_rel")
                     rl_choice = dyn_screen.get_pgui_choice("char__lb_rel")
                     if rl_choice is not None:
                         if dyn_screen.journey.inidata["religion"] != rl_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
@@ -431,12 +437,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stages[5] = False
 
                 case "origin":
-                    dyn_screen.journey.stage = 6
+                    if dyn_screen.journey.stage != 6:
+                        dyn_screen.journey.stage = 6
+                        dyn_screen.put_pgui("char__lb_orig")
+                        dyn_screen.put_pgui("char__tb_orig")
+                        dyn_screen.put_pgui("char__ti_hist")
+                        dyn_screen.put_pgui("char__tb_hist")
 
-                    dyn_screen.put_pgui("char__lb_orig")
-                    dyn_screen.put_pgui("char__tb_orig")
-                    dyn_screen.put_pgui("char__ti_hist")
-                    dyn_screen.put_pgui("char__tb_hist")
                     orig_choice = dyn_screen.get_pgui_choice("char__lb_orig")
                     history_txt = dyn_screen.get_pgui_choice("char__ti_hist")
                     if history_txt is not None:
@@ -455,12 +462,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     if dyn_screen.journey.stage != 7:
                         dyn_screen.journey.stage     = 7
                         dyn_screen.journey.stages[7] = True
+                        dyn_screen.put_pgui("char__tb_pdth")
 
                     match dyn_screen.journey.settings["permadeath"]:
                         case True: pdeath_col = fCol.ENABLED.value
                         case _:    pdeath_col = fCol.DISABLED.value
                     pdeath = put_text(screen, text=langstring("ccrt__sett_hardcore"), font_cat="menu", size=30, pos_x=30, pos_y=10, colour=pdeath_col)
-                    dyn_screen.put_pgui("char__tb_pdth")
                     if mouseColliderPx(pdeath[0], pdeath[1], pdeath[2], pdeath[3]):
                         if mouseRec(pg_events):
                             dyn_screen.journey.settings["permadeath"] = not dyn_screen.journey.settings["permadeath"]
@@ -468,21 +475,20 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 case "summary":
                     if dyn_screen.journey.stage != 8:
                         dyn_screen.journey.stage = 8
-
-                    put_text(screen, text=langstring("ccrt__end_name"),                                  font_cat="menu", size=30, pos_x=40, pos_y=10, colour=fCol.ENABLED.value)
-                    put_text(screen, text=dyn_screen.journey.inidata["name"],                            font_cat="menu", size=30, pos_x=50, pos_y=10, colour=fCol.DISABLED.value)
-                    put_text(screen, text=langstring("ccrt__end_race"),                                  font_cat="menu", size=30, pos_x=40, pos_y=18, colour=fCol.ENABLED.value)
-                    put_text(screen, text=getRace(dyn_screen.journey.inidata["race"]).langstr(),         font_cat="menu", size=30, pos_x=50, pos_y=18, colour=fCol.DISABLED.value)
-                    put_text(screen, text=langstring("ccrt__end_class"),                                 font_cat="menu", size=30, pos_x=40, pos_y=26, colour=fCol.ENABLED.value)
-                    put_text(screen, text=getClass(dyn_screen.journey.inidata["class"]).langstr(),       font_cat="menu", size=30, pos_x=50, pos_y=26, colour=fCol.DISABLED.value)
-                    put_text(screen, text=langstring("ccrt__end_religion"),                              font_cat="menu", size=30, pos_x=40, pos_y=34, colour=fCol.ENABLED.value)
-                    put_text(screen, text=getReligion(dyn_screen.journey.inidata["religion"]).langstr(), font_cat="menu", size=30, pos_x=50, pos_y=34, colour=fCol.DISABLED.value)
-                    put_text(screen, text=langstring("ccrt__end_origin"),                                font_cat="menu", size=30, pos_x=40, pos_y=42, colour=fCol.ENABLED.value)
-                    put_text(screen, text=getOrigin(dyn_screen.journey.inidata["origin"]).langstr(),     font_cat="menu", size=30, pos_x=50, pos_y=42, colour=fCol.DISABLED.value)
+                        put_text(screen, text=langstring("ccrt__end_name"),                                  font_cat="menu", size=30, pos_x=40, pos_y=10, colour=fCol.ENABLED.value)
+                        put_text(screen, text=dyn_screen.journey.inidata["name"],                            font_cat="menu", size=30, pos_x=50, pos_y=10, colour=fCol.DISABLED.value)
+                        put_text(screen, text=langstring("ccrt__end_race"),                                  font_cat="menu", size=30, pos_x=40, pos_y=18, colour=fCol.ENABLED.value)
+                        put_text(screen, text=getRace(dyn_screen.journey.inidata["race"]).langstr(),         font_cat="menu", size=30, pos_x=50, pos_y=18, colour=fCol.DISABLED.value)
+                        put_text(screen, text=langstring("ccrt__end_class"),                                 font_cat="menu", size=30, pos_x=40, pos_y=26, colour=fCol.ENABLED.value)
+                        put_text(screen, text=getClass(dyn_screen.journey.inidata["class"]).langstr(),       font_cat="menu", size=30, pos_x=50, pos_y=26, colour=fCol.DISABLED.value)
+                        put_text(screen, text=langstring("ccrt__end_religion"),                              font_cat="menu", size=30, pos_x=40, pos_y=34, colour=fCol.ENABLED.value)
+                        put_text(screen, text=getReligion(dyn_screen.journey.inidata["religion"]).langstr(), font_cat="menu", size=30, pos_x=50, pos_y=34, colour=fCol.DISABLED.value)
+                        put_text(screen, text=langstring("ccrt__end_origin"),                                font_cat="menu", size=30, pos_x=40, pos_y=42, colour=fCol.ENABLED.value)
+                        put_text(screen, text=getOrigin(dyn_screen.journey.inidata["origin"]).langstr(),     font_cat="menu", size=30, pos_x=50, pos_y=42, colour=fCol.DISABLED.value)
+                        dyn_screen.put_pgui("char__temp_warn")
 
                     # save button
                     sv_bt = put_text(screen, text=langstring("ccrt__end_save"), font_cat="menu", size=30, pos_x=58, pos_y=65, colour=fCol.ENABLED.value)
-                    dyn_screen.put_pgui("char__temp_warn")
 
                     # set variable later on and make new render when hovered && ifs for getting around
                     if mouseColliderPx(sv_bt[0], sv_bt[1], sv_bt[2], sv_bt[3]):
