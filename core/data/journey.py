@@ -110,6 +110,7 @@ class Journey:
         os.makedirs(os.path.dirname(out), exist_ok=True)
         with open(out, "w+") as f:
             f.write(ret)
+            f.flush()
 
     #=================================================================================================
     # - TODO -

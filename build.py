@@ -9,7 +9,7 @@ import sys; sys.pycache_prefix = "_temp/cache"
 import PyInstaller.__main__
 import PyInstaller
 import os; fpath = os.path.dirname(os.path.abspath("build.py"))
-from core.file_system.repo_manag import file_lister
+from core.file_system.repo_manag import file_lister, dir_lister
 from distutils.dir_util import copy_tree
 import stat, shutil, traceback
 #-----------------------------------------------------------
@@ -75,8 +75,29 @@ def file_deleting(delete_list):
             shutil.rmtree(i, onerror=on_rm_error)
         except FileNotFoundError: pass
 
+    # removes logs
     for l in file_lister(f"{DefaultRun.full_export_path}core/logs/"):
         os.remove(f"{DefaultRun.full_export_path}core/logs/{l}")
+    # removes saves
+    for s in file_lister(f"{DefaultRun.full_export_path}saves/"):
+        os.remove(f"{DefaultRun.full_export_path}saves/{s}")
+    # removes scripts that are not vanilla
+    for scr in file_lister(f"{DefaultRun.full_export_path}scripts/"):
+        if scr != "example_script.py":
+            os.remove(f"{DefaultRun.full_export_path}scripts/{scr}")
+    # removes mods that are not vanilla:
+    # statpacks
+    for stp in dir_lister(f"{DefaultRun.full_export_path}stats/"):
+        if stp != "ansur":
+            os.remove(f"{DefaultRun.full_export_path}stats/{stp}")
+    for stp in file_lister(f"{DefaultRun.full_export_path}stats/"):
+        os.remove(f"{DefaultRun.full_export_path}stats/{stp}")
+    # worldpacks
+    for wdp in dir_lister(f"{DefaultRun.full_export_path}worlds/"):
+        if wdp != "ansur":
+            os.remove(f"{DefaultRun.full_export_path}worlds/{wdp}")
+    for wdp in file_lister(f"{DefaultRun.full_export_path}worlds/"):
+        os.remove(f"{DefaultRun.full_export_path}worlds/{wdp}")
 
 # main function for running builder
 def forge():
