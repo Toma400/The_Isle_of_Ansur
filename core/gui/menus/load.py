@@ -9,7 +9,7 @@ from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr
 from core.graphics.text_manag import put_text
 from core.gui.manag.langstr import langstring
 from core.file_system.parsers import loadTOML
-from logging import log, ERROR, DEBUG
+from logging import log, ERROR
 
 def loadDescr(save: str) -> str:
     ret = ""

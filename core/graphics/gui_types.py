@@ -64,6 +64,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=30, align_x="center", pos_y=34, colour="#7C613B")
                     if mouseRec(pg_events):
                         guitype[0] = switch_gscr(dyn_screen, screen, "load")
+                        dyn_screen.set_pgui_element("load__saves", listSaves())
 
             elif mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
                 #put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
