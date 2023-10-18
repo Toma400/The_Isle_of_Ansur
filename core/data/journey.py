@@ -20,10 +20,13 @@ class Journey:
         self.inidata  : dict        = {k: "" for k in self.keys_saved} # dict held only during initial creation (used for -self.init-)
         self.settings : dict        = {"permadeath": False}            # dict holding default game settings
         # PATHS
-        self.buffdir  : str = f"saves/{self.name}/buffer"    # buffer save
-        self.savedir  : str = f"saves/{self.name}/adventure" # adventure save (manual)
-        self.cycledir : str = f"saves/{self.name}/cycle"     # cyclic save (autosave) -- WIP
-        self.arenadir : str = f"saves/{self.name}/arena"     # arena save (multiplayer)
+
+    def nameSet(self):
+        if self.name is not None:
+            self.buffdir  : str = f"saves/{self.name}/buffer"    # buffer save
+            self.savedir  : str = f"saves/{self.name}/adventure" # adventure save (manual)
+            self.cycledir : str = f"saves/{self.name}/cycle"     # cyclic save (autosave) -- WIP
+            self.arenadir : str = f"saves/{self.name}/arena"     # arena save (multiplayer)
 
     #=================================================================================================
     # - COMMON PROCEDURES -
@@ -83,26 +86,29 @@ class Journey:
         # - ! This way no migration software will be required, or if it will be, it should work
         #   only once or so
         self.name = self.inidata["name"]
+        self.nameSet()
         self.validateInit() # checks if all keys are in -inidata-
         ret = "" # initial string : followed by next lines appended below:
-        ret += f"name     = {self.inidata['name']}"     + "\n"
-        ret += f"gender   = {self.inidata['gender']}"   + "\n"
-        ret += f"race     = {self.inidata['race']}"     + "\n"
-        ret += f"class    = {self.inidata['class']}"    + "\n"
-        ret += f"religion = {self.inidata['religion']}" + "\n"
-        ret += f"origin   = {self.inidata['origin']}"   + "\n"
-        ret += f"attr     = {self.inidata['attr']}"     + "\n" #
-        ret += f"skill    = {self.inidata['skill']}"    + "\n" #
-        ret += f"history  = \'\'\'"                     + "\n"
-        ret += f"{self.inidata['history']}"             + "\n"
-        ret += f"\'\'\'"                                + "\n"
+        ret += f"name     = \"{self.inidata['name']}\""     + "\n"
+        ret += f"gender   = \"{self.inidata['gender']}\""   + "\n"
+        ret += f"race     = \"{self.inidata['race']}\""     + "\n"
+        ret += f"class    = \"{self.inidata['class']}\""    + "\n"
+        ret += f"religion = \"{self.inidata['religion']}\"" + "\n"
+        ret += f"origin   = \"{self.inidata['origin']}\""   + "\n"
+        ret += f"attr     = \"{self.inidata['attr']}\""     + "\n" #
+        ret += f"skill    = \"{self.inidata['skill']}\""    + "\n" #
+        ret += f"history  = \'\'\'"                         + "\n"
+        ret += f"{self.inidata['history']}"                 + "\n"
+        ret += f"\'\'\'"                                    + "\n"
 
         # ret += f"save_ver = {sysref('release_status')}:{sysref('release_version')}" + "\n"
         # ^ this will be useful once proper save is used, now we can just simply check 'is presave.toml existing'
-        ret += f"mods     = {getPacks()}"               + "\n"
+        ret += f"mods     = {str(getPacks()).replace(': ', ' = ')}" + "\n"
 
         # level, xp and all that should be put when TODO is done, alongside banks, chests and inventory
-        with open(f"{self.buffdir}/presave.toml", "r+") as f:
+        out = f"{self.buffdir}/presave.toml"
+        os.makedirs(os.path.dirname(out), exist_ok=True)
+        with open(out, "w+") as f:
             f.write(ret)
 
     #=================================================================================================

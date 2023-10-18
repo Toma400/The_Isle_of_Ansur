@@ -487,8 +487,10 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     if mouseColliderPx(sv_bt[0], sv_bt[1], sv_bt[2], sv_bt[3]):
                         put_text(screen, text=langstring("ccrt__end_save"), font_cat="menu", size=30, pos_x=58, pos_y=65, colour=fCol.HOVERED.value)
                         if mouseRec(pg_events):
-                            print(dyn_screen.journey.inidata)
-                            # pass
+                            dyn_screen.journey.init()
+                            guitype[0] = switch_gscr(dyn_screen, screen, "menu")
+                            guitype[1] = None
+                            dyn_screen.reset_pgui(True)
 
             # ==================================================
             # hovering & clicking events
