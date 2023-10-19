@@ -2,6 +2,8 @@
 __pycache__
 system/cache/pyinstaller
 
+docsv
+gui
 saves/
 core/logs
 _temp

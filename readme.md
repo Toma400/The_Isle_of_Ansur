@@ -40,7 +40,7 @@ such early state of the game!
 **Mods Repository:** [**GitHub page**](https://github.com/Toma400/Isle_of_Ansur_Mods_Repository/blob/library/Modlist.md)
 
 **Docs:**
-- Internal ones: [**Jump to files!**](docs/introduction.md)
+- Internal ones: [**Jump to file!**](modding_guide.pdf)
 - URL (outdated): [**GitHub**](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Main-Mod-Types)
 
 # Contribution

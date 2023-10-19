@@ -55,7 +55,7 @@ class DefaultRun:
         full_export_path + "test.py",
         full_export_path + "modding_guide.odt",
         # folders not used anymore
-        full_export_path + "docs",
+        full_export_path + "docsv",
         full_export_path + "gui",
         # caches
         full_export_path + "_temp",
