@@ -100,4 +100,5 @@ class Screen:
 
     def clear_pgui(self):
         """Flushes out all visibility of elements currently shown (used by 'switch_gscr' func)"""
+        self.pobjects.clear_values()
         self.pobjects.hide_elements()

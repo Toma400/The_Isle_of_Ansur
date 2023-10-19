@@ -94,6 +94,21 @@ class PGUI_Helper:
             case UITextBox.__module__:       self.get_element(element).set_text(overwrite)
             case UITextEntryLine.__module__: self.get_element(element).set_text(overwrite)
 
+    def clear_values(self):
+        """Clears values of elements that are meant to be empty at the initial phase (look at __init__)"""
+        UISelectionListList = ["char__lb_name", "char__lb_attrs", "char__lb_skills"]
+        UITextBoxList       = ["char__tb_race", "char__tb_class", "char__tb_attrs", "char__tb_skills", "char__tb_rel", "char__tb_orig", "char__tb_hist", "load__descr"]
+        UITextEntryLineList = ["char__ti_hist", "char__ti_name"]
+
+        for el in self.get_elements():
+            match self.get_element(el).__module__:
+                case UISelectionList.__module__:
+                    if el in UISelectionListList: self.get_element(el).set_item_list([])
+                case UITextBox.__module__:
+                    if el in UITextBoxList:       self.get_element(el).set_text("")
+                case UITextEntryLine.__module__:
+                    if el in UITextEntryLineList: self.get_element(el).set_text("")
+
     def reset_selection_list_all(self):
         """Resets all elements of the GUI, putting them in their default state"""
         for pobj in self.get_elements():
