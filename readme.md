@@ -3,16 +3,16 @@
 # The Isle of Ansur
 
 ---
+The Isle of Ansur is text-based RPG game, being remaster of my old terminal game taking place
+in my own steampunk/fantasy universe, Baedoor.
 
-The Isle of Ansur is text-based RPG game, founded on Baedoor universe.
-
-Despite its oldschool character, The Isle of Ansur tries to have expansive gameplay 
-mechanics and support modding in modern approach.
+Unlike original, it is made with graphical interface, trying to be accessible and much
+more advanced technologically.  
+Despite its oldschool character, The Isle of Ansur tries to support modding in modern approach.
 
 # Current Progress Status
 
 ---
-
 The Isle of Ansur is currently in:
 
 > **pre-alpha** 
@@ -24,7 +24,6 @@ such early state of the game!
 # Links
 
 ---
-
 [![Discord](https://img.shields.io/badge/Discord-Join%20our%20server!-7289da.svg?longCache=true&style=for-the-badge)](https://discord.gg/GbTw9KqnrE)
 
 **Download early builds:** https://github.com/Toma400/The_Isle_of_Ansur/releases
@@ -36,7 +35,6 @@ such early state of the game!
 # Modding
 
 ---
-
 **Mods Repository:** [**GitHub page**](https://github.com/Toma400/Isle_of_Ansur_Mods_Repository/blob/library/Modlist.md)
 
 **Docs:**
@@ -46,7 +44,6 @@ such early state of the game!
 # Contribution
 
 ---
-
 Currently contributions are closed. You can reach to developer by pull request or contacting
 directly, but it will most likely be rejected.  
 For anyone who would like to contribute anyway, here are principles that should be followed:
@@ -57,5 +54,7 @@ For anyone who would like to contribute anyway, here are principles that should 
 # Credits
 
 ---
+**Lead Developer:** Toma400  
 
-**Lead Developer:** Toma400
+---
+All resources used are under [Baedoor License](license) unless stated in [credits](credits.md).
