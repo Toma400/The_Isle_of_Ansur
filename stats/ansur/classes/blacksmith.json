@@ -1,0 +1,16 @@
+{
+    "key": "classes__blacksmith",
+    "skills": {
+        "smithing":       3,
+        "ore_processing": 2
+    },
+    "skills_major": [
+        "smithing",
+        "trade",
+        "ore_processing"
+    ],
+    "skills_minor": [
+        "shortswords",
+        "traps_designing"
+    ]
+}

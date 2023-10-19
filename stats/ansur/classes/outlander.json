@@ -1,0 +1,19 @@
+{
+    "key": "classes__outlander",
+    "skills": {
+        "survival":        3,
+        "cooking":         1,
+        "wound_treatment": 1
+    },
+    "skills_major": [
+        "survival",
+        "cooking",
+        "wound_treatment",
+        "hunting"
+    ],
+    "skills_minor": [
+        "shortswords",
+        "herbalism",
+        "alchemy"
+    ]
+}
