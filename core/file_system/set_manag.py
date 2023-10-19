@@ -29,14 +29,14 @@ def set_change(key, value=None):
 
     # list iterations
     else:
-        if value is None: json_change("settings.json", key, list_iter(set_lists(key), setval))
+        if value is None:  json_change("settings.json", key, list_iter(set_lists(key), setval))
         if value == "rev": json_change("settings.json", key, list_iter(set_lists(key), setval, True))
         log.debug(f"Switching settings for: {key} to {list_iter(set_lists(key), setval)}.")
 
 # lists to iterate over by list_iter
 def set_lists(key):
     match key:
-        case "language": return ["english", "polish"]
+        case "language":     return ["english"] # , "polish" - outed out for a moment
         case "listbox_mode": return ["proportional", "sized"]
 
 # returns default value of specific settings
