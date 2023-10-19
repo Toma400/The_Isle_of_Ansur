@@ -1,0 +1,21 @@
+{
+    "key": "classes__headhunter",
+    "races_exclusive": ["ansur:saphtri"],
+    "skills": {
+        "archery":     4,
+        "aim":         2,
+        "persuasion": -1
+    },
+    "skills_major": [
+        "archery",
+        "heavy_firearms",
+        "aim",
+        "light_armour"
+    ],
+    "skills_minor": [
+        "wound_treatment",
+        "horse_riding",
+        "traps_designing",
+        "traps_spotting"
+    ]
+}

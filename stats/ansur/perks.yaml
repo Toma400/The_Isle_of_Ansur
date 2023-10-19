@@ -17,3 +17,7 @@ diamond_soul: # no tech/mgck penalty
 assassins_hit:
   type: "boolean"
   key:  ""
+
+trader_sight:
+  type: "boolean"
+  key:  ""

@@ -1,0 +1,25 @@
+{
+    "key": "classes__priest",
+    "skills": {
+        "spellcasting":    3,
+        "unsealing":       1,
+        "wound_treatment": 1
+    },
+    "skills_major": [
+        "spellcasting",
+        "unsealing",
+        "wound_treatment"
+    ],
+    "skills_minor": [
+        "persuasion",
+        "scrolls_writing",
+        "herbalism",
+        "alchemy"
+    ],
+    "magic": {
+        "kind": {
+            "evocation":   2,
+            "restoration": 5
+        }
+    }
+}

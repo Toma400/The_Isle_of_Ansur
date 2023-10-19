@@ -1,0 +1,22 @@
+{
+    "key": "classes__illusionist",
+    "skills": {
+        "spellcasting": 4,
+        "unsealing":    1
+    },
+    "skills_major": [
+        "spellcasting",
+        "unsealing",
+        "scrolls_writing",
+        "mores_casting"
+    ],
+    "skills_minor": [
+        "alchemy"
+    ],
+    "magic": {
+        "kind": {
+            "illusion":       5,
+            "transformation": 2
+        }
+    }
+}
