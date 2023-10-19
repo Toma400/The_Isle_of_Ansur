@@ -262,10 +262,10 @@ Sharpshooters are masters of distances, knowing how to hit targets from unbeliev
 classes__archer_descr = '''
 Archer knows well how to handle bows and utilise them to their maximum capabilities. It is also trained in case anything goes wrong, knowing how to use knives in critical situation.
 '''
-classes__illusionist = '''
+classes__illusionist_descr = '''
 Illusionist is mage trained in wisdom that eye perception can be twisted, and they use it to their benefit for whatever purpose they have.
 '''
-classes__priest = '''
+classes__priest_descr = '''
 Priests are usually religious people who dedicated their lives to serve as healers and those giving help to the poor and weak.
 '''
 classes__rogue_descr = '''
@@ -277,16 +277,16 @@ Assassins are army of shadows, discussing politics with rulers at day, murdering
 classes__bard_descr = '''
 Bard loves singing and playing music in taverns, but it can also get some money in less official ways, in case something goes south in artistic career.
 '''
-classes__merchant = '''
+classes__merchant_descr = '''
 Merchant knows how to bargain a great price and cut costs where it is possible - knowledge of trades are no mystery for them!
 '''
-classes__blacksmith = '''
+classes__blacksmith_descr = '''
 Blacksmiths are great masters of iron and metals, forging tools, weapons and armour with those.
 '''
-classes__outlander = '''
+classes__outlander_descr = '''
 Outlanders are weirdos rejected by society, or by themselves, who seek their own destiny through isolation. This made them pretty great at surviving by themselves in roughest environment.
 '''
-classes__headhunter = '''
+classes__headhunter_descr = '''
 Headhunters are legendary saphtri archers who are known to be extremely effective with taking down their targets. They often worked for the separation of Arennan during Old Era revolt.
 '''
 classes__ormath_shaman_descr = '''

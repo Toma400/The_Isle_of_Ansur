@@ -53,6 +53,8 @@ class DefaultRun:
         full_export_path + ".breakpoints",
         full_export_path + ".gitignore",
         full_export_path + "test.py",
+        full_export_path + "modding_guide.odt",
+        full_export_path + "docs",
         # caches
         full_export_path + "_temp",
         full_export_path + "__pycache__",
@@ -77,27 +79,45 @@ def file_deleting(delete_list):
 
     # removes logs
     for l in file_lister(f"{DefaultRun.full_export_path}core/logs/"):
-        os.remove(f"{DefaultRun.full_export_path}core/logs/{l}")
+        try:
+            shutil.rmtree(f"{DefaultRun.full_export_path}core/logs/{l}", onerror=on_rm_error)
+        except: pass
     # removes saves
     for s in file_lister(f"{DefaultRun.full_export_path}saves/"):
-        os.remove(f"{DefaultRun.full_export_path}saves/{s}")
+        try:
+            shutil.rmtree(f"{DefaultRun.full_export_path}saves/{s}", onerror=on_rm_error)
+        except: pass
     # removes scripts that are not vanilla
     for scr in file_lister(f"{DefaultRun.full_export_path}scripts/"):
         if scr != "example_script.py":
-            os.remove(f"{DefaultRun.full_export_path}scripts/{scr}")
+            try:
+                shutil.rmtree(f"{DefaultRun.full_export_path}scripts/{scr}", onerror=on_rm_error)
+            except: pass
     # removes mods that are not vanilla:
     # statpacks
     for stp in dir_lister(f"{DefaultRun.full_export_path}stats/"):
         if stp != "ansur":
-            os.remove(f"{DefaultRun.full_export_path}stats/{stp}")
+            try:
+                shutil.rmtree(f"{DefaultRun.full_export_path}stats/{stp}", onerror=on_rm_error)
+            except: pass
     for stp in file_lister(f"{DefaultRun.full_export_path}stats/"):
-        os.remove(f"{DefaultRun.full_export_path}stats/{stp}")
+        try:
+            shutil.rmtree(f"{DefaultRun.full_export_path}stats/{stp}", onerror=on_rm_error)
+        except: pass
     # worldpacks
     for wdp in dir_lister(f"{DefaultRun.full_export_path}worlds/"):
         if wdp != "ansur":
-            os.remove(f"{DefaultRun.full_export_path}worlds/{wdp}")
+            try:
+                shutil.rmtree(f"{DefaultRun.full_export_path}worlds/{wdp}", onerror=on_rm_error)
+            except: pass
     for wdp in file_lister(f"{DefaultRun.full_export_path}worlds/"):
-        os.remove(f"{DefaultRun.full_export_path}worlds/{wdp}")
+        try:
+            shutil.rmtree(f"{DefaultRun.full_export_path}worlds/{wdp}", onerror=on_rm_error)
+        except: pass
+    for sv in dir_lister(f"{DefaultRun.full_export_path}saves/"):
+        try:
+            shutil.rmtree(f"{DefaultRun.full_export_path}saves/{sv}", onerror=on_rm_error)
+        except: pass
 
 # main function for running builder
 def forge():

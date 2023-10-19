@@ -507,6 +507,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                     guitype[1] = None
                     dyn_screen.reset_pgui(True)
+                    dyn_screen.journey.stage = None
 
             # elif mouseColliderPx(mn1[0], mn1[1], mn1[2], mn1[3]):
             #     put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=fCol.HOVERED.value)
