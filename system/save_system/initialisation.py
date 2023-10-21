@@ -8,10 +8,9 @@ def directory_call():
 
 def folder_creating(name):
   import os
-  import utils.text_manag as util
   path = f"saves/{name}"
   if os.path.isdir(path) == True:
-    print (util.colour_formatter("yellow", "※ Not able to create player profile, the name is taken. Please use different name instead ※"))
+    print ("※ Not able to create player profile, the name is taken. Please use different name instead ※")
     log.debug("Name is taken.")
     return False
   else:
