@@ -175,12 +175,11 @@ def name_formatter (name):
 # limit amount, prints message and backs to menu
 #--------------------------------------------------------
 def overflow_protector (list_, module):
-  from utils.text_manag import colour_formatter as colour
   import time
   import gui.menu
   import sys
   limit = sys.maxsize / 2
   if len(list_) >= limit:
-    print (colour("red", f"Limit of loaded elements for module: {module} reached! Terminating the game."))
+    print (f"Limit of loaded elements for module: {module} reached! Terminating the game.")
     time.sleep(10)
     gui.menu.start()

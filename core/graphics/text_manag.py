@@ -103,6 +103,16 @@ def text_replacer (text_size, align_x=None, align_y=None, x_pos=0, y_pos=0, x_en
         pass
     return pos_x, pos_y
 
+# Used to split the text to two parts, and if splitter position
+# is set, it re-adds splitting part to the text on this part
+def text_splitter(text, splitter, splitter_pos: int = None):
+    tlist = text.split(splitter)
+    if splitter_pos is None:
+        return tlist
+    else:
+        tlist[splitter_pos] = tlist[splitter_pos] + splitter
+        return tlist
+
 #==========|========================================================
 # LANGKEYS | Main part of langkey
 #==========|========================================================
