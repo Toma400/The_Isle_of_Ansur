@@ -29,6 +29,7 @@ import gui.menu #deprecated terminal version (pre-alpha 1/2)
 #gui.menu.start() #deprecated terminal version (pre-alpha 1/2)
 
 try:
+    # from core.file_system.theme_manag import get_theme; print(get_theme())
     main_circle()
 except Exception:
     log.critical("Main chain stopped. Printing the issue.", exc_info=True)

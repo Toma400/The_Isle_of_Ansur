@@ -1,21 +1,38 @@
 from core.graphics.gh_manag import returnCell, returnCells, revCell, nestCell, rendPut, imgPutRes, iterateCells, NestedImage
 from core.decorators import Callable, HelperMethod, EventListener, RequiresImprovement
 from core.graphics.text_manag import put_text
-from core.utils import scx
+from core.utils import scx, refunc
 from enum import Enum, auto
 from random import randint
 import pygame, logging
 
 class ListBoxPattern:
 
-    def __init__(self, *args):
+    def __init__(self, data):
         """
-        args | Should contain elements which will be nested inside each iteration of listbox segment
-             | Only Nested[Object] form, such as:
-             | - NestedImage
-             | - NestedText
+        data | Data, usually in list form, on which elements will iterate
+
+        Whole process of building pattern is used through .build_element() function
         """
-        self.elements = args
+        self.data           = data
+        self.elements: list = []
+
+    # def build_elements(self, *args):
+    #     for arg in args:
+    #         self.build_element()
+
+    @Callable
+    def build_element(self, element, attr=None):
+        """
+        element | Resource given (Image, Text) with specific relative coordinates
+        attr    | Attribute from self.data to be used within element (usually string)
+        """
+        attrval = self.data.__getattribute__(attr)
+        out     = None #element with appended 'attrval', if attrval exists/has appendable value (name of image, langstring for text)
+                       # <- there should be a way to differ those tho, so enums may come in handy after all (possibly with some predefined handlers for position (?)
+                       #    but not for contents, which are managed by attrval / attr arguments
+
+        self.elements.append(out)
 
 class ListBox:
 
@@ -63,8 +80,8 @@ class ListBox:
         #self.elements   = self.build_elements()
 
         # Decorations
-        self.bgdeco     = None                                                   #| Background listbox art
-        self.sgdeco     = None                                                   #| Segment art
+        self.bgdeco     = None                                                   #| Image Object, for background listbox art
+        self.sgdeco     = []                                                     #| Image Object (List), for segment art
 
         # States
         self.selected   = None                                                   #| Stores active segment (None if is not active)
@@ -75,23 +92,51 @@ class ListBox:
         #pygame.draw.rect(screen, (0, 50, 10), self.mnrectobj_)
 
         if self.bgdeco is not None: self.bgdeco.put(screen, "lb_")
-        if self.sgdeco is not None: self.sgdeco.put(screen, "lb_")
 
         rem = 0
         for sg in self.segments:
             col = (randint(0, 255), randint(0, 255), randint(0, 255))
             pygame.draw.rect(screen, col, sg)
             rem += self.sgspacing
+
+        if self.sgdeco is not []:
+            for sg in self.sgdeco: sg.put(screen, "lb_")
         # for el in self.elements:
         #     el.put(screen, variation="lb_")
 
+        # bgtile/sgtile? (equivalent to bgdeco/sgdeco, but would require making a tile by Python)
+
     @Callable
     def decor(self, bgdeco: NestedImage = None, sgdeco: NestedImage = None):
-        """Used to customise elements of the listbox, such as graphical representation of each element"""
+        """Used to customise elements of the listbox, such as graphical representation of each element. Recommended pos: (0, 0, 100, 100)"""
         if bgdeco is not None:
             self.bgdeco = bgdeco.nest((self.raw_mnrect[0], self.raw_mnrect[1],
                                        self.raw_mnrect[2], self.raw_mnrect[3])).sup()
-        if sgdeco is not None: pass
+        if sgdeco is not None:
+            ax           = ("x", "y")
+            raw_segments = []
+
+            for sg in self.segments:
+                raw_segment = []
+
+                for i, sgv in enumerate(sg):
+                    raw_segment.append(revCell(sgv,
+                                               ax[i % 2]))
+                    print (f"sgv: {sgv}, index: {i}, ax: {ax[i % 2]}")
+                raw_segments.append(raw_segment)
+
+            for sg in raw_segments:
+                self.sgdeco.append(NestedImage(sgdeco.temppath,
+                                               sgdeco.tempfile,
+                                               sgdeco.temppos).nest((sg[0],       sg[1],
+                                                                     sg[0]+sg[2], sg[1]+sg[3])).sup())
+                # self.sgdeco.append(NestedImage(sgdeco.temppath,
+                #                                sgdeco.tempfile,
+                #                                (sg[0],       sg[1],
+                #                                 sg[0]+sg[2], sg[1]+sg[3])).nest((sgdeco.temppos[0], sgdeco.temppos[1],
+                #                                                                  sgdeco.temppos[2], sgdeco.temppos[3])).sup())
+                print (f"sg raw:   {self.segments[raw_segments.index(sg)]}")
+                print (f"sg final: {sg}")
 
     def collider(self, screen):
         """Returns index of element currently collided with mouse"""
