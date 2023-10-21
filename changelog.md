@@ -7,10 +7,17 @@
 
 ---
 ## Pre-alpha builds
+- [Pre-alpha 3b](#centerpre-alpha-3bcenter)
 - [Pre-alpha 3](#centerpre-alpha-3center)
 - [Pre-alpha 2](#centerpre-alpha-2center)
 - [Pre-alpha 1](#centerpre-alpha-1center)
 
+> ---
+> ###<center>Pre-alpha 3b</center>
+> - Technicals
+>   - System-accepted languages are now referenced from `system_ref` which makes them
+>     less hardcoded and even editable through scripts/mods
+> 
 > ---
 > ###<center>Pre-alpha 3</center>
 >

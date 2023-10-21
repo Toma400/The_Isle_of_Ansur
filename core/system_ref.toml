@@ -2,7 +2,7 @@
 # VERSIONING SHOULD MATCH THE EXACT STATUS OF THE VERSION.
 name    = "The Isle of Ansur"
 status  = "pre alpha"
-version = "3"
+version = "3b"
 
 # RELEASE
 # RELEASE VERSIONING. SHOULD MATCH LATEST PUBLISHED VERSION, NOT DEVELOPED ONE.
@@ -17,4 +17,8 @@ cycle_number = "0"
 save_system = "1.0"
 vanilla_modules = [
     "ansur"
+]
+languages = [
+    "english",
+    "polish"
 ]

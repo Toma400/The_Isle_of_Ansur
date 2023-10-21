@@ -2,11 +2,11 @@
 __pycache__
 system/cache/pyinstaller
 
-docsv
-gui
+docsv/
+gui/
 saves/
-core/logs
-_temp
+core/logs/
+_temp/
 
 modding_guide.odt
 

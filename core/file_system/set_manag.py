@@ -36,7 +36,7 @@ def set_change(key, value=None):
 # lists to iterate over by list_iter
 def set_lists(key):
     match key:
-        case "language":     return ["english"] # , "polish" - outed out for a moment
+        case "language":     return sysref("languages")
         case "listbox_mode": return ["proportional", "sized"]
 
 # returns default value of specific settings
