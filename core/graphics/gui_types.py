@@ -1,4 +1,5 @@
 from core.graphics.text_manag import put_abstext, put_text, Text
+from core.gui.menus.location import locationScreen
 from core.gui.menus.load import loadGame
 from core.gui.manag.langstr import langstring
 from core.file_system.save_manag import listSaves
@@ -68,7 +69,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
             elif mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
                 #put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
-                pass
+                for event in pg_events:
+                    if event.type == pygame.KEYDOWN or event.type == pygame.K_t:
+                        # placeholder data to test
+                        dyn_screen.journey.name     = "Test"
+                        dyn_screen.journey.location = "ansur:tutorial"
+                        guitype[0] = switch_gscr(dyn_screen, screen, "location")
 
             elif mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
                 put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#7C613B")
@@ -89,6 +95,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         #==============================================================================================================
         case "load":
             loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen)
+
+        case "location":
+            if dyn_screen.journey.name is None or dyn_screen.journey.location is None:
+                raise Exception("While entering -locationScreen-, some required player data is not reachable.")
+            else:
+                locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen)
 
         #==============================================================================================================
         case "settings":
