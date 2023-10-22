@@ -14,6 +14,6 @@ other      = "#B0CA60"
 font_size = 1.0   # fallback value (if not specificed precisely later)
 
 [fonts.menu]
-_         = ["ferrum.otf",    "1.0"]
-polish    = ["ferrum.otf",    "1.0"]    # broken
-hungarian = ["verve_hun.otf", "1.0"]
+_         = ["ferrum.otf",          "1.0"]
+polish    = ["ferrum_extended.otf", "1.0"]    # broken
+hungarian = ["verve_hun.otf",       "1.0"]
