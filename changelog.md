@@ -14,6 +14,8 @@
 
 > ---
 > ###<center>Pre-alpha 3b</center>
+> - QoL
+>   - You can now go back to previous option in character creation menu
 > - Technicals
 >   - System-accepted languages are now referenced from `system_ref` which makes them
 >     less hardcoded and even editable through scripts/mods

@@ -69,12 +69,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
             elif mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
                 #put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
-                for event in pg_events:
-                    if event.type == pygame.KEYDOWN or event.type == pygame.K_t:
-                        # placeholder data to test
-                        dyn_screen.journey.name     = "Test"
-                        dyn_screen.journey.location = "ansur:tutorial"
-                        guitype[0] = switch_gscr(dyn_screen, screen, "location")
+                # for event in pg_events:
+                #     if event.type == pygame.KEYDOWN or event.type == pygame.K_t:
+                #         # placeholder data to test
+                #         dyn_screen.journey.name     = "Test"
+                #         dyn_screen.journey.location = "ansur:tutorial"
+                #         guitype[0] = switch_gscr(dyn_screen, screen, "location")
+                pass
 
             elif mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
                 put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#7C613B")
@@ -336,7 +337,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     put_text(screen, text=langstring(f"ccrt__gen_category{nm+2}"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18+(8*nm), colour=fCol.ENABLED.value)
                 # visualisation of which option is currently active
                 if dyn_screen.journey.stage == nm:
-                    put_text(screen, text=langstring(f"ccrt__gen_category{nm+1}"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10+(8*nm), colour=ccrt_col["active"])
+                    if nm >= 1:
+                        put_text(screen, text=langstring(f"ccrt__gen_category{nm}"),   font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=2+(8*nm),  colour=fCol.ENABLED.value) # go back
+                    put_text(    screen, text=langstring(f"ccrt__gen_category{nm+1}"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10+(8*nm), colour=ccrt_col["active"]) # current
 
             # https://github.com/Toma400/The_Isle_of_Ansur/commit/5305aef7e9b3b0cce483a30ade7cbc3f1e006e57 <- old (more manual) code for above ^
 
@@ -521,54 +524,117 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     dyn_screen.reset_pgui(True)
                     dyn_screen.journey.stage = None
 
-            # elif mouseColliderPx(mn1[0], mn1[1], mn1[2], mn1[3]):
-            #     put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=fCol.HOVERED.value)
-            #     if mouseRec(pg_events):
-            #         guitype[1] = switch_gscr(dyn_screen, screen, "gender")
-            #         dyn_screen.reset_pgui()
-
-            elif mouseColliderPx(mn2[0], mn2[1], mn2[2], mn2[3]) and guitype[1] == "gender" and dyn_screen.journey.stages[0] is True:
-                put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.HOVERED.value)
+            elif mouseColliderPx(mn1[0], mn1[1], mn1[2], mn1[3]) and guitype[1] == "race":
+                put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
-                    guitype[1] = switch_gscr(dyn_screen, screen, "race")
+                    dyn_screen.journey.stages[1] = False
+                    guitype[1] = switch_gscr(dyn_screen, screen, "gender")
                     dyn_screen.reset_pgui()
 
-            elif mouseColliderPx(mn3[0], mn3[1], mn3[2], mn3[3]) and guitype[1] == "race" and dyn_screen.journey.stages[1] is True:
-                put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=fCol.HOVERED.value)
-                if mouseRec(pg_events):
-                    guitype[1] = switch_gscr(dyn_screen, screen, "class")
-                    dyn_screen.reset_pgui()
+            elif mouseColliderPx(mn2[0], mn2[1], mn2[2], mn2[3]):
+                # go next
+                if guitype[1] == "gender" and dyn_screen.journey.stages[0] is True:
+                    put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        guitype[1] = switch_gscr(dyn_screen, screen, "race")
+                        dyn_screen.reset_pgui()
+                # go back
+                if guitype[1] == "class":
+                    put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        dyn_screen.journey.stages[2] = False
+                        guitype[1] = switch_gscr(dyn_screen, screen, "race")
+                        dyn_screen.reset_pgui()
 
-            elif mouseColliderPx(mn4[0], mn4[1], mn4[2], mn4[3]) and guitype[1] == "class" and dyn_screen.journey.stages[2] is True:
-                put_text(screen, text=langstring("ccrt__gen_category4"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=34, colour=fCol.HOVERED.value)
-                if mouseRec(pg_events):
-                    guitype[1] = switch_gscr(dyn_screen, screen, "name_avatar")
-                    dyn_screen.reset_pgui()
+            elif mouseColliderPx(mn3[0], mn3[1], mn3[2], mn3[3]):
+                # go next
+                if guitype[1] == "race" and dyn_screen.journey.stages[1] is True:
+                    put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        guitype[1] = switch_gscr(dyn_screen, screen, "class")
+                        dyn_screen.reset_pgui()
+                # go back
+                if guitype[1] == "name_avatar":
+                    put_text(screen, text=langstring("ccrt__gen_category3"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=26, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        dyn_screen.journey.stages[3] = False
+                        guitype[1] = switch_gscr(dyn_screen, screen, "class")
+                        dyn_screen.reset_pgui()
 
-            elif mouseColliderPx(mn5[0], mn5[1], mn5[2], mn5[3]) and guitype[1] == "name_avatar" and dyn_screen.journey.stages[3] is True:
-                put_text(screen, text=langstring("ccrt__gen_category5"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=42, colour=fCol.HOVERED.value)
-                if mouseRec(pg_events):
-                    guitype[1] = switch_gscr(dyn_screen, screen, "point_distribution")
-                    dyn_screen.reset_pgui()
+            elif mouseColliderPx(mn4[0], mn4[1], mn4[2], mn4[3]):
+                # go next
+                if guitype[1] == "class" and dyn_screen.journey.stages[2] is True:
+                    put_text(screen, text=langstring("ccrt__gen_category4"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=34, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        guitype[1] = switch_gscr(dyn_screen, screen, "name_avatar")
+                        dyn_screen.reset_pgui()
+                # go back
+                if guitype[1] == "point_distribution":
+                    put_text(screen, text=langstring("ccrt__gen_category4"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=34, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        dyn_screen.journey.stages[4] = False
+                        guitype[1] = switch_gscr(dyn_screen, screen, "name_avatar")
+                        dyn_screen.reset_pgui()
 
-            elif mouseColliderPx(mn6[0], mn6[1], mn6[2], mn6[3]) and guitype[1] == "point_distribution" and dyn_screen.journey.stages[4] is True:
-                put_text(screen, text=langstring("ccrt__gen_category6"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=50, colour=fCol.HOVERED.value)
-                if mouseRec(pg_events):
-                    guitype[1] = switch_gscr(dyn_screen, screen, "religion")
-                    dyn_screen.reset_pgui()
+            elif mouseColliderPx(mn5[0], mn5[1], mn5[2], mn5[3]):
+                # go next
+                if guitype[1] == "name_avatar" and dyn_screen.journey.stages[3] is True:
+                    put_text(screen, text=langstring("ccrt__gen_category5"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=42, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        guitype[1] = switch_gscr(dyn_screen, screen, "point_distribution")
+                        dyn_screen.reset_pgui()
+                # go back
+                if guitype[1] == "religion":
+                    put_text(screen, text=langstring("ccrt__gen_category5"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=42, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        dyn_screen.journey.stages[5] = False
+                        guitype[1] = switch_gscr(dyn_screen, screen, "point_distribution")
+                        dyn_screen.reset_pgui()
 
-            elif mouseColliderPx(mn7[0], mn7[1], mn7[2], mn7[3]) and guitype[1] == "religion" and dyn_screen.journey.stages[5] is True:
-                put_text(screen, text=langstring("ccrt__gen_category7"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=58, colour=fCol.HOVERED.value)
-                if mouseRec(pg_events):
-                    guitype[1] = switch_gscr(dyn_screen, screen, "origin")
-                    dyn_screen.reset_pgui()
+            elif mouseColliderPx(mn6[0], mn6[1], mn6[2], mn6[3]):
+                # go next
+                if guitype[1] == "point_distribution" and dyn_screen.journey.stages[4] is True:
+                    put_text(screen, text=langstring("ccrt__gen_category6"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=50, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        guitype[1] = switch_gscr(dyn_screen, screen, "religion")
+                        dyn_screen.reset_pgui()
+                # go back
+                if guitype[1] == "origin":
+                    put_text(screen, text=langstring("ccrt__gen_category6"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=50, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        dyn_screen.journey.stages[6] = False
+                        guitype[1] = switch_gscr(dyn_screen, screen, "religion")
+                        dyn_screen.reset_pgui()
 
-            elif mouseColliderPx(mn8[0], mn8[1], mn8[2], mn8[3]) and guitype[1] == "origin" and dyn_screen.journey.stages[6] is True:
-                put_text(screen, text=langstring("ccrt__gen_category8"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=66, colour=fCol.HOVERED.value)
-                if mouseRec(pg_events):
-                    guitype[1] = switch_gscr(dyn_screen, screen, "gameplay_settings")
-                    dyn_screen.reset_pgui()
+            elif mouseColliderPx(mn7[0], mn7[1], mn7[2], mn7[3]):
+                # go next
+                if guitype[1] == "religion" and dyn_screen.journey.stages[5] is True:
+                    put_text(screen, text=langstring("ccrt__gen_category7"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=58, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        guitype[1] = switch_gscr(dyn_screen, screen, "origin")
+                        dyn_screen.reset_pgui()
+                # go back
+                if guitype[1] == "gameplay_settings":
+                    put_text(screen, text=langstring("ccrt__gen_category7"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=58, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        dyn_screen.journey.stages[7] = False
+                        guitype[1] = switch_gscr(dyn_screen, screen, "origin")
+                        dyn_screen.reset_pgui()
 
+            elif mouseColliderPx(mn8[0], mn8[1], mn8[2], mn8[3]):
+                # go next
+                if guitype[1] == "origin" and dyn_screen.journey.stages[6] is True:
+                    put_text(screen, text=langstring("ccrt__gen_category8"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=66, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        guitype[1] = switch_gscr(dyn_screen, screen, "gameplay_settings")
+                        dyn_screen.reset_pgui()
+                # go back
+                if guitype[1] == "summary":
+                    put_text(screen, text=langstring("ccrt__gen_category8"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=66, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        dyn_screen.journey.stages[8] = False
+                        guitype[1] = switch_gscr(dyn_screen, screen, "gameplay_settings")
+                        dyn_screen.reset_pgui()
 
             elif mouseColliderPx(mn9[0], mn9[1], mn9[2], mn9[3]) and guitype[1] == "gameplay_settings" and dyn_screen.journey.stages[7] is True:
                 put_text(screen, text=langstring("ccrt__gen_category9"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=74, colour=fCol.HOVERED.value)
