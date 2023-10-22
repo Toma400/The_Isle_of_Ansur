@@ -23,10 +23,7 @@ folder_init()
 # Some of technical backgrounds are also explained in documentation (see
 # 'docks/mods' folder bundled with game).
 #===========================================================================
-
 from core.circles import *
-import gui.menu #deprecated terminal version (pre-alpha 1/2)
-#gui.menu.start() #deprecated terminal version (pre-alpha 1/2)
 
 try:
     # from core.file_system.theme_manag import get_theme; print(get_theme())

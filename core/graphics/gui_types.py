@@ -14,8 +14,10 @@ from core.data.player.religion import getReligion
 from core.data.player.origin import getOrigin
 from core.data.journey import Journey
 from core.graphics.gh_manag import *
+from os.path import exists
 
 def upd_click(upd, pgv): return mouseColliderPx(upd[0], upd[1], upd[2], upd[3]) and mouseRec(pgv)
+developer_mode         = exists(".dev")
 #===========|==================================================================================================
 # GUI       | Handles rendering of elements on the screen, putting out respective set of images and texts.
 # HANDLER   |
@@ -67,23 +69,22 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         guitype[0] = switch_gscr(dyn_screen, screen, "load")
                         dyn_screen.set_pgui_element("load__saves", listSaves())
 
-            elif mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
-                #put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
-                # for event in pg_events:
-                #     if event.type == pygame.KEYDOWN or event.type == pygame.K_t:
-                #         # placeholder data to test
-                #         dyn_screen.journey.name     = "Test"
-                #         dyn_screen.journey.location = "ansur:tutorial"
-                #         guitype[0] = switch_gscr(dyn_screen, screen, "location")
-                pass
+            elif mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]) and developer_mode:
+                put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
+                for event in pg_events:
+                    if event.type == pygame.KEYDOWN or event.type == pygame.K_t:
+                        # placeholder data to test
+                        dyn_screen.journey.name     = "Test"
+                        dyn_screen.journey.location = "ansur:tutorial"
+                        guitype[0] = switch_gscr(dyn_screen, screen, "location")
 
             elif mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
                 put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#7C613B")
                 if mouseRec(pg_events):
                     guitype[0] = switch_gscr(dyn_screen, screen, "settings")
 
-            elif mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]):
-                #put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=52, colour="#7C613B")
+            elif mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]) and developer_mode:
+                put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=52, colour="#7C613B")
                 #if mouseRec(pg_events):
                 #    guitype[0] = switch_gscr(dyn_screen, screen, "pack_manag")
                 pass

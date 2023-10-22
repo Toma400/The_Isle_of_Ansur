@@ -50,6 +50,7 @@ class DefaultRun:
     ommitted_elements = [  # list of files that are deleted after finishing the build
         full_export_path + ".git",
         full_export_path + ".idea",
+        full_export_path + ".dev",
         full_export_path + ".breakpoints",
         full_export_path + ".gitignore",
         full_export_path + "test.py",

@@ -24,3 +24,6 @@ scripts/tribal_script.rin
 stats/eternal_desert
 stats/tamriel_races
 stats/endermans_journey
+
+# used to enable developer's features, not suitable for non-development environment
+.dev
