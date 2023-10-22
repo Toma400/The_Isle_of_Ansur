@@ -1,4 +1,5 @@
 from pygame_gui.elements.ui_text_entry_line import UITextEntryLine
+from pygame_gui.elements.ui_text_entry_box import UITextEntryBox
 from pygame_gui.elements.ui_drop_down_menu import UISelectionList
 from pygame_gui.elements.ui_text_box import UITextBox
 from core.gui.manag.langstr import langstring as lstr
@@ -41,10 +42,9 @@ class PGUI_Helper:
         self.char__lb_rel    = UISelectionList(item_list=getReligionsTuple(),               relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
         self.char__tb_rel    = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
         # ---
-        self.char__lb_orig   = UISelectionList(item_list=getOriginsTuple(),                 relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(44))), manager=manager)
-        self.char__tb_orig   = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(60), toPxX(6)),  (toPxX(20), toPxX(20))), manager=manager)
-        self.char__ti_hist   = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(60), toPxX(26)), (toPxX(20), toPxX(2))),  manager=manager)
-        self.char__tb_hist   = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(60), toPxX(28)), (toPxX(20), toPxX(22))), manager=manager)
+        self.char__lb_orig   = UISelectionList(item_list=getOriginsTuple(),                 relative_rect=pygame.Rect((toPxX(40), toPxY(8)),  (toPxX(20), toPxY(76))), manager=manager)
+        self.char__tb_orig   = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(60), toPxY(8)),  (toPxX(20), toPxY(20))), manager=manager)
+        self.char__ti_hist   = UITextEntryBox (                                             relative_rect=pygame.Rect((toPxX(60), toPxY(35)), (toPxX(20), toPxY(49))), manager=manager)
         # ---
         self.char__tb_pdth   = UITextBox      (html_text=lstr("ccrt__sett_hardcore_descr"), relative_rect=pygame.Rect((toPxX(50), toPxY(10)), (toPxX(40), 50)),        manager=manager)
         self.char__temp_warn = UITextBox      (html_text=lstr("ccrt__end_save_warn"),       relative_rect=pygame.Rect((toPxX(45), toPxY(70)), (toPxX(30), 100)),       manager=manager)
@@ -76,6 +76,7 @@ class PGUI_Helper:
         match self.get_element(element).__module__:
             case UISelectionList.__module__: return getCurrentID(self.get_element(element))
             case UITextEntryLine.__module__: return self.get_element(element).text
+            case UITextEntryBox.__module__:  return self.get_element(element).get_text()
 
     def get_element_index(self, element: str) -> int | None:
         """Returns selected element of the GUI, as index number"""
@@ -92,13 +93,15 @@ class PGUI_Helper:
         match self.get_element(element).__module__:
             case UISelectionList.__module__: self.get_element(element).set_item_list(overwrite)
             case UITextBox.__module__:       self.get_element(element).set_text(overwrite)
+            case UITextEntryBox.__module__:  self.get_element(element).set_text(overwrite)
             case UITextEntryLine.__module__: self.get_element(element).set_text(overwrite)
 
     def clear_values(self):
         """Clears values of elements that are meant to be empty at the initial phase (look at __init__)"""
-        UISelectionListList = ["char__lb_name", "char__lb_attrs", "char__lb_skills"]
+        UISelectionListList = ["char__lb_attrs", "char__lb_skills"]
         UITextBoxList       = ["char__tb_race", "char__tb_class", "char__tb_attrs", "char__tb_skills", "char__tb_rel", "char__tb_orig", "char__tb_hist", "load__descr"]
-        UITextEntryLineList = ["char__ti_hist", "char__ti_name"]
+        UITextEntryBoxList  = ["char__ti_hist"]
+        UITextEntryLineList = ["char__ti_name"]
 
         for el in self.get_elements():
             match self.get_element(el).__module__:
@@ -108,6 +111,8 @@ class PGUI_Helper:
                     if el in UITextBoxList:       self.get_element(el).set_text("")
                 case UITextEntryLine.__module__:
                     if el in UITextEntryLineList: self.get_element(el).set_text("")
+                case UITextEntryBox.__module__:
+                    if el in UITextEntryBoxList:  self.get_element(el).set_text("")
 
     def reset_selection_list_all(self):
         """Resets all elements of the GUI, putting them in their default state"""

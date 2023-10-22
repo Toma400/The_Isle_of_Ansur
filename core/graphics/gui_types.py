@@ -346,7 +346,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         if dyn_screen.journey.inidata["race"] != race_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
                             dyn_screen.journey.setInit("race", race_choice)
                             dyn_screen.set_pgui_element("char__tb_race",  getRace(race_choice).descr())                                    # sets infobox
-                            dyn_screen.set_pgui_element("char__lb_class", getClassesTuple(dyn_screen.journey.inidata["race"]))             # sets class listbox
+                            dyn_screen.set_pgui_element("char__lb_class", getClassesTuple(race_choice))                                    # sets class listbox
                             dyn_screen.set_pgui_element("char__lb_name",  getRaceNames(race_choice, dyn_screen.journey.inidata["gender"])) # sets name listbox
                         dyn_screen.journey.stages[1] = True
                     else:
@@ -434,14 +434,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.put_pgui("char__lb_orig")
                         dyn_screen.put_pgui("char__tb_orig")
                         dyn_screen.put_pgui("char__ti_hist")
-                        dyn_screen.put_pgui("char__tb_hist")
+
+                    put_text(screen, text=langstring("ccrt__history"), font_cat="menu", size=30, pos_x=61, pos_y=30, colour=fCol.ENABLED.value)
 
                     orig_choice = dyn_screen.get_pgui_choice("char__lb_orig")
                     history_txt = dyn_screen.get_pgui_choice("char__ti_hist")
                     if history_txt is not None:
                         if dyn_screen.journey.inidata["history"] != history_txt: # sets history textbox
                             dyn_screen.journey.setInit("history", history_txt)
-                            dyn_screen.set_pgui_element("char__tb_hist", history_txt)
                     if orig_choice is not None:
                         if dyn_screen.journey.inidata["origin"] != orig_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
                             dyn_screen.journey.setInit("origin", orig_choice)

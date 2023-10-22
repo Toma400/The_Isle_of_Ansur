@@ -34,6 +34,7 @@ ccrt__gen_category8        = "Ustawienia rozgrywki"
 ccrt__gen_category9        = "Podsumowanie"
 
 ccrt__gender               = "Wybór płci wpływa delikatnie na dialogi oraz elementy rozgrywki."
+ccrt__history              = "Napisz swoją historię"
 
 ccrt__name_exists          = "To imię już jest w użyciu"
 ccrt__sett_hardcore        = "Permanentna śmierć"
