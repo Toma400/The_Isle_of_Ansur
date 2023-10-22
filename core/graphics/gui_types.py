@@ -1,5 +1,6 @@
 from core.graphics.text_manag import put_abstext, put_text, Text
 from core.gui.menus.location import locationScreen
+from core.gui.menus.packs import packMenu
 from core.gui.menus.load import loadGame
 from core.gui.manag.langstr import langstring
 from core.file_system.save_manag import listSaves
@@ -71,12 +72,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
             elif mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]) and developer_mode:
                 put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour="#7C613B")
-                for event in pg_events:
-                    if event.type == pygame.KEYDOWN or event.type == pygame.K_t:
-                        # placeholder data to test
-                        dyn_screen.journey.name     = "Test"
-                        dyn_screen.journey.location = "ansur:tutorial"
-                        guitype[0] = switch_gscr(dyn_screen, screen, "location")
+                if mouseRec(pg_events):
+                    # placeholder data to test
+                    dyn_screen.journey.name     = "Test"
+                    dyn_screen.journey.location = "ansur:tutorial"
+                    guitype[0] = switch_gscr(dyn_screen, screen, "location")
 
             elif mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
                 put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour="#7C613B")
@@ -85,9 +85,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
             elif mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]) and developer_mode:
                 put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=52, colour="#7C613B")
-                #if mouseRec(pg_events):
-                #    guitype[0] = switch_gscr(dyn_screen, screen, "pack_manag")
-                pass
+                if mouseRec(pg_events):
+                   guitype[0] = switch_gscr(dyn_screen, screen, "pack_manag")
 
             elif mouseColliderPx(gt6[0], gt6[1], gt6[2], gt6[3]):
                 put_text(screen, text=langstring("menu__button_exit"), font_cat="menu", size=30, align_x="center", pos_y=58, colour="#7C613B")
@@ -277,30 +276,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
         #==============================================================================================================
         case "pack_manag":
-            dyn_screen.gui("menu__gh_background").full().put(screen)
-
-            put_text(screen, text=langstring("menu__button_packs"),       font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
-            #gt1 = put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour="#4E3510")
-            #gt2 = put_text(screen, text=langstring("menu__sett_tech"),    font_cat="menu", size=30, pos_x=5, pos_y=22, colour="#4E3510")
-            gtx = put_text(screen, text=langstring("menu__sett_back"),    font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#4E3510")
-
-            #==================================================
-            # hovering & clicking events
-            #if mouseColliderPx(gt1[0], gt1[1], gt1[2], gt1[3]):
-            #    put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour="#7C613B")
-            #    if mouseRec(pg_events):
-            #        guitype[1] = switch_gscr(dyn_screen, screen, "settings_general")
-
-            #if mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
-            #    put_text(screen, text=langstring("menu__sett_tech"), font_cat="menu", size=30, pos_x=5, pos_y=22, colour="#7C613B")
-            #    if mouseRec(pg_events):
-            #        guitype[1] = switch_gscr(dyn_screen, screen, "settings_tech")
-
-            if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
-                put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#7C613B")
-                if mouseRec(pg_events):
-                    guitype[0] = switch_gscr(dyn_screen, screen, "menu")
-                    guitype[1] = None
+            packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen)
 
         # ==============================================================================================================
         case "new_game":
