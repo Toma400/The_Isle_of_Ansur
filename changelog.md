@@ -14,12 +14,23 @@
 
 > ---
 > ###<center>Pre-alpha 3b</center>
+```
 > - QoL
 >   - You can now go back to previous option in character creation menu
+>   - Improvements to graphical interface clarity
+> - Polish version
+>   - Added custom-made Ferrum font with expanded glyphs
+>   - Translated all game contents to Polish
+> - Modding
+>   - Mods can now be bundled into .zip file and put in 'packs' directory
+>     (if legacy unpacking isn't turned on, they will unpack automatically)
 > - Technicals
 >   - System-accepted languages are now referenced from `system_ref` which makes them
 >     less hardcoded and even editable through scripts/mods
+> - Fixes
+>   - Fixed lore names not showing up (#94)
 > 
+```
 > ---
 > ###<center>Pre-alpha 3</center>
 >

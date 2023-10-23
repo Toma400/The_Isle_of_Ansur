@@ -36,6 +36,7 @@ stat__atr_charisma         = "Charyzma"
 stat__atr_agility          = "Zręczność"
 stat__atr_endurance        = "Wytrzymałość"
 stat__atr_intelligence     = "Inteligencja"
+stat__atr_perception       = "Percepcja"
 stat__atr_strength         = "Siła"
 
 stat__sk_handfight                   = "Walka wręcz"

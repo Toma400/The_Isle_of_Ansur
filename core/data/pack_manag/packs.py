@@ -1,6 +1,9 @@
 from core.gui.manag.langstr import langstring
+from core.utils import sysref, scx # "legu"
 from glob import glob as walkdir
 from enum import Enum
+import logging as log
+import os
 
 class PackTypes(Enum):
     WORLD_PACK  = "worlds"
@@ -56,3 +59,34 @@ def getPacksSimplified(pack_list: dict[list[str]] = getPacks(), langstr: bool = 
 def getGlobalPacks() -> list[str]:
     """Returns global pack type (which means both types having the same ID)"""
     return [p for p in getPacks(PackTypes.WORLD_PACK) if p in getPacks(PackTypes.STAT_PACK)]
+
+def removePacks():
+    exclude = ["endermans_journey", "eternal_desert", "tamriel_races"] + sysref("vanilla_modules")
+    print(exclude)
+
+def unpackPacks():
+    def unpacking(zfile, pack):
+        whitelist = ["stat", "world", "theme"]
+        for foldername in zfile.namelist():
+            for packtype in whitelist:
+                if f"{packtype}s" in foldername:
+                    zfile.extract(foldername, "")
+                    log.debug(f"Unpacking {packtype}pack: {pack}")
+            if "scripts/" in foldername:
+                zfile.extract(foldername, "")
+                log.debug(f"Unpacking scripts of {pack}:")
+                scripts = zfile.open("scripts/")
+                for script in scripts.namelist():
+                    log.debug(f"- {script}")
+
+    packs = os.listdir("packs/")
+    if len(packs) > 0 and not scx("legu"):
+        import zipfile
+
+        log.info("Pack unloading process started...")
+        for pack in packs:
+            if ".zip" in pack:
+                log.info(f"Found pack: {pack}. Unzipping...")
+                with zipfile.ZipFile("packs/" + pack, "r") as file:
+                    unpacking(file, pack)
+                    file.close()

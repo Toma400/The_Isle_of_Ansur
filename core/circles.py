@@ -4,9 +4,11 @@ from core.graphics.gh_system import Screen
 from core.sounds.music import music_handler
 from core.scripts import script_handler
 from core.scripts import event_handler
+from core.data.pack_manag import packs
 from core.utils import *
 
 def main_circle():
+    packs.unpackPacks()
     dyn_screen = Screen()
 
     script_loader() # loads all scripts to be used by script_handler
