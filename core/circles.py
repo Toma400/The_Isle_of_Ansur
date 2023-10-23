@@ -8,6 +8,7 @@ from core.data.pack_manag import packs
 from core.utils import *
 
 def main_circle():
+    packs.removePacks()
     packs.unpackPacks()
     dyn_screen = Screen()
 

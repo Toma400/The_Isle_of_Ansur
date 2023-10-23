@@ -1,8 +1,0 @@
-{
-  "start": [
-    {
-      "descript": "You feel wind blowing. It is next day of your journey, ship is slowly sail further. It took nearly week to find yourself near Ansur island, but that time was rewarding. You feel much better after the time spent in your room, where you spent most of the time you felt sick. Captain, called Ergel by people, told you yesterday that ship will stay in Ansur for a while. It should be enough for you to rest",
-      "goto": "ansur:taevoia_ship"
-    }
-  ]
-}

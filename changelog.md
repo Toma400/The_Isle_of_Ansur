@@ -24,6 +24,8 @@
 > - Modding
 >   - Mods can now be bundled into .zip file and put in 'packs' directory
 >     (if legacy unpacking isn't turned on, they will unpack automatically)
+>   - If unpacking is enabled, contents of 'stats', 'worlds', 'themes' and 'scripts'
+>     is removed during load (before unpacking, which reloads contents this way)
 > - Technicals
 >   - System-accepted languages are now referenced from `system_ref` which makes them
 >     less hardcoded and even editable through scripts/mods

@@ -1,5 +1,5 @@
+from core.utils import sysref, scx, developer_mode
 from core.gui.manag.langstr import langstring
-from core.utils import sysref, scx # "legu"
 from glob import glob as walkdir
 from enum import Enum
 import logging as log
@@ -15,6 +15,7 @@ class PackTypes(Enum):
     # GLOBALPACK
 
 pack_types = [PackTypes.THEME_PACK, PackTypes.STAT_PACK, PackTypes.WORLD_PACK]
+packs      = list(filter(lambda ext: ".zip" in ext, os.listdir("packs/")))
 
 def getScripts() -> list[str]:
     """Returns list of script names (as str value)"""
@@ -61,25 +62,64 @@ def getGlobalPacks() -> list[str]:
     return [p for p in getPacks(PackTypes.WORLD_PACK) if p in getPacks(PackTypes.STAT_PACK)]
 
 def removePacks():
-    exclude = ["endermans_journey", "eternal_desert", "tamriel_races"] + sysref("vanilla_modules")
-    print(exclude)
+    exclude = ["endermans_journey", "eternal_desert", "tamriel_races"] + sysref("vanilla_modules") # excluded folders
+    excludf = ["example_script.py", "guide.toml"]                                                  # excluded files
+    dirs    = ["stats", "worlds", "themes", "scripts"]
+    if not scx("legu"):
+        import shutil
+
+        log.debug(f"Performing clearing of pack files. Excluded pack IDs: {exclude} | Excluded files: {excludf}")
+        for sdir in dirs:
+            # Faster implementation, but more verbose (os.walk usage) // can use Nim in case this gets rough as well
+            #
+            # for _, dirs, files in os.walk(f"{sdir}/"):
+            #     for bfile in files:
+            #         if bfile not in excludf:
+            #             try:
+            #                 if developer_mode:
+            #                     log.debug(f"Removing: {sdir}/{bfile}")
+            #                 os.remove(f"{sdir}/{bfile}")
+            #             except:
+            #                 if developer_mode:
+            #                     log.error(f"Couldn't remove {sdir}/{bfile} due to error:", exc_info=True)
+            #     for bdir in dirs:
+            #         if bdir not in exclude:
+            #             try:
+            #                 if developer_mode:
+            #                     log.debug(f"Removing: {sdir}/{bdir}")
+            #                 shutil.rmtree(f"{sdir}/{bdir}")
+            #             except:
+            #                 if developer_mode:
+            #                     log.error(f"Couldn't remove {sdir}/{bdir} due to error:", exc_info=True)
+
+            for thing in os.listdir(f"{sdir}/"):
+                if (thing not in exclude) and (thing not in excludf):
+                    if developer_mode:
+                        log.debug(f"Removing: {sdir}/{thing}")
+                    try:
+                        if os.path.isdir(f"{sdir}/{thing}"):
+                            shutil.rmtree(f"{sdir}/{thing}")
+                        else:
+                            os.remove(f"{sdir}/{thing}")
+                    except:
+                        if developer_mode:
+                            log.error(f"Couldn't remove {sdir}/{thing} due to error:", exc_info=True)
 
 def unpackPacks():
-    def unpacking(zfile, pack):
+    def unpacking(zfile, zpack):
         whitelist = ["stat", "world", "theme"]
         for foldername in zfile.namelist():
             for packtype in whitelist:
                 if f"{packtype}s" in foldername:
                     zfile.extract(foldername, "")
-                    log.debug(f"Unpacking {packtype}pack: {pack}")
+                    log.debug(f"Unpacking {packtype}pack: {zpack}")
             if "scripts/" in foldername:
                 zfile.extract(foldername, "")
-                log.debug(f"Unpacking scripts of {pack}:")
+                log.debug(f"Unpacking scripts of {zpack}:")
                 scripts = zfile.open("scripts/")
                 for script in scripts.namelist():
                     log.debug(f"- {script}")
 
-    packs = os.listdir("packs/")
     if len(packs) > 0 and not scx("legu"):
         import zipfile
 
