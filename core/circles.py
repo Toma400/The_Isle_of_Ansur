@@ -10,6 +10,7 @@ from core.utils import *
 def main_circle():
     packs.removePacks()
     packs.unpackPacks()
+    packs.verifyPacks()
     dyn_screen = Screen()
 
     script_loader() # loads all scripts to be used by script_handler

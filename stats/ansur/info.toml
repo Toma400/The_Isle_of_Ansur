@@ -1,7 +1,7 @@
 name    = "Isle of Ansur"
 credits = "Toma400"
 url     = "linktr.ee/toma400"
-version = "3B"                   # if different from zipped one, it gets overwritten with manual system (?)
+version = "0.3b"
 
 description  = '''
 Core mod for Isle of Ansur game, contains all files required for the game to run properly
