@@ -206,10 +206,16 @@ def unpackPacks():
                     log.debug(f"- {script}")
 
     def orderedPacks() -> list[str]:
+        # ordering vanilla modules as first
+        packs_io = packs_all
+        for vanilla_module in list(sysref("vanilla_modules").reverse()):
+            if f"{vanilla_module}.zip" in packs_io:
+                packs_io.insert(0, packs_io.pop(packs_io.index(vanilla_module)))
+
         if not exists("core/data/pack_manag/pack_order.yaml"):
             initial_order = ""
             f = open("core/data/pack_manag/pack_order.yaml", "w")
-            for pck in packs_all:
+            for pck in packs_io:
                 initial_order += f"- {pck}" + "\n"
             f.write(initial_order)
             f.flush()
@@ -218,7 +224,7 @@ def unpackPacks():
             buffer = loadYAML("core/data/pack_manag/pack_order.yaml")
             # appending newly added ones (uses list to minimise opening sessions)
             new = []
-            for pck in packs_all:
+            for pck in packs_io:
                 if pck not in buffer:
                     new.append(pck)
             with open("core/data/pack_manag/pack_order.yaml", "a") as f:
@@ -227,7 +233,7 @@ def unpackPacks():
             # checking removals of packs (uses list to minimise opening sessions)
             rv_missing = []
             for pck in buffer:
-                if pck not in packs_all:
+                if pck not in packs_io:
                     log.warning(f"Couldn't find already registered pack -{pck}- in pack folder. If you encounter issues, this may be caused by unexpected removal. Always prefer removing packs through mod manager.")
                     log.info(f"Removing -{pck}- pack from registry...")
                     rv_missing.append(pck)
@@ -241,11 +247,22 @@ def unpackPacks():
                 f.truncate()
         return loadYAML("core/data/pack_manag/pack_order.yaml")
 
+    def finalPacks() -> list[str]:
+        disabled = loadYAML("core/data/pack_manag/pack_disabled.yaml")
+        ret      = []
+        if disabled is None:
+            ret += orderedPacks()
+        else:
+            for pck in orderedPacks():
+                if pck not in disabled:
+                    ret.append(pck)
+        return ret
+
     if len(packs_all) > 0 and not scx("legu"):
         import zipfile
 
         log.info("Pack unloading process started...")
-        for pack in orderedPacks():
+        for pack in finalPacks():
             log.info(f"Found pack: {pack}. Unzipping...")
             with zipfile.ZipFile("packs/" + pack, "r") as file:
                 unpacking(file, pack)
