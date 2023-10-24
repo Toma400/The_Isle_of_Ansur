@@ -1,6 +1,6 @@
 from core.utils import sysref, scx, developer_mode
+from core.file_system.parsers import loadTOML, loadYAML
 from core.gui.manag.langstr import langstring
-from core.file_system.parsers import loadTOML
 from os.path import exists
 from glob import glob as walkdir
 from enum import Enum
@@ -18,7 +18,7 @@ class PackTypes(Enum):
     # GLOBALPACK
 
 pack_types = [PackTypes.THEME_PACK.value, PackTypes.STAT_PACK.value, PackTypes.WORLD_PACK.value]
-packs      = list(filter(lambda ext: ".zip" in ext, os.listdir("packs/")))
+packs_all  = list(filter(lambda ext: ".zip" in ext, os.listdir("packs/")))
 
 def getScripts() -> list[str]:
     """Returns list of script names (as str value)"""
@@ -205,13 +205,48 @@ def unpackPacks():
                 for script in scripts.namelist():
                     log.debug(f"- {script}")
 
-    if len(packs) > 0 and not scx("legu"):
+    def orderedPacks() -> list[str]:
+        if not exists("core/data/pack_manag/pack_order.yaml"):
+            initial_order = ""
+            f = open("core/data/pack_manag/pack_order.yaml", "w")
+            for pck in packs_all:
+                initial_order += f"- {pck}" + "\n"
+            f.write(initial_order)
+            f.flush()
+            f.close()
+        else:
+            buffer = loadYAML("core/data/pack_manag/pack_order.yaml")
+            # appending newly added ones (uses list to minimise opening sessions)
+            new = []
+            for pck in packs_all:
+                if pck not in buffer:
+                    new.append(pck)
+            with open("core/data/pack_manag/pack_order.yaml", "a") as f:
+                for n_pck in new:
+                    f.write(f"- {n_pck}" + "\n")
+            # checking removals of packs (uses list to minimise opening sessions)
+            rv_missing = []
+            for pck in buffer:
+                if pck not in packs_all:
+                    log.warning(f"Couldn't find already registered pack -{pck}- in pack folder. If you encounter issues, this may be caused by unexpected removal. Always prefer removing packs through mod manager.")
+                    log.info(f"Removing -{pck}- pack from registry...")
+                    rv_missing.append(pck)
+            with open("core/data/pack_manag/pack_order.yaml", "r+") as f:
+                read = f.readlines()
+                f.seek(0)
+                for line in read:
+                    pln = line.replace("- ", "").replace("\n", "")
+                    if pln not in rv_missing:
+                        f.write(line)
+                f.truncate()
+        return loadYAML("core/data/pack_manag/pack_order.yaml")
+
+    if len(packs_all) > 0 and not scx("legu"):
         import zipfile
 
         log.info("Pack unloading process started...")
-        for pack in packs:
-            if ".zip" in pack:
-                log.info(f"Found pack: {pack}. Unzipping...")
-                with zipfile.ZipFile("packs/" + pack, "r") as file:
-                    unpacking(file, pack)
-                    file.close()
+        for pack in orderedPacks():
+            log.info(f"Found pack: {pack}. Unzipping...")
+            with zipfile.ZipFile("packs/" + pack, "r") as file:
+                unpacking(file, pack)
+                file.close()

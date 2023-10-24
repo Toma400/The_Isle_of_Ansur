@@ -36,7 +36,7 @@
 >     less hardcoded and even editable through scripts/mods
 > - Fixes
 >   - Fixed lore names not showing up (#94)
-> 
+>
 ```
 > ---
 > ###<center>Pre-alpha 3</center>

@@ -1,4 +1,4 @@
-from core.data.pack_manag.packs import getScripts, packs
+from core.data.pack_manag.packs import getScripts, packs_all
 from core.utils import sysref
 import logging
 import time
@@ -64,7 +64,7 @@ def run_text():
     Printing vanilla modules list:
     {sysref('vanilla_modules')}
     Printing packs:
-    {packs}
+    {packs_all}
 
     Printing init.toml informations:
     Version:     {sysref('version')} 

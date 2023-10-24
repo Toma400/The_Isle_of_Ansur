@@ -15,6 +15,7 @@ core/assets/visuals/denaj.png
 core/assets/visuals/dunaj.jpg
 
 core/data/pack_manag/pack_errors.yaml
+core/data/pack_manag/pack_order.yaml
 
 # used to enable developer's features, not suitable for non-development environment
 .dev
