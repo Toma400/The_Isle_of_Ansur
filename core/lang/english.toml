@@ -7,6 +7,7 @@ menu__button_settings      = "Settings"
 menu__button_packs         = "Packs"
 menu__button_exit          = "Exit"
 menu__update               = "Update is available!"
+menu__pack_error           = "Error during loading packs"
 
 menu__sett_general         = "General"
 menu__sett_general_res     = "Screen Resolution"

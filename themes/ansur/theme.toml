@@ -8,6 +8,7 @@ disabled   = "#4F4C49"
 enabled    = "#4E3510"
 hovered    = "#7C613B"
 background = "#4F3920"
+error      = "#660000"
 other      = "#B0CA60"
 
 [fonts.general]

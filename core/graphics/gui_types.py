@@ -19,6 +19,7 @@ from os.path import exists
 
 def upd_click(upd, pgv): return mouseColliderPx(upd[0], upd[1], upd[2], upd[3]) and mouseRec(pgv)
 developer_mode         = exists(".dev")
+packs_err              = os.path.getsize("core/data/pack_manag/pack_errors.yaml") > 0
 #===========|==================================================================================================
 # GUI       | Handles rendering of elements on the screen, putting out respective set of images and texts.
 # HANDLER   |
@@ -40,11 +41,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             if dyn_screen.update and scx("vch"):
                 upd = put_text(screen, text=langstring("menu__update"), font_cat="menu", size=22, align_x="center", pos_y=96, colour=fCol.OTHER.value)
                 if upd_click(upd, pg_events): update() # GitHub repo
-            put_abstext(screen, text=f"{sysref('status')} {sysref('version')}", font_cat="menu", size=22, pos_x=0.5, pos_y=96, colour=fCol.BACKGROUND.value)
+            if packs_err:
+                put_text(screen, text=langstring("menu__pack_error"),            font_cat="menu", size=27, align_x="center", pos_y=90, colour=fCol.ERROR.value)
+            put_abstext(screen,  text=f"{sysref('status')} {sysref('version')}", font_cat="menu", size=22, pos_x=0.5,        pos_y=96, colour=fCol.BACKGROUND.value)
 
-            gt2c = fCol.DISABLED.value if len(listSaves()) == 0 else fCol.ENABLED.value # handles whether button for 'load' is available or not
+            gt2c = fCol.DISABLED.value if len(listSaves()) == 0 or packs_err else fCol.ENABLED.value # handles whether button for 'load' is available or not...
+            gt1c = fCol.DISABLED.value if packs_err                          else fCol.ENABLED.value # ...and the same while packs have error during verification
 
-            gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour=fCol.ENABLED.value)
+            gt1 = put_text(screen, text=langstring("menu__button_start"),    font_cat="menu", size=30, align_x="center", pos_y=28, colour=gt1c)
             gt2 = put_text(screen, text=langstring("menu__button_load"),     font_cat="menu", size=30, align_x="center", pos_y=34, colour=gt2c)
             gt3 = put_text(screen, text=langstring("menu__button_arena"),    font_cat="menu", size=30, align_x="center", pos_y=40, colour=fCol.DISABLED.value)
             gt4 = put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour=fCol.ENABLED.value)
@@ -57,13 +61,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
             #==================================================
             # hovering & clicking events
-            if mouseColliderPx(gt1[0], gt1[1], gt1[2], gt1[3]):
+            if mouseColliderPx(gt1[0], gt1[1], gt1[2], gt1[3]) and not packs_err:
                 put_text(screen, text=langstring("menu__button_start"), font_cat="menu", size=30, align_x="center", pos_y=28, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     guitype[0] = switch_gscr(dyn_screen, screen, "new_game")
                     guitype[1] = switch_gscr(dyn_screen, screen, "gender")
 
-            elif mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]):
+            elif mouseColliderPx(gt2[0], gt2[1], gt2[2], gt2[3]) and not packs_err:
                 if len(listSaves()) > 0:
                     put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=30, align_x="center", pos_y=34, colour="#7C613B")
                     if mouseRec(pg_events):

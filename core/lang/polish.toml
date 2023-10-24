@@ -7,6 +7,7 @@ menu__button_settings      = "Ustawienia"
 menu__button_packs         = "Paczki"
 menu__button_exit          = "Wyjdź"
 menu__update               = "Aktualizacja jest dostępna!"
+menu__pack_error           = "Błąd w trakcie ładowania modów"
 
 menu__sett_general         = "Ogólne"
 menu__sett_general_res     = "Rozdzielczość Ekranu"

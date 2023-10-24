@@ -86,6 +86,9 @@ def verifyPacks():
             log.error(f"Couldn't parse version requirement due to not supported format. Supported formats: [n], [n.n], [n.nx], [n.n.n]. Legend: n - digit, x - latin letter. Parsed literal value: {ver}")
             return 0, 0.0
 
+    def unifiedString(ver: (int, float)) -> str:
+        return f"{ver[0]}.{ver[1]}"
+
     def analyseVersion(req: (int, float), orig: (int, float), req_max: (int, float) = None) -> bool:
         """Analyses whether required version or require range of versions are met"""
         if req_max is None: req_max = req
@@ -117,8 +120,11 @@ def verifyPacks():
             else:
                 return None
 
-    vpack = getPacksSimplified(getPacks(), langstr=False)
+    vpack  = getPacksSimplified(getPacks(), langstr=False)
+    err_fl = open("core/data/pack_manag/pack_errors.yaml", "w")
+    errors = {}
     for packID in vpack.keys():
+        errors_pack = []
         pack_info = browseInfo(packID) # PyCharm warn here is stupid, it's 'str', not list
         if pack_info is not None:
             if "requirements" in pack_info.keys():
@@ -136,15 +142,28 @@ def verifyPacks():
                             req_fin = [unifiedVersion(req_init.replace(">", "")), (99999, 99999.99999)]
                         else:
                             req_fin = [unifiedVersion(req_init),   unifiedVersion(req_init)]
-                        # getting required mod's version
-                        req_ver = getVersion(req_id=req_pack)
-                        if req_ver is None:
+                        # requesting mod's version to check
+                        reqs_ver = getVersion(req_id=req_pack)
+                        if reqs_ver is None:
                             log.error(f"Couldn't verify {req_pack} version due to either -info.toml- missing or version key not being used.")
                         else:
-                            if analyseVersion(req_fin[0], req_ver, req_fin[1]) is False:
-                                log.critical(f"Version requirement of {packID} for module {req_pack} are not met. Required version: {req_fin[0]}-{req_fin[0]}. Available version: {req_ver}.")
+                            if analyseVersion(req_fin[0], reqs_ver, req_fin[1]) is False:
+                                log.critical(f"Version requirement of {packID} for module {req_pack} are not met. Required version: {unifiedString(req_fin[0])}-{unifiedString(req_fin[1])}. Available version: {unifiedString(reqs_ver)}.")
+                                errors_pack.append([req_pack, f"{unifiedString(req_fin[0])}-{unifiedString(req_fin[1])}", f"{unifiedString(reqs_ver)}"])
                     else:
                         log.error(f"Couldn't find {req_pack} in")
+            # creating error entry if any issues are found
+            if len(errors_pack) > 0:
+                errors[packID] = errors_pack
+    if len(errors.keys()) > 0:
+        err_msg = ""
+        for mod in errors.keys():
+            err_msg += f"{mod}:" + "\n"
+            for err in errors[mod]:
+                err_msg += f"- {err}" + "\n"
+        err_fl.write(err_msg)
+    err_fl.flush()
+    err_fl.close()
 
 def removePacks():
     """Performs cleaning of pack extraction folders. Used to update packs by simply updating .zip file"""

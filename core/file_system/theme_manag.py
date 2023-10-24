@@ -83,6 +83,7 @@ class FontColour(Enum):
     ENABLED    = font_colour("enabled")
     HOVERED    = font_colour("hovered")
     BACKGROUND = font_colour("background")
+    ERROR      = font_colour("error")
     OTHER      = font_colour("other")
 #=======================================================================================
 # Returns address of image that will show up in menu backgrounds
