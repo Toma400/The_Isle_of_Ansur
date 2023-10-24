@@ -28,6 +28,7 @@
 >     is removed during load (before unpacking, which reloads contents this way)
 >   - `Info.toml` now allows you for stating mod requirements, as well as specific
 >     version (it can also check vanilla version). Version ranges are supported
+>     - If version is not met, error message is shown and some menu options are disabled
 >   - Script function that runs during event is now called 'tick' (earlier: 'run')
 >     - This is build-up for a bit more nuanced scripting system in the future
 > - Technicals
