@@ -118,6 +118,8 @@ def verifyPacks():
                 return None
 
     vpack = getPacksSimplified(getPacks(), langstr=False)
+    print(unifiedVersion("0.1a"))
+    print(unifiedVersion("0.1b"))
     for packID in vpack.keys():
         pack_info = browseInfo(packID) # PyCharm warn here is stupid, it's 'str', not list
         if pack_info is not None:
@@ -127,9 +129,13 @@ def verifyPacks():
                         req_init = pack_info["requirements"][req_pack]
                         if req_init == "": # no specific required version, skipping
                             continue
-                        elif "-" in req_init:
+                        elif "-" in req_init: # ranged requirement ('1.1-1.8')
                             req_spl = req_init.replace(" ", "").split("-")
                             req_fin = [unifiedVersion(req_spl[0]), unifiedVersion(req_spl[1])]
+                        elif req_init.startswith("<"): # up to version ('<1.1'), inclusive
+                            req_fin = [(0, 0.0),                   unifiedVersion(req_init.replace("<", ""))]
+                        elif req_init.startswith(">"): # minimal version ('>1.1'), inclusive
+                            req_fin = [unifiedVersion(req_init.replace(">", "")), (99999, 99999.99999)]
                         else:
                             req_fin = [unifiedVersion(req_init),   unifiedVersion(req_init)]
                         # getting required mod's version
