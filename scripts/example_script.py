@@ -19,7 +19,7 @@ class ExampleScript(ioaScript):
     # fg_events - if you want to access IoA events
     # fg_core   - if you want to access IoA running Screen object
     #====================================================================
-    def run(self, screen, pg_events, fg_events, fg_core, *args, **kwargs):
+    def tick(self, screen, pg_events, fg_events, fg_core, *args, **kwargs):
         pass # here you write your code
 
     #====================================================================

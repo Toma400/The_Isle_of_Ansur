@@ -9,7 +9,8 @@ import requests
 # CONSTANTS | Used regularly in other parts of the code
 #===========|==================================================
 # path to game's folder
-gpath = os.path.dirname(os.path.abspath("main.py"))
+gpath          = os.path.dirname(os.path.abspath("main.py"))
+developer_mode = os.path.exists(".dev")
 # settings
 def scx(setn=None): # used for checking current settings status
     sdata = json_read("settings.json")
