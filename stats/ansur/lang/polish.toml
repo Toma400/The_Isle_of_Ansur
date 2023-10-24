@@ -113,3 +113,26 @@ religion__theism  = "Teizm (Niereligijny)"
 religion__atheism = "Ateizm"
 
 origin__wanderer = "Podróżnik"
+
+#================================================================================================================================
+# OPISY
+#================================================================================================================================
+races__baedoorian_descr = '''
+Ludzka rasa jest znana ze swojej elastyczności i adaptacji do środowiska. Jedną z częstych cech ludzi jest ich mobilność i otwartość na możliwości, czyniąc z nich świetnych kupców i mówców, wojowników, jak i techników czy magów.
+Co jednak rasa ta zyskuje z przystosowania, to traci ona na mistrzostwie. Ludzie rzadko osiągają wyniki powyżej średniej w wielu aspektach.
+Mimo tych mankamentów, ich zdolności asymilacji pozwalają być im bardzo ekspansywną grupą, zaludniającą większość miejsc uniwersum Baedoor.
+
+Mieszkańcy Baedoor są potomkami jitadczyków, dziedzicząc od nich zamiłowanie do żeglarstwa, talent do technologii i handlu, jak i miłość do złożonych gier politycznych i sztuki.
+Odmiennie jednak od ich przodków, kultura baedoorska była ukształtowana przez zapalczywych arystokratów. Przez to też ma ona tendencję być bardziej hermetyczna, jednakże pasja wielu arystokratycznych domów ciągnie kulturę baedoorską ku kolejnym odkryciom i podbojom.
+Obecnie cywilizacja baedoorska jest uważana za jedną z najbardziej zaawansowanych technologicznie w uniwersum. Jest jednak politycznie osłabiona przez podział Imperium, który dokonał się pod koniec Starej Ery.
+'''
+races__kaerian_descr = '''
+Ludzka rasa jest znana ze swojej elastyczności i adaptacji do środowiska. Jedną z częstych cech ludzi jest ich mobilność i otwartość na możliwości, czyniąc z nich świetnych kupców i mówców, wojowników, jak i techników czy magów.
+Co jednak rasa ta zyskuje z przystosowania, to traci ona na mistrzostwie. Ludzie rzadko osiągają wyniki powyżej średniej w wielu aspektach.
+Mimo tych mankamentów, ich zdolności asymilacji pozwalają być im bardzo ekspansywną grupą, zaludniającą większość miejsc uniwersum Baedoor.
+
+Kaeryjczycy są mieszkańcami Kaeru, ciemnych lądów na południe od Baedoor. Wliczają się w nich Serjanie, jak i również ci z seryjską krwią, z mieszanych małżeństw różnego rodzaju.
+Serjanie zbudowali swoją cywilizację w lasach, sąsiadując z kehtami, zaludniając głównie północną część wyspy. Ich historia jest przepełniona wieloma wojnami, głównie z cywilizacją kehtów, które to znacząco osłabiły ich militarną siłę.
+Od samych początków, serjanie byli bardzo utalentowani w przetwarzaniu wydobytych dóbr, jak i rzemieślnictwie drewna i gliny. Ich styl walki przepełniony był pasją, przez co nie było dla nich przeszkodą nawet słabe uzbrojenie.
+W obecnych czasach, populacja serjan jest dużo mniejsza, jednak wolni od wpływów Imperium, wracają powoli ku swojej przeszłej chwale, próbując odbudować swoje historyczne miasta obok łańcucha górskiego na wschodzie Kaeru.
+'''
