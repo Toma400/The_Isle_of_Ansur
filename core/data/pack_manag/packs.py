@@ -118,8 +118,6 @@ def verifyPacks():
                 return None
 
     vpack = getPacksSimplified(getPacks(), langstr=False)
-    print(unifiedVersion("0.1a"))
-    print(unifiedVersion("0.1b"))
     for packID in vpack.keys():
         pack_info = browseInfo(packID) # PyCharm warn here is stupid, it's 'str', not list
         if pack_info is not None:
