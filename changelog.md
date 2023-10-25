@@ -15,7 +15,11 @@
 > ---
 > ###<center>Pre-alpha 3b</center>
 ```
-> - QoL
+> - Gameplay
+>   - Removed `Human, Born in Moon Continent` race due to BRPGS 3.0 changes
+>     (if you saved character with it, the save will probably not load in the future)
+>   - Improved descriptions of all game elements
+> - Quality-of-Life
 >   - You can now go back to previous option in character creation menu
 >   - Improvements to graphical interface clarity
 > - Polish version

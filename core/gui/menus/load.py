@@ -15,21 +15,28 @@ def loadDescr(save: str) -> str:
     ret = ""
     try:
         sf             = loadTOML(f"saves/{save}/buffer/presave.toml")
-        packs_required = getPacksSimplified(sf['mods'])
+        packs_required = getPacksSimplified(sf['mods'], False)
         # string creation
-        ret += f"Name:     {sf['name']}"                            + "\n"
-        ret += f"Gender:   {getGender(sf['gender']).langstr()}"     + "\n"
-        ret += f"Race:     {getRace(sf['race']).langstr()}"         + "\n"
-        ret += f"Class:    {getClass(sf['class']).langstr()}"       + "\n"
-        ret += f"Religion: {getReligion(sf['religion']).langstr()}" + "\n"
-        ret += f"Origin:   {getOrigin(sf['origin']).langstr()}"     + "\n"
-        ret += f"History:"                                          + "\n"
-        ret += f"{sf['history']}"                                   + "\n"
-        ret += f"Packs used:"                                       + "\n"
+        ret += f"{'{:<15}'.format(langstring('ccrt__gen_name'))}"     + f"{sf['name']}"                            + "\n"
+        ret += f"{'{:<15}'.format(langstring('ccrt__gen_gender'))}"   + f"{getGender(sf['gender']).langstr()}"     + "\n"
+        ret += f"{'{:<15}'.format(langstring('ccrt__gen_race'))}"     + f"{getRace(sf['race']).langstr()}"         + "\n"
+        ret += f"{'{:<15}'.format(langstring('ccrt__gen_class'))}"    + f"{getClass(sf['class']).langstr()}"       + "\n"
+        ret += f"{'{:<15}'.format(langstring('ccrt__gen_religion'))}" + f"{getReligion(sf['religion']).langstr()}" + "\n"
+        ret += f"{'{:<15}'.format(langstring('ccrt__gen_origin'))}"   + f"{getOrigin(sf['origin']).langstr()}"     + "\n"
+        ret += f"{langstring('ccrt__gen_history')}"                                          + "\n"
+        ret += f"{sf['history']}"                                                            + "\n"
+        ret += f"{langstring('ccrt__load_packs_used')}"                                      + "\n"
+        # set fixed length that adjusts to the longest mod ID
+        maxlen = 0
         for pack in packs_required.keys():
-            ret += f"  - {'{:<20}'.format(pack)} |"
+            if len(pack) > maxlen:
+                maxlen = len(pack)
+        maxlen = '{:<' + str(maxlen + 1) + '}'
+        for pack in packs_required.keys():
+            ret += f"  - {maxlen.format(pack)} |"
             for p in packs_required[pack]:
-                ret += f" {p} |"
+                if p != "scripts":
+                    ret += f" {langstring(f'pack__type_{p}')} |"
             ret += "\n"
     except:
         log(ERROR, f"Couldn't load informations about save -{save}-. The save may be corrupted or made with older version. Printing stacktrace:", exc_info=True)

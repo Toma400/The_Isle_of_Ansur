@@ -24,6 +24,14 @@ menu__sett_tech_text_size  = "Text Size"
 menu__sett_tech_ver_notif  = "Update Notification"
 menu__sett_back            = "Back to menu"
 
+ccrt__gen_gender   = "Gender"
+ccrt__gen_race     = "Race"
+ccrt__gen_class    = "Class"
+ccrt__gen_name     = "Name"
+ccrt__gen_religion = "Religion"
+ccrt__gen_origin   = "Origin"
+ccrt__gen_history  = "History"
+
 ccrt__gen_category1        = "Gender"
 ccrt__gen_category2        = "Race"
 ccrt__gen_category3        = "Class"
@@ -49,6 +57,11 @@ ccrt__end_save             = "Save"
 ccrt__end_save_warn        = '''
 Character won't be available in current version, as it doesn't feature gameplay. It will be possible to load the profile later.
 '''
+
+ccrt__load_packs_used = "Packs used"
+pack__type_stats      = "Statpack"
+pack__type_themes     = "Themepack"
+pack__type_worlds     = "Worldpack"
 # end
 
 menu__load_choose          = "Choose your save"
