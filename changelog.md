@@ -35,6 +35,7 @@
 >     - If version is not met, error message is shown and some menu options are disabled
 >   - Script function that runs during event is now called 'tick' (earlier: 'run')
 >     - This is build-up for a bit more nuanced scripting system in the future
+>   - Mods adding genders can now customise wording through special language rules
 > - Technicals
 >   - System-accepted languages are now referenced from `system_ref` which makes them
 >     less hardcoded and even editable through scripts/mods
