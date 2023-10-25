@@ -3,7 +3,6 @@ races__kaerian     = "Człowiek, Urodzony w Kaer"
 races__jitadian    = "Człowiek, Urodzony w Jitado"
 races__mesinpean   = "Człowiek, Urodzony w Mes Inpei"
 races__mrran       = "Człowiek, Urodzony w Eimr"
-races__lunanians   = "Człowiek, Urodzony na Kontynencie Księżyca"
 races__nordwinians = "Człowiek, Urodzony na Wyspach Północych"
 races__ormath      = "Ormath"
 races__ghlodd      = "Głodd"
@@ -117,6 +116,8 @@ origin__wanderer = "Podróżnik"
 #================================================================================================================================
 # OPISY
 #================================================================================================================================
+# RASY
+#-----------------------
 races__baedoorian_descr = '''
 Ludzka rasa jest znana ze swojej elastyczności i adaptacji do środowiska. Jedną z częstych cech ludzi jest ich mobilność i otwartość na możliwości, czyniąc z nich świetnych kupców i mówców, wojowników, jak i techników czy magów.
 Co jednak rasa ta zyskuje z przystosowania, to traci ona na mistrzostwie. Ludzie rzadko osiągają wyniki powyżej średniej w wielu aspektach.
@@ -154,5 +155,26 @@ Mimo tych mankamentów, ich zdolności asymilacji pozwalają być im bardzo eksp
 Mesinpejczycy są najstarszą ludzką kulturą kontynentu, zaludniając jedną z najbardziej zróżnicowanych krain jaką jest wyspa Mes Inpei.
 W czasach przederowych imperiów dochodzących do władzy, Mes Inpea była uznawana za jedną z dwóch najpotężniejszych cywilizacji, zaraz po Imperium Głoddyjskim. Wraz z Jitado, stanowiły one dowód potęgi i siły Starożytnego Kontynentu.
 Podczas gdy mesinpejczycy nie posiadają żadnych wyróżniających cech militarnych czy magicznych, są oni dobrymi rzemieślnikami, wyprzedzając pozostałe cywilizacje w różnorodności i jakości wytwarzanych dóbr.
-Kultura mesinpejska była bardzo wpływową na późniejsze cywilizacje ludzkie, zaznaczając znaczenie tego kraju w trakcie prosperity.
+Kultura mesinpejska była bardzo wpływową na późniejsze cywilizacje ludzkie, zaznaczając znaczenie tego kraju w trakcie jego świetności.
+'''
+races__mrran_descr = '''
+Ludzka rasa jest znana ze swojej elastyczności i adaptacji do środowiska. Jedną z częstych cech ludzi jest ich mobilność i otwartość na możliwości, czyniąc z nich świetnych kupców i mówców, wojowników, jak i techników czy magów.
+Co jednak rasa ta zyskuje z przystosowania, to traci ona na mistrzostwie. Ludzie rzadko osiągają wyniki powyżej średniej w wielu aspektach.
+Mimo tych mankamentów, ich zdolności asymilacji pozwalają być im bardzo ekspansywną grupą, zaludniającą większość miejsc uniwersum Baedoor.
+
+Eimr może być uznany za krainę z najbardziej napiętą historią w całym uniwersum, targaną przez nieustanne konflikty.
+Poza tymi o zewnętrznym charakterze, jak wielokrotna okupacja obcych mocarstw, wiele napięć i wojn wśród mrrańczyków ma naturę wewnętrzną, jako wynik wielu cywilizacji żyjących obok siebie.
+Relatywna jałowość ziemi również utrudnia rozwój kraju, powodując iż wielu ucieka się w kradzież i rozbój jako metodę przetrwania. Eimr jest podzielone na wiele terytorii o samozwańczym statusie, które pozostają ważnym podziałem nawet w obecnym czasie, gdy kraj jest formalnie zjednoczony.
+Historia mrrańczyków jednak czyni ich bardzo uniwersalną cywilizacją, zdolną do szybszego uczenia się, gdyż jest to ich naturalny instynkt.
+'''
+races__nordwinians_descr = '''
+Ludzka rasa jest znana ze swojej elastyczności i adaptacji do środowiska. Jedną z częstych cech ludzi jest ich mobilność i otwartość na możliwości, czyniąc z nich świetnych kupców i mówców, wojowników, jak i techników czy magów.
+Co jednak rasa ta zyskuje z przystosowania, to traci ona na mistrzostwie. Ludzie rzadko osiągają wyniki powyżej średniej w wielu aspektach.
+Mimo tych mankamentów, ich zdolności asymilacji pozwalają być im bardzo ekspansywną grupą, zaludniającą większość miejsc uniwersum Baedoor.
+
+Nordwińczycy są mieszkańcami wysp północnych, dwóch obecnych na kontynencie baedoorskim, i pozostałych na oddzielnym archipelagu dalej na północ.
+Nordwińska kultura niesie ze sobą widoczne wpływy przodków, którzy to skolonizowali wyspę Baedoor przed pojawieniem się jitadczyków, jak i również północną część Kontynentu Księżycowego. Zależnie od miejsca, ich symbolika i architektura ulegała zmianie, dostosowując się do wpływów lokalnych społeczności.
+Wbrew powszechnym w kulturze nordwińczyków symbolu topora, równie popularne były długie miecze i kolczugi, szczególnie dla ludów nordwińskich, które osiadły w cieplejszych rejonach.
+Rodzinne wyspy nordwińczyków obfitowały w lasy, umożliwiając im sporą ekspertyzę w obróbce drewna, zarówno na meble jak i inne formy sztuki.
+Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały, świętując je częstymi ucztami, traktowane jako lokalne wydarzenie.
 '''

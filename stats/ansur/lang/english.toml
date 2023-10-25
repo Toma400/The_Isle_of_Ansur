@@ -3,7 +3,6 @@ races__kaerian     = "Human, Born in Kaer"
 races__jitadian    = "Human, Born in Jitado"
 races__mesinpean   = "Human, Born in Mes Inpea"
 races__mrran       = "Human, Born in Eimr"
-races__lunanians   = "Human, Born in Moon Continent"
 races__nordwinians = "Human, Born in Northern Isles"
 races__ormath      = "Ormath"
 races__ghlodd      = "Ghlodd"
@@ -117,6 +116,8 @@ origin__wanderer = "Wanderer"
 #================================================================================================================================
 # DESCRIPTIONS
 #================================================================================================================================
+# RACES
+#-----------------------
 races__baedoorian_descr = '''
 Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
 What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
@@ -161,28 +162,21 @@ Human race is known to be flexible and very adaptive to its environment. One of 
 What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
 Despite those shortcomings, their assimilation skills let them be very expansive kind, inhabiting most of places in Baedoor universe.
 
-Eimr inhabitants, also known as mrrans, are humans born as smithing workers and hardworking farmers, trying to make ends meet on unforgiving lands of Eimr.
-Frequent wars between mrran tribes and also foreigners invading their lands - including most known Ghloddish Empire occupation - made their culture shattered into many distinct forms.
-This makes Eimr a place of never-ending tensions, but also creates one of the most intricate political arenas in current world. The country that eventually arose from semi-united tribes is now fighting for their sovereign pride and identity.
-Thus, Mrrans are relentless warriors, knowledgeable when it comes to craftmanship just as well.
-'''
-races__lunanians_descr = '''
-Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
-What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
-Despite those shortcomings, their assimilation skills let them be very expansive kind, inhabiting most of places in Baedoor universe.
-
-Lunanians are general name for all civilisations of humans living on Moon Continent. While a bit overly broad, this kind of humans is known for often producing excellent pottery.
-Their culture of many countries bordering with each other forged their skills of trading, as well as fighting, as there were just equal amount of tensions between many kingdoms of those lands.
-This makes lunanians pretty diverse group that are capable for varied tasks to be done swiftly.
+Eimr may be considered as the most tense land in whole universe, being constantly torn by conflicts, either of internal or external nature.
+Unfortunate enough to have lived under multiple occupations, Eimr inhabitants also tend to get into wars and tensions between their own tribes, as mrran civilisation is bundled out of multiple cultures living near each other.
+The fact that lands of Eimr are rather poor and desolate doesn't help, as many resolve into thievery and mugging. Eimr is shattered into many self-claimed territories, even in modern days, where united country was achieved.
+All those tensions make mrrans very versatile, as they needed to learn their paths of life through individual experience.
 '''
 races__nordwinians_descr = '''
 Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
 What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
 Despite those shortcomings, their assimilation skills let them be very expansive kind, inhabiting most of places in Baedoor universe.
 
-Nordwinians are harsh people of the North, often seen by their symbolics, like axe or fur. Despite those stereotypical characterisation, they are quite often equipped with long swords and chainmails.
-They are fiery warriors, but they are also skilled craftmans when it comes to wood use, able to create furniture and many detailed artworks with their high dedication to carpentry.
-With high dedication to tradition, they cultivate their community rituals and celebrate with feasts. They are known for many festival hold during the year.
+Nordwinians are inhabitants of northern islands, two of which are part of Baedoor continent, and the rest is located further north, on their own archipelago.
+Nordwinian culture is visibly influenced by their ancestors who also colonised Baedoor island and northern parts of Moon continent, giving birth to nomathian tribes. Depending on location, their symbolics and architecture changed, adapting to influences of neighbouring civilisations.
+However, the prevailing symbol of nordwinians themselves - axe and fur - stayed intact. Despite them, they quite often adapted fighting with long swords and chainmails, especially those who settled in warmer regions.
+Being experienced with foresty lands of their origin, nordwinians are also experts when it comes to wood use, creating furniture and many detailed artworks with their high dedication to carpentry.
+Nordwinians are dedicated to tradition, cultivating community rituals and celebrate them with feasts. They are known for many festival hold during the year.
 '''
 races__ormath_descr = '''
 Ormath race is quite odd race of short, grayskinned beings living in tribes on Arennan desert. They are heavily structured in their hierarchical societies built around Elders and most importantly, Shaman being the guide of whole tribe.

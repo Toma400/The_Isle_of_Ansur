@@ -2,11 +2,15 @@
     "key": "races__mrran",
     "attributes": {
         "strength":      2,
-        "endurance":     2
+        "endurance":     2,
+        "charisma":     -1
     },
     "skills": {
         "ore_processing": 1,
         "smithing":       1,
         "blunts":         1
+    },
+    "perks": {
+        "ansur:improved_learning": 15
     }
 }
