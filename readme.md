@@ -8,7 +8,8 @@ in my own steampunk/fantasy universe, Baedoor.
 
 Unlike original, it is made with graphical interface, trying to be accessible and much
 more advanced technologically.  
-Despite its oldschool character, The Isle of Ansur tries to support modding in modern approach.
+Despite its oldschool character, The Isle of Ansur tries to improve on mechanics I find
+too static in the genre and support modding extensively.
 
 # Current Progress Status
 
@@ -20,6 +21,14 @@ The Isle of Ansur is currently in:
 This means game is not usable by any means. This doesn't mean you cannot download
 developer's builds or report issues, though - it's really welcome to participate in
 such early state of the game!
+
+Current gameplay features:
+- Creation of your own character (it can be saved for future updates gameplay)
+- Modding support (related to character creation)
+
+To have ~~spoilers~~ sneak-peek into development process, you can look into issues page.  
+Milestones/bulk topics let me organise and discuss next steps in what I code into the game.  
+Feel free to share your thoughts or report bugs there.
 
 # Links
 
@@ -51,10 +60,13 @@ For anyone who would like to contribute anyway, here are principles that should 
 - **[Principles For Code Contribution](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Code-Contribution-Principles)**  
 - **[Principles For Assets Contribution](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Assets-Contribution-Principles)**
 
+In next months translation contributions will be opened, when most of game features are in place.
+
 # Credits
 
 ---
 **Lead Developer:** Toma400  
 
 ---
-All resources used are under [Baedoor License](license) unless stated in [credits](credits.md).
+All resources used are under [Baedoor License](license) unless stated in [credits](credits.md).  
+AI scraping is understood as not allowed.

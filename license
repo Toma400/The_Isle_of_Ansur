@@ -1,5 +1,5 @@
                           BAEDOOR LICENSE
-                    Version 1.1, 23 April 2022
+                    Version 1.2, 23 April 2022
 
                         created by Toma400
                          (Tomasz Stępień)
@@ -8,12 +8,6 @@ This license refers broadly to The Isle of Ansur (later also: IoA)
 contents, but also elements on which IoA is based on.
 IoA content terms are in sections 1 and 3, user's creations
 in section 2, and Baedoor system license is under section 4.
-
-In case you have any doubts or questions, read EULA file or FAQ
-(located in /docs/ folder). EULA is basically more human-friendly
-form of license, since contents of both documents are similar.
-License is more precise though, so it is recommended to read it
-too, as it takes priority in any legal case.
 
 License may change in the future with next iterations.
 As an owner of the license and copyrights, I will use term "we" to
@@ -24,7 +18,7 @@ describe myself.
 The Isle of Ansur contents (by that we mean code, assets, universe and
 all content that is made for it by other people and published with
 any association to IoA product) belong to the author, unless stated
-otherwise (exceptions are located in docs/credits.md path).
+otherwise (exceptions are located in credits.md path).
 As an author, I prohibit any use of my contents without my consent,
 with exception of:
 
@@ -35,6 +29,11 @@ with exception of:
   - publishing modifications (packs), if they do not contradict rights
     from section 2/EULA
   - republishing the game in terms written in section 3
+
+Usage for AI in any form, by either individual or larger
+institution (company, university, government, etc.), is prohibited
+under any circumstances.
+This takes priority over exemption set in section 5.1.
 
 
 2. LICENSE FOR ASSOCIATED CONTENT
@@ -48,7 +47,7 @@ Author of said software has right to:
   - own their rights to the software, to the limitation that:
     - they cannot do any beneficial action (term explained in EULA and
       section 5.1) with said software
-    - they cannot contradict rights of IoA author to their software
+    - they cannot contradict rights of IoA author
 
 Author of IoA has right to:
 
@@ -58,7 +57,7 @@ Author of IoA has right to:
 
 
 3. INFOANARCHISM
-Even though we use All Rights Reserved license, restricting use of IoA
+Even though we use All Rights Reserved-like license, restricting use of IoA
 drastically, we believe in infoanarchist future. We perceive it, though,
 as freedom of sharing culture/art for free to anyone, not as death of
 an author.
@@ -87,6 +86,9 @@ Its use outside of IoA context is restricted to be:
     for example, putting watermark on image - it is then allowed to
     leave it without such remark; it is appreciated though to credit
     universe/RPG system elsewhere instead)
+  - not used for AI, be it understood as either training/fine-tuning
+    or as any other activity related to generative aspect of it.
+    This takes priority over exemption stated in section 5.1
 
 
 5. ADDITIONAL GLOSSARY
@@ -111,4 +113,6 @@ Although, optional use of it should be explicitly seen though, so
 no payment should be clearly shown as default.
 
 ---
-Version 1.1 is slightly updated variant of v1.0. Date: 13 September 2022
+Version 1.2 is updated version that covers AI usage, used before proper
+2.0 update that tries to cover that topic more extensively.
+Date: 25 October 2022
