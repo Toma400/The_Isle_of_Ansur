@@ -427,7 +427,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     if rl_choice is not None:
                         if dyn_screen.journey.inidata["religion"] != rl_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
                             dyn_screen.journey.setInit("religion", rl_choice)
-                            dyn_screen.set_pgui_element("char__tb_rel", getReligion(rl_choice).descr()) # sets infobox
+                            dyn_screen.set_pgui_element("char__tb_rel", getReligion(rl_choice).descr(gender=dyn_screen.journey.inidata["gender"])) # sets infobox
                         dyn_screen.journey.stages[5] = True
                     else:
                         dyn_screen.journey.stages[5] = False
