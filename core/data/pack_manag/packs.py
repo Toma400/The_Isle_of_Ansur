@@ -190,8 +190,12 @@ def removePacks():
                             log.error(f"Couldn't remove {sdir}/{thing} due to error:", exc_info=True)
 
 def unpackPacks():
-    """Unpacks .zip files from -packs- folder"""
+    """
+    Unpacks .zip files from -packs- folder. Serves in the same time as registrar for mods, creating/updating -pack_order- and -pack_disabled-.
+    It is important for this to come before Screen() initialisation, because some of latter elements will rely on files made by this function.
+    """
     def unpacking(zfile, zpack):
+        """Performs simple unpacking of non-disabled packs, in ordered form"""
         whitelist = ["stat", "world", "theme"]
         for foldername in zfile.namelist():
             for packtype in whitelist:
@@ -206,8 +210,9 @@ def unpackPacks():
                     log.debug(f"- {script}")
 
     def orderedPacks() -> list[str]:
-        # ordering vanilla modules as first
+        """Performs ordering of packs and updating the list if new ones are found/old ones are removed"""
         packs_io = packs_all
+        # ordering vanilla modules as first
         for vanilla_module in list(sysref("vanilla_modules").reverse()):
             if f"{vanilla_module}.zip" in packs_io:
                 packs_io.insert(0, packs_io.pop(packs_io.index(vanilla_module)))
@@ -248,6 +253,7 @@ def unpackPacks():
         return loadYAML("core/data/pack_manag/pack_order.yaml")
 
     def finalPacks() -> list[str]:
+        """Performs filtering of packs by eliminating disabled ones"""
         disabled = loadYAML("core/data/pack_manag/pack_disabled.yaml")
         ret      = []
         if disabled is None:

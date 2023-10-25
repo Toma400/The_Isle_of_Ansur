@@ -136,3 +136,23 @@ Serjanie zbudowali swoją cywilizację w lasach, sąsiadując z kehtami, zaludni
 Od samych początków, serjanie byli bardzo utalentowani w przetwarzaniu wydobytych dóbr, jak i rzemieślnictwie drewna i gliny. Ich styl walki przepełniony był pasją, przez co nie było dla nich przeszkodą nawet słabe uzbrojenie.
 W obecnych czasach, populacja serjan jest dużo mniejsza, jednak wolni od wpływów Imperium, wracają powoli ku swojej przeszłej chwale, próbując odbudować swoje historyczne miasta obok łańcucha górskiego na wschodzie Kaeru.
 '''
+races__jitadian_descr = '''
+Ludzka rasa jest znana ze swojej elastyczności i adaptacji do środowiska. Jedną z częstych cech ludzi jest ich mobilność i otwartość na możliwości, czyniąc z nich świetnych kupców i mówców, wojowników, jak i techników czy magów.
+Co jednak rasa ta zyskuje z przystosowania, to traci ona na mistrzostwie. Ludzie rzadko osiągają wyniki powyżej średniej w wielu aspektach.
+Mimo tych mankamentów, ich zdolności asymilacji pozwalają być im bardzo ekspansywną grupą, zaludniającą większość miejsc uniwersum Baedoor.
+
+Jitadczycy są doświadczonymi żeglarzami i inżynierami, przodując w odkryciach technologicznych w najstarszych czasach. Ich broń palna stanowiła znak najwyższej jakości, stanowiąc klasyczne wyposażenie rozlicznych armii.
+Jest powszechnie uznawane, iż jitadczycy byli pierwszymi, którzy używali prochu w swojej technologii, budując przemysł rusznikarski obok głoddyjskiego, zbudowanego jednak na odmiennych odkryciach.
+Choć znaczenie międzynarodowe Jitado osłabło w trakcie Starej Ery, jest ono wciąż uznawane za jedno z najbardziej wpływowych po dziś dzień, szczególnie przez ich rozciągnięte szeroko szlaki handlowe.
+Jitadczycy zwykli dbać o ekonomię swego państwa, co uczyniło ich państwo jednym z najbardziej prosperujących miejsc od początku wieków, odpornym na wiele kryzysów.
+'''
+races__mesinpean_descr = '''
+Ludzka rasa jest znana ze swojej elastyczności i adaptacji do środowiska. Jedną z częstych cech ludzi jest ich mobilność i otwartość na możliwości, czyniąc z nich świetnych kupców i mówców, wojowników, jak i techników czy magów.
+Co jednak rasa ta zyskuje z przystosowania, to traci ona na mistrzostwie. Ludzie rzadko osiągają wyniki powyżej średniej w wielu aspektach.
+Mimo tych mankamentów, ich zdolności asymilacji pozwalają być im bardzo ekspansywną grupą, zaludniającą większość miejsc uniwersum Baedoor.
+
+Mesinpejczycy są najstarszą ludzką kulturą kontynentu, zaludniając jedną z najbardziej zróżnicowanych krain jaką jest wyspa Mes Inpei.
+W czasach przederowych imperiów dochodzących do władzy, Mes Inpea była uznawana za jedną z dwóch najpotężniejszych cywilizacji, zaraz po Imperium Głoddyjskim. Wraz z Jitado, stanowiły one dowód potęgi i siły Starożytnego Kontynentu.
+Podczas gdy mesinpejczycy nie posiadają żadnych wyróżniających cech militarnych czy magicznych, są oni dobrymi rzemieślnikami, wyprzedzając pozostałe cywilizacje w różnorodności i jakości wytwarzanych dóbr.
+Kultura mesinpejska była bardzo wpływową na późniejsze cywilizacje ludzkie, zaznaczając znaczenie tego kraju w trakcie prosperity.
+'''
