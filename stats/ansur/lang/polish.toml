@@ -178,3 +178,24 @@ Wbrew powszechnym w kulturze nordwińczyków symbolu topora, równie popularne b
 Rodzinne wyspy nordwińczyków obfitowały w lasy, umożliwiając im sporą ekspertyzę w obróbce drewna, zarówno na meble jak i inne formy sztuki.
 Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały, świętując je częstymi ucztami, traktowane jako lokalne wydarzenie.
 '''
+#-----------------------
+# RELIGIE
+#-----------------------
+religion__theism_descr = '''
+Wierzysz w zewnętrzne siły, Boga, bogów, czy też duchy lub energię, która otacza fizyczny świat. Niekoniecznie jesteś pewien, co dokładnie masz przez to na myśli, ale wiesz, że to istnieje.
+
+Ten wybór nie przynosi żadnych korzyści, strat ani zobowiązań. Wybierz jeśli chcesz się zadeklarować jako teista bez żadnych skutków ubocznych konkretnej wiary.
+'''
+religion__atheism_descr = '''
+Nie wierzysz w cokolwiek nadprzyrodzonego, mimo iż Baedoor pełne jest magiczny fenomenów - dla Ciebie są one udowodnione przez naukę i niewarte uznania za cokolwiek więcej niż sprytna szarlataneria.
+
+Ten wybór nie przynosi żadnych korzyści, strat ani zobowiązań.
+'''
+#-----------------------
+# POCHODZENIE
+#-----------------------
+origin__wanderer_descr = '''
+Spacerujesz po pokładzie "Veno Edran", galeonu płynącego do Zachodniego Baedoor. Twoje życie było zbyt nijakie, więc zdecydowałeś się spróbować szczęścia - płącąc za podróż, uciekłeś z miejsca, którego miałeś dość.
+Czułeś coś w swoim sercu, odrobinę lęku, ale również nadziei, więc uśmiechnąłeś się, wyobrażając sobie mgliste doki portu Nowego Baedoor.
+Nowe Baedoor, najbardziej kosmopolitańskiego miasta tej ery, w której marzenia stają się rzeczywistością.
+'''

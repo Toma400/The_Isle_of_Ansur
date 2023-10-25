@@ -537,7 +537,9 @@ This is physical resistance, affecting how much damage you deflect without armou
 stat__sk_survival_descr = '''
 Survivality means all skills to live in difficult environments and conditions, including also body adaptation. Helps immensely in many various cases, however almost always not directly.
 '''
-
+#-----------------------
+# RELIGIONS
+#-----------------------
 religion__theism_descr = '''
 You believe in some kind of external forces, be it God or some spirits, but you don't necessarily know or want to investigate. Or you just find this topic overall too vague to find the truth.
 
@@ -548,7 +550,11 @@ You don't believe in anything supernatural, despite Baedoor having magical pheno
 
 This choice brings no advantages, disadvantages nor obligations.
 '''
-
+#-----------------------
+# ORIGINS
+#-----------------------
 origin__wanderer_descr = '''
-You find yourself travelling to the West Baedoor on ship. You don't know what to do with your life, but decided to try your luck with simply escaping your current daily routines and search for some work in the most cosmopolitan city in current era.
+You are walking on deck of "Veno Edran", galleon travelling to West Baedoor. You found yourself unsatisfied with your current life, and so decided to try some luck - paying for the trip, you escaped the place you got sick from.
+You feel something in your heart, a bit of dread, but also hope, and so you smile, imagining all that foggy, modern houses in New Baedoor port.
+New Baedoor, the most cosmopolitan city in current era, where all dreams come true.
 '''
