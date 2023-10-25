@@ -449,7 +449,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     if orig_choice is not None:
                         if dyn_screen.journey.inidata["origin"] != orig_choice: # this check allows for updating once per change (improves performance & get rid of render bug)
                             dyn_screen.journey.setInit("origin", orig_choice)
-                            dyn_screen.set_pgui_element("char__tb_orig", getOrigin(orig_choice).descr()) # sets infobox
+                            dyn_screen.set_pgui_element("char__tb_orig", getOrigin(orig_choice).descr(gender=dyn_screen.journey.inidata["gender"])) # sets infobox
                         dyn_screen.journey.stages[6] = True
                     else:
                         dyn_screen.journey.stages[6] = False

@@ -21,9 +21,9 @@ class Origin:
         """Returns langstring of object based on currently used language"""
         return langjstring(self.key, "stats", self.mod_id)
 
-    def descr(self) -> str:
+    def descr(self, gender: str = None) -> str:
         """Returns description of Origin taken from -key[_descr]-"""
-        return langjstring(f"{self.key}_descr", "stats", self.mod_id)
+        return langjstring(f"{self.key}_descr", "stats", self.mod_id, gender)
 
     def get(self, attribute: str) -> str | int | float | list | dict:
         """Returns specific attribute from Origin file. Any reuse of the same object reads from cache to optimise I/O"""

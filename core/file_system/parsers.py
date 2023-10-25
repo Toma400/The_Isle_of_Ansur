@@ -4,7 +4,7 @@ import yaml, toml, json
 # Main parsers
 #================================================================
 def loadYAML(fpath: str) -> dict | list:
-    with open(fpath) as yf:
+    with open(fpath, encoding="utf-8") as yf:
         ret = yaml.safe_load(yf)
         return ret
 

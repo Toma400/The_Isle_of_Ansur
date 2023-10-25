@@ -1,7 +1,8 @@
 {
   "key": "origin__wanderer",
   "new_game": {
-    "location": "ansur:tutorial",
-    "inventory": []
+    "location":        "ansur:tutorial",
+    "class_inventory": true,
+    "inventory":       []
   }
 }
