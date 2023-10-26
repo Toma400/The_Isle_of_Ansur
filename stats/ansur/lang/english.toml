@@ -499,22 +499,22 @@ stat__sk_ore_processing_descr = '''
 Ore processing is responsible for proper extraction of metals from ores, as well as producing alloys of various kinds. It is partially connected to smithing, but only if you want to be self-dependent on metal delivery.
 '''
 stat__sk_smithing_descr = '''
-Smithing is always needed craft of creating various items from metals.
-It is often perceived as military practice, but unlike most popular purpose of producing weapons and armours, smithing can be used for all kinds of craft, including even cutlery or pots forging.
+The most needed kind of craft skills, letting you forge metals into tools of various kinds.
+While often recognised with weapons and armour, smithing can be used for all kinds of products, including even cutlery or pots forging.
 '''
 stat__sk_herbalism_descr = '''
-Good herbalism skills allow you to correctly recognise and understand purpose of various herbs and plants.
-This is great especially in conjunction with alchemy, being herbalism further expansion.
+Herbalism skills allow to correctly recognise and understand purpose of various herbs and plants.
+This is great especially in conjunction with alchemy, allowing you to use herbs in potions.
 '''
 stat__sk_alchemy_descr = '''
-Alchemy is craft of creating potions and mixtures, as well as poisons and other types of fluids that affect you or your environment.
-Plants are often used in alchemic recipes, which makes it great following skill to master along the way.
+Craft of creating potions and mixtures, as well as poisons and other types of fluids that affect you or your environment.
+Plants are often used in alchemic recipes, which makes herbalism great following skill to master along the way.
 '''
 stat__sk_cooking_descr = '''
-Cooking let you prepare good meals and execute more advanced recipes into tasty, healthy meal helping you with everyday struggles.
+Let you prepare better meals and use more advanced recipes into tasty, healthy food.
 '''
 stat__sk_wound_treatment_descr = '''
-Lets you perform treatments on various wounds and heal faster.
+How knowledgeable you are on wounds dressing and medicine overall. Helps you heal faster.
 '''
 stat__sk_horse_riding_descr = '''
 Your experience with horse riding, affecting your travel speed with them, as well as fight on their back.

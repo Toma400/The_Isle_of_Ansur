@@ -181,14 +181,32 @@ Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały
 #-----------------------
 # UMIEJĘTNOŚCI
 #-----------------------
+stat__sk_smithing_descr = '''
+Najbardziej rozchwytywana forma rzemiosła, pozwalająca na przetwarzanie metali w różne narzędzia.
+Podczas gdy zwykle kojarzone z bronią i pancerzami, kowalstwo pozwala wykuwać wszelkie formy, wliczając w to nawet przedmioty codziennego użytku.
+'''
+stat__sk_herbalism_descr = '''
+Zielarstwo pozwala poprawnie rozpoznawać zioła i rośliny, jak i również rozumieć ich zastosowanie.
+W połączeniu z alchemią, umiejętność ta zyskuje tym bardziej, iż zioła stanowią istotny składnik mikstur.
+'''
+stat__sk_alchemy_descr = '''
+Sztuka tworzenia mikstur i płynów, jak i również trucizn i innych cieczy, które wpływają na użytkownika lub otoczenie.
+Rośliny są częstym składnikiem receptur alchemicznych, co czyni zielarstwo świetnym uzupełnieniem dla alchemii.
+'''
+stat__sk_cooking_descr = '''
+Pozwala ci przygotować lepsze posiłki, jak i również używać bardziej zaawansowanych przepisów do tworzenia zdrowego, pożywnego jedzenia.
+'''
+stat__sk_wound_treatment_descr = '''
+Jak obyty jesteś w opatrywaniu ran i medycynie jako takiej. Pozwala ci się sprawniej leczyć.
+'''
 stat__sk_horse_riding_descr = '''
 Twoje doświadczenie w jeździe konno, wpływające na prędkość podróży na ich grzbiecie, jak i skuteczność walki na koniu.
 '''
 stat__sk_boat_driving_descr = '''
-Twoje doświadczenie z łodziami, wpływające na efektywność w ich użyciu - zarówno osiągania większych prędkości, jak i skuteczności w walce z nich.
+Twoje doświadczenie w używaniu łodzi, wpływające na efektywność w ich użyciu - zarówno osiągania większych prędkości, jak i skuteczności w walce z nich.
 '''
 stat__sk_animal_taming_descr = '''
-Jak łatwo komunikujesz się i oswajasz zwierzęta. Zależnie od ich dzikości, odmienny poziom tej umiejętności będzie potrzebny.
+Jak łatwo przychodzi ci kontakt ze zwierzętami i ich oswajanie. Zależnie od charakteru zwierzęcia, odmienny poziom tej umiejętności będzie potrzebny.
 '''
 stat__sk_musicality_descr = '''
 Jak dobrym muzykiem jesteś. Pozwala na granie bardziej złożonych kompozycji muzycznych, jak i użycie większej ilości instrumentów.
