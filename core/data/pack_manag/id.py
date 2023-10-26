@@ -27,3 +27,7 @@ def absoluteID(string: str) -> str:
 
 def splitID(string: str) -> (str, str):
     return string.split(":")
+
+def zipToID(zip_name: str) -> str:
+    """Used to convert zip pack name into pack ID (assuming they are named the same)"""
+    return zip_name.replace(".zip", "").replace(" ", "_").lower()
