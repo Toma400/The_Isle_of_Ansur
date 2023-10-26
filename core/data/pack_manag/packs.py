@@ -82,6 +82,9 @@ def verifyPacks():
 
     def analyseVersion(req: (int, float), orig: (int, float), req_max: (int, float) = None) -> bool:
         """Analyses whether required version or require range of versions are met"""
+        def flt(f: float) -> int: # helps reaching only floating part
+            return int(f"{f}".split(".")[1])
+
         if req_max is None: req_max = req
         if not req[0] <= orig[0] <= req_max[0]:
             return False
@@ -89,7 +92,7 @@ def verifyPacks():
             if not req[1] <= orig[1] <= req_max[1]:
                 return False
             if not req[1] < orig[1]: # case: 0.5.5 < 0.6.1 (third is smaller, but second is bigger)
-                if not req[2] <= orig[2] <= req_max[2]:
+                if not flt(req[1]) <= flt(orig[1]) <= flt(req_max[1]):
                     return False
         return True
 
@@ -151,8 +154,8 @@ def verifyPacks():
 
 def removePacks():
     """Performs cleaning of pack extraction folders. Used to update packs by simply updating .zip file"""
-    exclude = ["endermans_journey", "eternal_desert", "tamriel_races"] + sysref("vanilla_modules") # excluded folders
-    excludf = ["example_script.py", "guide.toml"]                                                  # excluded files
+    exclude = sysref("vanilla_modules")                 # excluded folders
+    excludf = ["example_script.py", "guide.toml"]       # excluded files
     dirs    = ["stats", "worlds", "themes", "scripts"]
     if not scx("legu"):
         import shutil
@@ -197,7 +200,7 @@ def unpackPacks():
         """Performs ordering of packs and updating the list if new ones are found/old ones are removed"""
         packs_io = packs_all
         # ordering vanilla modules as first
-        for vanilla_module in list(sysref("vanilla_modules").reverse()):
+        for vanilla_module in [sysref("vanilla_modules").reverse()]:
             if f"{vanilla_module}.zip" in packs_io:
                 packs_io.insert(0, packs_io.pop(packs_io.index(vanilla_module)))
 
