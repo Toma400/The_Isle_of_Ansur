@@ -273,3 +273,7 @@ def unpackPacks():
             with zipfile.ZipFile("packs/" + pack, "r") as file:
                 unpacking(file, pack)
                 file.close()
+    else:
+        if os.path.exists("core/data/pack_manag/pack_order.yaml"):
+            try:    os.remove("core/data/pack_manag/pack_order.yaml")
+            except: log.error("Tried to remove -pack_order.yaml- file, but error occurred:", exc_info=True)
