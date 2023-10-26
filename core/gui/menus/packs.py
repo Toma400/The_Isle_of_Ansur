@@ -7,22 +7,30 @@ from core.file_system.parsers import loadYAML
 import os
 
 def packOrder() -> list[(str, str)]:
-    return [(pack.replace(".zip", "").replace("_", " ").upper(), pack) for pack in loadYAML("core/data/pack_manag/pack_order.yaml")]
+    ret = []
+    for pack in loadYAML("core/data/pack_manag/pack_order.yaml"):
+        inf = searchInfo(zipToID(pack))
+        if inf is not None:
+            if "name" in inf:
+                ret.append((inf["name"], pack))
+                continue
+        ret.append((pack.replace(".zip", "").replace("_", " ").title()))
+    return ret
 
 def packDescr(pack_id: str) -> str:
     inf = searchInfo(pack_id)
     ret = ""
     if inf is not None:
         if "name" in inf:
-            ret += f"{'{:<15}'.format(langstring('pack__name'))}"    + f"{inf['name']}"    + "\n"
+            ret += "<b>" + f"{'{:<15}'.format(langstring('pack__name'))}"    + f"</b>{inf['name']}"    + "\n"
         if "credits" in inf:
-            ret += f"{'{:<15}'.format(langstring('pack__authors'))}" + f"{inf['credits']}" + "\n"
+            ret += "<b>" + f"{'{:<15}'.format(langstring('pack__authors'))}" + f"</b>{inf['credits']}" + "\n"
         if "version" in inf:
-            ret += f"{'{:<15}'.format(langstring('pack__version'))}" + f"{inf['version']}" + "\n"
+            ret += "<b>" + f"{'{:<15}'.format(langstring('pack__version'))}" + f"</b>{inf['version']}" + "\n"
         if "description" in inf:
-            ret += langstring('pack__descr')                                               + "\n"
-            ret += inf["description"]                                                      + "\n"
-        ret += langstring("pack__req")                                                     + "\n"
+            ret += "<b>" + langstring('pack__descr') + "</b>"                                          + "\n"
+            ret += inf["description"]                                                                  + "\n"
+        ret += "<b>" + langstring("pack__req") + "</b>"                                                + "\n"
         if "requirements" in inf:
             maxlen = 0
             for mod_id in inf["requirements"].keys():
