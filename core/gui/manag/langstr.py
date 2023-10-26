@@ -15,8 +15,8 @@ def parseGender (string: str, gender_id: str) -> str:
     if os.path.exists(rule_path):
         gender_dict = loadYAML(rule_path)
         for og, rep in gender_dict.items():
-            re.sub(f"\\b{og}\\b",              rep,              initial_text)
-            re.sub(f"\\b{og.capitalize()}\\b", rep.capitalize(), initial_text)
+            initial_text = re.sub(r"\b" + og + r"\b",         rep,              initial_text)
+            initial_text = re.sub(f"\\b{og.capitalize()}\\b", rep.capitalize(), initial_text)
     return initial_text
 
 def langstring (key: str) -> str:
