@@ -517,25 +517,25 @@ stat__sk_wound_treatment_descr = '''
 Lets you perform treatments on various wounds and heal faster.
 '''
 stat__sk_horse_riding_descr = '''
-Measures your experience with horse riding, affecting your travel speed with them, as well as fight.
+Your experience with horse riding, affecting your travel speed with them, as well as fight on their back.
 '''
 stat__sk_boat_driving_descr = '''
-Showcases your experience with boats, affecting your travel speed and fight effectiveness.
+Your experience with boats, affecting your travel speed and fight effectiveness on this vehicle.
 '''
 stat__sk_animal_taming_descr = '''
-Describes how well you can communicate with animals and tame them. Depending on animal hostility different experience levels are needed.
+How easily you can communicate with animals and tame them. Depending on animal hostility, different levels are needed.
 '''
 stat__sk_musicality_descr = '''
-Tells how good of a musician you are, allowing you to play more complex songs and use variety of instruments.
+How good of a musician you are, allowing you to play more complex songs and use bigger variety of instruments.
 '''
 stat__sk_athletics_descr = '''
-Athletics decide on how fast you move and perform actions related to your body condition, such as running and swimming.
+How fast you move and perform actions related to your body condition, such as running and swimming.
 '''
 stat__sk_toughness_descr = '''
-This is physical resistance, affecting how much damage you deflect without armour.
+Your physical resistance, affecting how much damage you deflect without armour and how much some external forces affect you.
 '''
 stat__sk_survival_descr = '''
-Survivality means all skills to live in difficult environments and conditions, including also body adaptation. Helps immensely in many various cases, however almost always not directly.
+All skills to live in challenging environments and conditions, including also body adaptation. Helps immensely in many various cases while traversing difficult terrain, however almost always not directly.
 '''
 #-----------------------
 # RELIGIONS

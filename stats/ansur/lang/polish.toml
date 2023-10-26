@@ -179,6 +179,30 @@ Rodzinne wyspy nordwińczyków obfitowały w lasy, umożliwiając im sporą eksp
 Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały, świętując je częstymi ucztami, traktowane jako lokalne wydarzenie.
 '''
 #-----------------------
+# UMIEJĘTNOŚCI
+#-----------------------
+stat__sk_horse_riding_descr = '''
+Twoje doświadczenie w jeździe konno, wpływające na prędkość podróży na ich grzbiecie, jak i skuteczność walki na koniu.
+'''
+stat__sk_boat_driving_descr = '''
+Twoje doświadczenie z łodziami, wpływające na efektywność w ich użyciu - zarówno osiągania większych prędkości, jak i skuteczności w walce z nich.
+'''
+stat__sk_animal_taming_descr = '''
+Jak łatwo komunikujesz się i oswajasz zwierzęta. Zależnie od ich dzikości, odmienny poziom tej umiejętności będzie potrzebny.
+'''
+stat__sk_musicality_descr = '''
+Jak dobrym muzykiem jesteś. Pozwala na granie bardziej złożonych kompozycji muzycznych, jak i użycie większej ilości instrumentów.
+'''
+stat__sk_athletics_descr = '''
+Jak szybko się poruszasz, zarówno w normalnych warunkach, jak i podczas biegu czy pływania.
+'''
+stat__sk_toughness_descr = '''
+Twoja odporność na fizyczne obrażenia. Wpływa na to, jak wiele obrażeń bez pancerza jesteś w stanie przyjąć.
+'''
+stat__sk_survival_descr = '''
+Zdolności radzenia sobie w trudnych warunkach czy środowisku, wliczając w to przystosowanie organizmu. Pomaga w wielu sytuacjach podczas podróży przez nieprzyjazne tereny, jednak wpływ ten jest niemal zawsze jedynie pośredni.
+'''
+#-----------------------
 # RELIGIE
 #-----------------------
 religion__theism_descr = '''
@@ -187,7 +211,7 @@ Wierzysz w zewnętrzne siły, Boga, bogów, czy też duchy lub energię, która 
 Ten wybór nie przynosi żadnych korzyści, strat ani zobowiązań. Wybierz jeśli chcesz się zadeklarować jako teista bez żadnych skutków ubocznych konkretnej wiary.
 '''
 religion__atheism_descr = '''
-Nie wierzysz w cokolwiek nadprzyrodzonego, mimo iż Baedoor pełne jest magiczny fenomenów - dla Ciebie są one udowodnione przez naukę i niewarte uznania za cokolwiek więcej niż sprytna szarlataneria.
+Nie wierzysz w cokolwiek nadprzyrodzonego, mimo iż Baedoor pełne jest magicznych fenomenów - dla Ciebie są one udowodnione przez naukę i niewarte uznania za cokolwiek więcej niż sprytna szarlataneria.
 
 Ten wybór nie przynosi żadnych korzyści, strat ani zobowiązań.
 '''
