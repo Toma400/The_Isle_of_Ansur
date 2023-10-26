@@ -62,6 +62,11 @@ ccrt__load_packs_used = "Użyte mody"
 pack__type_stats      = "Statpack"
 pack__type_themes     = "Themepack"
 pack__type_worlds     = "Worldpack"
+pack__name            = "Nazwa"
+pack__authors         = "Autorzy"
+pack__version         = "Wersja"
+pack__descr           = "Opis"
+pack__req             = "Wymagane paczki"
 # end
 
 menu__load_choose          = "Wybierz swój zapis gry"

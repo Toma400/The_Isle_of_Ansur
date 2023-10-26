@@ -62,6 +62,11 @@ ccrt__load_packs_used = "Packs used"
 pack__type_stats      = "Statpack"
 pack__type_themes     = "Themepack"
 pack__type_worlds     = "Worldpack"
+pack__name            = "Name"
+pack__authors         = "Authors"
+pack__version         = "Version"
+pack__descr           = "Description"
+pack__req             = "Dependencies"
 # end
 
 menu__load_choose          = "Choose your save"

@@ -76,12 +76,16 @@ class Screen:
         return self.objects.get_element(value)
 
     def get_pgui_choice(self, element: str) -> str | None:
-        """Gets currently selected entry in GUI element (available only for some types)"""
+        """Gets currently selected entry in GUI element (available only for some types) as value"""
         return self.pobjects.get_value(element)
 
     def get_pgui_index(self, element: str) -> int | None:
-        """Gets currently selected entry in GUI element (available only for some types)"""
+        """Gets currently selected entry in GUI element (available only for some types) as index"""
         return self.pobjects.get_element_index(element)
+
+    def get_pgui_options(self, element: str) -> any:
+        """Returns options of specific GUI type"""
+        return self.pobjects.get_options(element)
 
     def set_pgui_element(self, element: str, overwrite):
         """Overwrites GUI element's contents (available only for some types)"""

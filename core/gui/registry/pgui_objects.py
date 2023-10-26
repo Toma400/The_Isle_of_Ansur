@@ -11,7 +11,7 @@ from core.data.player.profession import getClassesTuple
 from core.data.player.gender import getGendersTuple
 from core.data.player.race import getRacesTuple
 from core.gui.manag.pc import toPxX, toPxY
-import pygame
+import pygame, logging
 
 class PGUI_Helper:
     """
@@ -51,6 +51,9 @@ class PGUI_Helper:
         # ---
         self.load__saves     = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
         self.load__descr     = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(50), toPxY(45)), (toPxX(40), toPxY(30))), manager=manager)
+        # ---
+        self.pack__zip_list  = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
+        self.pack__descr     = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(50), toPxY(45)), (toPxX(40), toPxY(30))), manager=manager)
         self.char__ti_name.set_forbidden_characters("forbidden_file_path")
         self.hide_elements()
 
@@ -83,10 +86,17 @@ class PGUI_Helper:
         match self.get_element(element).__module__:
             case UISelectionList.__module__: return getCurrentIndex(self.get_element(element))
 
+    def get_options(self, element: str) -> any:
+        """Returns list of options for specific type. It doesn't return value!"""
+        match self.get_element(element).__module__:
+            case UISelectionList.__module__: return self.get_element(element).item_list
+            case _:                          logging.warning(f"Tried to request -get_options- from PGUI element that does not support it: {element}")
+
     def set_default(self, element: str):
         """Resets selected element of the GUI, usually putting it in its default state"""
         match self.get_element(element).__module__:
             case UISelectionList.__module__: resetSelected(self.get_element(element))
+            case _:                          logging.warning(f"Tried to request -set_default- from PGUI element that does not support it: {element}")
 
     def set_value(self, element: str, overwrite):
         """Overwrites item list of selected element"""
@@ -95,6 +105,7 @@ class PGUI_Helper:
             case UITextBox.__module__:       self.get_element(element).set_text(overwrite)
             case UITextEntryBox.__module__:  self.get_element(element).set_text(overwrite)
             case UITextEntryLine.__module__: self.get_element(element).set_text(overwrite)
+            case _:                          logging.warning(f"Tried to request -set_value- from PGUI element that does not support it: {element}")
 
     def clear_values(self):
         """Clears values of elements that are meant to be empty at the initial phase (look at __init__)"""
