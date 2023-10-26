@@ -24,3 +24,6 @@ def absoluteID(string: str) -> str:
     if ":" not in string:
       return f"ansur:{string}"
     return string
+
+def splitID(string: str) -> (str, str):
+    return string.split(":")

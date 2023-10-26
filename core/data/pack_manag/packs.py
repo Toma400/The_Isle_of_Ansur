@@ -1,23 +1,14 @@
 from core.utils import sysref, scx, developer_mode
 from core.file_system.parsers import loadTOML, loadYAML
 from core.gui.manag.langstr import langstring
+from core.data.pack_manag.info import searchInfo
+from core.data.pack_manag.types import *
 from os.path import exists
 from glob import glob as walkdir
-from enum import Enum
 import logging as log
 import re
 import os
 
-class PackTypes(Enum):
-    WORLD_PACK  = "worlds"
-    STAT_PACK   = "stats"
-    THEME_PACK  = "themes"
-    # those are loaded differently, so script below won't work
-    # ANY
-    # ALL
-    # GLOBALPACK
-
-pack_types = [PackTypes.THEME_PACK.value, PackTypes.STAT_PACK.value, PackTypes.WORLD_PACK.value]
 packs_all  = list(filter(lambda ext: ".zip" in ext, os.listdir("packs/")))
 
 def getScripts() -> list[str]:
@@ -102,16 +93,9 @@ def verifyPacks():
                     return False
         return True
 
-    def browseInfo(req_id: str) -> dict | None:
-        """Browses through all pack folders to find -info.toml- file"""
-        for packkind in pack_types:
-            if exists(f"{packkind}/{req_id}/info.toml"):
-                return loadTOML(f"{packkind}/{req_id}/info.toml")
-        return None
-
     def getVersion(req_id: str) -> (int, float) or None:
         """Gets version from specific -info.toml- file"""
-        info_file = browseInfo(req_id)
+        info_file = searchInfo(req_id)
         if info_file is None:
             return None
         else:
@@ -125,7 +109,7 @@ def verifyPacks():
     errors = {}
     for packID in vpack.keys():
         errors_pack = []
-        pack_info = browseInfo(packID) # PyCharm warn here is stupid, it's 'str', not list
+        pack_info = searchInfo(packID) # PyCharm warn here is stupid, it's 'str', not list
         if pack_info is not None:
             if "requirements" in pack_info.keys():
                 for req_pack in pack_info["requirements"].keys():
