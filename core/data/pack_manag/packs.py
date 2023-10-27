@@ -66,6 +66,8 @@ def verifyPacks():
             if any(not char.isdigit() for char in parts[1]):             # '1.1b'
                 chars = re.sub("[0-9]+", "", parts[1])
                 nums  = re.sub("[^0-9]", "", parts[1])
+                if chars == "+":
+                    return int(parts[0]), float(f"{nums}.{99999}")
                 return int(parts[0]), float(f"{nums}.{ord(chars) - 97}")
             else:                                                        # '1.1'
                 return int(parts[0]), float(parts[1])
