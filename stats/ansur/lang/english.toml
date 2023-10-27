@@ -384,22 +384,22 @@ stat__sk_sneaking_descr = '''
 Describes your ability to hide in dark corners and be invisible to others' eyes. It adds into stealth actions, be it stealing-related or fight related.
 '''
 stat__sk_pickpocketing_descr = '''
-Tells on ability to steal money from someone's pocket without them noticing. It is heavily connected to sneaking skill.
+How effectively you can steal money from someone's pocket without them noticing. Heavily connected to sneaking skill, as both affects avoiding others' detection awareness.
 '''
 stat__sk_traps_designing_descr = '''
-Affects on how good your traps will be when created and set, deciding on their quality and speed of installing them in location.
+Affects on how good traps will be when created and set, deciding on their quality and speed of installing in location. On highest levels it may allow you to construct traps out of environmental resources.
 '''
 stat__sk_traps_spotting_descr = '''
-Tells how easily you can spot elements of the environment destined to be trap of some form. Heavily connected to perception.
+How easily you can spot environmental objects destined to be trap of some form for unaware adventurer. Heavily connected to perception.
 '''
 stat__sk_hunting_descr = '''
-Hunting is a craft of properly skinning the animals hunted and preparing them for being a usable resource. Additionally, this skill affects your efficiency in finding animals to hunt.
+Let you properly prepare and skin animals hunted. Additionally, it affects your efficiency in finding animals to hunt since you gain more experience with detecting their presence in area.
 '''
 stat__sk_fishing_descr = '''
-Fishing allows for better preparation of fishes that were gathered. Additionally, this skill affects your efficiency when fishing.
+Allows for better preparation of fishes that were gathered. Additionally, this skill affects your efficiency when fishing, as you intuitively sense better places to search.
 '''
 stat__sk_sewing_descr = '''
-Sewing is a craft of making clothes from leather and other non-metallic materials. Proficiency in it let you craft various clothing types from various materials.
+Sewing let you create clothes from various non-metallic materials, such as leather. This goes well with hunting skill, since it let you complement gathering resources with processing them into more manufactured form.
 '''
 stat__sk_carpentry_descr = '''
 Carpentry is art of turning wood into furniture and other items, ranging even to instruments. It is considered as one of the most important fields of natural materials processing, being first alongside smithing to appear in towns.

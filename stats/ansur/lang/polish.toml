@@ -182,6 +182,24 @@ Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały
 #-----------------------
 # UMIEJĘTNOŚCI
 #-----------------------
+stat__sk_pickpocketing_descr = '''
+Jak skutecznie jesteś w stanie okraść kogoś bez bycia złapanym. Umiejętność mocno pozwiązana ze skradaniem się, jako że obie wpływają na minimalizowanie szansy rozpoznania.
+'''
+stat__sk_traps_designing_descr = '''
+Wpływa na jakość i szybkość zakładania pułapek w konkretnej lokacji. Na najwyższych poziomach pozwala dodatkowo wykorzystywać materiały z otoczenia, minimalizując koszta budowy.
+'''
+stat__sk_traps_spotting_descr = '''
+Decyduje o tym, jak łatwo przychodzi ci rozpoznawanie pułapek przeznaczonych dla mniej doświadczonych podróżników. Związane silnie z percepcją.
+'''
+stat__sk_hunting_descr = '''
+Daje możliwość poprawnego przygotowania i oskórowania złowionych zwierząt. Wpływa także na łatwość znajdowania ich podczas polowania, ułatwiając wyczuwanie ich obecności w najbliższym otoczeniu.
+'''
+stat__sk_fishing_descr = '''
+Ułatwia lepsze przygotowanie ryb po ich złowieniu. Dodatkowo, wpływa na lepszą skuteczność podczas łowienia ryb, jako że wraz z doświadczeniem nabywasz intuicji co do wyboru miejsca do łowienia.
+'''
+stat__sk_sewing_descr = '''
+Pozwala na tworzenie ubrań z różnych niemetalicznych surowców, takich jak skóra. Uzupełnia się dobrze z łowiectwem, pozwalając na przetworzenie zebranych materiałów na bardziej wartościowe przedmity.
+'''
 stat__sk_carpentry_descr = '''
 Stolarstwo to sztuka tworzenia mebli oraz przedmiotów różnego użytku z drewna, wliczając w to nawet instrumenty.
 Jest to jedna z najpowszechniejszych i najbardziej potrzebnych form rzemieślnictwa, co powoduje, że jest to jeden z pierwszych fachów pojawiających się w miastach.
