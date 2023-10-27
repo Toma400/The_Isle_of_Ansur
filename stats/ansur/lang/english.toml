@@ -456,89 +456,89 @@ All skills to live in challenging environments and conditions, including also bo
 #-----------------------
 # MAGIC
 #-----------------------
-stat__sk_common_magic_descr = '''
-It is general type of magic in Baedoor universe, shaped from elements and kinds intertwining with each other.
-Available to anyone willing to learn, it allows for slow gain of experience which results in more powerful magic being used in fields trained.
-'''
-stat__sk_path_magic_descr = '''
-It is specific type of magic, which requires sacrifice and dedication.
-Once chosen, path magic closes possibility to choose different option. This comes with a reward though: carefully mastered path magic is one of the most powerful forces in mortals universe.
-'''
-stat__sk_common_magic_void_descr = '''
-Void is chaotic element that is essence of existence. It creates and destroys everything that appears in the world. It is pure form of gods' dimension of the same name.
-'''
-stat__sk_common_magic_fire_descr = '''
-Fire is chaotic element that burns, but also purify, if given enough carefulness. It is powerful energy that rejects to be controlled.
-'''
-stat__sk_common_magic_electricity_descr = '''
-Electricity is semi-chaotic element that revolts around chaining effects of the phenomena, allowing you to manipulate with force closest to disrupt technology.
-'''
-stat__sk_common_magic_soul_descr = '''
-Soul is semi-chaotic element that is within each living being. Similarly to Void, this element is feared because of opposite reasons: because it is controllable, yet powerful, it is considered as sacrilegious and manipulative.
-'''
-stat__sk_common_magic_wind_descr = '''
-Wind is semi-ordered element that controls the flow and air. It is very subtle, but learnt to mastery can become extremely useful.
-'''
-stat__sk_common_magic_ice_descr = '''
-Ice is semi-ordered element made out of water element. Almost ironical concept of less order comes from way higher effect coming with ice, compared to soft water form.
-'''
-stat__sk_common_magic_water_descr = '''
-Water is ordered element that controls delicate, yet powerful force of water. While not exactly destructive, water becomes very dangerous when taken with patience.
-'''
-stat__sk_common_magic_earth_descr = '''
-Earth is ordered element that answers for dirt and all that is on the ground. While alone it can be powerful, causing masterful magicians to create local earthquake, its biggest potential lies in connection with other elements, allowing you for even small vulcano eruptions.
-'''
-stat__sk_common_magic_destruction_descr = '''
-Destruction gravitates towards annihilation and various form of reducing living aspect of reality. This makes it the most powerful, yet closest to uncontrollable form of Void.
-'''
-stat__sk_common_magic_absorption_descr = '''
-Absorption is kind of magic that takes form of incorporating outside energy into our own, making it great balance between offensive and defensive style of magic.
-'''
-stat__sk_common_magic_illusion_descr = '''
-Illusion performs changes on subliminal level of entities, manipulating more of perception than reality itself. This makes it really powerful against unexperienced, yet dependant on opposer's skills.
-'''
-stat__sk_common_magic_transformation_descr = '''
-Transformation is school of magic reflective on changing the reality itself. As such, it is extremely dangerous and effective against technology, yet the most costful and demanding from the mage.
-'''
-stat__sk_common_magic_evocation_descr = '''
-Evocation is craft of summoning living beings, ghosts, undead, demons and even gods. As such, it is really varying in difficulty and danger, entirely basing those on mage's intentions.
-'''
-stat__sk_common_magic_restoration_descr = '''
-Restoration is the most friendly form of magic to environment, set on basis of balance, where everything comes to the state of equilibrium. As such, it helps heavily with restoring anything that was put into unbalanced state, including living force.
-'''
-stat__sk_path_magic_dream_descr = '''
-Dream path is form of general magic path that is based on dreaming, oneironautic travelling and rather discovering wisdom about oververse than being practical magic.
-It is magic path known for its popularity among Starshifters.
-'''
-stat__sk_path_magic_death_descr = '''
-Death path is general magic path that touches craft of death and its manipulation directly. Unlike common magic revolving around evocation, path of death is much more intrinsic.
-This also makes it even harder to practice, as many forms of necromancy are not legal in many countries due to it being perceived as disturbing with sacred order of life.
-There are places where necromancy is much more popular, however, key example being Kaer island.
-'''
-stat__sk_path_magic_erd_descr = '''
-Erd path is ethnicity based path that revolves around reality manipulation, usually connected to air and water.
-Its practitioners are frequently seen walking on water or using air as a platform to elevate themselves.
-Being dedicated mostly for Erd civilisation, it is mostly practiced by Erd's monks.
-'''
-stat__sk_path_magic_lunatri_descr = '''
-Higher Tri path is ethnicity based path that conveys all wisdom Tri race forged across thousands of years, in its purest form.
-It is set on multiple pillars, merging them in way that allows nature to fill whatever intent Higher Tri mage has towards their destination.
-This allows this path to be extremely effective, while preserving state of the environment to highest degree. It comes with a high demand of practice and skill.
-'''
-stat__sk_path_magic_ormath_descr = '''
-Ormath path is ethnicity based path exclusive to ormaths, as it is connected with unique connection they have with the physical world.
-While the path itself is bound to wind, the way it manifests in the world negates Void, but also gets destabilised much more easily when Void comes into play.
-This path is very specific in use, as it serves much more peaceful, religious purposes of ormaths, but it can get really grand if used with blessings of wind spirits of the desert.
-'''
-stat__sk_path_magic_terten_descr = '''
-Terten path is ethnicity based path of terten magicians. It is based on plague, death and pestilence.
-It is one of the more powerful paths, connecting many branches of magic into one, but also making it not really suitable for living mage, as it risks sacrificing his identity to its outcomes.
-Unlike living races, tertens find themselves perfectly aligned to practice this magic, bringing miasma into deserts of Vaerdena.
-'''
-stat__sk_path_magic_keht_descr = '''
-Keht path is ethnicity based path that revolves around blood and vampiric tendencies of Keht race.
-It is perceived as highly immoral outside of Kaer island, but has very deep traditions within vampiric clans of that place.
-'''
+#stat__sk_common_magic_descr = '''
+#It is general type of magic in Baedoor universe, shaped from elements and kinds intertwining with each other.
+#Available to anyone willing to learn, it allows for slow gain of experience which results in more powerful magic being used in fields trained.
+#'''
+#stat__sk_path_magic_descr = '''
+#It is specific type of magic, which requires sacrifice and dedication.
+#Once chosen, path magic closes possibility to choose different option. This comes with a reward though: carefully mastered path magic is one of the most powerful forces in mortals universe.
+#'''
+#stat__sk_common_magic_void_descr = '''
+#Void is chaotic element that is essence of existence. It creates and destroys everything that appears in the world. It is pure form of gods' dimension of the same name.
+#'''
+#stat__sk_common_magic_fire_descr = '''
+#Fire is chaotic element that burns, but also purify, if given enough carefulness. It is powerful energy that rejects to be controlled.
+#'''
+#stat__sk_common_magic_electricity_descr = '''
+#Electricity is semi-chaotic element that revolts around chaining effects of the phenomena, allowing you to manipulate with force closest to disrupt technology.
+#'''
+#stat__sk_common_magic_soul_descr = '''
+#Soul is semi-chaotic element that is within each living being. Similarly to Void, this element is feared because of opposite reasons: because it is controllable, yet powerful, it is considered as sacrilegious and manipulative.
+#'''
+#stat__sk_common_magic_wind_descr = '''
+#Wind is semi-ordered element that controls the flow and air. It is very subtle, but learnt to mastery can become extremely useful.
+#'''
+#stat__sk_common_magic_ice_descr = '''
+#Ice is semi-ordered element made out of water element. Almost ironical concept of less order comes from way higher effect coming with ice, compared to soft water form.
+#'''
+#stat__sk_common_magic_water_descr = '''
+#Water is ordered element that controls delicate, yet powerful force of water. While not exactly destructive, water becomes very dangerous when taken with patience.
+#'''
+#stat__sk_common_magic_earth_descr = '''
+#Earth is ordered element that answers for dirt and all that is on the ground. While alone it can be powerful, causing masterful magicians to create local earthquake, its biggest potential lies in connection with other elements, allowing you for even small vulcano eruptions.
+#'''
+#stat__sk_common_magic_destruction_descr = '''
+#Destruction gravitates towards annihilation and various form of reducing living aspect of reality. This makes it the most powerful, yet closest to uncontrollable form of Void.
+#'''
+#stat__sk_common_magic_absorption_descr = '''
+#Absorption is kind of magic that takes form of incorporating outside energy into our own, making it great balance between offensive and defensive style of magic.
+#'''
+#stat__sk_common_magic_illusion_descr = '''
+#Illusion performs changes on subliminal level of entities, manipulating more of perception than reality itself. This makes it really powerful against unexperienced, yet dependant on opposer's skills.
+#'''
+#stat__sk_common_magic_transformation_descr = '''
+#Transformation is school of magic reflective on changing the reality itself. As such, it is extremely dangerous and effective against technology, yet the most costful and demanding from the mage.
+#'''
+#stat__sk_common_magic_evocation_descr = '''
+#Evocation is craft of summoning living beings, ghosts, undead, demons and even gods. As such, it is really varying in difficulty and danger, entirely basing those on mage's intentions.
+#'''
+#stat__sk_common_magic_restoration_descr = '''
+#Restoration is the most friendly form of magic to environment, set on basis of balance, where everything comes to the state of equilibrium. As such, it helps heavily with restoring anything that was put into unbalanced state, including living force.
+#'''
+#stat__sk_path_magic_dream_descr = '''
+#Dream path is form of general magic path that is based on dreaming, oneironautic travelling and rather discovering wisdom about oververse than being practical magic.
+#It is magic path known for its popularity among Starshifters.
+#'''
+#stat__sk_path_magic_death_descr = '''
+#Death path is general magic path that touches craft of death and its manipulation directly. Unlike common magic revolving around evocation, path of death is much more intrinsic.
+#This also makes it even harder to practice, as many forms of necromancy are not legal in many countries due to it being perceived as disturbing with sacred order of life.
+#There are places where necromancy is much more popular, however, key example being Kaer island.
+#'''
+#stat__sk_path_magic_erd_descr = '''
+#Erd path is ethnicity based path that revolves around reality manipulation, usually connected to air and water.
+#Its practitioners are frequently seen walking on water or using air as a platform to elevate themselves.
+#Being dedicated mostly for Erd civilisation, it is mostly practiced by Erd's monks.
+#'''
+#stat__sk_path_magic_lunatri_descr = '''
+#Higher Tri path is ethnicity based path that conveys all wisdom Tri race forged across thousands of years, in its purest form.
+#It is set on multiple pillars, merging them in way that allows nature to fill whatever intent Higher Tri mage has towards their destination.
+#This allows this path to be extremely effective, while preserving state of the environment to highest degree. It comes with a high demand of practice and skill.
+#'''
+#stat__sk_path_magic_ormath_descr = '''
+#Ormath path is ethnicity based path exclusive to ormaths, as it is connected with unique connection they have with the physical world.
+#While the path itself is bound to wind, the way it manifests in the world negates Void, but also gets destabilised much more easily when Void comes into play.
+#This path is very specific in use, as it serves much more peaceful, religious purposes of ormaths, but it can get really grand if used with blessings of wind spirits of the desert.
+#'''
+#stat__sk_path_magic_terten_descr = '''
+#Terten path is ethnicity based path of terten magicians. It is based on plague, death and pestilence.
+#It is one of the more powerful paths, connecting many branches of magic into one, but also making it not really suitable for living mage, as it risks sacrificing his identity to its outcomes.
+#Unlike living races, tertens find themselves perfectly aligned to practice this magic, bringing miasma into deserts of Vaerdena.
+#'''
+#stat__sk_path_magic_keht_descr = '''
+#Keht path is ethnicity based path that revolves around blood and vampiric tendencies of Keht race.
+#It is perceived as highly immoral outside of Kaer island, but has very deep traditions within vampiric clans of that place.
+#'''
 #-----------------------
 # RELIGIONS
 #-----------------------

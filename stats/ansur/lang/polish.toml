@@ -183,7 +183,7 @@ Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały
 # UMIEJĘTNOŚCI
 #-----------------------
 stat__sk_carpentry_descr = '''
-Stolarstwo to sztuka przetwarzania drewna w meble i przedmioty różnego użytku, wliczając w to nawet tworzenie instrumentów.
+Stolarstwo to sztuka tworzenia mebli oraz przedmiotów różnego użytku z drewna, wliczając w to nawet instrumenty.
 Jest to jedna z najpowszechniejszych i najbardziej potrzebnych form rzemieślnictwa, co powoduje, że jest to jeden z pierwszych fachów pojawiających się w miastach.
 '''
 stat__sk_pottery_descr = '''
@@ -194,7 +194,7 @@ stat__sk_stonemasonry_descr = '''
 Pozwala przetwarzać kamień w różne produkty oparte na tym surowcu, jak meble czy rzeźby. Jako że kamień nie jest tak popularnym materiałem jak drewno, jest to zazwyczaj lepszy wybór dla rzemieślników mieszkających w bogatszych miastach.
 '''
 stat__sk_ore_processing_descr = '''
-Przetwarzanie rud jest odpowiedzialne za efektywną obróbkę rud w czyste metale, jak i również stopy różnego rodzaju. Przydatne w połączeniu z kowalstwem, jeżeli nie zamierzasz kupować surowców od górników.
+Przetwarzanie rud odpowiada za efektywną obróbkę rud w czyste metale, jak i również stopy różnego rodzaju. Przydatne w połączeniu z kowalstwem, jeżeli nie zamierzasz kupować surowców od górników.
 '''
 stat__sk_smithing_descr = '''
 Najbardziej rozchwytywana forma rzemiosła, pozwalająca na przetwarzanie metali w różne narzędzia.
