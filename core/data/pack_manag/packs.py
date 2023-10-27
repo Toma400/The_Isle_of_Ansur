@@ -63,18 +63,20 @@ def verifyPacks():
         # example: '1.1', '1.1b'
         if ver.count(".") == 1:
             parts = ver.split(".")
-            if any(not char.isdigit() for char in parts[1]):             # '1.1b'
+            if any(not char.isdigit() for char in parts[1]):                 # '1.1b'/'1.1+'
                 chars = re.sub("[0-9]+", "", parts[1])
                 nums  = re.sub("[^0-9]", "", parts[1])
-                if chars == "+":
-                    return int(parts[0]), float(f"{nums}.{99999}")
-                return int(parts[0]), float(f"{nums}.{ord(chars) - 97}")
-            else:                                                        # '1.1'
+                if chars != "+":
+                    return int(parts[0]), float(f"{nums}.{ord(chars) - 97}") # '1.1b'
+                return int(parts[0]), float(f"{nums}.{99999}")               # '1.1+'
+            else:                                                            # '1.1'
                 return int(parts[0]), float(parts[1])
         # example: '1.1.1'
         if ver.count(".") == 2:
             parts = ver.split(".")
-            return int(parts[0]), float(f"{parts[1]}.{parts[2]}")
+            if parts[2] != "+":                                              # '1.1.1'
+                return int(parts[0]), float(f"{parts[1]}.{parts[2]}")
+            return int(parts[0]), float(f"{parts[1]}.{99999}")               # '1.1.+'
         else:
             log.error(f"Couldn't parse version requirement due to not supported format. Supported formats: [n], [n.n], [n.nx], [n.n.n]. Legend: n - digit, x - latin letter. Parsed literal value: {ver}")
             return 0, 0.0
