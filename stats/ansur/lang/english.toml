@@ -368,20 +368,23 @@ stat__sk_mores_casting_descr = '''
 Measures ability to cast runes into mores. Is usually combined with unsealing skill that performs unsealing of the spell.
 '''
 stat__sk_unsealing_descr = '''
-Unsealing is craft of unbinding spell from the object, be it scroll, more or other items, such as projectile, weapon, armour or anything else.
-It is essential part of niche "item magic", but also of any magic that uses items as parts of process.
+Unsealing means unbinding spell from the object, be it scroll, more or other item, such as projectile, weapon, armour or anything else. The most sophisticated item, the harder process of unsealing.
+This skill is essential part of niche "item magic", but also of any magic that uses items as parts of process.
 '''
 stat__sk_trade_descr = '''
-Trading is art of recognising price differences in various locations and chances that those put on items you sell or buy. This also allows you for easier bargaining and lowering prices in certain situations.
+Trading is art of persuading other party that their goods are of course as valuable as they think, but for you, they should have a bit... special discount.
+This skill also allows you to have good eye on whether this certain item is cheaper in specific place, or quite reversely, it became a bit harder to find in this area.
 '''
 stat__sk_persuasion_descr = '''
-Persuasion base itself on how fluently you can convince someone to your will or worldview. This makes it a powerful tool of communication.
+Makes your convincing skills way more effective, so eventually you can ask your enemy what they think about the weather and to drink this latest beverage you bought in local market area.
+Eventually they will greet you and tell you to come back soon. They may also be way more convinced that you are that good guy.
 '''
 stat__sk_lockpicking_descr = '''
-Showcases performance on whether you can work with locks, on their difficulty and your speed of dismantling their protections.
+It is all about tricking those locks a bit, so they will just as nicely open to your will. After all, keys are just a preferred way to deal with doors and chests, right?
+With enough lockpicking skills, everything will get easier and faster to unlock.
 '''
 stat__sk_sneaking_descr = '''
-Describes your ability to hide in dark corners and be invisible to others' eyes. It adds into stealth actions, be it stealing-related or fight related.
+Describes your ability to hide in dark corners and be invisible to others' eyes. Adds into stealth actions, be it stealing-related or fight related.
 '''
 stat__sk_pickpocketing_descr = '''
 How effectively you can steal money from someone's pocket without them noticing. Heavily connected to sneaking skill, as both affects avoiding others' detection awareness.

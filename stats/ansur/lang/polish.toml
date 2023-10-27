@@ -182,8 +182,27 @@ Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały
 #-----------------------
 # UMIEJĘTNOŚCI
 #-----------------------
+stat__sk_unsealing_descr = '''
+Odpieczętowanie to sztuka uwalniania czaru z obiektu, którym najczęściej zwój lub mora, czasem również pocisk, broń, pancerz, czy dowolny inny przedmiot. Im bardziej złożony obiekt, tym trudniejszy proces odpieczętowania.
+Ta umiejętność jest esencjonalną częścią niszowej "magiji przedmiotów", ale również jakiejkolwiek dziedziny czarów, które używają przedmiotów jako części procesu.
+'''
+stat__sk_trade_descr = '''
+Handel jest sztuką perswazji drugiej strony, w której próbujesz przekazać drugiej stronie, że oczywiście, cena jest właśnie taka, ale twoja przyniesie jej więcej korzyści. Czystym przypadkiem twoja jest odpowiednio niższa.
+Ta umiejętność w dodatku pozwala mieć pojęcie o tym, jakie ceny panują w konkretnych rejonach - co jest przydatne szczególnie, gdy chcesz kupić w jednym miejscu taniej, by sprzedać drożej w innym.
+'''
+stat__sk_persuasion_descr = '''
+Pozwala ci przekonać drugą stronę, tak iż ta ostatecznie będzie chciała z tobą porozmawiać o pogodzie, czy też napić się wina, które przytroczyłeś z lokalnego bazaru.
+Ostatecznie cię pozdrowi, i w sumie uzna, że choć przed chwilą chciała cię zabić, to w sumie jednak wolała porozmawiać o swojej chorej cioci.
+'''
+stat__sk_lockpicking_descr = '''
+Drzwi potrafią być irytujące, szczególnie jeśli ktoś je zamknie tak, by nie można się było do nich dostać bez klucza. Szczęśliwie, umiejętność obsługi wytrychów pozwala na bardzo wiele.
+Na przykład na przekonanie właściciela, że jednak te drzwi wyglądają lepiej otwarte. Im lepszy jesteś w otwieraniu zamków, tym szybciej i łatwiej ci się to uda.
+'''
+stat__sk_sneaking_descr = '''
+Opisuje zdolność do ukrywania się w ciemnych miejscach oraz bycie niewidocznym. Wpływa na czynności związane z skradaniem się takie jak poruszanie się, kradzież czy walka z ukrycia.
+'''
 stat__sk_pickpocketing_descr = '''
-Jak skutecznie jesteś w stanie okraść kogoś bez bycia złapanym. Umiejętność mocno pozwiązana ze skradaniem się, jako że obie wpływają na minimalizowanie szansy rozpoznania.
+Twoja skuteczność w kieszonkostwie bez bycia złapanym. Umiejętność mocno pozwiązana ze skradaniem się, jako że obie wpływają na minimalizowanie szansy rozpoznania.
 '''
 stat__sk_traps_designing_descr = '''
 Wpływa na jakość i szybkość zakładania pułapek w konkretnej lokacji. Na najwyższych poziomach pozwala dodatkowo wykorzystywać materiały z otoczenia, minimalizując koszta budowy.
@@ -195,10 +214,10 @@ stat__sk_hunting_descr = '''
 Daje możliwość poprawnego przygotowania i oskórowania złowionych zwierząt. Wpływa także na łatwość znajdowania ich podczas polowania, ułatwiając wyczuwanie ich obecności w najbliższym otoczeniu.
 '''
 stat__sk_fishing_descr = '''
-Ułatwia lepsze przygotowanie ryb po ich złowieniu. Dodatkowo, wpływa na lepszą skuteczność podczas łowienia ryb, jako że wraz z doświadczeniem nabywasz intuicji co do wyboru miejsca do łowienia.
+Ułatwia przygotowanie ryb po ich złowieniu. Wpływa na lepszą intuicję w wyborze miejsca do łowienia, pozwalając na większy połów.
 '''
 stat__sk_sewing_descr = '''
-Pozwala na tworzenie ubrań z różnych niemetalicznych surowców, takich jak skóra. Uzupełnia się dobrze z łowiectwem, pozwalając na przetworzenie zebranych materiałów na bardziej wartościowe przedmity.
+Pozwala na tworzenie ubrań z różnych niemetalicznych surowców, takich jak skóra. Łowiectwo pozwala na efektywniejsze wykorzystanie zebranych materiałów na bardziej wartościowe przedmioty.
 '''
 stat__sk_carpentry_descr = '''
 Stolarstwo to sztuka tworzenia mebli oraz przedmiotów różnego użytku z drewna, wliczając w to nawet instrumenty.

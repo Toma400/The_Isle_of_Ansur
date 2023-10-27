@@ -66,7 +66,7 @@ In next months translation contributions will be opened, when most of game featu
 
 ---
 **Lead Developer:** Toma400  
+**QA:** [skeletonguedworld](https://github.com/skeletontonguedworld)
 
 ---
-All resources used are under [Baedoor License](license) unless stated in [credits](credits.md).  
-AI scraping is understood as not allowed.
+All resources used are under [Baedoor License](license) unless stated in [credits](credits.md).
