@@ -362,10 +362,12 @@ stat__sk_spellcasting_descr = '''
 Influences your skills in magic, influencing its success and learning effectiveness.
 '''
 stat__sk_scrolls_writing_descr = '''
-Describes ability to write scrolls effectively and sealing the spell into it. Is usually combined with unsealing skill that performs later part of scroll use.
+Scrolls are used to store spells that can be sealed beforehand, so in tense situation you don't need to perform spell in its whole.
+This skill goes well with unbinding, as those are basically mutually used types of magic.
 '''
 stat__sk_mores_casting_descr = '''
-Measures ability to cast runes into mores. Is usually combined with unsealing skill that performs unsealing of the spell.
+Mores are items, usually bones or rocks, that absorb magic, and can be sealed easily with specific types of magic, to be later used with unbinding spells.
+Similarly to scroll writing, this skill goes hand in hand with unbinding, as it is natural extending of it.
 '''
 stat__sk_unsealing_descr = '''
 Unsealing means unbinding spell from the object, be it scroll, more or other item, such as projectile, weapon, armour or anything else. The most sophisticated item, the harder process of unsealing.

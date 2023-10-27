@@ -182,17 +182,25 @@ Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały
 #-----------------------
 # UMIEJĘTNOŚCI
 #-----------------------
+stat__sk_scrolls_writing_descr = '''
+Zwoje używane są do przechowywania zaklęć, które są zamknięte w nich z odpowiednim wyprzedzeniem, pozwalając na odpieczętowanie ich w napiętej sytuacji bez zużywania energii całego zaklęcia.
+Ta umiejętność jest łączona z odpieczętowaniem, jako że stanowią one dwie strony jednej monety, wzajemnie się uzupełniając.
+'''
+stat__sk_mores_casting_descr = '''
+Mory są przedmiotami, zwykle kośćmi czy kamieniami, które absorbują magię. To pozwala zamykać w nich specyficzne formy zaklęć, by użyć ich potem za pomocą odpieczętowania.
+Podobnie do pisania zwojów, umiejętność zaklinania morów uzupełnia się z odpieczętowywaniem, które stanowi jego naturalną kontynuację.
+'''
 stat__sk_unsealing_descr = '''
-Odpieczętowanie to sztuka uwalniania czaru z obiektu, którym najczęściej zwój lub mora, czasem również pocisk, broń, pancerz, czy dowolny inny przedmiot. Im bardziej złożony obiekt, tym trudniejszy proces odpieczętowania.
+Odpieczętowanie to sztuka uwalniania czaru z obiektu, którym najczęściej jest zwój lub mora, czasem również pocisk, broń, pancerz, czy dowolny inny przedmiot. Im bardziej złożony obiekt, tym trudniejszy proces odpieczętowania.
 Ta umiejętność jest esencjonalną częścią niszowej "magiji przedmiotów", ale również jakiejkolwiek dziedziny czarów, które używają przedmiotów jako części procesu.
 '''
 stat__sk_trade_descr = '''
-Handel jest sztuką perswazji drugiej strony, w której próbujesz przekazać drugiej stronie, że oczywiście, cena jest właśnie taka, ale twoja przyniesie jej więcej korzyści. Czystym przypadkiem twoja jest odpowiednio niższa.
+Handel jest sztuką perswazji drugiej strony, w której próbujesz przekazać, że oczywiście, cena jest właśnie taka, ale twoja przyniesie jej więcej korzyści. Czystym przypadkiem twoja jest odpowiednio niższa.
 Ta umiejętność w dodatku pozwala mieć pojęcie o tym, jakie ceny panują w konkretnych rejonach - co jest przydatne szczególnie, gdy chcesz kupić w jednym miejscu taniej, by sprzedać drożej w innym.
 '''
 stat__sk_persuasion_descr = '''
 Pozwala ci przekonać drugą stronę, tak iż ta ostatecznie będzie chciała z tobą porozmawiać o pogodzie, czy też napić się wina, które przytroczyłeś z lokalnego bazaru.
-Ostatecznie cię pozdrowi, i w sumie uzna, że choć przed chwilą chciała cię zabić, to w sumie jednak wolała porozmawiać o swojej chorej cioci.
+Ostatecznie pozdrowicie się wzajemnie, a druga strona w sumie uzna, że choć przed chwilą chciała cię zabić, to w sumie jednak wolała porozmawiać o swojej chorej cioci.
 '''
 stat__sk_lockpicking_descr = '''
 Drzwi potrafią być irytujące, szczególnie jeśli ktoś je zamknie tak, by nie można się było do nich dostać bez klucza. Szczęśliwie, umiejętność obsługi wytrychów pozwala na bardzo wiele.
