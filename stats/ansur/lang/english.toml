@@ -55,29 +55,6 @@ stat__sk_medium_armour               = "Medium Armour"
 stat__sk_heavy_armour                = "Heavy Armour"
 stat__sk_blocking                    = "Blocking"
 stat__sk_spellcasting                = "Spellcasting"
-stat__sk_common_magic                = "Common Magic"
-stat__sk_path_magic                  = "Path Magic"
-stat__sk_common_magic_void           = "Void"
-stat__sk_common_magic_fire           = "Fire"
-stat__sk_common_magic_electricity    = "Electricity"
-stat__sk_common_magic_soul           = "Soul"
-stat__sk_common_magic_wind           = "Wind"
-stat__sk_common_magic_ice            = "Ice"
-stat__sk_common_magic_water          = "Water"
-stat__sk_common_magic_earth          = "Earth"
-stat__sk_common_magic_destruction    = "Destruction"
-stat__sk_common_magic_absorption     = "Absorption"
-stat__sk_common_magic_illusion       = "Illusion"
-stat__sk_common_magic_transformation = "Transformation"
-stat__sk_common_magic_evocation      = "Evocation"
-stat__sk_common_magic_restoration    = "Restoration"
-stat__sk_path_magic_dream            = "Dream Path"
-stat__sk_path_magic_death            = "Death Path"
-stat__sk_path_magic_erd              = "Erd Path"
-stat__sk_path_magic_lunatri          = "Higher Tri Path"
-stat__sk_path_magic_ormath           = "Ormath Path"
-stat__sk_path_magic_terten           = "Terten Path"
-stat__sk_path_magic_keht             = "Keht Path"
 stat__sk_scrolls_writing             = "Scrolls Writing"
 stat__sk_mores_casting               = "Mores Casting"
 stat__sk_unsealing                   = "Unsealing"
@@ -107,6 +84,30 @@ stat__sk_musicality                  = "Musicality"
 stat__sk_athletics                   = "Athletics"
 stat__sk_toughness                   = "Toughness"
 stat__sk_survival                    = "Survival"
+
+stat__sk_common_magic                = "Common Magic"
+stat__sk_path_magic                  = "Path Magic"
+stat__sk_common_magic_void           = "Void"
+stat__sk_common_magic_fire           = "Fire"
+stat__sk_common_magic_electricity    = "Electricity"
+stat__sk_common_magic_soul           = "Soul"
+stat__sk_common_magic_wind           = "Wind"
+stat__sk_common_magic_ice            = "Ice"
+stat__sk_common_magic_water          = "Water"
+stat__sk_common_magic_earth          = "Earth"
+stat__sk_common_magic_destruction    = "Destruction"
+stat__sk_common_magic_absorption     = "Absorption"
+stat__sk_common_magic_illusion       = "Illusion"
+stat__sk_common_magic_transformation = "Transformation"
+stat__sk_common_magic_evocation      = "Evocation"
+stat__sk_common_magic_restoration    = "Restoration"
+stat__sk_path_magic_dream            = "Dream Path"
+stat__sk_path_magic_death            = "Death Path"
+stat__sk_path_magic_erd              = "Erd Path"
+stat__sk_path_magic_lunatri          = "Higher Tri Path"
+stat__sk_path_magic_ormath           = "Ormath Path"
+stat__sk_path_magic_terten           = "Terten Path"
+stat__sk_path_magic_keht             = "Keht Path"
 
 religion__theism  = "Theism (Non-specific)"
 religion__atheism = "Atheism"
@@ -360,7 +361,101 @@ Blocking describes your skill in parrying attacks with your shield or another we
 stat__sk_spellcasting_descr = '''
 Influences your skills in magic, influencing its success and learning effectiveness.
 '''
-# <----------------
+stat__sk_scrolls_writing_descr = '''
+Describes ability to write scrolls effectively and sealing the spell into it. Is usually combined with unsealing skill that performs later part of scroll use.
+'''
+stat__sk_mores_casting_descr = '''
+Measures ability to cast runes into mores. Is usually combined with unsealing skill that performs unsealing of the spell.
+'''
+stat__sk_unsealing_descr = '''
+Unsealing is craft of unbinding spell from the object, be it scroll, more or other items, such as projectile, weapon, armour or anything else.
+It is essential part of niche "item magic", but also of any magic that uses items as parts of process.
+'''
+stat__sk_trade_descr = '''
+Trading is art of recognising price differences in various locations and chances that those put on items you sell or buy. This also allows you for easier bargaining and lowering prices in certain situations.
+'''
+stat__sk_persuasion_descr = '''
+Persuasion base itself on how fluently you can convince someone to your will or worldview. This makes it a powerful tool of communication.
+'''
+stat__sk_lockpicking_descr = '''
+Showcases performance on whether you can work with locks, on their difficulty and your speed of dismantling their protections.
+'''
+stat__sk_sneaking_descr = '''
+Describes your ability to hide in dark corners and be invisible to others' eyes. It adds into stealth actions, be it stealing-related or fight related.
+'''
+stat__sk_pickpocketing_descr = '''
+Tells on ability to steal money from someone's pocket without them noticing. It is heavily connected to sneaking skill.
+'''
+stat__sk_traps_designing_descr = '''
+Affects on how good your traps will be when created and set, deciding on their quality and speed of installing them in location.
+'''
+stat__sk_traps_spotting_descr = '''
+Tells how easily you can spot elements of the environment destined to be trap of some form. Heavily connected to perception.
+'''
+stat__sk_hunting_descr = '''
+Hunting is a craft of properly skinning the animals hunted and preparing them for being a usable resource. Additionally, this skill affects your efficiency in finding animals to hunt.
+'''
+stat__sk_fishing_descr = '''
+Fishing allows for better preparation of fishes that were gathered. Additionally, this skill affects your efficiency when fishing.
+'''
+stat__sk_sewing_descr = '''
+Sewing is a craft of making clothes from leather and other non-metallic materials. Proficiency in it let you craft various clothing types from various materials.
+'''
+stat__sk_carpentry_descr = '''
+Carpentry is art of turning wood into furniture and other items, ranging even to instruments. It is considered as one of the most important fields of natural materials processing, being first alongside smithing to appear in towns.
+'''
+stat__sk_pottery_descr = '''
+Pottery holds a proud place of most important skills allowing you to manufacture items from natural resources, in this case from clay.
+It most commonly revolves around creating the dishes, but the skill allows you for much more varied range of items to be made, in very specific cases you can even create composite armours out of ceramics.
+'''
+stat__sk_stonemasonry_descr = '''
+Let you use stone to create stone-based products, such as furniture or sculptures. Since stone isn't as prevalent resource as wood, it is usually good choice for artisans residing in richer towns.
+'''
+stat__sk_ore_processing_descr = '''
+Ore processing is responsible for proper extraction of metals from ores, as well as producing alloys of various kinds. It is partially connected to smithing, but only if you want to be self-dependent on metal delivery.
+'''
+stat__sk_smithing_descr = '''
+The most needed kind of craft skills, letting you forge metals into tools of various kinds.
+While often recognised with weapons and armour, smithing can be used for all kinds of products, including even cutlery or pots forging.
+'''
+stat__sk_herbalism_descr = '''
+Herbalism skills allow to correctly recognise and understand purpose of various herbs and plants.
+This is great especially in conjunction with alchemy, allowing you to use herbs in potions.
+'''
+stat__sk_alchemy_descr = '''
+Craft of creating potions and mixtures, as well as poisons and other types of fluids that affect you or your environment.
+Plants are often used in alchemic recipes, which makes herbalism great following skill to master along the way.
+'''
+stat__sk_cooking_descr = '''
+Let you prepare better meals and use more advanced recipes into tasty, healthy food.
+'''
+stat__sk_wound_treatment_descr = '''
+How knowledgeable you are on wounds dressing and medicine overall. Helps you heal faster.
+'''
+stat__sk_horse_riding_descr = '''
+Your experience with horse riding, affecting your travel speed with them, as well as fight on their back.
+'''
+stat__sk_boat_driving_descr = '''
+Your experience with boats, affecting your travel speed and fight effectiveness on this vehicle.
+'''
+stat__sk_animal_taming_descr = '''
+How easily you can communicate with animals and tame them. Depending on animal hostility, different levels are needed.
+'''
+stat__sk_musicality_descr = '''
+How good of a musician you are, allowing you to play more complex songs and use bigger variety of instruments.
+'''
+stat__sk_athletics_descr = '''
+How fast you move and perform actions related to your body condition, such as running and swimming.
+'''
+stat__sk_toughness_descr = '''
+Your physical resistance, affecting how much damage you deflect without armour and how much some external forces affect you.
+'''
+stat__sk_survival_descr = '''
+All skills to live in challenging environments and conditions, including also body adaptation. Helps immensely in many various cases while traversing difficult terrain, however almost always not directly.
+'''
+#-----------------------
+# MAGIC
+#-----------------------
 stat__sk_common_magic_descr = '''
 It is general type of magic in Baedoor universe, shaped from elements and kinds intertwining with each other.
 Available to anyone willing to learn, it allows for slow gain of experience which results in more powerful magic being used in fields trained.
@@ -443,99 +538,6 @@ Unlike living races, tertens find themselves perfectly aligned to practice this 
 stat__sk_path_magic_keht_descr = '''
 Keht path is ethnicity based path that revolves around blood and vampiric tendencies of Keht race.
 It is perceived as highly immoral outside of Kaer island, but has very deep traditions within vampiric clans of that place.
-'''
-# <----------------
-stat__sk_scrolls_writing_descr = '''
-Describes ability to write scrolls effectively and sealing the spell into it. Is usually combined with unsealing skill that performs later part of scroll use.
-'''
-stat__sk_mores_casting_descr = '''
-Measures ability to cast runes into mores. Is usually combined with unsealing skill that performs unsealing of the spell.
-'''
-stat__sk_unsealing_descr = '''
-Unsealing is craft of unbinding spell from the object, be it scroll, more or other items, such as projectile, weapon, armour or anything else.
-It is essential part of niche "item magic", but also of any magic that uses items as parts of process.
-'''
-stat__sk_trade_descr = '''
-Trading is art of recognising price differences in various locations and chances that those put on items you sell or buy. This also allows you for easier bargaining and lowering prices in certain situations.
-'''
-stat__sk_persuasion_descr = '''
-Persuasion base itself on how fluently you can convince someone to your will or worldview. This makes it a powerful tool of communication.
-'''
-stat__sk_lockpicking_descr = '''
-Showcases performance on whether you can work with locks, on their difficulty and your speed of dismantling their protections.
-'''
-stat__sk_sneaking_descr = '''
-Describes your ability to hide in dark corners and be invisible to others' eyes. It adds into stealth actions, be it stealing-related or fight related.
-'''
-stat__sk_pickpocketing_descr = '''
-Tells on ability to steal money from someone's pocket without them noticing. It is heavily connected to sneaking skill.
-'''
-stat__sk_traps_designing_descr = '''
-Affects on how good your traps will be when created and set, deciding on their quality and speed of installing them in location.
-'''
-stat__sk_traps_spotting_descr = '''
-Tells how easily you can spot elements of the environment destined to be trap of some form. Heavily connected to perception.
-'''
-stat__sk_hunting_descr = '''
-Hunting is a craft of properly skinning the animals hunted and preparing them for being a usable resource. Additionally, this skill affects your efficiency in finding animals to hunt.
-'''
-stat__sk_fishing_descr = '''
-Fishing allows for better preparation of fishes that were gathered. Additionally, this skill affects your efficiency when fishing.
-'''
-stat__sk_sewing_descr = '''
-Sewing is a craft of making clothes from leather and other non-metallic materials. Proficiency in it let you craft various clothing types from various materials.
-'''
-stat__sk_carpentry_descr = '''
-Carpentry is art of turning wood into furniture or other forms, ranging even to instruments. It is very useful when dealing with any wood materials for utility items.
-'''
-stat__sk_pottery_descr = '''
-Pottery holds a proud place of skills allowing you to manufacture items from natural resources, in this case it being clay. Pottery mostly revolve around creating dishes, but not only those.
-In very specific cases and backgrounds you can even create composite armours out of ceramics, which is also pottery field of interest.
-'''
-stat__sk_stonemasonry_descr = '''
-Stonemasonry is workmanship of turning stone into items of various purposes. It can be used to craft furniture or sculptures, usually being good choice of artisans residing in richer towns.
-'''
-stat__sk_ore_processing_descr = '''
-Ore processing is responsible for proper extraction of metals from ores, as well as producing alloys of various kinds. It is partially connected to smithing, but only if you want to be self-dependent on metal delivery.
-'''
-stat__sk_smithing_descr = '''
-The most needed kind of craft skills, letting you forge metals into tools of various kinds.
-While often recognised with weapons and armour, smithing can be used for all kinds of products, including even cutlery or pots forging.
-'''
-stat__sk_herbalism_descr = '''
-Herbalism skills allow to correctly recognise and understand purpose of various herbs and plants.
-This is great especially in conjunction with alchemy, allowing you to use herbs in potions.
-'''
-stat__sk_alchemy_descr = '''
-Craft of creating potions and mixtures, as well as poisons and other types of fluids that affect you or your environment.
-Plants are often used in alchemic recipes, which makes herbalism great following skill to master along the way.
-'''
-stat__sk_cooking_descr = '''
-Let you prepare better meals and use more advanced recipes into tasty, healthy food.
-'''
-stat__sk_wound_treatment_descr = '''
-How knowledgeable you are on wounds dressing and medicine overall. Helps you heal faster.
-'''
-stat__sk_horse_riding_descr = '''
-Your experience with horse riding, affecting your travel speed with them, as well as fight on their back.
-'''
-stat__sk_boat_driving_descr = '''
-Your experience with boats, affecting your travel speed and fight effectiveness on this vehicle.
-'''
-stat__sk_animal_taming_descr = '''
-How easily you can communicate with animals and tame them. Depending on animal hostility, different levels are needed.
-'''
-stat__sk_musicality_descr = '''
-How good of a musician you are, allowing you to play more complex songs and use bigger variety of instruments.
-'''
-stat__sk_athletics_descr = '''
-How fast you move and perform actions related to your body condition, such as running and swimming.
-'''
-stat__sk_toughness_descr = '''
-Your physical resistance, affecting how much damage you deflect without armour and how much some external forces affect you.
-'''
-stat__sk_survival_descr = '''
-All skills to live in challenging environments and conditions, including also body adaptation. Helps immensely in many various cases while traversing difficult terrain, however almost always not directly.
 '''
 #-----------------------
 # RELIGIONS

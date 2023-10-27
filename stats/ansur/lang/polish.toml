@@ -55,29 +55,6 @@ stat__sk_medium_armour               = "Średni pancerz"
 stat__sk_heavy_armour                = "Ciężki pancerz"
 stat__sk_blocking                    = "Blokowanie"
 stat__sk_spellcasting                = "Rzucanie zaklęć"
-stat__sk_common_magic                = "Magia pospolita"
-stat__sk_path_magic                  = "Magia drogi"
-stat__sk_common_magic_void           = "Pustka"
-stat__sk_common_magic_fire           = "Ogień"
-stat__sk_common_magic_electricity    = "Elektryczność"
-stat__sk_common_magic_soul           = "Dusza"
-stat__sk_common_magic_wind           = "Wiatr"
-stat__sk_common_magic_ice            = "Lód"
-stat__sk_common_magic_water          = "Woda"
-stat__sk_common_magic_earth          = "Ziemia"
-stat__sk_common_magic_destruction    = "Destrukcja"
-stat__sk_common_magic_absorption     = "Absorpcja"
-stat__sk_common_magic_illusion       = "Iluzja"
-stat__sk_common_magic_transformation = "Transformacja"
-stat__sk_common_magic_evocation      = "Ewokacja"
-stat__sk_common_magic_restoration    = "Odnowienie"
-stat__sk_path_magic_dream            = "Droga Snu"
-stat__sk_path_magic_death            = "Droga Śmierci"
-stat__sk_path_magic_erd              = "Droga Erdyjska"
-stat__sk_path_magic_lunatri          = "Droga Wyższych Tri"
-stat__sk_path_magic_ormath           = "Droga Ormacka"
-stat__sk_path_magic_terten           = "Droga Terteńska"
-stat__sk_path_magic_keht             = "Droga Kehtyjska"
 stat__sk_scrolls_writing             = "Pisanie zwojów"
 stat__sk_mores_casting               = "Zaklinanie morów"
 stat__sk_unsealing                   = "Odpięczetowanie"
@@ -107,6 +84,30 @@ stat__sk_musicality                  = "Muzykalność"
 stat__sk_athletics                   = "Atletyka"
 stat__sk_toughness                   = "Twardość"
 stat__sk_survival                    = "Przetrwanie"
+
+stat__sk_common_magic                = "Magia pospolita"
+stat__sk_path_magic                  = "Magia drogi"
+stat__sk_common_magic_void           = "Pustka"
+stat__sk_common_magic_fire           = "Ogień"
+stat__sk_common_magic_electricity    = "Elektryczność"
+stat__sk_common_magic_soul           = "Dusza"
+stat__sk_common_magic_wind           = "Wiatr"
+stat__sk_common_magic_ice            = "Lód"
+stat__sk_common_magic_water          = "Woda"
+stat__sk_common_magic_earth          = "Ziemia"
+stat__sk_common_magic_destruction    = "Destrukcja"
+stat__sk_common_magic_absorption     = "Absorpcja"
+stat__sk_common_magic_illusion       = "Iluzja"
+stat__sk_common_magic_transformation = "Transformacja"
+stat__sk_common_magic_evocation      = "Ewokacja"
+stat__sk_common_magic_restoration    = "Odnowienie"
+stat__sk_path_magic_dream            = "Droga Snu"
+stat__sk_path_magic_death            = "Droga Śmierci"
+stat__sk_path_magic_erd              = "Droga Erdyjska"
+stat__sk_path_magic_lunatri          = "Droga Wyższych Tri"
+stat__sk_path_magic_ormath           = "Droga Ormacka"
+stat__sk_path_magic_terten           = "Droga Terteńska"
+stat__sk_path_magic_keht             = "Droga Kehtyjska"
 
 religion__theism  = "Teizm (Niereligijny)"
 religion__atheism = "Ateizm"
@@ -181,6 +182,20 @@ Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały
 #-----------------------
 # UMIEJĘTNOŚCI
 #-----------------------
+stat__sk_carpentry_descr = '''
+Stolarstwo to sztuka przetwarzania drewna w meble i przedmioty różnego użytku, wliczając w to nawet tworzenie instrumentów.
+Jest to jedna z najpowszechniejszych i najbardziej potrzebnych form rzemieślnictwa, co powoduje, że jest to jeden z pierwszych fachów pojawiających się w miastach.
+'''
+stat__sk_pottery_descr = '''
+Garncarstwo stanowi jedną z najważniejszych gałęzi rzemieślnictwa z naturalnych surowców, w tym wypadku gliny.
+Jest najbardziej rozpoznawalne poprzez wyrób garnków i przedmiotów codziennego użytku, jednak oferuje dużo większą różnorodność wyrobów, w niektórych przypadkach pozwalając nawet na wyrób pancerzy kompozytowych z ceramiki.
+'''
+stat__sk_stonemasonry_descr = '''
+Pozwala przetwarzać kamień w różne produkty oparte na tym surowcu, jak meble czy rzeźby. Jako że kamień nie jest tak popularnym materiałem jak drewno, jest to zazwyczaj lepszy wybór dla rzemieślników mieszkających w bogatszych miastach.
+'''
+stat__sk_ore_processing_descr = '''
+Przetwarzanie rud jest odpowiedzialne za efektywną obróbkę rud w czyste metale, jak i również stopy różnego rodzaju. Przydatne w połączeniu z kowalstwem, jeżeli nie zamierzasz kupować surowców od górników.
+'''
 stat__sk_smithing_descr = '''
 Najbardziej rozchwytywana forma rzemiosła, pozwalająca na przetwarzanie metali w różne narzędzia.
 Podczas gdy zwykle kojarzone z bronią i pancerzami, kowalstwo pozwala wykuwać wszelkie formy, wliczając w to nawet przedmioty codziennego użytku.
