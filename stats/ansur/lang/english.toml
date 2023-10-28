@@ -359,7 +359,7 @@ stat__sk_blocking_descr = '''
 Blocking describes your skill in parrying attacks with your shield or another weapon.
 '''
 stat__sk_spellcasting_descr = '''
-Influences your skills in magic, influencing its success and learning effectiveness.
+Influences your prosperity in using magic in general, such as casting successful spells and learning effectiveness. You can also understand magic concepts faster.
 '''
 stat__sk_scrolls_writing_descr = '''
 Scrolls are used to store spells that can be sealed beforehand, so in tense situation you don't need to perform spell in its whole.

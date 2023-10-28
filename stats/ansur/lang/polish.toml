@@ -182,6 +182,21 @@ Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały
 #-----------------------
 # UMIEJĘTNOŚCI
 #-----------------------
+stat__sk_light_armour_descr = '''
+Ukazuje zdolności w użyciu lekkiego pancerza, takiego jak ubranie czy skórzany pancerz.
+'''
+stat__sk_medium_armour_descr = '''
+Mówi o tym jak dobrze potrafisz używać średnich pancerzy. Zwykle są one zrobione z lekkich metali i opierają się na małych fragmentach zespojonych w większy kompozyt, jak kolczugi czy zbroje łuskowe.
+'''
+stat__sk_heavy_armour_descr = '''
+Ta umiejętność jest odpowiedzialna za to, jak dobrze radzisz sobie z ciężkimi zbrojami. Wliczają się w nie zbroje zrobione w pełni z metalu, zazwyczaj cieżkiego i trudnego do przebicia.
+'''
+stat__sk_blocking_descr = '''
+Blokowanie opisuje twoją zdolność do parowania ataków tarczą czy bronią.
+'''
+stat__sk_spellcasting_descr = '''
+Wpływa na ogólną zdolność używania magii - skuteczne rzeczanie zaklęć czy efektywną naukę konceptów magicznych.
+'''
 stat__sk_scrolls_writing_descr = '''
 Zwoje używane są do przechowywania zaklęć, które są zamknięte w nich z odpowiednim wyprzedzeniem, pozwalając na odpieczętowanie ich w napiętej sytuacji bez zużywania energii całego zaklęcia.
 Ta umiejętność jest łączona z odpieczętowaniem, jako że stanowią one dwie strony jednej monety, wzajemnie się uzupełniając.
