@@ -323,7 +323,7 @@ stat__sk_axes_descr = '''
 Defines how well you use axes and halberds. Affects aim, critical hits and damage done.
 '''
 stat__sk_blunts_descr = '''
-Describes your skill with using blunts of various kinds, from hammers to clubs of various kinds. Affects aim, critical hits and damage done.
+Describes your skill with using blunts of various kinds, from hammers to clubs. Affects aim, critical hits and damage done.
 '''
 stat__sk_polearms_descr = '''
 Measures your efficiency with using spears and all pierce-centered weapons. Affects aim, critical hits and damage done.

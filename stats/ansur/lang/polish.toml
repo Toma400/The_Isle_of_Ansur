@@ -182,6 +182,24 @@ Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały
 #-----------------------
 # UMIEJĘTNOŚCI
 #-----------------------
+stat__sk_handfight_descr = '''
+Określa twoją sprawność w walce na pięści. Przydatne szczególnie w walce z awanturującymi się pijanymi podróżnikami w gospodach.
+'''
+stat__sk_shortswords_descr = '''
+Twoja sprawność w używaniu małych, szybkich mieczy, takich jak noże, sztylety, jak i również krótkie miecze, szable i inne bronie z niezbyt ciężkimi ostrzami. Wpływa na celność, trafienia krytyczne i obrażenia.
+'''
+stat__sk_longswords_descr = '''
+Opisuje jak wprawnie walczysz ciężkimi mieczami różnego rodzaju. Wpływa na celność, trafienia krytyczne i obrażenia.
+'''
+stat__sk_axes_descr = '''
+Określa jak dobrze radzisz sobie z siekierami i halabardami. Wpływa na celność, trafienia krytyczne i obrażenia.
+'''
+stat__sk_blunts_descr = '''
+Opisuje twoje umiejętności w użyciu obuchów różnego rodzaju, od młotów po pałki. Wpływa na celność, trafienia krytyczne i obrażenia.
+'''
+stat__sk_polearms_descr = '''
+Określa twoje zdolności w używaniu włóczni i innych broni kłutych. Wpływa na celność, trafienia krytyczne i obrażenia.
+'''
 stat__sk_aim_descr = '''
 Wpływa na celność podczas używania broni dystansowych różnego rodzaju. Nie określa celności w pełnym stopniu, jako że zależy to również od doświadczenia w użyciu konkretnego typu broni, jednak ma spore znaczenie dla poprawnego celowania.
 '''
