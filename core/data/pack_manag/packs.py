@@ -59,10 +59,14 @@ def verifyPacks():
     def unifiedVersion(ver: str) -> (int, float):
         # example: '1'
         if "." not in ver:
-            return int(ver), 0.0
+            if "+" not in ver:
+                return int(ver), 0.0                                         # '1'
+            return int(ver.replace("+", "")), 99999.99999                    # '1+'
         # example: '1.1', '1.1b'
         if ver.count(".") == 1:
             parts = ver.split(".")
+            if parts[1] == "+":                                              # '1.+'
+                return int(parts[0]), 99999.99999
             if any(not char.isdigit() for char in parts[1]):                 # '1.1b'/'1.1+'
                 chars = re.sub("[0-9]+", "", parts[1])
                 nums  = re.sub("[^0-9]", "", parts[1])
