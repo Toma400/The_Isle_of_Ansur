@@ -60,7 +60,7 @@ Postać nie będzie dostępna w obecnej wersji, jednak będzie można ją załad
 
 load__packs_used      = "Użyte mody"
 load__load            = "Załaduj grę"
-load__restore         = "Przywróć ze schowka"
+load__restore         = "Nadpisz ze schowka"
 load__remove          = "Usuń grę"
 
 pack__type_stats      = "Statpack"

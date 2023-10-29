@@ -241,19 +241,26 @@ They differ heavily from all other tris, being shorter and much more tribalic in
 Despite their appearance and culture being so unlike tris, they share similarities in abilities and love to traditions, however the latter is also vastly separate.
 Pahtris were the only race to not be under Baedoor Empire ruling per se, as despite being conquered, Karos Archipelago were never occupied militarily. Pahtris were offered a lot of sovereignty, which let them preserve their culture intact.
 '''
+#-----------------------
+# CLASSES
+#-----------------------
 classes__undefined_descr = '''
 Undefined class does not take any precise advantage like other choices, but let you learn everything faster.
 It is basically a choice of everything and nothing - you get less, for later to get more.
 '''
 classes__swordsman_descr = '''
 Swordsman is class dedicated for melee fights, especially situations where swords are extensively used.
-It invests heavily in training of its physical strengths.
+It invests heavily in training of its physical strengths, as force is what swordsman masters greatly.
+
+It is great choice for anyone who enjoy fight and wants to recruit themselves as mercenary or even into the army.
 '''
 classes__gunslinger_descr = '''
-Gunslingers are knowledgeable fighters using firearms as their main weapon of choice. Unlike sharpshooters, they prefer a bit closer distances and use revolvers more frequently.
+Gunslingers are fast shooters, using firearms as their main weapon of choice. Unlike sharpshooters, they prefer a bit closer distances and use revolvers more frequently.
+Expect a lot of revolvers spinning and duels on your way! Whether you use your power to fight for the law or rob the bank, is absolutely up to you.
 '''
 classes__sharpshooter_descr = '''
-Sharpshooters are masters of distances, knowing how to hit targets from unbelievable distances, having their faithful rifle near them.
+Sharpshooters are masters of distances, knowing how to hit targets from unbelievable ranges, having their faithful rifle near them.
+While they may lack with power on closer ranges, they make up for it on longer ones. Skilled sharpshooter can even one-shot take the enemy out.
 '''
 classes__archer_descr = '''
 Archer knows well how to handle bows and utilise them to their maximum capabilities. It is also trained in case anything goes wrong, knowing how to use knives in critical situation.
