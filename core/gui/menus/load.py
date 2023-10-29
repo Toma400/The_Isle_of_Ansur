@@ -55,6 +55,7 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     dyn_screen.put_pgui("load__saves")
     dyn_screen.put_pgui("load__descr")
+    dyn_screen.put_pgui("load__temp_warn")
 
     game_loaded = dyn_screen.get_pgui_choice("load__saves")
     if game_loaded is not None:
