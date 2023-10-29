@@ -180,6 +180,35 @@ Rodzinne wyspy nordwińczyków obfitowały w lasy, umożliwiając im sporą eksp
 Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały, świętując je częstymi ucztami, traktowane jako lokalne wydarzenie.
 '''
 #-----------------------
+# KLASY
+#-----------------------
+classes__blacksmith_descr = '''
+Kowale są mistrzami żelaza i metali, kując narzędzia, bronie, pancerze i inne przedmioty różnego użytku.
+Są oni zwykle widoczni w miastach, praktykując swój fach i zarabiając pieniądze ze zleceń od mieszczan, jak i armii.
+
+Jest to dobra ścieżka dla tych, którzy wolą ustanowić swoje usługi i żyć zwyczajnym miejskim życiem - choć jest to również ciekawa alternatywa dla podróżnika, pozwalająca na łatwą naprawę swoich przedmiotów.
+Jedno jest pewne - jeśli są rzemieślnicy którzy nie muszą martwić się o pieniądze, są to kowale.
+'''
+classes__outlander_descr = '''
+Przybysze to ci odrzuceni przez społeczeństwo, czy też nawet samych siebie.
+Nauczyli się żyć w samotności, i w niej też poszukują swojego przeznaczenia.
+
+Przyzwyczajenie do radzenia sobie samemu pozwoliło im stać się doświadczonymi w każdej skrajnej sytuacji i otoczeniu, radząc sobie w trakcie podróży po pustyniach czy krainach, które nie widziały żywego ducha cywilizacji.
+'''
+classes__headhunter_descr = '''
+Łowcy głów są legendarną grupą saphtrijskich łuczników, znanych z bycia ekstremalnie efektywnymi w zdejmowaniu swoich celów. Byli oni ważną częścią rebelii o niezależność Arennan, jednak ich istnienie datuje się na najstarsze lata saphtrijskiej kultury.
+Byli oni często uwikłani w wewnętrzne konflikty, jednak zwykle przestrzegali swojego kodeksu moralnego.
+
+Wraz z upadkiem Imperium i saphtrijczyków uzyskujących suwerenność, łowcy głów przetrwali jako potężna gildia o historycznym znaczeniu, po dziś dzień rekrutująca nowych członków.
+Obecnie można ujrzeć łowcę najczęściej jako podróżnika, lub najemnika w saphtrijskiej armii.
+'''
+classes__ormath_shaman_descr = '''
+Ormacki szaman jest najważniejszą postacią dla swojego ludu. Jest on jedynym, który rozmawia z duchami wiatru, chroniąc plemię od niebezpiecznego świata wokół.
+Związany ze swoimi pobratymcami, szaman dba o nich, lecząc i pomagając w codziennych obowiązkach. Szamani są mistrzami potężnej magii ormackiej i Połączenia, tajemniczej siły pozwalającej im rozmawiać z ziemią, na której istnieje cały świat.
+
+Jako ormacki szaman, który stracił swoje plemię, nie jesteś już podległy obowiązkom wobec niego, jednak pamiętając o swoich korzeniach, zostaną one w tobie na zawsze.
+'''
+#-----------------------
 # UMIEJĘTNOŚCI
 #-----------------------
 stat__sk_handfight_descr = '''
