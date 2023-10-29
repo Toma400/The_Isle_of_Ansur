@@ -1,4 +1,5 @@
 from core.file_system.theme_manag import FontColour as fCol
+from core.file_system.save_manag import listSaves
 from core.data.pack_manag.packs import getPacksSimplified
 from core.data.player.religion import getReligion
 from core.data.player.profession import getClass
@@ -43,14 +44,18 @@ def loadDescr(save: str) -> str:
         ret = langstring("system__text_load_fail")
     return ret
 
+def removeSave(save: str):
+    import shutil; shutil.rmtree(f"saves/{save}", ignore_errors=True)
+
 def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     # background sprite
+    is_active = {"false": fCol.DISABLED.value, "true": fCol.ENABLED.value}
     dyn_screen.gui("menu__gh_background").full().put(screen)
 
     put_text(screen,       text=langstring("menu__button_load"), font_cat="menu", size=35, align_x="center",          pos_y=1,  colour=fCol.ENABLED.value)
     put_text(screen,       text=langstring("load__load"),        font_cat="menu", size=30, align_x="right",  pos_x=9, pos_y=10, colour=fCol.DISABLED.value)
     put_text(screen,       text=langstring("load__restore"),     font_cat="menu", size=30, align_x="right",  pos_x=9, pos_y=16, colour=fCol.DISABLED.value)
-    put_text(screen,       text=langstring("load__remove"),      font_cat="menu", size=30, align_x="right",  pos_x=9, pos_y=22, colour=fCol.DISABLED.value)
+    rsv = put_text(screen, text=langstring("load__remove"),      font_cat="menu", size=30, align_x="right",  pos_x=9, pos_y=22, colour=fCol.DISABLED.value)
     gtx = put_text(screen, text=langstring("menu__sett_back"),   font_cat="menu", size=30, align_x="center",          pos_y=92, colour=fCol.ENABLED.value)
 
     dyn_screen.put_pgui("load__saves")
@@ -62,6 +67,7 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         if dyn_screen.journey.name != game_loaded:
             dyn_screen.journey.name = game_loaded
             dyn_screen.set_pgui_element("load__descr", loadDescr(game_loaded))
+        put_text(screen, text=langstring("load__remove"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=22, colour=fCol.ENABLED.value)
 
     # GUI EXPECTED
     # - Image                            | I guess location image? Currently placeholder maybe
@@ -81,3 +87,10 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         if mouseRec(pg_events):
             guitype[0] = switch_gscr(dyn_screen, screen, "menu")
             guitype[1] = None
+
+    elif mouseColliderPx(rsv[0], rsv[1], rsv[2], rsv[3]) and game_loaded is not None:
+        put_text(screen, text=langstring("load__remove"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=22, colour=fCol.HOVERED.value)
+        if mouseRec(pg_events):
+            removeSave(game_loaded)
+            dyn_screen.set_pgui_element("load__saves", listSaves())
+            dyn_screen.set_pgui_element("load__descr", "")

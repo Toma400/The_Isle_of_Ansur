@@ -22,6 +22,7 @@
 > - Quality-of-Life
 >   - You can now go back to previous option in character creation menu
 >   - Improvements to graphical interface clarity
+>   - You can now remove savegames
 > - Polish version
 >   - Added custom-made Ferrum font with expanded glyphs
 >   - Translated all game contents to Polish
