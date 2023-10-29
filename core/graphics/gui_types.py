@@ -284,10 +284,10 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
         # ==============================================================================================================
         case "new_game":
-            ccrt_col = {"active": "#354A07", "set": "", "not_set": "#4F4C49"}
+            ccrt_col = {"active": "#354A07", "set": "", "not_set": fCol.DISABLED.value}
             dyn_screen.gui("menu__gh_background").full().put(screen)
 
-            put_text(screen, text=langstring("menu__button_start"),        font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
+            put_text(screen, text=langstring("menu__button_start"),        font_cat="menu", size=35, align_x="center", pos_y=1,  colour="#4E3510")
             gtx = put_text(screen, text=langstring("menu__sett_back"),     font_cat="menu", size=30, align_x="center", pos_y=92, colour="#4E3510")
 
             mn1 = put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=fCol.ENABLED.value)

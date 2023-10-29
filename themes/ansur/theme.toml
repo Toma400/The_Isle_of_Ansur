@@ -4,7 +4,7 @@ logo = "ioa_logo.png"
 menu = "menu_background.jpg"
 
 [fonts.colours]
-disabled   = "#4F4C49"
+disabled   = "#43403E"
 enabled    = "#4E3510"
 hovered    = "#7C613B"
 background = "#4F3920"
