@@ -60,7 +60,8 @@ For anyone who would like to contribute anyway, here are principles that should 
 - **[Principles For Code Contribution](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Code-Contribution-Principles)**  
 - **[Principles For Assets Contribution](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Assets-Contribution-Principles)**
 
-In next months translation contributions will be opened, when most of game features are in place.
+In next months translation and quest contributions will be opened, when most of game features
+are in place.
 
 # Credits
 

@@ -491,6 +491,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         put_text(screen, text=langstring("ccrt__end_save"), font_cat="menu", size=30, pos_x=58, pos_y=65, colour=fCol.HOVERED.value)
                         if mouseRec(pg_events):
                             dyn_screen.journey.init()
+                            dyn_screen.journey.reset()
                             guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                             guitype[1] = None
                             dyn_screen.reset_pgui(True)
@@ -503,6 +504,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                     guitype[1] = None
                     dyn_screen.reset_pgui(True)
+                    dyn_screen.journey.reset()
                     dyn_screen.journey.stage = None
 
             elif mouseColliderPx(mn1[0], mn1[1], mn1[2], mn1[3]) and guitype[1] == "race":

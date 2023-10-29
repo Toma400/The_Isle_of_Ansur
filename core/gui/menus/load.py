@@ -47,8 +47,8 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     # background sprite
     dyn_screen.gui("menu__gh_background").full().put(screen)
 
-    put_text(screen, text=langstring("menu__button_load"), font_cat="menu", size=35, align_x="center", pos_y=1, colour="#4E3510")
-    gtx = put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, align_x="center", pos_y=92, colour=fCol.ENABLED.value)
+    put_text(      screen, text=langstring("menu__button_load"), font_cat="menu", size=35, align_x="center", pos_y=1,  colour=fCol.DISABLED.value)
+    gtx = put_text(screen, text=langstring("menu__sett_back"),   font_cat="menu", size=30, align_x="center", pos_y=92, colour=fCol.ENABLED.value)
 
     dyn_screen.put_pgui("load__saves")
     dyn_screen.put_pgui("load__descr")

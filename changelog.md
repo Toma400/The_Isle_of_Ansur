@@ -41,6 +41,7 @@
 >     less hardcoded and even editable through scripts/mods
 > - Fixes
 >   - Fixed lore names not showing up (#94)
+>   - Fixed data hanging during saving game (#93)
 >
 ```
 > ---

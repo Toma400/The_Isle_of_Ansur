@@ -113,6 +113,14 @@ class Journey:
             f.write(ret)
             f.flush()
 
+    def reset(self):
+        """
+        Resets values, should be used after init() or quitting the game when, for example, coming back to menu
+        It allows for cleaner checks, during load for example: skips issue where load has issues right after creating character,
+        or potentially when you want to load the same game you just saved
+        """
+        self.__init__()
+
     #=================================================================================================
     # - TODO -
     #=================================================================================================
