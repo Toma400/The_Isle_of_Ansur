@@ -209,6 +209,33 @@ Związany ze swoimi pobratymcami, szaman dba o nich, lecząc i pomagając w codz
 Jako ormacki szaman, który stracił swoje plemię, nie jesteś już podległy obowiązkom wobec niego, jednak pamiętając o swoich korzeniach, zostaną one w tobie na zawsze.
 '''
 #-----------------------
+# ATRYBUTY
+#-----------------------
+stat__atr_strength_descr = '''
+To siła twoich muskułów, która zwana jest niekiedy "tą drugą perswazją".
+Od skuteczności walki z bliska po możliwy do uniesienia ciężar, wszystko co potrzebuje mocy twoich rąk jest zależne od tego atrybutu.
+'''
+stat__atr_agility_descr = '''
+Zręczność to sztuka poruszania się szybko i zwinnie.
+Wpływa na różne sytuacje, w której potrzebujesz użyć szybkości, decydując jak sprawnie walczysz, jak szybko podróżujesz, czy również jak łatwo możesz uciec z niebezpiecznej sytuacji.
+'''
+stat__atr_endurance_descr = '''
+Wytrzymałość pozwala twojemu ciały być odpornym na trudne sytuacje środowiskowe, wpływając na takie elementy jak kondycja fizyczna czy głód.
+Może być uznawana za atrybut przetrwania, jednak jest również użyteczna w czymkolwiek, co stawia wyzwanie twojemu ciału, jak chociażby wpływając na zmęczenie po podróży.
+'''
+stat__atr_charisma_descr = '''
+Charyzma oznacza to, co ludzie widzą w tobie - a jeśli widzą oni kogoś, za kim chcieliby podążać, to przekonasz ich do każdej swojej racji.
+W sytuacjach bez wyjścia, charyzma może okazać się tym właśnie wyjściem.
+'''
+stat__atr_perception_descr = '''
+Percepcja jest odpowiedzialna za sytuacje, w których potrzebujesz się skupić na konkretnej rzeczy, czy też mieć szybki refleks.
+Pomaga ci w odkrywaniu pułapek, zasadzek, polowaniu, ale również częściowo w celowaniu z broni dystansowych.
+'''
+stat__atr_intelligence_descr = '''
+Inteligencja, wbrew temu co zwykli mówić racjonaliści, to jedynie forma rozumienia świata wokół ciebie i wykorzystywania go ku swojej korzyści - ale i również potężny aspekt pomagający ci w rozumieniu magii.
+Popatrz, jak pozory mylą, a magia istnieje.
+'''
+#-----------------------
 # UMIEJĘTNOŚCI
 #-----------------------
 stat__sk_handfight_descr = '''

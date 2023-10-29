@@ -306,20 +306,23 @@ As ormath shaman who lost their tribe, you no longer have obligations towards it
 # ATTRIBUTES
 #-----------------------
 stat__atr_strength_descr = '''
-Strength is all about power of your muscles, thus affecting every action performed on those. From melee fight effectivity to inventory load, it is all dependant on this attribute.
+Strength is all about power of your muscles, sometimes also called "that second persuasion".
+From melee fight effectivity to inventory load, everything that needs you to use your arms to achieve some kind of force is dependant on this attribute.
 '''
 stat__atr_agility_descr = '''
-Agility is an art of moving, and thus it affects heavily many situations you will need to use that - how flexible you get with close fights, how fast you travel, how easily you can manage escaping from dangerous situation.
+Agility is an art of moving, moving swiftly and with grace.
+It affects heavily many situations you will need to use that - how flexible you get with close fights, how fast you travel, how easily you can manage escaping from dangerous situation.
 '''
 stat__atr_endurance_descr = '''
-Endurance let your body get resilient to harsh situations on longer periods, and affect things like your stamina or food loss.
+Endurance let your body get resilient to harsh environmental situations, and affect things like your stamina or food loss.
+Can be considered as survival attribute, but it is also useful for anything that challenges your body on longer time, like tiredness after travel.
 '''
 stat__atr_charisma_descr = '''
 Charisma is what people find about you - investing in it let you more easily convince others of your rights and sometimes even avoid situations where no other path was felt possible.
 It is heavily attribute set on societal interactions.
 '''
 stat__atr_perception_descr = '''
-Perception is responsible for all situations where you need to aim on something or have quick reflex.
+Perception is responsible for all situations where you need to focus on something or have quick reflex.
 It helps you encountering traps, ambushes, hunting animals, but also partially aids aiming with ranged weapons.
 '''
 stat__atr_intelligence_descr = '''
