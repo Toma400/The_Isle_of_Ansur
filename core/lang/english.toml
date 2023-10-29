@@ -58,7 +58,11 @@ ccrt__end_save_warn        = '''
 Character won't be available in current version, as it doesn't feature gameplay. It will be possible to load the profile later.
 '''
 
-ccrt__load_packs_used = "Packs used"
+load__packs_used      = "Packs used"
+load__load            = "Load saved game"
+load__restore         = "Restore from buffer"
+load__remove          = "Remove saved game"
+
 pack__type_stats      = "Statpack"
 pack__type_themes     = "Themepack"
 pack__type_worlds     = "Worldpack"

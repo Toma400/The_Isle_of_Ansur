@@ -58,7 +58,11 @@ ccrt__end_save_warn        = '''
 Postać nie będzie dostępna w obecnej wersji, jednak będzie można ją załadować w przyszłości.
 '''
 
-ccrt__load_packs_used = "Użyte mody"
+load__packs_used      = "Użyte mody"
+load__load            = "Załaduj grę"
+load__restore         = "Przywróć ze schowka"
+load__remove          = "Usuń grę"
+
 pack__type_stats      = "Statpack"
 pack__type_themes     = "Themepack"
 pack__type_worlds     = "Worldpack"

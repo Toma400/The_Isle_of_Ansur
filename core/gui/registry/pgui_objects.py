@@ -50,7 +50,7 @@ class PGUI_Helper:
         self.char__temp_warn = UITextBox      (html_text=lstr("ccrt__end_save_warn"),       relative_rect=pygame.Rect((toPxX(45), toPxY(70)), (toPxX(30), 100)),       manager=manager)
         # ---
         self.load__saves     = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
-        self.load__descr     = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(50), toPxY(45)), (toPxX(40), toPxY(30))), manager=manager)
+        self.load__descr     = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(40), toPxY(45)), (toPxX(52), toPxY(35))), manager=manager)
         # ---
         self.pack__zip_list  = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
         self.pack__descr     = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(50), toPxY(45)), (toPxX(40), toPxY(30))), manager=manager)

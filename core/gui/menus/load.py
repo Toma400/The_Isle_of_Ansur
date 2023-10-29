@@ -25,7 +25,7 @@ def loadDescr(save: str) -> str:
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_origin'))}"   + f"{getOrigin(sf['origin']).langstr()}"     + "\n"
         ret += f"{langstring('ccrt__gen_history')}"                                          + "\n"
         ret += f"{sf['history']}"                                                            + "\n"
-        ret += f"{langstring('ccrt__load_packs_used')}"                                      + "\n"
+        ret += f"{langstring('load__packs_used')}"                                           + "\n"
         # set fixed length that adjusts to the longest mod ID
         maxlen = 0
         for pack in packs_required.keys():
@@ -47,8 +47,11 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     # background sprite
     dyn_screen.gui("menu__gh_background").full().put(screen)
 
-    put_text(      screen, text=langstring("menu__button_load"), font_cat="menu", size=35, align_x="center", pos_y=1,  colour=fCol.DISABLED.value)
-    gtx = put_text(screen, text=langstring("menu__sett_back"),   font_cat="menu", size=30, align_x="center", pos_y=92, colour=fCol.ENABLED.value)
+    put_text(screen,       text=langstring("menu__button_load"), font_cat="menu", size=35, align_x="center",          pos_y=1,  colour=fCol.ENABLED.value)
+    put_text(screen,       text=langstring("load__load"),        font_cat="menu", size=30, align_x="right",  pos_x=9, pos_y=10, colour=fCol.DISABLED.value)
+    put_text(screen,       text=langstring("load__restore"),     font_cat="menu", size=30, align_x="right",  pos_x=9, pos_y=16, colour=fCol.DISABLED.value)
+    put_text(screen,       text=langstring("load__remove"),      font_cat="menu", size=30, align_x="right",  pos_x=9, pos_y=22, colour=fCol.DISABLED.value)
+    gtx = put_text(screen, text=langstring("menu__sett_back"),   font_cat="menu", size=30, align_x="center",          pos_y=92, colour=fCol.ENABLED.value)
 
     dyn_screen.put_pgui("load__saves")
     dyn_screen.put_pgui("load__descr")
