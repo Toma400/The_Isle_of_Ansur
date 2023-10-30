@@ -82,7 +82,9 @@ class FontColour(Enum):
     DISABLED   = font_colour("disabled")
     ENABLED    = font_colour("enabled")
     HOVERED    = font_colour("hovered")
-    BACKGROUND = font_colour("background")
+    BACKGROUND = font_colour("background") # ???
+    SELECTED   = font_colour("selected")
+    CHOICE     = font_colour("choice")
     ERROR      = font_colour("error")
     OTHER      = font_colour("other")
 #=======================================================================================

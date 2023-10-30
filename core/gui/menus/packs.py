@@ -1,4 +1,5 @@
 from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr
+from core.file_system.theme_manag import FontColour as fCol
 from core.data.pack_manag.info import searchInfo
 from core.data.pack_manag.id import zipToID
 from core.graphics.text_manag import put_text
@@ -44,7 +45,8 @@ def packDescr(pack_id: str) -> str:
 def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     dyn_screen.gui("menu__gh_background").full().put(screen)
 
-    gtx = put_text(screen, text=langstring("menu__sett_back"),    font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#4E3510")
+    gtx = put_text(screen, text=langstring("menu__sett_back"),          font_cat="menu", size=30, pos_x=5,          pos_y=92, colour=fCol.ENABLED.value)
+    put_text(screen,       text=langstring("menu__button_packs_manag"), font_cat="menu", size=35, align_x="center", pos_y=1,  colour=fCol.ENABLED.value)
     # pdb = put_text(screen, text=langstring("pack__disable"),      font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#4E3510")
     # pmu = put_text(screen, text=langstring("pack__move_up"),      font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#4E3510")
     # pmd = put_text(screen, text=langstring("pack__move_down"),    font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#4E3510")
@@ -72,7 +74,7 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     # EVENTS
     #===============================================================
     if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
-        put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#7C613B")
+        put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour=fCol.HOVERED.value)
         if mouseRec(pg_events):
             guitype[0] = switch_gscr(dyn_screen, screen, "menu")
             guitype[1] = None
