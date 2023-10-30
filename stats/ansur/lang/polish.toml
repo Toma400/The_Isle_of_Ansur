@@ -179,6 +179,26 @@ Wbrew powszechnym w kulturze nordwińczyków symbolu topora, równie popularne b
 Rodzinne wyspy nordwińczyków obfitowały w lasy, umożliwiając im sporą ekspertyzę w obróbce drewna, zarówno na meble jak i inne formy sztuki.
 Lud nordwiński jest przywiązany do tradycji. Kultywuje społeczne ceremoniały, świętując je częstymi ucztami, traktowane jako lokalne wydarzenie.
 '''
+races__ormath_descr = '''
+Ormathowie są rasą niskich, szaroskórych istot żyjących na pustyni Arennan. Łączą się w bardzo hierarchiczny system społeczny zbudowany wokół Starszyzny, jak i postaci Szamana, będącego przewodnikiem całego klanu.
+System plemienny sprawia, iż angażują się oni codziennie w aktywności grupowe obejmujące rodzinę lub przyjaciół, czy też całe plemię. Jest to jedna z charakterystycznych cech cywilizacji ormackiej.
+Ormathowie są przyzwyczajeni do trudnego środowiska, dzięki czemu dostosowali do niego swoje organizmy i umiejętności.
+
+Wiara stanowi sporą część życia ormathów, jednak w odróżnieniu od strukturalnych religii, rasa ormacka odczuwa połączenie z wiatrem, będącym naturalnym fenomenem pustyń Arennan. Szamanowie są nieraz nazywani "tymi, którzy znają języki wiatrów".
+Ormathowie wierzą, że wiatr jest główną siłą tchnącą ducha w istoty żyjące, ale także przewodzącą zmarłych ku ostatecznemu domowi.
+Ormacka demonologia uznaje wiele duchów wiatru, co wyjaśnia również dlaczego szamani są uznawani również za mediatorów między światami - częstokroć uspokajając te duchy, które próbują zasiać chaos w ich szczepie. Bywają momenty, gdy szaman musi stoczyć dosłowną walkę z duchem, by przywrócić go do porządku.
+'''
+races__ghlodd_descr = '''
+Rasa głoddyjska jest uznawana za jedną z najstarszych w uniwersum. Istniejąc od początków świata, głoddy żyły pod powierzchnią ogromnego, pustynnego kontynentu Seiteh, kultywując swoją bogatą artystyczną tradycję i religię.
+Jak mówią legendy, wyprowadził ich Bóg-Przewodnik, podczas gdy sieci podziemnych korytarzy i jaskiń pozostały jako ich dziedzictwo.
+
+Głoddy mają dziwne, zdeformowane ciała, składające się w większości ze sporej twarzy i bardzo słabo ukształtowanych kończyn do interakcji ze światem zewnętrznym - są one albo zniekształcone, bardzo krótkiego, albo wręcz nieukształtowane.
+Jednakże co głoddy nie wykształciły w ciele, nadrobiły w psyche. Są oni uznawani za jedne z najmądrzejszych i najbardziej inteligentnych ras, będąc świetnymi technologami, jak i magami.
+Przezwyciężają ograniczenie swojego ciała dzięki swoim psionicznym zdolnościom - dawne wieki znają Głoddyjskie Imperium jako jedną z najpotężniejszych sił, podbijającą wiele okolicznych krain.
+
+Głoddy są porywcze i kochają wojnę, jednocześnie jednak bardzo cenią swoje społeczne wartości, jak religia, wspólnota i rodzina. Uznają duchowość za jeden z najważniejszych elementów świata, co powoduje, że są gorliwymi pasjonatami sztuki.
+Ich tradycje są mocno zakorzenione w systemie społecznym, który często zdaje się być niezrozumiały dla osób spoza ich cywilizacji - jednak wystarczy zgłębić się dostatecznie, by dojrzeć piękno ich niezwykłego świata sprzeczności.
+'''
 #-----------------------
 # KLASY
 #-----------------------
