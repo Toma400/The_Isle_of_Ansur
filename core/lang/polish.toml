@@ -72,6 +72,9 @@ pack__authors         = "Autorzy"
 pack__version         = "Wersja"
 pack__descr           = "Opis"
 pack__req             = "Wymagane paczki"
+
+pack__switch          = "Wyłącz/włącz"
+pack__disabled        = "Paczka wyłączona"
 # end
 
 menu__load_choose          = "Wybierz swój zapis gry"

@@ -72,6 +72,9 @@ pack__authors         = "Authors"
 pack__version         = "Version"
 pack__descr           = "Description"
 pack__req             = "Dependencies"
+
+pack__switch          = "Disable/Enable"
+pack__disabled        = "Pack disabled"
 # end
 
 menu__load_choose          = "Choose your save"
