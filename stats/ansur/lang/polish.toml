@@ -267,6 +267,33 @@ classes__sharpshooter_descr = '''
 Strzelcy wyborowi to mistrzowie dystansów, wiedzący jak trafić przeciwnika z dużych odległości, mając swój wierny karabin obok siebie.
 Mimo, że mogą oni nie radzić sobie tak zgrabnie na bliskich pojedynkach, nadrabiają to w snajperskich wymianach pozdrowień, które pozwalają im niekiedy wyeliminować przeciwnika jednym strzałem.
 '''
+classes__archer_descr = '''
+Łucznik wie, jak radzić sobie z łukami i używa ich, by trafiać przeciwników prosto w gardła.
+Jednak czasami to gardło jest ciut zbyt blisko, i w takich sytuacjach łucznikowi towarzyszy wierny przyjaciel - sztylet trzymany u boku.
+'''
+classes__illusionist_descr = '''
+Iluzjonista to mag, który nauczył się, że oko jest równie naiwne co i ludzie oglądający jego sztuczki, i wytrenował sztukę manipulacji obrazem do perfekcji.
+'''
+classes__priest_descr = '''
+Kapłani to zazwyczaj religijni ludzie dedykujący swoje życie dla wyższego dobra, zwykle rozumiejąc przez to pomoc biednym i słabym.
+Ci, którzy nie zdecydowali, że jednak wolą pieniądz, bądź nie zdążyli zdecydować, bo zostali wcześniej uśmierceni przez bandytów, przynoszą dumę wierze, której habit noszą.
+'''
+classes__rogue_descr = '''
+Łotrzyk to taka dusza towarzystwa, która próbuje to towarzystwo poznać jak najlepiej, szczególnie zawartość ich kieszeni. Niestety, jak to dusze towarzystwa, także i łotrzyk zwykle znika na następny dzień i nie wiadomo gdzie go szukać.
+Z rzadka również znajdzie się jedna nieżywa osoba, przy której nie wiadomo, czy to wina tego wesołego kolegi z wczoraj, czy alkoholu.
+'''
+classes__assassin_descr = '''
+Asasyni to armia cieni, którzy też w cieniu przyjmują kontrakty, jednak zawsze ambitnie, bo wszak prawdziwy pieniądz jest przy wysokich sferach.
+Z takiego też powodu zwykle widzi się ich na dworach, a raczej rzadko widzi, gdyż kontrakty raczej rzadko nagradzają za jawne morderstwa. Choć i takie się zdarzą!
+'''
+classes__bard_descr = '''
+Bard wie, co kochają ludzie. Głównie dlatego, że im to gra w różnych gospodach, i że zwykle nie zarabia ani grosza, bo to też ludzie kochają, tyle że trzymać przy sobie.
+Czasem jednak, gdy poczuje, że jego żołądek nie zniesie empatyzowania z tłumem, potrafi ten grosz wydrzeć na inny sposób.
+'''
+classes__merchant_descr = '''
+Kupcy to mistrzowie targowania się, jak i znajomości lokalnych cen - kupca nie oszukasz, mówiąc, że właśnie w twojej wiosce zabito wszystkie owce, i dlatego wełna taka droga.
+O ile kupiec sam nie dokonał tego czynu (a jak można się domyślić, wcześniej kupiłby całą wełnę), to żaden amator nie wmówi mu, że czarne jest białe. Szczególnie owca.
+'''
 classes__blacksmith_descr = '''
 Kowale są mistrzami żelaza i metali, kując narzędzia, bronie, pancerze i inne przedmioty różnego użytku.
 Są oni zwykle widoczni w miastach, praktykując swój fach i zarabiając pieniądze ze zleceń od mieszczan, jak i armii.

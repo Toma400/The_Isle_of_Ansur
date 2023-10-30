@@ -268,25 +268,33 @@ Sharpshooters are masters of distances, knowing how to hit targets from unbeliev
 While they may lack with power on closer ranges, they make up for it on longer ones. Skilled sharpshooter can even one-shot take the enemy out.
 '''
 classes__archer_descr = '''
-Archer knows well how to handle bows and utilise them to their maximum capabilities. It is also trained in case anything goes wrong, knowing how to use knives in critical situation.
+Archer knows well how to handle bows and utilise them to their maximum capabilities, sending deadly arrows directly into enemy's throats.
+But sometimes the throat is a bit too close, and for this occasion archers are swift with some shorters weapons, keeping their trusty dagger close.
 '''
 classes__illusionist_descr = '''
 Illusionist is mage trained in wisdom that eye perception can be twisted, and they use it to their benefit for whatever purpose they have.
+The most common is to pay for your gambling debts, but this rarely work on the long run.
 '''
 classes__priest_descr = '''
-Priests are usually religious people who dedicated their lives to serve as healers and those giving help to the poor and weak.
+Priests are usually religious people who dedicated their lives to serve as healers and those giving aid to the poor and weak.
+Sometimes they do end up impaled somewhere, but their innocent hearts can't help but come to those in need.
 '''
 classes__rogue_descr = '''
 Rogues are knowledgeable both in thievery and silent murders, making them pretty powerful, diverse group to fill any faction needing services done quietly.
+But if they had to choose... they would leave murders to those a bit more dark people. There's nothing more charming than to be a bit mischievous, after all.
 '''
 classes__assassin_descr = '''
 Assassins are army of shadows, discussing politics with rulers at day, murdering them at night. Masters of deadly weapons, on both ranged and close range.
+Some of them follow moral guidelines, but your dagger is not loyal to any colour... unless you are one of those idealists, but those are usually on the other side of the knife.
 '''
 classes__bard_descr = '''
 Bard loves singing and playing music in taverns, but it can also get some money in less official ways, in case something goes south in artistic career.
+Sometimes something goes so even when trying to maintain boring duty - inns and taverns aren't known to be friendliest to someone who stays between two drunk gamers.
 '''
 classes__merchant_descr = '''
-Merchant knows how to bargain a great price and cut costs where it is possible - knowledge of trades are no mystery for them!
+Merchant knows how to bargain a great price and cut costs where it is possible - their whole life was spent doing trades, even as a teen you tried to sell your bottle of vine you stole from parents.
+While this didn't end up as greatly, now you are wiser, and any trade you do, is not on things from people you live with. But hey, we are all legal here!
+So, wouldn't you take this figure of Sur god? It's all gold, I promise!
 '''
 classes__blacksmith_descr = '''
 Blacksmiths are masters of iron and metals, forging tools, weapons, armour and other items of various use.
