@@ -10,7 +10,7 @@ hovered    = "#7C613B"
 background = "#4F3920" # currently unused
 selected   = "#354A07"
 choice     = "#1A5856"
-error      = "#660000"
+warning    = "#660000"
 other      = "#B0CA60"
 
 [fonts.general]

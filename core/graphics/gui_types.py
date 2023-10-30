@@ -43,7 +43,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 upd = put_text(screen, text=langstring("menu__update"), font_cat="menu", size=22, align_x="center", pos_y=96, colour=fCol.OTHER.value)
                 if upd_click(upd, pg_events): update() # GitHub repo
             if packs_err:
-                put_text(screen, text=langstring("menu__pack_error"), font_cat="menu", size=27, align_x="center", pos_y=90, colour=fCol.WARNING.value)
+                put_text(screen, text=langstring("menu__pack_error"),            font_cat="menu", size=27, align_x="center", pos_y=90, colour=fCol.WARNING.value)
             put_abstext(screen,  text=f"{sysref('status')} {sysref('version')}", font_cat="menu", size=22, pos_x=0.5,        pos_y=96, colour=fCol.BACKGROUND.value)
 
             gt2c = fCol.DISABLED.value if len(listSaves()) == 0 or packs_err else fCol.ENABLED.value # handles whether button for 'load' is available or not...

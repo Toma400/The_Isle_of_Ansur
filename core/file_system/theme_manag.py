@@ -87,7 +87,7 @@ class FontColour(Enum):
     BACKGROUND = fontColour("background") # ???
     SELECTED   = fontColour("selected")
     CHOICE     = fontColour("choice")
-    ERROR      = fontColour("error")
+    WARNING    = fontColour("warning")
     OTHER      = fontColour("other")
 #=======================================================================================
 # Returns address of image that will show up in menu backgrounds
