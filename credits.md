@@ -19,9 +19,7 @@ Use table of contents below to navigate.
 </center>
 
 #### Fonts
-- **Cohaerentia**, **Cinzel** and **Radius FG** fonts use is based on [SIL Open Font License](http://scripts.sil.org/OFL) and is bundled with the game by its rights.
-- **Mirra** font is developed by Oksana Tkachenko at HSE Art and Design School. Its use is based on its Creative Commons license.
-- **Ferrum** font [was released to public domain](https://www.1001fonts.com/ferrum-font.html).
+- **Ferrum Extended** is edited [Ferrum font that was released to public domain](https://www.1001fonts.com/ferrum-font.html).
 
 #### Logos
 - **The Isle of Ansur logo** was made by Goth Ross.

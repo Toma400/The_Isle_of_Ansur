@@ -60,6 +60,7 @@ class DefaultRun:
         # folders not used anymore
         full_export_path + "docsv",
         full_export_path + "gui",
+        full_export_path + "core/assets/fonts",
         # caches
         full_export_path + "_temp",
         full_export_path + "__pycache__",

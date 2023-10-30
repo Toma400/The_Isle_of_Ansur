@@ -1,16 +1,21 @@
 from core.decorators import Deprecated
+import shutil, os
+
+@Deprecated("core.file_system.repo_manag.deleter()")
+def file_deleting (pathage):
+  try: shutil.rmtree(pathage)
+  except NotADirectoryError: os.remove(pathage)
+  except FileNotFoundError: pass
 
 #old function to regular deleting of cache if redirect is not turned on
 def cache_deleting():
-  import utils.repo_manag
-  utils.repo_manag.file_deleting ("stats/__pycache__")
-  utils.repo_manag.file_deleting ("utils2/__pycache__")
-  utils.repo_manag.file_deleting ("gui/__pycache__")
-  utils.repo_manag.file_deleting ("saves/__pycache__")
-  utils.repo_manag.file_deleting ("system/__pycache__")
+  file_deleting ("stats/__pycache__")
+  file_deleting ("utils2/__pycache__")
+  file_deleting ("gui/__pycache__")
+  file_deleting ("saves/__pycache__")
+  file_deleting ("system/__pycache__")
   #deeper cache deleting
-  utils.repo_manag.file_deleting ("system/save_system/__pycache__")
-  del utils.repo_manag
+  file_deleting ("system/save_system/__pycache__")
 
 #redirecting
 def cache_redirect():
@@ -19,12 +24,11 @@ def cache_redirect():
 
 #if redirect gets switched off, this can be used to clear out cache stored in sys/cache
 def cache_brutedel():
-  import utils.repo_manag
-  utils.repo_manag.file_deleting ("system/cache/__pycache__")
-  utils.repo_manag.file_deleting ("system/cache/home")
-  utils.repo_manag.file_deleting ("system/cache/usr")
-  utils.repo_manag.file_deleting ("system/cache/Ministerstwo Kalibracyjne")
-  utils.repo_manag.file_deleting ("system/cache/Users")
+  file_deleting ("system/cache/__pycache__")
+  file_deleting ("system/cache/home")
+  file_deleting ("system/cache/usr")
+  file_deleting ("system/cache/Ministerstwo Kalibracyjne")
+  file_deleting ("system/cache/Users")
 
 @Deprecated("core.file_system.repo_manag.folder_init")
 def folder_init():
