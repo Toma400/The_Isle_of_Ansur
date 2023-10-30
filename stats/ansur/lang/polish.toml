@@ -222,6 +222,30 @@ Klan ten cenił sobie honor nad wszystko inne, co wyróżniało go na tle innych
 Mimo swojej militarnej kultury, zainteresowania voitri nie różnią się znacznie od innych klanów - oni również znajdują ogromną dumę w studiowaniu i odkrywaniu, z tą różnicą, iż chaotyczna natura uniwersum nie stanowi dla nich przeszkody.
 W odróżnieniu od lunatri, voitri można często spotkać poza granicami swojej ojczyzny, nierzadko jako najemników czy przewodników.
 '''
+races__saphtri_descr = '''
+Rasa tri jest jedną z najstarszych w uniwersum, a jej pochodzenie pozostaje zagadką. Niektórzy twierdzą, że tri byli pierwszymi świadomymi istotami od których pozostałe rasy ewoluowały.
+Jest to jednak dość niszowa teoria, gdyż wiele różnic pomiędzy tri a resztą ras zdaje się wykluczać jej prawdziwość.
+Jedynym widocznym podobieństwem, które tri współdzieli z ludźmi jest wygląd - jednakże tri praktykują dalece inny styl, kochając długie, ciemne włosy, jak i eleganckie, delikatne ubrania. Są też zwykle wyżsi i mają charakterystyczne, chudsze twarze.
+Są uważani za bystrych i szeroko uzdolnionych, szczególnie jednak w magii. Częstokroć można zobaczyć tri będących ważnymi magami - ich styl magii jest często bardzo ceremonialny, co ma również odbicie w ich kulturze.
+Jest to też powód dla którego tri często otwarcie okazują swoją słabość do sztuki, szczególnie teatru.
+
+Saphtri to pustynna odmiana tri, z dużo jaśniejszą cerą niż pozostałe, co przyniosło ich armii tytuł "łuczników słońca".
+Są dużo bardziej obyci z technologią niż pozostałe tri. Jednak, w odróżnieniu od ludzi, saphtrijska technologia opiera się bardziej na manipulacji mechanicznymi kompozycjami i może być nawet uznana za formę sztuki.
+Od narzędzi do maszyn, saphtri używają fizycznych atrybutów materiałów, doprowadzając je do ekstremum. To powoduje, że ich przedmioty korzystające z tych systemów są trudne do użytku dla tych, którzy są przyzwyczajeni do klasycznej formy technologii.
+Kultura saphtrijska jest dalece bardziej odległa od innych tri, jako że saphtri odseparowali się od swoich pobratymców w odległym czasie. To powoduje, że ich tradycje i praktyki religijne różnią się znacząco.
+'''
+races__pahtri_descr = '''
+Rasa tri jest jedną z najstarszych w uniwersum, a jej pochodzenie pozostaje zagadką. Niektórzy twierdzą, że tri byli pierwszymi świadomymi istotami od których pozostałe rasy ewoluowały.
+Jest to jednak dość niszowa teoria, gdyż wiele różnic pomiędzy tri a resztą ras zdaje się wykluczać jej prawdziwość.
+Jedynym widocznym podobieństwem, które tri współdzieli z ludźmi jest wygląd - jednakże tri praktykują dalece inny styl, kochając długie, ciemne włosy, jak i eleganckie, delikatne ubrania. Są też zwykle wyżsi i mają charakterystyczne, chudsze twarze.
+Są uważani za bystrych i szeroko uzdolnionych, szczególnie jednak w magii. Częstokroć można zobaczyć tri będących ważnymi magami - ich styl magii jest często bardzo ceremonialny, co ma również odbicie w ich kulturze.
+Jest to też powód dla którego tri często otwarcie okazują swoją słabość do sztuki, szczególnie teatru.
+
+Pahtri to dość rzadka odmiana tri, żyjąca na archipelagu na zachód od Rossevette. Nie jest jasne jak dotarli do tego miejsca, jednak teoretyzuje się, że wybyli z Księżyca jako pierwsi.
+To by tłumaczyło stopień zmian, jaki zaszedł nawet w ich budowie - są dużo niżsi i mają zdecydowanie bardziej plemienną kulturę od reszty tri.
+Mimo ich różnic w wyglądzie i kulturze, podzielają oni jednak zamiłowanie do tradycji, nawet jeżeli ta jest dość odmienna.
+Pahtri byli również jedyną rasą, która nie doświadczyła władania przez Imperium Baedoor, gdyż mimo bycia podbitymi, jurysdykcja królewska była symboliczna, bez aspektu militarnego. Dzięki tej suwerenności, kultura pahtrijska przetrwała praktycznie bez zmian.
+'''
 #-----------------------
 # KLASY
 #-----------------------
