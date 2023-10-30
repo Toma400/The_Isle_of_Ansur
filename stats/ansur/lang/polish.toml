@@ -199,6 +199,29 @@ Przezwyciężają ograniczenie swojego ciała dzięki swoim psionicznym zdolnoś
 Głoddy są porywcze i kochają wojnę, jednocześnie jednak bardzo cenią swoje społeczne wartości, jak religia, wspólnota i rodzina. Uznają duchowość za jeden z najważniejszych elementów świata, co powoduje, że są gorliwymi pasjonatami sztuki.
 Ich tradycje są mocno zakorzenione w systemie społecznym, który często zdaje się być niezrozumiały dla osób spoza ich cywilizacji - jednak wystarczy zgłębić się dostatecznie, by dojrzeć piękno ich niezwykłego świata sprzeczności.
 '''
+races__lunatri_descr = '''
+Rasa tri jest jedną z najstarszych w uniwersum, a jej pochodzenie pozostaje zagadką. Niektórzy twierdzą, że tri byli pierwszymi świadomymi istotami od których pozostałe rasy ewoluowały.
+Jest to jednak dość niszowa teoria, gdyż wiele różnic pomiędzy tri a resztą ras zdaje się wykluczać jej prawdziwość.
+Jedynym widocznym podobieństwem, które tri współdzieli z ludźmi jest wygląd - jednakże tri praktykują dalece inny styl, kochając długie, ciemne włosy, jak i eleganckie, delikatne ubrania. Są też zwykle wyżsi i mają charakterystyczne, chudsze twarze.
+Są uważani za bystrych i szeroko uzdolnionych, szczególnie jednak w magii. Częstokroć można zobaczyć tri będących ważnymi magami - ich styl magii jest często bardzo ceremonialny, co ma również odbicie w ich kulturze.
+Jest to też powód dla którego tri często otwarcie okazują swoją słabość do sztuki, szczególnie teatru.
+
+Lunatri to tri żyjący na Zachodnim Księżycu, ogromnej wyspie będącej domem dla wielu klanów tri. Mimo prób zjednoczenia (które częściowo poskutkowały, tworząc Zjednoczoną Unię Tri), rasa ta jest bardzo przywiązana do swoich lokalnych społeczności i granic terytorialnych.
+To powoduje, że rzadko kiedy można zobaczyć ich podrózujących poza Księżycem - który jest również uważany za kolebkę całej rasy tri.
+Mimo to, lunatri bardzo doceniają studiowanie wielu tematów, jak i świata wokół. Wielu pielgrzymów podróżuje do ich pięknych miast by zobaczyć monumentalną architekturę, uczyć się od mistrzów, czy zwyczajnie poznać tę intrygującą kulturę nieobecną nigdzie indziej.
+'''
+races__voitri_descr = '''
+Rasa tri jest jedną z najstarszych w uniwersum, a jej pochodzenie pozostaje zagadką. Niektórzy twierdzą, że tri byli pierwszymi świadomymi istotami od których pozostałe rasy ewoluowały.
+Jest to jednak dość niszowa teoria, gdyż wiele różnic pomiędzy tri a resztą ras zdaje się wykluczać jej prawdziwość.
+Jedynym widocznym podobieństwem, które tri współdzieli z ludźmi jest wygląd - jednakże tri praktykują dalece inny styl, kochając długie, ciemne włosy, jak i eleganckie, delikatne ubrania. Są też zwykle wyżsi i mają charakterystyczne, chudsze twarze.
+Są uważani za bystrych i szeroko uzdolnionych, szczególnie jednak w magii. Częstokroć można zobaczyć tri będących ważnymi magami - ich styl magii jest często bardzo ceremonialny, co ma również odbicie w ich kulturze.
+Jest to też powód dla którego tri często otwarcie okazują swoją słabość do sztuki, szczególnie teatru.
+
+Voitri to potomkowie słynnego klanu Voitori, który opuścił Księżyc w czasach przederowych. Ci tri osiadli się na wyspie Rossevette, formując swoją własną formę kultury tri, jednak wierną temu, co Voitori reprezentował na obszarze Księżyca.
+Klan ten cenił sobie honor nad wszystko inne, co wyróżniało go na tle innych tri, wraz z ogromnym zainteresowaniem bardziej chaotyczną formą magii. To również sprawiało, że Voitori był jednym z najbardziej niebezpiecznych klanów swych czasów.
+Mimo swojej militarnej kultury, zainteresowania voitri nie różnią się znacznie od innych klanów - oni również znajdują ogromną dumę w studiowaniu i odkrywaniu, z tą różnicą, iż chaotyczna natura uniwersum nie stanowi dla nich przeszkody.
+W odróżnieniu od lunatri, voitri można często spotkać poza granicami swojej ojczyzny, nierzadko jako najemników czy przewodników.
+'''
 #-----------------------
 # KLASY
 #-----------------------
