@@ -1,6 +1,6 @@
 import pygame.rect
 
-from core.file_system.theme_manag import font_handler, font_size
+from core.file_system.theme_manag import fontHandler, fontSize, getTheme
 from core.graphics.gh_manag import returnCell, revCell, iterateCells, iterateRevCells
 from core.decorators import Callable, HelperMethod
 from pygame.font import Font
@@ -12,9 +12,9 @@ from core.utils import *
 # Text renderer using scaling and alignment
 def put_text (screen, text, font_cat, size, pos_x=0, pos_y=0, align_x=None, align_y=None, colour=None, bg_colour=None, endpos_x=None, endpos_y=None, no_blit=False, raw=False):
     if colour is None: colour = (0, 0, 0) # default text colour is black
-    font = font_handler(font_cat)
+    font = fontHandler(font_cat)
     #======================================
-    fontobj = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size, font_cat))
+    fontobj = Font(f"{gpath}/themes/{getTheme()}/fonts/{font}", txt_size(size, font_cat))
     fontobjs = fontobj.size(text) # tuple of rendered text size
     pos_x, pos_y = text_replacer(
         fontobjs,
@@ -36,10 +36,10 @@ def put_abstext (screen, text, font_cat, size, pos_x, pos_y, colour=None, bg_col
     if colour is None: colour = (0, 0, 0) # default text colour is black
     pos_x = returnCell(pos_x, "x")
     pos_y = returnCell(pos_y, "y")
-    font = font_handler(font_cat)
+    font = fontHandler(font_cat)
     # 'size' is not cell-related because this would restrict precision
     #======================================
-    fontobj = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size, font_cat))
+    fontobj = Font(f"{gpath}/themes/{getTheme()}/fonts/{font}", txt_size(size, font_cat))
     txtobj = fontobj.render(text, True, colour, bg_colour)
     screen.blit(txtobj, (pos_x, pos_y))
 
@@ -76,21 +76,10 @@ def put_lore(lang):
     return ""
 
 #==========|========================================================
-# FONT     | Decides on font used depending on category and language
-# HANDLER  | You can pass font manually (use category=None then)
+# UTILS    |
 #==========|========================================================
-# Fonts change because not all fonts support specific alphabets
-@Deprecated("core.file_system.theme_manag.font_handler")
-def font_handler_depr (category: str, font=None):
-    match category:
-        case "menu":
-            if scx("lang")   == "polish":    font = "ferrum.otf"
-            elif scx("lang") == "hungarian": font = "verve_hun.otf"
-            else:                            font = "ferrum.otf"
-    return font
-
-# Sets position of text depending on its render size and cell position/alignment set
 def text_replacer (text_size, align_x=None, align_y=None, x_pos=0, y_pos=0, x_endpos=None, y_endpos=None):
+    """Sets position of text depending on its render size and cell position/alignment set"""
     match align_x:
         case "center": pos_x = returnCell(100, "x")/2 - text_size[0]/2
         case "right":  pos_x = returnCell(100, "x") - text_size[0] - returnCell(x_pos, "x")
@@ -103,9 +92,11 @@ def text_replacer (text_size, align_x=None, align_y=None, x_pos=0, y_pos=0, x_en
         pass
     return pos_x, pos_y
 
-# Used to split the text to two parts, and if splitter position
-# is set, it re-adds splitting part to the text on this part
 def text_splitter(text, splitter, splitter_pos: int = None):
+    """
+    Used to split the text to two parts, and if splitter position
+    is set, it re-adds splitting part to the text on this part
+    """
     tlist = text.split(splitter)
     if splitter_pos is None:
         return tlist
@@ -196,7 +187,7 @@ def txt_rect_manag (screen, text, font_cat, rect_x, rect_y, endrect_x, endrect_y
 
 # adjusts size to modifier in settings
 def txt_size (size, context=None):
-    return int((size*scx("txts"))*font_size(context))
+    return int((size*scx("txts")) * fontSize(context))
 
 #==========|========================================================
 # TEXT     | Used for objectify text features in cleaner way
@@ -251,7 +242,7 @@ class Text:
     @Callable
     def font(self, font_cat):
         """Chooses font depending on category ('lore:' prefix allows for use of lore fonts)"""
-        if "lore:" not in font_cat: self.txt_font = font_handler(font_cat)
+        if "lore:" not in font_cat: self.txt_font = fontHandler(font_cat)
         else:                       self.txt_font = put_lore(font_cat.replace("lore:", ""))
 
     @Callable

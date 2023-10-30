@@ -1,4 +1,4 @@
-from core.file_system.theme_manag import font_handler
+from core.file_system.theme_manag import fontHandler
 from core.graphics.text_manag import txt_size
 from core.graphics.gh_manag import returnCell
 from core.utils import gpath
@@ -23,7 +23,7 @@ class InputBox:
         else: self.background = "#E6E3D3" # default dark cream background
         # Font setup -------------------------------------------------
         if font is not None: self.font = Font(f"{gpath}/core/assets/fonts/{font}", txt_size(size, font_cat))
-        else:                self.font = font_handler(category="menu")
+        else:                self.font = fontHandler(category="menu")
 
         # Other variables --------------------------------------------
         self.text        = ''          # text inside the input box
