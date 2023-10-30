@@ -97,7 +97,6 @@ class PGUI_Helper:
         """Resets selected element of the GUI, usually putting it in its default state"""
         match self.get_element(element).__module__:
             case UISelectionList.__module__: resetSelected(self.get_element(element))
-            case _:                          logging.warning(f"Tried to request -set_default- from PGUI element that does not support it: {element}")
 
     def set_value(self, element: str, overwrite):
         """Overwrites item list of selected element"""

@@ -17,7 +17,7 @@
 ```
 > - Gameplay
 >   - Removed `Human, Born in Moon Continent` race due to BRPGS 3.0 changes
->     (if you saved character with it, the save will probably not load in the future)
+>     (if you saved character with it, the save will probably not load)
 >   - Improved descriptions of all game elements
 > - Quality-of-Life
 >   - You can now go back to previous option in character creation menu
@@ -40,6 +40,8 @@
 > - Technicals
 >   - System-accepted languages are now referenced from `system_ref` which makes them
 >     less hardcoded and even editable through scripts/mods
+>   - Theme-driven elements should now be consistent
+>     (previously it mixed theming with hardcoded values)
 > - Fixes
 >   - Fixed lore names not showing up (#94)
 >   - Fixed data hanging during saving game (#93)
