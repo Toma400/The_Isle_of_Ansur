@@ -1,5 +1,6 @@
-from os.path import join, isdir, isfile
+from os.path import join, isdir, isfile, exists
 from os import listdir
+from core.decorators import Deprecated
 import os, shutil, logging
 
 gpath = os.path.dirname(os.path.abspath("main.py"))
@@ -28,15 +29,40 @@ def dir_checker (path, separator, extension=None, no_path=False):
     if no_path: return no_pather(listed, path)
     return listed
 
+@Deprecated("Use -core.file_system.repo_manag.dir_checker()- instead (see the difference)")
+def dir_checker_depr (path, separator, extension=None):
+  if separator == "dir":
+    return [f for f in listdir(path) if isdir(join(path, f))]
+  elif separator == "file" and extension is None:
+    return [f for f in listdir(path) if isfile(join(path, f))]
+  elif separator == "file":
+    import glob
+    listed = glob.glob(path + "*." + extension)
+    listed2 = []
+    for i in listed:
+      i = i.replace(path, "")
+      listed2.append (i.replace("." + extension, ""))
+    return listed2
+  elif separator == "all":
+    import glob
+    listed = glob.glob(path + "*")
+    listed2 = []
+    for i in listed:
+      listed2.append (i.replace(path, ""))
+    return listed2
+
 # Checks if directory is empty
 def empty_checker (path):
   return os.stat(path).st_size == 0
 
 # "Safe" file deleter (flexible towards both folders and files)
 def deleter (pathage):
-  try: shutil.rmtree(pathage)
-  except NotADirectoryError: os.remove(pathage)
-  except FileNotFoundError: pass
+  try:
+    if exists(pathage):
+      if isfile(pathage):
+        os.remove(pathage)
+      elif isdir(pathage):
+        shutil.rmtree(pathage)
   except PermissionError:
     print(f"Couldn't remove file {pathage} due to invalid permission.")
 
@@ -51,7 +77,8 @@ def logs_deleting (num: int = None):
         if ui < del_num:
           deleter(f"{gpath}/core/logs/{u}.log")
   else:
-    for u in all_logs: deleter(f"{gpath}/core/logs/{u}.log")
+    for u in all_logs:
+      deleter(f"{gpath}/core/logs/{u}.log")
     logging.debug("Removed all logs with request of the user.")
 
 #================|========================================

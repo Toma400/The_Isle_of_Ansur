@@ -53,7 +53,6 @@ class DefaultRun:
         full_export_path + ".dev",
         full_export_path + ".breakpoints",
         full_export_path + ".gitignore",
-        full_export_path + "test.py",
         full_export_path + "modding_guide.odt",
         full_export_path + "core/data/pack_manag/pack_errors.yaml",
         full_export_path + "core/data/pack_manag/pack_order.yaml",

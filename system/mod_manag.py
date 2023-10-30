@@ -1,4 +1,4 @@
-from utils.repo_manag import dir_checker as dir_check
+from core.file_system.repo_manag import dir_checker_depr as dir_check
 
 #--------------------------------------------------------
 # MOD LISTER
