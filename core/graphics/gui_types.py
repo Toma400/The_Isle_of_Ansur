@@ -3,6 +3,7 @@ from core.gui.menus.location import locationScreen
 from core.gui.menus.packs import packMenu
 from core.gui.menus.load import loadGame
 from core.gui.manag.langstr import langstring
+from core.file_system.parsers import loadYAML
 from core.file_system.save_manag import listSaves
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
@@ -19,7 +20,7 @@ from os.path import exists
 
 def upd_click(upd, pgv): return mouseColliderPx(upd[0], upd[1], upd[2], upd[3]) and mouseRec(pgv)
 developer_mode         = exists(".dev")
-packs_err              = os.path.getsize("core/data/pack_manag/pack_errors.yaml") > 0
+packs_err              = os.path.getsize("core/data/pack_manag/pack_errors.yaml") > 0 if exists("core/data/pack_manag/pack_errors.yaml") else False
 #===========|==================================================================================================
 # GUI       | Handles rendering of elements on the screen, putting out respective set of images and texts.
 # HANDLER   |
@@ -42,7 +43,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 upd = put_text(screen, text=langstring("menu__update"), font_cat="menu", size=22, align_x="center", pos_y=96, colour=fCol.OTHER.value)
                 if upd_click(upd, pg_events): update() # GitHub repo
             if packs_err:
-                put_text(screen, text=langstring("menu__pack_error"),            font_cat="menu", size=27, align_x="center", pos_y=90, colour=fCol.ERROR.value)
+                put_text(screen, text=langstring("menu__pack_error"), font_cat="menu", size=27, align_x="center", pos_y=90, colour=fCol.WARNING.value)
             put_abstext(screen,  text=f"{sysref('status')} {sysref('version')}", font_cat="menu", size=22, pos_x=0.5,        pos_y=96, colour=fCol.BACKGROUND.value)
 
             gt2c = fCol.DISABLED.value if len(listSaves()) == 0 or packs_err else fCol.ENABLED.value # handles whether button for 'load' is available or not...
