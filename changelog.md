@@ -15,11 +15,8 @@
 
 > ---
 > ###<center>Pre-alpha 4</center>
-
-```
 > 
-```
-
+> ---
 > ###<center>Pre-alpha 3b</center>
 > - Gameplay
 >   - Removed `Human, Born in Moon Continent` race due to BRPGS 3.0 changes
