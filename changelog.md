@@ -7,17 +7,17 @@
 
 ---
 ## Pre-alpha builds
-- [Pre-alpha 4](#centerpre-alpha-4center)
-- [Pre-alpha 3b](#centerpre-alpha-3bcenter)
-- [Pre-alpha 3](#centerpre-alpha-3center)
-- [Pre-alpha 2](#centerpre-alpha-2center)
-- [Pre-alpha 1](#centerpre-alpha-1center)
+- [Pre-alpha 4](#pre-alpha-4)
+- [Pre-alpha 3b](#pre-alpha-3b)
+- [Pre-alpha 3](#pre-alpha-3)
+- [Pre-alpha 2](#pre-alpha-2)
+- [Pre-alpha 1](#pre-alpha-1)
 
 > ---
-> ###<center>Pre-alpha 4</center>
+> ### Pre-alpha 4
 > 
 > ---
-> ###<center>Pre-alpha 3b</center>
+> ### Pre-alpha 3b
 > - Gameplay
 >   - Removed `Human, Born in Moon Continent` race due to BRPGS 3.0 changes
 >     (if you saved character with it, the save will probably not load)
@@ -50,7 +50,7 @@
 >   - Fixed data hanging during saving game (#93)
 >
 > ---
-> ###<center>Pre-alpha 3</center>
+> ### Pre-alpha 3
 >
 > - **Full overhaul of file system**
 > - **Switching to graphical interface**
@@ -64,7 +64,7 @@
 > - Further updates to match current Baedoor RPG System
 > 
 > ---
-> ###<center>Pre-alpha 2</center>
+> ### Pre-alpha 2
 > 
 > <span style="color:#871C2C; font-weight:bold">IT IS NOT SAFE TO CREATE MODS NOR SAVES FROM THIS POINT ON. NEXT RELEASES WILL INTRODUCE GAMEBREAKING CHANGES.</span>  
 > <span style="color:#A44B58; font-weight:bold">Even though, changelog notes will list all technical changes which can be followed by mod creators to adjust their mods to new versions.</span>
@@ -79,7 +79,7 @@
 >   - Old saves will not be compatibile. Please recreate your character or edit the IDs manually; no tools for conversion are made yet
 > 
 > ---
-> ###<center>Pre-alpha 1</center>
+> ### Pre-alpha 1
 > 
 > - Added basic elements, such as menu
 > - Added character setup
