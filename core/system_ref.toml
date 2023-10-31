@@ -7,7 +7,7 @@ version = "3b"
 # RELEASE
 # RELEASE VERSIONING. SHOULD MATCH LATEST PUBLISHED VERSION, NOT DEVELOPED ONE.
 release_status  = "pre alpha"
-release_version = "3"
+release_version = "3b"
 
 # CYCLE
 cycle_name   = "Between Shadows and Light"
