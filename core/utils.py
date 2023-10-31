@@ -65,8 +65,8 @@ def version_checker():
     gitfile = requests.get("https://raw.githubusercontent.com/Toma400/The_Isle_of_Ansur/Alpha/core/system_ref.toml?ref=Alpha")
     if gitfile.status_code == 200:
         gitfile = toml.loads(gitfile.text)
-        if stcomp(gitfile["release_status"]) > stcomp(sysref("release_status")): return True
-        elif sbv(gitfile["release_version"]) > sbv(sysref("release_version")):   return True
+        if stcomp(gitfile["release_status"]) > stcomp(sysref("status")): return True
+        elif sbv(gitfile["release_version"]) > sbv(sysref("version")):   return True
         else:                                                                    log.info(f"Running actual version: [{sysref('release_status')} {sysref('release_version')}]")
     else: log.info(f"Attempted to request version checking, but the status of request was {gitfile.status_code}.")
     return False

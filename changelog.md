@@ -7,14 +7,18 @@
 
 ---
 ## Pre-alpha builds
+- [Pre-alpha 4](#centerpre-alpha-4center)
 - [Pre-alpha 3b](#centerpre-alpha-3bcenter)
 - [Pre-alpha 3](#centerpre-alpha-3center)
 - [Pre-alpha 2](#centerpre-alpha-2center)
 - [Pre-alpha 1](#centerpre-alpha-1center)
 
 > ---
-> ###<center>Pre-alpha 3b</center>
+> ###<center>Pre-alpha 4</center>
 ```
+> 
+```
+> ###<center>Pre-alpha 3b</center>
 > - Gameplay
 >   - Removed `Human, Born in Moon Continent` race due to BRPGS 3.0 changes
 >     (if you saved character with it, the save will probably not load)
@@ -46,7 +50,6 @@
 >   - Fixed lore names not showing up (#94)
 >   - Fixed data hanging during saving game (#93)
 >
-```
 > ---
 > ###<center>Pre-alpha 3</center>
 >
