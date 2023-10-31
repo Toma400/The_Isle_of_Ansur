@@ -53,7 +53,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             gt2 = put_text(screen, text=langstring("menu__button_load"),     font_cat="menu", size=30, align_x="center", pos_y=34, colour=gt2c)
             gt3 = put_text(screen, text=langstring("menu__button_arena"),    font_cat="menu", size=30, align_x="center", pos_y=40, colour=fCol.DISABLED.value)
             gt4 = put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour=fCol.ENABLED.value)
-            gt5 = put_text(screen, text=langstring("menu__button_packs"),    font_cat="menu", size=30, align_x="center", pos_y=52, colour=fCol.DISABLED.value)
+            gt5 = put_text(screen, text=langstring("menu__button_packs"),    font_cat="menu", size=30, align_x="center", pos_y=52, colour=fCol.ENABLED.value)
             gt6 = put_text(screen, text=langstring("menu__button_exit"),     font_cat="menu", size=30, align_x="center", pos_y=58, colour=fCol.ENABLED.value)
 
             #gt7 = Text(text=langstring("menu__button_exit"),     fonts="menu", size=30, pos=(50,64)).colour(tcol="#4E3510").put(screen)
@@ -88,7 +88,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 if mouseRec(pg_events):
                     guitype[0] = switch_gscr(dyn_screen, screen, "settings")
 
-            elif mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]) and developer_mode:
+            elif mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]):
                 put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=52, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                    guitype[0] = switch_gscr(dyn_screen, screen, "pack_manag")

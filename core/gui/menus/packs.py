@@ -1,5 +1,6 @@
 from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr
 from core.file_system.theme_manag import FontColour as fCol
+from core.data.pack_manag.packs import removePacks, unpackPacks, verifyPacks
 from core.data.pack_manag.info import searchInfo
 from core.data.pack_manag.id import zipToID
 from core.graphics.text_manag import put_text
@@ -10,12 +11,13 @@ import os
 def packOrder() -> list[(str, str)]:
     ret = []
     for pack in loadYAML("core/data/pack_manag/pack_order.yaml"):
+        dis = "* " if pack in packDisabled() else ""
         inf = searchInfo(zipToID(pack))
         if inf is not None:
             if "name" in inf:
-                ret.append((inf["name"], pack))
+                ret.append((dis + inf["name"], pack))
                 continue
-        ret.append((pack.replace(".zip", "").replace("_", " ").title(), pack))
+        ret.append((dis + pack.replace(".zip", "").replace("_", " ").title(), pack))
     return ret
 
 def packDisabled() -> list[str]:
@@ -52,15 +54,15 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     put_text(screen,       text=langstring("menu__button_packs_manag"), font_cat="menu", size=35, align_x="center",           pos_y=1,  colour=fCol.ENABLED.value)
     gtx = put_text(screen, text=langstring("menu__sett_back"),          font_cat="menu", size=30,                   pos_x=5,  pos_y=92, colour=fCol.ENABLED.value)
-    pdb = put_text(screen, text=langstring("pack__switch"),             font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=25, colour=fCol.DISABLED.value) # 'disable'
-    # pmu = put_text(screen, text=langstring("pack__move_up"),      font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#4E3510")
-    # pmd = put_text(screen, text=langstring("pack__move_down"),    font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#4E3510")
-    # pmd = put_text(screen, text=langstring("pack__remove"),       font_cat="menu", size=30, pos_x=5, pos_y=92, colour="#4E3510")
+    pdb = put_text(screen, text=langstring("pack__switch"),             font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=10, colour=fCol.DISABLED.value) # 'disable'
+    pmu = put_text(screen, text=langstring("pack__move_up"),            font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=15, colour=fCol.DISABLED.value) # 'order'
+    pmd = put_text(screen, text=langstring("pack__move_down"),          font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=20, colour=fCol.DISABLED.value)
+    pmd = put_text(screen, text=langstring("pack__remove"),             font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=25, colour=fCol.DISABLED.value) # 'removal'
 
     dyn_screen.put_pgui("pack__zip_list")
     dyn_screen.put_pgui("pack__descr")
 
-    if not dyn_screen.get_pgui_options("pack__zip_list"): # initial set (to update, simply set pack__zip_list to [] again)
+    if not dyn_screen.get_pgui_options("pack__zip_list"): # initial set (to 'lag-prone' update, set pack__zip_list to [] again)
         if os.path.exists("core/data/pack_manag/pack_order.yaml"):
             dyn_screen.set_pgui_element("pack__zip_list", packOrder())
 
@@ -69,9 +71,12 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     if pack_selected is not None:
         dyn_screen.set_pgui_element("pack__descr", packDescr(zipToID(pack_selected)))
-        put_text(screen, text=langstring("pack__switch"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=25, colour=fCol.ENABLED.value)
+        put_text(screen, text=langstring("pack__switch"),    font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=10, colour=fCol.ENABLED.value)
+        put_text(screen, text=langstring("pack__move_up"),   font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=15, colour=fCol.WARNING.value)
+        put_text(screen, text=langstring("pack__move_down"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=20, colour=fCol.WARNING.value)
+        put_text(screen, text=langstring("pack__remove"),    font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=25, colour=fCol.WARNING.value)
         if pack_selected in pack_disabled_list:
-            put_text(screen, text=langstring("pack__disabled"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=35, colour=fCol.WARNING.value)
+            put_text(screen, text=langstring("pack__disabled"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=40, colour=fCol.WARNING.value)
 
     #if [listbox] contents are []:
       # if [file storing packs] size is not 0:
@@ -82,6 +87,9 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     #     -> but None pack_order breaks things, as you know from yesterday, so please make it so pack registry clears the file, but won't break after that
     #        (possible workaround: if no mods exist, pack_order can be removed) and then second if above would only check for existence of it)
 
+    # :::: PACK DISABLED SHOULD BE ALSO GIT-OUTED &&& MAKE IT RENEWABLE ::::
+    # ---- currently, it doesn't work as good :c                        ----
+
     #===============================================================
     # EVENTS
     #===============================================================
@@ -90,18 +98,24 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         if mouseRec(pg_events):
             guitype[0] = switch_gscr(dyn_screen, screen, "menu")
             guitype[1] = None
+            removePacks()
+            unpackPacks()
+            verifyPacks()
 
     elif pack_selected is not None:
         # disabling/enabling pack
         if mouseColliderPx(pdb[0], pdb[1], pdb[2], pdb[3]):
-            put_text(screen, text=langstring("pack__switch"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=25, colour=fCol.HOVERED.value)
+            put_text(screen, text=langstring("pack__switch"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=10, colour=fCol.HOVERED.value)
             if mouseRec(pg_events):
                 if pack_selected not in pack_disabled_list:
                     with open("core/data/pack_manag/pack_disabled.yaml", "a") as yf:
                         yf.write(f"- {pack_selected}\n")
                 else:
                     with open("core/data/pack_manag/pack_disabled.yaml", "r") as yf:
-                        with open("core/data/pack_manag/pack_disabled.yaml", "w") as yf_out:
-                            for line in yf:
-                                if line.strip("\n") != f"- {pack_selected}":
-                                    yf_out.write(line)
+                        yf_in = yf.readlines()
+
+                    with open("core/data/pack_manag/pack_disabled.yaml", "w") as yf_out:
+                        for line in yf_in:
+                            if line.strip("\n") != f"- {pack_selected}":
+                                yf_out.write(line)
+                dyn_screen.set_pgui_element("pack__zip_list", packOrder())

@@ -23,3 +23,11 @@ roadmap.md
 
 # used to enable developer's features, not suitable for non-development environment
 .dev
+
+# testing packs
+packs/*.zip
+stats/endermans_journey
+stats/eternal_desert
+stats/prehistorical_wild
+stats/shooting_stars
+stats/tamriel_races
