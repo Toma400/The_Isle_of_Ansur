@@ -292,9 +292,8 @@ Bard loves singing and playing music in taverns, but it can also get some money 
 Sometimes something goes so even when trying to maintain boring duty - inns and taverns aren't known to be friendliest to someone who stays between two drunk gamers.
 '''
 classes__merchant_descr = '''
-Merchant knows how to bargain a great price and cut costs where it is possible - their whole life was spent doing trades, even as a teen you tried to sell your bottle of vine you stole from parents.
-While this didn't end up as greatly, now you are wiser, and any trade you do, is not on things from people you live with. But hey, we are all legal here!
-So, wouldn't you take this figure of Sur god? It's all gold, I promise!
+Merchants are masters of bargaining, they know local prices well - you can't trick him saying that in your village just all sheep were killed, and that's why wool is so pricey.
+Unless merchant didn't kill them all themselves (and obviously, he would buy all wool before that), no amateur will tell him black is white. Especially sheep.
 '''
 classes__blacksmith_descr = '''
 Blacksmiths are masters of iron and metals, forging tools, weapons, armour and other items of various use.
