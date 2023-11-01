@@ -18,6 +18,7 @@ core/assets/visuals/dunaj.jpg
 
 core/data/pack_manag/pack_errors.yaml
 core/data/pack_manag/pack_order.yaml
+core/data/pack_manag/pack_disabled.yaml
 
 roadmap.md
 

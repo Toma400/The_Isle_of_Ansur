@@ -1,6 +1,6 @@
 from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr
 from core.file_system.theme_manag import FontColour as fCol
-from core.data.pack_manag.packs import removePacks, unpackPacks, verifyPacks, getErrs
+from core.data.pack_manag.packs import removePacks, unpackPacks, verifyPacks, getErrs, getDisabled
 from core.data.pack_manag.info import searchInfo
 from core.data.pack_manag.id import zipToID
 from core.graphics.text_manag import put_text
@@ -10,7 +10,7 @@ import os
 
 def packOrder() -> list[(str, str)]:
     """Creates ordered tuple of (info.toml name, zip name) for later use by GUI"""
-    dbs = packDisabled()
+    dbs = getDisabled()
     ers = getErrs()
     ret = []
     for pack in loadYAML("core/data/pack_manag/pack_order.yaml"):
@@ -23,11 +23,6 @@ def packOrder() -> list[(str, str)]:
                 continue
         ret.append((dis + pack.replace(".zip", "").replace("_", " ").title(), pack))
     return ret
-
-def packDisabled() -> list[str]:
-    if os.path.getsize("core/data/pack_manag/pack_disabled.yaml") > 0:
-        return loadYAML("core/data/pack_manag/pack_disabled.yaml")
-    return []
 
 def packDescr(pack_id: str) -> str:
     inf = searchInfo(pack_id)
@@ -71,7 +66,7 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             dyn_screen.set_pgui_element("pack__zip_list", packOrder())
 
     pack_selected      = dyn_screen.get_pgui_choice("pack__zip_list")
-    pack_disabled_list = packDisabled()
+    pack_disabled_list = getDisabled()
 
     if pack_selected is not None:
         dyn_screen.set_pgui_element("pack__descr", packDescr(zipToID(pack_selected)))
@@ -102,9 +97,10 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         if mouseRec(pg_events):
             guitype[0] = switch_gscr(dyn_screen, screen, "menu")
             guitype[1] = None
-            removePacks()
+            removePacks() # refresh/reload from here
             unpackPacks()
             verifyPacks()
+            dyn_screen.set_pgui_element("pack__zip_list", packOrder())
 
     elif pack_selected is not None:
         # disabling/enabling pack

@@ -21,7 +21,6 @@ from os.path import exists
 
 def upd_click(upd, pgv): return mouseColliderPx(upd[0], upd[1], upd[2], upd[3]) and mouseRec(pgv)
 developer_mode         = exists(".dev")
-packs_err              = True if getErrs() else False
 #===========|==================================================================================================
 # GUI       | Handles rendering of elements on the screen, putting out respective set of images and texts.
 # HANDLER   |
@@ -36,6 +35,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
         #==============================================================================================================
         case "menu":
+            packs_err = True if getErrs() else False
 
             dyn_screen.gui("menu__gh_panorama").put(screen, "full_")
             dyn_screen.gui("menu__gh_logo").put(screen)

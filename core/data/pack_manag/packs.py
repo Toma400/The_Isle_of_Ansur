@@ -61,6 +61,15 @@ def getErrs() -> list[str]:
             return list(loadYAML("core/data/pack_manag/pack_errors.yaml").keys())
     return []
 
+def getDisabled() -> list[str]:
+    if os.path.exists("core/data/pack_manag/pack_disabled.yaml"):
+        if os.path.getsize("core/data/pack_manag/pack_disabled.yaml") > 0:
+            return loadYAML("core/data/pack_manag/pack_disabled.yaml")
+        return []
+    with open("core/data/pack_manag/pack_disabled.yaml", "w") as yf:
+        yf.flush()
+    return []
+
 def verifyPacks():
     def unifiedVersion(ver: str) -> (int, float):
         # example: '1'
@@ -255,7 +264,7 @@ def unpackPacks():
 
     def finalPacks() -> list[str]:
         """Performs filtering of packs by eliminating disabled ones"""
-        disabled = loadYAML("core/data/pack_manag/pack_disabled.yaml")
+        disabled = getDisabled()
         ret      = []
         if disabled is None:
             ret += orderedPacks()
