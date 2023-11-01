@@ -55,6 +55,12 @@ def getGlobalPacks() -> list[str]:
     """Returns global pack type (which means both types having the same ID)"""
     return [p for p in getPacks(PackTypes.WORLD_PACK) if p in getPacks(PackTypes.STAT_PACK)]
 
+def getErrs() -> list[str]:
+    if os.path.exists("core/data/pack_manag/pack_errors.yaml"):
+        if os.path.getsize("core/data/pack_manag/pack_errors.yaml") > 0:
+            return list(loadYAML("core/data/pack_manag/pack_errors.yaml").keys())
+    return []
+
 def verifyPacks():
     def unifiedVersion(ver: str) -> (int, float):
         # example: '1'

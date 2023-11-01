@@ -8,6 +8,7 @@ from core.file_system.save_manag import listSaves
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
+from core.data.pack_manag.packs import getErrs
 from core.data.player.attributes import getAttributesTupleAdjusted, getAttribute
 from core.data.player.skills import getSkillsTupleAdjusted, getSkill
 from core.data.player.profession import getClassesTuple, getClass
@@ -20,7 +21,7 @@ from os.path import exists
 
 def upd_click(upd, pgv): return mouseColliderPx(upd[0], upd[1], upd[2], upd[3]) and mouseRec(pgv)
 developer_mode         = exists(".dev")
-packs_err              = os.path.getsize("core/data/pack_manag/pack_errors.yaml") > 0 if exists("core/data/pack_manag/pack_errors.yaml") else False
+packs_err              = True if getErrs() else False
 #===========|==================================================================================================
 # GUI       | Handles rendering of elements on the screen, putting out respective set of images and texts.
 # HANDLER   |

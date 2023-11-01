@@ -1,6 +1,6 @@
 from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr
 from core.file_system.theme_manag import FontColour as fCol
-from core.data.pack_manag.packs import removePacks, unpackPacks, verifyPacks
+from core.data.pack_manag.packs import removePacks, unpackPacks, verifyPacks, getErrs
 from core.data.pack_manag.info import searchInfo
 from core.data.pack_manag.id import zipToID
 from core.graphics.text_manag import put_text
@@ -9,9 +9,13 @@ from core.file_system.parsers import loadYAML
 import os
 
 def packOrder() -> list[(str, str)]:
+    """Creates ordered tuple of (info.toml name, zip name) for later use by GUI"""
+    dbs = packDisabled()
+    ers = getErrs()
     ret = []
     for pack in loadYAML("core/data/pack_manag/pack_order.yaml"):
-        dis = "* " if pack in packDisabled() else ""
+        dis = "* "       if pack               in dbs else ""
+        dis = f"! {dis}" if pack.strip(".zip") in ers else dis
         inf = searchInfo(zipToID(pack))
         if inf is not None:
             if "name" in inf:
