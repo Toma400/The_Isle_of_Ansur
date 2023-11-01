@@ -57,7 +57,7 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     pdb = put_text(screen, text=langstring("pack__switch"),             font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=10, colour=fCol.DISABLED.value) # 'disable'
     pmu = put_text(screen, text=langstring("pack__move_up"),            font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=15, colour=fCol.DISABLED.value) # 'order'
     pmd = put_text(screen, text=langstring("pack__move_down"),          font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=20, colour=fCol.DISABLED.value)
-    pmd = put_text(screen, text=langstring("pack__remove"),             font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=25, colour=fCol.DISABLED.value) # 'removal'
+    prv = put_text(screen, text=langstring("pack__remove"),             font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=25, colour=fCol.DISABLED.value) # 'removal'
 
     dyn_screen.put_pgui("pack__zip_list")
     dyn_screen.put_pgui("pack__descr")
@@ -72,9 +72,9 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     if pack_selected is not None:
         dyn_screen.set_pgui_element("pack__descr", packDescr(zipToID(pack_selected)))
         put_text(screen, text=langstring("pack__switch"),    font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=10, colour=fCol.ENABLED.value)
-        put_text(screen, text=langstring("pack__move_up"),   font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=15, colour=fCol.WARNING.value)
-        put_text(screen, text=langstring("pack__move_down"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=20, colour=fCol.WARNING.value)
-        put_text(screen, text=langstring("pack__remove"),    font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=25, colour=fCol.WARNING.value)
+        put_text(screen, text=langstring("pack__move_up"),   font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=15, colour=fCol.ENABLED.value)
+        put_text(screen, text=langstring("pack__move_down"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=20, colour=fCol.ENABLED.value)
+        put_text(screen, text=langstring("pack__remove"),    font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=25, colour=fCol.DISABLED.value)
         if pack_selected in pack_disabled_list:
             put_text(screen, text=langstring("pack__disabled"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=40, colour=fCol.WARNING.value)
 
@@ -119,3 +119,35 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                             if line.strip("\n") != f"- {pack_selected}":
                                 yf_out.write(line)
                 dyn_screen.set_pgui_element("pack__zip_list", packOrder())
+
+        # moving selected pack up (it is - because that pushes pack earlier)
+        elif mouseColliderPx(pmu[0], pmu[1], pmu[2], pmu[3]):
+            put_text(screen, text=langstring("pack__move_up"),   font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=15, colour=fCol.HOVERED.value)
+            if mouseRec(pg_events):
+                current = loadYAML("core/data/pack_manag/pack_order.yaml")
+                pos = current.index(pack_selected)
+                pos_up = (pos - 1) if (pos - 1) >= 0 else None
+                if pos_up is not None:              # if it is not first
+                    pack_swapped = current[pos - 1]  # gets the one to swap
+                    current[pos] = pack_swapped      # performs swap
+                    current[pos - 1] = pack_selected
+                    with open("core/data/pack_manag/pack_order.yaml", "w") as yf_out:
+                        for pck in current:
+                            yf_out.write(f"- {pck}\n")
+                    dyn_screen.set_pgui_element("pack__zip_list", packOrder())
+
+        # moving selected pack down (it is + because that pushes pack further)
+        elif mouseColliderPx(pmd[0], pmd[1], pmd[2], pmd[3]):
+            put_text(screen, text=langstring("pack__move_down"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=20, colour=fCol.HOVERED.value)
+            if mouseRec(pg_events):
+                current = loadYAML("core/data/pack_manag/pack_order.yaml")
+                pos = current.index(pack_selected)
+                pos_up = (pos + 1) if (pos + 1) < len(current) else None
+                if pos_up is not None:              # if it is not last
+                    pack_swapped = current[pos + 1]  # gets the one to swap
+                    current[pos] = pack_swapped      # performs swap
+                    current[pos + 1] = pack_selected
+                    with open("core/data/pack_manag/pack_order.yaml", "w") as yf_out:
+                        for pck in current:
+                            yf_out.write(f"- {pck}\n")
+                    dyn_screen.set_pgui_element("pack__zip_list", packOrder())

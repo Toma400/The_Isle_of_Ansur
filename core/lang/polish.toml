@@ -75,6 +75,9 @@ pack__req             = "Wymagane paczki"
 
 pack__switch          = "Wyłącz/włącz"
 pack__disabled        = "Paczka wyłączona"
+pack__move_up         = "Przenieś w górę"
+pack__move_down       = "Przenieś w dół"
+pack__remove          = "Usuń paczkę"
 # end
 
 menu__load_choose          = "Wybierz swój zapis gry"

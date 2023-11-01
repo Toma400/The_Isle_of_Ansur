@@ -75,6 +75,9 @@ pack__req             = "Dependencies"
 
 pack__switch          = "Disable/Enable"
 pack__disabled        = "Pack disabled"
+pack__move_up         = "Move Up"
+pack__move_down       = "Move Down"
+pack__remove          = "Remove pack"
 # end
 
 menu__load_choose          = "Choose your save"
