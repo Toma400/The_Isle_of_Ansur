@@ -10,13 +10,13 @@ import pygame
 # MANAG  | them and resizing.
 #========|===========================================================
 # Basic:
-def imgLoad(path, name="", alpha=False): # name is optional, if you want to separate folder path from file for some reason
+def imgLoad(path, name="", alpha=False) -> pygame.Surface: # name is optional, if you want to separate folder path from file for some reason
     """Function-aimed alternative to Image.reload()"""
     try:
         surface = pygame.image.load(f"{gpath}/{path}{name}")
         if alpha is False: return surface.convert()
         return surface.convert_alpha()  # for transparent textures (alpha=True)
-    except pygame.error: log.error(f"Error occured during loading texture from path [{gpath}/{path}{name}].")
+    except pygame.error:      log.error(f"Error occured during loading texture from path [{gpath}/{path}{name}].")
     except FileNotFoundError: log.error(f"Texture from path [{gpath}/{path}{name}] not found.")
 
 @Deprecated("core.graphics.gh_manag.Image")

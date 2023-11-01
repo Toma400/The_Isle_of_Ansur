@@ -21,6 +21,7 @@ core/data/pack_manag/pack_order.yaml
 core/data/pack_manag/pack_disabled.yaml
 
 roadmap.md
+temp.md
 
 # used to enable developer's features, not suitable for non-development environment
 .dev

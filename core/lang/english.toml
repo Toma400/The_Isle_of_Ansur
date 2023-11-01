@@ -45,6 +45,9 @@ ccrt__gen_category9        = "Summary"
 
 ccrt__gender               = "Choice of gender affects slightly dialogues and some minor gameplay features."
 ccrt__history              = "Write your story"
+ccrt__url_check            = "Use link"
+ccrt__dir_check            = "Use file"
+ccrt__lore_check           = "Use default list"
 
 ccrt__name_exists          = "This name is already used"
 ccrt__sett_hardcore        = "Permadeath"

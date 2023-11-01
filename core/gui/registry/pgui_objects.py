@@ -2,9 +2,11 @@ from pygame_gui.elements.ui_text_entry_line import UITextEntryLine
 from pygame_gui.elements.ui_text_entry_box import UITextEntryBox
 from pygame_gui.elements.ui_drop_down_menu import UISelectionList
 from pygame_gui.elements.ui_text_box import UITextBox
+from pygame_gui.elements.ui_image import UIImage
 from core.gui.manag.langstr import langstring as lstr
 from core.gui.manag.pgui_wrapper import getCurrentID, getCurrentIndex, resetSelected
 from core.file_system.save_manag import listSaves
+from core.graphics.gh_manag import imgLoad
 from core.data.player.religion import getReligionsTuple
 from core.data.player.origin import getOriginsTuple
 from core.data.player.profession import getClassesTuple
@@ -23,6 +25,7 @@ class PGUI_Helper:
 
     lb | listbox (later element type)
     """
+    def_img = "core/assets/visuals/test_img_0.png"
 
     def __init__(self, manager):
         self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),                 relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(8))),  manager=manager)
@@ -31,8 +34,11 @@ class PGUI_Helper:
         self.char__tb_race   = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
         self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),                 relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
         self.char__tb_class  = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
-        self.char__lb_name   = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
-        self.char__ti_name   = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(40), toPxX(27)), (toPxX(40), 50)),        manager=manager)
+        # ---
+        self.char__lb_name   = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxY(30))), manager=manager)
+        self.char__ti_name   = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(62), toPxX(6)),  (toPxX(20), toPxY(5))),  manager=manager)
+        self.char__ti_avatar = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(62), toPxY(44)), (toPxX(20), toPxY(5))),  manager=manager)
+        self.char__ig_avatar = UIImage        (image_surface=imgLoad(self.def_img),         relative_rect=pygame.Rect((toPxX(40), toPxY(44)), (toPxX(20), toPxX(20))), manager=manager)
         # ---
         self.char__lb_attrs  = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(10))), manager=manager)
         self.char__lb_skills = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(40), toPxX(17)), (toPxX(20), toPxX(20))), manager=manager)
@@ -105,6 +111,7 @@ class PGUI_Helper:
             case UITextBox.__module__:       self.get_element(element).set_text(overwrite)
             case UITextEntryBox.__module__:  self.get_element(element).set_text(overwrite)
             case UITextEntryLine.__module__: self.get_element(element).set_text(overwrite)
+            case UIImage.__module__:         self.get_element(element).set_image(overwrite)
             case _:                          logging.warning(f"Tried to request -set_value- from PGUI element that does not support it: {element}")
 
     def clear_values(self):
