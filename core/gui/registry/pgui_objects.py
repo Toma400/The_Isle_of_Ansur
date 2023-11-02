@@ -57,6 +57,7 @@ class PGUI_Helper:
         # ---
         self.load__saves     = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
         self.load__descr     = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(40), toPxY(45)), (toPxX(52), toPxY(35))), manager=manager)
+        self.load__avatar    = UIImage        (image_surface=imgLoad(self.def_img),         relative_rect=pygame.Rect((toPxX(40), toPxY(10)), (toPxX(15), toPxX(15))), manager=manager)
         self.load__temp_warn = UITextBox      (html_text=lstr("ccrt__end_save_warn"),       relative_rect=pygame.Rect((toPxX(40), toPxY(38)), (toPxX(52), toPxY(5))),  manager=manager)
         # ---
         self.pack__zip_list  = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
