@@ -37,7 +37,7 @@ class PGUI_Helper:
         # ---
         self.char__lb_name   = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxY(30))), manager=manager)
         self.char__ti_name   = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(62), toPxX(6)),  (toPxX(20), toPxY(5))),  manager=manager)
-        self.char__ti_avatar = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(62), toPxY(44)), (toPxX(20), toPxY(5))),  manager=manager)
+        self.char__ti_avatar = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(62), toPxY(54)), (toPxX(20), toPxY(5))),  manager=manager)
         self.char__ig_avatar = UIImage        (image_surface=imgLoad(self.def_img),         relative_rect=pygame.Rect((toPxX(40), toPxY(44)), (toPxX(20), toPxX(20))), manager=manager)
         # ---
         self.char__lb_attrs  = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(10))), manager=manager)

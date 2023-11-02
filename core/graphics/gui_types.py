@@ -1,4 +1,4 @@
-from core.graphics.text_manag import put_abstext, put_text, Text
+from core.graphics.text_manag import put_abstext, put_text, adjustTextSize
 from core.gui.menus.location import locationScreen
 from core.gui.menus.packs import packMenu
 from core.gui.menus.load import loadGame
@@ -161,13 +161,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         put_text(screen, text=langstring("menu__sett_general_res"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=12, colour=fCol.HOVERED.value)
                         if mouseRec(pg_events, 1):
                             from win32api import GetSystemMetrics
-                            if scx("svx") < GetSystemMetrics(0): set_change("res_x", 100)       # if not full screen, increase x size by 100
-                            else:                                set_change("res_x", "set=400") # if full screen reached, set x size to 0
+                            if scx("svx") < GetSystemMetrics(0): set_change("res_x", 100);       set_change("text_size", f"set={adjustTextSize(res_ratio, x='+100')}") # if not full screen, increase x size by 100
+                            else:                                set_change("res_x", "set=400"); set_change("text_size", f"set={adjustTextSize(res_ratio, x='=400')}") # if full screen reached, set x size to 0
                             screen = dyn_screen.reset() # resets the screen
                         elif mouseRec(pg_events, 3):
                             from win32api import GetSystemMetrics
-                            if scx("svy") < GetSystemMetrics(1): set_change("res_y", 100)       # if not full screen, increase x size by 100
-                            else:                                set_change("res_y", "set=400") # if full screen reached, set x size to 0
+                            if scx("svy") < GetSystemMetrics(1): set_change("res_y", 100);       set_change("text_size", f"set={adjustTextSize(res_ratio, y='+100')}") # if not full screen, increase y size by 100
+                            else:                                set_change("res_y", "set=400"); set_change("text_size", f"set={adjustTextSize(res_ratio, y='=400')}") # if full screen reached, set y size to 0
                             screen = dyn_screen.reset() # resets the screen
                         elif mouseRec(pg_events, 2):
                             from win32api import GetSystemMetrics
@@ -393,9 +393,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     name_choice = dyn_screen.get_pgui_choice("char__ti_name")
                     name_pick   = dyn_screen.get_pgui_choice("char__lb_name")
                     av_url      = dyn_screen.get_pgui_choice("char__ti_avatar")
-                    av_ubutton  = put_text(screen, langstring("ccrt__url_check"),  font_cat="menu", size=30, pos_x=83, pos_y=45, colour=fCol.ENABLED.value)
-                    av_fbutton  = put_text(screen, langstring("ccrt__dir_check"),  font_cat="menu", size=30, pos_x=83, pos_y=50, colour=fCol.DISABLED.value)
-                    av_dbutton  = put_text(screen, langstring("ccrt__lore_check"), font_cat="menu", size=30, pos_x=83, pos_y=55, colour=fCol.DISABLED.value)
+                    av_left     = put_text(screen, "<",                            font_cat="menu", size=30,                  pos_x=62, pos_y=45, colour=fCol.DISABLED.value)
+                    av_right    = put_text(screen, ">",                            font_cat="menu", size=30, align_x="right", pos_x=18, pos_y=45, colour=fCol.DISABLED.value)
+                    av_dbutton  = put_text(screen, langstring("ccrt__lore_check"), font_cat="menu", size=30,                  pos_x=84, pos_y=45, colour=fCol.DISABLED.value)
+                    av_ubutton  = put_text(screen, langstring("ccrt__url_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=55, colour=fCol.ENABLED.value)
+                    av_fbutton  = put_text(screen, langstring("ccrt__dir_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=65, colour=fCol.DISABLED.value)
 
                     if name_pick is not None:
                         dyn_screen.set_pgui_element("char__ti_name", name_pick)
@@ -409,7 +411,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                             put_text(screen, langstring("ccrt__name_exists"), font_cat="menu", size=30, pos_x=50, pos_y=55, colour=fCol.OTHER.value)
 
                     if mouseColliderPx(av_ubutton[0], av_ubutton[1], av_ubutton[2], av_ubutton[3]) and av_url is not None:
-                        put_text(screen, langstring("ccrt__url_check"), font_cat="menu", size=30, pos_x=83, pos_y=45, colour=fCol.HOVERED.value)
+                        put_text(screen, langstring("ccrt__url_check"), font_cat="menu", size=30, pos_x=84, pos_y=55, colour=fCol.HOVERED.value)
                         if mouseRec(pg_events):
                             av = urlAvatar(av_url)
                             if av is False: log.error(f"Couldn't save URL: {av_url} as avatar")

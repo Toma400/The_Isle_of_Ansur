@@ -78,6 +78,25 @@ def put_lore(lang):
 #==========|========================================================
 # UTILS    |
 #==========|========================================================
+def adjustTextSize(res_ratio: str, x: str = None, y: str = None) -> float:
+    """Helps with changing text size in settings (with resolution changes)"""
+    xs, ys = res_ratio.split(" : ")
+    match x:
+        case "+100": xs = int(xs) + 100
+        case "=400": xs = 400
+        case _:      xs = int(xs)
+    match y:
+        case "+100": ys = int(ys) + 100
+        case "=400": ys = 400
+        case _:      ys = int(ys)
+
+    if   xs < 500  or ys < 500:  return 0.6
+    elif xs < 700  or ys < 700:  return 0.75
+    elif xs < 1080 or ys < 1080: return 1.0
+    elif xs < 1400 or ys < 1400: return 1.2
+    elif xs < 1900 or ys < 1900: return 1.5
+    else:                        return 1.75
+
 def text_replacer (text_size, align_x=None, align_y=None, x_pos=0, y_pos=0, x_endpos=None, y_endpos=None):
     """Sets position of text depending on its render size and cell position/alignment set"""
     match align_x:
