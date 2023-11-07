@@ -1,3 +1,5 @@
+from core.file_system.parsers import loadYAML
+from core.data.pack_manag.id import absoluteID
 from PIL import Image
 import os
 
@@ -7,7 +9,7 @@ def urlAvatar(url: str) -> bool:
     import requests
 
     def getExt() -> str | None:
-        cfs = [".png", ".jpg", ".webp"]
+        cfs = [".png", ".jpg", "jpeg", ".webp"]
         for cf in cfs:
             if cf in url:
                 return cf
@@ -36,12 +38,51 @@ def urlAvatar(url: str) -> bool:
 def pathAvatar(pth: str) -> bool:
     os.makedirs(temp_folder.strip("tmp"), exist_ok=True)
 
-    for ext in [".png", ".jpg"]:
+    for ext in [".png", ".jpg", ".jpeg"]:
         if pth.endswith(ext):
             cv = Image.open(f'{pth}')
             cv.save(f"{temp_folder}.png")
             return True
     return False
+
+def loreAvatarSelection():
+    """Creates _temp file that stores index for currently selected avatar image"""
+    os.makedirs(temp_folder.strip("tmp"), exist_ok=True)
+
+    with open(f"{temp_folder}.txt", "x") as isn:
+        isn.write("0")
+        isn.flush()
+
+def loreAvatars(rid: str, gid: str) -> list[str]:
+    """Preparation function, should be run once, so it is not included in -loreAvatar-"""
+    mod_id, race_uid = rid.split(":")
+    rav_path = f"stats/{mod_id}/races/avatars/{race_uid}.yaml"
+
+    avatars = [] # list of shortened paths taken out of JSON
+    out     = [] # list of absolute paths being returned
+
+    if os.path.exists(rav_path):
+        rjs = loadYAML(rav_path)
+        for rjs_key in rjs.keys():
+            if absoluteID(rjs_key) == gid:
+                avatars = rjs[rjs_key]
+
+    if avatars: # if not empty
+        for avatar in avatars:
+            out.append(f"stats/{mod_id}/assets/{avatar}")
+
+    return out
+
+def loreAvatar(avs: list, ix: int) -> bool:
+    """Proper picker function. Takes -loreAvatars- as variable & index as second argument"""
+    os.makedirs(temp_folder.strip("tmp"), exist_ok=True)
+
+    try:
+        cv = Image.open(f'{avs[ix]}')
+        cv.save(f"{temp_folder}.png")
+        return True
+    except:
+        return False
 
 def saveAvatar(name: str) -> bool:
     if os.path.exists(f"{temp_folder}.png"):

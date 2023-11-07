@@ -6,7 +6,7 @@ from core.gui.manag.langstr import langstring
 from core.file_system.parsers import loadYAML
 from core.graphics.gh_manag import imgLoad
 from core.gui.registry.pgui_objects import PGUI_Helper
-from core.data.player.avatar import urlAvatar, pathAvatar, saveAvatar, temp_folder as av_dir
+from core.data.player.avatar import urlAvatar, pathAvatar, loreAvatars, loreAvatar, loreAvatarSelection, saveAvatar, temp_folder as av_dir
 from core.file_system.save_manag import listSaves
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
@@ -384,6 +384,15 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.put_pgui("char__ti_av_url")
                         dyn_screen.put_pgui("char__ti_av_dir")
                         dyn_screen.put_pgui("char__ig_avatar")
+                        if exists(f"{av_dir}.png"): os.remove(f"{av_dir}.png") # removes leftover avatar image if you backtrack character creation
+                        if exists(f"{av_dir}.txt"): os.remove(f"{av_dir}.txt") # same with .txt file for image selection number
+                        loreAvatarSelection()
+
+                    avs     = loreAvatars(dyn_screen.journey.inidata["race"],    # lists all avatars available
+                                          dyn_screen.journey.inidata["gender"])
+                    avs_col = fCol.ENABLED.value if avs else fCol.DISABLED.value # decide on colour for button
+                    with open(f"{av_dir}.txt", "r") as isn:
+                        avs_isn = int(isn.readline())
 
                     saves = listSaves()
                     if exists(f"{av_dir}.png"):
@@ -395,12 +404,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     name_pick   = dyn_screen.get_pgui_choice("char__lb_name")
                     av_url      = dyn_screen.get_pgui_choice("char__ti_av_url")
                     av_path     = dyn_screen.get_pgui_choice("char__ti_av_dir")
-                    av_left     = put_text(screen, "<",                            font_cat="menu", size=30,                  pos_x=62, pos_y=45, colour=fCol.DISABLED.value)
-                    av_right    = put_text(screen, ">",                            font_cat="menu", size=30, align_x="right", pos_x=18, pos_y=45, colour=fCol.DISABLED.value)
-                    av_dbutton  = put_text(screen, langstring("ccrt__lore_check"), font_cat="menu", size=30,                  pos_x=84, pos_y=45, colour=fCol.DISABLED.value)
+                    av_left     = put_text(screen, "<",                            font_cat="menu", size=30,                  pos_x=62, pos_y=45, colour=avs_col)
+                    av_right    = put_text(screen, ">",                            font_cat="menu", size=30, align_x="right", pos_x=18, pos_y=45, colour=avs_col)
+                    av_dbutton  = put_text(screen, langstring("ccrt__lore_check"), font_cat="menu", size=30,                  pos_x=84, pos_y=45, colour=avs_col)
                     av_ubutton  = put_text(screen, langstring("ccrt__url_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=55, colour=fCol.ENABLED.value)
                     av_fbutton  = put_text(screen, langstring("ccrt__dir_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=65, colour=fCol.ENABLED.value)
-                    put_text              (screen, "_" * 42,                       font_cat="menu", size=70, align_x="right", pos_x=3,  pos_y=34, colour=fCol.DISABLED.value)
+                    put_text              (screen, langstring("ccrt__name_input"), font_cat="menu", size=30,                  pos_x=84, pos_y=12, colour=fCol.ENABLED.value)
+                    put_text              (screen, "_" * 41,                       font_cat="menu", size=70, align_x="right", pos_x=3,  pos_y=34, colour=fCol.DISABLED.value)
 
                     if name_pick is not None:
                         dyn_screen.set_pgui_element("char__ti_name", name_pick)
@@ -419,11 +429,39 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                             av = urlAvatar(av_url)
                             if av is False: log.error(f"Couldn't save URL: {av_url} as avatar")
 
-                    if mouseColliderPx(av_fbutton[0], av_fbutton[1], av_fbutton[2], av_fbutton[3]) and av_path is not None:
+                    elif mouseColliderPx(av_fbutton[0], av_fbutton[1], av_fbutton[2], av_fbutton[3]) and av_path is not None:
                         put_text(screen, langstring("ccrt__dir_check"), font_cat="menu", size=30, pos_x=84, pos_y=65, colour=fCol.HOVERED.value)
                         if mouseRec(pg_events):
                             av = pathAvatar(av_path)
                             if av is False: log.error(f"Couldn't save image from path: {av_path} as avatar")
+
+                    elif mouseColliderPx(av_dbutton[0], av_dbutton[1], av_dbutton[2], av_dbutton[3]) and avs:
+                        put_text(screen, langstring("ccrt__lore_check"), font_cat="menu", size=30, pos_x=84, pos_y=45, colour=fCol.HOVERED.value)
+                        if mouseRec(pg_events):
+                            av = loreAvatar(avs, avs_isn)
+                            if av is False: log.error(f"Couldn't load image from list: {avs}, index: {avs_isn} as avatar")
+
+                    elif mouseColliderPx(av_left[0], av_left[1], av_left[2], av_left[3]) and avs:
+                        put_text(screen, "<", font_cat="menu", size=30, pos_x=62, pos_y=45, colour=fCol.HOVERED.value)
+                        if mouseRec(pg_events):
+                            with open(f"{av_dir}.txt", "w") as isn:
+                                if avs_isn + 1 == len(avs):
+                                    isn.write(f"{0}")
+                                else:
+                                    isn.write(f"{avs_isn + 1}")
+                            av = loreAvatar(avs, avs_isn)
+                            if av is False: log.error(f"Couldn't load image from list: {avs}, index: {avs_isn} as avatar")
+
+                    elif mouseColliderPx(av_right[0], av_right[1], av_right[2], av_right[3]) and avs:
+                        put_text(screen, ">", font_cat="menu", size=30, align_x="right", pos_x=18, pos_y=45, colour=fCol.HOVERED.value)
+                        if mouseRec(pg_events):
+                            with open(f"{av_dir}.txt", "w") as isn:
+                                if avs_isn > 0:
+                                    isn.write(f"{avs_isn - 1}")
+                                else:
+                                    isn.write(f"{len(avs) - 1}")
+                            av = loreAvatar(avs, avs_isn)
+                            if av is False: log.error(f"Couldn't load image from list: {avs}, index: {avs_isn} as avatar")
 
                 case "point_distribution":
                     if dyn_screen.journey.stage != 4:

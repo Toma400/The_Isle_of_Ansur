@@ -35,8 +35,8 @@ class PGUI_Helper:
         self.char__lb_class  = UISelectionList(item_list=getClassesTuple(),                 relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
         self.char__tb_class  = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
         # ---
-        self.char__lb_name   = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxY(30))), manager=manager)
-        self.char__ti_name   = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(62), toPxX(6)),  (toPxX(20), toPxY(5))),  manager=manager)
+        self.char__lb_name   = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxX(40), toPxY(11)), (toPxX(20), toPxY(30))), manager=manager)
+        self.char__ti_name   = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(62), toPxY(11)), (toPxX(20), toPxY(5))),  manager=manager)
         self.char__ti_av_url = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(62), toPxY(54)), (toPxX(20), toPxY(5))),  manager=manager)
         self.char__ti_av_dir = UITextEntryLine(                                             relative_rect=pygame.Rect((toPxX(62), toPxY(64)), (toPxX(20), toPxY(5))),  manager=manager)
         self.char__ig_avatar = UIImage        (image_surface=imgLoad(self.def_img),         relative_rect=pygame.Rect((toPxX(40), toPxY(44)), (toPxX(20), toPxX(20))), manager=manager)
