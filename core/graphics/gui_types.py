@@ -6,7 +6,7 @@ from core.gui.manag.langstr import langstring
 from core.file_system.parsers import loadYAML
 from core.graphics.gh_manag import imgLoad
 from core.gui.registry.pgui_objects import PGUI_Helper
-from core.data.player.avatar import urlAvatar, saveAvatar, temp_folder as av_dir
+from core.data.player.avatar import urlAvatar, pathAvatar, saveAvatar, temp_folder as av_dir
 from core.file_system.save_manag import listSaves
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
@@ -381,7 +381,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.journey.stage = 3
                         dyn_screen.put_pgui("char__ti_name")
                         dyn_screen.put_pgui("char__lb_name")
-                        dyn_screen.put_pgui("char__ti_avatar")
+                        dyn_screen.put_pgui("char__ti_av_url")
+                        dyn_screen.put_pgui("char__ti_av_dir")
                         dyn_screen.put_pgui("char__ig_avatar")
 
                     saves = listSaves()
@@ -392,12 +393,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     name_choice = dyn_screen.get_pgui_choice("char__ti_name")
                     name_pick   = dyn_screen.get_pgui_choice("char__lb_name")
-                    av_url      = dyn_screen.get_pgui_choice("char__ti_avatar")
+                    av_url      = dyn_screen.get_pgui_choice("char__ti_av_url")
+                    av_path     = dyn_screen.get_pgui_choice("char__ti_av_dir")
                     av_left     = put_text(screen, "<",                            font_cat="menu", size=30,                  pos_x=62, pos_y=45, colour=fCol.DISABLED.value)
                     av_right    = put_text(screen, ">",                            font_cat="menu", size=30, align_x="right", pos_x=18, pos_y=45, colour=fCol.DISABLED.value)
                     av_dbutton  = put_text(screen, langstring("ccrt__lore_check"), font_cat="menu", size=30,                  pos_x=84, pos_y=45, colour=fCol.DISABLED.value)
                     av_ubutton  = put_text(screen, langstring("ccrt__url_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=55, colour=fCol.ENABLED.value)
-                    av_fbutton  = put_text(screen, langstring("ccrt__dir_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=65, colour=fCol.DISABLED.value)
+                    av_fbutton  = put_text(screen, langstring("ccrt__dir_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=65, colour=fCol.ENABLED.value)
+                    put_text              (screen, "_" * 42,                       font_cat="menu", size=70, align_x="right", pos_x=3,  pos_y=34, colour=fCol.DISABLED.value)
 
                     if name_pick is not None:
                         dyn_screen.set_pgui_element("char__ti_name", name_pick)
@@ -415,6 +418,12 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         if mouseRec(pg_events):
                             av = urlAvatar(av_url)
                             if av is False: log.error(f"Couldn't save URL: {av_url} as avatar")
+
+                    if mouseColliderPx(av_fbutton[0], av_fbutton[1], av_fbutton[2], av_fbutton[3]) and av_path is not None:
+                        put_text(screen, langstring("ccrt__dir_check"), font_cat="menu", size=30, pos_x=84, pos_y=65, colour=fCol.HOVERED.value)
+                        if mouseRec(pg_events):
+                            av = pathAvatar(av_path)
+                            if av is False: log.error(f"Couldn't save image from path: {av_path} as avatar")
 
                 case "point_distribution":
                     if dyn_screen.journey.stage != 4:

@@ -33,6 +33,16 @@ def urlAvatar(url: str) -> bool:
     else:
         return False
 
+def pathAvatar(pth: str) -> bool:
+    os.makedirs(temp_folder.strip("tmp"), exist_ok=True)
+
+    for ext in [".png", ".jpg"]:
+        if pth.endswith(ext):
+            cv = Image.open(f'{pth}')
+            cv.save(f"{temp_folder}.png")
+            return True
+    return False
+
 def saveAvatar(name: str) -> bool:
     if os.path.exists(f"{temp_folder}.png"):
         av_copy = Image.open(f"{temp_folder}.png")
