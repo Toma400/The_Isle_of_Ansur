@@ -6,6 +6,7 @@ import os
 temp_folder = "_temp/img/avatar/tmp" # without extension
 
 def urlAvatar(url: str) -> bool:
+    """Prepares selected URL image entry to save."""
     import requests
 
     def getExt() -> str | None:
@@ -36,6 +37,7 @@ def urlAvatar(url: str) -> bool:
         return False
 
 def pathAvatar(pth: str) -> bool:
+    """Prepares selected local image entry to save."""
     os.makedirs(temp_folder.strip("tmp"), exist_ok=True)
 
     for ext in [".png", ".jpg", ".jpeg"]:
@@ -53,7 +55,7 @@ def loreAvatarSelection():
         isn.write("0")
         isn.flush()
 
-def loreAvatars(rid: str, gid: str) -> list[str]:
+def loreAvatars(rid: str, gid: str):
     """Preparation function, should be run once, so it is not included in -loreAvatar-"""
     mod_id, race_uid = rid.split(":")
     rav_path = f"stats/{mod_id}/races/avatars/{race_uid}.yaml"
@@ -71,10 +73,13 @@ def loreAvatars(rid: str, gid: str) -> list[str]:
         for avatar in avatars:
             out.append(f"stats/{mod_id}/assets/{avatar}")
 
-    return out
+    os.makedirs(temp_folder.strip("tmp"), exist_ok=True)
+    with open(f"{temp_folder}.yaml", "x") as avf:
+        for v in out:
+            avf.write(f"- {v}\n")
 
 def loreAvatar(avs: list, ix: int) -> bool:
-    """Proper picker function. Takes -loreAvatars- as variable & index as second argument"""
+    """Proper picker function. Takes -loreAvatars- as variable & index as second argument. Prepares selected lore image entry to save."""
     os.makedirs(temp_folder.strip("tmp"), exist_ok=True)
 
     try:
@@ -85,6 +90,7 @@ def loreAvatar(avs: list, ix: int) -> bool:
         return False
 
 def saveAvatar(name: str) -> bool:
+    """Performs saving of buffered avatar into stable location"""
     if os.path.exists(f"{temp_folder}.png"):
         av_copy = Image.open(f"{temp_folder}.png")
         av_copy.save(f"saves/{name}/buffer/avatar.png")

@@ -384,12 +384,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         dyn_screen.put_pgui("char__ti_av_url")
                         dyn_screen.put_pgui("char__ti_av_dir")
                         dyn_screen.put_pgui("char__ig_avatar")
-                        if exists(f"{av_dir}.png"): os.remove(f"{av_dir}.png") # removes leftover avatar image if you backtrack character creation
-                        if exists(f"{av_dir}.txt"): os.remove(f"{av_dir}.txt") # same with .txt file for image selection number
+                        if exists(f"{av_dir}.png"):  os.remove(f"{av_dir}.png")  # removes leftover avatar image if you backtrack character creation
+                        if exists(f"{av_dir}.txt"):  os.remove(f"{av_dir}.txt")  # same with .txt file for image selection number
+                        if exists(f"{av_dir}.yaml"): os.remove(f"{av_dir}.yaml") # and .yaml file that stores all avatars
+                        loreAvatars(dyn_screen.journey.inidata["race"],          # makes list of all avatars available
+                                    dyn_screen.journey.inidata["gender"])
                         loreAvatarSelection()
 
-                    avs     = loreAvatars(dyn_screen.journey.inidata["race"],    # lists all avatars available
-                                          dyn_screen.journey.inidata["gender"])
+                    avs     = loadYAML(f"{av_dir}.yaml")
                     avs_col = fCol.ENABLED.value if avs else fCol.DISABLED.value # decide on colour for button
                     with open(f"{av_dir}.txt", "r") as isn:
                         avs_isn = int(isn.readline())
