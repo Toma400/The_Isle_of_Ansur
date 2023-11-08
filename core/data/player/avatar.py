@@ -61,13 +61,30 @@ def loreAvatars(rid: str, gid: str):
     rav_path = f"stats/{mod_id}/races/avatars/{race_uid}.yaml"
 
     avatars = [] # list of shortened paths taken out of JSON
+    ngender = [] # list of above, but in case there's no specific gender available
     out     = [] # list of absolute paths being returned
 
     if os.path.exists(rav_path):
-        rjs = loadYAML(rav_path)
-        for rjs_key in rjs.keys():
+        found    = False
+        rjs      = loadYAML(rav_path)
+        rjs_keys = rjs.keys()
+        for rjs_key in rjs_keys:
             if absoluteID(rjs_key) == gid:
                 avatars = rjs[rjs_key]
+                found   = True
+            if rjs_key != "strict":
+                ngender.append(rjs[rjs_key])
+
+        if found is False:    # if key not in -rjs-, use all avatars for race available
+            strict = False
+            if "strict" in rjs_keys:
+                if rjs["strict"] is True:
+                    strict = True
+
+            if not strict:
+                for val in ngender:
+                    for av in val:
+                        avatars.append(av)
 
     if avatars: # if not empty
         for avatar in avatars:
