@@ -409,8 +409,10 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     av_dbutton  = put_text(screen, langstring("ccrt__lore_check"), font_cat="menu", size=30,                  pos_x=84, pos_y=45, colour=avs_col)
                     av_ubutton  = put_text(screen, langstring("ccrt__url_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=55, colour=fCol.ENABLED.value)
                     av_fbutton  = put_text(screen, langstring("ccrt__dir_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=65, colour=fCol.ENABLED.value)
+                    av_clear    = put_text(screen, langstring("ccrt__av_clear"),   font_cat="menu", size=30,                  pos_x=84, pos_y=75, colour=fCol.ENABLED.value)
                     put_text              (screen, langstring("ccrt__name_input"), font_cat="menu", size=30,                  pos_x=84, pos_y=12, colour=fCol.ENABLED.value)
                     put_text              (screen, "_" * 41,                       font_cat="menu", size=70, align_x="right", pos_x=3,  pos_y=34, colour=fCol.DISABLED.value)
+                    put_text              (screen, "_" * 41,                       font_cat="menu", size=70, align_x="right", pos_x=3,  pos_y=73, colour=fCol.DISABLED.value)
 
                     if name_pick is not None:
                         dyn_screen.set_pgui_element("char__ti_name", name_pick)
@@ -462,6 +464,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                                     isn.write(f"{len(avs) - 1}")
                             av = loreAvatar(avs, avs_isn)
                             if av is False: log.error(f"Couldn't load image from list: {avs}, index: {avs_isn} as avatar")
+
+                    elif mouseColliderPx(av_clear[0], av_clear[1], av_clear[2], av_clear[3]):
+                        put_text(screen, langstring("ccrt__av_clear"), font_cat="menu", size=30, pos_x=84, pos_y=75, colour=fCol.HOVERED.value)
+                        if mouseRec(pg_events):
+                            if exists(f"{av_dir}.png"): os.remove(f"{av_dir}.png")
 
                 case "point_distribution":
                     if dyn_screen.journey.stage != 4:

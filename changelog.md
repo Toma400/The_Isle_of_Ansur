@@ -15,8 +15,19 @@
 
 > ---
 > ### Pre-alpha 4
-> 
-> ---
+```
+> - Gameplay
+>   - Added possibility to add avatars during character creation
+>     - Avatar can be added by using URL linked to image, or file path
+>     - But also picked from avatars built for each race/gender
+>     - You can see your character avatar in loading menu
+> - Mod Manager Menu (MMM)
+>   - Introduces Mod Loading Order (MLO) and way to change it
+>   - Allows for disabling zip packs (results in them not unpacking)
+> - Quality-of-Life
+>   - Text resizing is automatical with every resolution change now
+>     (no more changes to 400x400 resolution while keeping big text!)
+```
 > ### Pre-alpha 3b
 > - Gameplay
 >   - Removed `Human, Born in Moon Continent` race due to BRPGS 3.0 changes

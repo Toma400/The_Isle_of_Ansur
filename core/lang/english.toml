@@ -49,6 +49,7 @@ ccrt__name_input           = "Enter your name"
 ccrt__url_check            = "Use link"
 ccrt__dir_check            = "Use file"
 ccrt__lore_check           = "Browse default"
+ccrt__av_clear             = "Clear"
 
 ccrt__name_exists          = "This name is already used"
 ccrt__sett_hardcore        = "Permadeath"

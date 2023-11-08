@@ -1,6 +1,6 @@
 from core.file_system.repo_manag import file_lister
 from core.utils import *
-from enum import Enum, auto
+from enum import Enum
 import shutil
 
 class PackTypes(Enum):
