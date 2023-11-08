@@ -91,9 +91,12 @@ def loreAvatar(avs: list, ix: int) -> bool:
 
 def saveAvatar(name: str) -> bool:
     """Performs saving of buffered avatar into stable location"""
+    os.makedirs(f"saves/{name}/buffer/avatars/", exist_ok=True)
+
     if os.path.exists(f"{temp_folder}.png"):
         av_copy = Image.open(f"{temp_folder}.png")
         av_copy.save(f"saves/{name}/buffer/avatar.png")
+        av_copy.save(f"saves/{name}/buffer/avatars/0.png")
         return True
     return False
 
