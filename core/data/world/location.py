@@ -1,12 +1,16 @@
+from core.gui.registry.pgui_objects import PGUI_Helper
 from core.gui.manag.langstr import langjstring
 import toml
 
 class Location:
 
+    cache = None
+
     def __init__(self, name: str, tr_key: str, mod_id: str):
         self.name   : str = name       # name ID (used for LID)
         self.key    : str = tr_key     # translation key
         self.mod_id : str = mod_id     # mod ID
+        self.img    : str = f"worlds/{mod_id}/assets/{self.get('background')}" if self.get("background") is not None else PGUI_Helper.def_img
 
     def lid(self) -> str:
         """Creates LID representation of location, to export/import during game"""
@@ -15,6 +19,23 @@ class Location:
     def langstr(self) -> str:
         """Returns langstring of object based on currently used language"""
         return langjstring(key=self.key, modtype="worlds", modid=self.mod_id)
+
+    def get(self, attribute: str) -> str | int | float | list | dict | None:
+        """Returns specific attribute from Location file. Any reuse of the same object reads from cache to optimise I/O"""
+        if self.cache is None:
+            self.cache = toml.load(f"worlds/{self.mod_id}/locations/{self.name}.toml")
+        if attribute in self.cache.keys():
+            return self.cache[attribute]
+        else:
+            return None
+
+    def getc(self, category: str, attribute: str) -> str | int | float | list | dict | None:
+        """Returns attribute from category dict."""
+        ctg = self.get(category)
+        if ctg is not None:
+            if attribute in ctg.keys():
+                return self.get(category)[attribute]
+        return None
 
     def __repr__(self) -> str:
         return self.langstr()

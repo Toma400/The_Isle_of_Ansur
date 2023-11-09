@@ -1,4 +1,4 @@
-from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr
+from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr, imgLoad
 from core.file_system.theme_manag import FontColour as fCol
 from core.data.world.location import getLocation
 from core.graphics.text_manag import put_text
@@ -11,6 +11,10 @@ def locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     gtx = put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, align_x="center", pos_y=92, colour=fCol.ENABLED.value)
     put_text      (screen, text=loc.langstr(),                 font_cat="menu", size=35, align_x="center", pos_y=1,  colour=fCol.ENABLED.value)
+
+    dyn_screen.put_pgui("loc__image")
+
+    dyn_screen.set_pgui_element("loc__image", imgLoad(loc.img))
 
     #===============================================================
     # EVENTS
