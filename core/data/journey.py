@@ -1,9 +1,10 @@
 from core.data.player.gender import Gender, getGenders
 from core.data.player.race import Race, getRaces
+from core.data.player.origin import getOrigin
 from core.data.pack_manag.packs import getPacks
 from core.utils import sysref
 import logging as log
-import os
+import os, toml
 
 class Journey:
     # keys that are iterated over during save | -inidata- keys should match TOML keys
@@ -120,6 +121,12 @@ class Journey:
         or potentially when you want to load the same game you just saved
         """
         self.__init__()
+
+    @staticmethod
+    def readLocation(name: str) -> str:
+        """Temporary placeholder function"""
+        ps = toml.load(f"saves/{name}/buffer/presave.toml")
+        return getOrigin(ps["origin"]).getc("new_game", "location")
 
     #=================================================================================================
     # - TODO -

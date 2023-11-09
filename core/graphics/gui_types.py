@@ -79,13 +79,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         guitype[0] = switch_gscr(dyn_screen, screen, "load")
                         dyn_screen.set_pgui_element("load__saves", listSaves())
 
-            elif mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]) and developer_mode:
-                put_text(screen, text=langstring("menu__button_arena"), font_cat="menu", size=30, align_x="center", pos_y=40, colour=fCol.HOVERED.value)
-                if mouseRec(pg_events):
-                    # placeholder data to test
-                    dyn_screen.journey.name     = "Test"
-                    dyn_screen.journey.location = "ansur:tutorial"
-                    guitype[0] = switch_gscr(dyn_screen, screen, "location")
+            elif mouseColliderPx(gt3[0], gt3[1], gt3[2], gt3[3]):
+                pass
 
             elif mouseColliderPx(gt4[0], gt4[1], gt4[2], gt4[3]):
                 put_text(screen, text=langstring("menu__button_settings"), font_cat="menu", size=30, align_x="center", pos_y=46, colour=fCol.HOVERED.value)
