@@ -1,10 +1,17 @@
 [backgrounds]
-icon     = "ioa_logo.png"
-logo     = "ioa_logo.png"
-menu     = "menu_background.jpg"
-location = "game_background.jpg"
-frame    = "frame.png"
-clock    = "clock.png"
+icon        = "ioa_logo.png"
+logo        = "ioa_logo.png"
+menu        = "menu_background.jpg"
+location    = "game_background.jpg"
+frame_up    = "frame_up.png"
+frame_down  = "frame_down.png"
+frame_left  = "frame_left.png"
+frame_right = "frame_right.png"
+frame_cr_lu = "frame_left_up.png"
+frame_cr_ld = "frame_left_down.png"
+frame_cr_ru = "frame_right_up.png"
+frame_cr_rd = "frame_right_down.png"
+clock       = "clock.png"
 
 [fonts.colours]
 disabled   = "#43403E"

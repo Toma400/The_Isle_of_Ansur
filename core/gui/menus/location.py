@@ -20,11 +20,14 @@ def locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     bdr = put_text(screen, text=langstring("loc__bt_diary"),     font_cat="menu", size=35, align_x="right",  pos_x=14, pos_y=56.5, colour=fCol.DISABLED.value) # diary
 
     dyn_screen.put_pgui("loc__image")
-    dyn_screen.put_pgui("loc__frame")
-    # dyn_screen.put_pgui("loc__frame_up")
-    # dyn_screen.put_pgui("loc__frame_down")
-    # dyn_screen.put_pgui("loc__frame_left")
-    # dyn_screen.put_pgui("loc__frame_right")
+    dyn_screen.put_pgui("loc__frame_up")
+    dyn_screen.put_pgui("loc__frame_down")
+    dyn_screen.put_pgui("loc__frame_left")
+    dyn_screen.put_pgui("loc__frame_right")
+    dyn_screen.put_pgui("loc__frame_cr_lu")
+    dyn_screen.put_pgui("loc__frame_cr_ld")
+    dyn_screen.put_pgui("loc__frame_cr_ru")
+    dyn_screen.put_pgui("loc__frame_cr_rd")
     dyn_screen.put_pgui("loc__clock")
     dyn_screen.put_pgui("loc__tb_descr")
 
