@@ -1,5 +1,5 @@
 from core.file_system.repo_manag import dir_checker
-from core.file_system.theme_manag import bg_handler
+from core.file_system.theme_manag import bg_handler, getTheme
 from core.gui.registry.gui_objects import GUI_Helper
 from core.gui.registry.pgui_objects import PGUI_Helper
 from core.graphics.text_manag import text_splitter as tspl
@@ -42,21 +42,25 @@ def run_screen():
             return screen
         except pygame.error: continue
 
-def run_pgui():
-    return pygame_gui.UIManager((scx("svx"), scx("svy")))
+def run_pgui(manager_no: int = 0):
+    match manager_no:
+        case 0: return pygame_gui.UIManager((scx("svx"), scx("svy")))
+        case 1: return pygame_gui.UIManager((scx("svx"), scx("svy")), theme_path=f"themes/{getTheme()}/game.json")
+        case _: raise ValueError(f"-run_pgui- was given incorrect value of {manager_no} when trying to parse PyGameGUI theme.")
 
 class Screen:
 
     def __init__(self):
-        self.dyn_screen = [run_screen()]            # PyGame main screen (use 'self.screen' instead)
+        self.dyn_screen = [run_screen()]                     # PyGame main screen (use 'self.screen' instead)
         self.panorama   = bgm_screen()
-        self.pgui       = run_pgui()                # PyGameGUI manager
-        self.screen     = self.dyn_screen[0]        # Main handler for PyGame main screen
-        self.objects    = GUI_Helper(self.panorama) # Registry of GUI objects
-        self.pobjects   = PGUI_Helper(self.pgui)    # Registry of PyGameGUI objects
-        self.update     = version_checker()         # Bool value of whether game is up-to-date
-        self.clock      = pygame.time.Clock()       # Clock (mostly to hold PyGameGUI processes)
-        self.journey    = Journey()                 # Main game handler
+        self.pgui       = run_pgui()                         # PyGameGUI manager
+        self.pgui2      = run_pgui(1)                        # PyGameGUI manager (used for in-game text)
+        self.screen     = self.dyn_screen[0]                 # Main handler for PyGame main screen
+        self.objects    = GUI_Helper(self.panorama)          # Registry of GUI objects
+        self.pobjects   = PGUI_Helper(self.pgui, self.pgui2) # Registry of PyGameGUI objects
+        self.update     = version_checker()                  # Bool value of whether game is up-to-date
+        self.clock      = pygame.time.Clock()                # Clock (mostly to hold PyGameGUI processes)
+        self.journey    = Journey()                          # Main game handler
 
     def reset(self):
         """hard refresh of screen | should reassign currently used 'screen' variable"""
@@ -64,13 +68,13 @@ class Screen:
         self.pgui          = run_pgui()
         self.screen        = self.dyn_screen[0]
         self.objects.restart(self.panorama)
-        self.pobjects.restart(self.pgui)
+        self.pobjects.restart(self.pgui, self.pgui2)
         return self.screen
 
     def soft_reset(self):
         """soft refresh of screen | updates some elements, for example translations"""
         self.objects.restart(self.panorama)
-        self.pobjects.restart(self.pgui)
+        self.pobjects.restart(self.pgui, self.pgui2)
 
     def gui(self, value: str):
         return self.objects.get_element(value)

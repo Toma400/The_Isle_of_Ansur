@@ -28,7 +28,7 @@ class PGUI_Helper:
     def_img = "core/assets/visuals/test_img_0.png"
     clock   = bg_handler('clock')
 
-    def __init__(self, manager):
+    def __init__(self, manager, manag2):
         self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),                      relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(8))),  manager=manager)
         self.char__tb_gender = UITextBox      (html_text=lstr("ccrt__gender"),                   relative_rect=pygame.Rect((toPxX(40), toPxX(14)), (toPxX(40), toPxX(15))), manager=manager)
         self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),                        relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
@@ -75,7 +75,7 @@ class PGUI_Helper:
         self.loc__frame_cr_ru = UIImage       (image_surface=imgLoad(bg_handler('frame_cr_ru')), relative_rect=pygame.Rect((toPxX(85), toPxY(4)),  (toPxY(2),  toPxY(2))),  manager=manager)
         self.loc__frame_cr_rd = UIImage       (image_surface=imgLoad(bg_handler('frame_cr_rd')), relative_rect=pygame.Rect((toPxX(85), toPxY(47)), (toPxY(2),  toPxY(2))),  manager=manager)
         self.loc__clock       = UIImage       (image_surface=imgLoad(self.clock, alpha=True),    relative_rect=pygame.Rect((toPxX(48), toPxY(49)), (toPxX(3),  toPxX(3))),  manager=manager)
-        self.loc__tb_descr    = UITextBox     (html_text="",                                     relative_rect=pygame.Rect((toPxX(14), toPxY(63)), (toPxX(72), toPxY(27))), manager=manager)
+        self.loc__tb_descr    = UITextBox     (html_text="",                                     relative_rect=pygame.Rect((toPxX(14), toPxY(63)), (toPxX(72), toPxY(27))), manager=manag2)
         self.char__ti_name.set_forbidden_characters("forbidden_file_path")
         self.hide_elements()
 
@@ -152,6 +152,6 @@ class PGUI_Helper:
         for pobj in self.get_elements():
             self.set_default(pobj)
 
-    def restart(self, manager):
+    def restart(self, manager, manag2):
         """Restarts whole initialisation process of the class"""
-        self.__init__(manager)
+        self.__init__(manager, manag2)

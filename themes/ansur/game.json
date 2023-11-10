@@ -1,0 +1,14 @@
+ {
+     "defaults":
+     {
+         "colours":
+         {
+             "dark_bg":       "#7f6f55",
+             "normal_border": "#584735"
+         },
+         "fonts":
+         {
+              "size": 20
+         }
+     }
+ }
