@@ -64,7 +64,7 @@ class PGUI_Helper:
         self.pack__zip_list  = UISelectionList(item_list=[],                                relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
         self.pack__descr     = UITextBox      (html_text="",                                relative_rect=pygame.Rect((toPxX(50), toPxY(45)), (toPxX(40), toPxY(30))), manager=manager)
         # ---
-        self.loc__image      = UIImage        (image_surface=imgLoad(self.def_img),         relative_rect=pygame.Rect((toPxX(14), toPxY(8)),  (toPxX(72), toPxY(45))), manager=manager)
+        self.loc__image      = UIImage        (image_surface=imgLoad(self.def_img),         relative_rect=pygame.Rect((toPxX(14), toPxY(3)),  (toPxX(72), toPxY(45))), manager=manager)
         self.char__ti_name.set_forbidden_characters("forbidden_file_path")
         self.hide_elements()
 

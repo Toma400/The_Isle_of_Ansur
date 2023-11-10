@@ -83,6 +83,12 @@ pack__disabled        = "Pack disabled"
 pack__move_up         = "Move Up"
 pack__move_down       = "Move Down"
 pack__remove          = "Remove pack"
+
+loc__bt_character = "Character"
+loc__bt_inventory = "Inventory"
+loc__bt_location  = "Location"
+loc__bt_map       = "Map"
+loc__bt_diary     = "Diary"
 # end
 
 menu__load_choose          = "Choose your save"

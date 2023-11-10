@@ -83,6 +83,12 @@ pack__disabled        = "Paczka wyłączona"
 pack__move_up         = "Przenieś w górę"
 pack__move_down       = "Przenieś w dół"
 pack__remove          = "Usuń paczkę"
+
+loc__bt_character = "Statystyki"
+loc__bt_inventory = "Ekwipunek"
+loc__bt_location  = "Lokacja"
+loc__bt_map       = "Mapa"
+loc__bt_diary     = "Dziennik"
 # end
 
 menu__load_choose          = "Wybierz swój zapis gry"
