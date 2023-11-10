@@ -21,6 +21,8 @@ class GUI_Helper:
         self.menu__gh_logo       = Image(path=bg_handler("logo", True)[0], file=bg_handler("logo", True)[1], pos=(10, 1, 90, 22))
         self.menu__gh_background = Image(path=bg_handler("menu", True)[0], file=bg_handler("menu", True)[1], pos=(0, 0))
         self.menu__gh_panorama   = Image(path=panorama[0],                 file=panorama[1],                 pos=(0, 0)).full()
+        # ---
+        self.loc__gh_background  = Image(path=bg_handler("loc", True)[0], file=bg_handler("loc", True)[1], pos=(0, 0))
 
     def get_element(self, element: str):
         """Returns specific field/attribute given its string"""

@@ -2,6 +2,7 @@
 icon = "ioa_logo.png"
 logo = "ioa_logo.png"
 menu = "menu_background.jpg"
+loc  = "game_background.jpg"
 
 [fonts.colours]
 disabled   = "#43403E"
