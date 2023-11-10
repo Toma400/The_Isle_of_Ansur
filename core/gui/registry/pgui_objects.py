@@ -27,6 +27,7 @@ class PGUI_Helper:
     """
     def_img = "core/assets/visuals/test_img_0.png"
     clock   = bg_handler('clock')
+    frame   = bg_handler('frame')
 
     def __init__(self, manager):
         self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),                   relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(8))),  manager=manager)
@@ -65,9 +66,10 @@ class PGUI_Helper:
         self.pack__zip_list  = UISelectionList(item_list=[],                                  relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
         self.pack__descr     = UITextBox      (html_text="",                                  relative_rect=pygame.Rect((toPxX(50), toPxY(45)), (toPxX(40), toPxY(30))), manager=manager)
         # ---
-        self.loc__image      = UIImage        (image_surface=imgLoad(self.def_img),           relative_rect=pygame.Rect((toPxX(14), toPxY(3)),  (toPxX(72), toPxY(45))), manager=manager)
-        self.loc__clock      = UIImage        (image_surface=imgLoad(self.clock, alpha=True), relative_rect=pygame.Rect((toPxX(48), toPxY(48)), (toPxX(3),  toPxX(3))),  manager=manager)
-        self.loc__tb_descr   = UITextBox      (html_text="",                                  relative_rect=pygame.Rect((toPxX(14), toPxY(62)), (toPxX(72), toPxY(27))), manager=manager)
+        self.loc__image      = UIImage        (image_surface=imgLoad(self.def_img),           relative_rect=pygame.Rect((toPxX(14), toPxY(4)),  (toPxX(72), toPxY(45))), manager=manager)
+        self.loc__frame      = UIImage        (image_surface=imgLoad(self.frame, alpha=True), relative_rect=pygame.Rect((toPxX(14), toPxY(4)),  (toPxX(72), toPxY(45))), manager=manager)
+        self.loc__clock      = UIImage        (image_surface=imgLoad(self.clock, alpha=True), relative_rect=pygame.Rect((toPxX(48), toPxY(49)), (toPxX(3),  toPxX(3))),  manager=manager)
+        self.loc__tb_descr   = UITextBox      (html_text="",                                  relative_rect=pygame.Rect((toPxX(14), toPxY(63)), (toPxX(72), toPxY(27))), manager=manager)
         self.char__ti_name.set_forbidden_characters("forbidden_file_path")
         self.hide_elements()
 

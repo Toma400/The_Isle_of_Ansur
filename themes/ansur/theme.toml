@@ -3,6 +3,7 @@ icon     = "ioa_logo.png"
 logo     = "ioa_logo.png"
 menu     = "menu_background.jpg"
 location = "game_background.jpg"
+frame    = "frame.png"
 clock    = "clock.png"
 
 [fonts.colours]
