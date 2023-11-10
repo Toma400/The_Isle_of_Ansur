@@ -1,4 +1,5 @@
 from core.gui.registry.pgui_objects import PGUI_Helper
+from core.decorators import RequiresImprovement
 from core.gui.manag.langstr import langjstring
 import toml
 
@@ -19,6 +20,11 @@ class Location:
     def langstr(self) -> str:
         """Returns langstring of object based on currently used language"""
         return langjstring(key=self.key, modtype="worlds", modid=self.mod_id)
+
+    @RequiresImprovement
+    def descr(self) -> str:
+        """Returns description of Location taken from -key[_descr]-. Should be improved to recognise context and other elements"""
+        return langjstring(f"{self.key}_descr", "worlds", self.mod_id)
 
     def get(self, attribute: str) -> str | int | float | list | dict | None:
         """Returns specific attribute from Location file. Any reuse of the same object reads from cache to optimise I/O"""

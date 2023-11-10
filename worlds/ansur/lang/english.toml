@@ -1,1 +1,6 @@
-loc__tutorial_name = "Introduction"
+loc__tutorial       = "Introduction"
+
+# DESCRIPTIONS
+loc__tutorial_descr = '''
+It was a windy day on the coast when you arrived there. You saw beautiful stuff before you, just as sea breeze flow through your hair.
+'''

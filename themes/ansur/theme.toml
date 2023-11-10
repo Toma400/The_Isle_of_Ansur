@@ -1,8 +1,9 @@
 [backgrounds]
-icon = "ioa_logo.png"
-logo = "ioa_logo.png"
-menu = "menu_background.jpg"
-loc  = "game_background.jpg"
+icon     = "ioa_logo.png"
+logo     = "ioa_logo.png"
+menu     = "menu_background.jpg"
+location = "game_background.jpg"
+clock    = "clock.png"
 
 [fonts.colours]
 disabled   = "#43403E"

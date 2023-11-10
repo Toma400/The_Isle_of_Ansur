@@ -27,6 +27,7 @@ Use table of contents below to navigate.
 #### Images
 - **Maps** are made using Inkarnate software, which [allows for non-commercial use of said assets](https://inkarnate.s3.amazonaws.com/inkarnate-terms-of-use-june-2020.pdf).
 - **Background texture in game** is made by [darkwood67 under CC-A 3.0 license](https://www.deviantart.com/darkwood67/art/brown-age-136811979).
+- **Clock texture** is [made by Fatalyze and is permitted free to use](https://www.deviantart.com/fatalyze/art/Clock-Vector-286670137).
 
 #### Music
 - **COAG Menu** file is created by [CO.AG Music channel](https://www.youtube.com/channel/UCcavSftXHgxLBWwLDm_bNvA)
