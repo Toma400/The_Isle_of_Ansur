@@ -16,24 +16,27 @@ def urlAvatar(url: str) -> bool:
                 return cf
         return None
 
-    req_data = requests.get(url)
+    try:
+        req_data = requests.get(url)
 
-    os.makedirs(temp_folder.strip("tmp"), exist_ok=True)
+        os.makedirs(temp_folder.strip("tmp"), exist_ok=True)
 
-    if req_data.status_code == 200:
-        ext = getExt()
-        if ext is not None:
-            raw = open(f'{temp_folder}{ext}', 'wb')
-        else: return False
-        raw.write(req_data.content)
-        raw.flush()
-        raw.close()
+        if req_data.status_code == 200:
+            ext = getExt()
+            if ext is not None:
+                raw = open(f'{temp_folder}{ext}', 'wb')
+            else: return False
+            raw.write(req_data.content)
+            raw.flush()
+            raw.close()
 
-        if ext != ".png":
-            cv = Image.open(f'{temp_folder}{ext}')
-            cv.save(f"{temp_folder}.png")
-        return True
-    else:
+            if ext != ".png":
+                cv = Image.open(f'{temp_folder}{ext}')
+                cv.save(f"{temp_folder}.png")
+            return True
+        return False
+
+    except requests.exceptions.MissingSchema:
         return False
 
 def pathAvatar(pth: str) -> bool:
