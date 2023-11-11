@@ -1,6 +1,8 @@
 #temporary .py file, just to list all variables that will be needed in RPG system
+from core.decorators import Deprecated
 from core.utils import sysref
 
+@Deprecated("Part before removal of some imports: https://github.com/Toma400/The_Isle_of_Ansur/tree/ed2101fcf59e30b5a28469d388224cd1be0688bf")
 class profile:
 
   def settings_checker(setting):

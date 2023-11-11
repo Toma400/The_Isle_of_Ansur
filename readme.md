@@ -67,7 +67,7 @@ are in place.
 
 ---
 **Lead Developer:** Toma400  
-**QA:** [skeletonguedworld](https://github.com/skeletontonguedworld)
+**QA:** [skeletontonguedworld](https://github.com/skeletontonguedworld)
 
 ---
 All resources used are under [Baedoor License](license) unless stated in [credits](credits.md).
