@@ -89,10 +89,19 @@ def file_deleting(delete_list):
         try:
             shutil.rmtree(f"{DefaultRun.full_export_path}core/logs/{l}", onerror=on_rm_error)
         except: pass
-    # removes saves
-    for s in file_lister(f"{DefaultRun.full_export_path}saves/"):
+    # removes packs
+    for pk in file_lister(f"{DefaultRun.full_export_path}packs/"):
         try:
-            shutil.rmtree(f"{DefaultRun.full_export_path}saves/{s}", onerror=on_rm_error)
+            shutil.rmtree(f"{DefaultRun.full_export_path}packs/{pk}", onerror=on_rm_error)
+        except: pass
+    # removes saves
+    for sv in file_lister(f"{DefaultRun.full_export_path}saves/"):
+        try:
+            shutil.rmtree(f"{DefaultRun.full_export_path}saves/{sv}", onerror=on_rm_error)
+        except: pass
+    for sv in dir_lister(f"{DefaultRun.full_export_path}saves/"):
+        try:
+            shutil.rmtree(f"{DefaultRun.full_export_path}saves/{sv}", onerror=on_rm_error)
         except: pass
     # removes scripts that are not vanilla
     for scr in file_lister(f"{DefaultRun.full_export_path}scripts/"):
@@ -120,10 +129,6 @@ def file_deleting(delete_list):
     for wdp in file_lister(f"{DefaultRun.full_export_path}worlds/"):
         try:
             shutil.rmtree(f"{DefaultRun.full_export_path}worlds/{wdp}", onerror=on_rm_error)
-        except: pass
-    for sv in dir_lister(f"{DefaultRun.full_export_path}saves/"):
-        try:
-            shutil.rmtree(f"{DefaultRun.full_export_path}saves/{sv}", onerror=on_rm_error)
         except: pass
 
 # main function for running builder

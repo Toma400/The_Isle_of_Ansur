@@ -6,6 +6,7 @@ from core.data.pack_manag.id import zipToID
 from core.graphics.text_manag import put_text
 from core.gui.manag.langstr import langstring
 from core.file_system.parsers import loadYAML
+from os.path import exists
 import os
 
 def packOrder() -> list[(str, str)]:
@@ -13,15 +14,16 @@ def packOrder() -> list[(str, str)]:
     dbs = getDisabled()
     ers = getErrs()
     ret = []
-    for pack in loadYAML("core/data/pack_manag/pack_order.yaml"):
-        dis = "* "       if pack               in dbs else ""
-        dis = f"! {dis}" if pack.strip(".zip") in ers else dis
-        inf = searchInfo(zipToID(pack))
-        if inf is not None:
-            if "name" in inf:
-                ret.append((dis + inf["name"], pack))
-                continue
-        ret.append((dis + pack.replace(".zip", "").replace("_", " ").title(), pack))
+    if exists("core/data/pack_manag/pack_order.yaml"):
+        for pack in loadYAML("core/data/pack_manag/pack_order.yaml"):
+            dis = "* "       if pack               in dbs else ""
+            dis = f"! {dis}" if pack.strip(".zip") in ers else dis
+            inf = searchInfo(zipToID(pack))
+            if inf is not None:
+                if "name" in inf:
+                    ret.append((dis + inf["name"], pack))
+                    continue
+            ret.append((dis + pack.replace(".zip", "").replace("_", " ").title(), pack))
     return ret
 
 def packDescr(pack_id: str) -> str:
