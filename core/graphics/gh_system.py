@@ -6,6 +6,7 @@ from core.graphics.text_manag import text_splitter as tspl
 from system.mod_manag import mod_lister
 from core.data.journey import Journey
 from core.graphics.gh_manag import *
+from os.path import exists
 from core.utils import *
 import os, random, pygame, pygame_gui
 
@@ -43,9 +44,13 @@ def run_screen():
         except pygame.error: continue
 
 def run_pgui(manager_no: int = 0):
+    # configuration file handling
+    p0 = f"themes/{getTheme()}/main.json" if exists(f"themes/{getTheme()}/main.json") else None
+    p1 = f"themes/{getTheme()}/game.json" if exists(f"themes/{getTheme()}/game.json") else None
+
     match manager_no:
-        case 0: return pygame_gui.UIManager((scx("svx"), scx("svy")))
-        case 1: return pygame_gui.UIManager((scx("svx"), scx("svy")), theme_path=f"themes/{getTheme()}/game.json")
+        case 0: return pygame_gui.UIManager((scx("svx"), scx("svy")), theme_path=p0)
+        case 1: return pygame_gui.UIManager((scx("svx"), scx("svy")), theme_path=p1)
         case _: raise ValueError(f"-run_pgui- was given incorrect value of {manager_no} when trying to parse PyGameGUI theme.")
 
 class Screen:
