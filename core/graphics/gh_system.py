@@ -66,6 +66,7 @@ class Screen:
         """hard refresh of screen | should reassign currently used 'screen' variable"""
         self.dyn_screen[0] = run_screen()
         self.pgui          = run_pgui()
+        self.pgui2         = run_pgui(1)
         self.screen        = self.dyn_screen[0]
         self.objects.restart(self.panorama)
         self.pobjects.restart(self.pgui, self.pgui2)

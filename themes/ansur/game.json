@@ -3,12 +3,13 @@
      {
          "colours":
          {
-             "dark_bg":       "#7f6f55",
-             "normal_border": "#584735"
+             "dark_bg":       "#a7987b,#7f6f55,180",
+             "normal_border": "#584735",
+             "normal_text":   "#4E3510"
          },
          "fonts":
          {
-              "size": 20
+              "size": 50
          }
      }
  }

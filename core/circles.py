@@ -28,9 +28,11 @@ def main_circle():
             if event.type == pygame.QUIT:
                 tev.append("end")
 
-            dyn_screen.pgui.process_events(event) # PyGameGUI handler of events
+            dyn_screen.pgui.process_events(event)  # PyGameGUI handler of events
+            dyn_screen.pgui2.process_events(event)
 
         dyn_screen.pgui.update(clock_tick) # PyGameGUI updater
+        dyn_screen.pgui2.update(clock_tick)
 
         music = music_handler(music, guitype, forged_events)                    # controls music
         gui_handler(screen, guitype, forged_events, pg_events, tev, dyn_screen) # draws elements on a screen and sets interactions
@@ -38,6 +40,7 @@ def main_circle():
         script_handler(forged_events, screen, pg_events, dyn_screen)            # handles forged_events -> scripts runs
 
         dyn_screen.pgui.draw_ui(screen) # PyGameGUI UI handler
+        dyn_screen.pgui2.draw_ui(screen)
         pygame.display.flip()
 
     temp_remover(); pygame.quit()

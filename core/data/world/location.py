@@ -24,7 +24,8 @@ class Location:
     @RequiresImprovement
     def descr(self) -> str:
         """Returns description of Location taken from -key[_descr]-. Should be improved to recognise context and other elements"""
-        return langjstring(f"{self.key}_descr", "worlds", self.mod_id)
+        try:    return langjstring(f"{self.key}_descr", "worlds", self.mod_id)
+        except: return ""
 
     def get(self, attribute: str) -> str | int | float | list | dict | None:
         """Returns specific attribute from Location file. Any reuse of the same object reads from cache to optimise I/O"""
