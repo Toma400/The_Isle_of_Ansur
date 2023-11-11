@@ -102,6 +102,7 @@ class PGUI_Helper:
             case UISelectionList.__module__: return getCurrentID(self.get_element(element))
             case UITextEntryLine.__module__: return self.get_element(element).text
             case UITextEntryBox.__module__:  return self.get_element(element).get_text()
+            case UITextBox.__module__:       return self.get_element(element).html_text
 
     def get_element_index(self, element: str) -> int | None:
         """Returns selected element of the GUI, as index number"""

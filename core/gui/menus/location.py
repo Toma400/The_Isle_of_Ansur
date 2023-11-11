@@ -31,8 +31,9 @@ def locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     dyn_screen.put_pgui("loc__clock")
     dyn_screen.put_pgui("loc__tb_descr")
 
-    dyn_screen.set_pgui_element("loc__image",    imgLoad(loc.img))
-    dyn_screen.set_pgui_element("loc__tb_descr", loc.descr())
+    if dyn_screen.get_pgui_choice("loc__tb_descr") == "":
+        dyn_screen.set_pgui_element("loc__tb_descr", loc.descr())
+    dyn_screen.set_pgui_element("loc__image", imgLoad(loc.img))
 
     #===============================================================
     # EVENTS

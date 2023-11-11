@@ -1,5 +1,5 @@
  {
-     "defaults":
+     "text_box":
      {
          "colours":
          {
@@ -7,9 +7,11 @@
              "normal_border": "#584735",
              "normal_text":   "#4E3510"
          },
-         "fonts":
+         "font":
          {
-              "size": 50
+              "name":         "Ferrum Extended",
+              "size":         30,
+              "regular_path": "themes/ansur/fonts/ferrum_extended.otf"
          }
      }
  }
