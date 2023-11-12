@@ -27,6 +27,8 @@
 > - Quality-of-Life
 >   - Text resizing is automatical with every resolution change now
 >     (no more changes to 400x400 resolution while keeping big text!)
+> - Fixes
+>   - Fixed Polish letters not being recognised (#104)
 ```
 > ### Pre-alpha 3b
 > - Gameplay

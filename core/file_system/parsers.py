@@ -9,8 +9,8 @@ def loadYAML(fpath: str) -> dict | list:
         return ret
 
 def loadTOML(fpath: str) -> dict | list:
-    with open(fpath, encoding="utf-8") as yf:
-        return toml.loads(yf.read())
+    with open(fpath, encoding="utf-8") as tf:
+        return toml.loads(tf.read())
 
 def loadJSON(fpath: str) -> dict | list:
     return json.load(fpath)
