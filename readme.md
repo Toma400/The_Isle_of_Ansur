@@ -46,9 +46,9 @@ Feel free to share your thoughts or report bugs there.
 ---
 **Mods Repository:** [**GitHub page**](https://github.com/Toma400/Isle_of_Ansur_Mods_Repository/blob/library/Modlist.md)
 
-**Docs:**
-- Internal ones: [**Jump to file!**](modding_guide.pdf)
-- URL (outdated): [**GitHub**](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Main-Mod-Types)
+**Docs:** [**Jump to file!**](modding_guide.pdf)
+
+**BCS Mod Editor (indev):** [**GitHub page**](https://github.com/Toma400/BCSet_IoA)
 
 # Contribution
 
