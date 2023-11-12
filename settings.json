@@ -5,13 +5,13 @@
   "permadeath": false,
   "legacy_unpacking": false,
   "log_limit": 15,
-  "res_x": 1000,
-  "res_y": 700,
+  "res_x": 1920,
+  "res_y": 1080,
   "sound": 40,
   "listbox_mode": "proportional",
   "listbox_amount": 5,
   "listbox_size": 1.0,
   "version_checker": true,
-  "text_size": 1.0,
+  "text_size": 1.5,
   "bcs_theme": "default"
 }
