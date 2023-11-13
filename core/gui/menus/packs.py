@@ -109,6 +109,7 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         # disabling/enabling pack
         if mouseColliderPx(pdb[0], pdb[1], pdb[2], pdb[3]):
             put_text(screen, text=langstring("pack__switch"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=10, colour=fCol.HOVERED.value)
+            dyn_screen.tooltip = "menu__tp_pack_db"
             if mouseRec(pg_events):
                 if pack_selected not in pack_disabled_list:
                     with open("core/data/pack_manag/pack_disabled.yaml", "a") as yf:
@@ -126,6 +127,7 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         # moving selected pack up (it is - because that pushes pack earlier)
         elif mouseColliderPx(pmu[0], pmu[1], pmu[2], pmu[3]):
             put_text(screen, text=langstring("pack__move_up"),   font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=15, colour=fCol.HOVERED.value)
+            dyn_screen.tooltip = "menu__tp_pack_mvu"
             if mouseRec(pg_events):
                 current = loadYAML("core/data/pack_manag/pack_order.yaml")
                 pos = current.index(pack_selected)
@@ -142,6 +144,7 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         # moving selected pack down (it is + because that pushes pack further)
         elif mouseColliderPx(pmd[0], pmd[1], pmd[2], pmd[3]):
             put_text(screen, text=langstring("pack__move_down"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=20, colour=fCol.HOVERED.value)
+            dyn_screen.tooltip = "menu__tp_pack_mvd"
             if mouseRec(pg_events):
                 current = loadYAML("core/data/pack_manag/pack_order.yaml")
                 pos = current.index(pack_selected)
@@ -154,3 +157,6 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         for pck in current:
                             yf_out.write(f"- {pck}\n")
                     dyn_screen.set_pgui_element("pack__zip_list", packOrder())
+
+        else:
+            dyn_screen.tooltip = ""

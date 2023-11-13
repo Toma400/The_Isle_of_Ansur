@@ -75,7 +75,7 @@ ccrt__end_religion         = "Religia"
 ccrt__end_origin           = "Historia"
 ccrt__end_save             = "Zapisz"
 ccrt__end_save_warn        = '''
-Postać nie będzie dostępna w obecnej wersji, jednak będzie można ją załadować w przyszłości.
+Postać nie będzie dostępna w obecnej wersji, jednak będzie można ją załadować w przyszłości
 '''
 
 load__packs_used      = "Użyte mody"
@@ -97,6 +97,10 @@ pack__disabled        = "Paczka wyłączona"
 pack__move_up         = "Przenieś w górę"
 pack__move_down       = "Przenieś w dół"
 pack__remove          = "Usuń paczkę"
+
+pack__tooltip_switch  = "Zawartość wyłączonych paczek nie będzie dostępna w trakcie gry"
+pack__tooltip_mvu     = "Przenosi paczkę w górę hierarchii. Kolejność ładowania wpływa na nadpisywanie, zatem paczki opierające się na innych powinny być pod nimi"
+pack__tooltip_mvd     = "Przenosi paczkę w dół hierarchii. Kolejność ładowania wpływa na nadpisywanie, zatem paczki opierające się na innych powinny być pod nimi"
 
 loc__bt_character = "Statystyki"
 loc__bt_inventory = "Ekwipunek"

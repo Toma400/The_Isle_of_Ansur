@@ -75,7 +75,7 @@ ccrt__end_religion         = "Religion"
 ccrt__end_origin           = "Origin"
 ccrt__end_save             = "Save"
 ccrt__end_save_warn        = '''
-Character won't be available in current version, as it doesn't feature gameplay. It will be possible to load the profile later.
+Character won't be available in current version, as it doesn't feature gameplay. It will be possible to load the profile later
 '''
 
 load__packs_used      = "Packs used"
@@ -97,6 +97,10 @@ pack__disabled        = "Pack disabled"
 pack__move_up         = "Move Up"
 pack__move_down       = "Move Down"
 pack__remove          = "Remove pack"
+
+pack__tooltip_switch  = "Disabled packs will not have their contents available in game"
+pack__tooltip_mvu     = "Moves pack up the hierarchy. Loading order decides on overwrites, so packs dependent on other ones should be below dependency"
+pack__tooltip_mvd     = "Moves pack down the hierarchy. Loading order decides on overwrites, so packs dependent on other ones should be below dependency"
 
 loc__bt_character = "Character"
 loc__bt_inventory = "Inventory"
