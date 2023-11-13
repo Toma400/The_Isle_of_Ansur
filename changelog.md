@@ -25,6 +25,8 @@
 >   - Introduces Mod Loading Order (MLO) and way to change it
 >   - Allows for disabling zip packs (results in them not unpacking)
 > - Quality-of-Life
+>   - Tooltip now appears whenever you hover on GUI elements having it
+>     - You can turn tooltips in settings
 >   - Text resizing is automatical with every resolution change now
 >     (no more changes to 400x400 resolution while keeping big text!)
 > - Fixes

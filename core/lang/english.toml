@@ -25,6 +25,8 @@ menu__sett_tech_text_size  = "Text Size"
 menu__sett_tech_ver_notif  = "Update Notification"
 menu__sett_back            = "Back to menu"
 
+menu__sett_tooltip_res     = "Left-click to increase width, right-click to increase height. Middle-click to swap between fullscreen and windowed mode"
+
 ccrt__gen_gender   = "Gender"
 ccrt__gen_race     = "Race"
 ccrt__gen_class    = "Class"

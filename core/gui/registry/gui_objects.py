@@ -1,5 +1,8 @@
 from core.file_system.theme_manag import bg_handler
 from core.graphics.gh_manag import Image, ratioCell
+from core.gui.elements.ttooltip import TTooltip
+from core.gui.manag.langstr import langstring
+from core.gui.manag.pc import toPxX, toPxY
 
 class GUI_Helper:
     """ [ GUI HELPER ]
@@ -23,6 +26,8 @@ class GUI_Helper:
         self.menu__gh_panorama   = Image(path=panorama[0],                     file=panorama[1],                     pos=(0, 0)).full()
         # ---
         self.loc__gh_background  = Image(path=bg_handler("location", True)[0], file=bg_handler("location", True)[1], pos=(0, 0)).full()
+        # ---
+        self.menu__tp_res_screen = TTooltip(langstring("menu__sett_tooltip_res"), text_size=20, pos=(toPxX(80), toPxY(16)))
 
     def get_element(self, element: str):
         """Returns specific field/attribute given its string"""
@@ -31,6 +36,11 @@ class GUI_Helper:
     def get_elements(self) -> [str]:
         """Returns list of fields/attributes of the class"""
         return self.__dict__.keys()
+
+    def draw(self, element: str, screen, pos: (int, int) = None):
+        """Performs drawing on supporting elements (TTooltip at the time of writing this)"""
+        match self.get_element(element).__module__:
+            case TTooltip.__module__: self.get_element(element).draw(screen, pos)
 
     def restart(self, panorama):
         """Restarts whole initialisation process of the class"""

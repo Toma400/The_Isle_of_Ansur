@@ -154,6 +154,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     # hovering & clicking events
                     if mouseColliderPx(gt1rs[0], gt1rs[1], gt1rs[2], gt1rs[3]):
                         put_text(screen, text=langstring("menu__sett_general_res"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=12, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_res_screen")
                         if mouseRec(pg_events, 1):
                             from win32api import GetSystemMetrics
                             if scx("svx") < GetSystemMetrics(0): set_change("res_x", 100);       set_change("text_size", f"set={adjustTextSize(res_ratio, x='+100')}") # if not full screen, increase x size by 100

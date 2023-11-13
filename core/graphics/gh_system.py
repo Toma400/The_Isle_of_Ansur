@@ -105,6 +105,10 @@ class Screen:
         """Reveals GUI element currently being hidden"""
         self.pobjects.show_element(element)
 
+    def draw(self, element: str, pos: (int, int) = None):
+        """Draws supporting elements"""
+        self.objects.draw(element, self.screen, pos)
+
     def reset_pgui(self, complete=False):
         """Resets PGUI elements to their default state"""
         self.pobjects.reset_selection_list_all()
