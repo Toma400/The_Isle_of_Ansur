@@ -26,6 +26,7 @@ def scx(setn=None): # used for checking current settings status
         case "lbsz": return sdata["listbox_size"]
         case "vch":  return sdata["version_checker"]
         case "txts": return sdata["text_size"]
+        case "tltp": return sdata["tooltip"]
         case other:  return sdata
 
 def sysref(refn): # reads value from system reference file

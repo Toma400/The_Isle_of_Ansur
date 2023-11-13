@@ -23,9 +23,12 @@ menu__sett_tech_lb_amount  = "Ilość elementów list"
 menu__sett_tech_lb_size    = "Wielkość elementów list"
 menu__sett_tech_text_size  = "Wielkość tekstu"
 menu__sett_tech_ver_notif  = "Powiadomienie o aktualizacji"
+menu__sett_tech_tooltip    = "Podpowiedzi"
 menu__sett_back            = "Powrót do menu"
 
 menu__sett_tooltip_res     = "Lewy przycisk myszy zwiększa szerokość, prawy wysokość, środkowy przełącza między pełnym ekranem a oknem"
+menu__sett_tooltip_lang    = "Użyj przycisków myszy żeby zmienić język"
+menu__sett_tooltip_music   = "Lewy przycisk myszy by zwiększyć, prawy by zmniejszyć głośność. Środkowy przełącza między wyciszeniem a domyślną wartością"
 
 ccrt__gen_gender   = "Płeć"
 ccrt__gen_race     = "Rasa"

@@ -27,7 +27,9 @@ class GUI_Helper:
         # ---
         self.loc__gh_background  = Image(path=bg_handler("location", True)[0], file=bg_handler("location", True)[1], pos=(0, 0)).full()
         # ---
-        self.menu__tp_res_screen = TTooltip(langstring("menu__sett_tooltip_res"), text_size=20, pos=(toPxX(80), toPxY(16)))
+        self.menu__tp_sett_res   = TTooltip(langstring("menu__sett_tooltip_res"),   text_size=20, pos=(toPxX(80), toPxY(16)))
+        self.menu__tp_sett_lang  = TTooltip(langstring("menu__sett_tooltip_lang"),  text_size=20, pos=(toPxX(80), toPxY(24)))
+        self.menu__tp_sett_music = TTooltip(langstring("menu__sett_tooltip_music"), text_size=20, pos=(toPxX(80), toPxY(32)))
 
     def get_element(self, element: str):
         """Returns specific field/attribute given its string"""

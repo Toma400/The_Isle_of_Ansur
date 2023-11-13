@@ -87,7 +87,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 if mouseRec(pg_events):
                     guitype[0] = switch_gscr(dyn_screen, screen, "settings")
 
-            elif mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]):
+            elif mouseColliderPx(gt5[0], gt5[1], gt5[2], gt5[3]) and not scx("legu"):
                 put_text(screen, text=langstring("menu__button_packs"), font_cat="menu", size=30, align_x="center", pos_y=52, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                    guitype[0] = switch_gscr(dyn_screen, screen, "pack_manag")
@@ -154,7 +154,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     # hovering & clicking events
                     if mouseColliderPx(gt1rs[0], gt1rs[1], gt1rs[2], gt1rs[3]):
                         put_text(screen, text=langstring("menu__sett_general_res"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=12, colour=fCol.HOVERED.value)
-                        dyn_screen.draw("menu__tp_res_screen")
+                        dyn_screen.draw("menu__tp_sett_res")
                         if mouseRec(pg_events, 1):
                             from win32api import GetSystemMetrics
                             if scx("svx") < GetSystemMetrics(0): set_change("res_x", 100);       set_change("text_size", f"set={adjustTextSize(res_ratio, x='+100')}") # if not full screen, increase x size by 100
@@ -175,6 +175,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     elif mouseColliderPx(gt1ln[0], gt1ln[1], gt1ln[2], gt1ln[3]):
                         put_text(screen, text=langstring("menu__sett_general_lang"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_lang")
                         if mouseRec(pg_events):
                             set_change("language")
                             dyn_screen.soft_reset()
@@ -184,6 +185,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     elif mouseColliderPx(gt1ms[0], gt1ms[1], gt1ms[2], gt1ms[3]):
                         put_text(screen, text=langstring("menu__sett_general_music"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=28, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_music")
                         if mouseRec(pg_events):
                             set_change("sound", 1); fg_events.append("SNDV_CHG")
                         elif mouseRec(pg_events, 3):
@@ -209,12 +211,15 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     gt2ls = put_text(screen, text=langstring("menu__sett_tech_lb_size"),   font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=52, colour=sm2col)
                     gt2ts = put_text(screen, text=langstring("menu__sett_tech_text_size"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=60, colour=fCol.ENABLED.value)
                     gt2vn = put_text(screen, text=langstring("menu__sett_tech_ver_notif"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=68, colour=fCol.ENABLED.value)
+                    gt2tt = put_text(screen, text=langstring("menu__sett_tech_tooltip"),   font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=76, colour=fCol.ENABLED.value)
 
                     # settings values
                     if scx("legu"): put_text(screen, text=langstring("gen__enabled"),  font_cat="menu", size=30, pos_x=82, pos_y=12, colour=fCol.CHOICE.value) # legacy unpacking
                     else:           put_text(screen, text=langstring("gen__disabled"), font_cat="menu", size=30, pos_x=82, pos_y=12, colour=fCol.CHOICE.value)
                     if scx("vch"):  put_text(screen, text=langstring("gen__enabled"),  font_cat="menu", size=30, pos_x=82, pos_y=68, colour=fCol.CHOICE.value) # version notification
                     else:           put_text(screen, text=langstring("gen__disabled"), font_cat="menu", size=30, pos_x=82, pos_y=68, colour=fCol.CHOICE.value)
+                    if scx("tltp"): put_text(screen, text=langstring("gen__enabled"),  font_cat="menu", size=30, pos_x=82, pos_y=76, colour=fCol.CHOICE.value) # tooltip
+                    else:           put_text(screen, text=langstring("gen__disabled"), font_cat="menu", size=30, pos_x=82, pos_y=76, colour=fCol.CHOICE.value)
                     put_text(screen, text=str(scx("lglm")),             font_cat="menu", size=30, pos_x=82, pos_y=20, colour=fCol.CHOICE.value) # log limit number
                     put_text(screen, text=langstring(f"gen__{lbmode}"), font_cat="menu", size=30, pos_x=82, pos_y=36, colour=fCol.CHOICE.value) # listbox mode
                     put_text(screen, text=str(scx("lbam")),             font_cat="menu", size=30, pos_x=82, pos_y=44, colour=fCol.CHOICE.value) # listbox elements amount
@@ -278,6 +283,11 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         put_text(screen, text=langstring("menu__sett_tech_ver_notif"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=68, colour=fCol.HOVERED.value)
                         if mouseRec(pg_events):
                             set_change("version_checker")
+
+                    elif mouseColliderPx(gt2tt[0], gt2tt[1], gt2tt[2], gt2tt[3]):
+                        put_text(screen, text=langstring("menu__sett_tech_tooltip"),   font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=76, colour=fCol.HOVERED.value)
+                        if mouseRec(pg_events):
+                            set_change("tooltip")
 
         #==============================================================================================================
         case "pack_manag":

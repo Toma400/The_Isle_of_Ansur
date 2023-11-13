@@ -3,15 +3,14 @@ from core.graphics.text_manag import txt_size
 from core.decorators import RequiresImprovement, HelperMethod
 from PIL import Image as PILImage
 from core.utils import scx, gpath
-from pygame.surface import Surface
 from pygame.image import load as imgLoad
-from pygame.draw import rect as drawRect
-from pygame.rect import Rect
 from pygame.font import Font
+from core.utils import scx
 from os.path import exists
 from pathlib import Path
 import logging as log
 import os
+
 # TTooltip, as in 'Temporary Tooltip', because text handling will be taken manually here, samely with box drawing
 # Proper Tooltip will use Image and Text, most likely
 class TTooltip:
@@ -46,42 +45,43 @@ class TTooltip:
         """
         rel_pos   : (int, int) | Point from where draw should appear - tooltip will adjust from it
         """
-        if rel_pos is None: rel_pos = self._pos
-        # check is done once to minimise overload (see __init__ supplementary comments for context)
-        if self._ev_pos is None or self._check_pos != rel_pos:
-            self._check_pos = rel_pos
-            if rel_pos[0] + self._bg.get_width() < scx("svx"):
-                if rel_pos[1] + self._bg.get_height() < scx("svy"):
-                    self._ev_pos = rel_pos
+        if scx("tltp"):
+            if rel_pos is None: rel_pos = self._pos
+            # check is done once to minimise overload (see __init__ supplementary comments for context)
+            if self._ev_pos is None or self._check_pos != rel_pos:
+                self._check_pos = rel_pos
+                if rel_pos[0] + self._bg.get_width() < scx("svx"):
+                    if rel_pos[1] + self._bg.get_height() < scx("svy"):
+                        self._ev_pos = rel_pos
+                    else:
+                        if rel_pos[1] - self._bg.get_height() > 0:
+                            self._ev_pos = (rel_pos[0], rel_pos[1] - self._bg.get_height())
                 else:
-                    if rel_pos[1] - self._bg.get_height() > 0:
-                        self._ev_pos = (rel_pos[0], rel_pos[1] - self._bg.get_height())
-            else:
-                if rel_pos[1] + self._bg.get_height() < scx("svy"):
-                    self._ev_pos = (rel_pos[0] - self._bg.get_width(), rel_pos[1])
-                else:
-                    if rel_pos[1] - self._bg.get_height() > 0:
-                        self._ev_pos = (rel_pos[0] - self._bg.get_width(),
-                                        rel_pos[1] - self._bg.get_height())
+                    if rel_pos[1] + self._bg.get_height() < scx("svy"):
+                        self._ev_pos = (rel_pos[0] - self._bg.get_width(), rel_pos[1])
+                    else:
+                        if rel_pos[1] - self._bg.get_height() > 0:
+                            self._ev_pos = (rel_pos[0] - self._bg.get_width(),
+                                            rel_pos[1] - self._bg.get_height())
 
-        if self._ev_pos is not None: # equivalent to 'is ev_pos still None?'
-            # rect blit
-            screen.blit(self._bg, dest=self._ev_pos)
-            # text blit
-            render = self._fontobj.render(self._text, True,
-                                          self._theme_colour["text"],
-                                          self._theme_colour["background"])
-            screen.blit(render, (self._ev_pos[0] + self._theme_general["padding_side"],
-                                 self._ev_pos[1] + self._theme_general["padding_tops"]))
-        else:
-            log.error(f'''
-            Couldn't draw tooltip due to either too long text, too big size or unfortunate placement. Tooltip info:
-            Pos   : {rel_pos[0]}, {rel_pos[1]}
-            Size  : {self._bg.get_width()}, {self._bg.get_height()}
-            Text  :
-            {self._text}
-            TSize : {self._text_size}
-            ''')
+            if self._ev_pos is not None: # equivalent to 'is ev_pos still None?'
+                # rect blit
+                screen.blit(self._bg, dest=self._ev_pos)
+                # text blit
+                render = self._fontobj.render(self._text, True,
+                                              self._theme_colour["text"],
+                                              self._theme_colour["background"])
+                screen.blit(render, (self._ev_pos[0] + self._theme_general["padding_side"],
+                                     self._ev_pos[1] + self._theme_general["padding_tops"]))
+            else:
+                log.error(f'''
+                Couldn't draw tooltip due to either too long text, too big size or unfortunate placement. Tooltip info:
+                Pos   : {rel_pos[0]}, {rel_pos[1]}
+                Size  : {self._bg.get_width()}, {self._bg.get_height()}
+                Text  :
+                {self._text}
+                TSize : {self._text_size}
+                ''')
 
     @staticmethod
     @HelperMethod

@@ -23,9 +23,12 @@ menu__sett_tech_lb_amount  = "List Elements Amount"
 menu__sett_tech_lb_size    = "List Elements Size"
 menu__sett_tech_text_size  = "Text Size"
 menu__sett_tech_ver_notif  = "Update Notification"
+menu__sett_tech_tooltip    = "Tooltip"
 menu__sett_back            = "Back to menu"
 
 menu__sett_tooltip_res     = "Left-click to increase width, right-click to increase height. Middle-click to swap between fullscreen and windowed mode"
+menu__sett_tooltip_lang    = "Use mouse buttons to change language"
+menu__sett_tooltip_music   = "Left-click to increase, right-click to decrease volume. Middle-click to swap between mute and default value"
 
 ccrt__gen_gender   = "Gender"
 ccrt__gen_race     = "Race"
