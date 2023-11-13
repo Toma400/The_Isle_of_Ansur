@@ -41,6 +41,7 @@ def main_circle():
 
         dyn_screen.pgui.draw_ui(screen) # PyGameGUI UI handler
         dyn_screen.pgui2.draw_ui(screen)
+        dyn_screen.tooltip_handler()
         pygame.display.flip()
 
     temp_remover(); pygame.quit()

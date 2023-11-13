@@ -11,9 +11,11 @@ from pathlib import Path
 import logging as log
 import os
 
-# TTooltip, as in 'Temporary Tooltip', because text handling will be taken manually here, samely with box drawing
-# Proper Tooltip will use Image and Text, most likely
 class TTooltip:
+    """
+    Use | dyn_screen.draw("id")     | for general purposes
+    Use | dyn_screen.tooltip = "id" | if tooltip goes under PyGameGUI elements (remember to set it back to "" in else clause)
+    """
 
     @RequiresImprovement # make it multiline and dependent on Image/Text in core.gui.elements
     def __init__(self, text: str, text_size: int, pos: (int, int) = (0, 0)):

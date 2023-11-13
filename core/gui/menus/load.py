@@ -63,7 +63,6 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     dyn_screen.put_pgui("load__saves")
     dyn_screen.put_pgui("load__descr")
-    dyn_screen.put_pgui("load__temp_warn")
     dyn_screen.put_pgui("load__avatar")
 
     game_loaded = dyn_screen.get_pgui_choice("load__saves")
@@ -96,12 +95,14 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             guitype[0] = switch_gscr(dyn_screen, screen, "menu")
             guitype[1] = None
 
-    elif mouseColliderPx(lsv[0], lsv[1], lsv[2], lsv[3]) and game_loaded is not None and developer_mode:
-        put_text(screen, text=langstring("load__load"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=10, colour=fCol.HOVERED.value)
-        if mouseRec(pg_events):
-            dyn_screen.journey.name     = game_loaded
-            dyn_screen.journey.location = dyn_screen.journey.readLocation(game_loaded)
-            guitype[0] = switch_gscr(dyn_screen, screen, "location")
+    elif mouseColliderPx(lsv[0], lsv[1], lsv[2], lsv[3]):
+        if game_loaded is not None and developer_mode:
+            put_text(screen, text=langstring("load__load"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=10, colour=fCol.HOVERED.value)
+            if mouseRec(pg_events):
+                dyn_screen.journey.name     = game_loaded
+                dyn_screen.journey.location = dyn_screen.journey.readLocation(game_loaded)
+                guitype[0] = switch_gscr(dyn_screen, screen, "location")
+        dyn_screen.tooltip = "menu__tp_load_load"
 
     elif mouseColliderPx(rsv[0], rsv[1], rsv[2], rsv[3]) and game_loaded is not None:
         put_text(screen, text=langstring("load__remove"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=22, colour=fCol.HOVERED.value)
@@ -109,3 +110,6 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             removeSave(game_loaded)
             dyn_screen.set_pgui_element("load__saves", listSaves())
             dyn_screen.set_pgui_element("load__descr", "")
+
+    else:
+        dyn_screen.tooltip = ""

@@ -41,6 +41,8 @@ class GUI_Helper:
         self.menu__tp_sett_vernf = TTooltip(langstring("menu__sett_tooltip_ver_nf"),  text_size=20, pos=(toPxX(80), toPxY(72)))
         self.menu__tp_sett_tltp  = TTooltip(langstring("menu__sett_tooltip_tooltip"), text_size=20, pos=(toPxX(80), toPxY(80)))
 
+        self.menu__tp_load_load  = TTooltip(langstring("ccrt__end_save_warn"), text_size=20, pos=(toPxX(91), toPxY(14)))
+
     def get_element(self, element: str):
         """Returns specific field/attribute given its string"""
         return self.__getattribute__(element)

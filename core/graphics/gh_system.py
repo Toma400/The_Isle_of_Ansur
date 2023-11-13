@@ -66,6 +66,7 @@ class Screen:
         self.update     = version_checker()                  # Bool value of whether game is up-to-date
         self.clock      = pygame.time.Clock()                # Clock (mostly to hold PyGameGUI processes)
         self.journey    = Journey()                          # Main game handler
+        self.tooltip    = ""                                 # ID of tooltip that is shown currently
 
     def reset(self):
         """hard refresh of screen | should reassign currently used 'screen' variable"""
@@ -115,6 +116,15 @@ class Screen:
         if complete:
             for i in range(0, 8):
                 self.journey.stages[i] = False
+
+    def tooltip_handler(self):
+        """
+        Processes events related to tooltip showcasing. Edit -self.tooltip- to draw tooltip.
+        Use only if working alongside PyGameGUI (as it was created to handle PGUI being on top of regular elements)
+        and remember to reset tooltip back to "" with else clause.
+        """
+        if self.tooltip != "":
+            self.draw(self.tooltip)
 
     def clear_pgui(self):
         """Flushes out all visibility of elements currently shown (used by 'switch_gscr' func)"""
