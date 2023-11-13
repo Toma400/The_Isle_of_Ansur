@@ -27,9 +27,19 @@ class GUI_Helper:
         # ---
         self.loc__gh_background  = Image(path=bg_handler("location", True)[0], file=bg_handler("location", True)[1], pos=(0, 0)).full()
         # ---
-        self.menu__tp_sett_res   = TTooltip(langstring("menu__sett_tooltip_res"),   text_size=20, pos=(toPxX(80), toPxY(16)))
-        self.menu__tp_sett_lang  = TTooltip(langstring("menu__sett_tooltip_lang"),  text_size=20, pos=(toPxX(80), toPxY(24)))
-        self.menu__tp_sett_music = TTooltip(langstring("menu__sett_tooltip_music"), text_size=20, pos=(toPxX(80), toPxY(32)))
+        # Tooltips:
+        self.menu__tp_sett_res   = TTooltip(langstring("menu__sett_tooltip_res"),     text_size=20, pos=(toPxX(80), toPxY(16)))
+        self.menu__tp_sett_lang  = TTooltip(langstring("menu__sett_tooltip_lang"),    text_size=20, pos=(toPxX(80), toPxY(24)))
+        self.menu__tp_sett_music = TTooltip(langstring("menu__sett_tooltip_music"),   text_size=20, pos=(toPxX(80), toPxY(32)))
+        self.menu__tp_sett_legu  = TTooltip(langstring("menu__sett_tooltip_legacy"),  text_size=20, pos=(toPxX(80), toPxY(16)))
+        self.menu__tp_sett_loglm = TTooltip(langstring("menu__sett_tooltip_log_lm"),  text_size=20, pos=(toPxX(80), toPxY(24)))
+        self.menu__tp_sett_logrv = TTooltip(langstring("menu__sett_tooltip_log_rv"),  text_size=20, pos=(toPxX(80), toPxY(32)))
+        self.menu__tp_sett_lbox  = TTooltip(langstring("menu__sett_tooltip_listbox"), text_size=20, pos=(toPxX(80), toPxY(40)))
+        self.menu__tp_sett_lb_am = TTooltip(langstring("menu__sett_tooltip_lb_am"),   text_size=20, pos=(toPxX(80), toPxY(48)))
+        self.menu__tp_sett_lb_sz = TTooltip(langstring("menu__sett_tooltip_lb_size"), text_size=20, pos=(toPxX(80), toPxY(56)))
+        self.menu__tp_sett_tx_sz = TTooltip(langstring("menu__sett_tooltip_tx_size"), text_size=20, pos=(toPxX(80), toPxY(64)))
+        self.menu__tp_sett_vernf = TTooltip(langstring("menu__sett_tooltip_ver_nf"),  text_size=20, pos=(toPxX(80), toPxY(72)))
+        self.menu__tp_sett_tltp  = TTooltip(langstring("menu__sett_tooltip_tooltip"), text_size=20, pos=(toPxX(80), toPxY(80)))
 
     def get_element(self, element: str):
         """Returns specific field/attribute given its string"""

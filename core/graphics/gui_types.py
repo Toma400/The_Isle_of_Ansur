@@ -230,11 +230,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     # hovering & clicking events
                     if mouseColliderPx(gt2lu[0], gt2lu[1], gt2lu[2], gt2lu[3]):
                         put_text(screen, text=langstring("menu__sett_tech_legacy"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=12, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_legu")
                         if mouseRec(pg_events):
                             set_change("legacy_unpacking")
 
                     elif mouseColliderPx(gt2gl[0], gt2gl[1], gt2gl[2], gt2gl[3]):
                         put_text(screen, text=langstring("menu__sett_tech_log_limit"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_loglm")
                         if mouseRec(pg_events):
                             set_change("log_limit", 1)
                         elif mouseRec(pg_events, 3):
@@ -242,11 +244,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     elif mouseColliderPx(gt2gr[0], gt2gr[1], gt2gr[2], gt2gr[3]):
                         put_text(screen, text=langstring("menu__sett_tech_log_rv"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=28, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_logrv")
                         if mouseRec(pg_events):
                             logs_deleting()
 
                     elif mouseColliderPx(gt2lb[0], gt2lb[1], gt2lb[2], gt2lb[3]):
                         put_text(screen, text=langstring(f"menu__sett_tech_listbox"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=36, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_lbox")
                         if mouseRec(pg_events):
                             set_change("listbox_mode")
                         if mouseRec(pg_events, 3):
@@ -254,6 +258,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     elif mouseColliderPx(gt2la[0], gt2la[1], gt2la[2], gt2la[3]) and lbmode == "proportional":
                         put_text(screen, text=langstring("menu__sett_tech_lb_amount"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=44, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_lb_am")
                         if mouseRec(pg_events):
                             set_change("listbox_amount", 1)
                         if mouseRec(pg_events, 3):
@@ -263,6 +268,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     elif mouseColliderPx(gt2ls[0], gt2ls[1], gt2ls[2], gt2ls[3]) and lbmode == "sized":
                         put_text(screen, text=langstring("menu__sett_tech_lb_size"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=52, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_lb_sz")
                         if mouseRec(pg_events):
                             set_change("listbox_size", 0.1)
                         if mouseRec(pg_events, 3):
@@ -272,6 +278,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     elif mouseColliderPx(gt2ts[0], gt2ts[1], gt2ts[2], gt2ts[3]):
                         put_text(screen, text=langstring("menu__sett_tech_text_size"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=60, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_tx_sz")
                         if mouseRec(pg_events):
                             set_change("text_size", 0.1)
                         elif mouseRec(pg_events, 3):
@@ -281,11 +288,13 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     elif mouseColliderPx(gt2vn[0], gt2vn[1], gt2vn[2], gt2vn[3]):
                         put_text(screen, text=langstring("menu__sett_tech_ver_notif"), font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=68, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_vernf")
                         if mouseRec(pg_events):
                             set_change("version_checker")
 
                     elif mouseColliderPx(gt2tt[0], gt2tt[1], gt2tt[2], gt2tt[3]):
                         put_text(screen, text=langstring("menu__sett_tech_tooltip"),   font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=76, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("menu__tp_sett_tltp")
                         if mouseRec(pg_events):
                             set_change("tooltip")
 
