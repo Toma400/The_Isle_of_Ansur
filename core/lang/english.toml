@@ -65,6 +65,11 @@ ccrt__dir_check            = "Use file"
 ccrt__lore_check           = "Browse default"
 ccrt__av_clear             = "Clear"
 
+ccrt__tooltip_name         = "Write name of your choice of pick one based on your race and gender from the list on the left"
+ccrt__tooltip_av_lib       = "Pick avatar of your race - use arrows to browse library. If greyed out, your race currently doesn't have avatars"
+ccrt__tooltip_av_url       = "Download image from URL. Provided URL needs to lead to image of JPG/PNG/WEBP format (URL is correct if extension is in it)"
+ccrt__tooltip_av_dir       = "Copy image from your computer. Provided path should be absolute and contain file with extension name. JPG/PNG are supported"
+
 ccrt__name_exists          = "This name is already used"
 ccrt__sett_hardcore        = "Permadeath"
 ccrt__sett_hardcore_descr  = "Will lock the game after death, not allowing you to load it."

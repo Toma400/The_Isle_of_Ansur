@@ -65,6 +65,11 @@ ccrt__dir_check            = "Użyj pliku"
 ccrt__lore_check           = "Przeglądaj domyślne"
 ccrt__av_clear             = "Wyczyść"
 
+ccrt__tooltip_name         = "Wpisz imię lub wybierz z listy po lewej"
+ccrt__tooltip_av_lib       = "Wybierz awatar swojej rasy - użyj strzałek by przeglądać. Jeśli opcja jest wyszarzona, twoja rasa nie posiada awatarów"
+ccrt__tooltip_av_url       = "Pobierz obraz z linku. Link powinien prowadzić do obrazu JPG/PNG/WEBP (link jest poprawny jeśli zawiera rozszerzenie)"
+ccrt__tooltip_av_dir       = "Kopiuj obraz z komputera. Ścieżka powinna być kompletna i zawierać obraz wraz z rozszerzeniem. Wspierane są formaty JPG i PNG"
+
 ccrt__name_exists          = "To imię już jest w użyciu"
 ccrt__sett_hardcore        = "Permanentna śmierć"
 ccrt__sett_hardcore_descr  = "Zablokuje grę po śmierci, uniemożliwiając Ci załadowanie jej."

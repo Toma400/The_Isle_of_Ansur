@@ -46,6 +46,13 @@ class GUI_Helper:
         self.menu__tp_pack_mvu   = TTooltip(langstring("pack__tooltip_mvu"),    text_size=20, pos=(toPxX(90), toPxY(19)))
         self.menu__tp_pack_mvd   = TTooltip(langstring("pack__tooltip_mvd"),    text_size=20, pos=(toPxX(90), toPxY(25)))
 
+        self.ccrt__tp_name   = TTooltip(langstring("ccrt__tooltip_name"),        text_size=20, pos=(toPxX(84), toPxY(16)))
+        self.ccrt__tp_av_lib = TTooltip(langstring("ccrt__tooltip_av_lib"),      text_size=20, pos=(toPxX(84), toPxY(49)))
+        self.ccrt__tp_av_url = TTooltip(langstring("ccrt__tooltip_av_url"),      text_size=20, pos=(toPxX(84), toPxY(59)))
+        self.ccrt__tp_av_dir = TTooltip(langstring("ccrt__tooltip_av_dir"),      text_size=20, pos=(toPxX(84), toPxY(69)))
+        self.ccrt__tp_pdeath = TTooltip(langstring("ccrt__sett_hardcore_descr"), text_size=20, pos=(toPxX(30), toPxY(14)))
+        self.ccrt__tp_save   = TTooltip(langstring("ccrt__end_save_warn"),       text_size=20, pos=(toPxX(58), toPxY(69)))
+
     def get_element(self, element: str):
         """Returns specific field/attribute given its string"""
         return self.__getattribute__(element)

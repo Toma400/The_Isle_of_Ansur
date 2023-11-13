@@ -427,7 +427,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     av_ubutton  = put_text(screen, langstring("ccrt__url_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=55, colour=fCol.ENABLED.value)
                     av_fbutton  = put_text(screen, langstring("ccrt__dir_check"),  font_cat="menu", size=30,                  pos_x=84, pos_y=65, colour=fCol.ENABLED.value)
                     av_clear    = put_text(screen, langstring("ccrt__av_clear"),   font_cat="menu", size=30,                  pos_x=84, pos_y=75, colour=fCol.ENABLED.value)
-                    put_text              (screen, langstring("ccrt__name_input"), font_cat="menu", size=30,                  pos_x=84, pos_y=12, colour=fCol.ENABLED.value)
+                    name_hint   = put_text(screen, langstring("ccrt__name_input"), font_cat="menu", size=30,                  pos_x=84, pos_y=12, colour=fCol.ENABLED.value)
                     put_text              (screen, "_" * 41,                       font_cat="menu", size=70, align_x="right", pos_x=3,  pos_y=34, colour=fCol.DISABLED.value)
                     put_text              (screen, "_" * 41,                       font_cat="menu", size=70, align_x="right", pos_x=3,  pos_y=73, colour=fCol.DISABLED.value)
 
@@ -444,24 +444,29 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     if mouseColliderPx(av_ubutton[0], av_ubutton[1], av_ubutton[2], av_ubutton[3]) and av_url is not None:
                         put_text(screen, langstring("ccrt__url_check"), font_cat="menu", size=30, pos_x=84, pos_y=55, colour=fCol.HOVERED.value)
+                        dyn_screen.tooltip = "ccrt__tp_av_url"
                         if mouseRec(pg_events):
                             av = urlAvatar(av_url)
                             if av is False: log.error(f"Couldn't save URL: {av_url} as avatar")
 
                     elif mouseColliderPx(av_fbutton[0], av_fbutton[1], av_fbutton[2], av_fbutton[3]) and av_path is not None:
                         put_text(screen, langstring("ccrt__dir_check"), font_cat="menu", size=30, pos_x=84, pos_y=65, colour=fCol.HOVERED.value)
+                        dyn_screen.tooltip = "ccrt__tp_av_dir"
                         if mouseRec(pg_events):
                             av = pathAvatar(av_path)
                             if av is False: log.error(f"Couldn't save image from path: {av_path} as avatar")
 
-                    elif mouseColliderPx(av_dbutton[0], av_dbutton[1], av_dbutton[2], av_dbutton[3]) and avs:
-                        put_text(screen, langstring("ccrt__lore_check"), font_cat="menu", size=30, pos_x=84, pos_y=45, colour=fCol.HOVERED.value)
-                        if mouseRec(pg_events):
-                            av = loreAvatar(avs, avs_isn)
-                            if av is False: log.error(f"Couldn't load image from list: {avs}, index: {avs_isn} as avatar")
+                    elif mouseColliderPx(av_dbutton[0], av_dbutton[1], av_dbutton[2], av_dbutton[3]):
+                        dyn_screen.tooltip = "ccrt__tp_av_lib"
+                        if avs: # list of avatars is not empty
+                            put_text(screen, langstring("ccrt__lore_check"), font_cat="menu", size=30, pos_x=84, pos_y=45, colour=fCol.HOVERED.value)
+                            if mouseRec(pg_events):
+                                av = loreAvatar(avs, avs_isn)
+                                if av is False: log.error(f"Couldn't load image from list: {avs}, index: {avs_isn} as avatar")
 
                     elif mouseColliderPx(av_left[0], av_left[1], av_left[2], av_left[3]) and avs:
                         put_text(screen, "<", font_cat="menu", size=30, pos_x=62, pos_y=45, colour=fCol.HOVERED.value)
+                        dyn_screen.tooltip = ""
                         if mouseRec(pg_events):
                             with open(f"{av_dir}.txt", "w") as isn:
                                 if avs_isn + 1 == len(avs):
@@ -473,6 +478,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     elif mouseColliderPx(av_right[0], av_right[1], av_right[2], av_right[3]) and avs:
                         put_text(screen, ">", font_cat="menu", size=30, align_x="right", pos_x=18, pos_y=45, colour=fCol.HOVERED.value)
+                        dyn_screen.tooltip = ""
                         if mouseRec(pg_events):
                             with open(f"{av_dir}.txt", "w") as isn:
                                 if avs_isn > 0:
@@ -484,8 +490,15 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     elif mouseColliderPx(av_clear[0], av_clear[1], av_clear[2], av_clear[3]):
                         put_text(screen, langstring("ccrt__av_clear"), font_cat="menu", size=30, pos_x=84, pos_y=75, colour=fCol.HOVERED.value)
+                        dyn_screen.tooltip = ""
                         if mouseRec(pg_events):
                             if exists(f"{av_dir}.png"): os.remove(f"{av_dir}.png")
+
+                    elif mouseColliderPx(name_hint[0], name_hint[1], name_hint[2], name_hint[3]):
+                        dyn_screen.tooltip = "ccrt__tp_name"
+
+                    else:
+                        dyn_screen.tooltip = ""
 
                 case "point_distribution":
                     if dyn_screen.journey.stage != 4:
@@ -553,20 +566,19 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     if dyn_screen.journey.stage != 7:
                         dyn_screen.journey.stage     = 7
                         dyn_screen.journey.stages[7] = True
-                        dyn_screen.put_pgui("char__tb_pdth")
 
                     match dyn_screen.journey.settings["permadeath"]:
                         case True: pdeath_col = fCol.ENABLED.value
                         case _:    pdeath_col = fCol.DISABLED.value
                     pdeath = put_text(screen, text=langstring("ccrt__sett_hardcore"), font_cat="menu", size=30, pos_x=30, pos_y=10, colour=pdeath_col)
                     if mouseColliderPx(pdeath[0], pdeath[1], pdeath[2], pdeath[3]):
+                        dyn_screen.draw("ccrt__tp_pdeath")
                         if mouseRec(pg_events):
                             dyn_screen.journey.settings["permadeath"] = not dyn_screen.journey.settings["permadeath"]
 
                 case "summary":
                     if dyn_screen.journey.stage != 8:
                         dyn_screen.journey.stage = 8
-                        dyn_screen.put_pgui("char__temp_warn")
 
                     put_text(screen, text=langstring("ccrt__end_name"),                                  font_cat="menu", size=30, pos_x=40, pos_y=10, colour=fCol.ENABLED.value)
                     put_text(screen, text=dyn_screen.journey.inidata["name"],                            font_cat="menu", size=30, pos_x=50, pos_y=10, colour=fCol.DISABLED.value)
@@ -584,6 +596,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     # set variable later on and make new render when hovered && ifs for getting around
                     if mouseColliderPx(sv_bt[0], sv_bt[1], sv_bt[2], sv_bt[3]):
                         put_text(screen, text=langstring("ccrt__end_save"), font_cat="menu", size=30, pos_x=58, pos_y=65, colour=fCol.HOVERED.value)
+                        dyn_screen.draw("ccrt__tp_save")
                         if mouseRec(pg_events):
                             dyn_screen.journey.init()
                             saveAvatar(dyn_screen.journey.inidata['name']) # should be after init()
