@@ -12,6 +12,7 @@ frame_cr_ld = "frame_left_down.png"
 frame_cr_ru = "frame_right_up.png"
 frame_cr_rd = "frame_right_down.png"
 clock       = "clock.png"
+tooltip     = ""
 
 [fonts.colours]
 disabled   = "#43403E"
@@ -29,3 +30,15 @@ font_size = 1.0   # fallback value (if not specificed precisely later)
 [fonts.menu]
 _         = ["ferrum_extended.otf", "1.0"]
 polish    = ["ferrum_extended.otf", "1.0"]
+
+[fonts.tooltip]
+_         = ["ferrum_extended.otf", "1.0"]
+polish    = ["ferrum_extended.otf", "1.0"]
+
+[tooltip.colours]
+background = "#000000"
+text       = "#FFFFFF"
+
+[tooltip.general]
+padding_side = 2
+padding_tops = 1

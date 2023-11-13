@@ -13,4 +13,5 @@ def loadTOML(fpath: str) -> dict | list:
         return toml.loads(tf.read())
 
 def loadJSON(fpath: str) -> dict | list:
-    return json.load(fpath)
+    with open(fpath, encoding="utf-8") as jf:
+        return json.loads(jf)
