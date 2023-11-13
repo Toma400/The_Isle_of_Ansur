@@ -78,10 +78,10 @@ class Screen:
         self.pobjects.restart(self.pgui, self.pgui2)
         return self.screen
 
-    def soft_reset(self):
+    def soft_reset(self, reg=True, pgui=True):
         """soft refresh of screen | updates some elements, for example translations"""
-        self.objects.restart(self.panorama)
-        self.pobjects.restart(self.pgui, self.pgui2)
+        if reg:  self.objects.restart(self.panorama)
+        if pgui: self.pobjects.restart(self.pgui, self.pgui2)
 
     def gui(self, value: str):
         return self.objects.get_element(value)

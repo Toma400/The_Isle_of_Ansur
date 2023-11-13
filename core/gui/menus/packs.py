@@ -102,6 +102,7 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             removePacks() # refresh/reload from here
             unpackPacks()
             verifyPacks()
+            dyn_screen.soft_reset(reg=False)
             dyn_screen.set_pgui_element("pack__zip_list", packOrder())
 
     elif pack_selected is not None:
