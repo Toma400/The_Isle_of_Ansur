@@ -26,8 +26,7 @@ class GUI_Helper:
         self.menu__gh_panorama   = Image(path=panorama[0],                     file=panorama[1],                     pos=(0, 0)).full()
         # ---
         self.loc__gh_background  = Image(path=bg_handler("location", True)[0], file=bg_handler("location", True)[1], pos=(0, 0)).full()
-        # ---
-        # Tooltips:
+        # Tooltips (Settings):
         self.menu__tp_sett_res   = TTooltip(langstring("menu__sett_tooltip_res"),     text_size=20, pos=(toPxX(80), toPxY(16)))
         self.menu__tp_sett_lang  = TTooltip(langstring("menu__sett_tooltip_lang"),    text_size=20, pos=(toPxX(80), toPxY(24)))
         self.menu__tp_sett_music = TTooltip(langstring("menu__sett_tooltip_music"),   text_size=20, pos=(toPxX(80), toPxY(32)))
@@ -40,18 +39,18 @@ class GUI_Helper:
         self.menu__tp_sett_tx_sz = TTooltip(langstring("menu__sett_tooltip_tx_size"), text_size=20, pos=(toPxX(80), toPxY(64)))
         self.menu__tp_sett_vernf = TTooltip(langstring("menu__sett_tooltip_ver_nf"),  text_size=20, pos=(toPxX(80), toPxY(72)))
         self.menu__tp_sett_tltp  = TTooltip(langstring("menu__sett_tooltip_tooltip"), text_size=20, pos=(toPxX(80), toPxY(80)))
-
+        # Tooltips (MMM):
         self.menu__tp_load_load  = TTooltip(langstring("ccrt__end_save_warn"),  text_size=20, pos=(toPxX(91), toPxY(14)))
         self.menu__tp_pack_db    = TTooltip(langstring("pack__tooltip_switch"), text_size=20, pos=(toPxX(90), toPxY(14)))
         self.menu__tp_pack_mvu   = TTooltip(langstring("pack__tooltip_mvu"),    text_size=20, pos=(toPxX(90), toPxY(19)))
         self.menu__tp_pack_mvd   = TTooltip(langstring("pack__tooltip_mvd"),    text_size=20, pos=(toPxX(90), toPxY(25)))
-
-        self.ccrt__tp_name   = TTooltip(langstring("ccrt__tooltip_name"),        text_size=20, pos=(toPxX(84), toPxY(16)))
-        self.ccrt__tp_av_lib = TTooltip(langstring("ccrt__tooltip_av_lib"),      text_size=20, pos=(toPxX(84), toPxY(49)))
-        self.ccrt__tp_av_url = TTooltip(langstring("ccrt__tooltip_av_url"),      text_size=20, pos=(toPxX(84), toPxY(59)))
-        self.ccrt__tp_av_dir = TTooltip(langstring("ccrt__tooltip_av_dir"),      text_size=20, pos=(toPxX(84), toPxY(69)))
-        self.ccrt__tp_pdeath = TTooltip(langstring("ccrt__sett_hardcore_descr"), text_size=20, pos=(toPxX(30), toPxY(14)))
-        self.ccrt__tp_save   = TTooltip(langstring("ccrt__end_save_warn"),       text_size=20, pos=(toPxX(58), toPxY(69)))
+        # Tooltips (Character creation):
+        self.ccrt__tp_name       = TTooltip(langstring("ccrt__tooltip_name"),        text_size=20, pos=(toPxX(84), toPxY(16)))
+        self.ccrt__tp_av_lib     = TTooltip(langstring("ccrt__tooltip_av_lib"),      text_size=20, pos=(toPxX(84), toPxY(49)))
+        self.ccrt__tp_av_url     = TTooltip(langstring("ccrt__tooltip_av_url"),      text_size=20, pos=(toPxX(84), toPxY(59)))
+        self.ccrt__tp_av_dir     = TTooltip(langstring("ccrt__tooltip_av_dir"),      text_size=20, pos=(toPxX(84), toPxY(69)))
+        self.ccrt__tp_pdeath     = TTooltip(langstring("ccrt__sett_hardcore_descr"), text_size=20, pos=(toPxX(30), toPxY(14)))
+        self.ccrt__tp_save       = TTooltip(langstring("ccrt__end_save_warn"),       text_size=20, pos=(toPxX(58), toPxY(69)))
 
     def get_element(self, element: str):
         """Returns specific field/attribute given its string"""

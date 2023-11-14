@@ -36,7 +36,7 @@ _         = ["ferrum_extended.otf", "1.0"]
 polish    = ["ferrum_extended.otf", "1.0"]
 
 [tooltip.colours]
-background = "#7f6f55"
+background = "#7f6f55" # lack of this value will make tooltip transparent
 text       = "#4E3510"
 
 [tooltip.general]

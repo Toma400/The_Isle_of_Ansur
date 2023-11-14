@@ -14,7 +14,6 @@ cycle_name   = "Between Shadows and Light"
 cycle_number = "0"
 
 # TECHNICAL
-save_system = "1.0"
 vanilla_modules = [
     "ansur"
 ]

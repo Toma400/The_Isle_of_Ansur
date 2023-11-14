@@ -33,7 +33,7 @@ class TTooltip:
         tooltip_bg          = f"themes/{getTheme()}/assets/{get_theme_file()['backgrounds']['tooltip']}"
         if not exists(f"{gpath}/{tooltip_bg}"):
             log.error(f"Couldn't find theme image of path: {tooltip_bg}. Loading default one...")
-            tooltip_bg = "core/assets/visuals/test_img_0.png"
+            tooltip_bg = "core/assets/visuals/tooltip_bg.png"
         tooltip_bg_res      = self._resize(tooltip_bg, (self._text_size[0] + self._theme_general["padding_side"]*2,  # width/height is text size + padding
                                                         self._text_size[1] + self._theme_general["padding_tops"]*2))
         self._bg_img        = imgLoad(tooltip_bg_res)
@@ -67,12 +67,14 @@ class TTooltip:
                                             rel_pos[1] - self._bg.get_height())
 
             if self._ev_pos is not None: # equivalent to 'is ev_pos still None?'
-                # rect blit
-                screen.blit(self._bg, dest=self._ev_pos)
-                # text blit
-                render = self._fontobj.render(self._text, True,
-                                              self._theme_colour["text"],
-                                              self._theme_colour["background"])
+                if "background" in self._theme_colour:
+                    screen.blit(self._bg, dest=self._ev_pos) # frame
+                    render = self._fontobj.render(self._text, True,
+                                                  self._theme_colour["text"],
+                                                  self._theme_colour["background"])
+                else:
+                    render = self._fontobj.render(self._text, True,
+                                                  self._theme_colour["text"])
                 screen.blit(render, (self._ev_pos[0] + self._theme_general["padding_side"],
                                      self._ev_pos[1] + self._theme_general["padding_tops"]))
             else:
