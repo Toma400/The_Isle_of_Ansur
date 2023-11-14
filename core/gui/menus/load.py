@@ -71,9 +71,9 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             dyn_screen.journey.name = game_loaded
             dyn_screen.set_pgui_element("load__descr", loadDescr(game_loaded))
             if exists(f"saves/{game_loaded}/buffer/avatar.png"):
-                dyn_screen.set_pgui_element("load__avatar", imgLoad(f"saves/{game_loaded}/buffer/avatar.png"))
+                dyn_screen.set_pgui_element("load__avatar", imgLoad(f"saves/{game_loaded}/buffer/avatar.png", alpha=True))
             else:
-                dyn_screen.set_pgui_element("load__avatar", imgLoad(PGUI_Helper.def_img))
+                dyn_screen.set_pgui_element("load__avatar", imgLoad(PGUI_Helper.def_img, alpha=True))
         put_text(screen, text=langstring("load__remove"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=22, colour=fCol.ENABLED.value)
 
     # GUI EXPECTED

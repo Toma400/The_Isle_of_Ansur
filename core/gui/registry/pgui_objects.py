@@ -25,7 +25,7 @@ class PGUI_Helper:
 
     lb | listbox (later element type)
     """
-    def_img = "core/assets/visuals/test_img_0.png"
+    def_img = "core/assets/visuals/empty.png"
     clock   = bg_handler('clock')
 
     def __init__(self, manager, manag2):
@@ -40,7 +40,7 @@ class PGUI_Helper:
         self.char__ti_name   = UITextEntryLine(                                                  relative_rect=pygame.Rect((toPxX(62), toPxY(11)), (toPxX(20), toPxY(5))),  manager=manager)
         self.char__ti_av_url = UITextEntryLine(                                                  relative_rect=pygame.Rect((toPxX(62), toPxY(54)), (toPxX(20), toPxY(5))),  manager=manager)
         self.char__ti_av_dir = UITextEntryLine(                                                  relative_rect=pygame.Rect((toPxX(62), toPxY(64)), (toPxX(20), toPxY(5))),  manager=manager)
-        self.char__ig_avatar = UIImage        (image_surface=imgLoad(self.def_img),              relative_rect=pygame.Rect((toPxX(40), toPxY(44)), (toPxX(20), toPxX(20))), manager=manager)
+        self.char__ig_avatar = UIImage        (image_surface=imgLoad(self.def_img, alpha=True),  relative_rect=pygame.Rect((toPxX(40), toPxY(44)), (toPxX(20), toPxX(20))), manager=manager)
         # ---
         self.char__lb_attrs  = UISelectionList(item_list=[],                                     relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(20), toPxX(10))), manager=manager)
         self.char__lb_skills = UISelectionList(item_list=[],                                     relative_rect=pygame.Rect((toPxX(40), toPxX(17)), (toPxX(20), toPxX(20))), manager=manager)
@@ -56,7 +56,7 @@ class PGUI_Helper:
         # ---
         self.load__saves     = UISelectionList(item_list=[],                                     relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
         self.load__descr     = UITextBox      (html_text="",                                     relative_rect=pygame.Rect((toPxX(40), toPxY(40)), (toPxX(52), toPxY(40))), manager=manager)
-        self.load__avatar    = UIImage        (image_surface=imgLoad(self.def_img),              relative_rect=pygame.Rect((toPxX(40), toPxY(10)), (toPxX(15), toPxX(15))), manager=manager)
+        self.load__avatar    = UIImage        (image_surface=imgLoad(self.def_img, alpha=True),  relative_rect=pygame.Rect((toPxX(40), toPxY(10)), (toPxX(15), toPxX(15))), manager=manager)
         # ---
         self.pack__zip_list  = UISelectionList(item_list=[],                                     relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
         self.pack__descr     = UITextBox      (html_text="",                                     relative_rect=pygame.Rect((toPxX(50), toPxY(45)), (toPxX(40), toPxY(30))), manager=manager)

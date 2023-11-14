@@ -413,9 +413,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
                     saves = listSaves()
                     if exists(f"{av_dir}.png"):
-                        dyn_screen.set_pgui_element("char__ig_avatar", imgLoad(f"{av_dir}.png"))
+                        dyn_screen.set_pgui_element("char__ig_avatar", imgLoad(f"{av_dir}.png", alpha=True))
                     else:
-                        dyn_screen.set_pgui_element("char__ig_avatar", imgLoad(PGUI_Helper.def_img))
+                        dyn_screen.set_pgui_element("char__ig_avatar", imgLoad(PGUI_Helper.def_img, alpha=True))
 
                     name_choice = dyn_screen.get_pgui_choice("char__ti_name")
                     name_pick   = dyn_screen.get_pgui_choice("char__lb_name")
