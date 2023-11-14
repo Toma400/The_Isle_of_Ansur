@@ -1,6 +1,6 @@
 from core.file_system.parsers import loadYAML
 from core.data.pack_manag.id import absoluteID
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 import logging as log
 import os
 
@@ -32,8 +32,10 @@ def urlAvatar(url: str) -> bool:
             raw.close()
 
             if ext != ".png":
-                cv = Image.open(f'{temp_folder}{ext}')
-                cv.save(f"{temp_folder}.png")
+                try:
+                    cv = Image.open(f'{temp_folder}{ext}')
+                    cv.save(f"{temp_folder}.png")
+                except UnidentifiedImageError: return False
             return True
         return False
 
