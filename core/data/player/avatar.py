@@ -1,6 +1,7 @@
 from core.file_system.parsers import loadYAML
 from core.data.pack_manag.id import absoluteID
 from PIL import Image
+import logging as log
 import os
 
 temp_folder = "_temp/img/avatar/tmp" # without extension
@@ -70,24 +71,26 @@ def loreAvatars(rid: str, gid: str):
     if os.path.exists(rav_path):
         found    = False
         rjs      = loadYAML(rav_path)
-        rjs_keys = rjs.keys()
-        for rjs_key in rjs_keys:
-            if absoluteID(rjs_key) == gid:
-                avatars = rjs[rjs_key]
-                found   = True
-            if rjs_key != "strict":
-                ngender.append(rjs[rjs_key])
+        if rjs is not None: # prevents syntax errors
+            rjs_keys = rjs.keys()
+            for rjs_key in rjs_keys:
+                if absoluteID(rjs_key) == gid:
+                    avatars = rjs[rjs_key]
+                    found   = True
+                if rjs_key != "strict":
+                    ngender.append(rjs[rjs_key])
 
-        if found is False:    # if key not in -rjs-, use all avatars for race available
-            strict = False
-            if "strict" in rjs_keys:
-                if rjs["strict"] is True:
-                    strict = True
+            if found is False:    # if key not in -rjs-, use all avatars for race available
+                strict = False
+                if "strict" in rjs_keys:
+                    if rjs["strict"] is True:
+                        strict = True
 
-            if not strict:
-                for val in ngender:
-                    for av in val:
-                        avatars.append(av)
+                if not strict:
+                    for val in ngender:
+                        for av in val:
+                            avatars.append(av)
+        else: log.error(f"Couldn't read file contents of: {rav_path}. Please check the file for any syntax errors.")
 
     if avatars: # if not empty
         for avatar in avatars:

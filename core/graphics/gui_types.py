@@ -138,7 +138,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             # submenu handler
             match guitype[1]:
                 case "settings_general":
-                    put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour=fCol.HOVERED.value)
+                    put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour=fCol.SELECTED.value)
 
                     gt1rs = put_text(screen, text=langstring("menu__sett_general_res"),     font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=12, colour=fCol.ENABLED.value)
                     gt1ln = put_text(screen, text=langstring("menu__sett_general_lang"),    font_cat="menu", size=30, align_x="right", pos_x=20, pos_y=20, colour=fCol.ENABLED.value)
@@ -198,7 +198,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                                 set_change("sound", f"set={dfsd}"); fg_events.append("SNDV_CHG")
 
                 case "settings_tech":
-                    put_text(screen, text=langstring("menu__sett_tech"), font_cat="menu", size=30, pos_x=5, pos_y=22, colour=fCol.HOVERED.value)
+                    put_text(screen, text=langstring("menu__sett_tech"), font_cat="menu", size=30, pos_x=5, pos_y=22, colour=fCol.SELECTED.value)
                     lbmode = scx("lbmd")
                     if lbmode == "sized": sm1col = fCol.DISABLED.value; sm2col = fCol.ENABLED.value
                     else:                 sm1col = fCol.ENABLED.value;  sm2col = fCol.DISABLED.value
