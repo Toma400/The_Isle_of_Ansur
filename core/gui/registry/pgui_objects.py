@@ -59,7 +59,8 @@ class PGUI_Helper:
         self.load__avatar    = UIImage        (image_surface=imgLoad(self.def_img, alpha=True),  relative_rect=pygame.Rect((toPxX(40), toPxY(10)), (toPxX(15), toPxX(15))), manager=manager)
         # ---
         self.pack__zip_list  = UISelectionList(item_list=[],                                     relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
-        self.pack__descr     = UITextBox      (html_text="",                                     relative_rect=pygame.Rect((toPxX(50), toPxY(45)), (toPxX(40), toPxY(30))), manager=manager)
+        self.pack__descr     = UITextBox      (html_text="",                                     relative_rect=pygame.Rect((toPxX(40), toPxY(40)), (toPxX(52), toPxY(40))), manager=manager)
+        self.pack__logo      = UIImage        (image_surface=imgLoad(self.def_img, alpha=True),  relative_rect=pygame.Rect((toPxX(40), toPxY(10)), (toPxX(15), toPxX(15))), manager=manager)
         # ---
         self.loc__image       = UIImage       (image_surface=imgLoad(self.def_img),              relative_rect=pygame.Rect((toPxX(14), toPxY(5)),  (toPxX(72), toPxY(45))), manager=manager)
         self.loc__frame_up    = UIImage       (image_surface=imgLoad(bg_handler('frame_up')),    relative_rect=pygame.Rect((toPxX(14), toPxY(5)),  (toPxX(72), toPxY(2))),  manager=manager)

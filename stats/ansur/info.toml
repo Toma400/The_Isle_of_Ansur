@@ -1,6 +1,7 @@
 name    = "Isle of Ansur"
 credits = "Toma400"
 url     = "linktr.ee/toma400"
+logo    = "ioa_logo.png"
 version = "0.3b"
 
 description  = '''

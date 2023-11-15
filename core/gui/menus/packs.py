@@ -1,5 +1,6 @@
-from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr
+from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr, imgLoad
 from core.file_system.theme_manag import FontColour as fCol
+from core.gui.registry.pgui_objects import PGUI_Helper
 from core.data.pack_manag.packs import removePacks, unpackPacks, verifyPacks, getErrs, getDisabled
 from core.data.pack_manag.info import searchInfo
 from core.data.pack_manag.id import zipToID
@@ -26,8 +27,8 @@ def packOrder() -> list[(str, str)]:
             ret.append((dis + pack.replace(".zip", "").replace("_", " ").title(), pack))
     return ret
 
-def packDescr(pack_id: str) -> str:
-    inf = searchInfo(pack_id)
+def packDescr(pack_id: str, overwrite=None) -> str:
+    inf = searchInfo(pack_id) if overwrite is None else overwrite
     ret = ""
     if inf is not None:
         if "name" in inf:
@@ -62,6 +63,7 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     dyn_screen.put_pgui("pack__zip_list")
     dyn_screen.put_pgui("pack__descr")
+    dyn_screen.put_pgui("pack__logo")
 
     if not dyn_screen.get_pgui_options("pack__zip_list"): # initial set (to 'lag-prone' update, set pack__zip_list to [] again)
         if os.path.exists("core/data/pack_manag/pack_order.yaml"):
@@ -71,7 +73,20 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     pack_disabled_list = getDisabled()
 
     if pack_selected is not None:
-        dyn_screen.set_pgui_element("pack__descr", packDescr(zipToID(pack_selected)))
+        inf = searchInfo(zipToID(pack_selected), union=True)
+        dsc = None
+        avt = False
+        if inf is not None:
+            dsc = inf[1] # overwrites for later packDescr use
+            if "logo" in dsc:
+                logo_path = f"{inf[0]}/{zipToID(pack_selected)}/assets/{dsc['logo']}"
+                if exists(logo_path):
+                    dyn_screen.set_pgui_element("pack__logo", imgLoad(logo_path, alpha=True))
+                    avt = True
+        if avt is False:
+            dyn_screen.set_pgui_element("pack__logo", imgLoad(PGUI_Helper.def_img, alpha=True))
+
+        dyn_screen.set_pgui_element("pack__descr", packDescr(zipToID(pack_selected), dsc))
         put_text(screen, text=langstring("pack__switch"),    font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=10, colour=fCol.ENABLED.value)
         put_text(screen, text=langstring("pack__move_up"),   font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=15, colour=fCol.ENABLED.value)
         put_text(screen, text=langstring("pack__move_down"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=20, colour=fCol.ENABLED.value)

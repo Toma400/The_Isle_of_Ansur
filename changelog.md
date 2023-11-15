@@ -24,6 +24,8 @@
 > - Mod Manager Menu (MMM)
 >   - Introduces Mod Loading Order (MLO) and way to change it
 >   - Allows for disabling zip packs (results in them not unpacking)
+>   - You can now make logo of your mod visible in-game
+>     (`logo` key in info.toml file)
 > - Quality-of-Life
 >   - Tooltip now appears whenever you hover on GUI elements having it
 >     - You can turn tooltips in settings
