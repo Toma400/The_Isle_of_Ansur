@@ -59,7 +59,8 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     pdb = put_text(screen, text=langstring("pack__switch"),             font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=10, colour=fCol.DISABLED.value) # 'disable'
     pmu = put_text(screen, text=langstring("pack__move_up"),            font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=15, colour=fCol.DISABLED.value) # 'order'
     pmd = put_text(screen, text=langstring("pack__move_down"),          font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=20, colour=fCol.DISABLED.value)
-    prv = put_text(screen, text=langstring("pack__remove"),             font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=25, colour=fCol.DISABLED.value) # 'removal'
+    pmw = put_text(screen, text=langstring("pack__url"),                font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=25, colour=fCol.DISABLED.value) # 'url'
+    prv = put_text(screen, text=langstring("pack__remove"),             font_cat="menu", size=30, align_x="right",  pos_x=10, pos_y=30, colour=fCol.DISABLED.value) # 'removal'
 
     dyn_screen.put_pgui("pack__zip_list")
     dyn_screen.put_pgui("pack__descr")
@@ -74,6 +75,7 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     if pack_selected is not None:
         inf = searchInfo(zipToID(pack_selected), union=True)
+        urc = fCol.DISABLED.value
         dsc = None
         avt = False
         if inf is not None:
@@ -83,6 +85,8 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 if exists(logo_path):
                     dyn_screen.set_pgui_element("pack__logo", imgLoad(logo_path, alpha=True))
                     avt = True
+            if "url" in dsc:
+                urc = fCol.ENABLED.value
         if avt is False:
             dyn_screen.set_pgui_element("pack__logo", imgLoad(PGUI_Helper.def_img, alpha=True))
 
@@ -90,7 +94,8 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         put_text(screen, text=langstring("pack__switch"),    font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=10, colour=fCol.ENABLED.value)
         put_text(screen, text=langstring("pack__move_up"),   font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=15, colour=fCol.ENABLED.value)
         put_text(screen, text=langstring("pack__move_down"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=20, colour=fCol.ENABLED.value)
-        put_text(screen, text=langstring("pack__remove"),    font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=25, colour=fCol.DISABLED.value)
+        put_text(screen, text=langstring("pack__url"),       font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=25, colour=urc)
+        put_text(screen, text=langstring("pack__remove"),    font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=30, colour=fCol.DISABLED.value)
         if pack_selected in pack_disabled_list:
             put_text(screen, text=langstring("pack__disabled"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=40, colour=fCol.WARNING.value)
 
@@ -172,6 +177,15 @@ def packMenu(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         for pck in current:
                             yf_out.write(f"- {pck}\n")
                     dyn_screen.set_pgui_element("pack__zip_list", packOrder())
+
+        elif mouseColliderPx(pmw[0], pmw[1], pmw[2], pmw[3]):
+            inf = searchInfo(zipToID(pack_selected))
+            if inf is not None:
+                if "url" in inf:
+                    put_text(screen, text=langstring("pack__url"), font_cat="menu", size=30, align_x="right", pos_x=10, pos_y=25, colour=fCol.HOVERED.value)
+                    if mouseRec(pg_events):
+                        import webbrowser
+                        webbrowser.open(inf["url"], new=0, autoraise=True)
 
         else:
             dyn_screen.tooltip = ""

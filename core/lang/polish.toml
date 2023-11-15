@@ -101,6 +101,7 @@ pack__switch          = "Wyłącz/włącz"
 pack__disabled        = "Paczka wyłączona"
 pack__move_up         = "Przenieś w górę"
 pack__move_down       = "Przenieś w dół"
+pack__url             = "Strona internetowa"
 pack__remove          = "Usuń paczkę"
 
 pack__tooltip_switch  = "Zawartość wyłączonych paczek nie będzie dostępna w trakcie gry"

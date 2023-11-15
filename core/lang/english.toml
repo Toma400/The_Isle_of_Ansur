@@ -101,6 +101,7 @@ pack__switch          = "Disable/Enable"
 pack__disabled        = "Pack disabled"
 pack__move_up         = "Move Up"
 pack__move_down       = "Move Down"
+pack__url             = "Website"
 pack__remove          = "Remove pack"
 
 pack__tooltip_switch  = "Disabled packs will not have their contents available in game"
