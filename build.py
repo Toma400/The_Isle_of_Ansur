@@ -139,7 +139,7 @@ def forge():
     copy_tree(DefaultRun.core_path, DefaultRun.full_export_path) # copies all files over
     file_deleting(DefaultRun.ommitted_elements)                  # deletes files excluded in list
 
-#================================================================================================================
+#============================================================================================================
 print('{:^65}'.format("\33[35m    ------------------------------"))
 print('{:^65}'.format(" ISLE OF ANSUR BUILD CONSTRUCTOR "))
 print("\n")
