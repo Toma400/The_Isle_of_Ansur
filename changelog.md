@@ -7,6 +7,7 @@
 
 ---
 ## Pre-alpha builds
+- [Pre-alpha 5](#pre-alpha-5)
 - [Pre-alpha 4](#pre-alpha-4)
 - [Pre-alpha 3b](#pre-alpha-3b)
 - [Pre-alpha 3](#pre-alpha-3)
@@ -14,6 +15,10 @@
 - [Pre-alpha 1](#pre-alpha-1)
 
 > ---
+```
+### Pre-alpha 5
+
+```
 > ### Pre-alpha 4
 > - Gameplay
 >   - Added possibility to add avatars during character creation
