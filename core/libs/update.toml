@@ -1,0 +1,4 @@
+# all .nim files outside 'libs' that will be converted to .pyd/.so
+other = [
+    "core/data/save_system/verify.nim"
+]
