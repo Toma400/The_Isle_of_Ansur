@@ -27,3 +27,14 @@ def verifySave(name: str, variant: SV_KIND = SV_KIND.BUFFER) -> bool:
         if not exists(f"{sdir}/{rf}"):
             return False
     return True
+
+# TODO:
+# ANCITIPATED STRUCTURE
+# - {avatars}
+# - statistics
+#   - attributes.toml
+#   - skills.toml
+# - inventory
+#
+# - data.toml
+# - {avatar.png}

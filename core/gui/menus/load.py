@@ -119,3 +119,6 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             removeSave(game_loaded)
             dyn_screen.set_pgui_element("load__saves", listSaves())
             dyn_screen.set_pgui_element("load__descr", "")
+
+    else:
+        dyn_screen.tooltip = ""
