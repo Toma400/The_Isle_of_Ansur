@@ -21,7 +21,8 @@ class Journey:
         self.location : str or None = None                             # only none before load/creating character
         self.inidata  : dict        = {k: "" for k in self.keys_saved} # dict held only during initial creation (used for -self.init-)
         self.settings : dict        = {"permadeath": False}            # dict holding default game settings
-        # PATHS
+        # technical
+        self.verify   : bool        = False
 
     def nameSet(self):
         if self.name is not None:

@@ -87,6 +87,7 @@ load__packs_used      = "Użyte mody"
 load__load            = "Załaduj grę"
 load__restore         = "Nadpisz ze schowka"
 load__remove          = "Usuń grę"
+load__error           = "Błąd podczas ładowania gry"
 
 pack__type_stats      = "Statpack"
 pack__type_themes     = "Themepack"

@@ -40,7 +40,7 @@ class GUI_Helper:
         self.menu__tp_sett_vernf = TTooltip(langstring("menu__sett_tooltip_ver_nf"),  text_size=20, pos=(toPxX(80), toPxY(72)))
         self.menu__tp_sett_tltp  = TTooltip(langstring("menu__sett_tooltip_tooltip"), text_size=20, pos=(toPxX(80), toPxY(80)))
         # Tooltips (MMM):
-        self.menu__tp_load_load  = TTooltip(langstring("ccrt__end_save_warn"),  text_size=20, pos=(toPxX(91), toPxY(14)))
+        self.menu__tp_load_load  = TTooltip(langstring("load__error"),          text_size=20, pos=(toPxX(91), toPxY(14)))
         self.menu__tp_pack_db    = TTooltip(langstring("pack__tooltip_switch"), text_size=20, pos=(toPxX(90), toPxY(14)))
         self.menu__tp_pack_mvu   = TTooltip(langstring("pack__tooltip_mvu"),    text_size=20, pos=(toPxX(90), toPxY(19)))
         self.menu__tp_pack_mvd   = TTooltip(langstring("pack__tooltip_mvd"),    text_size=20, pos=(toPxX(90), toPxY(25)))

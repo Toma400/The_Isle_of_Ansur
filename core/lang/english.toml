@@ -87,6 +87,7 @@ load__packs_used      = "Packs used"
 load__load            = "Load saved game"
 load__restore         = "Overwrite from cache"
 load__remove          = "Remove saved game"
+load__error           = "Error loading save game"
 
 pack__type_stats      = "Statpack"
 pack__type_themes     = "Themepack"
