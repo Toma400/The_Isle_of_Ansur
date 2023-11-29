@@ -17,7 +17,10 @@
 > ---
 > ### Pre-alpha 5
 ```
-> - 
+> - Gameplay
+>   - You can now load your game
+>     - Saves made previously need patching to update their structure
+>       to current system
 >
 ```
 > ### Pre-alpha 4

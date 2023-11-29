@@ -111,7 +111,7 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     dyn_screen.journey.location = dyn_screen.journey.readLocation(game_loaded)
                     guitype[0] = switch_gscr(dyn_screen, screen, "location")
             else:
-                dyn_screen.draw("menu__tp_load_load")
+                dyn_screen.tooltip = "menu__tp_load_load"
 
     elif mouseColliderPx(rsv[0], rsv[1], rsv[2], rsv[3]) and game_loaded is not None:
         put_text(screen, text=langstring("load__remove"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=22, colour=fCol.HOVERED.value)
