@@ -411,7 +411,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     with open(f"{av_dir}.txt", "r") as isn:
                         avs_isn = int(isn.readline())
 
-                    saves = listSaves()
+                    saves = listSaves(False)
                     if exists(f"{av_dir}.png"):
                         dyn_screen.set_pgui_element("char__ig_avatar", imgLoad(f"{av_dir}.png", alpha=True))
                     else:
@@ -440,7 +440,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     else:
                         dyn_screen.journey.stages[3] = False
                         if name_choice in saves:
-                            put_text(screen, langstring("ccrt__name_exists"), font_cat="menu", size=30, pos_x=50, pos_y=55, colour=fCol.OTHER.value)
+                            put_text(screen, langstring("ccrt__name_exists"), font_cat="menu", size=30, pos_x=62, pos_y=20, colour=fCol.OTHER.value)
 
                     if mouseColliderPx(av_ubutton[0], av_ubutton[1], av_ubutton[2], av_ubutton[3]) and av_url is not None:
                         put_text(screen, langstring("ccrt__url_check"), font_cat="menu", size=30, pos_x=84, pos_y=55, colour=fCol.HOVERED.value)
