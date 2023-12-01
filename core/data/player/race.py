@@ -14,6 +14,9 @@ class Race:
         self.key    : str = tr_key  # translation key
         self.mod_id : str = mod_id  # mod ID
 
+        self.file   : str  = f"stats/{self.mod_id}/races/{self.name}.json"
+        self.exists : bool = exists(self.file)
+
     def rid(self) -> str:
         """Creates RID representation of race, to export/import during game"""
         return f"{self.mod_id}:{self.name}"
@@ -26,16 +29,25 @@ class Race:
         """Returns description of Race taken from -key[_descr]-"""
         return langjstring(f"{self.key}_descr", "stats", self.mod_id)
 
-    def get(self, attribute: str) -> str | int | float | list | dict:
+    def get(self, attribute: str) -> str | int | float | list | dict | None:
         """Returns specific attribute from Race file. Any reuse of the same object reads from cache to optimise I/O"""
-        if self.cache is None:
-            with open(f"stats/{self.mod_id}/races/{self.name}.json") as jf:
-                self.cache = json.load(jf)
-        return self.cache[attribute]
+        if self.exists:
+            if self.cache is None:
+                with open(self.file) as jf:
+                    self.cache = json.load(jf)
+            if attribute in self.cache:
+                return self.cache[attribute]
+            return None # if attr not in cache
+        return None     # if file doesn't exist
 
-    def getc(self, category: str, attribute: str) -> str | int | float | list | dict:
+    def getc(self, category: str, attribute: str) -> str | int | float | list | dict | None:
         """Returns attribute from category dict. Used mostly with sections like -skills- or -attrs- by Races"""
-        return self.get(category)[attribute]
+        get = self.get(category)
+        if type(get) == dict:
+            if attribute in get:
+                return get[attribute]
+            return None # if attr not in 'get'
+        return None     # if 'get' is None or type w/o keys
 
     def __repr__(self) -> str:
         return self.langstr()

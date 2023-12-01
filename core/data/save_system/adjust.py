@@ -58,35 +58,27 @@ def updateAttributes(name: str, data: dict = None):
     if exists(f"saves/{name}/{SV_KIND.BUFFER.value}/statistics/attributes.yaml"):
         atrout = loadYAML(f"saves/{name}/{SV_KIND.BUFFER.value}/statistics/attributes.yaml")
 
-    print(f"Atrout: {atrout}")
-
     # checking and resupplying attributes that were not added before
     for attr in attrs:
-        a = True
         if attr.aid() not in atrout:
-            a = False
             atrout[attr.aid()] = DEF_ATTR
-        print(f"Atrout attr: {attr.aid()} = {atrout[attr.aid()]} | {a}")
 
     # run only when initialising character
     if data is not None:
         # adding manually put attribute
-        print(f"Attr find: {data['attr']}")
         atrout[data["attr"]] = atrout[data["attr"]] + ADD_ATTR
 
         # race scan
-        rat = getRace(data["race"]).get("attributes") # TODO: prone to error if `attributes` is not there!
-        print(f"Rat: {rat}")
-        for ratr, ratv in rat.items():
-            atrout[absoluteID(ratr)] = atrout[absoluteID(ratr)] + ratv
+        rat = getRace(data["race"]).get("attributes")
+        if rat is not None:
+            for ratr, ratv in rat.items():
+                atrout[absoluteID(ratr)] = atrout[absoluteID(ratr)] + ratv
 
         # class scan
-        try:
-            cat = getClass(data["class"]).get("attributes") # TODO: prone to error if `attributes` is not there!
-            print(f"Cat: {cat}")
+        cat = getClass(data["class"]).get("attributes")
+        if cat is not None:
             for catr, catv in cat.items():
                 atrout[absoluteID(catr)] = atrout[absoluteID(catr)] + catv
-        except: print("No Cat!")
 
     with open(f"saves/{name}/{SV_KIND.BUFFER.value}/statistics/attributes.yaml", "w") as f:
         yaml.dump(atrout, f)

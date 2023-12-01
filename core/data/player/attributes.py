@@ -62,17 +62,17 @@ def getAttributesTupleAdjusted(cid: str, rid: str) -> list[(str, str)]:
     """Variant that also gets numerical representation of attributes. Works separately"""
     pre = {attr.aid(): DEFAULT_ATTR for attr in getAttributes()}
     ret = []
-    try:
-        race = getRace(rid).get("attributes")
+
+    race = getRace(rid).get("attributes")
+    if race is not None:
         for attr_id in race:
             pre[absoluteID(attr_id)] += race[attr_id]
-    except KeyError: pass
-    finally:
-        try:
-            clss = getClass(cid).get("attributes")
-            for attr_id in clss:
-                pre[absoluteID(attr_id)] += clss[attr_id]
-        except KeyError: pass
+
+    clss = getClass(cid).get("attributes")
+    if clss is not None:
+        for attr_id in clss:
+            pre[absoluteID(attr_id)] += clss[attr_id]
+
     for attr_id in pre:
         ret.append((f"{getAttribute(attr_id).langstr()}: {pre[attr_id]}", attr_id))
     return ret
