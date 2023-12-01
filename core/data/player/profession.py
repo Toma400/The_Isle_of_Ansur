@@ -2,6 +2,7 @@ from core.gui.manag.langstr import langjstring
 from system.mod_manag import mod_lister
 from glob import glob as walkdir
 from os.path import exists
+import logging as log
 import json
 
 class Class:
@@ -15,6 +16,8 @@ class Class:
 
         self.file   : str  = f"stats/{self.mod_id}/classes/{self.name}.json"
         self.exists : bool = exists(self.file)
+        if not self.exists:
+            log.error(f"Tried to reach Race file of RID {self.mod_id}:{self.name} but it doesn't exist. Path: {self.file}.")
 
     def cid(self) -> str:
         """Creates CID representation of class, to export/import during game"""

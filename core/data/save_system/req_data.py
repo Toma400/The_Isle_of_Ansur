@@ -24,6 +24,8 @@ REQUIRED_FILES = [
 
 # Default points or values
 DEF_ATTR = 8
+DEF_SKL  = 0
 
 # Default added points or values
 ADD_ATTR = 1
+ADD_SKL  = 3

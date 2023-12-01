@@ -66,17 +66,17 @@ def getSkillsTupleAdjusted(cid: str, rid: str, manual_excl: bool) -> list[(str, 
     """Variant that also gets numerical representation of skills. Works separately"""
     pre = {sk.sid(): DEFAULT_SK for sk in getSkills(manual_excl)}
     ret = []
-    try:
-        race = getRace(rid).get("skills")
+
+    race = getRace(rid).get("skills")
+    if race is not None:
         for sk_id in race:
             pre[absoluteID(sk_id)] += race[sk_id]
-    except KeyError: pass
-    finally:
-        try:
-            clss = getClass(cid).get("skills")
-            for sk_id in clss:
-                pre[absoluteID(sk_id)] += clss[sk_id]
-        except KeyError: pass
+
+    clss = getClass(cid).get("skills")
+    if clss is not None:
+        for sk_id in clss:
+            pre[absoluteID(sk_id)] += clss[sk_id]
+
     for sk_id in pre:
         ret.append((f"{getSkill(sk_id).langstr()}: {pre[sk_id]}", sk_id))
     return ret
