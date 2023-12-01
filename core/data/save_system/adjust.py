@@ -1,7 +1,12 @@
-from core.data.save_system.req_data import SV_KIND, REQUIRED_DIRS
+from core.data.save_system.req_data import SV_KIND, REQUIRED_DIRS, DEF_ATTR, ADD_ATTR
 from core.data.player.attributes import getAttributes
+from core.data.player.profession import getClass
+from core.data.player.race import getRace
+from core.data.pack_manag.id import absoluteID
+from core.file_system.parsers import loadYAML
 from os.path import exists
 from os import mkdir
+import yaml
 
 def updateSave(name: str, data: dict = None):
     """
@@ -23,13 +28,17 @@ def updateSave(name: str, data: dict = None):
           But writing things to buffer first should be priority, as it is where
           in general writing is meant to be
     """
+    # SV_DIR = SV_KIND.BUFFER.value if data is None else SV_KIND.ADVENTURE.value
+
     if not exists(f"saves/{name}"):
         mkdir(f"saves/{name}/{SV_KIND.BUFFER.value}")
-        for rd in REQUIRED_DIRS:
+    for rd in REQUIRED_DIRS:
+        if not exists(f"saves/{name}/{SV_KIND.BUFFER.value}/{rd}"):
             mkdir(f"saves/{name}/{SV_KIND.BUFFER.value}/{rd}")
-        # REQUIRED_FILES are delayed because they will be added in next functions
+    # REQUIRED_FILES are delayed because they will be added in following function calls
 
     updateAttributes(name, data)
+    # all other update thingies
 
 def updateAttributes(name: str, data: dict = None):
     """
@@ -44,5 +53,43 @@ def updateAttributes(name: str, data: dict = None):
     TODO: Check if current getAttributes() and its dependencies aren't using disabled packs
           (found no safeguard for this in code, but maybe there's something protecting from it)
     """
-    attrs = getAttributes()
+    attrs  = getAttributes()
+    atrout = {}
+    if exists(f"saves/{name}/{SV_KIND.BUFFER.value}/statistics/attributes.yaml"):
+        atrout = loadYAML(f"saves/{name}/{SV_KIND.BUFFER.value}/statistics/attributes.yaml")
+
+    print(f"Atrout: {atrout}")
+
+    # checking and resupplying attributes that were not added before
+    for attr in attrs:
+        a = True
+        if attr.aid() not in atrout:
+            a = False
+            atrout[attr.aid()] = DEF_ATTR
+        print(f"Atrout attr: {attr.aid()} = {atrout[attr.aid()]} | {a}")
+
+    # run only when initialising character
+    if data is not None:
+        # adding manually put attribute
+        print(f"Attr find: {data['attr']}")
+        atrout[data["attr"]] = atrout[data["attr"]] + ADD_ATTR
+
+        # race scan
+        rat = getRace(data["race"]).get("attributes") # TODO: prone to error if `attributes` is not there!
+        print(f"Rat: {rat}")
+        for ratr, ratv in rat.items():
+            atrout[absoluteID(ratr)] = atrout[absoluteID(ratr)] + ratv
+
+        # class scan
+        try:
+            cat = getClass(data["class"]).get("attributes") # TODO: prone to error if `attributes` is not there!
+            print(f"Cat: {cat}")
+            for catr, catv in cat.items():
+                atrout[absoluteID(catr)] = atrout[absoluteID(catr)] + catv
+        except: print("No Cat!")
+
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/statistics/attributes.yaml", "w") as f:
+        yaml.dump(atrout, f)
+        f.flush()
+
     # use 'data', and also use 'readTOML' if it exists (if not, create it)

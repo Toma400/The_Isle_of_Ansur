@@ -2,6 +2,7 @@ from core.data.player.gender import Gender, getGenders
 from core.data.player.race import Race, getRaces
 from core.data.player.origin import getOrigin
 from core.data.pack_manag.packs import getPacks
+from core.data.save_system.adjust import updateSave
 from core.utils import sysref
 import logging as log
 import os, toml
@@ -114,6 +115,9 @@ class Journey:
         with open(out, "w+") as f:
             f.write(ret)
             f.flush()
+
+        # in the future, the only thing that should appear, if anything
+        updateSave(self.name, self.inidata)
 
     def reset(self):
         """
