@@ -1,4 +1,5 @@
 from core.data.save_system.update_ref.statistics import updateAttributes, updateSkills
+from core.data.save_system.update_ref.packs import updateMods
 from core.data.save_system.update_ref.data import updateData
 from core.data.save_system.req_data import SV_KIND, REQUIRED_DIRS
 from os.path import exists
@@ -36,6 +37,7 @@ def updateSave(name: str, data: dict = None):
     updateAttributes(name, data)
     updateSkills(name, data)
     updateData(name, data)
+    updateMods(name, data)
     # to find place somewhere:
     # - religion (can change)
     # - mod IDs loaded (def can change)
