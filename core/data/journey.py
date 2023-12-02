@@ -105,10 +105,6 @@ class Journey:
         ret += f"{self.inidata['history']}"                 + "\n"
         ret += f"\'\'\'"                                    + "\n"
 
-        # ret += f"save_ver = {sysref('release_status')}:{sysref('release_version')}" + "\n"
-        # ^ this will be useful once proper save is used, now we can just simply check 'is presave.toml existing'
-        ret += f"mods     = {str(getPacks()).replace(': ', ' = ')}" + "\n"
-
         # level, xp and all that should be put when TODO is done, alongside banks, chests and inventory
         out = f"{self.buffdir}/presave.toml"
         os.makedirs(os.path.dirname(out), exist_ok=True)

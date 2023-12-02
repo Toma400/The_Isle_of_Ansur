@@ -21,11 +21,11 @@ REQUIRED_DIRS = [
 REQUIRED_FILES = [
     # main
     "data.toml",
-    "mods.toml",                 # TODO ('mod_id': 'ver')
+    "mods.toml",
     # nested
-    "reputation/towns.yaml",     # TODO # Where to put detailed ideas on towns/guilds/religions, instead of just numbers?
-    "reputation/guilds.yaml",    # TODO
-    "reputation/religions.yaml", # TODO
+    #"reputation/towns.yaml",     # TODO # Where to put detailed ideas on towns/guilds/religions, instead of just numbers?
+    #"reputation/guilds.yaml",    # TODO
+    #"reputation/religions.yaml", # TODO
     "statistics/attributes.yaml",
     "statistics/skills.yaml"
 ]

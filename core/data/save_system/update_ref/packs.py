@@ -22,6 +22,9 @@ def updateMods(name: str, data: dict = None):
 
     # checking removal of existing ones (verification)
     for mod_id, mod_ver in mod_list:
+        print("""I'm in core.data.pack_manag.packs - I'm here to remind you to test this iteration I'm in. Once you test it on loading of game, thus seeing whether this works
+                 correctly, my work will be done and you can remove me. Before that, don't you dare touching me! I do my duty fearlessly and will do unless you code all that
+                 stupid functions. Good luck!""")
         if mod_id in packs:
             saved_ver = unifiedVersion(mod_ver)
             curr_ver  = getVersion(mod_id)

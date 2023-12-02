@@ -2,7 +2,7 @@ from core.file_system.theme_manag import FontColour as fCol
 from core.gui.registry.pgui_objects import PGUI_Helper
 from core.data.save_system.verify import verifySave
 from core.data.save_system.walk import listSaves
-from core.data.pack_manag.packs import getPacksSimplified
+from core.data.pack_manag.info import searchInfo
 from core.data.player.religion import getReligion
 from core.data.player.profession import getClass
 from core.data.player.gender import getGender
@@ -15,36 +15,41 @@ from core.file_system.parsers import loadTOML
 from logging import log, ERROR
 from os.path import exists
 
-def loadDescr(save: str) -> str:
+def loadDescr(save: str, verification: bool) -> str:
     ret = ""
-    try:
-        sf             = loadTOML(f"saves/{save}/buffer/presave.toml")
-        packs_required = getPacksSimplified(sf['mods'], False)
+    if verification:
+        sf             = loadTOML(f"saves/{save}/buffer/data.toml")
+        packs_required = loadTOML(f"saves/{save}/buffer/mods.toml")
+        packs_final    = {}
         # string creation
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_name'))}"     + f"{sf['name']}"                            + "\n"
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_gender'))}"   + f"{getGender(sf['gender']).langstr()}"     + "\n"
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_race'))}"     + f"{getRace(sf['race']).langstr()}"         + "\n"
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_class'))}"    + f"{getClass(sf['class']).langstr()}"       + "\n"
-        ret += f"{'{:<15}'.format(langstring('ccrt__gen_religion'))}" + f"{getReligion(sf['religion']).langstr()}" + "\n"
+        # ret += f"{'{:<15}'.format(langstring('ccrt__gen_religion'))}" + f"{getReligion(sf['religion']).langstr()}" + "\n" << TODO
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_origin'))}"   + f"{getOrigin(sf['origin']).langstr()}"     + "\n"
         ret += f"{langstring('ccrt__gen_history')}"                                          + "\n"
-        ret += f"{sf['history']}"                                                            + "\n"
+        # ret += f"{sf['history']}"                                                            + "\n"                       << TODO
         ret += f"{langstring('load__packs_used')}"                                           + "\n"
-        # set fixed length that adjusts to the longest mod ID
+        # set fixed length that adjusts to the longest mod ID + set translation names
         maxlen = 0
-        for pack in packs_required.keys():
-            if len(pack) > maxlen:
-                maxlen = len(pack)
+        for pack, ver in packs_required.items():
+            p_info = searchInfo(pack)
+            p_name = pack
+            if p_info is not None:
+                if "name" in p_info:
+                    p_name = p_info["name"]
+            if len(p_name) > maxlen:
+                maxlen = len(p_name)
+            packs_final[p_name] = ver
+
         maxlen = '{:<' + str(maxlen + 1) + '}'
-        for pack in packs_required.keys():
-            ret += f"  - {maxlen.format(pack)} |"
-            for p in packs_required[pack]:
-                if p != "scripts":
-                    ret += f" {langstring(f'pack__type_{p}')} |"
-            ret += "\n"
-    except:
+        for pack, ver in packs_final.items():
+            ret += f"  - {maxlen.format(pack)} | " # name
+            ret += f"{ver}\n"                      # version
+    else:
         log(ERROR, f"Couldn't load informations about save -{save}-. The save may be corrupted or made with older version. Printing stacktrace:", exc_info=True)
-        ret = langstring("system__text_load_fail")
+        ret = langstring("load__error_longer")
     return ret
 
 def removeSave(save: str):
@@ -70,7 +75,7 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         if dyn_screen.journey.name != game_loaded:
             dyn_screen.journey.name   = game_loaded
             dyn_screen.journey.verify = verifySave(game_loaded)
-            dyn_screen.set_pgui_element("load__descr", loadDescr(game_loaded))
+            dyn_screen.set_pgui_element("load__descr", loadDescr(game_loaded, dyn_screen.journey.verify))
             if dyn_screen.journey.verify:
                 dyn_screen.tooltip = ""
             else:

@@ -88,6 +88,7 @@ load__load            = "Load saved game"
 load__restore         = "Overwrite from cache"
 load__remove          = "Remove saved game"
 load__error           = "Error loading save game"
+load__error_longer    = "Error loading save game. If you made this savegame on earlier version of the game, please search if there was any patch available"
 
 pack__type_stats      = "Statpack"
 pack__type_themes     = "Themepack"

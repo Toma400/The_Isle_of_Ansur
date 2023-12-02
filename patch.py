@@ -2,8 +2,11 @@ from core.data.save_system.update import updateSave
 from core.data.save_system.walk import listSaves
 from core.file_system.parsers import loadTOML
 from os.path import exists
+from os import remove
 
 for save in listSaves(False):
-    if exists(f"saves/{save}/buffer/presave.toml"):
-        data = loadTOML(f"saves/{save}/buffer/presave.toml")
+    presave = f"saves/{save}/buffer/presave.toml"
+    if exists(presave):
+        data = loadTOML(presave)
         updateSave(save, data)
+        remove(presave)
