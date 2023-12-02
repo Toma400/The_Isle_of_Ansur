@@ -2,7 +2,7 @@ from core.data.player.gender import Gender, getGenders
 from core.data.player.race import Race, getRaces
 from core.data.player.origin import getOrigin
 from core.data.pack_manag.packs import getPacks
-from core.data.save_system.adjust import updateSave
+from core.data.save_system.update import updateSave
 from core.utils import sysref
 import logging as log
 import os, toml

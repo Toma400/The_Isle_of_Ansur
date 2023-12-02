@@ -11,16 +11,30 @@ class SV_KIND (Enum):
     ADVENTURE = "adventure" # saved by hand
 
 REQUIRED_DIRS = [
+    "avatars",
+    "containers", # TODO
+    "locations",  # TODO
+    "reputation", # TODO
     "statistics",
-    "inventory"
+    "inventory"   # TODO
 ]
 REQUIRED_FILES = [
     # main
     "data.toml",
+    "mods.toml",                 # TODO ('mod_id': 'ver')
     # nested
+    "reputation/towns.yaml",     # TODO # Where to put detailed ideas on towns/guilds/religions, instead of just numbers?
+    "reputation/guilds.yaml",    # TODO
+    "reputation/religions.yaml", # TODO
     "statistics/attributes.yaml",
     "statistics/skills.yaml"
 ]
+# To make
+# - quest log
+# - location data
+# - banking accounts
+# - used mod IDs
+# - diary
 
 # Default points or values
 DEF_ATTR = 8
