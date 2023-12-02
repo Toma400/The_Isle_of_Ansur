@@ -37,9 +37,8 @@ def updateSave(name: str, data: dict = None):
     updateAttributes(name, data)
     updateSkills(name, data)
     updateData(name, data)
-    updateMods(name, data)
+    updateMods(name, data) # TODO: returns whether there was issue while loading packs
     # to find place somewhere:
     # - religion (can change)
-    # - mod IDs loaded (def can change)
     # - history (written stuff)
 

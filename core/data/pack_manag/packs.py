@@ -1,8 +1,9 @@
 from core.utils import sysref, scx, developer_mode
-from core.file_system.parsers import loadTOML, loadYAML
+from core.file_system.parsers import loadYAML
 from core.gui.manag.langstr import langstring
 from core.data.pack_manag.info import searchInfo
 from core.data.pack_manag.types import *
+from core.decorators import Deprecated
 from os.path import exists
 from glob import glob as walkdir
 import logging as log
@@ -71,6 +72,7 @@ def getDisabled() -> list[str]:
     return []
 
 def verifyPacks():
+    @Deprecated("core.data.pack_manag.versions")
     def unifiedVersion(ver: str) -> (int, float):
         # example: '1'
         if "." not in ver:
@@ -100,9 +102,11 @@ def verifyPacks():
             log.error(f"Couldn't parse version requirement due to not supported format. Supported formats: [n], [n.n], [n.nx], [n.n.n]. Legend: n - digit, x - latin letter. Parsed literal value: {ver}")
             return 0, 0.0
 
+    @Deprecated("core.data.pack_manag.versions")
     def unifiedString(ver: (int, float)) -> str:
         return f"{ver[0]}.{ver[1]}"
 
+    @Deprecated("core.data.pack_manag.versions")
     def analyseVersion(req: (int, float), orig: (int, float), req_max: (int, float) = None) -> bool:
         """Analyses whether required version or require range of versions are met"""
         def flt(f: float) -> int: # helps reaching only floating part
@@ -119,6 +123,7 @@ def verifyPacks():
                     return False
         return True
 
+    @Deprecated("core.data.pack_manag.versions")
     def getVersion(req_id: str) -> (int, float) or None:
         """Gets version from specific -info.toml- file"""
         info_file = searchInfo(req_id)
