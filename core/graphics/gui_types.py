@@ -8,6 +8,7 @@ from core.graphics.gh_manag import imgLoad
 from core.gui.registry.pgui_objects import PGUI_Helper
 from core.data.player.avatar import urlAvatar, pathAvatar, loreAvatars, loreAvatar, loreAvatarSelection, saveAvatar, temp_folder as av_dir
 from core.data.save_system.walk import listSaves
+from core.data.save_system.update import updateSave
 from core.file_system.theme_manag import FontColour as fCol
 from core.file_system.set_manag import set_change, def_set
 from core.file_system.repo_manag import logs_deleting
@@ -598,8 +599,8 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                         put_text(screen, text=langstring("ccrt__end_save"), font_cat="menu", size=30, pos_x=58, pos_y=65, colour=fCol.HOVERED.value)
                         dyn_screen.draw("ccrt__tp_save")
                         if mouseRec(pg_events):
-                            dyn_screen.journey.init()
-                            saveAvatar(dyn_screen.journey.inidata['name']) # should be after init()
+                            updateSave(dyn_screen.journey.inidata['name'], dyn_screen.journey.inidata)
+                            saveAvatar(dyn_screen.journey.inidata['name']) # should be after updateSave()
 
                             guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                             guitype[1] = None

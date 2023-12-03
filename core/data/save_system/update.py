@@ -3,7 +3,8 @@ from core.data.save_system.update_ref.packs import updateMods
 from core.data.save_system.update_ref.data import updateData
 from core.data.save_system.req_data import SV_KIND, REQUIRED_DIRS
 from os.path import exists
-from os import mkdir
+from os import makedirs
+import logging as log
 
 def updateSave(name: str, data: dict = None):
     """
@@ -26,12 +27,13 @@ def updateSave(name: str, data: dict = None):
           in general writing is meant to be
     """
     # SV_DIR = SV_KIND.BUFFER.value if data is None else SV_KIND.ADVENTURE.value
+    validateData(data)
 
     if not exists(f"saves/{name}"):
-        mkdir(f"saves/{name}/{SV_KIND.BUFFER.value}")
+        makedirs(f"saves/{name}/{SV_KIND.BUFFER.value}")
     for rd in REQUIRED_DIRS:
         if not exists(f"saves/{name}/{SV_KIND.BUFFER.value}/{rd}"):
-            mkdir(f"saves/{name}/{SV_KIND.BUFFER.value}/{rd}")
+            makedirs(f"saves/{name}/{SV_KIND.BUFFER.value}/{rd}")
     # REQUIRED_FILES are delayed because they will be added in following function calls
 
     updateAttributes(name, data)
@@ -39,6 +41,17 @@ def updateSave(name: str, data: dict = None):
     updateData(name, data)
     updateMods(name, data) # TODO: returns whether there was issue while loading packs
     # to find place somewhere:
+    # - settings
     # - religion (can change)
     # - history (written stuff)
 
+def validateData(data: dict):
+    """Checks passed `data` to updateSave to see whether all elements exist there"""
+    keys_saved = ["gender", "race", "class", "name", "attr", "skill", "religion", "origin", "history", "settings"]
+
+    for k in keys_saved:
+        if k not in data:
+            log.log(log.ERROR, f"Couldn't find {k} in -inidata- dictionary. Printing dictionary contents:")
+            for entry, value in data:
+                log.log(log.INFO, f"- {entry}: {value}")
+            raise KeyError("Raising crash due to the issue above.")
