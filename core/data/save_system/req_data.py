@@ -22,6 +22,7 @@ REQUIRED_FILES = [
     # main
     "data.toml",
     "mods.toml",
+    "player.toml",
     # nested
     #"reputation/towns.yaml",     # TODO # Where to put detailed ideas on towns/guilds/religions, instead of just numbers?
     #"reputation/guilds.yaml",    # TODO

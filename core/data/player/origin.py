@@ -2,6 +2,7 @@ from core.data.pack_manag.packs import getPacks, PackTypes
 from core.gui.manag.langstr import langjstring
 from glob import glob as walkdir
 from os.path import exists
+import logging as log
 import json
 
 class Origin:
@@ -12,6 +13,11 @@ class Origin:
         self.name   : str = name    # name ID (used for OID)
         self.key    : str = tr_key  # translation key
         self.mod_id : str = mod_id  # mod ID
+
+        self.file   : str  = f"stats/{self.mod_id}/origins/{self.name}.json"
+        self.exists : bool = exists(self.file)
+        if not self.exists:
+            log.error(f"Tried to reach Origin file of OID {self.mod_id}:{self.name} but it doesn't exist. Path: {self.file}.")
 
     def oid(self) -> str:
         """Creates OID representation of origin, to export/import during game"""
@@ -25,16 +31,25 @@ class Origin:
         """Returns description of Origin taken from -key[_descr]-"""
         return langjstring(f"{self.key}_descr", "stats", self.mod_id, gender)
 
-    def get(self, attribute: str) -> str | int | float | list | dict:
+    def get(self, attribute: str) -> str | int | float | list | dict | None:
         """Returns specific attribute from Origin file. Any reuse of the same object reads from cache to optimise I/O"""
-        if self.cache is None:
-            with open(f"stats/{self.mod_id}/origins/{self.name}.json") as jf:
-                self.cache = json.load(jf)
-        return self.cache[attribute]
+        if self.exists:
+            if self.cache is None:
+                with open(self.file) as jf:
+                    self.cache = json.load(jf)
+            if attribute in self.cache:
+                return self.cache[attribute]
+            return None # if attr not in cache
+        return None     # if file doesn't exist
 
-    def getc(self, category: str, attribute: str) -> str | int | float | list | dict:
+    def getc(self, category: str, attribute: str) -> str | int | float | list | dict | None:
         """Returns attribute from category dict. Used for more nested sections"""
-        return self.get(category)[attribute]
+        get = self.get(category)
+        if type(get) == dict:
+            if attribute in get:
+                return get[attribute]
+            return None # if attr not in 'get'
+        return None     # if 'get' is None or type w/o keys
 
     def __repr__(self) -> str:
         return self.langstr()

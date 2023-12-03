@@ -1,4 +1,5 @@
 from core.data.save_system.update_ref.statistics import updateAttributes, updateSkills
+from core.data.save_system.update_ref.player import updatePlayer
 from core.data.save_system.update_ref.packs import updateMods
 from core.data.save_system.update_ref.data import updateData
 from core.data.save_system.req_data import SV_KIND, REQUIRED_DIRS
@@ -38,12 +39,16 @@ def updateSave(name: str, data: dict = None):
 
     updateAttributes(name, data)
     updateSkills(name, data)
+    updatePlayer(name, data)
     updateData(name, data)
-    updateMods(name, data) # TODO: returns whether there was issue while loading packs
+    updateMods(name) # TODO: returns whether there was issue while loading packs
     # to find place somewhere:
     # - settings
     # - religion (can change)
     # - history (written stuff)
+    # - origin-related:
+    #   - inventory
+    #   - location
 
 def validateData(data: dict):
     """Checks passed `data` to updateSave to see whether all elements exist there"""
