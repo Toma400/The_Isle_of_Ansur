@@ -71,7 +71,7 @@ class Journey:
     @staticmethod
     def readLocation(name: str) -> str:
         """Temporary placeholder function"""
-        ps = toml.load(f"saves/{name}/buffer/presave.toml")
+        ps = toml.load(f"saves/{name}/buffer/data.toml")
         return getOrigin(ps["origin"]).getc("new_game", "location")
 
     #=================================================================================================

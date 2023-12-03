@@ -14,9 +14,10 @@ def updateData(name: str, data: dict = None):
 
     data_keys = data_file.keys()
     if exists(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml"):
-        get = loadTOML(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml")
-        for line, _ in get.items():
-            if line not in data_keys:
+        get      = loadTOML(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml")
+        get_keys = get.keys()
+        for line in data_keys:
+            if line not in get_keys:
                 raise KeyError(f"Saved -data.toml- for character: {name} do not contain required key: {line}. Save is either corrupted or needs patch.")
         data_file = get
 

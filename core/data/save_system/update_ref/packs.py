@@ -12,7 +12,7 @@ class ERR(Enum):
     NOT_FOUND = 0
     WRONG_VER = 1
 
-def updateMods(name: str, data: dict = None):
+def updateMods(name: str):
     errs     = {}   # errors
     mod_list = {}   # dict of {'mod': 'ver'}
     packs    = getPacksSimplified()
