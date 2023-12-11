@@ -19,8 +19,11 @@
 ```
 > - Gameplay
 >   - You can now load your game
+>     - If save has wrong/old structure, it will show an error
 >     - Saves made previously need patching to update their structure
 >       to current system
+> - Technicals
+>   - Save system was entirely remade to match new requirements
 >
 ```
 > ### Pre-alpha 4

@@ -48,7 +48,6 @@ def updateSave(name: str, data: dict = None):
     # - history (written stuff)
     # - origin-related:
     #   - inventory
-    #   - location
 
 def validateData(data: dict):
     """Checks passed `data` to updateSave to see whether all elements exist there"""

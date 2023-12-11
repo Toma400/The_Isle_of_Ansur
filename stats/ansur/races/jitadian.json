@@ -15,23 +15,35 @@
     },
     "names": {
         "male": [
+            "Aikatu",
             "Arentras",
             "Cryan",
             "Entar",
             "Frode",
+            "Ilin",
             "Invari",
             "Isou",
             "Jiro",
+            "Jules",
             "Nyver",
             "Sayton",
             "Si",
+            "Silas",
             "Sin",
+            "Viran",
             "Yraeni"
         ],
         "female": [
+            "Alaia",
+            "Athe",
+            "Bedeia",
+            "Eida",
+            "Ilin",
             "Lorat",
             "Nyvera",
-            "Sana"
+            "Salvi",
+            "Sana",
+            "Sunu"
         ]
     }
 }

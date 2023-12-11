@@ -23,7 +23,11 @@
         "male": [
             "Ain",
             "Ainji",
-            "Delai"
+            "Delai",
+            "Direnai"
+        ],
+        "female": [
+            "Direnai"
         ]
     }
 }
