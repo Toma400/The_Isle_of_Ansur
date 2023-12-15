@@ -1,11 +1,18 @@
-from core.data.player.gender import Gender, getGenders
-from core.data.player.race import Race, getRaces
 from core.data.player.origin import getOrigin
-from core.data.pack_manag.packs import getPacks
-from core.data.save_system.update import updateSave
-from core.utils import sysref
+import os, toml, yaml, json
+from os.path import exists
 import logging as log
-import os, toml
+from enum import Enum
+
+class SaveStr(Enum):
+    LOCATION = "player.toml | location"
+    GENDER   = "data.toml | gender"
+    RACE     = "data.toml | race"
+    CLASS    = "data.toml | class"
+    ORIGIN   = "data.toml | origin"
+    MODS     = "mods.toml"
+    ATTRS    = "statistics/attributes.yaml"
+    SKILLS   = "statistics/skills.yaml"
 
 class Journey:
     # keys that are iterated over during save | -inidata- keys should match TOML keys
@@ -24,6 +31,38 @@ class Journey:
         self.settings : dict        = {"permadeath": False}            # dict holding default game settings
         # technical
         self.verify   : bool        = False
+
+    def get(self, save_string: str) -> str | int | float | list | dict:
+        """Allows for quick data gathering from save files. Operates on `save_string` format.
+        Format:
+        `[path to file] [ | symbol with space around ] [key]
+        Example:
+        `player.toml | location`
+
+        String as `save_string` type should be held, because it makes this system more flexible
+        (scripts can use it for non-enum-counted elements)
+        """
+        save_string_parsed = save_string.split(" | ") if "|" in save_string else [save_string, None]
+        save_string_format = save_string_parsed[0].split(".")[1]
+        parsed_file        = None
+
+        if exists(f"saves/{self.name}/buffer/{save_string_parsed[0]}"):
+            loaded_file        = open(f"saves/{self.name}/buffer/{save_string_parsed[0]}", encoding="utf-8")
+
+            match save_string_format:
+                case "yaml": parsed_file = yaml.safe_load(loaded_file)
+                case "toml": parsed_file = toml.loads(loaded_file.read())
+                case "json": parsed_file = json.loads(loaded_file.read())
+
+        if parsed_file is not None:
+            if save_string_parsed[1] is None:
+                return dict(parsed_file)
+            elif save_string_parsed[1] in parsed_file:
+                return parsed_file[save_string_parsed[1]]
+            log.error(f"Couldn't find a key: {save_string_parsed[1]} in file: {save_string_parsed[0]}.")
+        else:
+            log.error(f"Couldn't reach path: {save_string_parsed[0]} because of incorrect save file.")
+        raise ValueError("Issue found during performing -get- operation on savefile through Journey handler. See previous log messages for what caused the error.")
 
     #=================================================================================================
     # - COMMON PROCEDURES -
