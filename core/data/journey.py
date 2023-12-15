@@ -5,6 +5,12 @@ import logging as log
 from enum import Enum
 
 class SaveStr(Enum):
+    """
+    Format:
+    `[path to file][ | symbol with space around][key]
+    Example:
+    `player.toml | location`
+    """
     LOCATION = "player.toml | location"
     GENDER   = "data.toml | gender"
     RACE     = "data.toml | race"
@@ -34,10 +40,6 @@ class Journey:
 
     def get(self, save_string: str) -> str | int | float | list | dict:
         """Allows for quick data gathering from save files. Operates on `save_string` format.
-        Format:
-        `[path to file] [ | symbol with space around ] [key]
-        Example:
-        `player.toml | location`
 
         String as `save_string` type should be held, because it makes this system more flexible
         (scripts can use it for non-enum-counted elements)
@@ -47,12 +49,14 @@ class Journey:
         parsed_file        = None
 
         if exists(f"saves/{self.name}/buffer/{save_string_parsed[0]}"):
-            loaded_file        = open(f"saves/{self.name}/buffer/{save_string_parsed[0]}", encoding="utf-8")
+            loaded_file = open(f"saves/{self.name}/buffer/{save_string_parsed[0]}", encoding="utf-8")
 
             match save_string_format:
                 case "yaml": parsed_file = yaml.safe_load(loaded_file)
                 case "toml": parsed_file = toml.loads(loaded_file.read())
                 case "json": parsed_file = json.loads(loaded_file.read())
+
+            loaded_file.close()
 
         if parsed_file is not None:
             if save_string_parsed[1] is None:
@@ -63,6 +67,40 @@ class Journey:
         else:
             log.error(f"Couldn't reach path: {save_string_parsed[0]} because of incorrect save file.")
         raise ValueError("Issue found during performing -get- operation on savefile through Journey handler. See previous log messages for what caused the error.")
+
+    def set(self, save_string: str, value: str | int | float | dict | list):
+        """Allows for quick data setting into save files. Operates on `save_string` format.
+
+        String as `save_string` type should be held, because it makes this system more flexible
+        (scripts can use it for non-enum-counted elements)
+        """
+        save_string_parsed = save_string.split(" | ") if "|" in save_string else [save_string, None]
+        save_string_format = save_string_parsed[0].split(".")[1]
+        parsed_file        = None
+
+        if exists(f"saves/{self.name}/buffer/{save_string_parsed[0]}"):
+            loaded_file = open(f"saves/{self.name}/buffer/{save_string_parsed[0]}", encoding="utf-8")
+
+            match save_string_format:
+                case "yaml": parsed_file = yaml.safe_load(loaded_file)
+                case "toml": parsed_file = toml.loads(loaded_file.read())
+                case "json": parsed_file = json.loads(loaded_file.read())
+
+            loaded_file.close()
+
+            print(parsed_file)
+
+        if parsed_file is not None and save_string_parsed[1] is not None:
+            parsed_file[save_string_parsed[1]] = value
+
+            with open(f"saves/{self.name}/buffer/{save_string_parsed[0]}", "w+") as f:
+                match save_string_format:
+                    case "yaml": yaml.dump(parsed_file, f)
+                    case "toml": toml.dump(parsed_file, f)
+                    case "json": json.dump(parsed_file, f)
+                f.flush()
+        else:
+            log.error(f"Tried to write data: {value} into file: {save_string_parsed[0]} and key: {save_string_parsed[1]}, but error occurred.")
 
     #=================================================================================================
     # - COMMON PROCEDURES -
@@ -76,12 +114,6 @@ class Journey:
     #                                                        (as chests were considered as different savefile entity for statistics)
     # - in the future, cache browsing could be introduced, that would have certain threshold, but would first search through this
     #   "object pool" and if it doesn't find anything there, it'd make this regular loading process of data
-    def readStats(self, stat: str):
-        """Reads statistics value from buffer save (not save!)"""
-
-    def updateStats(self, stat: str, value: str | int | bool | list):
-        """Allows changing statistics by overwriting buffer save"""
-
     def save(self):
         """Creates gamesave from buffer save"""
 
