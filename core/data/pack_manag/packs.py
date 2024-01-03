@@ -211,9 +211,10 @@ def unpackPacks():
     """
     def unpacking(zfile, zpack):
         """Performs simple unpacking of non-disabled packs, in ordered form"""
-        whitelist = ["stat", "world", "theme"]
+        whitelist   = ["core"]
+        whitelist_s = ["stat", "world", "theme"]
         for foldername in zfile.namelist():
-            for packtype in whitelist:
+            for packtype in whitelist + whitelist_s:
                 if f"{packtype}s" in foldername:
                     zfile.extract(foldername, "")
                     log.debug(f"Unpacking {packtype}pack: {zpack}")
