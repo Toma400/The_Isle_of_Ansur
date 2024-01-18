@@ -46,22 +46,30 @@ Feel free to share your thoughts or report bugs there.
 ---
 **Mods Repository:** [**GitHub page**](https://github.com/Toma400/Isle_of_Ansur_Mods_Repository/blob/library/Modlist.md)
 
-**Docs:** [**Jump to file!**](modding_guide.pdf)
+**Docs:** [**Jump to file!**](modding_guide.pdf) (a little outdated, but should work)
 
-**BCS Mod Editor (indev):** [**GitHub page**](https://github.com/Toma400/BCSet_IoA)
+# Translations
+Translations are currently handled as mods, so they have small limitations, but can
+be easily contributed into. Completed translations will be merged into the game at
+later stage of development.  
+Feel free to contribute!
+
+**Polish:** [**GitHub page**](https://github.com/Toma400/The_Isle_of_Ansur_PL)
 
 # Contribution
 
 ---
-Currently contributions are closed. You can reach to developer by pull request or contacting
-directly, but it will most likely be rejected.  
+Currently, you can contribute to open-sourced translation mods listed in [section above](#translations).
+
+Contributions for other features are currently closed.
+You can reach to developer by pull request or contacting directly, but it will
+most likely be rejected.  
 For anyone who would like to contribute anyway, here are principles that should be followed:
 
 - **[Principles For Code Contribution](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Code-Contribution-Principles)**  
 - **[Principles For Assets Contribution](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Assets-Contribution-Principles)**
 
-In next months translation and quest contributions will be opened, when most of game features
-are in place.
+In next months quest contributions will be opened, when most of game features are in place.
 
 # Credits
 

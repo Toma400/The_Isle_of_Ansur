@@ -4,9 +4,10 @@ from core.file_system.parsers import loadTOML
 from os.path import exists
 from os import remove
 
-for save in listSaves(False):
-    presave = f"saves/{save}/buffer/presave.toml"
-    if exists(presave):
-        data = loadTOML(presave)
-        updateSave(save, data)
-        remove(presave)
+if not exists(".dev"):
+    for save in listSaves(False):
+        presave = f"saves/{save}/buffer/presave.toml"
+        if exists(presave):
+            data = loadTOML(presave)
+            updateSave(save, data)
+            remove(presave)
