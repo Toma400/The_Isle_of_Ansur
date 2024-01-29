@@ -52,7 +52,7 @@ class Location:
 
 
 def getLocation(lid: str) -> Location:
-    """Location constructor that uses LID instead of explicit __init__ constructor. Resource-heavy in iteration compared to getLocations()"""
+    """Location constructor that uses LID instead of explicit __init__ constructor"""
     lid_ems = lid.split(":")
 
     def returnKey() -> str: # returns translation key

@@ -14,4 +14,4 @@ def loadTOML(fpath: str) -> dict | list:
 
 def loadJSON(fpath: str) -> dict | list:
     with open(fpath, encoding="utf-8") as jf:
-        return json.loads(jf)
+        return json.loads(jf.read())

@@ -17,6 +17,9 @@
 > ---
 > ### Pre-alpha 5
 ```
+> - Polish version
+>   - Moved into [separate mod](https://github.com/Toma400/The_Isle_of_Ansur_PL)
+>     for the time being
 > - Gameplay
 >   - You can now load your game
 >     - If save has wrong/old structure, it will show an error
