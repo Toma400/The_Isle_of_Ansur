@@ -1,4 +1,4 @@
-from core.gui.manag.langstr import langjstring
+from core.gui.manag.langstr import langjstring, ErrorDummy
 from system.mod_manag import mod_lister
 from glob import glob as walkdir
 from os.path import exists
@@ -64,16 +64,18 @@ class Class:
     def __str__(self) -> str:
         return self.langstr()
 
-def getClass(cid: str) -> Class:
+def getClass(cid: str) -> Class | ErrorDummy:
     """Race constructor that uses CID instead of explicit __init__ constructor. Resource-heavy in iteration compared to getClasses()"""
     cid_ems = cid.split(":")
 
-    def returnKey() -> str: # returns translation key
-        with open(f"stats/{cid_ems[0]}/classes/{cid_ems[1]}.json") as jf:
-            pjf = json.load(jf)
-            return pjf["key"]
+    if exists(f"stats/{cid_ems[0]}/classes/{cid_ems[1]}.json"):
+        def returnKey() -> str: # returns translation key
+            with open(f"stats/{cid_ems[0]}/classes/{cid_ems[1]}.json") as jf:
+                pjf = json.load(jf)
+                return pjf["key"]
 
-    return Class(name=cid_ems[1], tr_key=returnKey(), mod_id=cid_ems[0])
+        return Class(name=cid_ems[1], tr_key=returnKey(), mod_id=cid_ems[0])
+    return ErrorDummy()
 
 def getClasses() -> list[Class]:
     """Main gatherer of class data during load/reload"""

@@ -41,3 +41,11 @@ def langjstring (key: str, modtype: str, modid: str = "ansur", gender: str = Non
         return read
     else:
         return parseGender(read, gender)
+
+class ErrorDummy:
+    """Used in situations when `langstr()` is casted on object that would yield error string in langstr() phase, but its initialisation does that beforehand
+    Solution to errors like this: https://github.com/Toma400/The_Isle_of_Ansur/issues/111"""
+
+    @staticmethod
+    def langstr() -> str:
+        return langstring("system__text_load_fail")

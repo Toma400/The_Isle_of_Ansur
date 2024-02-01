@@ -1,5 +1,5 @@
 from core.data.pack_manag.packs import getPacks, PackTypes
-from core.gui.manag.langstr import langjstring
+from core.gui.manag.langstr import langjstring, ErrorDummy
 from glob import glob as walkdir
 from os.path import exists
 import logging as log
@@ -58,17 +58,18 @@ class Origin:
         return self.langstr()
 
 
-def getOrigin(oid: str) -> Origin:
+def getOrigin(oid: str) -> Origin | ErrorDummy:
     """Origin constructor that uses OID instead of explicit __init__ constructor. Resource-heavy in iteration compared to getOrigins()"""
     rlid_ems = oid.split(":")
 
-    def returnKey() -> str:  # returns translation key
-        with open(f"stats/{rlid_ems[0]}/origins/{rlid_ems[1]}.json") as jf:
-            pjf = json.load(jf)
-            return pjf["key"]
+    if exists(f"stats/{rlid_ems[0]}/origins/{rlid_ems[1]}.json"):
+        def returnKey() -> str:  # returns translation key
+            with open(f"stats/{rlid_ems[0]}/origins/{rlid_ems[1]}.json") as jf:
+                pjf = json.load(jf)
+                return pjf["key"]
 
-    return Origin(name=rlid_ems[1], tr_key=returnKey(), mod_id=rlid_ems[0])
-
+        return Origin(name=rlid_ems[1], tr_key=returnKey(), mod_id=rlid_ems[0])
+    return ErrorDummy()
 
 def getOrigins() -> list[Origin]:
     """Main gatherer of origin data during load/reload"""

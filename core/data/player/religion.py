@@ -1,5 +1,5 @@
 from core.data.pack_manag.packs import getPacks, PackTypes
-from core.gui.manag.langstr import langjstring
+from core.gui.manag.langstr import langjstring, ErrorDummy
 from glob import glob as walkdir
 from os.path import exists
 import json
@@ -42,16 +42,18 @@ class Religion:
     def __str__(self) -> str:
         return self.langstr()
 
-def getReligion(rlid: str) -> Religion:
+def getReligion(rlid: str) -> Religion | ErrorDummy:
     """Religion constructor that uses RLID instead of explicit __init__ constructor. Resource-heavy in iteration compared to getReligions()"""
     rlid_ems = rlid.split(":")
 
-    def returnKey() -> str: # returns translation key
-        with open(f"stats/{rlid_ems[0]}/religions/{rlid_ems[1]}.json") as jf:
-            pjf = json.load(jf)
-            return pjf["key"]
+    if exists(f"stats/{rlid_ems[0]}/religions/{rlid_ems[1]}.json"):
+        def returnKey() -> str: # returns translation key
+            with open(f"stats/{rlid_ems[0]}/religions/{rlid_ems[1]}.json") as jf:
+                pjf = json.load(jf)
+                return pjf["key"]
 
-    return Religion(name=rlid_ems[1], tr_key=returnKey(), mod_id=rlid_ems[0])
+        return Religion(name=rlid_ems[1], tr_key=returnKey(), mod_id=rlid_ems[0])
+    return ErrorDummy()
 
 def getReligions() -> list[Religion]:
     """Main gatherer of religion data during load/reload"""

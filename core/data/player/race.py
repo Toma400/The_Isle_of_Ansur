@@ -1,5 +1,5 @@
+from core.gui.manag.langstr import langjstring, ErrorDummy
 from core.data.pack_manag.id import agnosticID
-from core.gui.manag.langstr import langjstring
 from system.mod_manag import mod_lister
 from glob import glob as walkdir
 from os.path import exists
@@ -58,16 +58,18 @@ class Race:
     def __str__(self) -> str:
         return self.langstr()
 
-def getRace(rid: str) -> Race:
+def getRace(rid: str) -> Race | ErrorDummy:
     """Race constructor that uses RID instead of explicit __init__ constructor. Resource-heavy in iteration compared to getRaces()"""
     rid_ems = rid.split(":")
 
-    def returnKey() -> str: # returns translation key
-        with open(f"stats/{rid_ems[0]}/races/{rid_ems[1]}.json") as jf:
-            pjf = json.load(jf)
-            return pjf["key"]
+    if exists(f"stats/{rid_ems[0]}/races/{rid_ems[1]}.json"):
+        def returnKey() -> str: # returns translation key
+            with open(f"stats/{rid_ems[0]}/races/{rid_ems[1]}.json") as jf:
+                pjf = json.load(jf)
+                return pjf["key"]
 
-    return Race(name=rid_ems[1], tr_key=returnKey(), mod_id=rid_ems[0])
+        return Race(name=rid_ems[1], tr_key=returnKey(), mod_id=rid_ems[0])
+    return ErrorDummy()
 
 def getRaces() -> list[Race]:
     """Main gatherer of race data during load/reload"""
