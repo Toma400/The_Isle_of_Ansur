@@ -35,6 +35,7 @@ class SaveVerifier:
             dict[str]      - list of missing packs [ID]
             dict[str, str] - list of incorrect packs [ID, version used during save]
         """
+
         packs_required = loadTOML(f"saves/{self.name}/buffer/mods.toml")
         packs_used     = loadYAML("core/data/pack_manag/pack_order.yaml") if exists("core/data/pack_manag/pack_order.yaml") else []
         everything_ok  = True
@@ -42,6 +43,8 @@ class SaveVerifier:
         packs_final_in = {}
         packs_final_ms = []
         packs_final_er = {}
+
+        packs_used.append("ansur") # TODO: remove it once 'ansur' becomes its own .zip file
 
         for pack in packs_used:
             p_info = searchInfo(zipToID(pack))
