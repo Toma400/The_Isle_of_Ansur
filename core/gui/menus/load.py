@@ -1,6 +1,6 @@
 from core.file_system.theme_manag import FontColour as fCol
 from core.gui.registry.pgui_objects import PGUI_Helper
-from core.data.save_system.verify import verifySave
+from core.data.save_system.verify import SaveVerifier
 from core.data.save_system.walk import listSaves
 from core.data.pack_manag.info import searchInfo
 from core.data.player.religion import getReligion
@@ -12,12 +12,12 @@ from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr, imgLo
 from core.graphics.text_manag import put_text
 from core.gui.manag.langstr import langstring
 from core.file_system.parsers import loadTOML
-from logging import log, ERROR
+from logging import log, ERROR, WARNING
 from os.path import exists
 
-def loadDescr(save: str, verification: bool) -> str:
+def loadDescr(save: str, vr: SaveVerifier) -> str:
     ret = ""
-    if verification:
+    if vr.save_structure:
         sf             = loadTOML(f"saves/{save}/buffer/data.toml")
         packs_required = loadTOML(f"saves/{save}/buffer/mods.toml")
         packs_final    = {}
@@ -46,7 +46,29 @@ def loadDescr(save: str, verification: bool) -> str:
         maxlen = '{:<' + str(maxlen + 1) + '}'
         for pack, ver in packs_final.items():
             ret += f"  - {maxlen.format(pack)} | " # name
-            ret += f"{ver}\n"                      # version
+            ret += f"{ver}"                        # version
+            if pack in vr.mods_versions[3]:        # error: required version
+                ret += f" * {langstring('system__text_mis')}"
+            elif pack in vr.mods_versions[4]:
+                ret += f" * {langstring('system__text_dif')}: {vr.mods_versions[3][pack]}"
+            ret += "\n"
+
+        if not vr.mods_versions[0]:
+            log(WARNING, f'''
+            Save -{save}- did not met its mods requirements.
+            
+            Required mods:
+            {vr.mods_versions[1]}
+            
+            Loaded mods:
+            {vr.mods_versions[2]}
+            
+            Missing:
+            {vr.mods_versions[3]}
+            
+            Different versions:
+            {vr.mods_versions[4]}
+            ''')
     else:
         log(ERROR, f"Couldn't load informations about save -{save}-. The save may be corrupted or made with older version. Printing stacktrace:", exc_info=True)
         ret = langstring("load__error_longer")
@@ -74,9 +96,9 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     if game_loaded is not None:
         if dyn_screen.journey.name != game_loaded:
             dyn_screen.journey.name   = game_loaded
-            dyn_screen.journey.verify = verifySave(game_loaded)
+            dyn_screen.journey.verify = SaveVerifier(game_loaded)
             dyn_screen.set_pgui_element("load__descr", loadDescr(game_loaded, dyn_screen.journey.verify))
-            if dyn_screen.journey.verify:
+            if dyn_screen.journey.verify.correct: # see comment for this var
                 dyn_screen.tooltip = ""
             else:
                 dyn_screen.tooltip = "menu__tp_load_load"
@@ -85,7 +107,7 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             else:
                 dyn_screen.set_pgui_element("load__avatar", imgLoad(PGUI_Helper.def_img, alpha=True))
         put_text(screen, text=langstring("load__remove"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=22, colour=fCol.ENABLED.value)
-        if dyn_screen.journey.verify is True:
+        if dyn_screen.journey.verify.correct is True: # see comment for this var
             put_text(screen, text=langstring("load__load"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=10, colour=fCol.ENABLED.value)
 
     # GUI EXPECTED

@@ -27,6 +27,8 @@
 >       to current system
 > - Technicals
 >   - Save system was entirely remade to match new requirements
+> - Fixes
+>   - Fixed crash to desktop on loading menu (#111)
 >
 ```
 > ### Pre-alpha 4

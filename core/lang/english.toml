@@ -193,3 +193,5 @@ pack__worlds               = "Worldpack"
 pack__stats                = "Statpack"
 
 system__text_load_fail     = "Text failed to load"
+system__text_mis           = "Missing"
+system__text_dif           = "Saved version"

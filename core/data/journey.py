@@ -1,3 +1,4 @@
+from core.data.save_system.verify import SaveVerifier
 from core.data.player.origin import getOrigin
 import os, toml, yaml, json
 from os.path import exists
@@ -36,7 +37,7 @@ class Journey:
         self.inidata  : dict        = {k: "" for k in self.keys_saved} # dict held only during initial creation (used for -self.init-)
         self.settings : dict        = {"permadeath": False}            # dict holding default game settings
         # technical
-        self.verify   : bool        = False
+        self.verify : SaveVerifier or None = None
 
     def get(self, save_string: str) -> str | int | float | list | dict:
         """Allows for quick data gathering from save files. Operates on `save_string` format.
