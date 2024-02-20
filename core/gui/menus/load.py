@@ -131,7 +131,7 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     elif mouseColliderPx(lsv[0], lsv[1], lsv[2], lsv[3]):
         if game_loaded is not None:
-            if dyn_screen.journey.verify is True:
+            if dyn_screen.journey.verify.correct: # see comment for this var
                 put_text(screen, text=langstring("load__load"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=10, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     dyn_screen.journey.name     = game_loaded

@@ -15,14 +15,14 @@ REQUIRED_DIRS = [
     "containers", # TODO
     "locations",  # TODO
     "reputation", # TODO
-    "statistics",
-    "inventory"   # TODO
+    "statistics"
 ]
 REQUIRED_FILES = [
     # main
     "data.toml",
     "mods.toml",
     "player.toml",
+    "inventory.yaml",
     # nested
     #"reputation/towns.yaml",     # TODO # Where to put detailed ideas on towns/guilds/religions, instead of just numbers?
     #"reputation/guilds.yaml",    # TODO
