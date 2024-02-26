@@ -3,6 +3,6 @@
   "new_game": {
     "location":        "ansur:tutorial",
     "class_inventory": true,
-    "inventory":       []
+    "inventory":       [{"ansur:letter_to_yourself": 1}]
   }
 }

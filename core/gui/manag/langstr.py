@@ -49,3 +49,9 @@ class ErrorDummy:
     @staticmethod
     def langstr() -> str:
         return langstring("system__text_load_fail")
+
+    def get(self, attribute: str) -> None:
+        return None
+
+    def getc(self, category: str, attribute: str) -> None:
+        return None

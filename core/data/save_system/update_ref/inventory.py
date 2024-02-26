@@ -1,8 +1,9 @@
+from core.file_system.parsers import loadYAML, loadTOML
+from core.data.player.origin import getOrigin
 from core.data.save_system.req_data import SV_KIND
-from core.file_system.parsers import loadYAML
 from os.path import exists
 import logging as log
-import yaml
+import yaml, toml
 
 def updateInventory(name: str, data: dict = None):
     inv = {
@@ -49,8 +50,6 @@ def updateInventory(name: str, data: dict = None):
                 raise KeyError(f"Saved -inventory.yaml- for character: {name} do not contain required key: {line}. Save is either corrupted or needs patch.")
         inv = get
 
-    # --- CLASS INVENTORY ---
-
     # checking for correctness
     for inv_key in inv_keys:
         if inv_key not in inv:
@@ -79,16 +78,31 @@ def addItem(iid: str, name: str, count: int = 1) -> None:
         get = loadYAML(f"saves/{name}/{SV_KIND.BUFFER.value}/inventory.yaml")
         if "loose" in get:
             is_in = scan(get["loose"], iid) # if item is in inventory (if yes = position, else = -1)
-            print(is_in)
-            print("---")
             if is_in != -1:
                 get["loose"][is_in] = {iid: get["loose"][is_in][iid] + count} # adds the number
             else:
                 get["loose"].append({iid: count}) # sets the number
 
-            print(get)
             with open(f"saves/{name}/{SV_KIND.BUFFER.value}/inventory.yaml", "w") as f:
                 yaml.dump(get, f)
                 f.flush()
             return None
     log.error(f"Tried to add item of ID: {iid}, to the player of name: {name}, but failed.")
+
+def addClassInventory(name: str):
+    ...
+
+def addOriginInventory(name: str):
+    get = loadTOML(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml")
+
+    og  = getOrigin(get["origin"])
+    add = og.getc("new_game", "inventory")
+
+    if add is not None:
+        for item in add:
+            for iid, val in item.items():
+                addItem(iid, name, val)
+
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml", "w") as f:
+        toml.dump(get, f)
+        f.flush()
