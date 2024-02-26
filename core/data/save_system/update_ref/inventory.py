@@ -1,6 +1,7 @@
 from core.data.save_system.req_data import SV_KIND
 from core.file_system.parsers import loadYAML
 from os.path import exists
+import logging as log
 import yaml
 
 def updateInventory(name: str, data: dict = None):
@@ -61,3 +62,33 @@ def updateInventory(name: str, data: dict = None):
     with open(f"saves/{name}/{SV_KIND.BUFFER.value}/inventory.yaml", "w") as f:
         yaml.dump(inv, f)
         f.flush()
+
+def addItem(iid: str, name: str, count: int = 1) -> None:
+    """Temporary system to add items to inventory. Return is purely for logging purposes"""
+    """WARNING: IT IS PURELY FOR STACKABLE ITEMS"""
+    def scan(l: list[dict[str, int]], iid: str) -> int:
+        pos = 0
+        for entry in l:
+            if iid in entry:
+                return pos
+            else:
+                pos += 1
+        return -1
+
+    if exists(f"saves/{name}/{SV_KIND.BUFFER.value}/inventory.yaml"):
+        get = loadYAML(f"saves/{name}/{SV_KIND.BUFFER.value}/inventory.yaml")
+        if "loose" in get:
+            is_in = scan(get["loose"], iid) # if item is in inventory (if yes = position, else = -1)
+            print(is_in)
+            print("---")
+            if is_in != -1:
+                get["loose"][is_in] = {iid: get["loose"][is_in][iid] + count} # adds the number
+            else:
+                get["loose"].append({iid: count}) # sets the number
+
+            print(get)
+            with open(f"saves/{name}/{SV_KIND.BUFFER.value}/inventory.yaml", "w") as f:
+                yaml.dump(get, f)
+                f.flush()
+            return None
+    log.error(f"Tried to add item of ID: {iid}, to the player of name: {name}, but failed.")
