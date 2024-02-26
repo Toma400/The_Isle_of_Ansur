@@ -1,4 +1,5 @@
 from core.file_system.parsers import loadYAML, loadTOML
+from core.data.player.profession import getClass
 from core.data.player.origin import getOrigin
 from core.data.save_system.req_data import SV_KIND
 from os.path import exists
@@ -90,7 +91,19 @@ def addItem(iid: str, name: str, count: int = 1) -> None:
     log.error(f"Tried to add item of ID: {iid}, to the player of name: {name}, but failed.")
 
 def addClassInventory(name: str):
-    ...
+    get = loadTOML(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml")
+
+    oc  = getClass(get["class"])
+    add = oc.getc("new_game", "inventory")
+
+    if add is not None:
+        for item in add:
+            for iid, val in item.items():
+                addItem(iid, name, val)
+
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml", "w") as f:
+        toml.dump(get, f)
+        f.flush()
 
 def addOriginInventory(name: str):
     get = loadTOML(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml")
