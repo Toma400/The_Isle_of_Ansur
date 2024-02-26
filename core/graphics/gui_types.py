@@ -1,5 +1,6 @@
 from core.graphics.text_manag import put_abstext, put_text, adjustTextSize
 from core.gui.menus.location import locationScreen
+from core.gui.menus.diary import diaryScreen
 from core.gui.menus.packs import packMenu
 from core.gui.menus.load import loadGame
 from core.gui.manag.langstr import langstring
@@ -108,6 +109,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             else:
                 locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen)
 
+        case "diary":
+            diaryScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen)
+
         #==============================================================================================================
         case "settings":
             dyn_screen.gui("menu__gh_background").full().put(screen)
@@ -115,7 +119,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             put_text(screen, text=langstring("menu__button_settings"),    font_cat="menu", size=35, align_x="center", pos_y=1, colour=fCol.ENABLED.value)
             gt1 = put_text(screen, text=langstring("menu__sett_general"), font_cat="menu", size=30, pos_x=5, pos_y=12, colour=fCol.ENABLED.value)
             gt2 = put_text(screen, text=langstring("menu__sett_tech"),    font_cat="menu", size=30, pos_x=5, pos_y=22, colour=fCol.ENABLED.value)
-            gtx = put_text(screen, text=langstring("menu__sett_back"),    font_cat="menu", size=30, pos_x=5, pos_y=92, colour=fCol.ENABLED.value)
+            gtx = put_text(screen, text=langstring("menu__back"),         font_cat="menu", size=30, pos_x=5, pos_y=92, colour=fCol.ENABLED.value)
 
             #==================================================
             # hovering & clicking events
@@ -130,7 +134,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     guitype[1] = switch_gscr(dyn_screen, screen, "settings_tech")
 
             elif mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
-                put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour=fCol.HOVERED.value)
+                put_text(screen, text=langstring("menu__back"), font_cat="menu", size=30, pos_x=5, pos_y=92, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                     guitype[1] = None
@@ -309,7 +313,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             dyn_screen.gui("menu__gh_background").full().put(screen)
 
             put_text(screen, text=langstring("menu__button_start"),        font_cat="menu", size=35, align_x="center", pos_y=1,  colour="#4E3510")
-            gtx = put_text(screen, text=langstring("menu__sett_back"),     font_cat="menu", size=30, align_x="center", pos_y=92, colour="#4E3510")
+            gtx = put_text(screen, text=langstring("menu__back"),          font_cat="menu", size=30, align_x="center", pos_y=92, colour="#4E3510")
 
             mn1 = put_text(screen, text=langstring("ccrt__gen_category1"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=10, colour=fCol.ENABLED.value)
             mn2 = put_text(screen, text=langstring("ccrt__gen_category2"), font_cat="menu", size=30, align_x="left", pos_x=5, pos_y=18, colour=ccrt_col["disabled"])
@@ -610,7 +614,7 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             # ==================================================
             # hovering & clicking events
             if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
-                put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, align_x="center", pos_y=92, colour=fCol.HOVERED.value)
+                put_text(screen, text=langstring("menu__back"), font_cat="menu", size=30, align_x="center", pos_y=92, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     guitype[0] = switch_gscr(dyn_screen, screen, "menu")
                     guitype[1] = None

@@ -45,8 +45,9 @@ def updateSave(name: str, data: dict = None):
     updateMods(name) # TODO: returns whether there was issue while loading packs
 
     updateInventory(name, data)
-    addOriginInventory(name)
-    addClassInventory(name)
+    if data is not None:
+        addOriginInventory(name)
+        addClassInventory(name)
     # to find place somewhere:
     # - settings
     # - religion (can change)

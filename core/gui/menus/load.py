@@ -86,7 +86,7 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     lsv = put_text(screen, text=langstring("load__load"),        font_cat="menu", size=30, align_x="right",  pos_x=9, pos_y=10, colour=fCol.DISABLED.value)
     put_text(screen,       text=langstring("load__restore"),     font_cat="menu", size=30, align_x="right",  pos_x=9, pos_y=16, colour=fCol.DISABLED.value)
     rsv = put_text(screen, text=langstring("load__remove"),      font_cat="menu", size=30, align_x="right",  pos_x=9, pos_y=22, colour=fCol.DISABLED.value)
-    gtx = put_text(screen, text=langstring("menu__sett_back"),   font_cat="menu", size=30, align_x="center",          pos_y=92, colour=fCol.ENABLED.value)
+    gtx = put_text(screen, text=langstring("menu__back"),        font_cat="menu", size=30, align_x="center",          pos_y=92, colour=fCol.ENABLED.value)
 
     dyn_screen.put_pgui("load__saves")
     dyn_screen.put_pgui("load__descr")
@@ -124,7 +124,7 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     # EVENTS
     #===============================================================
     if mouseColliderPx(gtx[0], gtx[1], gtx[2], gtx[3]):
-        put_text(screen, text=langstring("menu__sett_back"), font_cat="menu", size=30, align_x="center", pos_y=92, colour=fCol.HOVERED.value)
+        put_text(screen, text=langstring("menu__back"), font_cat="menu", size=30, align_x="center", pos_y=92, colour=fCol.HOVERED.value)
         if mouseRec(pg_events):
             guitype[0] = switch_gscr(dyn_screen, screen, "menu")
             guitype[1] = None
