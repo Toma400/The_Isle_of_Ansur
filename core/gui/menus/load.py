@@ -26,10 +26,10 @@ def loadDescr(save: str, vr: SaveVerifier) -> str:
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_gender'))}"   + f"{getGender(sf['gender']).langstr()}"     + "\n"
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_race'))}"     + f"{getRace(sf['race']).langstr()}"         + "\n"
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_class'))}"    + f"{getClass(sf['class']).langstr()}"       + "\n"
-        # ret += f"{'{:<15}'.format(langstring('ccrt__gen_religion'))}" + f"{getReligion(sf['religion']).langstr()}" + "\n" << TODO
+        ret += f"{'{:<15}'.format(langstring('ccrt__gen_religion'))}" + f"{getReligion(sf['religion']).langstr()}" + "\n"
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_origin'))}"   + f"{getOrigin(sf['origin']).langstr()}"     + "\n"
         ret += f"{langstring('ccrt__gen_history')}"                                          + "\n"
-        # ret += f"{sf['history']}"                                                            + "\n"                       << TODO
+        ret += f"{sf['history']}"                                                            + "\n"
         ret += f"{langstring('load__packs_used')}"                                           + "\n"
         # set fixed length that adjusts to the longest mod ID + set translation names
         maxlen = 0

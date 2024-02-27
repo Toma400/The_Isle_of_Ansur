@@ -51,7 +51,7 @@ def updateMods(name: str):
             else:
                 mod_list[mod_id] = "0.0.0"
 
-    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/mods.toml", "w") as f:
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/mods.toml", "w", encoding="utf8") as f:
         toml.dump(mod_list, f)
         f.flush()
 

@@ -29,6 +29,6 @@ def updatePlayer(name: str, data: dict = None):
         if player_data[player_key] is None:
             raise KeyError(f"Provided -data- is None: {player_key}")
 
-    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/player.toml", "w") as f:
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/player.toml", "w", encoding="utf8") as f:
         toml.dump(player_data, f)
         f.flush()

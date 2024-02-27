@@ -59,7 +59,7 @@ def updateInventory(name: str, data: dict = None):
         if val_key not in inv["active"]:
             raise KeyError(f"Provided -inv- key is None: {val_key}")
 
-    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/inventory.yaml", "w") as f:
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/inventory.yaml", "w", encoding="utf8") as f:
         yaml.dump(inv, f)
         f.flush()
 
@@ -84,7 +84,7 @@ def addItem(iid: str, name: str, count: int = 1) -> None:
             else:
                 get["loose"].append({iid: count}) # sets the number
 
-            with open(f"saves/{name}/{SV_KIND.BUFFER.value}/inventory.yaml", "w") as f:
+            with open(f"saves/{name}/{SV_KIND.BUFFER.value}/inventory.yaml", "w", encoding="utf8") as f:
                 yaml.dump(get, f)
                 f.flush()
             return None
@@ -101,7 +101,7 @@ def addClassInventory(name: str):
             for iid, val in item.items():
                 addItem(iid, name, val)
 
-    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml", "w") as f:
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml", "w", encoding="utf8") as f:
         toml.dump(get, f)
         f.flush()
 
@@ -116,6 +116,6 @@ def addOriginInventory(name: str):
             for iid, val in item.items():
                 addItem(iid, name, val)
 
-    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml", "w") as f:
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml", "w", encoding="utf8") as f:
         toml.dump(get, f)
         f.flush()

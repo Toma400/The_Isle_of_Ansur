@@ -46,7 +46,7 @@ def updateAttributes(name: str, data: dict = None):
             for catr, catv in cat.items():
                 atrout[absoluteID(catr)] = atrout[absoluteID(catr)] + catv
 
-    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/statistics/attributes.yaml", "w") as f:
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/statistics/attributes.yaml", "w", encoding="utf8") as f:
         yaml.dump(atrout, f)
         f.flush()
 
@@ -88,6 +88,6 @@ def updateSkills(name: str, data: dict = None):
             for cskr, cskv in csk.items():
                 skout[absoluteID(cskr)] = skout[absoluteID(cskr)] + cskv
 
-    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/statistics/skills.yaml", "w") as f:
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/statistics/skills.yaml", "w", encoding="utf8") as f:
         yaml.dump(skout, f)
         f.flush()

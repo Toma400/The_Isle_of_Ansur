@@ -5,14 +5,17 @@ import toml
 
 def updateData(name: str, data: dict = None):
     data_file = {
-        "name":   None,
-        "gender": None,
-        "race":   None,
-        "class":  None,
-        "origin": None
+        "name":     None,
+        "gender":   None,
+        "race":     None,
+        "class":    None,
+        "origin":   None,
+        "religion": None,
+        "history":  None
     }
 
     data_keys = data_file.keys()
+
     if exists(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml"):
         get      = loadTOML(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml")
         get_keys = get.keys()
@@ -31,6 +34,6 @@ def updateData(name: str, data: dict = None):
         if data_file[data_key] is None:
             raise KeyError(f"Provided -data- is None: {data_key}")
 
-    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml", "w") as f:
+    with open(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml", "w", encoding="utf8") as f:
         toml.dump(data_file, f)
         f.flush()
