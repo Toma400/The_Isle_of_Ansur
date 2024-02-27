@@ -11,5 +11,17 @@ if not exists(".dev"):
         presave = f"saves/{save}/buffer/presave.toml"
         if exists(presave):
             data = loadTOML(presave)
-            updateSave(save, data)
-            remove(presave)
+            # filling missing 'settings' data
+            data["settings"] = {
+                "permadeath": False
+            }
+            try:
+                updateSave(save, data)
+                remove(presave)
+            except Exception as e:
+                print(e)
+    print("Saves updated successfully")
+else:
+    print("Developer's build, no updating was performed")
+
+input("Press Enter to finish")

@@ -88,7 +88,7 @@ class DefaultRun:
             "--noupx",
             "--clean",
             "--name=" + patchName,
-            "--distpath=" + cls.export_path + patchName + "/",
+            "--distpath=" + cls.export_path + cls.game_name + "/",
             "--workpath=" + cls.core_path + "system/cache/pyinstaller",
             "--specpath=" + cls.core_path + "system/cache/pyinstaller"
         ]

@@ -62,6 +62,6 @@ def validateData(data: dict):
     for k in keys_saved:
         if k not in data:
             log.log(log.ERROR, f"Couldn't find {k} in -inidata- dictionary. Printing dictionary contents:")
-            for entry, value in data:
+            for entry, value in data.items():
                 log.log(log.INFO, f"- {entry}: {value}")
             raise KeyError("Raising crash due to the issue above.")
