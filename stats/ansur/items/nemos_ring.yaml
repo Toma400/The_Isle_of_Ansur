@@ -1,0 +1,15 @@
+key:     "item__nemos_ring"
+texture: "items/nemos_ring.png"
+weight:  0.1
+
+# used for clothing and jewelry
+wear:
+    slot: "ring"
+
+# economic factors, min/max that will rely on tag value in area (if not specified, value in between is used: 275 in this case)
+tag: "jewelry_silver"
+value_min: 250
+value_max: 300
+
+# ...when having shop, item will be measured against tag, so basically you can make any custom tags or skip any, it won't matter
+# ...stackability is measured on whether key -durability- is set (set = non-stackable, not set = stackable | at least for now)

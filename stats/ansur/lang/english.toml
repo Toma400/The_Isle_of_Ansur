@@ -114,6 +114,9 @@ religion__atheism = "Atheism"
 
 origin__wanderer = "Wanderer"
 
+item__honey_roll         = "Honey Roll"
+item__letter_to_yourself = "Letter To Yourself"
+item__nemos_ring         = "Nemos Ring"
 #================================================================================================================================
 # DESCRIPTIONS
 #================================================================================================================================
@@ -605,4 +608,16 @@ origin__wanderer_descr = '''
 You are walking on deck of "Veno Edran", galleon travelling to West Baedoor. You found yourself unsatisfied with your current life, and so decided to try some luck - paying for the trip, you escaped the place you got sick from.
 You feel something in your heart, a bit of dread, but also hope, and so you smile, imagining all that foggy, modern houses in New Baedoor port.
 New Baedoor, the most cosmopolitan city in current era, where all dreams come true.
+'''
+#-----------------------
+# ITEMS
+#-----------------------
+item__honey_roll_descr = '''
+Sweet roll filled with honey.
+'''
+item__letter_to_yourself_descr = '''
+Strange paper that somehow have my own writing on it. I don't remember when I wrote that, honestly.
+'''
+item__nemos_ring_descr = '''
+You see silver ring with embbed piece of lapis. It has some engraved letters, you can read name "Nemos" from them.
 '''
