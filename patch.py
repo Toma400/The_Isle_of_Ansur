@@ -4,6 +4,8 @@ from core.file_system.parsers import loadTOML
 from os.path import exists
 from os import remove
 
+# PATCH_NAME = LocationUpdatePatch
+
 if not exists(".dev"):
     for save in listSaves(False):
         presave = f"saves/{save}/buffer/presave.toml"

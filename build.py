@@ -11,6 +11,7 @@ import PyInstaller
 import os; fpath = os.path.dirname(os.path.abspath("build.py"))
 from core.file_system.repo_manag import file_lister, dir_lister
 from distutils.dir_util import copy_tree
+from os.path import exists
 import stat, shutil, traceback
 #-----------------------------------------------------------
 # FORGE
@@ -72,6 +73,20 @@ class DefaultRun:
         full_export_path + "system/cache/__pycache__",
         full_export_path + "system/cache/pyinstaller"
     ]
+
+    @classmethod
+    def patch(cls, patchName) -> list:
+        return [
+            cls.core_path + "patch.py",
+            "--onedir",
+            "--onefile",
+            "--noupx",
+            "--clean",
+            "--name=" + patchName,
+            "--distpath=" + cls.export_path + patchName + "/",
+            "--workpath=" + cls.core_path + "system/cache/pyinstaller",
+            "--specpath=" + cls.core_path + "system/cache/pyinstaller"
+        ]
 
 # function used to delete elements excluded in list above
 def file_deleting(delete_list):
@@ -138,6 +153,17 @@ def forge():
     )
     copy_tree(DefaultRun.core_path, DefaultRun.full_export_path) # copies all files over
     file_deleting(DefaultRun.ommitted_elements)                  # deletes files excluded in list
+
+    if exists("patch.py"):
+        # handler of possible patch - please include comment with such syntax to set patch name:
+        #                        # PATCH_NAME = nameOfThePatch
+        with open("patch.py") as p_file:
+            p_name = "Patch"
+            for line in p_file.readlines():
+                if line.startswith("# PATCH_NAME = "):
+                    p_name = line.replace("# PATCH_NAME = ", "").replace("\n", "")
+
+        PyInstaller.__main__.run(DefaultRun.patch(p_name))
 
 #============================================================================================================
 print('{:^65}'.format("\33[35m    ------------------------------"))
