@@ -4,7 +4,7 @@ from core.file_system.parsers import loadTOML
 from os.path import exists
 from os import remove
 
-# PATCH_NAME = LocationUpdatePatch
+# PATCH_NAME = Patch_PreAlpha5
 
 if not exists(".dev"):
     for save in listSaves(False):

@@ -7,6 +7,7 @@
 
 ---
 ## Pre-alpha builds
+- Pre-alpha 6
 - [Pre-alpha 5](#pre-alpha-5)
 - [Pre-alpha 4](#pre-alpha-4)
 - [Pre-alpha 3b](#pre-alpha-3b)
@@ -17,9 +18,6 @@
 > ---
 > ### Pre-alpha 5
 ```
-> - Polish version
->   - Moved into [separate mod](https://github.com/Toma400/The_Isle_of_Ansur_PL)
->     for the time being
 > - Gameplay
 >   - You can now load your game
 >     - If save has wrong/old structure, it will show an error
@@ -27,6 +25,12 @@
 >       to current system
 > - Technicals
 >   - Save system was entirely remade to match new requirements
+>     - Patch that allows updating old saves is delivered with release
+>   - Added inventory and item systems (heavily WIP and unseen in game though)
+>     - Origin and class can now add initial items added when game starts
+> - Polish version
+>   - Moved into [separate mod](https://github.com/Toma400/The_Isle_of_Ansur_PL)
+>     for the time being
 > - Fixes
 >   - Fixed crash to desktop on loading menu (#111)
 >
