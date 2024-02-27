@@ -50,7 +50,7 @@ def loadDescr(save: str, vr: SaveVerifier) -> str:
             if pack in vr.mods_versions[3]:        # error: required version
                 ret += f" * {langstring('system__text_mis')}"
             elif pack in vr.mods_versions[4]:
-                ret += f" * {langstring('system__text_dif')}: {vr.mods_versions[3][pack]}"
+                ret += f" * {langstring('system__text_dif')}: {vr.mods_versions[4][pack]}"
             ret += "\n"
 
         if not vr.mods_versions[0]:

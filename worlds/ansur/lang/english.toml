@@ -1,6 +1,6 @@
-loc__tutorial       = "Introduction"
+loc__sea__veno_edran_deck_0       = "Veno Edran, Main Deck"
 
 # DESCRIPTIONS
-loc__tutorial_descr = '''
-It was a windy day on the coast when you arrived there. You saw beautiful stuff before you, just as sea breeze flow through your hair.
+loc__sea__veno_edran_deck_0_descr = '''
+It was a windy day. You saw beautiful sea before you, just as breeze flow through your hair.
 '''

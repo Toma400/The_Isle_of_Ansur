@@ -71,7 +71,12 @@ class DefaultRun:
         full_export_path + "utils/__pycache__",
         full_export_path + "system/core/__pycache__",
         full_export_path + "system/cache/__pycache__",
-        full_export_path + "system/cache/pyinstaller"
+        full_export_path + "system/cache/pyinstaller",
+        # rubbish
+        full_export_path + "ioase.nim",
+        full_export_path + "ioase.nims",
+        full_export_path + "todoes.md",
+        full_export_path + "pjs.html"
     ]
 
     @classmethod

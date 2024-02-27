@@ -14,7 +14,7 @@ def diaryScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     # EVENTS
     #===============================================================
     if mouseColliderPx(bex[0], bex[1], bex[2], bex[3]):
-        put_text(screen, text=langstring("menu__back"), font_cat="menu", size=35, align_x="center", pos_y=90, colour=fCol.HOVERED.value)
+        put_text(screen, text=langstring("menu__back"), font_cat="menu", size=35, align_x="center", pos_y=85, colour=fCol.HOVERED.value)
         if mouseRec(pg_events):
             guitype[0] = switch_gscr(dyn_screen, screen, "menu")
             guitype[1] = None
