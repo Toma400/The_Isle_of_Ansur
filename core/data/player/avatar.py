@@ -11,9 +11,9 @@ def urlAvatar(url: str) -> bool:
     import requests
 
     def getExt() -> str | None:
-        cfs = [".png", ".jpg", "jpeg", ".webp"]
+        cfs = [".png", ".jpg", ".jpeg", ".webp"]
         for cf in cfs:
-            if cf in url:
+            if cf in url or cf.upper() in url:
                 return cf
         return None
 
@@ -47,7 +47,7 @@ def pathAvatar(pth: str) -> bool:
     os.makedirs(temp_folder.strip("tmp"), exist_ok=True)
 
     for ext in [".png", ".jpg", ".jpeg"]:
-        if pth.endswith(ext):
+        if pth.endswith(ext) or pth.endswith(ext.upper()):
             cv = Image.open(f'{pth}')
             cv.save(f"{temp_folder}.png")
             return True

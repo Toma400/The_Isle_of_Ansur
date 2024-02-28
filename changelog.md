@@ -7,6 +7,7 @@
 
 ---
 ## Pre-alpha builds
+- [Pre-alpha 6](#pre-alpha-6)
 - [Pre-alpha 5](#pre-alpha-5)
 - [Pre-alpha 4](#pre-alpha-4)
 - [Pre-alpha 3b](#pre-alpha-3b)
@@ -15,6 +16,11 @@
 - [Pre-alpha 1](#pre-alpha-1)
 
 > ---
+```
+> ### Pre-alpha 6
+>
+>
+```
 > ### Pre-alpha 5
 > - Gameplay
 >   - You can now load your game
