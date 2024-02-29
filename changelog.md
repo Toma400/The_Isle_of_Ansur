@@ -18,7 +18,8 @@
 > ---
 ```
 > ### Pre-alpha 6
->
+> - Fixes
+>   - Fixed not recognising uppercased file extensions (#118)
 >
 ```
 > ### Pre-alpha 5
