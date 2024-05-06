@@ -22,6 +22,8 @@
 >   - Fixed not recognising uppercased file extensions (#118)
 >
 ```
+>
+> ---
 > ### Pre-alpha 5
 > - Gameplay
 >   - You can now load your game
@@ -38,6 +40,8 @@
 >     for the time being
 > - Fixes
 >   - Fixed crash to desktop on loading menu (#111)
+> 
+> ---
 > ### Pre-alpha 4
 > - Gameplay
 >   - Added possibility to add avatars during character creation
@@ -57,6 +61,8 @@
 >     (no more changes to 400x400 resolution while keeping big text!)
 > - Fixes
 >   - Fixed Polish letters not being recognised (#104)
+> 
+> ---
 > ### Pre-alpha 3b
 > - Gameplay
 >   - Removed `Human, Born in Moon Continent` race due to BRPGS 3.0 changes
