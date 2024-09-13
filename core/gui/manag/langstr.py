@@ -15,7 +15,7 @@ def parseGender (string: str, gender_id: str) -> str:
     if os.path.exists(rule_path):
         gender_dict = loadYAML(rule_path)
         for og, rep in gender_dict.items():
-            initial_text = re.sub(r"\b" + og + r"\b",         rep,              initial_text)
+            initial_text = re.sub(f"\\b{og}\\b",              rep,              initial_text)
             initial_text = re.sub(f"\\b{og.capitalize()}\\b", rep.capitalize(), initial_text)
     return initial_text
 
@@ -40,7 +40,9 @@ def langjstring (key: str, modtype: str, modid: str = "ansur", gender: str = Non
     if gender is None:
         return read
     else:
-        return parseGender(read, gender)
+        if read[0] == "!": # "!" at the beginning of the string marks requirement for replacement
+            return parseGender(read[1:], gender) # removes "!"
+        return read
 
 class ErrorDummy:
     """Used in situations when `langstr()` is casted on object that would yield error string in langstr() phase, but its initialisation does that beforehand
