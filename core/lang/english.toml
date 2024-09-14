@@ -150,6 +150,8 @@ game__init_class_excl      = "Class is exclusive for race you don't represent!" 
 game__init_attr            = "Choose attribute you want to enhance"
 game__init_skill           = "Choose ability you want to enhance"
 
+game__diary_save           = "Save your game"
+
 stat__gen_name             = "Name"
 stat__gen_gender           = "Gender"
 stat__gen_gender1          = "Male"
