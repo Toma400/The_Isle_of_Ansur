@@ -8,16 +8,22 @@ class SaveVerifier:
 
     def __init__(self, name: str):
         # vars to use later
-        self.name     = name
+        self.name              = name
+        self.variant : SV_KIND = SV_KIND.ADVENTURE
         # vars for organisation
         self.save_structure = self.verifySaveStructure()
         self.mods_versions  = self.verifyModsDependencies() if self.save_structure else (False, {}, {}, {})
+        if not self.save_structure or not self.mods_versions: # reading from buffer, in case adventure doesn't work
+            self.variant: SV_KIND = SV_KIND.BUFFER
+            self.save_structure   = self.verifySaveStructure()
+            self.mods_versions    = self.verifyModsDependencies() if self.save_structure else (False, {}, {}, {})
+        self.varstr         = self.variant.value # stringified variant, so no SV_KIND import is needed elsewhere (important: use only outside file, it's set at the end)
         # bulk bool for both correctness
         #   later replace with save_structure only, and mods_versions being False should prompt the warning only
         self.correct        = self.save_structure and self.mods_versions[0]
 
-    def verifySaveStructure(self, variant: SV_KIND = SV_KIND.BUFFER) -> bool:
-        sdir = f"saves/{self.name}/{variant.value}"
+    def verifySaveStructure(self) -> bool:
+        sdir = f"saves/{self.name}/{self.variant.value}"
         for rd in REQUIRED_DIRS:
             if not exists(f"{sdir}/{rd}"):
                 return False
@@ -36,7 +42,7 @@ class SaveVerifier:
             dict[str, str] - list of incorrect packs [ID, version used during save]
         """
 
-        packs_required = loadTOML(f"saves/{self.name}/buffer/mods.toml")
+        packs_required = loadTOML(f"saves/{self.name}/{self.variant.value}/mods.toml")
         packs_used     = loadYAML("core/data/pack_manag/pack_order.yaml") if exists("core/data/pack_manag/pack_order.yaml") else []
         everything_ok  = True
         packs_final_rq = {}

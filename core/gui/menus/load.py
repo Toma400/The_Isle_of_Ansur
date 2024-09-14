@@ -1,6 +1,7 @@
 from core.file_system.theme_manag import FontColour as fCol
 from core.gui.registry.pgui_objects import PGUI_Helper
 from core.data.save_system.verify import SaveVerifier
+from core.data.save_system.buffer import loadBuffer
 from core.data.save_system.walk import listSaves
 from core.data.pack_manag.info import searchInfo
 from core.data.player.religion import getReligion
@@ -15,11 +16,11 @@ from core.file_system.parsers import loadTOML
 from logging import log, ERROR, WARNING
 from os.path import exists
 
-def loadDescr(save: str, vr: SaveVerifier) -> str:
+def loadDescr(vr: SaveVerifier) -> str:
     ret = ""
     if vr.save_structure:
-        sf             = loadTOML(f"saves/{save}/buffer/data.toml")
-        packs_required = loadTOML(f"saves/{save}/buffer/mods.toml")
+        sf             = loadTOML(f"saves/{vr.name}/{vr.variant.value}/data.toml")
+        packs_required = loadTOML(f"saves/{vr.name}/{vr.variant.value}/mods.toml")
         packs_final    = {}
         # string creation
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_name'))}"     + f"{sf['name']}"                            + "\n"
@@ -55,7 +56,7 @@ def loadDescr(save: str, vr: SaveVerifier) -> str:
 
         if not vr.mods_versions[0]:
             log(WARNING, f'''
-            Save -{save}- did not met its mods requirements.
+            Save -{vr.name}- did not met its mods requirements.
             
             Required mods:
             {vr.mods_versions[1]}
@@ -70,7 +71,7 @@ def loadDescr(save: str, vr: SaveVerifier) -> str:
             {vr.mods_versions[4]}
             ''')
     else:
-        log(ERROR, f"Couldn't load informations about save -{save}-. The save may be corrupted or made with older version. Printing stacktrace:", exc_info=True)
+        log(ERROR, f"Couldn't load informations about save -{vr.name}-. The save may be corrupted or made with older version. Printing stacktrace:", exc_info=True)
         ret = langstring("load__error_longer")
     return ret
 
@@ -97,7 +98,7 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         if dyn_screen.journey.name != game_loaded:
             dyn_screen.journey.name   = game_loaded
             dyn_screen.journey.verify = SaveVerifier(game_loaded)
-            dyn_screen.set_pgui_element("load__descr", loadDescr(game_loaded, dyn_screen.journey.verify))
+            dyn_screen.set_pgui_element("load__descr", loadDescr(dyn_screen.journey.verify))
             if dyn_screen.journey.verify.correct: # see comment for this var
                 dyn_screen.tooltip = ""
             else:
@@ -135,8 +136,10 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 put_text(screen, text=langstring("load__load"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=10, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     dyn_screen.journey.name     = game_loaded
-                    dyn_screen.journey.location = dyn_screen.journey.readLocation(game_loaded)
+                    dyn_screen.journey.location = dyn_screen.journey.readLocation(dyn_screen.journey.verify)
                     guitype[0] = switch_gscr(dyn_screen, screen, "location")
+                    if dyn_screen.journey.verify.varstr == "adventure":
+                        loadBuffer(dyn_screen.journey.name) # overwrites the buffer
             else:
                 dyn_screen.tooltip = "menu__tp_load_load"
 

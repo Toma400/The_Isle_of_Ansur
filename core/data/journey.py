@@ -116,10 +116,14 @@ class Journey:
     # - in the future, cache browsing could be introduced, that would have certain threshold, but would first search through this
     #   "object pool" and if it doesn't find anything there, it'd make this regular loading process of data
     def save(self):
-        """Creates gamesave from buffer save"""
+        """Creates gamesave from buffer save
+        TODO: saveBuffer does kinda this feature already, find usages and see which handling is better
+        """
 
     def load(self):
-        """Passes gamesave onto buffer save"""
+        """Passes gamesave onto buffer save
+        TODO: loadBuffer does kinda this feature already, find usages and see which handling is better
+        """
 
     #=================================================================================================
     # - INIT STAGE -
@@ -141,9 +145,9 @@ class Journey:
         self.__init__()
 
     @staticmethod
-    def readLocation(name: str) -> str:
+    def readLocation(vr: SaveVerifier) -> str:
         """Changed from placeholder origin to saved one - please change it back if needed | TODO: change buffer to adventure?"""
-        ps = toml.load(f"saves/{name}/buffer/player.toml")
+        ps = toml.load(f"saves/{vr.name}/{vr.varstr}/player.toml")
         return ps["location"]
 
     #=================================================================================================
