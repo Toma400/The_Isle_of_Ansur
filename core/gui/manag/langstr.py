@@ -7,6 +7,8 @@ import toml, os, re
 # Used to align text to specific part of the console
 # Takes a bit different values if used with colours
 #===================================================================
+gender_check = "^" # text[0] key allowing `parseGender` to run
+
 def parseGender (string: str, gender_id: str) -> str:
     """Replaces all keywords into their respective gender variant"""
     initial_text        = string
@@ -40,7 +42,7 @@ def langjstring (key: str, modtype: str, modid: str = "ansur", gender: str = Non
     if gender is None:
         return read
     else:
-        if read[0] == "!": # "!" at the beginning of the string marks requirement for replacement
+        if read[0] == gender_check: # symbol at the beginning of the string marks requirement for replacement
             return parseGender(read[1:], gender) # removes "!"
         return read
 

@@ -18,8 +18,11 @@
 > ---
 ```
 > ### Pre-alpha 6
+> - Technicals
+>   - Gender-parsing of text now requires prefix (`^`)
 > - Fixes
 >   - Fixed not recognising uppercased file extensions (#118)
+>   - Fixed location theme not showing (#119), at least I hope
 >
 ```
 >
