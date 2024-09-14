@@ -30,7 +30,7 @@ class Location:
     def get(self, attribute: str) -> str | int | float | list | dict | None:
         """Returns specific attribute from Location file. Any reuse of the same object reads from cache to optimise I/O"""
         if self.cache is None:
-            self.cache = toml.load(f"worlds/{self.mod_id}/locations/{self.name}.toml")
+            self.cache = toml.load(f"worlds/{self.mod_id}/locations/{self.name}/info.toml")
         if attribute in self.cache.keys():
             return self.cache[attribute]
         else:
@@ -56,7 +56,7 @@ def getLocation(lid: str) -> Location:
     lid_ems = lid.split(":")
 
     def returnKey() -> str: # returns translation key
-        pjf = toml.load(f"worlds/{lid_ems[0]}/locations/{lid_ems[1]}.toml")
+        pjf = toml.load(f"worlds/{lid_ems[0]}/locations/{lid_ems[1]}/info.toml")
         return pjf["key"]
 
     return Location(name=lid_ems[1], tr_key=returnKey(), mod_id=lid_ems[0])

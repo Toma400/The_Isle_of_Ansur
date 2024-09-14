@@ -1,7 +1,7 @@
 {
   "key": "origin__wanderer",
   "new_game": {
-    "location":  "ansur:sea__veno_edran__deck_0",
+    "location":  "ansur:sea__veno_edran__deck0",
     "inventory": [
       {"ansur:letter_to_yourself": 1}
     ]

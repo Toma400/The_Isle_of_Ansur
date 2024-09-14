@@ -1,6 +1,10 @@
-loc__sea__veno_edran_deck_0       = "Veno Edran, Main Deck"
+loc__sea__veno_edran_deck0       = "Veno Edran, Main Deck"
+loc__sea__veno_edran_deck1       = "Veno Edran, Rear Deck"
 
 # DESCRIPTIONS
-loc__sea__veno_edran_deck_0_descr = '''
+loc__sea__veno_edran_deck0_descr = '''
+It was a windy day. You saw beautiful sea before you, just as breeze flow through your hair.
+'''
+loc__sea__veno_edran_deck1_descr = '''
 It was a windy day. You saw beautiful sea before you, just as breeze flow through your hair.
 '''
