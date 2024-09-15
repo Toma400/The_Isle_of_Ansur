@@ -1,2 +1,32 @@
 key         = "loc__sea__veno_edran_deck0"
-destination = "sea__veno_edran__deck0"
+destination = "ansur:sea__veno_edran__deck0"
+
+
+descr       = "loc__sea__veno_edran_deck1to0"
+req = [
+    "inventory.yaml | loose |> ansur:letter_to_yourself | 1",
+    "statistics/skills.yaml | ansur:fishing | >1"
+] # file | (categories) |> key | value
+  # file - should not get whitespaces cut, .format should split the function
+  # (categories) - optional, should be split by , (so `sth, sth2, sth3` would be category nested three times); cut whitespaces
+  # key - item related; cut whitespaces
+  # value - equal value, use >/< for ranges; cut whitespaces unless this plans to include strings
+
+  # benefits? you can basically do anything with this system, unlike the one that restricts it more heavily
+  # disadvantages? you can't really write down requirements automatically - but! - you can potentially have the requirements written by yourself in
+  #                special key? (could also include some description of game's direction there - quite often you won't "travel" there per se with
+  #                              many requirements, but instead just "walk" with only tiredness going down)
+
+req_or = [
+    ""
+]
+
+cost = [
+    ""
+]
+set = [
+    ""
+]
+# req - checks and return true if all checks are valid (should we cover OR too?)
+# cost - only for ints? allows for changing the values based on substraction
+# set - allows for setting specific value

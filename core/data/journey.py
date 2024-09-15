@@ -89,8 +89,6 @@ class Journey:
 
             loaded_file.close()
 
-            print(parsed_file)
-
         if parsed_file is not None and save_string_parsed[1] is not None:
             parsed_file[save_string_parsed[1]] = value
 

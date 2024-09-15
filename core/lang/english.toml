@@ -151,6 +151,7 @@ game__init_attr            = "Choose attribute you want to enhance"
 game__init_skill           = "Choose ability you want to enhance"
 
 game__diary_save           = "Save your game"
+game__map_travel           = "Travel there"
 game__gen_back             = "Return to journey"
 
 stat__gen_name             = "Name"

@@ -63,8 +63,8 @@ def getLocation(lid: str) -> Location:
 
     return Location(name=lid_ems[1], tr_key=returnKey(), mod_id=lid_ems[0])
 
-def getDestinations(lid: str) -> list[(str, str)]:
-    """PyGame_GUI - friendly getter for travel destinations, returning tuple of <translation, LID>"""
+def getDestinations(dyn_screen, lid: str) -> list[(str, dict)]:
+    """PyGame_GUI - friendly getter for travel destinations, returning tuple of <translation, destination dict>"""
     ret: list[(str, str)] = []
     lid_ems = lid.split(":")
 
@@ -72,10 +72,37 @@ def getDestinations(lid: str) -> list[(str, str)]:
 
     for dest in file_lister(f"worlds/{lid_ems[0]}/locations/{lid_ems[1]}/destinations/", ext="toml"):
         dest_info = toml.load(f"{dest}.toml")
-        dest_id  = None
-        dest_key = None
-        if "key"         in dest_info.keys(): dest_key = langjstring(dest_info["key"], "worlds", lid_ems[0]) # translation, `dest_info["key"]` yields pure langstr
-        if "destination" in dest_info.keys(): dest_id  = dest_info["destination"]
-        if dest_id is not None and dest_key is not None:
-            ret.append((dest_key, dest_id))
+        dest_keys = dest_info.keys()
+        if "key" in dest_keys and "destination" in dest_keys:
+            if "always_visible" in dest_keys: # hides entry if it doesn't pass checks (default = always visible)
+                if dest_info["always_visible"] is False:
+                    if checkDestination(dest) is False:
+                        continue
+            ret.append((langjstring(dest_info["key"], "worlds", lid_ems[0]), # translation, `dest_info["key"]` yields pure langstr
+                        dest))                                          # dict
     return ret
+
+def checkDestination(dyn_screen, dest: str) -> bool:
+    """`dest` should be path to .toml file of respective destination"""
+    """TODO: do not use `cost` nor `set` here"""
+    if dest is None:               return False
+    if not exists(f"{dest}.toml"): return False
+
+    dest_info = toml.load(f"{dest}.toml")
+    dest_keys = dest_info.keys()
+
+    if "req" not in dest_keys:
+        if "req_or" not in dest_keys:
+            return True
+    return True
+#        req_or = ...
+#    req = ...
+
+def travelTo(dyn_screen, dest: str):
+    """`dest` should be path to .toml file of respective destination"""
+    """TODO: perform `cost` and `set` here, also move the character? (this would need Journey ig)"""
+    dest_info = toml.load(f"{dest}.toml")
+    dest_keys = dest_info.keys()
+
+    dyn_screen.journey.location = dest_info["destination"]
+    dyn_screen.journey.set("player.toml | location", dest_info["destination"])

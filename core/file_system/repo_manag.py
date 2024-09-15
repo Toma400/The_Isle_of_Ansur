@@ -87,14 +87,18 @@ def logs_deleting (num: int = None):
 def dir_lister (path):
   return [f for f in listdir(path) if isdir(join(path, f))]
 
-def file_lister (path, ext=None):
+def file_lister (path, ext=None, file_only=False):
   if ext is None:
     return [f for f in listdir(path) if isfile(join(path, f))]
   else:
     import glob; listed = glob.glob(path + "*." + ext); listed2 = []
     for i in listed:
-      i = i.replace(path, "")
-      listed2.append(i.replace("." + ext, ""))
+      ret = i.replace("." + ext, "")
+      if file_only: # cuts the path, leaving only filename
+        ret = ret.replace("\\", "/")
+        ret = ret.replace("\\", "/")
+        ret = ret.replace(path, "")
+      listed2.append(ret)
     return listed2
 
 def deep_file_lister (path, ext=None):
