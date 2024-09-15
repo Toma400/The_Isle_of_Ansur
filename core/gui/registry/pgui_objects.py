@@ -73,6 +73,9 @@ class PGUI_Helper:
         self.loc__frame_cr_rd = UIImage       (image_surface=imgLoad(bg_handler('frame_cr_rd')), relative_rect=pygame.Rect((toPxX(85), toPxY(48)), (toPxY(2),  toPxY(2))),  manager=manager)
         self.loc__clock       = UIImage       (image_surface=imgLoad(self.clock, alpha=True),    relative_rect=pygame.Rect((toPxX(48), toPxY(50)), (toPxX(3),  toPxX(3))),  manager=manager)
         self.loc__tb_descr    = UITextBox     (html_text="",                                     relative_rect=pygame.Rect((toPxX(14), toPxY(64)), (toPxX(72), toPxY(27))), manager=manag2)
+        # ---
+        self.map__travel_dest = UISelectionList(item_list=[],                                    relative_rect=pygame.Rect((toPxX(10), toPxY(10)), (toPxX(30), toPxY(40))), manager=manag2)
+        # TODO? Maybe make similar `manag2` for the listbox in game? (see the travel_dest one, but also later inventory etc. - probably without Ferrum tho)
         self.char__ti_name.set_forbidden_characters("forbidden_file_path")
         self.hide_elements()
 

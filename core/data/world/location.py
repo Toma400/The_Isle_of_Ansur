@@ -1,6 +1,8 @@
+from core.file_system.repo_manag import file_lister
 from core.gui.registry.pgui_objects import PGUI_Helper
 from core.decorators import RequiresImprovement
 from core.gui.manag.langstr import langjstring
+from os.path import exists
 import toml
 
 class Location:
@@ -60,3 +62,20 @@ def getLocation(lid: str) -> Location:
         return pjf["key"]
 
     return Location(name=lid_ems[1], tr_key=returnKey(), mod_id=lid_ems[0])
+
+def getDestinations(lid: str) -> list[(str, str)]:
+    """PyGame_GUI - friendly getter for travel destinations, returning tuple of <translation, LID>"""
+    ret: list[(str, str)] = []
+    lid_ems = lid.split(":")
+
+    if not exists(f"worlds/{lid_ems[0]}/locations/{lid_ems[1]}/destinations"): return ret # early return
+
+    for dest in file_lister(f"worlds/{lid_ems[0]}/locations/{lid_ems[1]}/destinations/", ext="toml"):
+        dest_info = toml.load(f"{dest}.toml")
+        dest_id  = None
+        dest_key = None
+        if "key"         in dest_info.keys(): dest_key = langjstring(dest_info["key"], "worlds", lid_ems[0]) # translation, `dest_info["key"]` yields pure langstr
+        if "destination" in dest_info.keys(): dest_id  = dest_info["destination"]
+        if dest_id is not None and dest_key is not None:
+            ret.append((dest_key, dest_id))
+    return ret

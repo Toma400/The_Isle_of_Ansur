@@ -18,6 +18,8 @@
 > ---
 ```
 > ### Pre-alpha 6
+> - Gameplay
+>   - Added travel menu
 > - Technicals
 >   - Gender-parsing of text now requires prefix (`^`)
 > - Fixes

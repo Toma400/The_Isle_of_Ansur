@@ -1,5 +1,6 @@
 from core.graphics.text_manag import put_abstext, put_text, adjustTextSize
 from core.gui.menus.location import locationScreen
+from core.gui.menus.travel import travelScreen
 from core.gui.menus.diary import diaryScreen
 from core.gui.menus.packs import packMenu
 from core.gui.menus.load import loadGame
@@ -108,6 +109,9 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 raise Exception("While entering -locationScreen-, some required player data is not reachable.")
             else:
                 locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen)
+
+        case "map":
+            travelScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen)
 
         case "diary":
             diaryScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen)
