@@ -1,0 +1,33 @@
+ {
+     "text_box":
+     {
+         "colours":
+         {
+             "dark_bg":       "#a7987b,#7f6f55,180",
+             "normal_border": "#584735",
+             "normal_text":   "#4E3510"
+         },
+         "font":
+         {
+              "name":         "Ferrum Extended",
+              "size":         20,
+              "regular_path": "themes/ansur/fonts/ferrum_extended.otf"
+         },
+         "misc":
+         {
+              "border_width": "4"
+         }
+     },
+     "selection_list":
+     {
+         "colours":
+         {
+             "dark_bg":       "#a7987b,#7f6f55,180",
+             "normal_border": "#584735"
+         },
+         "misc":
+         {
+             "list_item_height": "30"
+         }
+     }
+ }

@@ -28,7 +28,7 @@ class PGUI_Helper:
     def_img = "core/assets/visuals/empty.png"
     clock   = bg_handler('clock')
 
-    def __init__(self, manager, manag2):
+    def __init__(self, manager, manag2, manag3):
         self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),                      relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(8))),  manager=manager)
         self.char__tb_gender = UITextBox      (html_text=lstr("ccrt__gender"),                   relative_rect=pygame.Rect((toPxX(40), toPxX(14)), (toPxX(40), toPxX(15))), manager=manager)
         self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),                        relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
@@ -74,8 +74,9 @@ class PGUI_Helper:
         self.loc__clock       = UIImage       (image_surface=imgLoad(self.clock, alpha=True),    relative_rect=pygame.Rect((toPxX(48), toPxY(50)), (toPxX(3),  toPxX(3))),  manager=manager)
         self.loc__tb_descr    = UITextBox     (html_text="",                                     relative_rect=pygame.Rect((toPxX(14), toPxY(64)), (toPxX(72), toPxY(27))), manager=manag2)
         # ---
-        self.map__travel_dest = UISelectionList(item_list=[],                                    relative_rect=pygame.Rect((toPxX(10), toPxY(10)), (toPxX(30), toPxY(40))), manager=manag2)
-        # TODO? Maybe make similar `manag2` for the listbox in game? (see the travel_dest one, but also later inventory etc. - probably without Ferrum tho)
+        self.map__travel_dest  = UISelectionList(item_list=[],                                   relative_rect=pygame.Rect((toPxX(10), toPxY(10)), (toPxX(35), toPxY(40))), manager=manag3)
+        self.map__travel_descr = UITextBox      (html_text="",                                   relative_rect=pygame.Rect((toPxX(10), toPxY(52)), (toPxX(35), toPxY(25))), manager=manag3)
+        # TODO? Maybe make similar `manag2` for the listbox in game? (see the travel_dest one, but also later inventory etc. - probably without Ferrum tho, maybe also smaller font?)
         self.char__ti_name.set_forbidden_characters("forbidden_file_path")
         self.hide_elements()
 
@@ -153,6 +154,6 @@ class PGUI_Helper:
         for pobj in self.get_elements():
             self.set_default(pobj)
 
-    def restart(self, manager, manag2):
+    def restart(self, manager, manag2, manag3):
         """Restarts whole initialisation process of the class"""
-        self.__init__(manager, manag2)
+        self.__init__(manager, manag2, manag3)

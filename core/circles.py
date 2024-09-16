@@ -30,9 +30,11 @@ def main_circle():
 
             dyn_screen.pgui.process_events(event)  # PyGameGUI handler of events
             dyn_screen.pgui2.process_events(event)
+            dyn_screen.pgui3.process_events(event)
 
         dyn_screen.pgui.update(clock_tick) # PyGameGUI updater
         dyn_screen.pgui2.update(clock_tick)
+        dyn_screen.pgui3.update(clock_tick)
 
         music = music_handler(music, guitype, forged_events)                    # controls music
         gui_handler(screen, guitype, forged_events, pg_events, tev, dyn_screen) # draws elements on a screen and sets interactions
@@ -41,6 +43,7 @@ def main_circle():
 
         dyn_screen.pgui.draw_ui(screen) # PyGameGUI UI handler
         dyn_screen.pgui2.draw_ui(screen)
+        dyn_screen.pgui3.draw_ui(screen)
         dyn_screen.tooltip_handler()
         pygame.display.flip()
 

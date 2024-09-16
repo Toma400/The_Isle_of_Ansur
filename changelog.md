@@ -19,7 +19,9 @@
 ```
 > ### Pre-alpha 6
 > - Gameplay
->   - Added travel menu
+>   - Added travel feature
+>     - Travelling can be done from new travel menu
+>     - Travel can be conditioned and require specific cost
 > - Technicals
 >   - Gender-parsing of text now requires prefix (`^`)
 > - Fixes

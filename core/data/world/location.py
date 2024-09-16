@@ -78,15 +78,23 @@ def getDestinations(dyn_screen, lid: str) -> list[(str, dict)]:
         if "key" in dest_keys and "destination" in dest_keys:
             if "always_visible" in dest_keys: # hides entry if it doesn't pass checks (default = always visible)
                 if dest_info["always_visible"] is False:
-                    if checkDestination(dest) is False:
+                    if checkDestination(dyn_screen, dest) is False:
                         continue
             ret.append((langjstring(dest_info["key"], "worlds", lid_ems[0]), # translation, `dest_info["key"]` yields pure langstr
                         dest))                                          # dict
     return ret
 
-def checkDestination(dyn_screen, dest: str) -> bool:
+def getDestinationDescr(dyn_screen, dest: str) -> str:
     """`dest` should be path to .toml file of respective destination"""
-    """TODO: do not use `cost` nor `set` here"""
+    if dest is None:               return ""
+    if not exists(f"{dest}.toml"): return ""
+
+    dest_info = toml.load(f"{dest}.toml")
+    if "descr" in dest_info.keys():
+        return langjstring(dest_info["descr"], "worlds", getLocation(dyn_screen.journey.location).mod_id)
+
+def checkDestination(dyn_screen, dest: str) -> bool:
+    """`dest` should be path to .toml file of respective destination | only performs `req` and `req_or` checks"""
     if dest is None:               return False
     if not exists(f"{dest}.toml"): return False
 
@@ -102,13 +110,10 @@ def checkDestination(dyn_screen, dest: str) -> bool:
                     file = loadYAML(f"saves/{dyn_screen.journey.name}/buffer/{t_path}")
                 case "toml":
                     file = toml.load(f"saves/{dyn_screen.journey.name}/buffer/{t_path}")
-        print(file)
         if file is not None:
             t_keys = t_key.split(" |> ")
-            print(t_keys)
             result = file
             for k in t_keys:
-                print(k)
                 result = result[k]
             if ">" in t_val:
                 return int(result) > int(t_val.replace(">", ""))
@@ -144,10 +149,13 @@ def checkDestination(dyn_screen, dest: str) -> bool:
     return out_1 and out_2
 
 def travelTo(dyn_screen, dest: str):
-    """`dest` should be path to .toml file of respective destination"""
+    """`dest` should be path to .toml file of respective destination | only performs `cost` and `set`"""
     """TODO: perform `cost` and `set` here, also move the character? (this would need Journey ig)"""
     dest_info = toml.load(f"{dest}.toml")
     dest_keys = dest_info.keys()
+
+    if "cost" in dest_keys: pass
+    if "set" in dest_keys: pass
 
     dyn_screen.journey.location = dest_info["destination"]
     dyn_screen.journey.set("player.toml | location", dest_info["destination"])
