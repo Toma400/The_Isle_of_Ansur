@@ -2,7 +2,9 @@ from core.file_system.repo_manag import file_lister
 from core.gui.registry.pgui_objects import PGUI_Helper
 from core.decorators import RequiresImprovement
 from core.gui.manag.langstr import langjstring
+from core.file_system.parsers import loadYAML
 from os.path import exists
+import logging as log
 import toml
 
 class Location:
@@ -88,15 +90,58 @@ def checkDestination(dyn_screen, dest: str) -> bool:
     if dest is None:               return False
     if not exists(f"{dest}.toml"): return False
 
+    def parseDestScript(t: str) -> bool | None:
+        ts = t.split(" | ")
+        t_path = ts[0]
+        t_key  = ts[1]
+        t_val  = ts[2]
+        file   = None
+        if exists(f"saves/{dyn_screen.journey.name}/buffer/{t_path}"):
+            match t_path.split(".")[1]:
+                case "yaml":
+                    file = loadYAML(f"saves/{dyn_screen.journey.name}/buffer/{t_path}")
+                case "toml":
+                    file = toml.load(f"saves/{dyn_screen.journey.name}/buffer/{t_path}")
+        print(file)
+        if file is not None:
+            t_keys = t_key.split(" |> ")
+            print(t_keys)
+            result = file
+            for k in t_keys:
+                print(k)
+                result = result[k]
+            if ">" in t_val:
+                return int(result) > int(t_val.replace(">", ""))
+            elif "<" in t_val:
+                return int(result) < int(t_val.replace("<", ""))
+            else:
+                return int(result) == int(t_val.replace("=", "")) # = is optional
+        else:
+            log.error(f"Couldn't find or read file evoked by parseDestScript with path: saves/{dyn_screen.journey.name}/buffer/{t_path}")
+            return None # (should it be changed to False instead? better CTD or keep it silently running? (stability and save keeping vs less error notice?))
+    #--- eof
+
     dest_info = toml.load(f"{dest}.toml")
     dest_keys = dest_info.keys()
 
-    if "req" not in dest_keys:
-        if "req_or" not in dest_keys:
-            return True
-    return True
-#        req_or = ...
-#    req = ...
+    out_1 = True
+    out_2 = False
+
+    if "req" in dest_keys: # if not, it's just True by default
+        for r in dest_info["req"]:
+            if parseDestScript(r) is False:
+                out_1 = False
+
+    if "req_or" not in dest_keys:
+        out_2 = True
+    else:
+        for r in dest_info["req_or"]:
+            if parseDestScript(r) is True:
+                out_2 = True
+        if len(dest_info["req_or"]) == 0: # in case someone leaves empty []
+            out_2 = True
+
+    return out_1 and out_2
 
 def travelTo(dyn_screen, dest: str):
     """`dest` should be path to .toml file of respective destination"""
