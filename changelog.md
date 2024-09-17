@@ -16,7 +16,6 @@
 - [Pre-alpha 1](#pre-alpha-1)
 
 > ---
-```
 > ### Pre-alpha 6
 > - Gameplay
 >   - Added second location, made proper descriptions for both
@@ -29,7 +28,6 @@
 >   - Fixed not recognising uppercased file extensions (#118)
 >   - Fixed location theme not showing (#119), at least I hope
 >
-```
 >
 > ---
 > ### Pre-alpha 5

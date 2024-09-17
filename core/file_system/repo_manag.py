@@ -93,12 +93,8 @@ def file_lister (path, ext=None, file_only=False):
   else:
     import glob; listed = glob.glob(path + "*." + ext); listed2 = []
     for i in listed:
-      ret = i.replace("." + ext, "")
-      if file_only: # cuts the path, leaving only filename
-        ret = ret.replace("\\", "/")
-        ret = ret.replace("\\", "/")
-        ret = ret.replace(path, "")
-      listed2.append(ret)
+      i = i.replace(path, "")
+      listed2.append(i.replace("." + ext, ""))
     return listed2
 
 def deep_file_lister (path, ext=None):
