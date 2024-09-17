@@ -24,6 +24,7 @@ such early state of the game!
 
 Current gameplay features:
 - Creation of your own character (it can be saved for future updates gameplay)
+- Visiting tutorial location
 - Modding support (related to character creation)
 
 To have ~~spoilers~~ sneak-peek into development process, you can look into issues page.  
@@ -39,7 +40,7 @@ Feel free to share your thoughts or report bugs there.
 
 **Github:** https://github.com/Toma400/The_Isle_of_Ansur
 
-**Discord:** https://discord.gg/GbTw9KqnrE
+**Discord:** [**Click to join!**](https://discord.gg/GbTw9KqnrE)
 
 # Modding
 
@@ -61,6 +62,20 @@ Feel free to contribute!
 ---
 Currently, you can contribute to open-sourced translation mods listed in [section above](#translations).
 
+Isle of Ansur is also searching for **concept artist** who would be interested in long-term
+collaboration on the project. The fields covered could include any of those (listed from
+the biggest priority to lowest):
+- landscapes
+- characters
+- items
+- interiors
+
+Important to note however, the collaboration would work under the premise that IoA is
+a free game, thus contributing needs to follow [terms described here](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Assets-Contribution-Principles).  
+There is no deadlines or pressure on collaborator however, as ultimately this should be
+an effort that is driven by passion.
+
+<!--
 Contributions for other features are currently closed.
 You can reach to developer by pull request or contacting directly, but it will
 most likely be rejected.  
@@ -70,6 +85,7 @@ For anyone who would like to contribute anyway, here are principles that should 
 - **[Principles For Assets Contribution](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Assets-Contribution-Principles)**
 
 In next months quest contributions will be opened, when most of game features are in place.
+-->
 
 # Credits
 
