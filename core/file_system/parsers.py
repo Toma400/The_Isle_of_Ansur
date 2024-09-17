@@ -8,6 +8,11 @@ def loadYAML(fpath: str) -> dict | list:
         ret = yaml.safe_load(yf)
         return ret
 
+def writeYAML(fpath: str, fcont: any):
+    with open(fpath, mode="w", encoding="utf-8") as yf:
+        yaml.safe_dump(fcont, yf)
+        yf.flush()
+
 def loadTOML(fpath: str) -> dict | list:
     with open(fpath, encoding="utf-8") as tf:
         return toml.loads(tf.read())
