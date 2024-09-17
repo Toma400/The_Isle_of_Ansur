@@ -7,6 +7,7 @@
 
 ---
 ## Pre-alpha builds
+- [Pre-alpha 7](#pre-alpha-7)
 - [Pre-alpha 6](#pre-alpha-6)
 - [Pre-alpha 5](#pre-alpha-5)
 - [Pre-alpha 4](#pre-alpha-4)
@@ -16,6 +17,12 @@
 - [Pre-alpha 1](#pre-alpha-1)
 
 > ---
+> ```
+> ### Pre-alpha 6
+> 
+> 
+> ```
+> ---
 > ### Pre-alpha 6
 > - Gameplay
 >   - Added second location, made proper descriptions for both
@@ -23,6 +30,7 @@
 >     - Travelling can be done from new travel menu
 >     - Travel can be conditioned and require specific cost
 > - Technicals
+>   - Location files now follow different structure
 >   - Gender-parsing of text now requires prefix (`^`)
 > - Fixes
 >   - Fixed not recognising uppercased file extensions (#118)
