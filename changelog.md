@@ -19,6 +19,7 @@
 ```
 > ### Pre-alpha 6
 > - Gameplay
+>   - Added second location, made proper descriptions for both
 >   - Added travel feature
 >     - Travelling can be done from new travel menu
 >     - Travel can be conditioned and require specific cost

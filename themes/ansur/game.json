@@ -10,7 +10,7 @@
          "font":
          {
               "name":         "Ferrum Extended",
-              "size":         30,
+              "size":         25,
               "regular_path": "themes/ansur/fonts/ferrum_extended.otf"
          },
          "misc":

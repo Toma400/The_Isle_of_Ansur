@@ -2,7 +2,6 @@
 __pycache__
 system/cache
 
-docs/
 docsv/
 gui/
 saves/

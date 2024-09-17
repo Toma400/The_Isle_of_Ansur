@@ -43,9 +43,11 @@ def locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         if mouseRec(pg_events):
             guitype[0] = switch_gscr(dyn_screen, screen, "map")
             guitype[1] = None
+            dyn_screen.set_pgui_element("loc__tb_descr", "") # resets description
 
     elif mouseColliderPx(bdr[0], bdr[1], bdr[2], bdr[3]):
         put_text(screen, text=langstring("loc__bt_diary"), font_cat="menu", size=35, align_x="right", pos_x=14, pos_y=57.5, colour=fCol.HOVERED.value)
         if mouseRec(pg_events):
             guitype[0] = switch_gscr(dyn_screen, screen, "diary")
             guitype[1] = None
+            dyn_screen.set_pgui_element("loc__tb_descr", "") # resets description

@@ -3,14 +3,18 @@ loc__sea__veno_edran_deck1       = "Veno Edran, Rear Deck"
 
 # DESCRIPTIONS
 loc__sea__veno_edran_deck0_descr = '''
-It was a windy day. You saw beautiful sea before you, just as breeze flow through your hair.
+It is a windy day. You can see blueness of the sea opening before you as the ship flows through waves, without any land on the horizon.
+The old sailor rests himself on a starboard, smoking a pipe peacefully. Everything seems really calm.
 '''
 loc__sea__veno_edran_deck1_descr = '''
-It was a windy day. You saw beautiful sea before you, just as breeze flow through your hair.
+The back of the ship feels a bit covered from the wind, and more cosy. You can see stairs leading up to the rudder, and an entrance to the ship's hull.
+Three sailors talk with each other, sometimes laughing when their friend on crow's nest waves to them.
 '''
 
 # TRAVELS
 loc__sea__veno_edran_deck1to0 = '''
+Turn around to see where ship is sailing to.
 '''
 loc__sea__veno_edran_deck0to1 = '''
+Turn around to see the back of the ship.
 '''

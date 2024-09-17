@@ -173,7 +173,11 @@ def travelTo(dyn_screen, dest: str):
                 result = file
                 for k in t_keys:
                     result = result[k]
-                t_val = int(t_val) - int(result) # to add something, use negative values
+                t_val = int(result) - int(t_val) # to add something, use negative values
+
+            # check if value is int, defaults to int
+            try:    t_val = int(t_val)
+            except: pass
 
             dict_in = {t_keys[-1]: t_val}
             if len(t_keys) > 1:
