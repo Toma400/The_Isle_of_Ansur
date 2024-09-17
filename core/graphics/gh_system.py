@@ -45,9 +45,9 @@ def run_screen():
 
 def run_pgui(manager_no: int = 0):
     # configuration file handling
-    p0 = f"themes/{getTheme()}/main.json" if exists(f"themes/{getTheme()}/main.json") else None
-    p1 = f"themes/{getTheme()}/game.json" if exists(f"themes/{getTheme()}/game.json") else None
-    p2 = f"themes/{getTheme()}/menu.json" if exists(f"themes/{getTheme()}/menu.json") else None
+    p0 = f"{os.getcwd()}/themes/{getTheme()}/main.json" if exists(f"themes/{getTheme()}/main.json") else None
+    p1 = f"{os.getcwd()}/themes/{getTheme()}/game.json" if exists(f"themes/{getTheme()}/game.json") else None
+    p2 = f"{os.getcwd()}/themes/{getTheme()}/menu.json" if exists(f"themes/{getTheme()}/menu.json") else None
 
     match manager_no:
         case 0: return pygame_gui.UIManager((scx("svx"), scx("svy")), theme_path=p0)

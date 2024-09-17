@@ -51,8 +51,8 @@ class PGUI_Helper:
         self.char__tb_rel    = UITextBox      (html_text="",                                     relative_rect=pygame.Rect((toPxX(40), toPxX(26)), (toPxX(40), toPxX(20))), manager=manager)
         # ---
         self.char__lb_orig   = UISelectionList(item_list=getOriginsTuple(),                      relative_rect=pygame.Rect((toPxX(40), toPxY(8)),  (toPxX(20), toPxY(76))), manager=manager)
-        self.char__tb_orig   = UITextBox      (html_text="",                                     relative_rect=pygame.Rect((toPxX(60), toPxY(8)),  (toPxX(20), toPxY(20))), manager=manager)
-        self.char__ti_hist   = UITextEntryBox (                                                  relative_rect=pygame.Rect((toPxX(60), toPxY(35)), (toPxX(20), toPxY(49))), manager=manager)
+        self.char__tb_orig   = UITextBox      (html_text="",                                     relative_rect=pygame.Rect((toPxX(60), toPxY(8)),  (toPxX(30), toPxY(20))), manager=manager)
+        self.char__ti_hist   = UITextEntryBox (                                                  relative_rect=pygame.Rect((toPxX(60), toPxY(35)), (toPxX(30), toPxY(49))), manager=manager)
         # ---
         self.load__saves     = UISelectionList(item_list=[],                                     relative_rect=pygame.Rect((toPxY(10), toPxY(10)), (toPxX(30), toPxY(70))), manager=manager)
         self.load__descr     = UITextBox      (html_text="",                                     relative_rect=pygame.Rect((toPxX(40), toPxY(40)), (toPxX(52), toPxY(40))), manager=manager)
