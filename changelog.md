@@ -18,9 +18,27 @@
 
 > ---
 > ```
-> ### Pre-alpha 6
+> ### Pre-alpha 7
+> - Gameplay
+>   - Introduced time feature
+>     - It now make time progress in location menu
+>     - It is also passing through travel
 > 
+> Updating from PA6:
+> - Make sure to add relevant date data to your save
+>   - In `saves`, find your old save
+>   - Open `player.toml` file and add the following lines:
 > 
+>       time_era = 2
+>       time_year = 921
+>       time_month = 8
+>       time_day = 23
+>       time_wday = 1
+>       time_hour = 11
+>       time_min = 0
+> 
+>   - They can have different values, but those above are the default for `wanderer`
+>     origin from vanilla
 > ```
 > ---
 > ### Pre-alpha 6

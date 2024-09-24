@@ -4,6 +4,7 @@ from core.data.save_system.verify import SaveVerifier
 from core.data.save_system.buffer import loadBuffer
 from core.data.save_system.walk import listSaves
 from core.data.pack_manag.info import searchInfo
+from core.data.world.time import parseBaeTime
 from core.data.player.religion import getReligion
 from core.data.player.profession import getClass
 from core.data.player.gender import getGender
@@ -136,10 +137,11 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                 put_text(screen, text=langstring("load__load"), font_cat="menu", size=30, align_x="right", pos_x=9, pos_y=10, colour=fCol.HOVERED.value)
                 if mouseRec(pg_events):
                     dyn_screen.journey.name     = game_loaded
-                    dyn_screen.journey.location = dyn_screen.journey.readLocation(dyn_screen.journey.verify)
                     guitype[0] = switch_gscr(dyn_screen, screen, "location")
                     if dyn_screen.journey.verify.varstr == "adventure":
-                        loadBuffer(dyn_screen.journey.name) # overwrites the buffer
+                        loadBuffer(dyn_screen.journey.name) # overwrites the buffer (journey binding below because of that - they all read from buffer)
+                    dyn_screen.journey.location = dyn_screen.journey.readLocation(dyn_screen.journey.verify)
+                    dyn_screen.journey.date     = parseBaeTime(dyn_screen.journey.readDate(dyn_screen.journey.verify))
             else:
                 dyn_screen.tooltip = "menu__tp_load_load"
 

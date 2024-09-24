@@ -7,7 +7,14 @@ import toml
 def updatePlayer(name: str, data: dict = None):
 
     player_data = {
-        "location": None
+        "location":   None,
+        "time_era":   None,
+        "time_year":  None,
+        "time_month": None,
+        "time_day":   None,
+        "time_wday":  None,
+        "time_hour":  None,
+        "time_min":   None
     }
 
     player_keys = player_data.keys()
@@ -22,7 +29,16 @@ def updatePlayer(name: str, data: dict = None):
     # direct handling of `data`
     if data is not None:
         # no need for error check, because if `getc` fails, None is checked later
-        player_data["location"] = getOrigin(data["origin"]).getc("new_game", "location")
+        time = getOrigin(data["origin"]).getc("new_game", "time")
+
+        player_data["location"]   = getOrigin(data["origin"]).getc("new_game", "location")
+        player_data["time_era"]   = time[0]
+        player_data["time_year"]  = time[1]
+        player_data["time_month"] = time[2]
+        player_data["time_day"]   = time[3]
+        player_data["time_wday"]  = time[4]
+        player_data["time_hour"]  = time[5]
+        player_data["time_min"]   = time[6]
 
     # verification
     for player_key in player_keys:

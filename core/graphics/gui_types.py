@@ -21,7 +21,6 @@ from core.data.player.profession import getClassesTuple, getClass
 from core.data.player.race import getRace, getRaceNames
 from core.data.player.religion import getReligion
 from core.data.player.origin import getOrigin
-from core.data.journey import Journey
 from core.graphics.gh_manag import *
 from os.path import exists
 

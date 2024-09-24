@@ -1,4 +1,5 @@
 from core.data.save_system.verify import SaveVerifier
+from core.data.world.time import BaeTime
 from core.data.player.origin import getOrigin
 import os, toml, yaml, json
 from os.path import exists
@@ -13,6 +14,13 @@ class SaveStr(Enum):
     `player.toml | location`
     """
     LOCATION = "player.toml | location"
+    T_ERA    = "player.toml | time_era"
+    T_YEAR   = "player.toml | time_year"
+    T_MONTH  = "player.toml | time_month"
+    T_DAY    = "player.toml | time_day"
+    T_WDAY   = "player.toml | time_wday"
+    T_HOUR   = "player.toml | time_hour"
+    T_MIN    = "player.toml | time_min"
     GENDER   = "data.toml | gender"
     RACE     = "data.toml | race"
     CLASS    = "data.toml | class"
@@ -31,11 +39,12 @@ class Journey:
         #                                                             [religion, origin]
         #                                                                          [settings, summary]
         self.stages   : list[bool]  = [False, False, False, False, False, False, False, False, False]
-        self.stage    : int or None = None                             # selected stage of -stages- (above)
-        self.name     : str or None = None                             # only none when game not loaded/character not created
-        self.location : str or None = None                             # only none before load/creating character
-        self.inidata  : dict        = {k: "" for k in self.keys_saved} # dict held only during initial creation (used for -self.init-)
-        self.settings : dict        = {"permadeath": False}            # dict holding default game settings
+        self.stage    : int or None     = None                         # selected stage of -stages- (above)
+        self.name     : str or None     = None                         # only none when game not loaded/character not created
+        self.location : str or None     = None                         # only none before load/creating character
+        self.date     : BaeTime or None = None                         #            - ... -
+        self.inidata  : dict            = {k: "" for k in self.keys_saved} # dict held only during initial creation (used for -self.init-)
+        self.settings : dict            = {"permadeath": False}            # dict holding default game settings
         # technical
         self.verify : SaveVerifier or None = None
 
@@ -74,6 +83,9 @@ class Journey:
 
         String as `save_string` type should be held, because it makes this system more flexible
         (scripts can use it for non-enum-counted elements)
+
+        TODO: Should also have function that allows writing multiple keys into one file, for performance reasons
+        (see - time saving example, it basically needs to open player file 7 times)
         """
         save_string_parsed = save_string.split(" | ") if "|" in save_string else [save_string, None]
         save_string_format = save_string_parsed[0].split(".")[1]
@@ -101,6 +113,17 @@ class Journey:
         else:
             log.error(f"Tried to write data: {value} into file: {save_string_parsed[0]} and key: {save_string_parsed[1]}, but error occurred.")
 
+    def pass_time(self):
+        if self.date is not None:
+            print(self.date.tick)
+            if self.date.incr() is True:
+                self.set(SaveStr.T_ERA.value,   self.date.era)
+                self.set(SaveStr.T_YEAR.value,  self.date.year)
+                self.set(SaveStr.T_MONTH.value, self.date.month)
+                self.set(SaveStr.T_DAY.value,   self.date.day)
+                self.set(SaveStr.T_WDAY.value,  self.date.wday)
+                self.set(SaveStr.T_HOUR.value,  self.date.hour)
+                self.set(SaveStr.T_MIN.value,   self.date.min)
     #=================================================================================================
     # - COMMON PROCEDURES -
     # Procedures used during the game on regular basis.
@@ -144,9 +167,23 @@ class Journey:
 
     @staticmethod
     def readLocation(vr: SaveVerifier) -> str:
-        """Changed from placeholder origin to saved one - please change it back if needed | TODO: change buffer to adventure?"""
+        """Changed from placeholder origin to saved one - please change it back if needed
+           TODO: change buffer to adventure? <- negative, see loading process now taking buffer loaded into consideration"""
         ps = toml.load(f"saves/{vr.name}/{vr.varstr}/player.toml")
         return ps["location"]
+
+    @staticmethod
+    def readDate(vr: SaveVerifier) -> list[int, int, int, int, int, int, int]:
+        """Made on the same basis readLocation is done, so whatever comment was for function above should apply here
+           TODO: change buffer to adventure? <- negative, see loading process now taking buffer loaded into consideration"""
+        ps = toml.load(f"saves/{vr.name}/{vr.varstr}/player.toml")
+        return [ps["time_era"],
+                ps["time_year"],
+                ps["time_month"],
+                ps["time_day"],
+                ps["time_wday"],
+                ps["time_hour"],
+                ps["time_min"]]
 
     #=================================================================================================
     # - TODO -

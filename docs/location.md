@@ -32,7 +32,7 @@ set = [
 ]
 ```
 #### Contents
-- `key` - language key for location name
+- `key` - language key for location name and description
 - `destination` - location ID (LID) for the location you want teleport player to
 - `always_visible` - optional, defaults to `true`. If set to `false`, it will hide the
   destination from travel menu

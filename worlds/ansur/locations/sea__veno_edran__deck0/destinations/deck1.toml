@@ -2,3 +2,7 @@ key         = "loc__sea__veno_edran_deck1"
 destination = "ansur:sea__veno_edran__deck1"
 
 descr       = "loc__sea__veno_edran_deck0to1"
+
+cost = [
+    "player.toml | time_min | -1"
+]

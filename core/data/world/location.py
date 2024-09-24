@@ -2,6 +2,7 @@ from core.file_system.repo_manag import file_lister
 from core.gui.registry.pgui_objects import PGUI_Helper
 from core.decorators import RequiresImprovement
 from core.gui.manag.langstr import langjstring
+from core.data.world.time import parseBaeTime
 from core.file_system.parsers import loadYAML, writeYAML
 from os.path import exists
 import logging as log
@@ -186,7 +187,7 @@ def travelTo(dyn_screen, dest: str):
             file.update(dict_in)
             match t_path.split(".")[1]:
                 case "toml":
-                    with open(f"saves/{dyn_screen.journey.name}/buffer/{t_path}") as file_out:
+                    with open(f"saves/{dyn_screen.journey.name}/buffer/{t_path}", mode="w") as file_out:
                         toml.dump(file, file_out)
                 case "yaml":
                     writeYAML(f"saves/{dyn_screen.journey.name}/buffer/{t_path}", file)
@@ -203,5 +204,8 @@ def travelTo(dyn_screen, dest: str):
         for r in dest_info["set"]:
             parseDestScriptEdit(r, 1)
 
-    dyn_screen.journey.location = dest_info["destination"]
+    # TODO: ideally, there should be a func that updates all object-like Journey fields (so, ones not read from buffer by default) and this section below
+    #       should just have .set() to update .toml file (after which dest_info would be read from it)
+    dyn_screen.journey.location = dest_info["destination"] # ^ and after that above, this would be `parseLocation` or sth reading from buffer, not destination file
     dyn_screen.journey.set("player.toml | location", dest_info["destination"])
+    dyn_screen.journey.date = parseBaeTime(dyn_screen.journey.readDate(dyn_screen.journey.verify))
