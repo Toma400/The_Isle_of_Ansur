@@ -3,6 +3,7 @@ from core.file_system.theme_manag import FontColour as fCol
 from core.graphics.text_manag import put_text
 from core.gui.manag.langstr import langstring
 from core.data.save_system.buffer import saveBuffer
+from core.data.journey import Journey
 
 def diaryScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
@@ -32,3 +33,4 @@ def diaryScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         if mouseRec(pg_events):
             guitype[0] = switch_gscr(dyn_screen, screen, "menu")
             guitype[1] = None
+            dyn_screen.journey = Journey()
