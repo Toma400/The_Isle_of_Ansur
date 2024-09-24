@@ -34,13 +34,14 @@ class BaeTime:
             case 0: return f"{self.day} {langstring(f'time__month_{self.month}')} {self.year}"
             case 1: return f"{langstring(f'time__week_{self.wday}')}, {self.hour}:{self.min:02}"
 
-    def incr(self) -> bool:
+    def incr(self, dt: float) -> bool:
         """Return handling is optional | returns True if limit is exceeded (should be condition for file save)"""
+        TL = int(30 // dt) # tick limit
         self.tick += 1
-        return self.check()
+        return self.check(TL)
 
-    def check(self) -> bool:
-        if self.tick > TICK_LIMIT:
+    def check(self, tl: int) -> bool:
+        if self.tick > tl:
             self.min += 1
             self.tick = 0
             if self.min > 59:

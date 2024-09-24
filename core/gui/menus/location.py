@@ -35,7 +35,9 @@ def locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     if dyn_screen.get_pgui_choice("loc__tb_descr") == "":
         dyn_screen.set_pgui_element("loc__tb_descr", loc.descr())
-    dyn_screen.set_pgui_element("loc__image", imgLoad(loc.img))
+    if dyn_screen.cache.loc_img is None: # set to None to update the image
+        dyn_screen.cache.loc_img = loc.img
+        dyn_screen.set_pgui_element("loc__image", imgLoad(loc.img))
 
     #===============================================================
     # EVENTS
@@ -54,4 +56,4 @@ def locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             guitype[1] = None
             dyn_screen.set_pgui_element("loc__tb_descr", "") # resets description
 
-    dyn_screen.journey.pass_time() # let the time pass if game is running
+    dyn_screen.journey.pass_time(dyn_screen.dtime) # let the time pass if game is running

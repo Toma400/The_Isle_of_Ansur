@@ -20,8 +20,8 @@ def main_circle():
 
     tev = []
     while not tev:
-        clock_tick = dyn_screen.clock.tick(60) / 1000.0  # delta time for PyGameGUI
-        screen     = dyn_screen.screen                   # read-only, but simpler value to be used by most features
+        dyn_screen.dtime = dyn_screen.clock.tick(60) / 1000.0  # delta time for PyGameGUI
+        screen           = dyn_screen.screen                   # read-only, but simpler value to be used by most features
 
         pg_events = pygame.event.get() # variablised so it can be passed to functions w/o calling more than one per frame
         for event in pg_events:
@@ -32,9 +32,9 @@ def main_circle():
             dyn_screen.pgui2.process_events(event)
             dyn_screen.pgui3.process_events(event)
 
-        dyn_screen.pgui.update(clock_tick) # PyGameGUI updater
-        dyn_screen.pgui2.update(clock_tick)
-        dyn_screen.pgui3.update(clock_tick)
+        dyn_screen.pgui.update(dyn_screen.dtime) # PyGameGUI updater
+        dyn_screen.pgui2.update(dyn_screen.dtime)
+        dyn_screen.pgui3.update(dyn_screen.dtime)
 
         music = music_handler(music, guitype, forged_events)                    # controls music
         gui_handler(screen, guitype, forged_events, pg_events, tev, dyn_screen) # draws elements on a screen and sets interactions
@@ -46,5 +46,7 @@ def main_circle():
         dyn_screen.pgui3.draw_ui(screen)
         dyn_screen.tooltip_handler()
         pygame.display.flip()
+
+        print(f"FPS: {dyn_screen.dtime}")
 
     temp_remover(); pygame.quit()

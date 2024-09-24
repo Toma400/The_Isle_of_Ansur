@@ -42,6 +42,7 @@ def travelScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             # ^ those two above can be removed, but I thought travel should not keep us on map, as to make it *important* and not speedrun jumping through locations
             #   that said, ideally there should be some screen in between, with encounters or something (but that's far future)
             dyn_screen.set_pgui_element("map__travel_dest", []) # should be kept, will refresh destinations either way
+            dyn_screen.cache.loc_img = None                     # let location screen be refreshed once
 
     elif mouseColliderPx(bex[0], bex[1], bex[2], bex[3]):
         put_text(screen, text=langstring("game__gen_back"), font_cat="menu", size=35, align_x="center", pos_y=85, colour=fCol.HOVERED.value)

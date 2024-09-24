@@ -23,6 +23,11 @@
 >   - Introduced time feature
 >     - It now make time progress in location menu
 >     - It is also passing through travel
+> - Technicals
+>   - Improved performance in various areas
+>     - Location screen should be ~10 times faster
+> - Fixes
+>   - Fixed save descriptions not showing after coming back to menu (#124)
 > 
 > Updating from PA6:
 > - Make sure to add relevant date data to your save

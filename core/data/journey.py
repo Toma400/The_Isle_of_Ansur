@@ -113,10 +113,9 @@ class Journey:
         else:
             log.error(f"Tried to write data: {value} into file: {save_string_parsed[0]} and key: {save_string_parsed[1]}, but error occurred.")
 
-    def pass_time(self):
+    def pass_time(self, dt: float):
         if self.date is not None:
-            print(self.date.tick)
-            if self.date.incr() is True:
+            if self.date.incr(dt) is True:
                 self.set(SaveStr.T_ERA.value,   self.date.era)
                 self.set(SaveStr.T_YEAR.value,  self.date.year)
                 self.set(SaveStr.T_MONTH.value, self.date.month)

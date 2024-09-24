@@ -55,6 +55,11 @@ def run_pgui(manager_no: int = 0):
         case 2: return pygame_gui.UIManager((scx("svx"), scx("svy")), theme_path=p2)
         case _: raise ValueError(f"-run_pgui- was given incorrect value of {manager_no} when trying to parse PyGameGUI theme.")
 
+class GHCache:
+    """Object that is used for variables that need to have longer timespan; mostly a means to improve performance"""
+    def __init__(self):
+        self.loc_img: str | None = None # location image path
+
 class Screen:
 
     def __init__(self):
@@ -68,7 +73,9 @@ class Screen:
         self.pobjects   = PGUI_Helper(self.pgui, self.pgui2, self.pgui3) # Registry of PyGameGUI objects
         self.update     = version_checker()                              # Bool value of whether game is up-to-date
         self.clock      = pygame.time.Clock()                            # Clock (mostly to hold PyGameGUI processes)
+        self.dtime      = 0                                              # Delta time (set in main loop)
         self.journey    = Journey()                                      # Main game handler
+        self.cache      = GHCache()                                      # Cache for misc aspects not covered by Helpers and Journey
         self.tooltip    = ""                                             # ID of tooltip that is shown currently
 
     def reset(self):
