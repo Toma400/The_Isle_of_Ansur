@@ -28,17 +28,21 @@ def loadDescr(vr: SaveVerifier) -> str:
         packs_required = loadTOML(f"saves/{vr.name}/{vr.variant.value}/mods.toml")
         packs_final    = {}
         # string creation
-        ret += f"{'{:<15}'.format(langstring('ccrt__gen_name'))}"     + f"{sf['name']}"                            + "\n"
-        ret += f"{'{:<15}'.format(langstring('stat__gen_location'))}" + f"{getLocation(pf['location']).langstr()}" + "\n"
-        ret += f"{'{:<15}'.format(langstring('stat__gen_time'))}"     + f"{dt.asStr(0)} | {dt.asStr(1)}"           + "\n"
-        ret += f"{'{:<15}'.format(langstring('ccrt__gen_gender'))}"   + f"{getGender(sf['gender']).langstr()}"     + "\n"
-        ret += f"{'{:<15}'.format(langstring('ccrt__gen_race'))}"     + f"{getRace(sf['race']).langstr()}"         + "\n"
-        ret += f"{'{:<15}'.format(langstring('ccrt__gen_class'))}"    + f"{getClass(sf['class']).langstr()}"       + "\n"
-        ret += f"{'{:<15}'.format(langstring('ccrt__gen_religion'))}" + f"{getReligion(sf['religion']).langstr()}" + "\n"
-        ret += f"{'{:<15}'.format(langstring('ccrt__gen_origin'))}"   + f"{getOrigin(sf['origin']).langstr()}"     + "\n"
-        ret += f"{langstring('ccrt__gen_history')}"                                          + "\n"
-        ret += f"{sf['history']}"                                                            + "\n"
-        ret += f"{langstring('load__packs_used')}"                                           + "\n"
+        try:
+            ret += f"{'{:<15}'.format(langstring('ccrt__gen_name'))}"     + f"{sf['name']}"                            + "\n"
+            ret += f"{'{:<15}'.format(langstring('stat__gen_location'))}" + f"{getLocation(pf['location']).langstr()}" + "\n"
+            ret += f"{'{:<15}'.format(langstring('stat__gen_time'))}"     + f"{dt.asStr(0)} | {dt.asStr(1)}"           + "\n"
+            ret += f"{'{:<15}'.format(langstring('ccrt__gen_gender'))}"   + f"{getGender(sf['gender']).langstr()}"     + "\n"
+            ret += f"{'{:<15}'.format(langstring('ccrt__gen_race'))}"     + f"{getRace(sf['race']).langstr()}"         + "\n"
+            ret += f"{'{:<15}'.format(langstring('ccrt__gen_class'))}"    + f"{getClass(sf['class']).langstr()}"       + "\n"
+            ret += f"{'{:<15}'.format(langstring('ccrt__gen_religion'))}" + f"{getReligion(pf['religion']).langstr()}" + "\n"
+            ret += f"{'{:<15}'.format(langstring('ccrt__gen_origin'))}"   + f"{getOrigin(sf['origin']).langstr()}"     + "\n"
+            ret += f"-- {langstring('ccrt__gen_history')} ---"                                   + "\n"
+            ret += f"{pf['history']}"                                                            + "\n"
+            ret += f"-- {langstring('load__packs_used')} ---"                                    + "\n"
+        except KeyError: # handling crash in case any of keys is not there (will happen for version migrations - try/except can be removed after 1.0)
+            log(ERROR, f"Couldn't parse informations about save -{vr.name}-. The save may be corrupted or made with older version. Printing stacktrace:", exc_info=True)
+            ret = langstring("load__error_longer")
         # set fixed length that adjusts to the longest mod ID + set translation names
         maxlen = 0
         for pack, ver in packs_required.items():

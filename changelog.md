@@ -44,6 +44,13 @@
 > 
 >   - They can have different values, but those above are the default for `wanderer`
 >     origin from vanilla
+>   - Next, open `data.toml` file, with `player.toml` still being opened
+>   - Copy those two lines from `data.toml` to `player.toml`:
+> 
+>       religion = "..."
+>       history = "..."
+> 
+>   - Once you finish copying, remove them from `data.toml`
 > ```
 > ---
 > ### Pre-alpha 6

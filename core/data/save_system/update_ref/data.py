@@ -9,9 +9,7 @@ def updateData(name: str, data: dict = None):
         "gender":   None,
         "race":     None,
         "class":    None,
-        "origin":   None,
-        "religion": None,
-        "history":  None
+        "origin":   None
     }
 
     data_keys = data_file.keys()

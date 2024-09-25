@@ -14,7 +14,9 @@ def updatePlayer(name: str, data: dict = None):
         "time_day":   None,
         "time_wday":  None,
         "time_hour":  None,
-        "time_min":   None
+        "time_min":   None,
+        "religion":   None,
+        "history":    None
     }
 
     player_keys = player_data.keys()
@@ -39,6 +41,8 @@ def updatePlayer(name: str, data: dict = None):
         player_data["time_wday"]  = time[4]
         player_data["time_hour"]  = time[5]
         player_data["time_min"]   = time[6]
+        player_data["religion"]   = data["religion"]
+        player_data["history"]    = data["history"]
 
     # verification
     for player_key in player_keys:
