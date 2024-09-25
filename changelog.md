@@ -25,7 +25,7 @@
 >     - It is also passing through travel
 > - Technicals
 >   - Improved performance in various areas
->     - Location screen should be ~10 times faster
+>     - Location screen should be 8-10 times faster
 > - Fixes
 >   - Fixed save descriptions not showing after coming back to menu (#124)
 > 

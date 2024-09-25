@@ -4,12 +4,14 @@ from core.data.save_system.verify import SaveVerifier
 from core.data.save_system.buffer import loadBuffer
 from core.data.save_system.walk import listSaves
 from core.data.pack_manag.info import searchInfo
-from core.data.world.time import parseBaeTime
 from core.data.player.religion import getReligion
 from core.data.player.profession import getClass
 from core.data.player.gender import getGender
 from core.data.player.origin import getOrigin
 from core.data.player.race import getRace
+from core.data.world.location import getLocation
+from core.data.world.time import parseBaeTime
+from core.data.journey import Journey
 from core.graphics.gh_manag import mouseColliderPx, mouseRec, switch_gscr, imgLoad
 from core.graphics.text_manag import put_text
 from core.gui.manag.langstr import langstring
@@ -21,10 +23,14 @@ def loadDescr(vr: SaveVerifier) -> str:
     ret = ""
     if vr.save_structure:
         sf             = loadTOML(f"saves/{vr.name}/{vr.variant.value}/data.toml")
+        pf             = loadTOML(f"saves/{vr.name}/{vr.variant.value}/player.toml")
+        dt             = parseBaeTime(Journey.readDate(vr)) # use .asStr(0) + .asStr(1)
         packs_required = loadTOML(f"saves/{vr.name}/{vr.variant.value}/mods.toml")
         packs_final    = {}
         # string creation
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_name'))}"     + f"{sf['name']}"                            + "\n"
+        ret += f"{'{:<15}'.format(langstring('stat__gen_location'))}" + f"{getLocation(pf['location']).langstr()}" + "\n"
+        ret += f"{'{:<15}'.format(langstring('stat__gen_time'))}"     + f"{dt.asStr(0)} | {dt.asStr(1)}"           + "\n"
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_gender'))}"   + f"{getGender(sf['gender']).langstr()}"     + "\n"
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_race'))}"     + f"{getRace(sf['race']).langstr()}"         + "\n"
         ret += f"{'{:<15}'.format(langstring('ccrt__gen_class'))}"    + f"{getClass(sf['class']).langstr()}"       + "\n"

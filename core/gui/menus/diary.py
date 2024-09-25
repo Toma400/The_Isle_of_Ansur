@@ -22,6 +22,8 @@ def diaryScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
         put_text(screen, text=langstring("game__diary_save"), font_cat="menu", size=35, pos_x=10, pos_y=25, colour=fCol.HOVERED.value)
         if mouseRec(pg_events):
             saveBuffer(dyn_screen.journey.name)
+            guitype[0] = switch_gscr(dyn_screen, screen, "location")
+            guitype[1] = None
 
     elif mouseColliderPx(bex[0], bex[1], bex[2], bex[3]):
         put_text(screen, text=langstring("game__gen_back"), font_cat="menu", size=35, align_x="center", pos_y=85, colour=fCol.HOVERED.value)

@@ -1,7 +1,6 @@
 from core.gui.manag.langstr import langstring
 import logging as log
 
-TICK_LIMIT = 60 # should be average tick amount per second (20?) * amount of seconds needed to pass (15 seconds as default "minute")
 MDS = { # month day limits
     1:  31,
     2:  28,
@@ -36,7 +35,7 @@ class BaeTime:
 
     def incr(self, dt: float) -> bool:
         """Return handling is optional | returns True if limit is exceeded (should be condition for file save)"""
-        TL = int(30 // dt) # tick limit
+        TL = int(30 // dt) # tick limit (should represent roughly 1 second irl = 1 second in-game)
         self.tick += 1
         return self.check(TL)
 

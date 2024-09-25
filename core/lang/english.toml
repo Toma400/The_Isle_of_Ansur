@@ -159,6 +159,7 @@ stat__gen_gender           = "Gender"
 stat__gen_gender1          = "Male"
 stat__gen_gender2          = "Female"
 stat__gen_location         = "Location"
+stat__gen_time             = "Time"
 
 stat__hint_hp              = "Health Points"
 stat__hint_mp              = "Magic Points"
