@@ -23,6 +23,7 @@
 >   - Introduced time feature
 >     - It now make time progress in location menu
 >     - It is also passing through travel
+>   - Some actions now move player between screens, making actions more intuitive
 > - Technicals
 >   - Improved performance in various areas
 >     - Location screen should be 8-10 times faster
@@ -44,7 +45,9 @@
 > 
 >   - They can have different values, but those above are the default for `wanderer`
 >     origin from vanilla
->   - Next, open `data.toml` file, with `player.toml` still being opened
+> 
+> - Handle save file changes between PA6 and PA7 
+>   - Open `data.toml` file, with `player.toml` still being opened
 >   - Copy those two lines from `data.toml` to `player.toml`:
 > 
 >       religion = "..."

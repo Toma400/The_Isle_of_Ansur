@@ -3,9 +3,10 @@ from core.gui.menus.location import locationScreen
 from core.gui.menus.travel import travelScreen
 from core.gui.menus.diary import diaryScreen
 from core.gui.menus.packs import packMenu
-from core.gui.menus.load import loadGame
+from core.gui.menus.load import loadGame, loadSequence
 from core.gui.manag.langstr import langstring
 from core.file_system.parsers import loadYAML
+from core.data.save_system.verify import SaveVerifier
 from core.graphics.gh_manag import imgLoad
 from core.gui.registry.pgui_objects import PGUI_Helper
 from core.data.player.avatar import urlAvatar, pathAvatar, loreAvatars, loreAvatar, loreAvatarSelection, saveAvatar, temp_folder as av_dir
@@ -609,10 +610,14 @@ def gui_handler(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                             updateSave(dyn_screen.journey.inidata['name'], dyn_screen.journey.inidata)
                             saveAvatar(dyn_screen.journey.inidata['name']) # should be after updateSave()
 
-                            guitype[0] = switch_gscr(dyn_screen, screen, "menu")
-                            guitype[1] = None
-                            dyn_screen.journey.reset()
+                            jump_to = dyn_screen.journey.inidata['name']  # keeping this one to use after .reset()
+                            dyn_screen.journey.reset() # resets, so there's clear Journey object to overwrite back
                             dyn_screen.reset_pgui(True)
+
+                            dyn_screen.journey.name   = jump_to
+                            dyn_screen.journey.verify = SaveVerifier(jump_to)
+                            guitype[0] = switch_gscr(dyn_screen, screen, "location")
+                            loadSequence(dyn_screen) # binding
 
             # ==================================================
             # hovering & clicking events

@@ -89,6 +89,11 @@ def loadDescr(vr: SaveVerifier) -> str:
 def removeSave(save: str):
     import shutil; shutil.rmtree(f"saves/{save}", ignore_errors=True)
 
+def loadSequence(d):
+    """`d` should be dyn_screen object"""
+    d.journey.location = d.journey.readLocation(d.journey.verify)
+    d.journey.date     = parseBaeTime(d.journey.readDate(d.journey.verify))
+
 def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     # background sprite
     is_active = {"false": fCol.DISABLED.value, "true": fCol.ENABLED.value}
@@ -150,8 +155,7 @@ def loadGame(screen, guitype, fg_events, pg_events, tev, dyn_screen):
                     guitype[0] = switch_gscr(dyn_screen, screen, "location")
                     if dyn_screen.journey.verify.varstr == "adventure":
                         loadBuffer(dyn_screen.journey.name) # overwrites the buffer (journey binding below because of that - they all read from buffer)
-                    dyn_screen.journey.location = dyn_screen.journey.readLocation(dyn_screen.journey.verify)
-                    dyn_screen.journey.date     = parseBaeTime(dyn_screen.journey.readDate(dyn_screen.journey.verify))
+                    loadSequence(dyn_screen) # binding
             else:
                 dyn_screen.tooltip = "menu__tp_load_load"
 
