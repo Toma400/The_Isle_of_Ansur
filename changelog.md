@@ -54,6 +54,14 @@
 >       history = "..."
 > 
 >   - Once you finish copying, remove them from `data.toml`
+> 
+> - Create new file needed
+>   - Create `settings.toml` in the same directory previously edited files were
+>   - Put below text in the file:
+>     
+>       permadeath = false
+> 
+>   - You can set it as `true` in case you want to have permadeath option on
 > ```
 > ---
 > ### Pre-alpha 6

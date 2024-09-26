@@ -1,5 +1,6 @@
 from core.data.save_system.update_ref.statistics import updateAttributes, updateSkills
 from core.data.save_system.update_ref.inventory import updateInventory, addOriginInventory, addClassInventory
+from core.data.save_system.update_ref.settings import updateSettings
 from core.data.save_system.update_ref.player import updatePlayer
 from core.data.save_system.update_ref.packs import updateMods
 from core.data.save_system.update_ref.data import updateData
@@ -38,6 +39,7 @@ def updateSave(name: str, data: dict = None):
             makedirs(f"saves/{name}/{SV_KIND.BUFFER.value}/{rd}")
     # REQUIRED_FILES are delayed because they will be added in following function calls
 
+    updateSettings(name, data)
     updateAttributes(name, data)
     updateSkills(name, data)
     updatePlayer(name, data)
