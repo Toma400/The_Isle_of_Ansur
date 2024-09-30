@@ -59,6 +59,7 @@ class GHCache:
     """Object that is used for variables that need to have longer timespan; mostly a means to improve performance"""
     def __init__(self):
         self.loc_img: str | None = None # location image path
+        self.char_mn: str | None = None # character menu refresh
 
 class Screen:
 
@@ -96,6 +97,12 @@ class Screen:
 
     def gui(self, value: str):
         return self.objects.get_element(value)
+
+    def pgui_disable(self, value: str):
+        return self.pobjects.set_able(value, 0)
+
+    def pgui_enable(self, value: str):
+        return self.pobjects.set_able(value, 1)
 
     def get_pgui_choice(self, element: str) -> str | None:
         """Gets currently selected entry in GUI element (available only for some types) as value"""

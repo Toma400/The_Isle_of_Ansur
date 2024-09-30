@@ -29,6 +29,7 @@ class PGUI_Helper:
     clock   = bg_handler('clock')
 
     def __init__(self, manager, manag2, manag3):
+        # TODO: swap `char` for character creation to `strt` or `nwgm` or something that tells explicitly it's about not character menu, but new game
         self.char__lb_gender = UISelectionList(item_list=getGendersTuple(),                      relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(8))),  manager=manager)
         self.char__tb_gender = UITextBox      (html_text=lstr("ccrt__gender"),                   relative_rect=pygame.Rect((toPxX(40), toPxX(14)), (toPxX(40), toPxX(15))), manager=manager)
         self.char__lb_race   = UISelectionList(item_list=getRacesTuple(),                        relative_rect=pygame.Rect((toPxX(40), toPxX(6)),  (toPxX(40), toPxX(20))), manager=manager)
@@ -73,11 +74,16 @@ class PGUI_Helper:
         self.loc__frame_cr_rd = UIImage       (image_surface=imgLoad(bg_handler('frame_cr_rd')), relative_rect=pygame.Rect((toPxX(85), toPxY(48)), (toPxY(2),  toPxY(2))),  manager=manager)
         self.loc__clock       = UIImage       (image_surface=imgLoad(self.clock, alpha=True),    relative_rect=pygame.Rect((toPxX(48), toPxY(50)), (toPxX(3),  toPxX(3))),  manager=manager)
         self.loc__tb_descr    = UITextBox     (html_text="",                                     relative_rect=pygame.Rect((toPxX(14), toPxY(64)), (toPxX(72), toPxY(27))), manager=manag2)
+        # --- TODO: change back to `char` once the above `char` name changes (`chmn` looks bad)
+        self.chmn__avatar     = UIImage       (image_surface=imgLoad(self.def_img, alpha=True),  relative_rect=pygame.Rect((toPxX(65), toPxY(10)), (toPxX(25), toPxX(25))), manager=manag3)
+        self.chmn__history    = UITextEntryBox (                                                 relative_rect=pygame.Rect((toPxX(65), toPxY(12) +
+                                                                                                                                       toPxX(25)), (toPxX(25), toPxY(30))), manager=manag3)
         # ---
         self.map__travel_dest  = UISelectionList(item_list=[],                                   relative_rect=pygame.Rect((toPxX(10), toPxY(10)), (toPxX(35), toPxY(40))), manager=manag3)
         self.map__travel_descr = UITextBox      (html_text="",                                   relative_rect=pygame.Rect((toPxX(10), toPxY(52)), (toPxX(35), toPxY(25))), manager=manag3)
         # TODO? Maybe make similar `manag2` for the listbox in game? (see the travel_dest one, but also later inventory etc. - probably without Ferrum tho, maybe also smaller font?)
         self.char__ti_name.set_forbidden_characters("forbidden_file_path")
+        self.chmn__history.disable() # overridable in character menu
         self.hide_elements()
 
     def get_element(self, element: str):
@@ -130,6 +136,16 @@ class PGUI_Helper:
             case UITextEntryLine.__module__: self.get_element(element).set_text(overwrite)
             case UIImage.__module__:         self.get_element(element).set_image(overwrite)
             case _:                          logging.warning(f"Tried to request -set_value- from PGUI element that does not support it: {element}")
+
+    def set_able(self, element: str, switch: int):
+        """Sets able/disable mode. Switch allows for explicit mode selection (0 = disable, 1 = enable)"""
+        permitted = [UITextEntryBox.__module__]
+        if self.get_element(element).__module__ in permitted:
+            match switch:
+                case 0: self.get_element(element).disable()
+                case 1: self.get_element(element).enable()
+                case _: logging.warning(f"Tried to request -set_able- from PGUI element with incorrect value: {switch}")
+        else: logging.warning(f"Tried to request -set_able- from PGUI element that does not support it: {element}")
 
     def clear_values(self):
         """Clears values of elements that are meant to be empty at the initial phase (look at __init__)"""

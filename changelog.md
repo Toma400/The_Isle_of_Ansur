@@ -23,6 +23,7 @@
 >   - Introduced time feature
 >     - It now make time progress in location menu
 >     - It is also passing through travel
+>   - Added character screen, so player can now see their hero
 >   - Some actions now move player between screens, making actions more intuitive
 > - Technicals
 >   - Improved performance in various areas

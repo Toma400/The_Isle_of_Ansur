@@ -13,11 +13,11 @@ def locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     put_text(      screen, text=loc.langstr(),                    font_cat="menu", size=38, align_x="right",  pos_x=14, pos_y=50.5, colour=fCol.ENABLED.value)
     put_text(      screen, text="-" * 154,                        font_cat="menu", size=20, align_x="center",           pos_y=54,   colour=fCol.ENABLED.value)
     put_text(      screen, text=dyn_screen.journey.date.asStr(0), font_cat="menu", size=38, align_x="left",   pos_x=14, pos_y=50.5, colour=fCol.ENABLED.value)
-    put_text(      screen, text=dyn_screen.journey.date.asStr(1), font_cat="menu", size=38, align_x="left",   pos_x=14, pos_y=57.5, colour=fCol.ENABLED.value)
-    # buttons TODO: uncomment them, making space for datecheck
-    #bch = put_text(screen, text=langstring("loc__bt_character"), font_cat="menu", size=35,                   pos_x=14, pos_y=57.5, colour=fCol.DISABLED.value) # character
-    #biv = put_text(screen, text=langstring("loc__bt_inventory"), font_cat="menu", size=35,                   pos_x=30, pos_y=57.5, colour=fCol.DISABLED.value) # inventory
-    #blc = put_text(screen, text=langstring("loc__bt_location"),  font_cat="menu", size=35, align_x="center",           pos_y=57.5, colour=fCol.DISABLED.value) # location
+    #put_text(      screen, text=dyn_screen.journey.date.asStr(1), font_cat="menu", size=38, align_x="left",   pos_x=14, pos_y=50.5, colour=fCol.ENABLED.value)
+    # above TODO: uncomment once space is made
+    bch = put_text(screen, text=langstring("loc__bt_character"), font_cat="menu", size=35,                   pos_x=14, pos_y=57.5, colour=fCol.ENABLED.value)  # character
+    biv = put_text(screen, text=langstring("loc__bt_inventory"), font_cat="menu", size=35,                   pos_x=30, pos_y=57.5, colour=fCol.DISABLED.value) # inventory
+    blc = put_text(screen, text=langstring("loc__bt_location"),  font_cat="menu", size=35, align_x="center",           pos_y=57.5, colour=fCol.DISABLED.value) # location
     bmp = put_text(screen, text=langstring("loc__bt_map"),       font_cat="menu", size=35, align_x="right",  pos_x=30, pos_y=57.5, colour=fCol.ENABLED.value)  # map
     bdr = put_text(screen, text=langstring("loc__bt_diary"),     font_cat="menu", size=35, align_x="right",  pos_x=14, pos_y=57.5, colour=fCol.ENABLED.value)  # diary
 
@@ -42,7 +42,14 @@ def locationScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     #===============================================================
     # EVENTS
     #===============================================================
-    if mouseColliderPx(bmp[0], bmp[1], bmp[2], bmp[3]):
+    if mouseColliderPx(bch[0], bch[1], bch[2], bch[3]):
+        put_text(screen, text=langstring("loc__bt_character"), font_cat="menu", size=35, pos_x=14, pos_y=57.5, colour=fCol.HOVERED.value)
+        if mouseRec(pg_events):
+            guitype[0] = switch_gscr(dyn_screen, screen, "character")
+            guitype[1] = None
+            dyn_screen.set_pgui_element("loc__tb_descr", "") # resets description
+
+    elif mouseColliderPx(bmp[0], bmp[1], bmp[2], bmp[3]):
         put_text(screen, text=langstring("loc__bt_map"), font_cat="menu", size=35, align_x="right", pos_x=30, pos_y=57.5, colour=fCol.HOVERED.value)
         if mouseRec(pg_events):
             guitype[0] = switch_gscr(dyn_screen, screen, "map")
