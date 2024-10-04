@@ -61,6 +61,7 @@ class GHCache:
         self.loc_img: str | None = None # location image path
         self.char_mn: str | None = None # character menu refresh
         self.char_he: int        = 0    # character history edit (0 - disabled, 1 - opened); used only as a check, not setter per se
+        self.char_bm: int        = 0    # character textbox mode (0 - disabled, 1 - origin, 2 - attributes, 3 - skills)
 
 class Screen:
 
@@ -122,7 +123,7 @@ class Screen:
         self.pobjects.set_value(element, overwrite)
 
     def put_pgui(self, element: str):
-        """Reveals GUI element currently being hidden"""
+        """Reveals GUI element currently being hidden | TODO: If menu has 'run on first tick' procs chain, you can put it here - doesn't need to be evoked every tick"""
         self.pobjects.show_element(element)
 
     def draw(self, element: str, pos: (int, int) = None):

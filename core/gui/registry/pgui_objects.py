@@ -80,6 +80,10 @@ class PGUI_Helper:
         self.chmn__history    = UITextEntryBox (                                                 relative_rect=pygame.Rect((toPxX(90) -
                                                                                                                             toPxY(30), toPxY(12) +
                                                                                                                                        toPxY(30)), (toPxY(30), toPxY(35))), manager=manag3)
+        self.chmn__none   = UITextBox       (html_text="", relative_rect=pygame.Rect((toPxX(10), toPxY(50)), (toPxX(40), toPxY(27))), manager=manag3)
+        self.chmn__origin = UITextBox       (html_text="", relative_rect=pygame.Rect((toPxX(10), toPxY(50)), (toPxX(40), toPxY(27))), manager=manag3)
+        self.chmn__attrs  = UISelectionList (item_list=[], relative_rect=pygame.Rect((toPxX(10), toPxY(50)), (toPxX(40), toPxY(27))), manager=manag3)
+        self.chmn__skills = UISelectionList (item_list=[], relative_rect=pygame.Rect((toPxX(10), toPxY(50)), (toPxX(40), toPxY(27))), manager=manag3)
         # ---
         self.map__travel_dest  = UISelectionList(item_list=[],                                   relative_rect=pygame.Rect((toPxX(10), toPxY(10)), (toPxX(35), toPxY(40))), manager=manag3)
         self.map__travel_descr = UITextBox      (html_text="",                                   relative_rect=pygame.Rect((toPxX(10), toPxY(52)), (toPxX(35), toPxY(25))), manager=manag3)
