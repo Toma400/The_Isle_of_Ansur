@@ -60,6 +60,7 @@ class GHCache:
     def __init__(self):
         self.loc_img: str | None = None # location image path
         self.char_mn: str | None = None # character menu refresh
+        self.char_he: int        = 0    # character history edit (0 - disabled, 1 - opened); used only as a check, not setter per se
 
 class Screen:
 

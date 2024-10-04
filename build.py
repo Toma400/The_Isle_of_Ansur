@@ -52,6 +52,7 @@ class DefaultRun:
         full_export_path + ".git",
         full_export_path + ".idea",
         full_export_path + ".dev",
+        full_export_path + ".fps",
         full_export_path + ".breakpoints",
         full_export_path + ".gitignore",
         full_export_path + "modding_guide.odt",

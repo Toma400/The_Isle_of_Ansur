@@ -5,7 +5,11 @@ from core.sounds.music import music_handler
 from core.scripts import script_handler
 from core.scripts import event_handler
 from core.data.pack_manag import packs
+from os.path import exists
 from core.utils import *
+import logging as log
+
+fps_check = exists(".fps")
 
 def main_circle():
     packs.removePacks()
@@ -47,6 +51,8 @@ def main_circle():
         dyn_screen.tooltip_handler()
         pygame.display.flip()
 
-        print(f"FPS: {dyn_screen.dtime}")
+        if fps_check:
+            print(f"FPS: {dyn_screen.dtime}")
+            log.info(f"FPS: {dyn_screen.dtime}")
 
     temp_remover(); pygame.quit()

@@ -120,6 +120,7 @@ loc__bt_diary     = "Diary"
 
 char__av_gall  = "Gallery"
 char__his_edit = "Edit History"
+char__his_save = "Save History"
 
 time__month_1              = "January"
 time__month_2              = "February"
