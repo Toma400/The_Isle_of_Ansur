@@ -75,9 +75,11 @@ class PGUI_Helper:
         self.loc__clock       = UIImage       (image_surface=imgLoad(self.clock, alpha=True),    relative_rect=pygame.Rect((toPxX(48), toPxY(50)), (toPxX(3),  toPxX(3))),  manager=manager)
         self.loc__tb_descr    = UITextBox     (html_text="",                                     relative_rect=pygame.Rect((toPxX(14), toPxY(64)), (toPxX(72), toPxY(27))), manager=manag2)
         # --- TODO: change back to `char` once the above `char` name changes (`chmn` looks bad)
-        self.chmn__avatar     = UIImage       (image_surface=imgLoad(self.def_img, alpha=True),  relative_rect=pygame.Rect((toPxX(65), toPxY(10)), (toPxX(25), toPxX(25))), manager=manag3)
-        self.chmn__history    = UITextEntryBox (                                                 relative_rect=pygame.Rect((toPxX(65), toPxY(12) +
-                                                                                                                                       toPxX(25)), (toPxX(25), toPxY(30))), manager=manag3)
+        self.chmn__avatar     = UIImage       (image_surface=imgLoad(self.def_img, alpha=True),  relative_rect=pygame.Rect((toPxX(90) -
+                                                                                                                            toPxY(30), toPxY(10)), (toPxY(30), toPxY(30))), manager=manag3)
+        self.chmn__history    = UITextEntryBox (                                                 relative_rect=pygame.Rect((toPxX(90) -
+                                                                                                                            toPxY(30), toPxY(12) +
+                                                                                                                                       toPxY(30)), (toPxY(30), toPxY(35))), manager=manag3)
         # ---
         self.map__travel_dest  = UISelectionList(item_list=[],                                   relative_rect=pygame.Rect((toPxX(10), toPxY(10)), (toPxX(35), toPxY(40))), manager=manag3)
         self.map__travel_descr = UITextBox      (html_text="",                                   relative_rect=pygame.Rect((toPxX(10), toPxY(52)), (toPxX(35), toPxY(25))), manager=manag3)

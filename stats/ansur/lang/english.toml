@@ -295,7 +295,7 @@ Bard loves singing and playing music in taverns, but it can also get some money 
 Sometimes something goes so even when trying to maintain boring duty - inns and taverns aren't known to be friendliest to someone who stays between two drunk gamers.
 '''
 classes__merchant_descr = '''
-Merchants are masters of bargaining, they know local prices well - you can't trick him saying that in your village just all sheep were killed, and that's why wool is so pricey.
+Merchants are masters of bargaining, they know local prices well - you can't trick them saying that in your village just all sheep were killed, and that's why wool is so pricey.
 Unless merchant didn't kill them all themselves (and obviously, he would buy all wool before that), no amateur will tell him black is white. Especially sheep.
 '''
 classes__blacksmith_descr = '''

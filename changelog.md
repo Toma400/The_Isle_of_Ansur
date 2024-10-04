@@ -30,6 +30,7 @@
 >     - Location screen should be 8-10 times faster
 > - Fixes
 >   - Fixed save descriptions not showing after coming back to menu (#124)
+>   - Fixed some typos
 > 
 > Updating from PA6:
 > - Make sure to add relevant date data to your save
