@@ -45,7 +45,10 @@ def getAttributes() -> list[Attribute]:
                 ret.append(Attribute(attr, pjf[attr]["key"], stat_pack))
     return ret
 
-def getAttribute(aid: str) -> Attribute:
+def getAttribute(aid: str, no_check=True) -> Attribute:
+    if no_check is True:
+        spl = aid.split(":")
+        return Attribute(spl[1], loadYAML(f"stats/{spl[0]}/attributes.yaml")[spl[1]]["key"], spl[0])
     for attr in getAttributes():
         if attr.aid() == absoluteID(aid):
             return attr

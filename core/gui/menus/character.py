@@ -4,21 +4,41 @@ from core.data.player.origin import getOrigin
 from core.data.player.religion import getReligion
 from core.data.player.profession import getClass
 from core.data.player.race import getRace
+from core.data.player.gender import getGender
+from core.data.player.attributes import getAttribute
+from core.data.player.skills import getSkill
 from core.graphics.text_manag import put_text
+from core.file_system.parsers import loadYAML
 from core.gui.manag.langstr import langstring
 from core.gui.manag.pc import toPxX, toPxY
 from os.path import exists
 
 av_spacing = revCell(toPxX(12) + toPxY(30), "x") # based on `pgui_objects` placement for `avatar` element)
 
+def parseStatistics(player, mode: 1 | 2) -> list[str]:
+    """Yields list of attributes (mode = 1) or skills (mode = 2)"""
+    spath = f"saves/{player}/buffer/statistics/attributes.yaml" if mode == 1 else f"saves/{player}/buffer/statistics/skills.yaml"
+    file  = loadYAML(spath)
+    ret   = []
+    match mode:
+        case 1:
+            for k, v in file.items():
+                ret.append(f"{getAttribute(k).langstr()}: {v}")
+        case 2:
+            for k, v in file.items():
+                ret.append(f"{getSkill(k).langstr()}: {v}")
+        case _: pass
+    return ret
+
 def characterScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
 
     dyn_screen.gui("loc__gh_background").full().put(screen) # background sprite
 
     put_text(screen, text=dyn_screen.journey.get("data.toml | name"),                                                                        font_cat="menu", size=38, align_x="left", pos_x=10, pos_y=10, colour=fCol.ENABLED.value)
-    put_text(screen, text=langstring("ccrt__gen_race")     + ": " + getRace(dyn_screen.journey.get("data.toml | race")).langstr(),           font_cat="menu", size=32, align_x="left", pos_x=10, pos_y=18, colour=fCol.ENABLED.value)
-    put_text(screen, text=langstring("ccrt__gen_class")    + ": " + getClass(dyn_screen.journey.get("data.toml | class")).langstr(),         font_cat="menu", size=32, align_x="left", pos_x=10, pos_y=24, colour=fCol.ENABLED.value)
-    put_text(screen, text=langstring("ccrt__gen_religion") + ": " + getReligion(dyn_screen.journey.get("player.toml | religion")).langstr(), font_cat="menu", size=32, align_x="left", pos_x=10, pos_y=30, colour=fCol.ENABLED.value)
+    put_text(screen, text=langstring("ccrt__gen_gender")   + ": " + getGender(dyn_screen.journey.get("data.toml | gender")).langstr(),       font_cat="menu", size=29, align_x="left", pos_x=10, pos_y=18, colour=fCol.ENABLED.value)
+    put_text(screen, text=langstring("ccrt__gen_race")     + ": " + getRace(dyn_screen.journey.get("data.toml | race")).langstr(),           font_cat="menu", size=29, align_x="left", pos_x=10, pos_y=23, colour=fCol.ENABLED.value)
+    put_text(screen, text=langstring("ccrt__gen_class")    + ": " + getClass(dyn_screen.journey.get("data.toml | class")).langstr(),         font_cat="menu", size=29, align_x="left", pos_x=10, pos_y=28, colour=fCol.ENABLED.value)
+    put_text(screen, text=langstring("ccrt__gen_religion") + ": " + getReligion(dyn_screen.journey.get("player.toml | religion")).langstr(), font_cat="menu", size=29, align_x="left", pos_x=10, pos_y=33, colour=fCol.ENABLED.value)
 
     agl = put_text(screen,     text=langstring("char__av_gall"),  font_cat="menu", size=35, align_x="right", pos_x=av_spacing, pos_y=10, colour=fCol.DISABLED.value)
     if dyn_screen.cache.char_he == 0: # history edit switch
@@ -41,8 +61,8 @@ def characterScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             dyn_screen.set_pgui_element("chmn__avatar",  imgLoad(f"saves/{dyn_screen.journey.name}/buffer/avatar.png", alpha=True))
             dyn_screen.set_pgui_element("chmn__history", dyn_screen.journey.get("player.toml | history"))
         dyn_screen.set_pgui_element("chmn__origin", getOrigin(dyn_screen.journey.get("data.toml | origin")).descr())
-        # TODO: attrs filling
-        # TODO: skills filling
+        dyn_screen.set_pgui_element("chmn__attrs",  parseStatistics(dyn_screen.journey.name, 1))
+        dyn_screen.set_pgui_element("chmn__skills", parseStatistics(dyn_screen.journey.name, 2))
         dyn_screen.put_pgui("chmn__none")
 
     match dyn_screen.cache.char_bm:

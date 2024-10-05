@@ -49,7 +49,10 @@ def getSkills(manual_excl: bool = False) -> list[Skill]:
                         ret.append(Skill(sk, pjf[sk]["key"], stat_pack))
     return ret
 
-def getSkill(sid: str) -> Skill:
+def getSkill(sid: str, no_check=True) -> Skill:
+    if no_check is True:
+        spl = sid.split(":")
+        return Skill(spl[1], loadYAML(f"stats/{spl[0]}/skills.yaml")[spl[1]]["key"], spl[0])
     for sk in getSkills():
         if sk.sid() == absoluteID(sid):
             return sk
