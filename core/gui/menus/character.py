@@ -61,8 +61,6 @@ def characterScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
             dyn_screen.set_pgui_element("chmn__avatar",  imgLoad(f"saves/{dyn_screen.journey.name}/buffer/avatar.png", alpha=True))
             dyn_screen.set_pgui_element("chmn__history", dyn_screen.journey.get("player.toml | history"))
         dyn_screen.set_pgui_element("chmn__origin", getOrigin(dyn_screen.journey.get("data.toml | origin")).descr())
-        dyn_screen.set_pgui_element("chmn__attrs",  parseStatistics(dyn_screen.journey.name, 1))
-        dyn_screen.set_pgui_element("chmn__skills", parseStatistics(dyn_screen.journey.name, 2))
         dyn_screen.put_pgui("chmn__none")
 
     match dyn_screen.cache.char_bm:
@@ -84,12 +82,14 @@ def characterScreen(screen, guitype, fg_events, pg_events, tev, dyn_screen):
     if mouseColliderPx(bat[0], bat[1], bat[2], bat[3]):
         put_text(screen, text=langstring("char__attrs"),      font_cat="menu", size=32, pos_x=25, endpos_x=35, pos_y=44, colour=fCol.HOVERED.value)
         if mouseRec(pg_events):
+            dyn_screen.set_pgui_element("chmn__attrs", parseStatistics(dyn_screen.journey.name, 1))
             dyn_screen.cache.char_bm = 2
             dyn_screen.clear_pgui()
 
     if mouseColliderPx(bsk[0], bsk[1], bsk[2], bsk[3]):
         put_text(screen, text=langstring("char__skills"),     font_cat="menu", size=32, pos_x=40, endpos_x=50, pos_y=44, colour=fCol.HOVERED.value)
         if mouseRec(pg_events):
+            dyn_screen.set_pgui_element("chmn__skills", parseStatistics(dyn_screen.journey.name, 2))
             dyn_screen.cache.char_bm = 3
             dyn_screen.clear_pgui()
 
