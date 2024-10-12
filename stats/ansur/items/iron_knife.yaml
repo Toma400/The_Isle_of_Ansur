@@ -1,0 +1,24 @@
+key:     "item__iron_knife"
+texture: "items/nemos_ring.png"
+weight:  1.0
+
+quality_min: 0
+quality_max: 50
+
+damage_min: 3
+damage_max: 9
+
+# used for clothing and jewelry
+wear:
+    slot: "hand"
+
+data:
+    quality: quality_min..quality_max
+
+# economic factors, min/max that will rely on tag value in area (if not specified, value in between is used: 275 in this case)
+tag: "weapon_iron"
+value_min: 20
+value_max: 30
+
+# ...when having shop, item will be measured against tag, so basically you can make any custom tags or skip any, it won't matter
+# ...stackability is measured on whether key -durability- is set (set = non-stackable, not set = stackable | at least for now)

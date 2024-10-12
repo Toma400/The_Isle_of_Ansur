@@ -17,6 +17,11 @@ def loadTOML(fpath: str) -> dict | list:
     with open(fpath, encoding="utf-8") as tf:
         return toml.loads(tf.read())
 
+def writeTOML(fpath: str, fcont: any):
+    with open(fpath, mode="w", encoding="utf-8") as tf:
+        toml.dump(fcont, tf)
+        tf.flush()
+
 def loadJSON(fpath: str) -> dict | list:
     with open(fpath, encoding="utf-8") as jf:
         return json.loads(jf.read())
