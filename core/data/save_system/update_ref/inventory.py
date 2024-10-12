@@ -1,7 +1,7 @@
 from core.file_system.parsers import loadYAML, loadTOML
 from core.data.player.profession import getClass
 from core.data.player.origin import getOrigin
-from core.data.player.inventory import addItem, isUnique
+from core.data.player.inventory import addItem
 from core.data.save_system.req_data import SV_KIND
 from os.path import exists
 import logging as log
@@ -73,8 +73,6 @@ def updateInventory(name: str, data: dict = None):
         yaml.dump(eq, f2)
         f2.flush()
 
-# TODO: make uniques work!
-
 def addClassInventory(name: str):
     get = loadTOML(f"saves/{name}/{SV_KIND.BUFFER.value}/data.toml")
 
@@ -82,8 +80,12 @@ def addClassInventory(name: str):
     add = oc.getc("new_game", "inventory")
 
     if add is not None:
-        for item in add:
-            for iid, val in item.items():
+        if "stackables" in add.keys():
+            for iid, val in add["stackables"].items():
+                addItem(name, iid, val)
+        if "uniques" in add.keys():
+            for item in add["uniques"]:
+                (iid, val), = item.items()
                 addItem(name, iid, val)
 
 def addOriginInventory(name: str):
@@ -93,6 +95,10 @@ def addOriginInventory(name: str):
     add = og.getc("new_game", "inventory")
 
     if add is not None:
-        for item in add:
-            for iid, val in item.items():
+        if "stackables" in add.keys():
+            for iid, val in add["stackables"].items():
+                addItem(name, iid, val)
+        if "uniques" in add.keys():
+            for item in add["uniques"]:
+                (iid, val), = item.items()
                 addItem(name, iid, val)

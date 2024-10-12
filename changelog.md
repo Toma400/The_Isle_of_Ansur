@@ -20,6 +20,9 @@
 > ```
 > ### Pre-alpha 7
 > - Gameplay
+>   - Introduced complete item/inventory system
+>     - TODO: write transition tutorial
+>     - TODO: uniques mentioned?
 >   - Introduced time feature
 >     - It now make time progress in location menu
 >     - It is also passing through travel
@@ -31,6 +34,7 @@
 >     - Location screen should be 8-10 times faster
 > - Fixes
 >   - Fixed save descriptions not showing after coming back to menu (#124)
+>   - Fixed incorrect list of names for non-recognised genders (#129)
 >   - Fixed some typos
 > 
 > Updating from PA6:
@@ -65,6 +69,39 @@
 >       permadeath = false
 > 
 >   - You can set it as `true` in case you want to have permadeath option on
+> 
+> - Make changes to your inventory files
+>   - Create `equip.yaml` file in directory used for previous changes
+>   - Put below entries in it:
+> 
+>       amulet: ''
+>       belt: ''
+>       boots: ''
+>       glove: ''
+>       greaves: ''
+>       head: ''
+>       l_hand: ''
+>       pants: ''
+>       r_hand: ''
+>       ring1: ''
+>       ring2: ''
+>       shirt: ''
+>       torso: ''
+> 
+>  - Rewrite `inventory.yaml` file to look like that:
+> 
+>       stackables:
+>           ansur:letter_to_yourself: 1
+>       uniques:
+>       - ansur:iron_knife:
+>           quality: 30
+> 
+>  - Adjust it to your will/old items, remembering that stackables are just indented
+>    dictionaries (being `key:value` pair) and uniques are list of single dictionaries
+>    in `{ID: data}` format
+>  - Data of unique items is just a simple `key:value` pair dictionary - PA7 only includes
+>    quality as a key 
+> 
 > ```
 > ---
 > ### Pre-alpha 6

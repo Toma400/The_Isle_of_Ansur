@@ -3,8 +3,13 @@
   "new_game": {
     "location": "ansur:sea__veno_edran__deck0",
     "time":     [2, 921, 8, 23, 1, 11, 0],
-    "inventory": [
-      {"ansur:letter_to_yourself": 1}
-    ]
+    "inventory": {
+      "stackables": {
+        "ansur:letter_to_yourself": 1
+      },
+      "uniques": [
+        {"ansur:iron_knife": null}
+      ]
+    }
   }
 }
