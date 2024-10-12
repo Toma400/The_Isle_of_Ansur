@@ -104,14 +104,10 @@ def getRaceNames(rid: str, gid: str) -> list[(str, str)]:
             for name in getRace(rid).getc("names", gid):
                 ret.append((name, name))
     except:                                                          # runs when specific gender is not found
-        try: # checks if 'strict' parameter exists                     # if 'strict' parameter is not True
-            if getRace(rid).getc("names", "strict") is False:          # it takes names from all genders
-                for gend in getRace(rid).get("names"):
-                    for name in getRace(rid).getc("names", gend):
-                        ret.append((name, name))
-        except: # runs if 'strict' does not exist (defaults to False)
+        strict = getRace(rid).getc("names", "strict")                # checks if 'strict' parameter exists
+        if strict is not True:                                       # if 'strict' parameter is False or None...
             for gend in getRace(rid).get("names"):
-                for name in getRace(rid).getc("names", gend):
+                for name in getRace(rid).getc("names", gend):        # ...add names from all genders
                     ret.append((name, name))
     finally:
         ret.sort()
