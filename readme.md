@@ -71,7 +71,7 @@ the biggest priority to lowest):
 - interiors
 
 Important to note however, the collaboration would work under the premise that IoA is
-a free game, thus contributing needs to follow [terms described here](https://github.com/Toma400/The_Isle_of_Ansur/wiki/Assets-Contribution-Principles).  
+a free game, thus contributing needs to follow [terms described here](https://baedoor.github.io/wcontr/_guidelines.html).  
 There is no deadlines or pressure on collaborator however, as ultimately this should be
 an effort that is driven by passion.
 
