@@ -29,6 +29,7 @@
 >   - Added character screen, so player can now see info about their hero
 >     - It allows for editing character's history
 >   - Some actions now move player between screens, making actions more intuitive
+>   - Hardcore mode now doesn't allow exiting without save
 > - Technicals
 >   - Improved performance in various areas
 >     - Location screen should be 8-10 times faster
