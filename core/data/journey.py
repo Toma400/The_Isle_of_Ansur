@@ -1,6 +1,9 @@
 from core.data.save_system.verify import SaveVerifier
+from core.data.save_system.req_data import SV_KIND
+from core.data.custom_scripts.stat import statScript
 from core.data.world.time import BaeTime
 from core.data.player.origin import getOrigin
+from core.file_system.parsers import loadTOML
 import os, toml, yaml, json
 from os.path import exists
 import logging as log
@@ -21,6 +24,9 @@ class SaveStr(Enum):
     T_WDAY   = "player.toml | time_wday"
     T_HOUR   = "player.toml | time_hour"
     T_MIN    = "player.toml | time_min"
+    FATIGUE  = "player.toml | sp"
+    HUNGER   = "player.toml | hunger"
+    THIRST   = "player.toml | thirst"
     GENDER   = "data.toml | gender"
     RACE     = "data.toml | race"
     CLASS    = "data.toml | class"
@@ -34,6 +40,8 @@ class Journey:
     keys_saved = ["gender", "race", "class", "name", "attr", "skill", "religion", "origin", "history", "settings"]
 
     def __init__(self):
+        if not exists(f"stats/ansur/system.toml"):
+            raise FileNotFoundError(f"Not found -system.toml- in core package.")
         # character creation stages finished
         #                           [gender, race, class, name, points]
         #                                                             [religion, origin]
@@ -47,6 +55,7 @@ class Journey:
         self.settings : dict            = {"permadeath": False}            # dict holding default game settings
         # technical
         self.verify : SaveVerifier or None = None
+        self.system : dict                 = loadTOML(f"stats/ansur/system.toml")
 
     def get(self, save_string: str) -> str | int | float | list | dict:
         """Allows for quick data gathering from save files. Operates on `save_string` format.
@@ -115,6 +124,7 @@ class Journey:
 
     def pass_time(self, dt: float):
         if self.date is not None:
+            prev_hour = self.date.hour
             if self.date.incr(dt) is True:
                 self.set(SaveStr.T_ERA.value,   self.date.era)
                 self.set(SaveStr.T_YEAR.value,  self.date.year)
@@ -123,6 +133,13 @@ class Journey:
                 self.set(SaveStr.T_WDAY.value,  self.date.wday)
                 self.set(SaveStr.T_HOUR.value,  self.date.hour)
                 self.set(SaveStr.T_MIN.value,   self.date.min)
+                # here you can do comparisons between 'prev_X' and 'self.date' to check passing of each subtype
+                # (e.g. 'prev_day > self.date.day'); make sure to set variable above
+                if self.date.hour > prev_hour or (self.date.hour == 0 and prev_hour == 23):
+                    self.set(SaveStr.FATIGUE.value, self.get(SaveStr.FATIGUE.value) - statScript(self.name, SV_KIND.BUFFER.value, self.system["sp_loss"]))
+                    self.set(SaveStr.HUNGER.value,  self.get(SaveStr.HUNGER.value)  - statScript(self.name, SV_KIND.BUFFER.value, self.system["hunger_loss"]))
+                    self.set(SaveStr.THIRST.value,  self.get(SaveStr.THIRST.value)  - statScript(self.name, SV_KIND.BUFFER.value, self.system["thirst_loss"]))
+
     #=================================================================================================
     # - COMMON PROCEDURES -
     # Procedures used during the game on regular basis.

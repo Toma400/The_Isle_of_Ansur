@@ -1,11 +1,11 @@
 hp_max      = "20 + [A]ansur:endurance * 10"
 mp_max      = "20 + [A]ansur:intelligence * 10"
 sp_max      = "800 + [A]ansur:endurance * 25 + [S]ansur:survival * 30"
-sp_loss     = "40 + temperatureFunc * 10"               # each hour | may need taking cap on -3/-2 to also consume energy
+sp_loss     = "40" #"40 + temperatureFunc * 10"               # each hour | may need taking cap on -3/-2 to also consume energy
 hunger_max  = "100"
 thirst_max  = "100"
 hunger_loss = "8 - [S]ansur:survival"                   # each hour
-thirst_loss = "8 + temperatureFunc - [S]ansur:survival" # each hour
+thirst_loss = "8 - [S]ansur:survival" #"8 + temperatureFunc - [S]ansur:survival" # each hour
 weight_max  = "[A]ansur:strength * 3"
 decay       = "[S]level / 1000"
 ceiling     = "100"

@@ -1,4 +1,3 @@
-from core.data.save_system.req_data import SV_KIND
 from core.data.pack_manag.id import absoluteID
 from core.file_system.parsers import loadYAML
 import re
@@ -11,17 +10,17 @@ import re
 ATTR_REF  = r"\[A\][\w:]*"
 SKILL_REF = r"\[S\][\w:]*"
 
-def statScript(player: str, sv_kind: SV_KIND, script: str) -> int:
+def statScript(player: str, sv_str: str, script: str) -> int:
     script_var = script
     # find [A]* and [S]* strings and replace them with int values
     ar = re.findall(ATTR_REF, script)
     sr = re.findall(SKILL_REF, script)
     for a in ar: #[A]attributeID
-        al    = loadYAML(f"saves/{player}/{sv_kind.value}/statistics/attributes.yaml")
+        al    = loadYAML(f"saves/{player}/{sv_str}/statistics/attributes.yaml")
         abs_a = absoluteID(a.replace("[A]", ""))
         script_var = script_var.replace(a, str(al[abs_a]))
     for s in sr: #[S]skillID
-        sl    = loadYAML(f"saves/{player}/{sv_kind.value}/statistics/skills.yaml")
+        sl    = loadYAML(f"saves/{player}/{sv_str}/statistics/skills.yaml")
         abs_s = absoluteID(s.replace("[S]", ""))
         script_var = script_var.replace(s, str(sl[abs_s]))
     # do math operation on string with replaced attribute/skill values
