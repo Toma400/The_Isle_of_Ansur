@@ -1,2 +1,3 @@
 key        = "loc__sea__veno_edran_deck0"
 background = "locations/sea__veno_edran__deck0.png"
+type       = "exterior"

@@ -1,30 +1,21 @@
 races__baedoorian  = "Human, Born in Baedoor"
-races__kaerian     = "Human, Born in Kaer"
 races__jitadian    = "Human, Born in Jitado"
 races__mesinpean   = "Human, Born in Mes Inpea"
-races__mrran       = "Human, Born in Eimr"
-races__nordwinians = "Human, Born in Northern Isles"
 races__ormath      = "Ormath"
 races__ghlodd      = "Ghlodd"
-races__lunatri     = "Lunatri"
 races__voitri      = "Voitri"
 races__saphtri     = "Saphtri"
 races__pahtri      = "Pahtri"
 
 classes__undefined     = "Undefined"
-classes__swordsman     = "Swordsman"
 classes__gunslinger    = "Gunslinger"
 classes__sharpshooter  = "Sharpshooter"
 classes__archer        = "Archer"
-classes__illusionist   = "Illusionist"
-classes__priest        = "Priest"
 classes__rogue         = "Rogue"
-classes__assassin      = "Assassin"
 classes__bard          = "Bard"
 classes__merchant      = "Merchant"
 classes__blacksmith    = "Blacksmith"
 classes__outlander     = "Outlander"
-classes__headhunter    = "Headhunter"
 classes__ormath_shaman = "Ormath Shaman"
 
 gender__male       = "Man"
@@ -131,16 +122,6 @@ Inhabitants of Baedoor are descendants of jitadians, and as such they are great 
 Unlike their grandfathers however, Baedoor culture was forged by fiery aristocrats and it tends to get more hermetic, yet the passion built by many aristocratic homes drives the culture towards new discoveries and conquests.
 Currently, Baedoor civilisation is considered as one of the most technologically advanced in whole universe, but it is politically weakened because of Empire fall during Old Era ending.
 '''
-races__kaerian_descr = '''
-Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
-What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
-Despite those shortcomings, their assimilation skills let them be very expansive kind, inhabiting most of places in Baedoor universe.
-
-Kaer humans are known to be inhabitants of Kaer, dark lands on the south of Baedoor. They count both Serj and those with serj blood from mixed marriages with Baedoor occupants or other races living in Kaer.
-Serj built their unique civilisation in forests alongside kehts, keeping mostly north part of the island. Their history is tainted with many wars, mostly with kehts, which really depleted their military strength.
-Since beginning, serjs were ere very talented in processing mined goods and craft of wooden and clay furniture. They fought with savage fury, gaining advantage even with very poor equipment.
-Nowadays, serj population is much smaller than it used to be, but free of Empire's chains, they slowly come back to their old power, trying to restitute their historical cities near eastern mountain range.
-'''
 races__jitadian_descr = '''
 Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
 What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
@@ -161,27 +142,6 @@ In times of Pre Era empires rise to power, Mes Inpea was considered one of two m
 While mesinpeans do not possess any specific traits when it comes to military or magic, they are great workers, exceeding other human civilisations in diversity and average quality of their craftmanship.
 Mesinpean culture in general was very influential on later human civilisations, being their strongest mark of impact during their golden era.
 '''
-races__mrran_descr = '''
-Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
-What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
-Despite those shortcomings, their assimilation skills let them be very expansive kind, inhabiting most of places in Baedoor universe.
-
-Eimr may be considered as the most tense land in whole universe, being constantly torn by conflicts, either of internal or external nature.
-Unfortunate enough to have lived under multiple occupations, Eimr inhabitants also tend to get into wars and tensions between their own tribes, as mrran civilisation is bundled out of multiple cultures living near each other.
-The fact that lands of Eimr are rather poor and desolate doesn't help, as many resolve into thievery and mugging. Eimr is shattered into many self-claimed territories, even in modern days, where united country was achieved.
-All those tensions make mrrans very versatile, as they needed to learn their paths of life through individual experience.
-'''
-races__nordwinians_descr = '''
-Human race is known to be flexible and very adaptive to its environment. One of common qualities of humans is their mobility and openness to chances, making them overall great merchants and spokeperson, classic fighters, as well as technicians and mages.
-What this race gains from being very fluid however, it loses on mastery. Human beings are rarely beyond bit-above-average in many aspects.
-Despite those shortcomings, their assimilation skills let them be very expansive kind, inhabiting most of places in Baedoor universe.
-
-Nordwinians are inhabitants of northern islands, two of which are part of Baedoor continent, and the rest is located further north, on their own archipelago.
-Nordwinian culture is visibly influenced by their ancestors who also colonised Baedoor island and northern parts of Moon continent, giving birth to nomathian tribes. Depending on location, their symbolics and architecture changed, adapting to influences of neighbouring civilisations.
-However, the prevailing symbol of nordwinians themselves - axe and fur - stayed intact. Despite them, they quite often adapted fighting with long swords and chainmails, especially those who settled in warmer regions.
-Being experienced with foresty lands of their origin, nordwinians are also experts when it comes to wood use, creating furniture and many detailed artworks with their high dedication to carpentry.
-Nordwinians are dedicated to tradition, cultivating community rituals and celebrate them with feasts. They are known for many festival hold during the year.
-'''
 races__ormath_descr = '''
 Ormaths are quite strange race of short, grayskinned beings living in tribes on Arennan desert. They are heavily structured in their hierarchical societies built around Elders and most importantly, Shaman being the guide of whole tribe.
 They also perform many daily activities in groups, either of families and friends, or whole tribe. This community focus is one of recurring qualities of ormath race.
@@ -201,17 +161,6 @@ They often overcome body limitations with psionical powers - oldest centuries ar
 
 Ghlodds are hot-headed and loving war, but they also value highly their social values, such as religion, community and family. They find spirituality to be the most enriching aspect of the world, making them huge advocates for art of any kind.
 Their traditions are highly rooted in societal system that seems very odd to foreigners, making ghloddish culture feel hermetic until it is analysed more in-depth through books or simple talk with Seiteh inhabitants.
-'''
-races__lunatri_descr = '''
-Tri race is one of the oldest races in universe, with their origin being unknown. Some people claim that they were the ones to be first sentient lives and all other races evolved from them, either by deforming or transforming.
-That claim however is rarely brought, as they share a lot of differences with other races and it wouldn't be likely without mass gods interventions for it to happen.
-The only visible similarity tri share is their look resembling humans - but tris tend to have way different taste, loving long, dark hair and elegant, subtle wear. They also tend to have slender faces and be slightly taller.
-All tris are considered as bright and skilled in variety of works, but also proficient in magic. They are known to be most influencial mages, often preferring very theatrical, ceremonial ways to perform rituals.
-Ceremonies are well established part of tri culture, which is seen also in their love of art, theatre and traditions of similar character.
-
-Lunatris are tris living on West Moon, enormous island consisting of many tri clans spread across. Despite efforts to unite themselves (which partially succeeded, as Federated Tri Union exists), they are very bound to their specific community and land.
-This makes them very much bound to their homeland, so they are rarely seen travelling outside of their part of Moon continent - which is also considered as place from where all tris come from.
-Despite that, lunatris are fond on studying many subjects, making them curious of the world around them. Lots of pilgrims come to beautiful cities of West Moon to see their ambitious architecture, to learn from masters, and about their unique culture.
 '''
 races__voitri_descr = '''
 Tri race is one of the oldest races in universe, with their origin being unknown. Some people claim that they were the ones to be first sentient lives and all other races evolved from them, either by deforming or transforming.
@@ -256,12 +205,6 @@ classes__undefined_descr = '''
 Undefined class does not take any precise advantage like other choices, but let you learn everything faster.
 It is basically a choice of everything and nothing - you get less, for later to get more.
 '''
-classes__swordsman_descr = '''
-Swordsman is class dedicated for melee fights, especially situations where swords are extensively used.
-It invests heavily in training of its physical strengths, as force is what swordsman masters greatly.
-
-It is great choice for anyone who enjoy fight and wants to recruit themselves as mercenary or even into the army.
-'''
 classes__gunslinger_descr = '''
 Gunslingers are fast shooters, using firearms as their main weapon of choice. Unlike sharpshooters, they prefer a bit closer distances and use revolvers more frequently.
 Expect a lot of revolvers spinning and duels on your way! Whether you use your power to fight for the law or rob the bank, is absolutely up to you.
@@ -274,21 +217,9 @@ classes__archer_descr = '''
 Archer knows well how to handle bows and utilise them to their maximum capabilities, sending deadly arrows directly into enemy's throats.
 But sometimes the throat is a bit too close, and for this occasion archers are swift with some shorters weapons, keeping their trusty dagger close.
 '''
-classes__illusionist_descr = '''
-Illusionist is mage trained in wisdom that eye perception can be twisted, and they use it to their benefit for whatever purpose they have.
-The most common is to pay for your gambling debts, but this rarely work on the long run.
-'''
-classes__priest_descr = '''
-Priests are usually religious people who dedicated their lives to serve as healers and those giving aid to the poor and weak.
-Sometimes they do end up impaled somewhere, but their innocent hearts can't help but come to those in need.
-'''
 classes__rogue_descr = '''
 Rogues are knowledgeable both in thievery and silent murders, making them pretty powerful, diverse group to fill any faction needing services done quietly.
 But if they had to choose... they would leave murders to those a bit more dark people. There's nothing more charming than to be a bit mischievous, after all.
-'''
-classes__assassin_descr = '''
-Assassins are army of shadows, discussing politics with rulers at day, murdering them at night. Masters of deadly weapons, on both ranged and close range.
-Some of them follow moral guidelines, but your dagger is not loyal to any colour... unless you are one of those idealists, but those are usually on the other side of the knife.
 '''
 classes__bard_descr = '''
 Bard loves singing and playing music in taverns, but it can also get some money in less official ways, in case something goes south in artistic career.
@@ -310,13 +241,6 @@ Outlanders are those rejected by society, or themselves, who learned to live on 
 They seek their destiny through solitude, which made them pretty great at surviving without any help in roughest environment.
 
 This class choice is great pick with any character that likes to wander and get lost. Having handful of useful skills related to survival can get crucial while traversing deserts or areas without any sign of civilisation.
-'''
-classes__headhunter_descr = '''
-Headhunters are legendary saphtri archers who are known to be extremely effective with taking down their targets. They often worked for the separation of Arennan during Old Era revolt, but their existence dates to the eldest times of saphtri culture.
-They were often involved in internal conflicts, however they most often followed their moral code.
-
-With fall of Empire and saphtris getting independence, headhunters survived as a powerful guild of historical hero figures, still recruiting young members.
-They are however way more likely to be seen as adventurers or in saphtri national army.
 '''
 classes__ormath_shaman_descr = '''
 Ormath shaman has the most important role of all ormath members of the tribe. They only speak with wind spirits, connecting the tribe with the dangerous world around them.
