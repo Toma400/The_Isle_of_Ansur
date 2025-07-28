@@ -3,13 +3,26 @@ Location is a basic element that represents world in Isle of Ansur game.
 It is made by creating folder in `worlds/{your mod id}/locations/`. Name of the folder
 created together with mod ID will become a location ID (LID).
 
+- [Location data](#location-data)
 - [Destinations](#destinations)
-  - [Contents](#contents)
   - [Script syntax](#script-syntax)
+
+### Location data
+Location has its data stored in `info.toml` file inside location directory. The file is fairly
+small:
+```toml
+key        = "loc__sea__veno_edran_deck0"
+background = "locations/sea__veno_edran__deck0.png"
+type       = "exterior"
+```
+#### Contents
+- `key` - language key for location name and description
+- `background` - file path in `assets` folder of your worldpack leading to the image shown when visiting the location
+- `type` - type of the location, affecting ways the player with interact with it (options: `exterior`, `interior`)
 
 ### Destinations
 To create a destination player can travel to from specific location, create `destinations`
-folder. Next, create a .toml file [with name of your choice](#destination-filename-is-not-id).
+folder in your location folder. Next, create a .toml file [with name of your choice](#destination-filename-is-not-id).
 
 It should look like that:
 ```toml
