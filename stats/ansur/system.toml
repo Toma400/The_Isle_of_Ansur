@@ -7,5 +7,5 @@ thirst_max  = "100"
 hunger_loss = "8 - [S]ansur:survival"                   # each hour
 thirst_loss = "8 - [S]ansur:survival" #"8 + temperatureFunc - [S]ansur:survival" # each hour
 weight_max  = "[A]ansur:strength * 3"
-decay       = "[S]level / 1000"
+decay       = "[S]level / 1000" # TODO
 ceiling     = "100"

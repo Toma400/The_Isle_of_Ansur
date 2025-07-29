@@ -1,8 +1,9 @@
 from core.file_system.repo_manag import file_lister
 from core.gui.registry.pgui_objects import PGUI_Helper
-from core.decorators import RequiresImprovement
+from core.decorators import RequiresImprovement, Deprecated
 from core.gui.manag.langstr import langjstring
 from core.data.world.time import parseBaeTime
+from core.data.custom_scripts.travel import travelScript
 from core.file_system.parsers import loadYAML, writeYAML
 from os.path import exists
 import logging as log
@@ -99,6 +100,7 @@ def checkDestination(dyn_screen, dest: str) -> bool:
     if dest is None:               return False
     if not exists(f"{dest}.toml"): return False
 
+    @Deprecated("core.data.custom_scripts.travel.travelScript")
     def parseDestScriptCond(t: str) -> bool | None:
         ts = t.split(" | ")
         t_path = ts[0]
@@ -135,14 +137,14 @@ def checkDestination(dyn_screen, dest: str) -> bool:
 
     if "req" in dest_keys: # if not, it's just True by default
         for r in dest_info["req"]:
-            if parseDestScriptCond(r) is False:
+            if travelScript(dyn_screen, r) is False:
                 out_1 = False
 
     if "req_or" not in dest_keys:
         out_2 = True
     else:
         for r in dest_info["req_or"]:
-            if parseDestScriptCond(r) is True:
+            if travelScript(dyn_screen, r) is True:
                 out_2 = True
         if len(dest_info["req_or"]) == 0: # in case someone leaves empty []
             out_2 = True
