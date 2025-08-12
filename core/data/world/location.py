@@ -3,7 +3,7 @@ from core.gui.registry.pgui_objects import PGUI_Helper
 from core.decorators import RequiresImprovement, Deprecated
 from core.gui.manag.langstr import langjstring
 from core.data.world.time import parseBaeTime
-from core.data.custom_scripts.travel import travelScript
+from core.data.custom_scripts.travel import travelScript, travelScriptEdit
 from core.file_system.parsers import loadYAML, writeYAML
 from os.path import exists
 import logging as log
@@ -100,35 +100,6 @@ def checkDestination(dyn_screen, dest: str) -> bool:
     if dest is None:               return False
     if not exists(f"{dest}.toml"): return False
 
-    @Deprecated("core.data.custom_scripts.travel.travelScript")
-    def parseDestScriptCond(t: str) -> bool | None:
-        ts = t.split(" | ")
-        t_path = ts[0]
-        t_key  = ts[1]
-        t_val  = ts[2]
-        file   = None
-        if exists(f"saves/{dyn_screen.journey.name}/buffer/{t_path}"):
-            match t_path.split(".")[1]:
-                case "yaml":
-                    file = loadYAML(f"saves/{dyn_screen.journey.name}/buffer/{t_path}")
-                case "toml":
-                    file = toml.load(f"saves/{dyn_screen.journey.name}/buffer/{t_path}")
-        if file is not None:
-            t_keys = t_key.split(" |> ")
-            result = file
-            for k in t_keys:
-                result = result[k]
-            if ">" in t_val:
-                return int(result) > int(t_val.replace(">", ""))
-            elif "<" in t_val:
-                return int(result) < int(t_val.replace("<", ""))
-            else:
-                return int(result) == int(t_val.replace("=", "")) # = is optional
-        else:
-            log.error(f"Couldn't find or read file evoked by parseDestScript with path: saves/{dyn_screen.journey.name}/buffer/{t_path}. Condition script: {t}")
-            return None # (should it be changed to False instead? better CTD or keep it silently running? (stability and save keeping vs less error notice?))
-    #--- eof
-
     dest_info = toml.load(f"{dest}.toml")
     dest_keys = dest_info.keys()
 
@@ -157,54 +128,13 @@ def travelTo(dyn_screen, dest: str):
     dest_info = toml.load(f"{dest}.toml")
     dest_keys = dest_info.keys()
 
-    def parseDestScriptEdit(t: str, mode: 0 | 1):
-        """Mode: 0 is `cost`, 1 is `set`"""
-        ts = t.split(" | ")
-        t_path = ts[0]
-        t_key  = ts[1]
-        t_val  = ts[2]
-        file   = None
-        if exists(f"saves/{dyn_screen.journey.name}/buffer/{t_path}"):
-            match t_path.split(".")[1]:
-                case "toml":
-                    file = toml.load(f"saves/{dyn_screen.journey.name}/buffer/{t_path}")
-                case "yaml":
-                    file = loadYAML(f"saves/{dyn_screen.journey.name}/buffer/{t_path}")
-        if file is not None:
-            t_keys = t_key.split(" |> ")
-            if mode == 0: # if cost, then checks previous value
-                result = file
-                for k in t_keys:
-                    result = result[k]
-                t_val = int(result) - int(t_val) # to add something, use negative values
-
-            # check if value is int, defaults to int
-            try:    t_val = int(t_val)
-            except: pass
-
-            dict_in = {t_keys[-1]: t_val}
-            if len(t_keys) > 1:
-                for k in reversed(t_keys[:-1]):
-                    dict_in = {k: dict_in}
-            file.update(dict_in)
-            match t_path.split(".")[1]:
-                case "toml":
-                    with open(f"saves/{dyn_screen.journey.name}/buffer/{t_path}", mode="w") as file_out:
-                        toml.dump(file, file_out)
-                case "yaml":
-                    writeYAML(f"saves/{dyn_screen.journey.name}/buffer/{t_path}", file)
-        else:
-            log.error(f"Couldn't find or read file evoked by parseDestScript with path: saves/{dyn_screen.journey.name}/buffer/{t_path}. Edit script: {t} | Mode: {mode}")
-            return None # (should it be changed to False instead? better CTD or keep it silently running? (stability and save keeping vs less error notice?))
-    #--- eof
-
     if "cost" in dest_keys:
         for r in dest_info["cost"]:
-            parseDestScriptEdit(r, 0)
+            travelScriptEdit(dyn_screen, r, 0)
 
     if "set" in dest_keys:
         for r in dest_info["set"]:
-            parseDestScriptEdit(r, 1)
+            travelScriptEdit(dyn_screen, r, 1)
 
     # TODO: ideally, there should be a func that updates all object-like Journey fields (so, ones not read from buffer by default) and this section below
     #       should just have .set() to update .toml file (after which dest_info would be read from it)
